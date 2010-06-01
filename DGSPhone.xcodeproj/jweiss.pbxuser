@@ -1,0 +1,133 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 273}}";
+			sepNavSelRange = "{271, 0}";
+			sepNavVisRange = "{0, 401}";
+		};
+	};
+	1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 1261}}";
+			sepNavSelRange = "{248, 0}";
+			sepNavVisRange = "{0, 417}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* DGSPhone */ = {
+		activeExec = 0;
+		executables = (
+			DA38B1D911B59DAE00112AA4 /* DGSPhone */,
+		);
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = DA38B1D911B59DAE00112AA4 /* DGSPhone */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* DGSPhone */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* DGSPhone */,
+		);
+		codeSenseManager = DA38B1EB11B59DCF00112AA4 /* Code sense */;
+		executables = (
+			DA38B1D911B59DAE00112AA4 /* DGSPhone */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 297115054;
+			PBXWorkspaceStateSaveDate = 297115054;
+		};
+		sourceControlManager = DA38B1EA11B59DCF00112AA4 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 262}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 348}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 262}}";
+			sepNavSelRange = "{185, 0}";
+			sepNavVisRange = "{0, 185}";
+		};
+	};
+	DA38B1D911B59DAE00112AA4 /* DGSPhone */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DGSPhone;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	DA38B1EA11B59DCF00112AA4 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	DA38B1EB11B59DCF00112AA4 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 262}}";
+			sepNavSelRange = "{159, 0}";
+			sepNavVisRange = "{0, 221}";
+		};
+	};
+	DA38B1F811B59F2F00112AA4 /* LoginViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 715}}";
+			sepNavSelRange = "{277, 0}";
+			sepNavVisRange = "{0, 1238}";
+			sepNavWindowFrame = "{{15, 338}, {1027, 685}}";
+		};
+	};
+	DA38B1FC11B59F5800112AA4 /* AccountTest.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 455}}";
+			sepNavSelRange = "{772, 0}";
+			sepNavVisRange = "{76, 643}";
+		};
+	};
+	DA38B1FD11B59F5800112AA4 /* AccountTest.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 455}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 454}";
+		};
+	};
+	DA38B1FF11B59FA600112AA4 /* Account.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {542, 262}}";
+			sepNavSelRange = "{120, 0}";
+			sepNavVisRange = "{0, 199}";
+		};
+	};
+}
