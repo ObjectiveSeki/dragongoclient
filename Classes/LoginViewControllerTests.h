@@ -1,5 +1,5 @@
 //
-//  AccountTest.h
+//  LoginViewControllerTests.h
 //  DGSPhone
 //
 //  Created by Justin Weiss on 6/1/10.
@@ -17,7 +17,7 @@
 //#import "application_headers" as required
 
 
-@interface AccountTest : SenTestCase {
+@interface LoginViewControllerTests : SenTestCase {
 
 }
 
