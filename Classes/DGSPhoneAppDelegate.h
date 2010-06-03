@@ -10,11 +10,11 @@
 
 @interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
-	UIWindow *loginWindow;
+	UIViewController *viewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UIWindow *loginWindow;
+@property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
 @end
 

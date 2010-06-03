@@ -12,8 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		DA084DD011B5F4F100150EDC /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* LoginWindow.xib */; };
-		DA084DD111B5F4F100150EDC /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F911B59F2F00112AA4 /* LoginViewController.xib */; };
+		DA084DD011B5F4F100150EDC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
 		DA084DD311B5F4F100150EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		DA084DD411B5F4F100150EDC /* DGSPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */; };
 		DA084DD511B5F4F100150EDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
@@ -21,15 +20,23 @@
 		DA084DD811B5F4F100150EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		DA084DD911B5F4F100150EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		DA084DDA11B5F4F100150EDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		DA084E0711B5F60300150EDC /* LoginViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA084E0611B5F60300150EDC /* LoginViewControllerTests.m */; };
 		DA32E1AB11B5FF0000B6CB05 /* DGSPhoneTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */; };
 		DA32E1AE11B5FF7C00B6CB05 /* AccountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA71CAAB11B5EAC8008696AC /* AccountTests.m */; };
-		DA38B1F511B59EBD00112AA4 /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* LoginWindow.xib */; };
+		DA38B1F511B59EBD00112AA4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
-		DA38B1FB11B59F2F00112AA4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F911B59F2F00112AA4 /* LoginViewController.xib */; };
 		DA38B20111B59FA600112AA4 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B20011B59FA600112AA4 /* Account.m */; };
+		DA48E4D711B765DF00BE2A98 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8689111B7477600A4DA7A /* Reachability.m */; };
+		DA48E4D811B765E100BE2A98 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688E11B7477600A4DA7A /* ASINSStringAdditions.m */; };
+		DA48E4D911B765E200BE2A98 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688C11B7477600A4DA7A /* ASINetworkQueue.m */; };
+		DA48E4DA11B765E200BE2A98 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688A11B7477600A4DA7A /* ASIInputStream.m */; };
+		DA48E4DB11B765E500BE2A98 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
+		DA48E4DC11B765E600BE2A98 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
+		DA48E4DD11B765E600BE2A98 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
 		DA71CAAC11B5EAC8008696AC /* AccountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA71CAAB11B5EAC8008696AC /* AccountTests.m */; };
 		DA71CAB311B5EBD3008696AC /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B20011B59FA600112AA4 /* Account.m */; };
+		DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
+		DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
+		DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DAC8689211B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
 		DAC8689311B7477600A4DA7A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
 		DAC8689411B7477600A4DA7A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
@@ -37,13 +44,6 @@
 		DAC8689611B7477600A4DA7A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688C11B7477600A4DA7A /* ASINetworkQueue.m */; };
 		DAC8689711B7477600A4DA7A /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688E11B7477600A4DA7A /* ASINSStringAdditions.m */; };
 		DAC8689811B7477600A4DA7A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8689111B7477600A4DA7A /* Reachability.m */; };
-		DAC8689911B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
-		DAC8689A11B7477600A4DA7A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
-		DAC8689B11B7477600A4DA7A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
-		DAC8689C11B7477600A4DA7A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688A11B7477600A4DA7A /* ASIInputStream.m */; };
-		DAC8689D11B7477600A4DA7A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688C11B7477600A4DA7A /* ASINetworkQueue.m */; };
-		DAC8689E11B7477600A4DA7A /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688E11B7477600A4DA7A /* ASINSStringAdditions.m */; };
-		DAC8689F11B7477600A4DA7A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8689111B7477600A4DA7A /* Reachability.m */; };
 		DAC868A011B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
 		DAC868A111B7477600A4DA7A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
 		DAC868A211B7477600A4DA7A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
@@ -68,14 +68,11 @@
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DA084DE011B5F4F100150EDC /* DGSPhoneTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTesting-Info.plist"; sourceTree = "<group>"; };
-		DA084E0511B5F60300150EDC /* LoginViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewControllerTests.h; sourceTree = "<group>"; };
-		DA084E0611B5F60300150EDC /* LoginViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewControllerTests.m; sourceTree = "<group>"; };
 		DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSPhoneTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGSPhoneTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA38B1F411B59EBD00112AA4 /* LoginWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginWindow.xib; sourceTree = "<group>"; };
+		DA38B1F411B59EBD00112AA4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		DA38B1F911B59F2F00112AA4 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Classes/LoginViewController.xib; sourceTree = "<group>"; };
 		DA38B1FF11B59FA600112AA4 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		DA38B20011B59FA600112AA4 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -84,6 +81,7 @@
 		DA71CAAA11B5EAC8008696AC /* AccountTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTests.h; sourceTree = "<group>"; };
 		DA71CAAB11B5EAC8008696AC /* AccountTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTests.m; sourceTree = "<group>"; };
 		DA71CAED11B5EDCB008696AC /* DGSPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTests-Info.plist"; sourceTree = "<group>"; };
+		DA7CA4A611B761E8004CD524 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		DAC8688111B7477600A4DA7A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		DAC8688311B7477600A4DA7A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -205,8 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
-				DA38B1F911B59F2F00112AA4 /* LoginViewController.xib */,
-				DA38B1F411B59EBD00112AA4 /* LoginWindow.xib */,
+				DA7CA4A611B761E8004CD524 /* LoginView.xib */,
+				DA38B1F411B59EBD00112AA4 /* MainWindow.xib */,
 				DA084DE011B5F4F100150EDC /* DGSPhoneTesting-Info.plist */,
 			);
 			name = Resources;
@@ -225,8 +223,6 @@
 		DA084E0411B5F5EB00150EDC /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DA084E0511B5F60300150EDC /* LoginViewControllerTests.h */,
-				DA084E0611B5F60300150EDC /* LoginViewControllerTests.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -390,8 +386,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA38B1F511B59EBD00112AA4 /* LoginWindow.xib in Resources */,
-				DA38B1FB11B59F2F00112AA4 /* LoginViewController.xib in Resources */,
+				DA38B1F511B59EBD00112AA4 /* MainWindow.xib in Resources */,
+				DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,8 +396,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA32E1AB11B5FF0000B6CB05 /* DGSPhoneTests.octest in Resources */,
-				DA084DD011B5F4F100150EDC /* LoginWindow.xib in Resources */,
-				DA084DD111B5F4F100150EDC /* LoginViewController.xib in Resources */,
+				DA084DD011B5F4F100150EDC /* MainWindow.xib in Resources */,
+				DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +488,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA084E0711B5F60300150EDC /* LoginViewControllerTests.m in Sources */,
 				DA32E1AE11B5FF7C00B6CB05 /* AccountTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,13 +498,13 @@
 			files = (
 				DA71CAAC11B5EAC8008696AC /* AccountTests.m in Sources */,
 				DA71CAB311B5EBD3008696AC /* Account.m in Sources */,
-				DAC8689911B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */,
-				DAC8689A11B7477600A4DA7A /* ASIFormDataRequest.m in Sources */,
-				DAC8689B11B7477600A4DA7A /* ASIHTTPRequest.m in Sources */,
-				DAC8689C11B7477600A4DA7A /* ASIInputStream.m in Sources */,
-				DAC8689D11B7477600A4DA7A /* ASINetworkQueue.m in Sources */,
-				DAC8689E11B7477600A4DA7A /* ASINSStringAdditions.m in Sources */,
-				DAC8689F11B7477600A4DA7A /* Reachability.m in Sources */,
+				DA48E4D711B765DF00BE2A98 /* Reachability.m in Sources */,
+				DA48E4D811B765E100BE2A98 /* ASINSStringAdditions.m in Sources */,
+				DA48E4D911B765E200BE2A98 /* ASINetworkQueue.m in Sources */,
+				DA48E4DA11B765E200BE2A98 /* ASIInputStream.m in Sources */,
+				DA48E4DB11B765E500BE2A98 /* ASIHTTPRequest.m in Sources */,
+				DA48E4DC11B765E600BE2A98 /* ASIFormDataRequest.m in Sources */,
+				DA48E4DD11B765E600BE2A98 /* ASIAuthenticationDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

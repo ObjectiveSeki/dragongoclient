@@ -2,14 +2,19 @@
 //  LoginViewController.m
 //  DGSPhone
 //
-//  Created by Justin Weiss on 6/1/10.
+//  Created by Justin Weiss on 6/2/10.
 //  Copyright 2010 Avvo. All rights reserved.
 //
 
 #import "LoginViewController.h"
-
+#import "Account.h"
 
 @implementation LoginViewController
+
+@synthesize loggingInStatusView;
+@synthesize loginFieldsView;
+@synthesize usernameField;
+@synthesize passwordField;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -20,6 +25,25 @@
     return self;
 }
 */
+
+- (void)login 
+{
+	Account *account = [[Account alloc] init];
+	if ([account login]) {
+		NSLog(@"Success!");
+	} else {
+		NSLog(@"Boo!");
+		[[self loggingInStatusView] setHidden:YES];
+		[[self loginFieldsView] setHidden:NO];
+	}
+	[account release];
+}
+
+- (IBAction)loginWithUsernameAndPassword:(id)sender
+{
+	Account *account = [[Account alloc] init];
+	[account loginWithUsername:[usernameField text] password:[passwordField text]];
+}
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -47,6 +71,10 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+	self.loggingInStatusView = nil;
+	self.loginFieldsView = nil;
+	self.usernameField = nil;
+	self.passwordField = nil;
 }
 
 

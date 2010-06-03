@@ -7,13 +7,12 @@
 //
 
 #import "DGSPhoneAppDelegate.h"
-#import "Account.h"
+#import "LoginViewController.h"
 
 @implementation DGSPhoneAppDelegate
 
 @synthesize window;
-@synthesize	loginWindow;
-
+@synthesize viewController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -22,12 +21,14 @@
 
     // Override point for customization after application launch.
 	
-    [window makeKeyAndVisible];
-		Account *account = [[Account alloc] init];
+	LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	
-	[account login];
+	[self setViewController:loginController];
+	[window addSubview:[loginController view]];
+    [loginController login];
+    [loginController release];
 	
-	[account release];
+	[window makeKeyAndVisible];
 	
 	return YES;
 }
