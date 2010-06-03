@@ -7,16 +7,18 @@
 //
 
 #import "AccountTests.h"
+#import "Account.h"
 
 
 @implementation AccountTests
 
 // all code under test must be linked into the Unit Test bundle
 
-- (void) testMath {
-    
-    STAssertTrue((1+1)==2, @"Compiler isn't feeling well today :-(" );
-    
+- (void) testInit {
+	Account *account = [[Account alloc] init];
+	
+	[account release];
+
 }
 
 

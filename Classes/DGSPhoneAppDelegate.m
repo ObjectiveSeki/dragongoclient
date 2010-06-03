@@ -7,6 +7,7 @@
 //
 
 #import "DGSPhoneAppDelegate.h"
+#import "Account.h"
 
 @implementation DGSPhoneAppDelegate
 
@@ -22,6 +23,11 @@
     // Override point for customization after application launch.
 	
     [window makeKeyAndVisible];
+		Account *account = [[Account alloc] init];
+	
+	[account login];
+	
+	[account release];
 	
 	return YES;
 }

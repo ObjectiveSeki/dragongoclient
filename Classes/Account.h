@@ -10,7 +10,13 @@
 
 
 @interface Account : NSObject {
-
 }
+
+- (void)logout;
+
+- (BOOL)login;
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
+
 
 @end

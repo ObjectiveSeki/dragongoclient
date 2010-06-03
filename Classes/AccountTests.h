@@ -15,6 +15,6 @@
 
 }
 
-- (void) testMath;              // simple standalone test
+- (void) testInit;              // simple standalone test
 
 @end
