@@ -16,24 +16,12 @@
 		DA084DD311B5F4F100150EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		DA084DD411B5F4F100150EDC /* DGSPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */; };
 		DA084DD511B5F4F100150EDC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
-		DA084DD611B5F4F100150EDC /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B20011B59FA600112AA4 /* Account.m */; };
 		DA084DD811B5F4F100150EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		DA084DD911B5F4F100150EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		DA084DDA11B5F4F100150EDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		DA32E1AB11B5FF0000B6CB05 /* DGSPhoneTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */; };
-		DA32E1AE11B5FF7C00B6CB05 /* AccountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA71CAAB11B5EAC8008696AC /* AccountTests.m */; };
 		DA38B1F511B59EBD00112AA4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
-		DA38B20111B59FA600112AA4 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B20011B59FA600112AA4 /* Account.m */; };
-		DA48E4D711B765DF00BE2A98 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8689111B7477600A4DA7A /* Reachability.m */; };
-		DA48E4D811B765E100BE2A98 /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688E11B7477600A4DA7A /* ASINSStringAdditions.m */; };
-		DA48E4D911B765E200BE2A98 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688C11B7477600A4DA7A /* ASINetworkQueue.m */; };
-		DA48E4DA11B765E200BE2A98 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688A11B7477600A4DA7A /* ASIInputStream.m */; };
-		DA48E4DB11B765E500BE2A98 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
-		DA48E4DC11B765E600BE2A98 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
-		DA48E4DD11B765E600BE2A98 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
-		DA71CAAC11B5EAC8008696AC /* AccountTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA71CAAB11B5EAC8008696AC /* AccountTests.m */; };
-		DA71CAB311B5EBD3008696AC /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B20011B59FA600112AA4 /* Account.m */; };
 		DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
@@ -55,6 +43,129 @@
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
 		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
+		DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
+		DAEA518211B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
+		DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
+		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
+		DAEA519C11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
+		DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
+		DAEA520711B890B800F4CCB3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */; };
+		DAEA525811B895A100F4CCB3 /* status.html in Resources */ = {isa = PBXBuildFile; fileRef = DAEA525711B895A100F4CCB3 /* status.html */; };
+		DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
+		DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */; };
+		DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526A11B8977B00F4CCB3 /* Foundation.framework */; };
+		DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
+		DAEA537311B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */; };
+		DAEA537411B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535E11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m */; };
+		DAEA537511B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536011B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m */; };
+		DAEA537611B8AB6200F4CCB3 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */; };
+		DAEA537711B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536411B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m */; };
+		DAEA537811B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536611B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m */; };
+		DAEA537911B8AB6200F4CCB3 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536811B8AB6200F4CCB3 /* CXMLElement.m */; };
+		DAEA537A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m */; };
+		DAEA537B11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536C11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m */; };
+		DAEA537C11B8AB6200F4CCB3 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536E11B8AB6200F4CCB3 /* CXMLNode.m */; };
+		DAEA537D11B8AB6200F4CCB3 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA537111B8AB6200F4CCB3 /* CTidy.m */; };
+		DAEA53D811B8B61000F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536C11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m */; };
+		DAEA53D911B8B61000F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m */; };
+		DAEA53DA11B8B61000F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535E11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m */; };
+		DAEA53DB11B8B61000F4CCB3 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536E11B8AB6200F4CCB3 /* CXMLNode.m */; };
+		DAEA53DC11B8B61000F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536611B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m */; };
+		DAEA53DD11B8B61000F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536411B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m */; };
+		DAEA53DE11B8B61000F4CCB3 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536811B8AB6200F4CCB3 /* CXMLElement.m */; };
+		DAEA53DF11B8B61000F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536011B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m */; };
+		DAEA53E011B8B61000F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */; };
+		DAEA53E111B8B61000F4CCB3 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */; };
+		DAEA53E211B8B61000F4CCB3 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA537111B8AB6200F4CCB3 /* CTidy.m */; };
+		DAEA53E311B8B61100F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536C11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m */; };
+		DAEA53E411B8B61100F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m */; };
+		DAEA53E511B8B61100F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535E11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m */; };
+		DAEA53E611B8B61100F4CCB3 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536E11B8AB6200F4CCB3 /* CXMLNode.m */; };
+		DAEA53E711B8B61100F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536611B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m */; };
+		DAEA53E811B8B61100F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536411B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m */; };
+		DAEA53E911B8B61100F4CCB3 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536811B8AB6200F4CCB3 /* CXMLElement.m */; };
+		DAEA53EA11B8B61100F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536011B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m */; };
+		DAEA53EB11B8B61100F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */; };
+		DAEA53EC11B8B61100F4CCB3 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */; };
+		DAEA53ED11B8B61100F4CCB3 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA537111B8AB6200F4CCB3 /* CTidy.m */; };
+		DAEA552D11B8BFB900F4CCB3 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FD11B8BFB800F4CCB3 /* access.c */; };
+		DAEA552E11B8BFB900F4CCB3 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FF11B8BFB800F4CCB3 /* alloc.c */; };
+		DAEA552F11B8BFB900F4CCB3 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550011B8BFB800F4CCB3 /* attrask.c */; };
+		DAEA553011B8BFB900F4CCB3 /* attrdict.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550111B8BFB800F4CCB3 /* attrdict.c */; };
+		DAEA553111B8BFB900F4CCB3 /* attrget.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550311B8BFB800F4CCB3 /* attrget.c */; };
+		DAEA553211B8BFB900F4CCB3 /* attrs.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550411B8BFB800F4CCB3 /* attrs.c */; };
+		DAEA553311B8BFB900F4CCB3 /* buffio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550611B8BFB900F4CCB3 /* buffio.c */; };
+		DAEA553411B8BFB900F4CCB3 /* charsets.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550711B8BFB900F4CCB3 /* charsets.c */; };
+		DAEA553511B8BFB900F4CCB3 /* clean.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550911B8BFB900F4CCB3 /* clean.c */; };
+		DAEA553611B8BFB900F4CCB3 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550B11B8BFB900F4CCB3 /* config.c */; };
+		DAEA553711B8BFB900F4CCB3 /* entities.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550D11B8BFB900F4CCB3 /* entities.c */; };
+		DAEA553811B8BFB900F4CCB3 /* fileio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550F11B8BFB900F4CCB3 /* fileio.c */; };
+		DAEA553911B8BFB900F4CCB3 /* iconvtc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551211B8BFB900F4CCB3 /* iconvtc.c */; };
+		DAEA553A11B8BFB900F4CCB3 /* istack.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551411B8BFB900F4CCB3 /* istack.c */; };
+		DAEA553B11B8BFB900F4CCB3 /* lexer.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551511B8BFB900F4CCB3 /* lexer.c */; };
+		DAEA553C11B8BFB900F4CCB3 /* localize.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551711B8BFB900F4CCB3 /* localize.c */; };
+		DAEA553D11B8BFB900F4CCB3 /* mappedio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551811B8BFB900F4CCB3 /* mappedio.c */; };
+		DAEA553E11B8BFB900F4CCB3 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551B11B8BFB900F4CCB3 /* parser.c */; };
+		DAEA553F11B8BFB900F4CCB3 /* pprint.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551D11B8BFB900F4CCB3 /* pprint.c */; };
+		DAEA554011B8BFB900F4CCB3 /* streamio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551F11B8BFB900F4CCB3 /* streamio.c */; };
+		DAEA554111B8BFB900F4CCB3 /* tagask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552111B8BFB900F4CCB3 /* tagask.c */; };
+		DAEA554211B8BFB900F4CCB3 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552211B8BFB900F4CCB3 /* tags.c */; };
+		DAEA554311B8BFB900F4CCB3 /* tidylib.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552511B8BFB900F4CCB3 /* tidylib.c */; };
+		DAEA554411B8BFB900F4CCB3 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552611B8BFB900F4CCB3 /* tmbstr.c */; };
+		DAEA554511B8BFB900F4CCB3 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552811B8BFB900F4CCB3 /* utf8.c */; };
+		DAEA554611B8BFB900F4CCB3 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552B11B8BFB900F4CCB3 /* win32tc.c */; };
+		DAEA554711B8BFB900F4CCB3 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FD11B8BFB800F4CCB3 /* access.c */; };
+		DAEA554811B8BFB900F4CCB3 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FF11B8BFB800F4CCB3 /* alloc.c */; };
+		DAEA554911B8BFB900F4CCB3 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550011B8BFB800F4CCB3 /* attrask.c */; };
+		DAEA554A11B8BFB900F4CCB3 /* attrdict.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550111B8BFB800F4CCB3 /* attrdict.c */; };
+		DAEA554B11B8BFB900F4CCB3 /* attrget.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550311B8BFB800F4CCB3 /* attrget.c */; };
+		DAEA554C11B8BFB900F4CCB3 /* attrs.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550411B8BFB800F4CCB3 /* attrs.c */; };
+		DAEA554D11B8BFB900F4CCB3 /* buffio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550611B8BFB900F4CCB3 /* buffio.c */; };
+		DAEA554E11B8BFB900F4CCB3 /* charsets.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550711B8BFB900F4CCB3 /* charsets.c */; };
+		DAEA554F11B8BFB900F4CCB3 /* clean.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550911B8BFB900F4CCB3 /* clean.c */; };
+		DAEA555011B8BFB900F4CCB3 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550B11B8BFB900F4CCB3 /* config.c */; };
+		DAEA555111B8BFB900F4CCB3 /* entities.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550D11B8BFB900F4CCB3 /* entities.c */; };
+		DAEA555211B8BFB900F4CCB3 /* fileio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550F11B8BFB900F4CCB3 /* fileio.c */; };
+		DAEA555311B8BFB900F4CCB3 /* iconvtc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551211B8BFB900F4CCB3 /* iconvtc.c */; };
+		DAEA555411B8BFB900F4CCB3 /* istack.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551411B8BFB900F4CCB3 /* istack.c */; };
+		DAEA555511B8BFB900F4CCB3 /* lexer.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551511B8BFB900F4CCB3 /* lexer.c */; };
+		DAEA555611B8BFB900F4CCB3 /* localize.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551711B8BFB900F4CCB3 /* localize.c */; };
+		DAEA555711B8BFB900F4CCB3 /* mappedio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551811B8BFB900F4CCB3 /* mappedio.c */; };
+		DAEA555811B8BFB900F4CCB3 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551B11B8BFB900F4CCB3 /* parser.c */; };
+		DAEA555911B8BFB900F4CCB3 /* pprint.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551D11B8BFB900F4CCB3 /* pprint.c */; };
+		DAEA555A11B8BFB900F4CCB3 /* streamio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551F11B8BFB900F4CCB3 /* streamio.c */; };
+		DAEA555B11B8BFB900F4CCB3 /* tagask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552111B8BFB900F4CCB3 /* tagask.c */; };
+		DAEA555C11B8BFB900F4CCB3 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552211B8BFB900F4CCB3 /* tags.c */; };
+		DAEA555D11B8BFB900F4CCB3 /* tidylib.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552511B8BFB900F4CCB3 /* tidylib.c */; };
+		DAEA555E11B8BFB900F4CCB3 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552611B8BFB900F4CCB3 /* tmbstr.c */; };
+		DAEA555F11B8BFB900F4CCB3 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552811B8BFB900F4CCB3 /* utf8.c */; };
+		DAEA556011B8BFB900F4CCB3 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552B11B8BFB900F4CCB3 /* win32tc.c */; };
+		DAEA556111B8BFB900F4CCB3 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FD11B8BFB800F4CCB3 /* access.c */; };
+		DAEA556211B8BFB900F4CCB3 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FF11B8BFB800F4CCB3 /* alloc.c */; };
+		DAEA556311B8BFB900F4CCB3 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550011B8BFB800F4CCB3 /* attrask.c */; };
+		DAEA556411B8BFB900F4CCB3 /* attrdict.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550111B8BFB800F4CCB3 /* attrdict.c */; };
+		DAEA556511B8BFB900F4CCB3 /* attrget.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550311B8BFB800F4CCB3 /* attrget.c */; };
+		DAEA556611B8BFB900F4CCB3 /* attrs.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550411B8BFB800F4CCB3 /* attrs.c */; };
+		DAEA556711B8BFB900F4CCB3 /* buffio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550611B8BFB900F4CCB3 /* buffio.c */; };
+		DAEA556811B8BFB900F4CCB3 /* charsets.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550711B8BFB900F4CCB3 /* charsets.c */; };
+		DAEA556911B8BFB900F4CCB3 /* clean.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550911B8BFB900F4CCB3 /* clean.c */; };
+		DAEA556A11B8BFB900F4CCB3 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550B11B8BFB900F4CCB3 /* config.c */; };
+		DAEA556B11B8BFB900F4CCB3 /* entities.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550D11B8BFB900F4CCB3 /* entities.c */; };
+		DAEA556C11B8BFB900F4CCB3 /* fileio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550F11B8BFB900F4CCB3 /* fileio.c */; };
+		DAEA556D11B8BFB900F4CCB3 /* iconvtc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551211B8BFB900F4CCB3 /* iconvtc.c */; };
+		DAEA556E11B8BFB900F4CCB3 /* istack.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551411B8BFB900F4CCB3 /* istack.c */; };
+		DAEA556F11B8BFB900F4CCB3 /* lexer.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551511B8BFB900F4CCB3 /* lexer.c */; };
+		DAEA557011B8BFB900F4CCB3 /* localize.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551711B8BFB900F4CCB3 /* localize.c */; };
+		DAEA557111B8BFB900F4CCB3 /* mappedio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551811B8BFB900F4CCB3 /* mappedio.c */; };
+		DAEA557211B8BFB900F4CCB3 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551B11B8BFB900F4CCB3 /* parser.c */; };
+		DAEA557311B8BFB900F4CCB3 /* pprint.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551D11B8BFB900F4CCB3 /* pprint.c */; };
+		DAEA557411B8BFB900F4CCB3 /* streamio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551F11B8BFB900F4CCB3 /* streamio.c */; };
+		DAEA557511B8BFB900F4CCB3 /* tagask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552111B8BFB900F4CCB3 /* tagask.c */; };
+		DAEA557611B8BFB900F4CCB3 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552211B8BFB900F4CCB3 /* tags.c */; };
+		DAEA557711B8BFB900F4CCB3 /* tidylib.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552511B8BFB900F4CCB3 /* tidylib.c */; };
+		DAEA557811B8BFB900F4CCB3 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552611B8BFB900F4CCB3 /* tmbstr.c */; };
+		DAEA557911B8BFB900F4CCB3 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552811B8BFB900F4CCB3 /* utf8.c */; };
+		DAEA557A11B8BFB900F4CCB3 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552B11B8BFB900F4CCB3 /* win32tc.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,13 +184,9 @@
 		DA38B1F411B59EBD00112AA4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		DA38B1FF11B59FA600112AA4 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		DA38B20011B59FA600112AA4 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		DA71CA8411B5E97F008696AC /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		DA71CAAA11B5EAC8008696AC /* AccountTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountTests.h; sourceTree = "<group>"; };
-		DA71CAAB11B5EAC8008696AC /* AccountTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountTests.m; sourceTree = "<group>"; };
 		DA71CAED11B5EDCB008696AC /* DGSPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		DA7CA4A611B761E8004CD524 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		DAC8688111B7477600A4DA7A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -103,6 +210,98 @@
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		DAEA517F11B88A1100F4CCB3 /* DGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGS.h; sourceTree = "<group>"; };
+		DAEA518011B88A1100F4CCB3 /* DGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGS.m; sourceTree = "<group>"; };
+		DAEA519911B88D8300F4CCB3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		DAEA519A11B88D8300F4CCB3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		DAEA525711B895A100F4CCB3 /* status.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = status.html; sourceTree = "<group>"; };
+		DAEA525911B895ED00F4CCB3 /* DGSTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSTests.h; sourceTree = "<group>"; };
+		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
+		DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		DAEA526A11B8977B00F4CCB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
+		DAEA535B11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
+		DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
+		DAEA535D11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
+		DAEA535E11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_CreationExtensions.m; sourceTree = "<group>"; };
+		DAEA535F11B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_PrivateExtensions.h; sourceTree = "<group>"; };
+		DAEA536011B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_PrivateExtensions.m; sourceTree = "<group>"; };
+		DAEA536111B8AB6200F4CCB3 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
+		DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument.m; sourceTree = "<group>"; };
+		DAEA536311B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement_CreationExtensions.h; sourceTree = "<group>"; };
+		DAEA536411B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement_CreationExtensions.m; sourceTree = "<group>"; };
+		DAEA536511B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement_ElementTreeExtensions.h; sourceTree = "<group>"; };
+		DAEA536611B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement_ElementTreeExtensions.m; sourceTree = "<group>"; };
+		DAEA536711B8AB6200F4CCB3 /* CXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement.h; sourceTree = "<group>"; };
+		DAEA536811B8AB6200F4CCB3 /* CXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement.m; sourceTree = "<group>"; };
+		DAEA536911B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
+		DAEA536A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
+		DAEA536B11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
+		DAEA536C11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
+		DAEA536D11B8AB6200F4CCB3 /* CXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode.h; sourceTree = "<group>"; };
+		DAEA536E11B8AB6200F4CCB3 /* CXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode.m; sourceTree = "<group>"; };
+		DAEA537011B8AB6200F4CCB3 /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
+		DAEA537111B8AB6200F4CCB3 /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
+		DAEA537211B8AB6200F4CCB3 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
+		DAEA54F811B8BFAE00F4CCB3 /* buffio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffio.h; sourceTree = "<group>"; };
+		DAEA54F911B8BFAE00F4CCB3 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		DAEA54FA11B8BFAE00F4CCB3 /* tidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidy.h; sourceTree = "<group>"; };
+		DAEA54FB11B8BFAE00F4CCB3 /* tidyenum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidyenum.h; sourceTree = "<group>"; };
+		DAEA54FD11B8BFB800F4CCB3 /* access.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = access.c; sourceTree = "<group>"; };
+		DAEA54FE11B8BFB800F4CCB3 /* access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = access.h; sourceTree = "<group>"; };
+		DAEA54FF11B8BFB800F4CCB3 /* alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alloc.c; sourceTree = "<group>"; };
+		DAEA550011B8BFB800F4CCB3 /* attrask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrask.c; sourceTree = "<group>"; };
+		DAEA550111B8BFB800F4CCB3 /* attrdict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrdict.c; sourceTree = "<group>"; };
+		DAEA550211B8BFB800F4CCB3 /* attrdict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attrdict.h; sourceTree = "<group>"; };
+		DAEA550311B8BFB800F4CCB3 /* attrget.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrget.c; sourceTree = "<group>"; };
+		DAEA550411B8BFB800F4CCB3 /* attrs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrs.c; sourceTree = "<group>"; };
+		DAEA550511B8BFB800F4CCB3 /* attrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attrs.h; sourceTree = "<group>"; };
+		DAEA550611B8BFB900F4CCB3 /* buffio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffio.c; sourceTree = "<group>"; };
+		DAEA550711B8BFB900F4CCB3 /* charsets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = charsets.c; sourceTree = "<group>"; };
+		DAEA550811B8BFB900F4CCB3 /* charsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charsets.h; sourceTree = "<group>"; };
+		DAEA550911B8BFB900F4CCB3 /* clean.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = clean.c; sourceTree = "<group>"; };
+		DAEA550A11B8BFB900F4CCB3 /* clean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clean.h; sourceTree = "<group>"; };
+		DAEA550B11B8BFB900F4CCB3 /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = config.c; sourceTree = "<group>"; };
+		DAEA550C11B8BFB900F4CCB3 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		DAEA550D11B8BFB900F4CCB3 /* entities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = entities.c; sourceTree = "<group>"; };
+		DAEA550E11B8BFB900F4CCB3 /* entities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entities.h; sourceTree = "<group>"; };
+		DAEA550F11B8BFB900F4CCB3 /* fileio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileio.c; sourceTree = "<group>"; };
+		DAEA551011B8BFB900F4CCB3 /* fileio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileio.h; sourceTree = "<group>"; };
+		DAEA551111B8BFB900F4CCB3 /* forward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forward.h; sourceTree = "<group>"; };
+		DAEA551211B8BFB900F4CCB3 /* iconvtc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = iconvtc.c; sourceTree = "<group>"; };
+		DAEA551311B8BFB900F4CCB3 /* iconvtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iconvtc.h; sourceTree = "<group>"; };
+		DAEA551411B8BFB900F4CCB3 /* istack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = istack.c; sourceTree = "<group>"; };
+		DAEA551511B8BFB900F4CCB3 /* lexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lexer.c; sourceTree = "<group>"; };
+		DAEA551611B8BFB900F4CCB3 /* lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexer.h; sourceTree = "<group>"; };
+		DAEA551711B8BFB900F4CCB3 /* localize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = localize.c; sourceTree = "<group>"; };
+		DAEA551811B8BFB900F4CCB3 /* mappedio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mappedio.c; sourceTree = "<group>"; };
+		DAEA551911B8BFB900F4CCB3 /* mappedio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mappedio.h; sourceTree = "<group>"; };
+		DAEA551A11B8BFB900F4CCB3 /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
+		DAEA551B11B8BFB900F4CCB3 /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
+		DAEA551C11B8BFB900F4CCB3 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
+		DAEA551D11B8BFB900F4CCB3 /* pprint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pprint.c; sourceTree = "<group>"; };
+		DAEA551E11B8BFB900F4CCB3 /* pprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pprint.h; sourceTree = "<group>"; };
+		DAEA551F11B8BFB900F4CCB3 /* streamio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = streamio.c; sourceTree = "<group>"; };
+		DAEA552011B8BFB900F4CCB3 /* streamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = streamio.h; sourceTree = "<group>"; };
+		DAEA552111B8BFB900F4CCB3 /* tagask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tagask.c; sourceTree = "<group>"; };
+		DAEA552211B8BFB900F4CCB3 /* tags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tags.c; sourceTree = "<group>"; };
+		DAEA552311B8BFB900F4CCB3 /* tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tags.h; sourceTree = "<group>"; };
+		DAEA552411B8BFB900F4CCB3 /* tidy-int.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tidy-int.h"; sourceTree = "<group>"; };
+		DAEA552511B8BFB900F4CCB3 /* tidylib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tidylib.c; sourceTree = "<group>"; };
+		DAEA552611B8BFB900F4CCB3 /* tmbstr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tmbstr.c; sourceTree = "<group>"; };
+		DAEA552711B8BFB900F4CCB3 /* tmbstr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tmbstr.h; sourceTree = "<group>"; };
+		DAEA552811B8BFB900F4CCB3 /* utf8.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utf8.c; sourceTree = "<group>"; };
+		DAEA552911B8BFB900F4CCB3 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
+		DAEA552A11B8BFB900F4CCB3 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		DAEA552B11B8BFB900F4CCB3 /* win32tc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = win32tc.c; sourceTree = "<group>"; };
+		DAEA552C11B8BFB900F4CCB3 /* win32tc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win32tc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +316,7 @@
 				DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */,
 				DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */,
 				DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */,
+				DAEA520711B890B800F4CCB3 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +341,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */,
+				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +387,15 @@
 				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
 				DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */,
 				DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */,
+				DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */,
+				DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */,
+				DAEA526A11B8977B00F4CCB3 /* Foundation.framework */,
+				DAEA52A611B8989F00F4CCB3 /* UIKit.framework */,
+				DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */,
+				DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */,
+				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
+				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
+				DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -192,6 +403,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DAEA535811B8AB3B00F4CCB3 /* TouchXML */,
 				DAC8688011B7477600A4DA7A /* ASIHttpRequest */,
 				32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
@@ -202,6 +414,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
 				DA7CA4A611B761E8004CD524 /* LoginView.xib */,
 				DA38B1F411B59EBD00112AA4 /* MainWindow.xib */,
@@ -230,8 +443,10 @@
 		DA38B20211B59FAB00112AA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DA38B1FF11B59FA600112AA4 /* Account.h */,
-				DA38B20011B59FA600112AA4 /* Account.m */,
+				DAEA517F11B88A1100F4CCB3 /* DGS.h */,
+				DAEA518011B88A1100F4CCB3 /* DGS.m */,
+				DAEA519911B88D8300F4CCB3 /* Game.h */,
+				DAEA519A11B88D8300F4CCB3 /* Game.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -257,8 +472,8 @@
 		DA71CAF711B5EEA9008696AC /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				DA71CAAA11B5EAC8008696AC /* AccountTests.h */,
-				DA71CAAB11B5EAC8008696AC /* AccountTests.m */,
+				DAEA525911B895ED00F4CCB3 /* DGSTests.h */,
+				DAEA525A11B895ED00F4CCB3 /* DGSTests.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -286,6 +501,130 @@
 			);
 			name = ASIHttpRequest;
 			path = Classes/ASIHttpRequest;
+			sourceTree = "<group>";
+		};
+		DAEA525511B8954100F4CCB3 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA525711B895A100F4CCB3 /* status.html */,
+				DAEA534711B8A4C000F4CCB3 /* status.csv */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		DAEA535811B8AB3B00F4CCB3 /* TouchXML */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA54FC11B8BFB800F4CCB3 /* src */,
+				DAEA54F711B8BFAE00F4CCB3 /* include */,
+				DAEA535A11B8AB6200F4CCB3 /* Creation */,
+				DAEA535F11B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.h */,
+				DAEA536011B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m */,
+				DAEA536111B8AB6200F4CCB3 /* CXMLDocument.h */,
+				DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */,
+				DAEA536311B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.h */,
+				DAEA536411B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m */,
+				DAEA536511B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.h */,
+				DAEA536611B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m */,
+				DAEA536711B8AB6200F4CCB3 /* CXMLElement.h */,
+				DAEA536811B8AB6200F4CCB3 /* CXMLElement.m */,
+				DAEA536911B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.h */,
+				DAEA536A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m */,
+				DAEA536B11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.h */,
+				DAEA536C11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m */,
+				DAEA536D11B8AB6200F4CCB3 /* CXMLNode.h */,
+				DAEA536E11B8AB6200F4CCB3 /* CXMLNode.m */,
+				DAEA536F11B8AB6200F4CCB3 /* Tidy */,
+				DAEA537211B8AB6200F4CCB3 /* TouchXML.h */,
+			);
+			name = TouchXML;
+			path = Classes/TouchXML;
+			sourceTree = "<group>";
+		};
+		DAEA535A11B8AB6200F4CCB3 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA535B11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.h */,
+				DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */,
+				DAEA535D11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.h */,
+				DAEA535E11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
+		DAEA536F11B8AB6200F4CCB3 /* Tidy */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA537011B8AB6200F4CCB3 /* CTidy.h */,
+				DAEA537111B8AB6200F4CCB3 /* CTidy.m */,
+			);
+			path = Tidy;
+			sourceTree = "<group>";
+		};
+		DAEA54F711B8BFAE00F4CCB3 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA54F811B8BFAE00F4CCB3 /* buffio.h */,
+				DAEA54F911B8BFAE00F4CCB3 /* platform.h */,
+				DAEA54FA11B8BFAE00F4CCB3 /* tidy.h */,
+				DAEA54FB11B8BFAE00F4CCB3 /* tidyenum.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		DAEA54FC11B8BFB800F4CCB3 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA54FD11B8BFB800F4CCB3 /* access.c */,
+				DAEA54FE11B8BFB800F4CCB3 /* access.h */,
+				DAEA54FF11B8BFB800F4CCB3 /* alloc.c */,
+				DAEA550011B8BFB800F4CCB3 /* attrask.c */,
+				DAEA550111B8BFB800F4CCB3 /* attrdict.c */,
+				DAEA550211B8BFB800F4CCB3 /* attrdict.h */,
+				DAEA550311B8BFB800F4CCB3 /* attrget.c */,
+				DAEA550411B8BFB800F4CCB3 /* attrs.c */,
+				DAEA550511B8BFB800F4CCB3 /* attrs.h */,
+				DAEA550611B8BFB900F4CCB3 /* buffio.c */,
+				DAEA550711B8BFB900F4CCB3 /* charsets.c */,
+				DAEA550811B8BFB900F4CCB3 /* charsets.h */,
+				DAEA550911B8BFB900F4CCB3 /* clean.c */,
+				DAEA550A11B8BFB900F4CCB3 /* clean.h */,
+				DAEA550B11B8BFB900F4CCB3 /* config.c */,
+				DAEA550C11B8BFB900F4CCB3 /* config.h */,
+				DAEA550D11B8BFB900F4CCB3 /* entities.c */,
+				DAEA550E11B8BFB900F4CCB3 /* entities.h */,
+				DAEA550F11B8BFB900F4CCB3 /* fileio.c */,
+				DAEA551011B8BFB900F4CCB3 /* fileio.h */,
+				DAEA551111B8BFB900F4CCB3 /* forward.h */,
+				DAEA551211B8BFB900F4CCB3 /* iconvtc.c */,
+				DAEA551311B8BFB900F4CCB3 /* iconvtc.h */,
+				DAEA551411B8BFB900F4CCB3 /* istack.c */,
+				DAEA551511B8BFB900F4CCB3 /* lexer.c */,
+				DAEA551611B8BFB900F4CCB3 /* lexer.h */,
+				DAEA551711B8BFB900F4CCB3 /* localize.c */,
+				DAEA551811B8BFB900F4CCB3 /* mappedio.c */,
+				DAEA551911B8BFB900F4CCB3 /* mappedio.h */,
+				DAEA551A11B8BFB900F4CCB3 /* message.h */,
+				DAEA551B11B8BFB900F4CCB3 /* parser.c */,
+				DAEA551C11B8BFB900F4CCB3 /* parser.h */,
+				DAEA551D11B8BFB900F4CCB3 /* pprint.c */,
+				DAEA551E11B8BFB900F4CCB3 /* pprint.h */,
+				DAEA551F11B8BFB900F4CCB3 /* streamio.c */,
+				DAEA552011B8BFB900F4CCB3 /* streamio.h */,
+				DAEA552111B8BFB900F4CCB3 /* tagask.c */,
+				DAEA552211B8BFB900F4CCB3 /* tags.c */,
+				DAEA552311B8BFB900F4CCB3 /* tags.h */,
+				DAEA552411B8BFB900F4CCB3 /* tidy-int.h */,
+				DAEA552511B8BFB900F4CCB3 /* tidylib.c */,
+				DAEA552611B8BFB900F4CCB3 /* tmbstr.c */,
+				DAEA552711B8BFB900F4CCB3 /* tmbstr.h */,
+				DAEA552811B8BFB900F4CCB3 /* utf8.c */,
+				DAEA552911B8BFB900F4CCB3 /* utf8.h */,
+				DAEA552A11B8BFB900F4CCB3 /* version.h */,
+				DAEA552B11B8BFB900F4CCB3 /* win32tc.c */,
+				DAEA552C11B8BFB900F4CCB3 /* win32tc.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +752,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */,
+				DAEA525811B895A100F4CCB3 /* status.html in Resources */,
+				DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +796,6 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.m in Sources */,
 				DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */,
-				DA38B20111B59FA600112AA4 /* Account.m in Sources */,
 				DAC8689211B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */,
 				DAC8689311B7477600A4DA7A /* ASIFormDataRequest.m in Sources */,
 				DAC8689411B7477600A4DA7A /* ASIHTTPRequest.m in Sources */,
@@ -463,6 +803,45 @@
 				DAC8689611B7477600A4DA7A /* ASINetworkQueue.m in Sources */,
 				DAC8689711B7477600A4DA7A /* ASINSStringAdditions.m in Sources */,
 				DAC8689811B7477600A4DA7A /* Reachability.m in Sources */,
+				DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */,
+				DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */,
+				DAEA53D811B8B61000F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */,
+				DAEA53D911B8B61000F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */,
+				DAEA53DA11B8B61000F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */,
+				DAEA53DB11B8B61000F4CCB3 /* CXMLNode.m in Sources */,
+				DAEA53DC11B8B61000F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				DAEA53DD11B8B61000F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */,
+				DAEA53DE11B8B61000F4CCB3 /* CXMLElement.m in Sources */,
+				DAEA53DF11B8B61000F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				DAEA53E011B8B61000F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */,
+				DAEA53E111B8B61000F4CCB3 /* CXMLDocument.m in Sources */,
+				DAEA53E211B8B61000F4CCB3 /* CTidy.m in Sources */,
+				DAEA554711B8BFB900F4CCB3 /* access.c in Sources */,
+				DAEA554811B8BFB900F4CCB3 /* alloc.c in Sources */,
+				DAEA554911B8BFB900F4CCB3 /* attrask.c in Sources */,
+				DAEA554A11B8BFB900F4CCB3 /* attrdict.c in Sources */,
+				DAEA554B11B8BFB900F4CCB3 /* attrget.c in Sources */,
+				DAEA554C11B8BFB900F4CCB3 /* attrs.c in Sources */,
+				DAEA554D11B8BFB900F4CCB3 /* buffio.c in Sources */,
+				DAEA554E11B8BFB900F4CCB3 /* charsets.c in Sources */,
+				DAEA554F11B8BFB900F4CCB3 /* clean.c in Sources */,
+				DAEA555011B8BFB900F4CCB3 /* config.c in Sources */,
+				DAEA555111B8BFB900F4CCB3 /* entities.c in Sources */,
+				DAEA555211B8BFB900F4CCB3 /* fileio.c in Sources */,
+				DAEA555311B8BFB900F4CCB3 /* iconvtc.c in Sources */,
+				DAEA555411B8BFB900F4CCB3 /* istack.c in Sources */,
+				DAEA555511B8BFB900F4CCB3 /* lexer.c in Sources */,
+				DAEA555611B8BFB900F4CCB3 /* localize.c in Sources */,
+				DAEA555711B8BFB900F4CCB3 /* mappedio.c in Sources */,
+				DAEA555811B8BFB900F4CCB3 /* parser.c in Sources */,
+				DAEA555911B8BFB900F4CCB3 /* pprint.c in Sources */,
+				DAEA555A11B8BFB900F4CCB3 /* streamio.c in Sources */,
+				DAEA555B11B8BFB900F4CCB3 /* tagask.c in Sources */,
+				DAEA555C11B8BFB900F4CCB3 /* tags.c in Sources */,
+				DAEA555D11B8BFB900F4CCB3 /* tidylib.c in Sources */,
+				DAEA555E11B8BFB900F4CCB3 /* tmbstr.c in Sources */,
+				DAEA555F11B8BFB900F4CCB3 /* utf8.c in Sources */,
+				DAEA556011B8BFB900F4CCB3 /* win32tc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +852,6 @@
 				DA084DD311B5F4F100150EDC /* main.m in Sources */,
 				DA084DD411B5F4F100150EDC /* DGSPhoneAppDelegate.m in Sources */,
 				DA084DD511B5F4F100150EDC /* LoginViewController.m in Sources */,
-				DA084DD611B5F4F100150EDC /* Account.m in Sources */,
 				DAC868A011B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */,
 				DAC868A111B7477600A4DA7A /* ASIFormDataRequest.m in Sources */,
 				DAC868A211B7477600A4DA7A /* ASIHTTPRequest.m in Sources */,
@@ -481,6 +859,45 @@
 				DAC868A411B7477600A4DA7A /* ASINetworkQueue.m in Sources */,
 				DAC868A511B7477600A4DA7A /* ASINSStringAdditions.m in Sources */,
 				DAC868A611B7477600A4DA7A /* Reachability.m in Sources */,
+				DAEA518211B88A1100F4CCB3 /* DGS.m in Sources */,
+				DAEA519C11B88D8300F4CCB3 /* Game.m in Sources */,
+				DAEA53E311B8B61100F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */,
+				DAEA53E411B8B61100F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */,
+				DAEA53E511B8B61100F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */,
+				DAEA53E611B8B61100F4CCB3 /* CXMLNode.m in Sources */,
+				DAEA53E711B8B61100F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				DAEA53E811B8B61100F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */,
+				DAEA53E911B8B61100F4CCB3 /* CXMLElement.m in Sources */,
+				DAEA53EA11B8B61100F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				DAEA53EB11B8B61100F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */,
+				DAEA53EC11B8B61100F4CCB3 /* CXMLDocument.m in Sources */,
+				DAEA53ED11B8B61100F4CCB3 /* CTidy.m in Sources */,
+				DAEA556111B8BFB900F4CCB3 /* access.c in Sources */,
+				DAEA556211B8BFB900F4CCB3 /* alloc.c in Sources */,
+				DAEA556311B8BFB900F4CCB3 /* attrask.c in Sources */,
+				DAEA556411B8BFB900F4CCB3 /* attrdict.c in Sources */,
+				DAEA556511B8BFB900F4CCB3 /* attrget.c in Sources */,
+				DAEA556611B8BFB900F4CCB3 /* attrs.c in Sources */,
+				DAEA556711B8BFB900F4CCB3 /* buffio.c in Sources */,
+				DAEA556811B8BFB900F4CCB3 /* charsets.c in Sources */,
+				DAEA556911B8BFB900F4CCB3 /* clean.c in Sources */,
+				DAEA556A11B8BFB900F4CCB3 /* config.c in Sources */,
+				DAEA556B11B8BFB900F4CCB3 /* entities.c in Sources */,
+				DAEA556C11B8BFB900F4CCB3 /* fileio.c in Sources */,
+				DAEA556D11B8BFB900F4CCB3 /* iconvtc.c in Sources */,
+				DAEA556E11B8BFB900F4CCB3 /* istack.c in Sources */,
+				DAEA556F11B8BFB900F4CCB3 /* lexer.c in Sources */,
+				DAEA557011B8BFB900F4CCB3 /* localize.c in Sources */,
+				DAEA557111B8BFB900F4CCB3 /* mappedio.c in Sources */,
+				DAEA557211B8BFB900F4CCB3 /* parser.c in Sources */,
+				DAEA557311B8BFB900F4CCB3 /* pprint.c in Sources */,
+				DAEA557411B8BFB900F4CCB3 /* streamio.c in Sources */,
+				DAEA557511B8BFB900F4CCB3 /* tagask.c in Sources */,
+				DAEA557611B8BFB900F4CCB3 /* tags.c in Sources */,
+				DAEA557711B8BFB900F4CCB3 /* tidylib.c in Sources */,
+				DAEA557811B8BFB900F4CCB3 /* tmbstr.c in Sources */,
+				DAEA557911B8BFB900F4CCB3 /* utf8.c in Sources */,
+				DAEA557A11B8BFB900F4CCB3 /* win32tc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +905,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA32E1AE11B5FF7C00B6CB05 /* AccountTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,15 +912,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA71CAAC11B5EAC8008696AC /* AccountTests.m in Sources */,
-				DA71CAB311B5EBD3008696AC /* Account.m in Sources */,
-				DA48E4D711B765DF00BE2A98 /* Reachability.m in Sources */,
-				DA48E4D811B765E100BE2A98 /* ASINSStringAdditions.m in Sources */,
-				DA48E4D911B765E200BE2A98 /* ASINetworkQueue.m in Sources */,
-				DA48E4DA11B765E200BE2A98 /* ASIInputStream.m in Sources */,
-				DA48E4DB11B765E500BE2A98 /* ASIHTTPRequest.m in Sources */,
-				DA48E4DC11B765E600BE2A98 /* ASIFormDataRequest.m in Sources */,
-				DA48E4DD11B765E600BE2A98 /* ASIAuthenticationDialog.m in Sources */,
+				DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */,
+				DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */,
+				DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */,
+				DAEA537311B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */,
+				DAEA537411B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */,
+				DAEA537511B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				DAEA537611B8AB6200F4CCB3 /* CXMLDocument.m in Sources */,
+				DAEA537711B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */,
+				DAEA537811B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */,
+				DAEA537911B8AB6200F4CCB3 /* CXMLElement.m in Sources */,
+				DAEA537A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */,
+				DAEA537B11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */,
+				DAEA537C11B8AB6200F4CCB3 /* CXMLNode.m in Sources */,
+				DAEA537D11B8AB6200F4CCB3 /* CTidy.m in Sources */,
+				DAEA552D11B8BFB900F4CCB3 /* access.c in Sources */,
+				DAEA552E11B8BFB900F4CCB3 /* alloc.c in Sources */,
+				DAEA552F11B8BFB900F4CCB3 /* attrask.c in Sources */,
+				DAEA553011B8BFB900F4CCB3 /* attrdict.c in Sources */,
+				DAEA553111B8BFB900F4CCB3 /* attrget.c in Sources */,
+				DAEA553211B8BFB900F4CCB3 /* attrs.c in Sources */,
+				DAEA553311B8BFB900F4CCB3 /* buffio.c in Sources */,
+				DAEA553411B8BFB900F4CCB3 /* charsets.c in Sources */,
+				DAEA553511B8BFB900F4CCB3 /* clean.c in Sources */,
+				DAEA553611B8BFB900F4CCB3 /* config.c in Sources */,
+				DAEA553711B8BFB900F4CCB3 /* entities.c in Sources */,
+				DAEA553811B8BFB900F4CCB3 /* fileio.c in Sources */,
+				DAEA553911B8BFB900F4CCB3 /* iconvtc.c in Sources */,
+				DAEA553A11B8BFB900F4CCB3 /* istack.c in Sources */,
+				DAEA553B11B8BFB900F4CCB3 /* lexer.c in Sources */,
+				DAEA553C11B8BFB900F4CCB3 /* localize.c in Sources */,
+				DAEA553D11B8BFB900F4CCB3 /* mappedio.c in Sources */,
+				DAEA553E11B8BFB900F4CCB3 /* parser.c in Sources */,
+				DAEA553F11B8BFB900F4CCB3 /* pprint.c in Sources */,
+				DAEA554011B8BFB900F4CCB3 /* streamio.c in Sources */,
+				DAEA554111B8BFB900F4CCB3 /* tagask.c in Sources */,
+				DAEA554211B8BFB900F4CCB3 /* tags.c in Sources */,
+				DAEA554311B8BFB900F4CCB3 /* tidylib.c in Sources */,
+				DAEA554411B8BFB900F4CCB3 /* tmbstr.c in Sources */,
+				DAEA554511B8BFB900F4CCB3 /* utf8.c in Sources */,
+				DAEA554611B8BFB900F4CCB3 /* win32tc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +993,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2;
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
 			};
@@ -664,6 +1112,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

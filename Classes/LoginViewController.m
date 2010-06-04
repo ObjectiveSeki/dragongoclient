@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import "Account.h"
+#import "DGS.h"
 
 @implementation LoginViewController
 
@@ -28,21 +28,19 @@
 
 - (void)login 
 {
-	Account *account = [[Account alloc] init];
-	if ([account login]) {
+	if ([DGS loggedIn]) {
 		NSLog(@"Success!");
+		[DGS currentGames];
 	} else {
 		NSLog(@"Boo!");
 		[[self loggingInStatusView] setHidden:YES];
 		[[self loginFieldsView] setHidden:NO];
 	}
-	[account release];
 }
 
 - (IBAction)loginWithUsernameAndPassword:(id)sender
 {
-	Account *account = [[Account alloc] init];
-	[account loginWithUsername:[usernameField text] password:[passwordField text]];
+	[DGS loginWithUsername:[usernameField text] password:[passwordField text]];
 }
 
 /*

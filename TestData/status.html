@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+ <META http-equiv="content-type" content="text/html;charset=iso-8859-1">
+ <META NAME="DESCRIPTION" CONTENT="To play go on a turn by turn basis.">
+ <TITLE>DGS - Status</TITLE>
+ <LINK REL="shortcut icon" HREF="images/favicon.ico" TYPE="image/x-icon">
+ <link rel="stylesheet" type="text/css" media="screen" href="skins/dragon/screen.css">
+ <link rel="stylesheet" type="text/css" media="print" href="skins/dragon/print.css">
+ <link rel="alternate" type="application/rss+xml" title="DGS Status RSS Feed" href="/rss/status.php">
+ <STYLE TYPE="text/css">
+table.Table a.Button { color: white;}
+table.Table td.Button { background-image: url(images/button0.gif);}
+ </STYLE>
+</HEAD>
+<BODY id="DGS" class="Status">
+
+
+<table id='pageHead'>
+ <tr>
+  <td class=ServerHome><A id='homeId' href="http://www.dragongoserver.net/index.php">Dragon Go Server</A></td>
+  <td class=LoginBox>Logged in as: <A id='loggedId' href="status.php">justinweiss</A></td>
+ </tr>
+</table>
+
+<table id='pageLayout'>
+ <tr class=LayoutVertical>
+  <td class=Menu rowspan=2>
+
+<table id="pageMenu" class=MenuVertical>
+ <tr>
+  <td class=Logo1><img src="images/dragonlogo_bl.jpg" alt="Dragon"></td>
+ </tr><tr>
+  <td align=left nowrap><a href="status.php" accesskey="s" title="[&amp;s]" class="strong">Status</a><br><a href="waiting_room.php" accesskey="r" title="[&amp;r]">Waiting room</a><br><a href="userinfo.php" accesskey="p" title="[&amp;p]">User info</a><br></td>
+ </tr><tr>
+  <td height=1><img height=1 src="images/dot.gif" alt=""></td>
+ </tr><tr>
+  <td align=left nowrap><a href="list_messages.php" accesskey="b" title="[&amp;b]">Messages</a><br><a href="message.php?mode=NewMessage" accesskey="m" title="[&amp;m]">Send a message</a><br><a href="message.php?mode=Invite" accesskey="i" title="[&amp;i]">Invite</a><br></td>
+ </tr><tr>
+  <td height=1><img height=1 src="images/dot.gif" alt=""></td>
+ </tr><tr>
+  <td align=left nowrap><a href="users.php" accesskey="u" title="[&amp;u]">Users</a><br><a href="list_contacts.php" accesskey="c" title="[&amp;c]">Contacts</a><br><a href="show_games.php?uid=all" accesskey="g" title="[&amp;g]">Games</a><br></td>
+ </tr><tr>
+  <td height=1><img height=1 src="images/dot.gif" alt=""></td>
+ </tr><tr>
+  <td align=left nowrap><a href="forum/index.php" accesskey="f" title="[&amp;f]">Forums</a><br><a href="faq.php" accesskey="q" title="[&amp;q]">FAQ</a><br><a href="docs.php" accesskey="d" title="[&amp;d]">Docs</a><br></td>
+ </tr><tr>
+  <td class=Logo2><img src="images/dragonlogo_br.jpg" alt="Dragon"></td>
+ </tr>
+</table>
+<table class=NotPrintable id='pageTools' border=0 cellspacing=0 cellpadding=6>
+<tr>
+<td><a href="rss/status.php"><img src="images/rss-icon.png" alt="RSS" title="DGS Status RSS Feed"></a></td>
+</tr>
+</table>
+
+  </td>
+  <td id="pageBody">
+
+
+<div id="sectStatus" class=Section><h3 class=Header>Status</h3><table id='userInfos' class="Infos">
+<colgroup><col class=ColRubric><col class=ColInfo></colgroup>
+ <tr class="Row1">
+  <td class="Rubric">Name</td><td>Justin Weiss</td>
+ </tr>
+ <tr class="Row2">
+  <td class="Rubric">Userid</td><td>justinweiss</td>
+ </tr>
+ <tr class="Row3">
+  <td class="Rubric">Open for matches?</td><td>Yes</td>
+ </tr>
+ <tr class="Row4">
+  <td class="Rubric">Rating</td><td><a class=Rating href="ratinggraph.php?uid=53292">18&nbsp;kyu&nbsp;(+36%)</a></td>
+ </tr>
+ <tr class="Row1">
+  <td class="Rubric">Rank info</td><td>21k KGS</td>
+ </tr>
+ <tr class="Row2">
+  <td class="Rubric"><a href="edit_vacation.php">Vacation days left</a></td><td>25&nbsp;days</td>
+ </tr>
+</table>
+</div>
+<hr class=Section>
+
+<div id="sectGames" class=Section><h3 class=Header>Your turn to move in the following games:</h3>
+
+<FORM id="tableFACForm" name="tableFAC" class="FormTableFAC" action="status.php" method="GET"><table id='gameTable' class=Table>
+ <tr id="TableHead" class=Head>
+  <th id="Col0" scope=col class="Button"><div><img class=MinWidth src='images/dot.gif' width=96 height=0 alt=''><span class="Header">ID</span></div></th>
+  <th id="Col2" scope=col><div><span class="Header">sgf</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=2#Col0" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col3" scope=col><div><span class="Header">Opponent</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=3#Col2" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col5" scope=col><div><span class="Header">Col</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=5#Col3" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col6" scope=col><div><span class="Header">Size</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=6#Col5" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col7" scope=col><div><span class="Header">H</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=7#Col6" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col8" scope=col><div><span class="Header">Komi</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=8#Col7" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col9" scope=col><div><span class="Header">#M</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=9#Col8" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col10" scope=col><div><span class="Header">Time remaining</span><span class=Tool><a href="status.php?sort1=Games.Lastchanged&amp;sort2=Games.ID&amp;sf_init=1&amp;sf_act=0&amp;sf_hc=0&amp;del=10#Col9" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+ </tr>
+ <tr class=Row1 ondblclick="javascript:this.className=((this.className=='Row1')?'HilRow1':'Row1');">
+  <td class=Button><a class=Button href="game.php?gid=571269">571269</a></td>
+  <td><A href="sgf.php?gid=571269"><font color="#d50047">sgf</font></A></td>
+  <td><A href="userinfo.php?uid=55038"><font color=black>Tryphon Tournesol</font></a></td>
+  <td align=center><img src="17/w.gif" alt="w"></td>
+  <td>19</td>
+  <td>4</td>
+  <td>0.5</td>
+  <td>76</td>
+  <td align=center>F: 6d&nbsp;11h</td>
+ </tr>
+ <tr class=Row2 ondblclick="javascript:this.className=((this.className=='Row2')?'HilRow2':'Row2');">
+  <td class=Button><a class=Button href="game.php?gid=569659">569659</a></td>
+  <td><A href="sgf.php?gid=569659"><font color="#d50047">sgf</font></A></td>
+  <td><A href="userinfo.php?uid=10797"><font color=black>Dick Wirtz</font></a></td>
+  <td align=center><img src="17/w.gif" alt="w"></td>
+  <td>19</td>
+  <td>3</td>
+  <td>0.5</td>
+  <td>73</td>
+  <td align=center>F: 6d&nbsp;11h</td>
+ </tr>
+ <tr class=Row3 ondblclick="javascript:this.className=((this.className=='Row3')?'HilRow3':'Row3');">
+  <td class=Button><a class=Button href="game.php?gid=570161">570161</a></td>
+  <td><A href="sgf.php?gid=570161"><font color="#d50047">sgf</font></A></td>
+  <td><A href="userinfo.php?uid=1590"><font color=black>Peter Nicell</font></a></td>
+  <td align=center><img src="17/b.gif" alt="b"></td>
+  <td>19</td>
+  <td>2</td>
+  <td>2.5</td>
+  <td>95</td>
+  <td align=center>J: 72d&nbsp;12h</td>
+ </tr>
+</table>
+<div id='tableFAC'><SELECT name="add" size="1" >
+<OPTION value="13">Last move</OPTION>
+<OPTION value="14">Rated</OPTION>
+<OPTION value="16">Rating</OPTION>
+<OPTION value="4">Userid</OPTION>
+<OPTION value="0" selected></OPTION>
+<OPTION value="-1">All columns</OPTION>
+</SELECT><INPUT type="submit" name="addcol" value="Add Column"></div><input type="hidden" name="sort1" value="Games.Lastchanged"><input type="hidden" name="sort2" value="Games.ID">
+</FORM></div>
+
+  </td>
+ </tr><tr class=Links>
+  <td class=Links>
+
+<table id="pageLinks" class=Links>
+ <tr>
+  <td width="25%"><a href="userinfo.php?uid=53292" accesskey="1" title="[&amp;1]">Show/edit userinfo</a></td>
+  <td width="25%"><a href="show_games.php?uid=53292" accesskey="2" title="[&amp;2]">Show running games</a></td>
+  <td width="25%"><a href="show_games.php?uid=53292&amp;finished=1" accesskey="3" title="[&amp;3]">Show finished games</a></td>
+  <td width="25%"><a href="show_games.php?observe=1" accesskey="4" title="[&amp;4]">Show observed games</a></td>
+ </tr>
+</table>
+
+  </td>
+ </tr>
+</table>
+
+<table id='pageFoot'>
+ <tr>
+  <td class=ServerHome><A href="index.php">Dragon Go Server</A></td>
+  <td class=PageTime>Page time <span id="pageTime">2010-06-03 18:59</span></td>
+  <td class=LoginBox><a href="index.php?logout=t" accesskey="o" title="[&amp;o]">Logout</a></td>
+ </tr>
+</table>
+<table class=HostedBy>
+ <tr>
+  <td id='hostedBy'>Hosted by&nbsp;&nbsp;<a href="http://www.samurajdata.se" target="_blank"><img src="images/samurajlogo.gif" alt="Samuraj Logo" width=160 height=20 border=0 align=middle></a></td>
+ </tr>
+</table>
+</BODY>
+</HTML>
