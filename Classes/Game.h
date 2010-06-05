@@ -19,4 +19,6 @@
 @property(nonatomic, retain) NSString * opponent;
 @property(nonatomic) int gameId;
 
+- (NSString *)sgfString;
+
 @end

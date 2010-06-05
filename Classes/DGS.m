@@ -118,12 +118,16 @@
 				NSString *data = [[[td nodesForXPath:@"a" error:&error] objectAtIndex:0] stringValue];
 				game.gameId = [data integerValue];
 				NSLog(@"%d", game.gameId);
-			}
-			else if ([headerName isEqual:@"Opponent"]) {
+			} else if ([headerName isEqual:@"Opponent"]) {
 				CXMLNode *td = [columns objectAtIndex:i];
 				NSString *data = [[[td nodesForXPath:@"a/font" error:&error] objectAtIndex:0] stringValue];
 				game.opponent = [data stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
 				NSLog(@"%@", game.opponent);
+			} else if ([headerName isEqual:@"sgf"]) {
+				CXMLNode *td = [columns objectAtIndex:i];
+				NSString *data = [[[td nodesForXPath:@"a/@href" error:&error] objectAtIndex:0] stringValue];
+				game.sgfUrl = [NSString stringWithFormat:@"%@%@", @"http://www.dragongoserver.net/", data];
+				NSLog(@"%@", game.sgfUrl);
 			}
 		}
 		

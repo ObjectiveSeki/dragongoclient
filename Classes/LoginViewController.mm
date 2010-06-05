@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "DGS.h"
+#import "SGF.h"
+#import "Game.h"
 
 @implementation LoginViewController
 
@@ -30,7 +32,9 @@
 {
 	if ([DGS loggedIn]) {
 		NSLog(@"Success!");
-		[DGS currentGames];
+		NSArray *games = [DGS currentGames];
+		NSString *sgfString = [[games objectAtIndex:0] sgfString];
+		[[[SGF alloc] initWithString:sgfString boardSize:19] autorelease];
 	} else {
 		NSLog(@"Boo!");
 		[[self loggingInStatusView] setHidden:YES];

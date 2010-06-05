@@ -7,13 +7,24 @@
 //
 
 #import "Game.h"
-
+#import	"ASIHTTPRequest.h"
 
 @implementation Game
 
 @synthesize sgfUrl;
 @synthesize opponent;
 @synthesize gameId;
+
+- (NSString *)sgfString {
+	NSURL *url = [NSURL URLWithString:self.sgfUrl];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+	[request startSynchronous];
+	NSError *error = [request error];
+	if (!error) {
+		return [request responseString];
+	}
+	return nil;
+}
 
 - (void)dealloc {
 	[sgfUrl release];
