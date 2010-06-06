@@ -7,9 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "CurrentGamesController.h"
+#import "DGSPhoneAppDelegate.h"
 #import "DGS.h"
-#import "SGF.h"
-#import "Game.h"
 
 @implementation LoginViewController
 
@@ -31,12 +31,14 @@
 - (void)login 
 {
 	if ([DGS loggedIn]) {
-		NSLog(@"Success!");
-		NSArray *games = [DGS currentGames];
-		NSString *sgfString = [[games objectAtIndex:0] sgfString];
-		[[[SGF alloc] initWithString:sgfString boardSize:19] autorelease];
+		CurrentGamesController *gamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
+
+		DGSPhoneAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+		UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gamesController];
+		[delegate replaceViewController:navigationController];
+		[navigationController release];
+		[gamesController release];
 	} else {
-		NSLog(@"Boo!");
 		[[self loggingInStatusView] setHidden:YES];
 		[[self loginFieldsView] setHidden:NO];
 	}

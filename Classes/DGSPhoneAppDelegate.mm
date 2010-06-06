@@ -8,6 +8,7 @@
 
 #import "DGSPhoneAppDelegate.h"
 #import "LoginViewController.h"
+#import "SGF.h"
 
 @implementation DGSPhoneAppDelegate
 
@@ -17,14 +18,25 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+- (void)replaceViewController:(UIViewController *)aViewController {
+	UIView *oldView = nil;
+	if ([[window subviews] count] > 0) {
+		oldView = [[window subviews] objectAtIndex:0];
+	}
+	[self setViewController:aViewController];
+	[window addSubview:[aViewController view]];
+	if (oldView) {
+		[oldView removeFromSuperview];
+	}
+}
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+	[SGF initFuego];
     // Override point for customization after application launch.
 	
 	LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	
-	[self setViewController:loginController];
-	[window addSubview:[loginController view]];
+	[self replaceViewController:loginController];
     [loginController login];
     [loginController release];
 	
@@ -69,6 +81,7 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+	[SGF finishFuego];
 }
 
 

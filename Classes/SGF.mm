@@ -7,20 +7,28 @@
 //
 
 #import "SGF.h"
-#import "SgGameReader.h"
-#import "SgNode.h"
 #import "SgInit.h"
 #import "GoInit.h"
+#import "SgGameReader.h"
+#import "SgNode.h"
 #include <sstream>
 
 @implementation SGF
+
++ (void)initFuego {
+	SgInit();
+	GoInit();
+}
+
++ (void)finishFuego {
+	GoFini();
+	SgFini();
+}
 
 - (id)initWithString:(NSString *)sgfString boardSize:(int)boardSize {
 	if ([super init]) {
 		std::string sgfStr([sgfString UTF8String]);
 		std::istringstream input(sgfStr);
-		SgInit();
-		GoInit();
 		SgGameReader gameReader(input, boardSize);
 		SgNode *rootNode = gameReader.ReadGame();
 		GoBoard goBoard;

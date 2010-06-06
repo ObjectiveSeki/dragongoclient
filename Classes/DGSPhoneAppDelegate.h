@@ -16,5 +16,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
+- (void)replaceViewController:(UIViewController *)aViewController;
+
 @end
 

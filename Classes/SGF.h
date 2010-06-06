@@ -15,6 +15,9 @@
 	GoGame *goGame;
 }
 
++ (void)initFuego;
++ (void)finishFuego;
+
 - initWithString:(NSString *)sgfString boardSize:(int)boardSize;
 
 @end
