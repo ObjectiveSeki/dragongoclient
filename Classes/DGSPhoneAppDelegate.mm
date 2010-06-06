@@ -8,7 +8,7 @@
 
 #import "DGSPhoneAppDelegate.h"
 #import "LoginViewController.h"
-#import "SGF.h"
+#import "Board.h"
 
 @implementation DGSPhoneAppDelegate
 
@@ -31,7 +31,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[SGF initFuego];
+	[Board initFuego];
     // Override point for customization after application launch.
 	
 	LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
@@ -81,7 +81,7 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
-	[SGF finishFuego];
+	[Board finishFuego];
 }
 
 

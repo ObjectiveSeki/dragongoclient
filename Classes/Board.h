@@ -1,5 +1,5 @@
 //
-//  SGF.h
+//  Board.h
 //  DGSPhone
 //
 //  Created by Justin Weiss on 6/4/10.
@@ -11,13 +11,17 @@
 #import "SgNode.h"
 #import "GoGame.h"
 
-@interface SGF : NSObject {
+@interface Board : NSObject {
 	GoGame *goGame;
+	GoBoard *goBoard;
 }
 
 + (void)initFuego;
 + (void)finishFuego;
 
-- initWithString:(NSString *)sgfString boardSize:(int)boardSize;
+- initWithSGFString:(NSString *)sgfString boardSize:(int)boardSize;
+
+- (int)size;
+- (NSArray *)stones;
 
 @end
