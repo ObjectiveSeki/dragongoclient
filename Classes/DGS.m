@@ -26,7 +26,6 @@
 }
 
 + (BOOL)loggedIn {
-	return YES;
 	NSURL *url = [NSURL URLWithString:@"http://www.dragongoserver.net/status.php"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request startSynchronous];

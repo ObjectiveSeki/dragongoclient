@@ -47,6 +47,7 @@
 - (IBAction)loginWithUsernameAndPassword:(id)sender
 {
 	[DGS loginWithUsername:[usernameField text] password:[passwordField text]];
+	[self login];
 }
 
 /*

@@ -169,7 +169,6 @@
 		DA41785311B9FE6500B3050E /* SgUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774311B9FE6500B3050E /* SgUtil.cpp */; };
 		DA41785411B9FE6500B3050E /* SgVectorUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774611B9FE6500B3050E /* SgVectorUtility.cpp */; };
 		DA41785511B9FE6500B3050E /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774811B9FE6500B3050E /* SgWrite.cpp */; };
-		DA419A4311BA0A5300B3050E /* Boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA419A4211BA0A5300B3050E /* Boost.framework */; };
 		DA419A6111BA0C0600B3050E /* Board.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* Board.mm */; };
 		DA419A6211BA0C0600B3050E /* Board.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* Board.mm */; };
 		DA419A6311BA0C0600B3050E /* Board.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* Board.mm */; };
@@ -317,6 +316,15 @@
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
 		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
+		DADD18D411BC72730038F8BC /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
+		DADD18D511BC72730038F8BC /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
+		DADD18D611BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
+		DADD18D711BC72730038F8BC /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
+		DADD18D811BC72730038F8BC /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
+		DADD18D911BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
+		DADD18DA11BC72730038F8BC /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
+		DADD18DB11BC72730038F8BC /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
+		DADD18DC11BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
 		DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA518211B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
@@ -586,7 +594,6 @@
 		DA41774711B9FE6500B3050E /* SgVectorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgVectorUtility.h; sourceTree = "<group>"; };
 		DA41774811B9FE6500B3050E /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA41774911B9FE6500B3050E /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
-		DA419A4211BA0A5300B3050E /* Boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Boost.framework; path = /Users/jweiss/Downloads/boost/framework/Boost.framework; sourceTree = "<absolute>"; };
 		DA419A5F11BA0C0600B3050E /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		DA419A6011BA0C0600B3050E /* Board.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Board.mm; sourceTree = "<group>"; };
 		DA419A8D11BA0D5100B3050E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/powerpc-apple-darwin10/4.2.1/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -702,6 +709,9 @@
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		DADD18D111BC72730038F8BC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = vendor/boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
+		DADD18D211BC72730038F8BC /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = vendor/boost/lib/libboost_system.a; sourceTree = "<group>"; };
+		DADD18D311BC72730038F8BC /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = vendor/boost/lib/libboost_thread.a; sourceTree = "<group>"; };
 		DAEA517F11B88A1100F4CCB3 /* DGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGS.h; sourceTree = "<group>"; };
 		DAEA518011B88A1100F4CCB3 /* DGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGS.m; sourceTree = "<group>"; };
 		DAEA519911B88D8300F4CCB3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -816,7 +826,9 @@
 				DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */,
 				DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */,
 				DAEA520711B890B800F4CCB3 /* libxml2.2.dylib in Frameworks */,
-				DA419A4311BA0A5300B3050E /* Boost.framework in Frameworks */,
+				DADD18D711BC72730038F8BC /* libboost_filesystem.a in Frameworks */,
+				DADD18D811BC72730038F8BC /* libboost_system.a in Frameworks */,
+				DADD18D911BC72730038F8BC /* libboost_thread.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,6 +839,9 @@
 				DA084DD811B5F4F100150EDC /* Foundation.framework in Frameworks */,
 				DA084DD911B5F4F100150EDC /* UIKit.framework in Frameworks */,
 				DA084DDA11B5F4F100150EDC /* CoreGraphics.framework in Frameworks */,
+				DADD18D411BC72730038F8BC /* libboost_filesystem.a in Frameworks */,
+				DADD18D511BC72730038F8BC /* libboost_system.a in Frameworks */,
+				DADD18D611BC72730038F8BC /* libboost_thread.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +858,9 @@
 			files = (
 				DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */,
 				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
+				DADD18DA11BC72730038F8BC /* libboost_filesystem.a in Frameworks */,
+				DADD18DB11BC72730038F8BC /* libboost_system.a in Frameworks */,
+				DADD18DC11BC72730038F8BC /* libboost_thread.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,8 +915,10 @@
 				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
 				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
 				DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */,
-				DA419A4211BA0A5300B3050E /* Boost.framework */,
 				DA419A8D11BA0D5100B3050E /* libstdc++.dylib */,
+				DADD18D111BC72730038F8BC /* libboost_filesystem.a */,
+				DADD18D211BC72730038F8BC /* libboost_system.a */,
+				DADD18D311BC72730038F8BC /* libboost_thread.a */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -2002,18 +2022,19 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Downloads/boost/framework\"",
-				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					vendor/boost/include,
+					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin10/4.2.1\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				PRODUCT_NAME = DGSPhone;
 			};
@@ -2034,6 +2055,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SDKROOT)/usr/lib/gcc/powerpc-apple-darwin10/4.2.1\"",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				PRODUCT_NAME = DGSPhone;
 				VALIDATE_PRODUCT = YES;
@@ -2078,6 +2101,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				INFOPLIST_FILE = "DGSPhoneTesting-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
 				PRODUCT_NAME = DGSPhoneTesting;
 			};
 			name = Debug;
@@ -2090,6 +2118,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				INFOPLIST_FILE = "DGSPhone-Info copy.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
 				PRODUCT_NAME = DGSPhone;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2169,6 +2202,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
 				INFOPLIST_FILE = "LogicTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -2198,6 +2236,11 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "LogicTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
