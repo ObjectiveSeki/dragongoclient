@@ -48,6 +48,19 @@
 	return goGame->Board().Size();
 }
 
+- (Stone *)lastMove {
+	Stone *lastMove = [[[Stone alloc] init] autorelease];
+	SgNode *move = goGame->CurrentNode();
+	lastMove.x = SgPointUtil::Col(move->NodeMove());
+	lastMove.y = SgPointUtil::Row(move->NodeMove());
+	if (move->NodePlayer() == SG_BLACK) {
+		lastMove.player = kStonePlayerBlack;
+	} else if (move->NodePlayer() == SG_WHITE) {
+		lastMove.player = kStonePlayerWhite;
+	}
+	return lastMove;
+}
+
 - (NSArray *)stones {
 	NSMutableArray *stones = [NSMutableArray array];
 	

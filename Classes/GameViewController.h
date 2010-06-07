@@ -13,9 +13,11 @@
 @interface GameViewController : UIViewController {
 	Game *game;
 	IBOutlet GoBoardView *boardView;
+	IBOutlet UIScrollView *scrollView;
 }
 
 @property(nonatomic, retain) Game *game;
 @property(nonatomic, retain) IBOutlet GoBoardView *boardView;
+@property(nonatomic, retain) IBOutlet UIScrollView *scrollView;
 
 @end

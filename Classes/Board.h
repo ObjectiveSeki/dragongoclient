@@ -10,6 +10,7 @@
 #import "SgSystem.h"
 #import "SgNode.h"
 #import "GoGame.h"
+#import "Stone.h"
 
 @interface Board : NSObject {
 	GoGame *goGame;
@@ -23,5 +24,6 @@
 
 - (int)size;
 - (NSArray *)stones;
+- (Stone *)lastMove;
 
 @end
