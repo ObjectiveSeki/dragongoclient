@@ -11,8 +11,12 @@
 
 @interface GoBoardView : UIView {
 	Board *board;
+	IBOutlet id delegate;
 }
 
 @property(nonatomic, retain) Board *board;
+@property(nonatomic, retain) IBOutlet id delegate;
+
+- (bool)playStoneAtPoint:(CGPoint)point;
 
 @end

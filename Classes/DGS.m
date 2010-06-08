@@ -33,7 +33,6 @@
 	NSError *error = [request error];
 	if (!error) {
 		if (NSNotFound == [[request responseString] rangeOfString:@"you have to be logged in"].location) {
-			NSLog(@"%@", [request responseString]);
 			return YES;
 		} else {
 			NSLog(@"Unauthorized");

@@ -33,8 +33,8 @@
 		SgGameReader gameReader(input, boardSize);
 		SgNode *rootNode = gameReader.ReadGame();
 		goBoard = new GoBoard();
-		goGame = new GoGame(*goBoard);
-		goGame->Init(rootNode, true, false);
+		goGame = new GoGameRecord(*goBoard);
+		goGame->InitFromRoot(rootNode, true);
 		
 		// Fast-forward to the end of the game
 		while (goGame->CanGoInDirection(SgNode::NEXT)) {
@@ -79,6 +79,18 @@
 	}
 	
 	return stones;
+}
+
+- (bool)playStoneAtRow:(int)row column:(int)col {
+	SgPoint p = SgPointUtil::Pt(row, col);
+	if (goGame->Board().IsLegal(p)) {
+		goGame->AddMove(p, goGame->Board().ToPlay());
+		goGame->GoInDirection(SgNode::NEXT);
+		return YES;
+	} else {
+		return NO;
+	}
+	return NO;
 }
 
 - (void)dealloc {

@@ -13,7 +13,7 @@
 #import "Stone.h"
 
 @interface Board : NSObject {
-	GoGame *goGame;
+	GoGameRecord *goGame;
 	GoBoard *goBoard;
 }
 
@@ -25,5 +25,6 @@
 - (int)size;
 - (NSArray *)stones;
 - (Stone *)lastMove;
+- (bool)playStoneAtRow:(int)row column:(int)col;
 
 @end

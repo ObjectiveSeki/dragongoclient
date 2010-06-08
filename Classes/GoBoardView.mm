@@ -16,6 +16,7 @@
 @implementation GoBoardView
 
 @synthesize board;
+@synthesize delegate;
 
 // Initialize the layer by setting
 // the levelsOfDetailBias of bias and levelsOfDetail
@@ -58,6 +59,14 @@
 	return CGPointMake(pointX, pointY);
 }
 
+- (CGPoint)boardPositionForPoint:(CGPoint)point {
+	float pointDelta = [self pointDistance];
+	float boardX = round((point.x - [self minX]) / pointDelta + 1);
+	float boardY = round(([self maxY] - point.y) / pointDelta + 1);
+	
+	return CGPointMake(boardX, boardY);
+}
+
 - (void)drawBoardGrid:(CGContextRef)context boardSize:(int)boardSize {
 	
 	CGContextSetLineWidth(context, 1.0);
@@ -86,7 +95,7 @@
 
 - (void)drawStones:(CGContextRef)context {
 	NSArray *stones = [board stones];
-	float boardRadius = [self pointDistance] * 0.5;
+	float boardRadius = [self pointDistance] * 0.40;
 	for (Stone *stone in stones) {
 		if ([stone player] == kStonePlayerBlack) {
 			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
@@ -114,7 +123,7 @@
 	
 	CGPoint coords = [self pointForBoardX:[stone x] Y:[stone y]];
 	CGContextBeginPath(context);
-	CGContextAddArc(context, coords.x, coords.y, [self pointDistance] * 0.3, 0, 2*3.14159, 0);
+	CGContextAddArc(context, coords.x, coords.y, [self pointDistance] * 0.25, 0, 2*3.14159, 0);
 	CGContextStrokePath(context);
 }
 
@@ -126,6 +135,17 @@
 	[self drawBoardGrid:context boardSize:[[self board] size]];
 	[self drawStones:context];
 	[self drawLastMoveIndicator:context];
+}
+
+- (bool)playStoneAtPoint:(CGPoint)point {
+	CGPoint boardPoint = [self boardPositionForPoint:point];
+	return [[self board] playStoneAtRow:(int)boardPoint.x column:(int)boardPoint.y];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	UITouch *touch = [touches anyObject];
+	[delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
 }
 
 
