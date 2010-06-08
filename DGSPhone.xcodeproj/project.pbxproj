@@ -19,6 +19,9 @@
 		DA084DD811B5F4F100150EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		DA084DD911B5F4F100150EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		DA084DDA11B5F4F100150EDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		DA137D6011BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
+		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
+		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA32E1AB11B5FF0000B6CB05 /* DGSPhoneTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */; };
 		DA38B1F511B59EBD00112AA4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */; };
@@ -289,7 +292,6 @@
 		DA419C0211BA168A00B3050E /* GoStaticSafetySolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5011BA168A00B3050E /* GoStaticSafetySolver.cpp */; };
 		DA419C0311BA168A00B3050E /* GoTimeControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5211BA168A00B3050E /* GoTimeControl.cpp */; };
 		DA419C0411BA168A00B3050E /* GoUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5411BA168A00B3050E /* GoUtil.cpp */; };
-		DA419D4611BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA419D4711BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
 		DA419D4811BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA419D4911BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
@@ -464,7 +466,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DGSPhoneAppDelegate.mm; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* DGSPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* DGS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DA084DE011B5F4F100150EDC /* DGSPhoneTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTesting-Info.plist"; sourceTree = "<group>"; };
 		DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSPhoneTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGSPhoneTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA38B1F411B59EBD00112AA4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -886,7 +889,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* DGSPhone.app */,
+				1D6058910D05DD3D006BFB54 /* DGS.app */,
 				DA71CA8411B5E97F008696AC /* LogicTests.octest */,
 				DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */,
 				DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */,
@@ -942,6 +945,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA137D5F11BE13CF00225C12 /* AppIcon.png */,
 				DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */,
 				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
@@ -1411,9 +1415,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* DGSPhone */ = {
+		1D6058900D05DD3D006BFB54 /* DGS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DGSPhone" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DGS" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -1423,9 +1427,9 @@
 			);
 			dependencies = (
 			);
-			name = DGSPhone;
+			name = DGS;
 			productName = DGSPhone;
-			productReference = 1D6058910D05DD3D006BFB54 /* DGSPhone.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* DGS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DA084DCE11B5F4F100150EDC /* DGSPhoneTesting */ = {
@@ -1493,7 +1497,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* DGSPhone */,
+				1D6058900D05DD3D006BFB54 /* DGS */,
 				DA71CA8311B5E97F008696AC /* LogicTests */,
 				DA084DCE11B5F4F100150EDC /* DGSPhoneTesting */,
 				DA084DE611B5F52900150EDC /* DGSPhoneTests */,
@@ -1510,6 +1514,7 @@
 				DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */,
 				DA419D4B11BB2DA400B3050E /* CurrentGamesView.xib in Resources */,
 				DAF9108E11BB5F0700FE7B96 /* GameView.xib in Resources */,
+				DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1522,6 +1527,7 @@
 				DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */,
 				DA419D4911BB2DA400B3050E /* CurrentGamesView.xib in Resources */,
 				DAF9108D11BB5F0700FE7B96 /* GameView.xib in Resources */,
+				DA137D6011BE13CF00225C12 /* AppIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1540,6 +1546,7 @@
 				DAEA525811B895A100F4CCB3 /* status.html in Resources */,
 				DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */,
 				DA419D4711BB2DA400B3050E /* CurrentGamesView.xib in Resources */,
+				DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2013,7 +2020,6 @@
 				DA419B8E11BA168A00B3050E /* GoStaticSafetySolver.cpp in Sources */,
 				DA419B8F11BA168A00B3050E /* GoTimeControl.cpp in Sources */,
 				DA419B9011BA168A00B3050E /* GoUtil.cpp in Sources */,
-				DA419D4611BB2DA400B3050E /* CurrentGamesController.mm in Sources */,
 				DAF911F611BB796900FE7B96 /* Stone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2040,7 +2046,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
-				PRODUCT_NAME = DGSPhone;
+				PRODUCT_NAME = DGS;
 			};
 			name = Debug;
 		};
@@ -2205,6 +2211,10 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				HEADER_SEARCH_PATHS = (
+					vendor/boost/include,
+					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2,
+				);
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2263,7 +2273,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DGSPhone" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "DGS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

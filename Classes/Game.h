@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import	"Stone.h"
 
 @interface Game : NSObject {
 	int gameId;
@@ -20,5 +20,5 @@
 @property(nonatomic) int gameId;
 
 - (NSString *)sgfString;
-
+- (void)playMove:(Stone *)move lastMove:(Stone *)move comment:(NSString *)comment;
 @end

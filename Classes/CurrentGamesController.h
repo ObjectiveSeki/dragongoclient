@@ -11,8 +11,12 @@
 
 @interface CurrentGamesController : UITableViewController {
 	NSArray *games;
+	IBOutlet UIBarButtonItem *refreshButton;
 }
 
 @property(nonatomic, retain) NSArray *games;
+@property(nonatomic, retain) IBOutlet UIBarButtonItem *refreshButton;
+
+- (IBAction)refreshGames;
 
 @end

@@ -12,9 +12,13 @@
 @implementation GameViewController
 
 @synthesize game;
+@synthesize board;
 @synthesize boardView;
 @synthesize scrollView;
 @synthesize boardState;
+@synthesize undoButton;
+@synthesize confirmButton;
+
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -38,6 +42,19 @@
     [super viewDidLoad];
 	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+}
+
+- (IBAction)undoMove {
+	[board undoLastMove];
+	[self setBoardState:kBoardStateStoneNotPlaced];
+	[[self navigationItem] setRightBarButtonItem:nil animated:YES];
+	[[self confirmButton] setEnabled:NO];
+	[[self boardView] setNeedsDisplay];
+}
+
+- (IBAction)confirmMove {
+	[[self game] playMove:[[self board] currentMove] lastMove:[[self board] lastMove] comment:nil];
+	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
@@ -67,6 +84,8 @@
 		[self setBoardState:kBoardStateZoomedIn];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
 		if ([view playStoneAtPoint:[touch locationInView:view]]) {
+			[[self navigationItem] setRightBarButtonItem:[self undoButton] animated:YES];
+			[[self confirmButton] setEnabled:YES];
 			[view setNeedsDisplay];
 			CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:0.5 withCenter:[touch locationInView:view]];
 			[[self scrollView] zoomToRect:zoomRect animated:YES];
@@ -131,9 +150,10 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self setBoardState:kBoardStateStoneNotPlaced];
-	Board *board = [[Board alloc] initWithSGFString:[game sgfString] boardSize:19];
-	[[self boardView] setBoard:board];
-	[board release];
+	Board *theBoard = [[Board alloc] initWithSGFString:[game sgfString] boardSize:19];
+	[[self boardView] setBoard:theBoard];
+	[self setBoard:theBoard];
+	[theBoard release];
 }
 
 - (void)viewDidUnload {
@@ -142,6 +162,9 @@
     // e.g. self.myOutlet = nil;
 	self.boardView = nil;
 	self.game = nil;
+	self.board = nil;
+	self.undoButton = nil;
+	self.confirmButton = nil;
 }
 
 

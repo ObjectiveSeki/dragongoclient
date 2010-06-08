@@ -9,5 +9,6 @@
 }
 
 - (void)testParseGames;
+- (void)testBoardCoords;
 
 @end

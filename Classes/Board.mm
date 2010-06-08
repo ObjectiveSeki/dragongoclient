@@ -12,6 +12,7 @@
 #import "SgGameReader.h"
 #import "SgNode.h"
 #import "Stone.h"
+#import "DGS.h"
 #include <sstream>
 
 @implementation Board
@@ -48,17 +49,34 @@
 	return goGame->Board().Size();
 }
 
-- (Stone *)lastMove {
-	Stone *lastMove = [[[Stone alloc] init] autorelease];
-	SgNode *move = goGame->CurrentNode();
-	lastMove.x = SgPointUtil::Col(move->NodeMove());
-	lastMove.y = SgPointUtil::Row(move->NodeMove());
-	if (move->NodePlayer() == SG_BLACK) {
-		lastMove.player = kStonePlayerBlack;
-	} else if (move->NodePlayer() == SG_WHITE) {
-		lastMove.player = kStonePlayerWhite;
+- (void)undoLastMove {
+	goGame->GoInDirection(SgNode::PREVIOUS);
+	goGame->CurrentNode()->DeleteSubtree();
+}
+
+- (Stone *)stoneFromNode:(SgNode *)node {
+	Stone *currentMove = [[[Stone alloc] init] autorelease];
+	currentMove.col = SgPointUtil::Col(node->NodeMove());
+	currentMove.row = SgPointUtil::Row(node->NodeMove());
+	currentMove.boardSize = [self size];
+	if (node->NodePlayer() == SG_BLACK) {
+		currentMove.player = kStonePlayerBlack;
+	} else if (node->NodePlayer() == SG_WHITE) {
+		currentMove.player = kStonePlayerWhite;
 	}
+	return currentMove;
+}
+
+- (Stone *)lastMove {
+	SgNode *currentNode = goGame->CurrentNode();
+	goGame->GoInDirection(SgNode::PREVIOUS);
+	Stone *lastMove = [self stoneFromNode:goGame->CurrentNode()];
+	goGame->GoToNode(currentNode);
 	return lastMove;
+}
+
+- (Stone *)currentMove {
+	return [self stoneFromNode:goGame->CurrentNode()];
 }
 
 - (NSArray *)stones {
@@ -66,8 +84,9 @@
 	
 	for (GoBoard::Iterator it(goGame->Board()); it; ++it) {
 		Stone *stone = [[Stone alloc] init];
-		stone.x = SgPointUtil::Col(*it);
-		stone.y = SgPointUtil::Row(*it);
+		stone.col = SgPointUtil::Col(*it);
+		stone.row = SgPointUtil::Row(*it);
+		stone.boardSize = [self size];
 		if (goGame->Board().IsColor(*it, SG_BLACK)) {
 			stone.player = kStonePlayerBlack;
 			[stones addObject:stone];
@@ -82,7 +101,9 @@
 }
 
 - (bool)playStoneAtRow:(int)row column:(int)col {
-	SgPoint p = SgPointUtil::Pt(row, col);
+	SgPoint p = SgPointUtil::Pt(col, row);
+	NSLog(@"%d %d", row, col);
+	NSLog(@"%@", [DGS sgfCoordsWithRow:row column:col boardSize:[self size]]);
 	if (goGame->Board().IsLegal(p)) {
 		goGame->AddMove(p, goGame->Board().ToPlay());
 		goGame->GoInDirection(SgNode::NEXT);

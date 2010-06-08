@@ -22,6 +22,8 @@
 + (NSArray *)currentGames;
 #endif
 
++ (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
+
 // Internal
 + (NSArray *)gamesFromCSV:(NSString *)csvData;
 + (NSArray *)gamesFromTable:(NSString *)htmlString;

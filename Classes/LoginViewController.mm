@@ -41,6 +41,7 @@
 	} else {
 		[[self loggingInStatusView] setHidden:YES];
 		[[self loginFieldsView] setHidden:NO];
+		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	}
 }
 

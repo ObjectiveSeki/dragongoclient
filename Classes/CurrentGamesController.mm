@@ -14,25 +14,27 @@
 @implementation CurrentGamesController
 
 @synthesize games;
+@synthesize refreshButton;
 
 #pragma mark -
 #pragma mark View lifecycle
 
 
 - (void)viewDidLoad {
-	self.games = [DGS currentGames];
 	self.title = @"Current Games";
+	self.navigationItem.rightBarButtonItem = self.refreshButton;
 	[super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	[self refreshGames];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -56,6 +58,11 @@
 }
 */
 
+- (IBAction)refreshGames {
+	self.games = [DGS currentGames];
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+	[[self tableView] reloadData];
+}
 
 #pragma mark -
 #pragma mark Table view data source
@@ -157,6 +164,7 @@
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	[games release];
+	self.refreshButton = nil;
 }
 
 

@@ -11,8 +11,9 @@
 
 @implementation Stone
 
-@synthesize x;
-@synthesize y;
+@synthesize row;
+@synthesize col;
 @synthesize player;
+@synthesize boardSize;
 
 @end

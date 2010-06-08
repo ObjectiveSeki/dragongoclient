@@ -24,7 +24,9 @@
 
 - (int)size;
 - (NSArray *)stones;
+- (Stone *)currentMove;
 - (Stone *)lastMove;
+- (void)undoLastMove;
 - (bool)playStoneAtRow:(int)row column:(int)col;
 
 @end

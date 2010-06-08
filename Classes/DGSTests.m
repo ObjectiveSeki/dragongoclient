@@ -17,4 +17,10 @@
 	STAssertEquals([games count], expectedCount, nil);
 }
 
+- (void)testBoardCoords {
+	STAssertEqualObjects(@"ss", [DGS sgfCoordsWithRow:1 column:19 boardSize:19], nil, nil );
+	STAssertEqualObjects(@"aa", [DGS sgfCoordsWithRow:19 column:1 boardSize:19], nil, nil );
+	STAssertEqualObjects(@"ab", [DGS sgfCoordsWithRow:18 column:1 boardSize:19], nil, nil );
+}
+
 @end

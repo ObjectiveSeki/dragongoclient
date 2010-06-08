@@ -69,6 +69,14 @@
 
 #endif
 
+
++ (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize
+{
+	char rowChar = 'a' + (boardSize - row);
+	char colChar = 'a' + (col - 1);
+	return [NSString stringWithFormat:@"%c%c", colChar, rowChar];
+}
+
 + (NSArray *)gamesFromCSV:(NSString *)csvData {
 	NSMutableArray *games = [NSMutableArray array];
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
@@ -81,7 +89,9 @@
 	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:htmlString options:CXMLDocumentTidyHTML error:&error];
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameTable']/tr" error:&error];
 
-	// TODO: make sure we have rows!!
+    if ([tableRows count] == 0) {
+		return games;
+	}
 	
 	// First row is the header
 	CXMLNode *headerRow = [tableRows objectAtIndex:0];

@@ -14,13 +14,15 @@ typedef enum _StonePlayer {
 } StonePlayer;
 
 @interface Stone : NSObject {
-	int x;
-	int y;
+	int row;
+	int col;
 	StonePlayer player;
+	int boardSize;
 };
 
-@property(nonatomic) int x;
-@property(nonatomic) int y;
+@property(nonatomic) int row;
+@property(nonatomic) int col;
 @property(nonatomic) StonePlayer player;
+@property(nonatomic) int boardSize;
 
 @end

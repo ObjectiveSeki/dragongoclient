@@ -50,11 +50,11 @@
 	return (float)([self maxX] - [self minX]) / ([[self board] size] - 1);
 }
 
-- (CGPoint)pointForBoardX:(int)x Y:(int)y {
+- (CGPoint)pointForBoardRow:(int)row column:(int)col {
 	
 	float pointDelta = [self pointDistance];
-	float pointX = (x - 1) * pointDelta + [self minX];
-	float pointY = [self maxY] - ((y - 1) * pointDelta);
+	float pointX = (col - 1) * pointDelta + [self minX];
+	float pointY = [self maxY] - ((row - 1) * pointDelta);
 	
 	return CGPointMake(pointX, pointY);
 }
@@ -75,8 +75,8 @@
 	// draw all the lines on the X axis
 	for(int i = 1; i <= boardSize; i++) {
 		CGContextBeginPath(context);
-		CGPoint startPoint = [self pointForBoardX:i Y:1];
-		CGPoint endPoint = [self pointForBoardX:i Y:boardSize];
+		CGPoint startPoint = [self pointForBoardRow:1 column:i];
+		CGPoint endPoint = [self pointForBoardRow:boardSize column:i];
 		CGContextMoveToPoint(context, startPoint.x, startPoint.y);
 		CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
 		CGContextStrokePath(context);
@@ -85,8 +85,8 @@
 	// draw all the lines on the Y axis
 	for(int i = 1; i <= boardSize; i++) {
 		CGContextBeginPath(context);
-		CGPoint startPoint = [self pointForBoardX:1 Y:i];
-		CGPoint endPoint = [self pointForBoardX:boardSize Y:i];
+		CGPoint startPoint = [self pointForBoardRow:i column:1];
+		CGPoint endPoint = [self pointForBoardRow:i column:boardSize];
 		CGContextMoveToPoint(context, startPoint.x, startPoint.y);
 		CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
 		CGContextStrokePath(context);
@@ -95,7 +95,7 @@
 
 - (void)drawStones:(CGContextRef)context {
 	NSArray *stones = [board stones];
-	float boardRadius = [self pointDistance] * 0.40;
+	float boardRadius = [self pointDistance] * 0.43;
 	for (Stone *stone in stones) {
 		if ([stone player] == kStonePlayerBlack) {
 			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
@@ -105,7 +105,7 @@
 			CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
 		}
 
-		CGPoint coords = [self pointForBoardX:[stone x] Y:[stone y]];
+		CGPoint coords = [self pointForBoardRow:[stone row] column:[stone col]];
 		CGContextBeginPath(context);
 		CGContextAddArc(context, coords.x, coords.y, boardRadius, 0, 2*3.14159, 0);
 		CGContextDrawPath(context, kCGPathFillStroke);
@@ -113,7 +113,7 @@
 }
 
 - (void)drawLastMoveIndicator:(CGContextRef)context {
-	Stone *stone = [board lastMove];
+	Stone *stone = [board currentMove];
 
 	if ([stone player] == kStonePlayerBlack) {
 		CGContextSetRGBStrokeColor(context, 1.0, 1.0, 1.0, 1.0);
@@ -121,7 +121,7 @@
 		CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
 	}	
 	
-	CGPoint coords = [self pointForBoardX:[stone x] Y:[stone y]];
+	CGPoint coords = [self pointForBoardRow:[stone row] column:[stone col]];
 	CGContextBeginPath(context);
 	CGContextAddArc(context, coords.x, coords.y, [self pointDistance] * 0.25, 0, 2*3.14159, 0);
 	CGContextStrokePath(context);
@@ -139,7 +139,7 @@
 
 - (bool)playStoneAtPoint:(CGPoint)point {
 	CGPoint boardPoint = [self boardPositionForPoint:point];
-	return [[self board] playStoneAtRow:(int)boardPoint.x column:(int)boardPoint.y];
+	return [[self board] playStoneAtRow:(int)boardPoint.y column:(int)boardPoint.x];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
