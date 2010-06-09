@@ -132,6 +132,18 @@
 				CXMLNode *td = [columns objectAtIndex:i];
 				NSString *data = [[[td nodesForXPath:@"a/@href" error:&error] objectAtIndex:0] stringValue];
 				game.sgfUrl = [NSString stringWithFormat:@"%@%@", @"http://www.dragongoserver.net/", data];
+			} else if ([headerName isEqual:@"Time remaining"]) {
+				CXMLNode *td = [columns objectAtIndex:i];
+				NSString *data = [td stringValue];
+				game.time = data;
+			}  else if ([headerName isEqual:@"Col"]) {
+				CXMLNode *td = [columns objectAtIndex:i];
+				NSString *data = [[[td nodesForXPath:@"img/@alt" error:&error] objectAtIndex:0] stringValue];
+				if ([data isEqual:@"b"]) {
+					game.color = kStonePlayerBlack;
+				} else {
+					game.color = kStonePlayerWhite;
+				}
 			}
 		}
 		

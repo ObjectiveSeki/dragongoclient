@@ -16,6 +16,8 @@
 @synthesize sgfUrl;
 @synthesize opponent;
 @synthesize gameId;
+@synthesize time;
+@synthesize color;
 
 #ifndef LOGIC_TEST_MODE
 
@@ -57,6 +59,7 @@
 - (void)dealloc {
 	[sgfUrl release];
 	[opponent release];
+	[time release];
 	[super dealloc];
 }
 

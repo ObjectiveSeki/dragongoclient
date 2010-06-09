@@ -11,10 +11,16 @@
 @interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UIViewController *viewController;
+	UIImage *blackStone;
+	UIImage *whiteStone;
+	UIImage *boardImage;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
+@property (nonatomic, retain) UIImage *blackStone;
+@property (nonatomic, retain) UIImage *whiteStone;
+@property (nonatomic, retain) UIImage *boardImage;
 
 - (void)replaceViewController:(UIViewController *)aViewController;
 

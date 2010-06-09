@@ -86,11 +86,19 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
-    [[cell textLabel] setText:[[games objectAtIndex:[indexPath row]] opponent]];
+	Game *game = [games objectAtIndex:[indexPath row]];
+	if ([game color] == kStonePlayerBlack) {
+		[cell setImage:[[[UIApplication sharedApplication] delegate] blackStone]];
+	} else {
+		[cell setImage:[[[UIApplication sharedApplication] delegate] whiteStone]];
+	}
+    [[cell textLabel] setText: [game opponent]];
+	[[cell detailTextLabel] setText:[game time]];
+	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	
     return cell;
 }

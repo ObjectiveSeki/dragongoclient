@@ -13,11 +13,15 @@
 	int gameId;
 	NSString * sgfUrl;
 	NSString * opponent;
+	NSString * time;
+	StonePlayer color;
 }
 
 @property(nonatomic, retain) NSString * sgfUrl;
 @property(nonatomic, retain) NSString * opponent;
+@property(nonatomic, retain) NSString * time;
 @property(nonatomic) int gameId;
+@property(nonatomic) StonePlayer color;
 
 - (NSString *)sgfString;
 - (void)playMove:(Stone *)move lastMove:(Stone *)move comment:(NSString *)comment;

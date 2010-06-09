@@ -69,6 +69,8 @@
 
 - (void)drawBoardGrid:(CGContextRef)context boardSize:(int)boardSize {
 	
+	[[[[UIApplication sharedApplication] delegate] boardImage] drawInRect:[self bounds]];
+	
 	CGContextSetLineWidth(context, 1.0);
 	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
 
@@ -95,20 +97,19 @@
 
 - (void)drawStones:(CGContextRef)context {
 	NSArray *stones = [board stones];
-	float boardRadius = [self pointDistance] * 0.43;
+	float boardRadius = [self pointDistance] * 0.52;
+	UIImage *stoneImage;
 	for (Stone *stone in stones) {
 		if ([stone player] == kStonePlayerBlack) {
-			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
-			CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 1.0);
+			stoneImage = [[[UIApplication sharedApplication] delegate] blackStone];
 		} else {
-			CGContextSetRGBStrokeColor(context, 1.0, 1.0, 1.0, 1.0);
-			CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
+			stoneImage = [[[UIApplication sharedApplication] delegate] whiteStone];
 		}
 
 		CGPoint coords = [self pointForBoardRow:[stone row] column:[stone col]];
-		CGContextBeginPath(context);
-		CGContextAddArc(context, coords.x, coords.y, boardRadius, 0, 2*3.14159, 0);
-		CGContextDrawPath(context, kCGPathFillStroke);
+		
+		CGRect stoneRect = CGRectMake(coords.x - boardRadius, coords.y - boardRadius, boardRadius * 2, boardRadius * 2);
+		[stoneImage drawInRect:stoneRect];
 	}
 }
 

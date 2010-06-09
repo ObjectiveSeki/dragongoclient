@@ -14,6 +14,9 @@
 
 @synthesize window;
 @synthesize viewController;
+@synthesize blackStone;
+@synthesize whiteStone;
+@synthesize boardImage;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -33,6 +36,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[Board initFuego];
     // Override point for customization after application launch.
+	
+	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];
+	[self setWhiteStone:[UIImage imageNamed:@"White.png"]];
+	[self setBoardImage:[UIImage imageNamed:@"Board.png"]];
 	
 	LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	
@@ -96,6 +103,9 @@
 
 
 - (void)dealloc {
+	[blackStone release];
+	[whiteStone release];
+	[boardImage release];
     [window release];
     [super dealloc];
 }
