@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="22"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -74,7 +74,7 @@
 							<object class="IBUIView" id="941288829">
 								<reference key="NSNextResponder" ref="617603125"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrameSize">{320, 320}</string>
+								<string key="NSFrameSize">{640, 640}</string>
 								<reference key="NSSuperview" ref="617603125"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -90,7 +90,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
-						<float key="IBUIMaximumZoomScale">2</float>
+						<float key="IBUIMinimumZoomScale">0.5</float>
 						<bool key="IBUIBouncesZoom">NO</bool>
 					</object>
 				</object>

@@ -99,39 +99,6 @@
     return self.boardView;
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)theScrollView withView:(UIView *)view atScale:(float)scale {
-	
-	float zoomScale=theScrollView.zoomScale;
-	CGSize newContentSize=theScrollView.contentSize;
-	CGPoint newContentOffset=theScrollView.contentOffset;
-	CGSize oldContentViewSize=[boardView frame].size;
-	
-	float xMult=newContentSize.width/oldContentViewSize.width;
-	float yMult=newContentSize.height/oldContentViewSize.height;
-	
-	newContentOffset.x *=xMult;
-	newContentOffset.y *=yMult;
-	
-	float currentMinZoom=theScrollView.minimumZoomScale;
-	float currentMaxZoom=theScrollView.maximumZoomScale;
-	
-	float newMinZoom=currentMinZoom/zoomScale;
-	float newMaxZoom=currentMaxZoom/zoomScale;
-	
-	[theScrollView setMinimumZoomScale:1.0];
-	[theScrollView setMaximumZoomScale:1.0];
-	[theScrollView setZoomScale:1.0 animated:NO];
-	
-	[boardView setFrame:CGRectMake(0,0,newContentSize.width,newContentSize.height)];
-	theScrollView.contentSize=newContentSize;
-	[theScrollView setContentOffset:newContentOffset animated:NO];
-	
-	[theScrollView setMinimumZoomScale:newMinZoom];
-	[theScrollView setMaximumZoomScale:newMaxZoom];
-	
-	[boardView setNeedsDisplay];
-}
-
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -154,6 +121,8 @@
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 	[theBoard release];
+	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:0.5 withCenter:[[self boardView] center]];
+	[[self scrollView] zoomToRect:zoomRect animated:NO];
 }
 
 - (void)viewDidUnload {

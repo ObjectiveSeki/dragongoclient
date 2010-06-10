@@ -10,8 +10,8 @@
 #import "Stone.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define MARGIN_X 20
-#define MARGIN_Y 20
+#define MARGIN_X 40
+#define MARGIN_Y 40
 
 @implementation GoBoardView
 
@@ -115,7 +115,8 @@
 
 - (void)drawLastMoveIndicator:(CGContextRef)context {
 	Stone *stone = [board currentMove];
-
+	CGContextSetLineWidth(context, 2.0);
+	
 	if ([stone player] == kStonePlayerBlack) {
 		CGContextSetRGBStrokeColor(context, 1.0, 1.0, 1.0, 1.0);
 	} else {
