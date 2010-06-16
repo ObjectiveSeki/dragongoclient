@@ -466,9 +466,9 @@
 		DAF9105F11BB5BBD00FE7B96 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */; };
 		DAF9108D11BB5F0700FE7B96 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF9108C11BB5F0700FE7B96 /* GameView.xib */; };
 		DAF9108E11BB5F0700FE7B96 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF9108C11BB5F0700FE7B96 /* GameView.xib */; };
-		DAF911F411BB796900FE7B96 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Stone.m */; };
-		DAF911F511BB796900FE7B96 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Stone.m */; };
-		DAF911F611BB796900FE7B96 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Stone.m */; };
+		DAF911F411BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
+		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
+		DAF911F611BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -826,8 +826,8 @@
 		DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
 		DAF9108C11BB5F0700FE7B96 /* GameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
-		DAF911F211BB796900FE7B96 /* Stone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stone.h; sourceTree = "<group>"; };
-		DAF911F311BB796900FE7B96 /* Stone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stone.m; sourceTree = "<group>"; };
+		DAF911F211BB796900FE7B96 /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
+		DAF911F311BB796900FE7B96 /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1006,8 +1006,8 @@
 				DAEA519A11B88D8300F4CCB3 /* Game.m */,
 				DA419A5F11BA0C0600B3050E /* Board.h */,
 				DA419A6011BA0C0600B3050E /* Board.mm */,
-				DAF911F211BB796900FE7B96 /* Stone.h */,
-				DAF911F311BB796900FE7B96 /* Stone.m */,
+				DAF911F211BB796900FE7B96 /* Move.h */,
+				DAF911F311BB796900FE7B96 /* Move.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1759,7 +1759,7 @@
 				DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */,
 				DAF9102911BB48A800FE7B96 /* GoBoardView.mm in Sources */,
 				DAF9105F11BB5BBD00FE7B96 /* GameViewController.mm in Sources */,
-				DAF911F511BB796900FE7B96 /* Stone.m in Sources */,
+				DAF911F511BB796900FE7B96 /* Move.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1908,7 +1908,7 @@
 				DA419D4811BB2DA400B3050E /* CurrentGamesController.mm in Sources */,
 				DAF9102811BB48A800FE7B96 /* GoBoardView.mm in Sources */,
 				DAF9105E11BB5BBD00FE7B96 /* GameViewController.mm in Sources */,
-				DAF911F411BB796900FE7B96 /* Stone.m in Sources */,
+				DAF911F411BB796900FE7B96 /* Move.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2052,7 +2052,7 @@
 				DA419B8E11BA168A00B3050E /* GoStaticSafetySolver.cpp in Sources */,
 				DA419B8F11BA168A00B3050E /* GoTimeControl.cpp in Sources */,
 				DA419B9011BA168A00B3050E /* GoUtil.cpp in Sources */,
-				DAF911F611BB796900FE7B96 /* Stone.m in Sources */,
+				DAF911F611BB796900FE7B96 /* Move.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,9 @@ enum BoardState {
 	IBOutlet UIBarButtonItem *undoButton;
 	IBOutlet UIBarButtonItem *confirmButton;
 	BoardState boardState;
+	float maximumZoomScale;
+	float minimumZoomScale;
+	float currentZoomScale;
 }
 
 @property(nonatomic, retain) Game *game;

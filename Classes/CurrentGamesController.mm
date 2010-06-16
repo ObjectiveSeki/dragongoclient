@@ -91,7 +91,7 @@
     
     // Configure the cell...
 	Game *game = [games objectAtIndex:[indexPath row]];
-	if ([game color] == kStonePlayerBlack) {
+	if ([game color] == kMovePlayerBlack) {
 		[cell setImage:[[[UIApplication sharedApplication] delegate] blackStone]];
 	} else {
 		[cell setImage:[[[UIApplication sharedApplication] delegate] whiteStone]];

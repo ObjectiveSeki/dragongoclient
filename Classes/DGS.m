@@ -140,9 +140,9 @@
 				CXMLNode *td = [columns objectAtIndex:i];
 				NSString *data = [[[td nodesForXPath:@"img/@alt" error:&error] objectAtIndex:0] stringValue];
 				if ([data isEqual:@"b"]) {
-					game.color = kStonePlayerBlack;
+					game.color = kMovePlayerBlack;
 				} else {
-					game.color = kStonePlayerWhite;
+					game.color = kMovePlayerWhite;
 				}
 			}
 		}

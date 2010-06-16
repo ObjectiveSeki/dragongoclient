@@ -32,12 +32,12 @@
 	return nil;
 }
 
-- (void)playMove:(Stone *)move lastMove:(Stone *)lastMove comment:(NSString *)comment {
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove comment:(NSString *)comment {
 	NSURL *url = [NSURL URLWithString:@"http://www.dragongoserver.net/quick_play.php"];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [self gameId]] forKey:@"gid"];
 
-	if ([move player] == kStonePlayerBlack) {
+	if ([move player] == kMovePlayerBlack) {
 		[request setPostValue:@"B" forKey:@"color"];
 	} else {
 		[request setPostValue:@"W" forKey:@"color"];

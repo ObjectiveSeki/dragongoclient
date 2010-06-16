@@ -7,7 +7,7 @@
 //
 
 #import "GoBoardView.h"
-#import "Stone.h"
+#import "Move.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define MARGIN_X 40
@@ -96,34 +96,43 @@
 }
 
 - (void)drawStones:(CGContextRef)context {
-	NSArray *stones = [board stones];
+	NSArray *moves = [board moves];
 	float boardRadius = [self pointDistance] * 0.52;
 	UIImage *stoneImage;
-	for (Stone *stone in stones) {
-		if ([stone player] == kStonePlayerBlack) {
-			stoneImage = [[[UIApplication sharedApplication] delegate] blackStone];
-		} else {
-			stoneImage = [[[UIApplication sharedApplication] delegate] whiteStone];
-		}
-
-		CGPoint coords = [self pointForBoardRow:[stone row] column:[stone col]];
+	for (Move *move in moves) {
 		
-		CGRect stoneRect = CGRectMake(coords.x - boardRadius, coords.y - boardRadius, boardRadius * 2, boardRadius * 2);
-		[stoneImage drawInRect:stoneRect];
+		if ([move moveType] == kMoveTypeMove) {
+
+			if ([move player] == kMovePlayerBlack) {
+				stoneImage = [[[UIApplication sharedApplication] delegate] blackStone];
+			} else {
+				stoneImage = [[[UIApplication sharedApplication] delegate] whiteStone];
+			}
+
+			CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
+			
+			CGRect stoneRect = CGRectMake(coords.x - boardRadius, coords.y - boardRadius, boardRadius * 2, boardRadius * 2);
+			[stoneImage drawInRect:stoneRect];
+		}
 	}
 }
 
 - (void)drawLastMoveIndicator:(CGContextRef)context {
-	Stone *stone = [board currentMove];
+	Move *move = [board currentMove];
+	
+	if ([move moveType] != kMoveTypeMove) {
+		return;
+	}
+	
 	CGContextSetLineWidth(context, 2.0);
 	
-	if ([stone player] == kStonePlayerBlack) {
+	if ([move player] == kMovePlayerBlack) {
 		CGContextSetRGBStrokeColor(context, 1.0, 1.0, 1.0, 1.0);
 	} else {
 		CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
 	}	
 	
-	CGPoint coords = [self pointForBoardRow:[stone row] column:[stone col]];
+	CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
 	CGContextBeginPath(context);
 	CGContextAddArc(context, coords.x, coords.y, [self pointDistance] * 0.25, 0, 2*3.14159, 0);
 	CGContextStrokePath(context);

@@ -11,7 +11,7 @@
 #import "GoInit.h"
 #import "SgGameReader.h"
 #import "SgNode.h"
-#import "Stone.h"
+#import "Move.h"
 #import "DGS.h"
 #include <sstream>
 
@@ -54,50 +54,62 @@
 	goGame->CurrentNode()->DeleteSubtree();
 }
 
-- (Stone *)stoneFromNode:(SgNode *)node {
-	Stone *currentMove = [[[Stone alloc] init] autorelease];
-	currentMove.col = SgPointUtil::Col(node->NodeMove());
-	currentMove.row = SgPointUtil::Row(node->NodeMove());
-	currentMove.boardSize = [self size];
+- (Move *)moveFromNode:(SgNode *)node {
+	Move *currentMove = [[[Move alloc] init] autorelease];
+	SgPoint move = node->NodeMove();
+	
 	if (node->NodePlayer() == SG_BLACK) {
-		currentMove.player = kStonePlayerBlack;
+		currentMove.player = kMovePlayerBlack;
 	} else if (node->NodePlayer() == SG_WHITE) {
-		currentMove.player = kStonePlayerWhite;
+		currentMove.player = kMovePlayerWhite;
+	}
+	currentMove.boardSize = [self size];
+	
+	if (SgIsSpecialMove(move)) {
+		if (move == SG_PASS) {
+			currentMove.moveType = kMoveTypePass;
+		} else if (move == SG_RESIGN) {
+			currentMove.moveType = kMoveTypeResign;
+		}
+	} else {
+		currentMove.col = SgPointUtil::Col(node->NodeMove());
+		currentMove.row = SgPointUtil::Row(node->NodeMove());
+		currentMove.moveType = kMoveTypeMove;
 	}
 	return currentMove;
 }
 
-- (Stone *)lastMove {
+- (Move *)lastMove {
 	SgNode *currentNode = goGame->CurrentNode();
 	goGame->GoInDirection(SgNode::PREVIOUS);
-	Stone *lastMove = [self stoneFromNode:goGame->CurrentNode()];
+	Move *lastMove = [self moveFromNode:goGame->CurrentNode()];
 	goGame->GoToNode(currentNode);
 	return lastMove;
 }
 
-- (Stone *)currentMove {
-	return [self stoneFromNode:goGame->CurrentNode()];
+- (Move *)currentMove {
+	return [self moveFromNode:goGame->CurrentNode()];
 }
 
-- (NSArray *)stones {
-	NSMutableArray *stones = [NSMutableArray array];
+- (NSArray *)moves {
+	NSMutableArray *moves = [NSMutableArray array];
 	
 	for (GoBoard::Iterator it(goGame->Board()); it; ++it) {
-		Stone *stone = [[Stone alloc] init];
-		stone.col = SgPointUtil::Col(*it);
-		stone.row = SgPointUtil::Row(*it);
-		stone.boardSize = [self size];
+		Move *move = [[Move alloc] init];
+		move.col = SgPointUtil::Col(*it);
+		move.row = SgPointUtil::Row(*it);
+		move.boardSize = [self size];
 		if (goGame->Board().IsColor(*it, SG_BLACK)) {
-			stone.player = kStonePlayerBlack;
-			[stones addObject:stone];
+			move.player = kMovePlayerBlack;
+			[moves addObject:move];
 		} else if (goGame->Board().IsColor(*it, SG_WHITE)) {
-			stone.player = kStonePlayerWhite;
-			[stones addObject:stone];
+			move.player = kMovePlayerWhite;
+			[moves addObject:move];
 		}
-		[stone release];
+		[move release];
 	}
 	
-	return stones;
+	return moves;
 }
 
 - (bool)playStoneAtRow:(int)row column:(int)col {

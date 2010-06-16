@@ -42,6 +42,7 @@
     [super viewDidLoad];
 	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+	currentZoomScale = 1.0;
 }
 
 - (IBAction)undoMove {
@@ -76,19 +77,41 @@
     return zoomRect;
 }
 
+-(void)lockZoom
+{
+    maximumZoomScale = self.scrollView.maximumZoomScale;
+    minimumZoomScale = self.scrollView.minimumZoomScale;
+	
+    self.scrollView.maximumZoomScale = currentZoomScale;
+    self.scrollView.minimumZoomScale = currentZoomScale;
+}
+
+-(void)unlockZoom
+{
+    self.scrollView.maximumZoomScale = maximumZoomScale;
+    self.scrollView.minimumZoomScale = minimumZoomScale;
+}
+
+- (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
+	[self unlockZoom];
+	currentZoomScale = scale;
+	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
+	[[self scrollView] zoomToRect:zoomRect animated:animated];
+	NSLog(@"%f %f %f", currentZoomScale, minimumZoomScale, maximumZoomScale);
+	[self lockZoom];
+}
+
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
 	
 	if ([self boardState] == kBoardStateStoneNotPlaced) {
-		CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:2.0 withCenter:[touch locationInView:view]];
-		[[self scrollView] zoomToRect:zoomRect animated:YES];
+		[self zoomToScale:1.0 center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
 		if ([view playStoneAtPoint:[touch locationInView:view]]) {
 			[[self navigationItem] setRightBarButtonItem:[self undoButton] animated:YES];
 			[[self confirmButton] setEnabled:YES];
-			[view setNeedsDisplay];
-			CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:0.5 withCenter:[touch locationInView:view]];
-			[[self scrollView] zoomToRect:zoomRect animated:YES];
+			[view setNeedsDisplay]; // show just placed move
+			[self zoomToScale:0.5 center:[touch locationInView:view] animated:YES];
 			[self setBoardState:kBoardStateStonePlaced];
 		}
 	}
@@ -121,8 +144,8 @@
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 	[theBoard release];
-	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:0.5 withCenter:[[self boardView] center]];
-	[[self scrollView] zoomToRect:zoomRect animated:NO];
+	[self lockZoom];
+	[self zoomToScale:0.5 center:[[self boardView] center] animated:NO];
 }
 
 - (void)viewDidUnload {

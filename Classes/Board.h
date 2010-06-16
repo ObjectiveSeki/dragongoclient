@@ -10,7 +10,7 @@
 #import "SgSystem.h"
 #import "SgNode.h"
 #import "GoGame.h"
-#import "Stone.h"
+#import "Move.h"
 
 @interface Board : NSObject {
 	GoGameRecord *goGame;
@@ -23,9 +23,9 @@
 - initWithSGFString:(NSString *)sgfString boardSize:(int)boardSize;
 
 - (int)size;
-- (NSArray *)stones;
-- (Stone *)currentMove;
-- (Stone *)lastMove;
+- (NSArray *)moves;
+- (Move *)currentMove;
+- (Move *)lastMove;
 - (void)undoLastMove;
 - (bool)playStoneAtRow:(int)row column:(int)col;
 
