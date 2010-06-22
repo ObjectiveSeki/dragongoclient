@@ -22,8 +22,7 @@
 #ifndef LOGIC_TEST_MODE
 
 - (NSString *)sgfString {
-	NSURL *url = [NSURL URLWithString:self.sgfUrl];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:self.sgfUrl];
 	[request startSynchronous];
 	NSError *error = [request error];
 	if (!error) {
@@ -32,26 +31,8 @@
 	return nil;
 }
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove comment:(NSString *)comment {
-	NSURL *url = [NSURL URLWithString:@"http://www.dragongoserver.net/quick_play.php"];
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [self gameId]] forKey:@"gid"];
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment {
 
-	if ([move player] == kMovePlayerBlack) {
-		[request setPostValue:@"B" forKey:@"color"];
-	} else {
-		[request setPostValue:@"W" forKey:@"color"];
-	}
-	
-	[request setPostValue:[DGS sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"sgf_move"];
-	
-	[request setPostValue:[DGS sgfCoordsWithRow:[lastMove row] column:[lastMove col] boardSize:[lastMove boardSize]] forKey:@"sgf_prev"];
-
-    [request startSynchronous];
-	NSError *error = [request error];
-	if (!error) {
-		NSLog(@"%@", [request responseString]);
-	}
 }
 
 #endif

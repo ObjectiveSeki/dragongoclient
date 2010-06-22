@@ -10,11 +10,16 @@
 #import "DGS.h"
 #import "Game.h"
 #import "GameViewController.h"
+#import "LoginViewController.h"
 
 @implementation CurrentGamesController
 
 @synthesize games;
 @synthesize refreshButton;
+@synthesize tableView;
+@synthesize logoutButton;
+@synthesize dgs;
+@synthesize reloadingIndicator;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -22,7 +27,10 @@
 
 - (void)viewDidLoad {
 	self.title = @"Current Games";
+	self.navigationItem.leftBarButtonItem = self.logoutButton;
 	self.navigationItem.rightBarButtonItem = self.refreshButton;
+	self.dgs  = [[DGS alloc] init];
+	self.dgs.delegate = self;
 	[super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -59,9 +67,38 @@
 */
 
 - (IBAction)refreshGames {
-	self.games = [DGS currentGames];
+	[dgs getCurrentGames];
+	[[self reloadingIndicator] startAnimating];
+	[[self refreshButton] setEnabled:NO];
+	[[self logoutButton] setEnabled:NO];
+	[[self tableView] setUserInteractionEnabled:NO];
+}
+
+- (void)gotCurrentGames:(NSArray *)currentGames {
+	self.games = currentGames;
+	[[self reloadingIndicator] stopAnimating];
+	[[self refreshButton] setEnabled:YES];
+	[[self logoutButton] setEnabled:YES];
+	[[self tableView] setUserInteractionEnabled:YES];
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 	[[self tableView] reloadData];
+}
+
+- (void)notLoggedIn {
+	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	loginViewController.delegate = self;
+	[self presentModalViewController:loginViewController animated:YES];
+	[loginViewController notLoggedIn];
+	[loginViewController release];
+}
+
+- (void)loggedIn {
+	[self dismissModalViewControllerAnimated:YES];
+	[self refreshGames];
+}
+
+- (IBAction)logout {
+	[dgs logout];
 }
 
 #pragma mark -
@@ -173,6 +210,10 @@
     // For example: self.myOutlet = nil;
 	[games release];
 	self.refreshButton = nil;
+	self.tableView = nil;
+	self.logoutButton = nil;
+	self.reloadingIndicator = nil;
+	self.dgs = nil;
 }
 
 

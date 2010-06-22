@@ -17,6 +17,8 @@
 @synthesize loginFieldsView;
 @synthesize usernameField;
 @synthesize passwordField;
+@synthesize delegate;
+@synthesize dgs;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,35 +30,43 @@
 }
 */
 
-- (void)login 
-{
-	if ([DGS loggedIn]) {
-		CurrentGamesController *gamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
+- (void)loggedIn {
+	[[self delegate] loggedIn];
+}
 
-		DGSPhoneAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-		UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gamesController];
-		[delegate replaceViewController:navigationController];
-		[navigationController release];
-		[gamesController release];
-	} else {
-		[[self loggingInStatusView] setHidden:YES];
-		[[self loginFieldsView] setHidden:NO];
-		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-	}
+- (void)notLoggedIn {
+	[[self loggingInStatusView] setHidden:YES];
+	[[self loginFieldsView] setHidden:NO];
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (IBAction)loginWithUsernameAndPassword:(id)sender
 {
-	[DGS loginWithUsername:[usernameField text] password:[passwordField text]];
-	[self login];
+	[[self usernameField] resignFirstResponder];
+	[[self passwordField] resignFirstResponder];
+	[dgs loginWithUsername:[usernameField text] password:[passwordField text]];
+	[[self loggingInStatusView] setHidden:NO];
+	[[self loginFieldsView] setHidden:YES];
 }
 
-/*
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if (textField == usernameField) {
+		[[self passwordField] becomeFirstResponder];
+	} else if (textField == passwordField) {
+		[self loginWithUsernameAndPassword:passwordField];
+	}
+	return YES;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.dgs = [[[DGS alloc] init] autorelease];
+	self.dgs.delegate = self;
+	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+	
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -81,6 +91,7 @@
 	self.loginFieldsView = nil;
 	self.usernameField = nil;
 	self.passwordField = nil;
+	self.dgs = nil;
 }
 
 

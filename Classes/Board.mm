@@ -112,10 +112,12 @@
 	return moves;
 }
 
+- (int)moveNumber {
+	return goGame->Board().MoveNumber();
+}
+
 - (bool)playStoneAtRow:(int)row column:(int)col {
 	SgPoint p = SgPointUtil::Pt(col, row);
-	NSLog(@"%d %d", row, col);
-	NSLog(@"%@", [DGS sgfCoordsWithRow:row column:col boardSize:[self size]]);
 	if (goGame->Board().IsLegal(p)) {
 		goGame->AddMove(p, goGame->Board().ToPlay());
 		goGame->GoInDirection(SgNode::NEXT);
@@ -124,6 +126,11 @@
 		return NO;
 	}
 	return NO;
+}
+
+- (void)pass {
+	goGame->AddMove(SG_PASS, goGame->Board().ToPlay());
+	goGame->GoInDirection(SgNode::NEXT);
 }
 
 - (void)dealloc {

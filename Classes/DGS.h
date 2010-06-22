@@ -7,25 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "LoginProtocol.h"
 
 @interface DGS : NSObject {
-
+	id <LoginProtocol> delegate;
 }
+
+@property(nonatomic, assign) id <LoginProtocol> delegate;
 
 #ifndef LOGIC_TEST_MODE
 
-+ (void)logout;
-+ (BOOL)loggedIn;
-+ (void)loginWithUsername:(NSString *)username password:(NSString *)password;
+- (void)logout;
+- (BOOL)loggedIn;
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
 
-+ (NSArray *)currentGames;
+- (void)getCurrentGames;
 #endif
 
-+ (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
+- (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
 
 // Internal
-+ (NSArray *)gamesFromCSV:(NSString *)csvData;
-+ (NSArray *)gamesFromTable:(NSString *)htmlString;
+- (NSArray *)gamesFromCSV:(NSString *)csvData;
+- (NSArray *)gamesFromTable:(NSString *)htmlString;
 
 @end

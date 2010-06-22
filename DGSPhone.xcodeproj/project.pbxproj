@@ -491,6 +491,7 @@
 		DA38B1F411B59EBD00112AA4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginViewController.mm; sourceTree = "<group>"; };
+		DA4026C811D06C5A005017C4 /* LoginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProtocol.h; sourceTree = "<group>"; };
 		DA4176BA11B9FE5A00B3050E /* GtpEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GtpEngine.cpp; sourceTree = "<group>"; };
 		DA4176BB11B9FE5A00B3050E /* GtpEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GtpEngine.h; sourceTree = "<group>"; };
 		DA4176BC11B9FE5A00B3050E /* GtpInputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GtpInputStream.cpp; sourceTree = "<group>"; };
@@ -888,6 +889,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA4026C611D06C38005017C4 /* Protocols */,
 				DAF9102311BB487500FE7B96 /* Views */,
 				DA71CAA911B5EAB1008696AC /* Tests */,
 				DA38B20311B59FB400112AA4 /* Controller */,
@@ -1023,6 +1025,14 @@
 				DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		DA4026C611D06C38005017C4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DA4026C811D06C5A005017C4 /* LoginProtocol.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		DA4176B511B9FDB100B3050E /* Fuego */ = {

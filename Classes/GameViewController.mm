@@ -18,6 +18,7 @@
 @synthesize boardState;
 @synthesize undoButton;
 @synthesize confirmButton;
+@synthesize passButton;
 
 
 /*
@@ -51,11 +52,26 @@
 	[[self navigationItem] setRightBarButtonItem:nil animated:YES];
 	[[self confirmButton] setEnabled:NO];
 	[[self boardView] setNeedsDisplay];
+	[[self passButton] setEnabled:YES];
+}
+
+
+- (void)setMoveMade {
+	[[self navigationItem] setRightBarButtonItem:[self undoButton] animated:YES];
+	[[self confirmButton] setEnabled:YES];
+	[[self passButton] setEnabled:NO];
+	[[self boardView] setNeedsDisplay]; // show just placed move
+	[self setBoardState:kBoardStateStonePlaced];
 }
 
 - (IBAction)confirmMove {
-	[[self game] playMove:[[self board] currentMove] lastMove:[[self board] lastMove] comment:nil];
+	[[self game] playMove:[[self board] currentMove] lastMove:[[self board] lastMove] moveNumber:[[self board] moveNumber] comment:nil];
 	[[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (IBAction)pass {
+	[board pass];
+	[self setMoveMade];
 }
 
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
@@ -106,13 +122,11 @@
 	if ([self boardState] == kBoardStateStoneNotPlaced) {
 		[self zoomToScale:1.0 center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
+		[[self passButton] setEnabled:NO];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
 		if ([view playStoneAtPoint:[touch locationInView:view]]) {
-			[[self navigationItem] setRightBarButtonItem:[self undoButton] animated:YES];
-			[[self confirmButton] setEnabled:YES];
-			[view setNeedsDisplay]; // show just placed move
+			[self setMoveMade];
 			[self zoomToScale:0.5 center:[touch locationInView:view] animated:YES];
-			[self setBoardState:kBoardStateStonePlaced];
 		}
 	}
 }
@@ -157,6 +171,7 @@
 	self.board = nil;
 	self.undoButton = nil;
 	self.confirmButton = nil;
+	self.passButton = nil;
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "DGSPhoneAppDelegate.h"
-#import "LoginViewController.h"
+#import "CurrentGamesController.h"
 #import "Board.h"
 
 @implementation DGSPhoneAppDelegate
@@ -41,12 +41,13 @@
 	[self setWhiteStone:[UIImage imageNamed:@"White.png"]];
 	[self setBoardImage:[UIImage imageNamed:@"Board.png"]];
 	
-	LoginViewController *loginController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	
-	[self replaceViewController:loginController];
-    [loginController login];
-    [loginController release];
-	
+	CurrentGamesController *gamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gamesController];
+	[self replaceViewController:navigationController];
+	[navigationController release];
+	[gamesController release];
+
 	[window makeKeyAndVisible];
 	
 	return YES;

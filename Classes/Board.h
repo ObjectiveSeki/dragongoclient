@@ -24,9 +24,11 @@
 
 - (int)size;
 - (NSArray *)moves;
+- (int)moveNumber;
 - (Move *)currentMove;
 - (Move *)lastMove;
 - (void)undoLastMove;
 - (bool)playStoneAtRow:(int)row column:(int)col;
+- (void)pass;
 
 @end
