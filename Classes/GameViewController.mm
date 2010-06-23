@@ -7,6 +7,7 @@
 //
 
 #import "GameViewController.h"
+#import "LoginViewController.h"
 #import "Board.h"
 
 @implementation GameViewController
@@ -19,6 +20,7 @@
 @synthesize undoButton;
 @synthesize confirmButton;
 @synthesize passButton;
+@synthesize	dgs;
 
 
 /*
@@ -44,6 +46,8 @@
 	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	currentZoomScale = 1.0;
+	self.dgs = [[DGS alloc] init];
+	dgs.delegate = self;
 }
 
 - (IBAction)undoMove {
@@ -65,7 +69,11 @@
 }
 
 - (IBAction)confirmMove {
-	[[self game] playMove:[[self board] currentMove] lastMove:[[self board] lastMove] moveNumber:[[self board] moveNumber] comment:nil];
+	[[self dgs] playMove:[[self board] currentMove] lastMove:[[self board] lastMove] moveNumber:[[self board] moveNumber] comment:nil gameId:[game gameId]];
+}
+
+- (void)playedMove {
+
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -73,6 +81,20 @@
 	[board pass];
 	[self setMoveMade];
 }
+
+- (void)notLoggedIn {
+	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	loginViewController.delegate = self;
+	[self presentModalViewController:loginViewController animated:YES];
+	[loginViewController notLoggedIn];
+	[loginViewController release];
+}
+
+- (void)loggedIn {
+	[self dismissModalViewControllerAnimated:YES];
+	[[self navigationController] popViewControllerAnimated:YES];
+}
+
 
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
 	
@@ -113,7 +135,6 @@
 	currentZoomScale = scale;
 	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
 	[[self scrollView] zoomToRect:zoomRect animated:animated];
-	NSLog(@"%f %f %f", currentZoomScale, minimumZoomScale, maximumZoomScale);
 	[self lockZoom];
 }
 
@@ -172,6 +193,7 @@
 	self.undoButton = nil;
 	self.confirmButton = nil;
 	self.passButton = nil;
+	self.dgs = nil;
 }
 
 

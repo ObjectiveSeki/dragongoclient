@@ -14,30 +14,14 @@
 @implementation Game
 
 @synthesize sgfUrl;
+@synthesize sgfString;
 @synthesize opponent;
 @synthesize gameId;
 @synthesize time;
 @synthesize color;
 
-#ifndef LOGIC_TEST_MODE
-
-- (NSString *)sgfString {
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:self.sgfUrl];
-	[request startSynchronous];
-	NSError *error = [request error];
-	if (!error) {
-		return [request responseString];
-	}
-	return nil;
-}
-
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment {
-
-}
-
-#endif
-
 - (void)dealloc {
+	[sgfString release];
 	[sgfUrl release];
 	[opponent release];
 	[time release];

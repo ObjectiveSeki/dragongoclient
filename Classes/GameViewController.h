@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Game.h"
 #import "GoBoardView.h"
+#import "DGS.h"
 
 enum BoardState {
 	kBoardStateStoneNotPlaced,
@@ -16,9 +17,10 @@ enum BoardState {
 	kBoardStateStonePlaced
 };
 
-@interface GameViewController : UIViewController {
+@interface GameViewController : UIViewController <LoginProtocol> {
 	Game *game;
 	Board *board;
+	DGS *dgs;
 	IBOutlet GoBoardView *boardView;
 	IBOutlet UIScrollView *scrollView;
 	IBOutlet UIBarButtonItem *undoButton;
@@ -38,9 +40,13 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *undoButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *confirmButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *passButton;
+@property(nonatomic, retain) DGS *dgs;
 
 - (IBAction)undoMove;
 - (IBAction)confirmMove;
 - (IBAction)pass;
+
+- (void)notLoggedIn;
+- (void)loggedIn;
 
 @end

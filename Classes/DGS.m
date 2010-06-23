@@ -7,7 +7,6 @@
 //
 
 #import "DGS.h"
-#import "Game.h"
 #import "CXMLDocument.h"
 
 #ifndef LOGIC_TEST_MODE
@@ -29,11 +28,17 @@
 	return self;
 }
 
-- (BOOL)loggedIn:(NSString *)response {
-	if (NSNotFound == [response rangeOfString:@"Logged in as:"].location) {
-		NSLog(@"Unauthorized");
-	} else {
+- (BOOL)loggedIn:(ASIHTTPRequest *)request {
+	NSString *urlString = [[request url] absoluteString];
+	NSLog(@"%@", urlString);
+	
+	BOOL loggedOutURLNotFound = (NSNotFound == [urlString rangeOfString:@"error.php"].location && NSNotFound == [urlString rangeOfString:@"index.php"].location);
+	BOOL errorStatusNotFound = (NSNotFound == [[request responseString] rangeOfString:@"#Error:"].location);
+	
+	if (loggedOutURLNotFound && errorStatusNotFound) {
 		return YES;
+	} else {
+		NSLog(@"Unauthorized");
 	}
 	return NO;
 }
@@ -41,27 +46,13 @@
 
 - (NSURL *)URLWithPath:(NSString *)path {
 	//NSString *baseString = @"http://www.dragongoserver.net";
-	NSString *baseString = @"http://localhost/~jweiss/DragonGoServer";
+	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
-}
-
-- (BOOL)loggedIn {
-	NSURL *url = [self URLWithPath:@"/status.php"];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	[request startSynchronous];
-	
-	NSError *error = [request error];
-	if (!error) {
-		return [self loggedIn:[request responseString]];
-	}
-	return NO;
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-	NSString *response = [request responseString];
-	NSLog(@"%@", response);
-	if (NO == [self loggedIn:response]) {
+	if (NO == [self loggedIn:request]) {
 		[[self delegate] notLoggedIn];
 	} else {
 		SEL selector = NSSelectorFromString([[request userInfo] objectForKey:@"selector"]);
@@ -102,7 +93,7 @@
 }
 
 - (void)getCurrentGames {
-	NSURL *url = [self URLWithPath:@"/status.php"];
+	NSURL *url = [self URLWithPath:@"/quick_status.php"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setUserInfo:[NSDictionary dictionaryWithObject:@"gotCurrentGames:" forKey:@"selector"]];
 	[request setDelegate:self];
@@ -110,8 +101,21 @@
 }
 
 - (void)gotCurrentGames:(ASIHTTPRequest *)request {
-	NSArray *gameList = [self gamesFromTable:[request responseString]];
+	NSArray *gameList = [self gamesFromCSV:[request responseString]];
 	[[self delegate] gotCurrentGames:gameList];
+}
+
+- (void)getSgfForGame:(Game *)game {
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
+	[request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"gotSgfForGame:", @"selector", game, @"game", nil]];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+- (void)gotSgfForGame:(ASIHTTPRequest *)request {
+	Game *game = [[request userInfo] objectForKey:@"game"];
+	[game setSgfString:[request responseString]];
+	[[self delegate] gotSgfForGame:game];
 }
 
 #endif
@@ -127,21 +131,34 @@
 - (NSArray *)gamesFromCSV:(NSString *)csvData {
 	NSMutableArray *games = [NSMutableArray array];
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
+	for(NSString *line in lines) {
+		NSArray *cols = [line componentsSeparatedByString:@", "];
+		if([[cols objectAtIndex:0] isEqual:@"'G'"]) {
+			Game *game = [[Game alloc] init];
+			[game setGameId:[[cols objectAtIndex:1] intValue]];
+			NSString *opponentString = [cols objectAtIndex:2];
+			[game setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
+			
+			[game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d", [game gameId]]]];
+			if ([[cols objectAtIndex:3] isEqual:@"'W'"]) {
+				[game setColor:kMovePlayerWhite];
+			} else {
+				[game setColor:kMovePlayerBlack];
+			}
+			
+			NSString *timeRemainingString = [cols objectAtIndex:5];
+			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
+			
+			[games addObject:game];
+			[game release];
+		}
+	}
 	return games;
 }
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
 	
-	if ([move moveType] == kMoveTypePass) {
-		int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
-		NSURL *url = [self URLWithPath:@"/game.php"];
-	    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
-		[request setPostValue:@"pass" forKey:@"action"];
-		[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
-		[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
-		[request startAsynchronous];
-	} else {
+	if ([lastMove moveType] == kMoveTypeMove && [move moveType] == kMoveTypeMove) {
 		NSURL *url = [self URLWithPath:@"/quick_play.php"];
 		ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
@@ -155,9 +172,34 @@
 		[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"sgf_move"];
 		
 		[request setPostValue:[self sgfCoordsWithRow:[lastMove row] column:[lastMove col] boardSize:[lastMove boardSize]] forKey:@"sgf_prev"];
+		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+		[request setDelegate:self];
 		
 		[request startAsynchronous];
+		
+	} else {
+		// can't respond using quick_play.php
+		int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
+		NSURL *url = [self URLWithPath:@"/game.php"];
+		
+	    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
+		[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
+		[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
+		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+		if ([move moveType] == kMoveTypePass) {
+			[request setPostValue:@"pass" forKey:@"action"];
+		} else if ([move moveType] == kMoveTypeMove) {
+			[request setPostValue:@"domove" forKey:@"action"];
+			[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"coord"];
+		}
+		[request setDelegate:self];
+		[request startAsynchronous];
 	}
+}
+
+- (void)playedMove:(ASIHTTPRequest *)request {
+	[[self delegate] playedMove];
 }
 
 - (NSArray *)gamesFromTable:(NSString *)htmlString {

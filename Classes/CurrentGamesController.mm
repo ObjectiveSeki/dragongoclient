@@ -11,15 +11,17 @@
 #import "Game.h"
 #import "GameViewController.h"
 #import "LoginViewController.h"
+#import "DGSPhoneAppDelegate.h"
 
 @implementation CurrentGamesController
 
 @synthesize games;
 @synthesize refreshButton;
-@synthesize tableView;
+@synthesize gameTableView;
 @synthesize logoutButton;
 @synthesize dgs;
 @synthesize reloadingIndicator;
+@synthesize selectedCell;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -29,7 +31,7 @@
 	self.title = @"Current Games";
 	self.navigationItem.leftBarButtonItem = self.logoutButton;
 	self.navigationItem.rightBarButtonItem = self.refreshButton;
-	self.dgs  = [[DGS alloc] init];
+	self.dgs = [[DGS alloc] init];
 	self.dgs.delegate = self;
 	[super viewDidLoad];
 
@@ -66,22 +68,32 @@
 }
 */
 
+
+
+- (void)setEnabled:(BOOL)enabled {
+	if (enabled) {
+		[[self refreshButton] setEnabled:YES];
+		[[self logoutButton] setEnabled:YES];
+		[[self gameTableView] setUserInteractionEnabled:YES];
+	} else {
+		[[self refreshButton] setEnabled:NO];
+		[[self logoutButton] setEnabled:NO];
+		[[self gameTableView] setUserInteractionEnabled:NO];
+	}
+}
+
 - (IBAction)refreshGames {
+	[self setEnabled:NO];
 	[dgs getCurrentGames];
 	[[self reloadingIndicator] startAnimating];
-	[[self refreshButton] setEnabled:NO];
-	[[self logoutButton] setEnabled:NO];
-	[[self tableView] setUserInteractionEnabled:NO];
 }
 
 - (void)gotCurrentGames:(NSArray *)currentGames {
 	self.games = currentGames;
 	[[self reloadingIndicator] stopAnimating];
-	[[self refreshButton] setEnabled:YES];
-	[[self logoutButton] setEnabled:YES];
-	[[self tableView] setUserInteractionEnabled:YES];
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-	[[self tableView] reloadData];
+	[[self gameTableView] reloadData];
+	[self setEnabled:YES];
 }
 
 - (void)notLoggedIn {
@@ -129,9 +141,9 @@
     // Configure the cell...
 	Game *game = [games objectAtIndex:[indexPath row]];
 	if ([game color] == kMovePlayerBlack) {
-		[cell setImage:[[[UIApplication sharedApplication] delegate] blackStone]];
+		[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone]];
 	} else {
-		[cell setImage:[[[UIApplication sharedApplication] delegate] whiteStone]];
+		[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone]];
 	}
     [[cell textLabel] setText: [game opponent]];
 	[[cell detailTextLabel] setText:[game time]];
@@ -185,13 +197,28 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
+	[self setEnabled:NO];
+	[dgs getSgfForGame:[self.games objectAtIndex:[indexPath row]]];
+	
+	self.selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+	UIActivityIndicatorView *activityView = 
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[activityView startAnimating];
+	[self.selectedCell setAccessoryView:activityView];
+	[activityView release];
+}
+
+- (void)gotSgfForGame:(Game *)game {
+	[self.selectedCell setAccessoryView:nil];
+	self.selectedCell = nil;
+	// Navigation logic may go here. Create and push another view controller.
 	GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:nil];
 	// ...
 	// Pass the selected object to the new view controller.
-	[gameViewController setGame:[games objectAtIndex:[indexPath row]]];
+	[gameViewController setGame:game];
 	[self.navigationController pushViewController:gameViewController animated:YES];
 	[gameViewController release];
+	[self setEnabled:YES];
 }
 
 
@@ -210,10 +237,11 @@
     // For example: self.myOutlet = nil;
 	[games release];
 	self.refreshButton = nil;
-	self.tableView = nil;
+	self.gameTableView = nil;
 	self.logoutButton = nil;
 	self.reloadingIndicator = nil;
 	self.dgs = nil;
+	self.selectedCell = nil;
 }
 
 

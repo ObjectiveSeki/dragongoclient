@@ -10,7 +10,7 @@
 #import "DGS.h"
 
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : UIViewController <LoginProtocol> {
     IBOutlet UIView *loggingInStatusView;
 	IBOutlet UIView *loginFieldsView;
 	IBOutlet UITextField *usernameField;
@@ -26,7 +26,6 @@
 @property(nonatomic, retain) DGS *dgs;
 @property(nonatomic, assign) id delegate;
 
-- (void)login;
 - (IBAction)loginWithUsernameAndPassword:(id)sender;
 
 @end

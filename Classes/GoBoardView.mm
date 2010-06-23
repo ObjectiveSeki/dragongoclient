@@ -8,6 +8,7 @@
 
 #import "GoBoardView.h"
 #import "Move.h"
+#import "DGSPhoneAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define MARGIN_X 40
@@ -69,7 +70,7 @@
 
 - (void)drawBoardGrid:(CGContextRef)context boardSize:(int)boardSize {
 	
-	[[[[UIApplication sharedApplication] delegate] boardImage] drawInRect:[self bounds]];
+	[[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] boardImage] drawInRect:[self bounds]];
 	
 	CGContextSetLineWidth(context, 1.0);
 	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
@@ -104,9 +105,9 @@
 		if ([move moveType] == kMoveTypeMove) {
 
 			if ([move player] == kMovePlayerBlack) {
-				stoneImage = [[[UIApplication sharedApplication] delegate] blackStone];
+				stoneImage = [(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone];
 			} else {
-				stoneImage = [[[UIApplication sharedApplication] delegate] whiteStone];
+				stoneImage = [(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone];
 			}
 
 			CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
