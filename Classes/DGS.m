@@ -45,8 +45,8 @@
 
 
 - (NSURL *)URLWithPath:(NSString *)path {
-	//NSString *baseString = @"http://www.dragongoserver.net";
-	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	NSString *baseString = @"http://www.dragongoserver.net";
+	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
