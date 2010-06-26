@@ -15,6 +15,7 @@
 @interface Board : NSObject {
 	GoGameRecord *goGame;
 	GoBoard *goBoard;
+	Move *resignMove;
 }
 
 + (void)initFuego;
@@ -30,5 +31,8 @@
 - (void)undoLastMove;
 - (bool)playStoneAtRow:(int)row column:(int)col;
 - (void)pass;
+- (void)resign;
+
+@property(nonatomic, retain) Move *resignMove;
 
 @end

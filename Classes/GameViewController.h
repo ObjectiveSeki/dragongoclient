@@ -26,6 +26,7 @@ enum BoardState {
 	IBOutlet UIBarButtonItem *undoButton;
 	IBOutlet UIBarButtonItem *confirmButton;
 	IBOutlet UIBarButtonItem *passButton;
+	IBOutlet UIBarButtonItem *resignButton;
 	BoardState boardState;
 	float maximumZoomScale;
 	float minimumZoomScale;
@@ -40,11 +41,13 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *undoButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *confirmButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *passButton;
+@property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, retain) DGS *dgs;
 
 - (IBAction)undoMove;
 - (IBAction)confirmMove;
 - (IBAction)pass;
+- (IBAction)resign;
 
 - (void)notLoggedIn;
 - (void)loggedIn;

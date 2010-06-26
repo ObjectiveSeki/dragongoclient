@@ -19,6 +19,11 @@
 @synthesize board;
 @synthesize delegate;
 
+@synthesize blackName;
+@synthesize whiteName;
+@synthesize blackStatus;
+@synthesize whiteStatus;
+
 // Initialize the layer by setting
 // the levelsOfDetailBias of bias and levelsOfDetail
 // of the tiled layer
@@ -139,6 +144,24 @@
 	CGContextStrokePath(context);
 }
 
+- (void)updatePlayerInfo {
+	UILabel *statusLabel = nil;
+	[[self blackStatus] setText:@""];
+	[[self whiteStatus] setText:@""];
+	
+	if ([[[self board] currentMove] player] == kMovePlayerBlack) {
+		statusLabel = [self blackStatus];
+	} else {
+		statusLabel = [self whiteStatus];
+	}
+
+	if ([[[self board] currentMove] moveType] == kMoveTypePass) {
+		[statusLabel setText:@"Pass"];
+	} else if ([[[self board] currentMove] moveType] == kMoveTypeResign) {
+		[statusLabel setText:@"Resign"];
+	}
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
@@ -147,6 +170,7 @@
 	[self drawBoardGrid:context boardSize:[[self board] size]];
 	[self drawStones:context];
 	[self drawLastMoveIndicator:context];
+	[self updatePlayerInfo];
 }
 
 - (bool)playStoneAtPoint:(CGPoint)point {
@@ -162,7 +186,11 @@
 
 
 - (void)dealloc {
-	[board release];
+	self.blackName = nil;
+	self.whiteName = nil;
+	self.blackStatus = nil;
+	self.whiteStatus = nil;
+	self.board = nil;
     [super dealloc];
 }
 

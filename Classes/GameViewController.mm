@@ -20,6 +20,7 @@
 @synthesize undoButton;
 @synthesize confirmButton;
 @synthesize passButton;
+@synthesize resignButton;
 @synthesize	dgs;
 
 
@@ -57,6 +58,7 @@
 	[[self confirmButton] setEnabled:NO];
 	[[self boardView] setNeedsDisplay];
 	[[self passButton] setEnabled:YES];
+	[[self resignButton] setEnabled:YES];
 }
 
 
@@ -64,6 +66,7 @@
 	[[self navigationItem] setRightBarButtonItem:[self undoButton] animated:YES];
 	[[self confirmButton] setEnabled:YES];
 	[[self passButton] setEnabled:NO];
+	[[self resignButton] setEnabled:NO];
 	[[self boardView] setNeedsDisplay]; // show just placed move
 	[self setBoardState:kBoardStateStonePlaced];
 }
@@ -79,6 +82,11 @@
 
 - (IBAction)pass {
 	[board pass];
+	[self setMoveMade];
+}
+
+- (IBAction)resign {
+	[board resign];
 	[self setMoveMade];
 }
 
@@ -144,6 +152,7 @@
 		[self zoomToScale:1.0 center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
 		[[self passButton] setEnabled:NO];
+		[[self resignButton] setEnabled:NO];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
 		if ([view playStoneAtPoint:[touch locationInView:view]]) {
 			[self setMoveMade];

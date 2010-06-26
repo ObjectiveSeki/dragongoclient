@@ -17,6 +17,8 @@
 
 @implementation Board
 
+@synthesize resignMove;
+
 + (void)initFuego {
 	SgInit();
 	GoInit();
@@ -50,8 +52,12 @@
 }
 
 - (void)undoLastMove {
-	goGame->GoInDirection(SgNode::PREVIOUS);
-	goGame->CurrentNode()->DeleteSubtree();
+	if (self.resignMove) {
+		self.resignMove = nil;
+	} else {
+		goGame->GoInDirection(SgNode::PREVIOUS);
+		goGame->CurrentNode()->DeleteSubtree();
+	}
 }
 
 - (Move *)moveFromNode:(SgNode *)node {
@@ -63,13 +69,12 @@
 	} else if (node->NodePlayer() == SG_WHITE) {
 		currentMove.player = kMovePlayerWhite;
 	}
+	
 	currentMove.boardSize = [self size];
 	
 	if (SgIsSpecialMove(move)) {
 		if (move == SG_PASS) {
 			currentMove.moveType = kMoveTypePass;
-		} else if (move == SG_RESIGN) {
-			currentMove.moveType = kMoveTypeResign;
 		}
 	} else {
 		currentMove.col = SgPointUtil::Col(node->NodeMove());
@@ -81,14 +86,24 @@
 
 - (Move *)lastMove {
 	SgNode *currentNode = goGame->CurrentNode();
-	goGame->GoInDirection(SgNode::PREVIOUS);
+	
+	// If we have a resign move, pretend that the last move is actually the 'current move', from the perspective of the sgf file
+	if (!self.resignMove) {
+		goGame->GoInDirection(SgNode::PREVIOUS);
+	}
 	Move *lastMove = [self moveFromNode:goGame->CurrentNode()];
-	goGame->GoToNode(currentNode);
+	if (!self.resignMove) {
+		goGame->GoToNode(currentNode);
+	}
 	return lastMove;
 }
 
 - (Move *)currentMove {
-	return [self moveFromNode:goGame->CurrentNode()];
+	if (self.resignMove) {
+		return self.resignMove;
+	} else {
+		return [self moveFromNode:goGame->CurrentNode()];
+	}
 }
 
 - (NSArray *)moves {
@@ -113,7 +128,11 @@
 }
 
 - (int)moveNumber {
-	return goGame->Board().MoveNumber();
+	int moveNumber = goGame->Board().MoveNumber();
+	if (self.resignMove) {
+		++moveNumber;
+	}
+	return moveNumber;
 }
 
 - (bool)playStoneAtRow:(int)row column:(int)col {
@@ -133,9 +152,27 @@
 	goGame->GoInDirection(SgNode::NEXT);
 }
 
+- (void)resign {
+	// resigns are special because they aren't supported by fuego
+	Move *currentMove = [[Move alloc] init];
+	
+	currentMove.moveType = kMoveTypeResign;
+	Move *lastMove = [self currentMove];
+	if ([lastMove player] == kMovePlayerBlack) {
+		currentMove.player = kMovePlayerWhite;
+	} else {
+		currentMove.player = kMovePlayerBlack;
+	}
+	currentMove.boardSize = [self size];
+	
+	self.resignMove = currentMove;
+	[currentMove release];
+}
+
 - (void)dealloc {
 	delete goBoard;
 	delete goGame;
+	self.resignMove = nil;
 	[super dealloc];
 }
 

@@ -124,7 +124,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [games count];
+	if (games) {
+		return [games count];
+	}
+	else {
+		return 0;
+	}
 }
 
 
@@ -235,7 +240,7 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-	[games release];
+	self.games = nil;
 	self.refreshButton = nil;
 	self.gameTableView = nil;
 	self.logoutButton = nil;

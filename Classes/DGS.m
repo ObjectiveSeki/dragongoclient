@@ -45,8 +45,8 @@
 
 
 - (NSURL *)URLWithPath:(NSString *)path {
-	NSString *baseString = @"http://www.dragongoserver.net";
-	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	//NSString *baseString = @"http://www.dragongoserver.net";
+	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
@@ -189,6 +189,8 @@
 		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
 		if ([move moveType] == kMoveTypePass) {
 			[request setPostValue:@"pass" forKey:@"action"];
+		} else if ([move moveType] == kMoveTypeResign) {
+			[request setPostValue:@"resign" forKey:@"action"];
 		} else if ([move moveType] == kMoveTypeMove) {
 			[request setPostValue:@"domove" forKey:@"action"];
 			[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"coord"];
