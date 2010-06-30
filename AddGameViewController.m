@@ -33,9 +33,6 @@ typedef enum _AddGameSection {
 	
 	
 	self.newGame = [[[NewGame alloc] init] autorelease];
-
-	self.descriptionCell = [TableCellFactory textCell];
-	self.descriptionCell.label.text = @"Comment";
 }
 
 
@@ -108,46 +105,44 @@ typedef enum _AddGameSection {
 	return 0;
 }
 
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
+- (UITableViewCell *)defaultCell:(UITableView *)tableView {
+	static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }	
+	return cell;
+}
+
+- (TextCell *)textCell:(UITableView *)tableView {
+	static NSString *CellIdentifier = @"TextCell";
+    
+    TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+		cell = [TableCellFactory textCell];
     }
 	
-	switch([indexPath section]) 
-	{
-		case kDescriptionSection:
-			switch([indexPath row]) 
-			{
-				case 0:
-					cell = self.descriptionCell;
-					self.descriptionCell.textField.text = self.newGame.comment;
-					break;	
-			}
-			break;
-		case kBoardSection:
-			switch([indexPath row]) 
-			{
-				case 0:
-					[[cell detailTextLabel] setText:@"board size"];
-					break;				
-				case 1:
-					[[cell detailTextLabel] setText:@"handicap"];
-					break;				
-				}
-			break;
-		case kTimeSection:
-			switch([indexPath row]) {
-					
-			}
-			break;
+	return cell;
+}
+
+- (void)setComment:(TextCell *)commentCell {
+	[self.newGame setComment:[[commentCell textField] text]];
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell *cell = [self defaultCell:tableView];
+	if ([indexPath section] == kDescriptionSection) {
+
+		if ([indexPath row] == 0) {
+			TextCell *cell = [self textCell:tableView];
+			cell.label.text = @"Comment";
+			cell.textField.text = self.newGame.comment;
+			cell.textEditedSelector = @selector(setComment:);
+			return cell;
+		}
 	}
-    
     return cell;
 }
 

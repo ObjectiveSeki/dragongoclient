@@ -10,7 +10,7 @@
 
 
 @implementation TextCell
-@synthesize label, textField;
+@synthesize label, textField, textEditedSelector;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
@@ -27,6 +27,17 @@
     // Configure the view for the selected state
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[[self textField] resignFirstResponder];
+	return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+	if (self.textEditedSelector) {
+		[[UIApplication sharedApplication] sendAction:self.textEditedSelector to:nil from:self forEvent:nil];
+	}
+	return YES;
+}
 
 - (void)dealloc {
 	self.label = nil;

@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TextCell : UITableViewCell {
+@interface TextCell : UITableViewCell <UITextFieldDelegate> {
 	IBOutlet UILabel *label;
 	IBOutlet UITextField *textField;
+	SEL textEditedSelector;
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *label;
 @property(nonatomic, retain) IBOutlet UITextField *textField;
-
+@property(nonatomic) SEL textEditedSelector;
 @end

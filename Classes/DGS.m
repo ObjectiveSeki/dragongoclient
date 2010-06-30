@@ -220,7 +220,7 @@
 	[request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
 	[request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
-	[request setPostValue:[game :[game timeUnit]] forKey:@"timeunit"];
+	[request setPostValue:[game byoYomiTypeValue] forKey:@"timeunit"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimeValue]] forKey:@"byotimevalue_jap"];
 	[request setPostValue:[game timePeriodValue:[game japaneseTimeUnit]] forKey:@"timeunit_jap"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimePeriods]] forKey:@"byoperiods_jap"];
