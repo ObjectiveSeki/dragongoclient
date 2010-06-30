@@ -30,6 +30,7 @@
 @property(nonatomic, retain) UITableViewCell *selectedCell;
 - (IBAction)refreshGames;
 - (IBAction)logout;
+- (IBAction)addGame;
 - (void)notLoggedIn;
 
 @end

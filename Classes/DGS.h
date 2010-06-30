@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LoginProtocol.h"
 #import "Game.h"
+#import "NewGame.h"
 
 @interface DGS : NSObject {
 	id <LoginProtocol> delegate;
@@ -24,6 +25,7 @@
 - (void)getCurrentGames;
 - (void)getSgfForGame:(Game *)game;
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId;
+- (void)addGame:(NewGame *)game;
 #endif
 
 - (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;

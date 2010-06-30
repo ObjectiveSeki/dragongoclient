@@ -8,6 +8,7 @@
 
 #import "DGS.h"
 #import "CXMLDocument.h"
+#import "NewGame.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIHTTPRequest.h"
@@ -202,6 +203,50 @@
 
 - (void)playedMove:(ASIHTTPRequest *)request {
 	[[self delegate] playedMove];
+}
+
+- (void)addGame:(NewGame *)game {
+	NSURL *url = [self URLWithPath:@"/add_to_waitingroom.php"];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
+	[request setPostValue:[game ruleSetValue] forKey:@"ruleset"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game boardSize]] forKey:@"size"];
+	[request setPostValue:[game komiTypeValue] forKey:@"cat_htype"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game adjustedHandicap]] forKey:@"adj_handicap"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game minHandicap]] forKey:@"min_handicap"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game maxHandicap]] forKey:@"max_handicap"];
+	[request setPostValue:[game boolValue:[game stdHandicap]] forKey:@"stdhandicap"];
+	[request setPostValue:[NSString stringWithFormat:@"%f", [game adjustedKomi]] forKey:@"adj_komi"];
+	[request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
+	[request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
+	[request setPostValue:[game :[game timeUnit]] forKey:@"timeunit"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimeValue]] forKey:@"byotimevalue_jap"];
+	[request setPostValue:[game timePeriodValue:[game japaneseTimeUnit]] forKey:@"timeunit_jap"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimePeriods]] forKey:@"byoperiods_jap"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimeValue]] forKey:@"byotimevalue_can"];
+	[request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimePeriods]] forKey:@"byoperiods_can"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game fischerTimeValue]] forKey:@"byotimevalue_fis"];
+	[request setPostValue:[game timePeriodValue:[game fischerTimeUnit]] forKey:@"timeunit_fis"];
+
+	[request setPostValue:[game boolValue:[game weekendClock]] forKey:@"weekendclock"];
+	[request setPostValue:[game boolValue:[game rated]] forKey:@"rated"];
+	[request setPostValue:[game minimumRating] forKey:@"rating1"];
+	[request setPostValue:[game maximumRating] forKey:@"rating2"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", [game sameOpponent]] forKey:@"same_opp"];	
+	[request setPostValue:[game comment] forKey:@"comment"];
+	[request setPostValue:@"Add Game" forKey:@"add_game"];
+	
+	
+	[request setUserInfo:[NSDictionary dictionaryWithObject:@"addedGame:" forKey:@"selector"]];
+	[request setDelegate:self];
+	
+	[request startAsynchronous];
+}
+
+- (void)addedGame:(ASIHTTPRequest *)request {
+	[[self delegate] addedGame];
 }
 
 - (NSArray *)gamesFromTable:(NSString *)htmlString {

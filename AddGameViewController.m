@@ -1,50 +1,49 @@
 //
-//  CurrentGamesController.mm
+//  AddGameViewController.m
 //  DGSPhone
 //
-//  Created by Justin Weiss on 6/5/10.
+//  Created by Justin Weiss on 6/28/10.
 //  Copyright 2010 Avvo. All rights reserved.
 //
 
-#import "CurrentGamesController.h"
-#import "DGS.h"
-#import "Game.h"
-#import "GameViewController.h"
-#import "LoginViewController.h"
-#import "DGSPhoneAppDelegate.h"
 #import "AddGameViewController.h"
+#import "TableCellFactory.h"
+#import "LoginViewController.h"
 
-@implementation CurrentGamesController
-@synthesize games;
-@synthesize refreshButton;
-@synthesize gameTableView;
-@synthesize logoutButton;
-@synthesize dgs;
-@synthesize reloadingIndicator;
-@synthesize selectedCell;
+
+@implementation AddGameViewController
+@synthesize descriptionCell, newGame, dgs;
 
 #pragma mark -
 #pragma mark View lifecycle
 
+typedef enum _AddGameSection {
+	kDescriptionSection,
+	kBoardSection,
+	kTimeSection
+} AddGameSection;
+
 
 - (void)viewDidLoad {
-	self.title = @"Current Games";
-	self.navigationItem.leftBarButtonItem = self.logoutButton;
-	self.navigationItem.rightBarButtonItem = self.refreshButton;
-	self.dgs = [[[DGS alloc] init] autorelease];
-	self.dgs.delegate = self;
-	[super viewDidLoad];
-
+    [super viewDidLoad];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.dgs = [[[DGS alloc] init] autorelease];
+	self.dgs.delegate = self;
+	
+	
+	self.newGame = [[[NewGame alloc] init] autorelease];
+
+	self.descriptionCell = [TableCellFactory textCell];
+	self.descriptionCell.label.text = @"Comment";
 }
 
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	[self refreshGames];
 }
-
+*/
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -68,34 +67,6 @@
 }
 */
 
-
-
-- (void)setEnabled:(BOOL)enabled {
-	if (enabled) {
-		[[self refreshButton] setEnabled:YES];
-		[[self logoutButton] setEnabled:YES];
-		[[self gameTableView] setUserInteractionEnabled:YES];
-	} else {
-		[[self refreshButton] setEnabled:NO];
-		[[self logoutButton] setEnabled:NO];
-		[[self gameTableView] setUserInteractionEnabled:NO];
-	}
-}
-
-- (IBAction)refreshGames {
-	[self setEnabled:NO];
-	[dgs getCurrentGames];
-	[[self reloadingIndicator] startAnimating];
-}
-
-- (void)gotCurrentGames:(NSArray *)currentGames {
-	self.games = currentGames;
-	[[self reloadingIndicator] stopAnimating];
-	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-	[[self gameTableView] reloadData];
-	[self setEnabled:YES];
-}
-
 - (void)notLoggedIn {
 	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	loginViewController.delegate = self;
@@ -106,17 +77,14 @@
 
 - (void)loggedIn {
 	[self dismissModalViewControllerAnimated:YES];
-	[self refreshGames];
 }
 
-- (IBAction)logout {
-	[dgs logout];
+- (void)addedGame {
+	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (IBAction)addGame {
-	AddGameViewController *addGameController = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
-	[[self navigationController] pushViewController:addGameController animated:YES];
-	[addGameController release];
+	[self.dgs addGame:self.newGame];
 }
 
 #pragma mark -
@@ -124,18 +92,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return kTimeSection + 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	if (games) {
-		return [games count];
+    if (section == kDescriptionSection) {
+		return 1;
+	} else if (section == kBoardSection) {
+		return 2;
+	} else if (section == kTimeSection) {
+		return 3;
 	}
-	else {
-		return 0;
-	}
+	return 0;
 }
 
 
@@ -146,20 +116,38 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    // Configure the cell...
-	Game *game = [games objectAtIndex:[indexPath row]];
-	if ([game color] == kMovePlayerBlack) {
-		[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone]];
-	} else {
-		[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone]];
-	}
-    [[cell textLabel] setText: [game opponent]];
-	[[cell detailTextLabel] setText:[game time]];
-	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	
+	switch([indexPath section]) 
+	{
+		case kDescriptionSection:
+			switch([indexPath row]) 
+			{
+				case 0:
+					cell = self.descriptionCell;
+					self.descriptionCell.textField.text = self.newGame.comment;
+					break;	
+			}
+			break;
+		case kBoardSection:
+			switch([indexPath row]) 
+			{
+				case 0:
+					[[cell detailTextLabel] setText:@"board size"];
+					break;				
+				case 1:
+					[[cell detailTextLabel] setText:@"handicap"];
+					break;				
+				}
+			break;
+		case kTimeSection:
+			switch([indexPath row]) {
+					
+			}
+			break;
+	}
+    
     return cell;
 }
 
@@ -208,28 +196,14 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self setEnabled:NO];
-	[dgs getSgfForGame:[self.games objectAtIndex:[indexPath row]]];
-	
-	self.selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-	UIActivityIndicatorView *activityView = 
-    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	[activityView startAnimating];
-	[self.selectedCell setAccessoryView:activityView];
-	[activityView release];
-}
-
-- (void)gotSgfForGame:(Game *)game {
-	[self.selectedCell setAccessoryView:nil];
-	self.selectedCell = nil;
-	// Navigation logic may go here. Create and push another view controller.
-	GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:nil];
-	// ...
-	// Pass the selected object to the new view controller.
-	[gameViewController setGame:game];
-	[self.navigationController pushViewController:gameViewController animated:YES];
-	[gameViewController release];
-	[self setEnabled:YES];
+    // Navigation logic may go here. Create and push another view controller.
+	/*
+	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+	 [self.navigationController pushViewController:detailViewController animated:YES];
+	 [detailViewController release];
+	 */
 }
 
 
@@ -246,14 +220,9 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-	self.games = nil;
-	self.refreshButton = nil;
-	self.gameTableView = nil;
-	self.logoutButton = nil;
-	self.reloadingIndicator = nil;
+	self.descriptionCell = nil;
+	self.newGame = nil;
 	self.dgs = nil;
-	self.selectedCell = nil;
-	
 }
 
 
@@ -263,3 +232,4 @@
 
 
 @end
+

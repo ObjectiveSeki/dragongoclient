@@ -12,6 +12,18 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		DA02D0AE11D98B0800A9D887 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D0AC11D98B0800A9D887 /* AddGameViewController.m */; };
+		DA02D0AF11D98B0800A9D887 /* AddGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02D0AD11D98B0800A9D887 /* AddGameView.xib */; };
+		DA02D0B011D98B0800A9D887 /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D0AC11D98B0800A9D887 /* AddGameViewController.m */; };
+		DA02D0B111D98B0800A9D887 /* AddGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02D0AD11D98B0800A9D887 /* AddGameView.xib */; };
+		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
+		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
+		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
+		DA02D14E11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
+		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
+		DA02D15B11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
+		DA02D15F11D99E8B00A9D887 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02D15E11D99E8B00A9D887 /* TableCells.xib */; };
+		DA02D16011D99E8B00A9D887 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02D15E11D99E8B00A9D887 /* TableCells.xib */; };
 		DA084DD011B5F4F100150EDC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
 		DA084DD311B5F4F100150EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		DA084DD411B5F4F100150EDC /* DGSPhoneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */; };
@@ -483,6 +495,16 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DA02D0AB11D98B0800A9D887 /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddGameViewController.h; path = ../AddGameViewController.h; sourceTree = "<group>"; };
+		DA02D0AC11D98B0800A9D887 /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddGameViewController.m; path = ../AddGameViewController.m; sourceTree = "<group>"; };
+		DA02D0AD11D98B0800A9D887 /* AddGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGameView.xib; sourceTree = "<group>"; };
+		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
+		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
+		DA02D14B11D99D7600A9D887 /* TableCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellFactory.h; sourceTree = "<group>"; };
+		DA02D14C11D99D7600A9D887 /* TableCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellFactory.m; sourceTree = "<group>"; };
+		DA02D15811D99E4500A9D887 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
+		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		DA02D15E11D99E8B00A9D887 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DA084DE011B5F4F100150EDC /* DGSPhoneTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTesting-Info.plist"; sourceTree = "<group>"; };
 		DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSPhoneTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
@@ -892,6 +914,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA02D14A11D99D3900A9D887 /* Table Cells */,
 				DA4026C611D06C38005017C4 /* Protocols */,
 				DAF9102311BB487500FE7B96 /* Views */,
 				DA71CAA911B5EAB1008696AC /* Tests */,
@@ -972,6 +995,8 @@
 				DA38B1F411B59EBD00112AA4 /* MainWindow.xib */,
 				DA084DE011B5F4F100150EDC /* DGSPhoneTesting-Info.plist */,
 				DAF9108C11BB5F0700FE7B96 /* GameView.xib */,
+				DA02D0AD11D98B0800A9D887 /* AddGameView.xib */,
+				DA02D15E11D99E8B00A9D887 /* TableCells.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -984,6 +1009,17 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA02D14A11D99D3900A9D887 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DA02D14B11D99D7600A9D887 /* TableCellFactory.h */,
+				DA02D14C11D99D7600A9D887 /* TableCellFactory.m */,
+				DA02D15811D99E4500A9D887 /* TextCell.h */,
+				DA02D15911D99E4500A9D887 /* TextCell.m */,
+			);
+			name = "Table Cells";
 			sourceTree = "<group>";
 		};
 		DA084E0411B5F5EB00150EDC /* Application */ = {
@@ -1008,6 +1044,8 @@
 			children = (
 				DAEA517F11B88A1100F4CCB3 /* DGS.h */,
 				DAEA518011B88A1100F4CCB3 /* DGS.m */,
+				DA02D13B11D99BF000A9D887 /* NewGame.h */,
+				DA02D13C11D99BF000A9D887 /* NewGame.m */,
 				DAEA519911B88D8300F4CCB3 /* Game.h */,
 				DAEA519A11B88D8300F4CCB3 /* Game.m */,
 				DA419A5F11BA0C0600B3050E /* Board.h */,
@@ -1021,6 +1059,8 @@
 		DA38B20311B59FB400112AA4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DA02D0AB11D98B0800A9D887 /* AddGameViewController.h */,
+				DA02D0AC11D98B0800A9D887 /* AddGameViewController.m */,
 				DA38B1F711B59F2F00112AA4 /* LoginViewController.h */,
 				DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */,
 				DA419D4311BB2DA400B3050E /* CurrentGamesController.h */,
@@ -1556,6 +1596,8 @@
 				DA37D90B11BF56DA00BC1445 /* White.png in Resources */,
 				DA37D9C311BF6E5100BC1445 /* Board.png in Resources */,
 				DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */,
+				DA02D0B111D98B0800A9D887 /* AddGameView.xib in Resources */,
+				DA02D15F11D99E8B00A9D887 /* TableCells.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1595,6 +1637,8 @@
 				DA37D90D11BF56DA00BC1445 /* White.png in Resources */,
 				DA37D9C411BF6E5100BC1445 /* Board.png in Resources */,
 				DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */,
+				DA02D0AF11D98B0800A9D887 /* AddGameView.xib in Resources */,
+				DA02D16011D99E8B00A9D887 /* TableCells.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1776,6 +1820,10 @@
 				DAF9102911BB48A800FE7B96 /* GoBoardView.mm in Sources */,
 				DAF9105F11BB5BBD00FE7B96 /* GameViewController.mm in Sources */,
 				DAF911F511BB796900FE7B96 /* Move.m in Sources */,
+				DA02D0B011D98B0800A9D887 /* AddGameViewController.m in Sources */,
+				DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */,
+				DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */,
+				DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2069,6 +2117,10 @@
 				DA419B8F11BA168A00B3050E /* GoTimeControl.cpp in Sources */,
 				DA419B9011BA168A00B3050E /* GoUtil.cpp in Sources */,
 				DAF911F611BB796900FE7B96 /* Move.m in Sources */,
+				DA02D0AE11D98B0800A9D887 /* AddGameViewController.m in Sources */,
+				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
+				DA02D14E11D99D7600A9D887 /* TableCellFactory.m in Sources */,
+				DA02D15B11D99E4500A9D887 /* TextCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

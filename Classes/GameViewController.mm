@@ -47,7 +47,7 @@
 	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	currentZoomScale = 1.0;
-	self.dgs = [[DGS alloc] init];
+	self.dgs = [[[DGS alloc] init] autorelease];
 	dgs.delegate = self;
 }
 
