@@ -126,13 +126,31 @@ typedef enum _AddGameSection {
 	return cell;
 }
 
+- (SelectCell *)selectCell:(UITableView *)tableView {
+	static NSString *CellIdentifier = @"SelectCell";
+    
+    SelectCell *cell = (SelectCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+		cell = [TableCellFactory selectCell];
+    }
+	
+	return cell;
+}
+
 - (void)setComment:(TextCell *)commentCell {
 	[self.newGame setComment:[[commentCell textField] text]];
 }
 
+- (void)setBoardSize:(SelectCell *)cell {
+	NSString *boardSize = [[cell.options objectAtIndex:0] objectAtIndex:[cell.picker selectedRowInComponent:0]];
+	[self.newGame setBoardSize:[boardSize intValue]];
+	cell.value.text = boardSize;
+	cell.selectedOptions = [NSArray arrayWithObject:boardSize];
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [self defaultCell:tableView];
+	UITableViewCell *cell = [self textCell:tableView];
 	if ([indexPath section] == kDescriptionSection) {
 
 		if ([indexPath row] == 0) {
@@ -140,6 +158,21 @@ typedef enum _AddGameSection {
 			cell.label.text = @"Comment";
 			cell.textField.text = self.newGame.comment;
 			cell.textEditedSelector = @selector(setComment:);
+			return cell;
+		}
+	}
+	if ([indexPath section] == kBoardSection) {
+		
+		if ([indexPath row] == 0) {
+			SelectCell *cell = [self selectCell:tableView];
+			NSString *boardSize = [NSString stringWithFormat:@"%d", self.newGame.boardSize];
+			NSArray *options = [NSArray arrayWithObjects:@"9", @"13", @"19", nil];
+			cell.label.text = @"Board Size";
+			cell.value.text = boardSize;
+			cell.changedSelector = @selector(setBoardSize:);
+			cell.parentView = self.view;
+			cell.options = [NSArray arrayWithObject:options];
+			cell.selectedOptions = [NSArray arrayWithObject:boardSize];
 			return cell;
 		}
 	}

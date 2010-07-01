@@ -323,6 +323,8 @@
 		DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
+		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
+		DA8366D011DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DAC8689211B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
 		DAC8689311B7477600A4DA7A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
 		DAC8689411B7477600A4DA7A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
@@ -730,6 +732,8 @@
 		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA71CAED11B5EDCB008696AC /* DGSPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		DA7CA4A611B761E8004CD524 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
+		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
+		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
 		DAC8688111B7477600A4DA7A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		DAC8688311B7477600A4DA7A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -1018,6 +1022,8 @@
 				DA02D14C11D99D7600A9D887 /* TableCellFactory.m */,
 				DA02D15811D99E4500A9D887 /* TextCell.h */,
 				DA02D15911D99E4500A9D887 /* TextCell.m */,
+				DA8366CD11DC3606001A68F9 /* SelectCell.h */,
+				DA8366CE11DC3606001A68F9 /* SelectCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -1824,6 +1830,7 @@
 				DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */,
 				DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */,
 				DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */,
+				DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2121,6 +2128,7 @@
 				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
 				DA02D14E11D99D7600A9D887 /* TableCellFactory.m in Sources */,
 				DA02D15B11D99E4500A9D887 /* TextCell.m in Sources */,
+				DA8366D011DC3606001A68F9 /* SelectCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

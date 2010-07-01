@@ -23,8 +23,23 @@
     return textCell;
 }
 
+- (SelectCell *) newSelectCell{
+    [[NSBundle mainBundle] loadNibNamed:@"TableCells" owner:self options:nil];
+    return selectCell;
+}
+
++ (SelectCell *) selectCell
+{
+    TableCellFactory *tcf = [[TableCellFactory alloc] init];
+    SelectCell *selectCell = [tcf newSelectCell];
+    [tcf release];
+    return selectCell;
+}
+
+
 - (void)dealloc {
     [textCell release];
+	[selectCell release];
     [super dealloc];
 }
 

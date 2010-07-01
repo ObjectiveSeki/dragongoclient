@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "TextCell.h"
+#import "SelectCell.h"
 
 @interface TableCellFactory : NSObject {
     IBOutlet TextCell *textCell;
+	IBOutlet SelectCell *selectCell;
 }
 
 - (TextCell *) newTextCell;
-
 + (TextCell *) textCell;
-
+- (SelectCell *) newSelectCell;
++ (SelectCell *) selectCell;
 @end

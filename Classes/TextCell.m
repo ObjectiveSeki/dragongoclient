@@ -24,11 +24,23 @@
 
     [super setSelected:selected animated:animated];
 
+	if (selected) {
+		self.textField.userInteractionEnabled = YES;
+		[self.textField becomeFirstResponder];
+	} else {
+		self.textField.userInteractionEnabled = NO;
+		[self.textField resignFirstResponder];
+	}
+	
     // Configure the view for the selected state
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[[self textField] resignFirstResponder];
+	return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
 	return YES;
 }
 
