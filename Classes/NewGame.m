@@ -91,6 +91,24 @@
 	return komiTypeString;
 }
 
+- (NSString *)komiTypeString:(KomiType)aKomiType {
+	NSString *komiTypeString;
+	
+	switch(aKomiType) {
+		case kKomiTypeConventional:
+			komiTypeString = @"Conventional";
+			break;
+		case kKomiTypeProper:
+			komiTypeString = @"Proper";
+			break;
+	}
+	return komiTypeString;
+}
+
+- (NSString *)komiTypeString {
+	return [self komiTypeString:self.komiType];
+}
+
 - (NSString *)jigoModeValue {
 	NSString *jigoModeString;
 	
@@ -124,6 +142,28 @@
 	}
 	return byoYomiString;
 }
+
+- (NSString *)byoYomiTypeString:(ByoYomiType)aByoYomiType {
+	NSString *byoYomiString;
+	
+	switch(aByoYomiType) {
+		case kByoYomiTypeJapanese:
+			byoYomiString = @"Japanese";
+			break;
+		case kByoYomiTypeCanadian:
+			byoYomiString = @"Canadian";
+			break;
+		case kByoYomiTypeFischer:
+			byoYomiString = @"Fischer";
+			break;			
+	}
+	return byoYomiString;
+}
+
+- (NSString *)byoYomiTypeString {
+	return [self byoYomiTypeString:self.byoYomiType];
+}
+
 
 - (NSString *)boolValue:(BOOL) value {
 	if (value) {

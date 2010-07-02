@@ -14,10 +14,10 @@
 @synthesize label;
 @synthesize value;
 @synthesize picker;
-@synthesize parentView;
 @synthesize options;
 @synthesize selectedOptions;
 @synthesize changedSelector;
+@synthesize sizes;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
@@ -28,10 +28,15 @@
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
+	UITableView *tableView = (UITableView *)self.superview;
+	
+	int pickerViewHeight = 215;
+	
 	if (selected && !self.picker) {
 		[super setSelected:YES animated:animated];
-		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, 264, self.parentView.frame.size.width, self.parentView.frame.size.height)] autorelease];
+		tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height + pickerViewHeight);
+		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, 480.0 - pickerViewHeight, 320.0, pickerViewHeight)] autorelease];
+
 		self.picker.showsSelectionIndicator = YES;
 		[[[UIApplication sharedApplication] keyWindow] addSubview:self.picker];
 		self.picker.dataSource = self;
@@ -40,11 +45,22 @@
 			int row = [[self.options objectAtIndex:i] indexOfObject:[self.selectedOptions objectAtIndex:i]];
 			[self.picker selectRow:row inComponent:i animated:NO];
 		}
-		// Configure the view for the selected state
+		// move the cell to the middle
+		// if we're below the picker
+		float bottomOfCell = self.frame.origin.y + self.frame.size.height + 5;
+		float topOfPicker = tableView.frame.size.height - pickerViewHeight;
+		if (bottomOfCell > topOfPicker) {
+			CGPoint contentOffset = tableView.contentOffset;
+			contentOffset.y += bottomOfCell - topOfPicker;
+			[tableView setContentOffset:contentOffset animated:YES];
+		}
 	} else {
 		[super setSelected:NO animated:animated];
-		[self.picker removeFromSuperview];
-		self.picker = nil;
+		if (self.picker) {
+			tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height - pickerViewHeight);
+			[self.picker removeFromSuperview];
+			self.picker = nil;		
+		}
 	}
 }
 
@@ -59,7 +75,13 @@
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-	return self.picker.frame.size.width / [self.options count];
+	CGFloat size;
+	if (self.sizes) {
+		size = [[self.sizes objectAtIndex:component] floatValue];
+	} else {
+		size = self.picker.frame.size.width / [self.options count];
+	}
+	return size;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
@@ -74,12 +96,17 @@
 	return [[self.options objectAtIndex:component] count];
 }
 
+- (NSString *)selectedValueInComponent:(NSInteger)component {
+	return [[self.options objectAtIndex:component] objectAtIndex:[self.picker selectedRowInComponent:component]];
+}
+
 
 - (void)dealloc {
 	self.label = nil;
 	self.value = nil;
 	[self.picker removeFromSuperview];
 	self.picker = nil;
+	self.sizes = nil;
 	self.selectedOptions = nil;
     [super dealloc];
 }

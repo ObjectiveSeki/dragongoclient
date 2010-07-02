@@ -97,9 +97,18 @@ typedef enum _ByoYomiType {
 @property(nonatomic, retain) NSString *comment;
 
 - (NSString *)ruleSetValue;
+
+// The komi type, in a form value that DGS understands
 - (NSString *)komiTypeValue;
+
+// The komi type, in human-readable form
+- (NSString *)komiTypeString:(KomiType)komiType;
+- (NSString *)komiTypeString;
+
 - (NSString *)jigoModeValue;
 - (NSString *)byoYomiTypeValue;
+- (NSString *)byoYomiTypeString;
+- (NSString *)byoYomiTypeString:(ByoYomiType)byoYomiType;
 - (NSString *)boolValue:(BOOL)value;
 - (NSString *)timePeriodValue:(TimePeriod)value;
 

@@ -148,6 +148,33 @@ typedef enum _AddGameSection {
 	cell.selectedOptions = [NSArray arrayWithObject:boardSize];
 }
 
+- (void)setKomiType:(SelectCell *)cell {
+	KomiType komiType = [cell.picker selectedRowInComponent:0];
+	NSString *komiTypeString = [self.newGame komiTypeString:komiType];
+	self.newGame.komiType = komiType;
+	cell.value.text = komiTypeString;
+	cell.selectedOptions = [NSArray arrayWithObject:komiTypeString];
+}
+
+- (void)setByoYomiType:(SelectCell *)cell {
+	ByoYomiType byoYomiType = [cell.picker selectedRowInComponent:0];
+	NSString *byoYomiTypeString = [self.newGame byoYomiTypeString:byoYomiType];
+	self.newGame.byoYomiType = byoYomiType;
+	cell.value.text = byoYomiTypeString;
+	cell.selectedOptions = [NSArray arrayWithObject:byoYomiTypeString];
+}
+
+- (void)setMainTime:(SelectCell *)cell {
+	int tens = [[cell selectedValueInComponent:0] intValue];
+	int ones = [[cell selectedValueInComponent:1] intValue];
+	int timeValue = tens * 10 + ones;
+	self.newGame.timeValue = timeValue;
+	self.newGame.timeUnit = [cell.picker selectedRowInComponent:2];
+	
+	cell.value.text = [NSString stringWithFormat:@"%d %@", self.newGame.timeValue, [self.newGame timePeriodValue:self.newGame.timeUnit]];
+	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:self.newGame.timeUnit], nil];
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [self textCell:tableView];
@@ -170,9 +197,45 @@ typedef enum _AddGameSection {
 			cell.label.text = @"Board Size";
 			cell.value.text = boardSize;
 			cell.changedSelector = @selector(setBoardSize:);
-			cell.parentView = self.view;
 			cell.options = [NSArray arrayWithObject:options];
 			cell.selectedOptions = [NSArray arrayWithObject:boardSize];
+			return cell;
+		} else if ([indexPath row] == 1) {
+			SelectCell *cell = [self selectCell:tableView];
+			NSString *komiType = [self.newGame komiTypeString];
+			NSArray *options = [NSArray arrayWithObjects:[self.newGame komiTypeString:kKomiTypeConventional], [self.newGame komiTypeString:kKomiTypeProper], nil];
+			cell.label.text = @"Komi Type";
+			cell.value.text = komiType;
+			cell.changedSelector = @selector(setKomiType:);
+			cell.options = [NSArray arrayWithObject:options];
+			cell.selectedOptions = [NSArray arrayWithObject:komiType];
+			return cell;
+		}
+	} else if ([indexPath section] == kTimeSection) {
+		if ([indexPath row] == 0) {
+			SelectCell *cell = [self selectCell:tableView];
+			NSString *mainTimeString = [NSString stringWithFormat:@"%d %@", self.newGame.timeValue, [self.newGame timePeriodValue:self.newGame.timeUnit]];
+			NSArray *zeroToNine = [NSArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
+			NSArray *timePeriods = [NSArray arrayWithObjects:[self.newGame timePeriodValue:kTimePeriodHours], [self.newGame timePeriodValue:kTimePeriodDays], [self.newGame timePeriodValue:kTimePeriodMonths], nil];
+			NSArray *sizes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:80.0],[NSNumber numberWithFloat:80.0], [NSNumber numberWithFloat:140.0], nil];
+			cell.label.text = @"Main Time";
+			cell.value.text = mainTimeString;
+			cell.changedSelector = @selector(setMainTime:);
+			cell.sizes = sizes;
+			cell.options = [NSArray arrayWithObjects:zeroToNine, zeroToNine, timePeriods, nil];
+			int tens = self.newGame.timeValue / 10;
+			int ones = self.newGame.timeValue - (tens * 10);
+			cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:self.newGame.timeUnit], nil];
+			return cell;
+		} else if ([indexPath row] == 1) {
+			SelectCell *cell = [self selectCell:tableView];
+			NSString *byoYomiType = [self.newGame byoYomiTypeString];
+			NSArray *options = [NSArray arrayWithObjects:[self.newGame byoYomiTypeString:kByoYomiTypeJapanese], [self.newGame byoYomiTypeString:kByoYomiTypeCanadian], [self.newGame byoYomiTypeString:kByoYomiTypeFischer], nil];
+			cell.label.text = @"Byo-Yomi";
+			cell.value.text = byoYomiType;
+			cell.changedSelector = @selector(setByoYomiType:);
+			cell.options = [NSArray arrayWithObject:options];
+			cell.selectedOptions = [NSArray arrayWithObject:byoYomiType];
 			return cell;
 		}
 	}
@@ -224,6 +287,7 @@ typedef enum _AddGameSection {
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	//[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     // Navigation logic may go here. Create and push another view controller.
 	/*
 	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
