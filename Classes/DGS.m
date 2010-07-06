@@ -159,7 +159,7 @@
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
 	
-	if ([lastMove moveType] == kMoveTypeMove && [move moveType] == kMoveTypeMove) {
+	if (lastMove && [lastMove moveType] == kMoveTypeMove && [move moveType] == kMoveTypeMove) {
 		NSURL *url = [self URLWithPath:@"/quick_play.php"];
 		ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];

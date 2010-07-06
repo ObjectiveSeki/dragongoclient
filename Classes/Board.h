@@ -32,6 +32,11 @@
 - (bool)playStoneAtRow:(int)row column:(int)col;
 - (void)pass;
 - (void)resign;
+- (int)handicap;
+
+// NO if the game has a handicap and the stones have not yet been placed,
+// YES otherwise.
+- (bool)handicapStonesPlaced;
 
 @property(nonatomic, retain) Move *resignMove;
 

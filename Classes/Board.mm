@@ -35,7 +35,10 @@
 		std::istringstream input(sgfStr);
 		SgGameReader gameReader(input, boardSize);
 		SgNode *rootNode = gameReader.ReadGame();
-		goBoard = new GoBoard();
+		int handicap = rootNode->GetIntProp(SG_PROP_HANDICAP);
+		int size = rootNode->GetIntProp(SG_PROP_SIZE);
+		
+		goBoard = new GoBoard(size, GoSetup(), GoRules(handicap));
 		goGame = new GoGameRecord(*goBoard);
 		goGame->InitFromRoot(rootNode, true);
 		
@@ -43,12 +46,26 @@
 		while (goGame->CanGoInDirection(SgNode::NEXT)) {
 			goGame->GoInDirection(SgNode::NEXT);
 		}
+		
+		// If we placed handicap stones, it should be W's turn to play
+		// Not sure why Fuego doesn't handle this...
+		if ([self handicap] > 0 && [self handicapStonesPlaced]) {
+			goGame->SetToPlay(SG_WHITE);
+		}
 	}
 	return self;
 }
 
+- (bool)handicapStonesPlaced {
+	return [self moveNumber] == [self handicap];
+}
+
 - (int)size {
 	return goGame->Board().Size();
+}
+
+- (int)handicap {
+	return goGame->Board().Rules().Handicap();
 }
 
 - (void)undoLastMove {
@@ -85,6 +102,11 @@
 }
 
 - (Move *)lastMove {
+	
+	if (self.moveNumber <= [self handicap] + 1) {
+		return nil;
+	}
+	
 	SgNode *currentNode = goGame->CurrentNode();
 	
 	// If we have a resign move, pretend that the last move is actually the 'current move', from the perspective of the sgf file
@@ -101,6 +123,8 @@
 - (Move *)currentMove {
 	if (self.resignMove) {
 		return self.resignMove;
+	} else if (self.moveNumber <= [self handicap]) {
+		return nil;
 	} else {
 		return [self moveFromNode:goGame->CurrentNode()];
 	}
@@ -129,6 +153,7 @@
 
 - (int)moveNumber {
 	int moveNumber = goGame->Board().MoveNumber();
+	moveNumber += goGame->Board().Setup().m_stones.Both().Size();
 	if (self.resignMove) {
 		++moveNumber;
 	}

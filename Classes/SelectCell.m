@@ -33,8 +33,8 @@
 	int pickerViewHeight = 215;
 	
 	if (selected && !self.picker) {
-		[super setSelected:YES animated:animated];
-		tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height + pickerViewHeight);
+		NSLog(@"selected %@", self.label.text);
+		tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height - pickerViewHeight);
 		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, 480.0 - pickerViewHeight, 320.0, pickerViewHeight)] autorelease];
 
 		self.picker.showsSelectionIndicator = YES;
@@ -54,13 +54,16 @@
 			contentOffset.y += bottomOfCell - topOfPicker;
 			[tableView setContentOffset:contentOffset animated:YES];
 		}
+		[super setSelected:YES animated:animated];
 	} else {
-		[super setSelected:NO animated:animated];
+		NSLog(@"deselected %@", self.label.text);
+		
 		if (self.picker) {
 			tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height - pickerViewHeight);
 			[self.picker removeFromSuperview];
 			self.picker = nil;		
 		}
+		[super setSelected:NO animated:animated];
 	}
 }
 

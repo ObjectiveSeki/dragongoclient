@@ -126,7 +126,7 @@
 - (void)drawLastMoveIndicator:(CGContextRef)context {
 	Move *move = [board currentMove];
 	
-	if ([move moveType] != kMoveTypeMove) {
+	if (!move || ([move moveType] != kMoveTypeMove)) {
 		return;
 	}
 	
