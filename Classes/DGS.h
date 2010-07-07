@@ -25,6 +25,7 @@
 - (void)getCurrentGames;
 - (void)getSgfForGame:(Game *)game;
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId;
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId;
 - (void)addGame:(NewGame *)game;
 #endif
 

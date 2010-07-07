@@ -72,7 +72,11 @@
 }
 
 - (IBAction)confirmMove {
-	[[self dgs] playMove:[[self board] currentMove] lastMove:[[self board] lastMove] moveNumber:[[self board] moveNumber] comment:nil gameId:[game gameId]];
+	if ([self.board beginningOfHandicapGame]) {
+		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
+	} else {
+		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
+	}
 }
 
 - (void)playedMove {
@@ -155,7 +159,12 @@
 		[[self resignButton] setEnabled:NO];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
 		if ([view playStoneAtPoint:[touch locationInView:view]]) {
-			[self setMoveMade];
+			if ([self.board needsHandicapStones]) {
+				self.boardState = kBoardStateStoneNotPlaced;
+				[self.boardView setNeedsDisplay];
+			} else {
+				[self setMoveMade];
+			}
 			[self zoomToScale:0.5 center:[touch locationInView:view] animated:YES];
 		}
 	}

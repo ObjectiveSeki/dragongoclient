@@ -130,8 +130,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	if (games) {
-		return [games count];
+	if (self.games) {
+		return [self.games count];
 	}
 	else {
 		return 0;

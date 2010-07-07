@@ -34,9 +34,14 @@
 - (void)resign;
 - (int)handicap;
 
-// NO if the game has a handicap and the stones have not yet been placed,
-// YES otherwise.
-- (bool)handicapStonesPlaced;
+// NO if the game has a handicap and the handicap stones have just been placed
+- (bool)beginningOfHandicapGame;
+
+// YES if the game has a hadicap and handicap stones still need to be placed
+- (bool)needsHandicapStones;
+
+// If handicap stones have just been placed, return the handicap stones. Otherwise, return nil.
+- (NSArray *)handicapStones;
 
 @property(nonatomic, retain) Move *resignMove;
 

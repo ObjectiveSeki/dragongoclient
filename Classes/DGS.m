@@ -46,8 +46,8 @@
 
 
 - (NSURL *)URLWithPath:(NSString *)path {
-	//NSString *baseString = @"http://www.dragongoserver.net";
-	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	NSString *baseString = @"http://www.dragongoserver.net";
+	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
@@ -155,6 +155,29 @@
 		}
 	}
 	return games;
+}
+
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId {
+	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
+	NSURL *url = [self URLWithPath:@"/game.php"];
+	
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
+	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
+	[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+	[request setPostValue:@"handicap" forKey:@"action"];
+	
+	NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
+
+	for (Move *move in moves) {
+		[moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
+	}
+	
+	[request setPostValue:moveString forKey:@"stonestring"];
+	[moveString release];
+	[request setDelegate:self];
+	[request startAsynchronous];
 }
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {

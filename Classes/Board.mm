@@ -47,17 +47,30 @@
 			goGame->GoInDirection(SgNode::NEXT);
 		}
 		
-		// If we placed handicap stones, it should be W's turn to play
+		// If we just placed handicap stones, it should be W's turn to play
 		// Not sure why Fuego doesn't handle this...
-		if ([self handicap] > 0 && [self handicapStonesPlaced]) {
+		if ([self beginningOfHandicapGame]) {
 			goGame->SetToPlay(SG_WHITE);
 		}
 	}
 	return self;
 }
 
-- (bool)handicapStonesPlaced {
-	return [self moveNumber] == [self handicap];
+- (bool)beginningOfHandicapGame {
+	return [self handicap] && [self moveNumber] == [self handicap];
+}
+
+- (bool)needsHandicapStones {
+	return [self moveNumber] < [self handicap];
+}
+
+- (NSArray *)handicapStones {
+	if ([self beginningOfHandicapGame]) {
+		return [self moves];
+	} else {
+		return nil;
+	}
+	
 }
 
 - (int)size {
