@@ -18,6 +18,7 @@
 @implementation Board
 
 @synthesize resignMove;
+@synthesize markedStones;
 
 + (void)initFuego {
 	SgInit();
@@ -42,10 +43,33 @@
 		goGame = new GoGameRecord(*goBoard);
 		goGame->InitFromRoot(rootNode, true);
 		
+		NSMutableArray *marked = [[NSMutableArray alloc] init];
+		
 		// Fast-forward to the end of the game
 		while (goGame->CanGoInDirection(SgNode::NEXT)) {
 			goGame->GoInDirection(SgNode::NEXT);
+			if (goGame->CurrentNode()->HasProp(SG_PROP_MARKED)) {
+				SgVector<SgPoint> points(((SgPropPointList *)goGame->CurrentNode()->Get(SG_PROP_MARKED))->Value());
+				for(int i = 0; i < points.Length(); ++i) {
+					Move *move = [[Move alloc] init];
+					SgPoint point = points[i];
+					
+					move.row = SgPointUtil::Row(point);
+					move.col = SgPointUtil::Col(point);
+					
+					if (goGame->Board().IsColor(point, SG_BLACK)) {
+						move.player = kMovePlayerBlack;
+					} else if (goGame->Board().IsColor(point, SG_WHITE)) {
+						move.player = kMovePlayerWhite;
+					}
+					
+					[marked addObject:move];
+					[move release];
+				}
+			}
 		}
+		self.markedStones = marked;
+		[marked release];
 		
 		// If we just placed handicap stones, it should be W's turn to play
 		// Not sure why Fuego doesn't handle this...
@@ -62,6 +86,10 @@
 
 - (bool)needsHandicapStones {
 	return [self moveNumber] < [self handicap];
+}
+
+- (bool)gameEnded {
+	return goGame->EndOfGame();
 }
 
 - (NSArray *)handicapStones {
@@ -211,6 +239,7 @@
 	delete goBoard;
 	delete goGame;
 	self.resignMove = nil;
+	self.markedStones = nil;
 	[super dealloc];
 }
 

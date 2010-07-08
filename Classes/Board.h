@@ -16,7 +16,11 @@
 	GoGameRecord *goGame;
 	GoBoard *goBoard;
 	Move *resignMove;
+	NSArray *markedStones;
 }
+
+@property(nonatomic, retain) Move *resignMove;
+@property(nonatomic, retain) NSArray *markedStones;
 
 + (void)initFuego;
 + (void)finishFuego;
@@ -43,6 +47,6 @@
 // If handicap stones have just been placed, return the handicap stones. Otherwise, return nil.
 - (NSArray *)handicapStones;
 
-@property(nonatomic, retain) Move *resignMove;
+- (bool)gameEnded;
 
 @end

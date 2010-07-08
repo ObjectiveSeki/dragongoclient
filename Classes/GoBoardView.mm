@@ -144,6 +144,28 @@
 	CGContextStrokePath(context);
 }
 
+- (void)markDeadStones:(CGContextRef)context {
+	NSArray *deadStones = [self.board markedStones];
+	float xRadius = 0.22;
+	CGContextSetLineWidth(context, 2.0);
+	
+	for (Move *move in deadStones) {
+		if ([move player] == kMovePlayerBlack) {
+			CGContextSetRGBStrokeColor(context, 1.0, 1.0, 1.0, 1.0);
+		} else {
+			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
+		}	
+		
+		CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
+		CGContextBeginPath(context);
+		CGContextMoveToPoint(context, coords.x - [self pointDistance] * xRadius, coords.y - [self pointDistance] * xRadius);
+		CGContextAddLineToPoint(context, coords.x + [self pointDistance] * xRadius, coords.y + [self pointDistance] * xRadius);
+		CGContextMoveToPoint(context, coords.x + [self pointDistance] * xRadius, coords.y - [self pointDistance] * xRadius);
+		CGContextAddLineToPoint(context, coords.x - [self pointDistance] * xRadius, coords.y + [self pointDistance] * xRadius);
+		CGContextStrokePath(context);
+	}
+}
+
 - (void)updatePlayerInfo {
 	UILabel *statusLabel = nil;
 	[[self blackStatus] setText:@""];
@@ -170,7 +192,11 @@
 	[self drawBoardGrid:context boardSize:[[self board] size]];
 	[self drawStones:context];
 	[self drawLastMoveIndicator:context];
-	[self updatePlayerInfo];
+	if ([self.board gameEnded]) {
+		[self markDeadStones:context];
+	} else {
+		[self updatePlayerInfo];
+	}
 }
 
 - (bool)playStoneAtPoint:(CGPoint)point {
