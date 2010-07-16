@@ -7,26 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Board.h"
+#import "FuegoBoard.h"
 
 @interface GoBoardView : UIView {
-	Board *board;
+	FuegoBoard *board;
 	IBOutlet id delegate;
 	IBOutlet UILabel *blackName;
 	IBOutlet UILabel *whiteName;
 	IBOutlet UILabel *blackStatus;
 	IBOutlet UILabel *whiteStatus;
-	
+	int pointDistance;
+	int _margin;
 }
 
-@property(nonatomic, retain) Board *board;
+@property(nonatomic, retain) FuegoBoard *board;
 @property(nonatomic, retain) IBOutlet id delegate;
 
 @property(nonatomic, retain) IBOutlet UILabel *blackName;
 @property(nonatomic, retain) IBOutlet UILabel *whiteName;
 @property(nonatomic, retain) IBOutlet UILabel *blackStatus;
 @property(nonatomic, retain) IBOutlet UILabel *whiteStatus;
+@property(nonatomic, readonly) int pointDistance;
 
 - (bool)playStoneAtPoint:(CGPoint)point;
+- (bool)markDeadStonesAtPoint:(CGPoint)point;
 
 @end

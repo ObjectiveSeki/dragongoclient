@@ -1,0 +1,22 @@
+(
+;FF[4]GM[1]
+AP[DGS:1.0.15]
+PC[Dragon Go Server: http://localhost.local/~jweiss/DragonGoServer/]
+DT[2010-07-16,2010-07-16]
+GN[test1-test2-12-20100716]
+SO[http://localhost.local/~jweiss/DragonGoServer/game.php?gid=12]
+PB[test (test2)]
+PW[test (test1)]
+BR[22k]
+WR[14k]
+GC[Game ID: 12
+Rated: Y
+
+White Start Rating: 14k (+30%) - ELO 729
+Black Start Rating: 22k (+32%) - ELO -68]
+OT[90 days + 1 day per move and 10 extra periods]
+RU[Japanese]
+SZ[19]
+KM[0.5]
+HA[8]
+)

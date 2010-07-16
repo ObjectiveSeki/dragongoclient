@@ -23,6 +23,8 @@
 @synthesize reloadingIndicator;
 @synthesize selectedCell;
 
+#define TEST_GAMES
+
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -90,6 +92,24 @@
 
 - (void)gotCurrentGames:(NSArray *)currentGames {
 	self.games = currentGames;
+	
+#ifdef TEST_GAMES
+	
+	NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", nil];
+	NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
+	for (NSString *name in testGames) {
+		Game *game = [[Game alloc] init];
+		game.opponent = name;
+		game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"]];
+		game.color = kMovePlayerBlack;
+		game.time = @"Test";
+		[mutableCurrentGames addObject:game];
+		[game release];
+	}
+	self.games = mutableCurrentGames;
+	[mutableCurrentGames release];
+#endif
+	
 	[[self reloadingIndicator] stopAnimating];
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 	[[self gameTableView] reloadData];
@@ -209,6 +229,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
+	
+#ifdef TEST_GAMES
+	Game *game = [self.games objectAtIndex:[indexPath row]];
+	if (game.gameId == 0) {
+		[self gotSgfForGame:game];
+	} else {
+#endif
+	
 	[dgs getSgfForGame:[self.games objectAtIndex:[indexPath row]]];
 	
 	self.selectedCell = [tableView cellForRowAtIndexPath:indexPath];
@@ -217,6 +245,9 @@
 	[activityView startAnimating];
 	[self.selectedCell setAccessoryView:activityView];
 	[activityView release];
+#ifdef TEST_GAMES
+	}
+#endif
 }
 
 - (void)gotSgfForGame:(Game *)game {

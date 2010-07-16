@@ -12,14 +12,13 @@
 #import "DGS.h"
 
 enum BoardState {
-	kBoardStateStoneNotPlaced,
+	kBoardStateZoomedOut,
 	kBoardStateZoomedIn,
-	kBoardStateStonePlaced
 };
 
 @interface GameViewController : UIViewController <LoginProtocol> {
 	Game *game;
-	Board *board;
+	FuegoBoard *board;
 	DGS *dgs;
 	IBOutlet GoBoardView *boardView;
 	IBOutlet UIScrollView *scrollView;
@@ -34,7 +33,7 @@ enum BoardState {
 }
 
 @property(nonatomic, retain) Game *game;
-@property(nonatomic, retain) Board *board;
+@property(nonatomic, retain) FuegoBoard *board;
 @property(nonatomic, retain) IBOutlet GoBoardView *boardView;
 @property(nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property(nonatomic) BoardState boardState;

@@ -180,6 +180,31 @@
 	[request startAsynchronous];
 }
 
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
+	int lastMoveNumber = moveNumber; // TODO: For some reason this doesn't need to lose one number?
+	NSURL *url = [self URLWithPath:@"/game.php"];
+	
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
+	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
+	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
+	[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+	[request setPostValue:@"done" forKey:@"action"];
+	
+	if ([changedStones count] > 0) {
+		NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([changedStones count] * 2)];
+		
+		for (Move *move in changedStones) {
+			[moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
+		}
+		
+		[request setPostValue:moveString forKey:@"stonestring"];
+		[moveString release];
+	}
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
 	
 	if (lastMove && [lastMove moveType] == kMoveTypeMove && [move moveType] == kMoveTypeMove) {

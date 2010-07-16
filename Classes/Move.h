@@ -32,4 +32,8 @@ typedef enum _MoveType {
 @property(nonatomic) MovePlayer player;
 @property(nonatomic) MoveType moveType;
 @property(nonatomic) int boardSize;
+
+- (NSUInteger)hash;
+- (BOOL)isEqual:(id)other;
+
 @end

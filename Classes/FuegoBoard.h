@@ -1,5 +1,5 @@
 //
-//  Board.h
+//  FuegoBoard.h
 //  DGSPhone
 //
 //  Created by Justin Weiss on 6/4/10.
@@ -12,15 +12,18 @@
 #import "GoGame.h"
 #import "Move.h"
 
-@interface Board : NSObject {
+@interface FuegoBoard : NSObject {
 	GoGameRecord *goGame;
 	GoBoard *goBoard;
+	SgNode *startNode;
 	Move *resignMove;
-	NSArray *markedStones;
+	NSArray *markedGroups;
+	NSArray *changedGroups;
 }
 
 @property(nonatomic, retain) Move *resignMove;
-@property(nonatomic, retain) NSArray *markedStones;
+@property(nonatomic, retain) NSArray *markedGroups;
+@property(nonatomic, retain) NSArray *changedGroups;
 
 + (void)initFuego;
 + (void)finishFuego;
@@ -32,8 +35,12 @@
 - (int)moveNumber;
 - (Move *)currentMove;
 - (Move *)lastMove;
+- (NSArray *)markedStones;
+- (NSArray *)changedStones;
+- (NSArray *)deadStones;
 - (void)undoLastMove;
 - (bool)playStoneAtRow:(int)row column:(int)col;
+- (bool)markDeadStonesAtRow:(int)row column:(int)col;
 - (void)pass;
 - (void)resign;
 - (int)handicap;
@@ -47,6 +54,17 @@
 // If handicap stones have just been placed, return the handicap stones. Otherwise, return nil.
 - (NSArray *)handicapStones;
 
+// Captured endgame territory, in an array of moves
+- (NSArray *)territory;
+
 - (bool)gameEnded;
+
+- (bool)canUndo;
+- (bool)canPlayMove;
+- (bool)canPassOrResign;
+- (bool)canSubmit;
+
+- (NSString *)name:(MovePlayer)movePlayer;
+- (int)captures:(MovePlayer)movePlayer;
 
 @end

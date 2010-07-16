@@ -44,6 +44,8 @@
 		DA37D9C211BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA37D9C311BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA37D9C411BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
+		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
+		DA38AB9911EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1F511B59EBD00112AA4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */; };
 		DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
@@ -195,9 +197,9 @@
 		DA41785311B9FE6500B3050E /* SgUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774311B9FE6500B3050E /* SgUtil.cpp */; };
 		DA41785411B9FE6500B3050E /* SgVectorUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774611B9FE6500B3050E /* SgVectorUtility.cpp */; };
 		DA41785511B9FE6500B3050E /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774811B9FE6500B3050E /* SgWrite.cpp */; };
-		DA419A6111BA0C0600B3050E /* Board.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* Board.mm */; };
-		DA419A6211BA0C0600B3050E /* Board.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* Board.mm */; };
-		DA419A6311BA0C0600B3050E /* Board.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* Board.mm */; };
+		DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
+		DA419A6211BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
+		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419B6A11BA168A00B3050E /* GoBensonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0411BA168900B3050E /* GoBensonSolver.cpp */; };
 		DA419B6B11BA168A00B3050E /* GoBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0611BA168900B3050E /* GoBlock.cpp */; };
 		DA419B6C11BA168A00B3050E /* GoBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0811BA168900B3050E /* GoBoard.cpp */; };
@@ -320,6 +322,12 @@
 		DA419D4911BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA419D4B11BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
+		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
+		DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
+		DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
+		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
+		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
+		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
@@ -514,6 +522,7 @@
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		DA37D9C111BF6E5100BC1445 /* Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Board.png; sourceTree = "<group>"; };
+		DA38AB9711EC028B005E1AB7 /* First Score.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "First Score.sgf"; sourceTree = "<group>"; };
 		DA38B1F411B59EBD00112AA4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginViewController.mm; sourceTree = "<group>"; };
@@ -638,8 +647,8 @@
 		DA41774711B9FE6500B3050E /* SgVectorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgVectorUtility.h; sourceTree = "<group>"; };
 		DA41774811B9FE6500B3050E /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA41774911B9FE6500B3050E /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
-		DA419A5F11BA0C0600B3050E /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
-		DA419A6011BA0C0600B3050E /* Board.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Board.mm; sourceTree = "<group>"; };
+		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
+		DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoard.mm; sourceTree = "<group>"; };
 		DA419A8D11BA0D5100B3050E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/powerpc-apple-darwin10/4.2.1/libstdc++.dylib"; sourceTree = SDKROOT; };
 		DA419B0311BA168900B3050E /* GoAssertBoardRestored.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoAssertBoardRestored.h; sourceTree = "<group>"; };
 		DA419B0411BA168900B3050E /* GoBensonSolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoBensonSolver.cpp; sourceTree = "<group>"; };
@@ -731,6 +740,9 @@
 		DA71CA8411B5E97F008696AC /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA71CAED11B5EDCB008696AC /* DGSPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTests-Info.plist"; sourceTree = "<group>"; };
+		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
+		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
+		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
 		DA7CA4A611B761E8004CD524 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
@@ -1054,8 +1066,8 @@
 				DA02D13C11D99BF000A9D887 /* NewGame.m */,
 				DAEA519911B88D8300F4CCB3 /* Game.h */,
 				DAEA519A11B88D8300F4CCB3 /* Game.m */,
-				DA419A5F11BA0C0600B3050E /* Board.h */,
-				DA419A6011BA0C0600B3050E /* Board.mm */,
+				DA419A5F11BA0C0600B3050E /* FuegoBoard.h */,
+				DA419A6011BA0C0600B3050E /* FuegoBoard.mm */,
 				DAF911F211BB796900FE7B96 /* Move.h */,
 				DAF911F311BB796900FE7B96 /* Move.m */,
 			);
@@ -1365,6 +1377,10 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */,
+				DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */,
+				DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */,
+				DA38AB9711EC028B005E1AB7 /* First Score.sgf */,
 				DAEA525711B895A100F4CCB3 /* status.html */,
 				DAEA534711B8A4C000F4CCB3 /* status.csv */,
 			);
@@ -1604,6 +1620,10 @@
 				DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */,
 				DA02D0B111D98B0800A9D887 /* AddGameView.xib in Resources */,
 				DA02D15F11D99E8B00A9D887 /* TableCells.xib in Resources */,
+				DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */,
+				DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
+				DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
+				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1645,6 +1665,10 @@
 				DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */,
 				DA02D0AF11D98B0800A9D887 /* AddGameView.xib in Resources */,
 				DA02D16011D99E8B00A9D887 /* TableCells.xib in Resources */,
+				DA38AB9911EC028B005E1AB7 /* First Score.sgf in Resources */,
+				DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
+				DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
+				DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1782,7 +1806,7 @@
 				DA4177FA11B9FE6500B3050E /* SgUtil.cpp in Sources */,
 				DA4177FB11B9FE6500B3050E /* SgVectorUtility.cpp in Sources */,
 				DA4177FC11B9FE6500B3050E /* SgWrite.cpp in Sources */,
-				DA419A6311BA0C0600B3050E /* Board.mm in Sources */,
+				DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */,
 				DA419BDE11BA168A00B3050E /* GoBensonSolver.cpp in Sources */,
 				DA419BDF11BA168A00B3050E /* GoBlock.cpp in Sources */,
 				DA419BE011BA168A00B3050E /* GoBoard.cpp in Sources */,
@@ -1936,7 +1960,7 @@
 				DA41785311B9FE6500B3050E /* SgUtil.cpp in Sources */,
 				DA41785411B9FE6500B3050E /* SgVectorUtility.cpp in Sources */,
 				DA41785511B9FE6500B3050E /* SgWrite.cpp in Sources */,
-				DA419A6211BA0C0600B3050E /* Board.mm in Sources */,
+				DA419A6211BA0C0600B3050E /* FuegoBoard.mm in Sources */,
 				DA419BA411BA168A00B3050E /* GoBensonSolver.cpp in Sources */,
 				DA419BA511BA168A00B3050E /* GoBlock.cpp in Sources */,
 				DA419BA611BA168A00B3050E /* GoBoard.cpp in Sources */,
@@ -2083,7 +2107,7 @@
 				DA4177A111B9FE6500B3050E /* SgUtil.cpp in Sources */,
 				DA4177A211B9FE6500B3050E /* SgVectorUtility.cpp in Sources */,
 				DA4177A311B9FE6500B3050E /* SgWrite.cpp in Sources */,
-				DA419A6111BA0C0600B3050E /* Board.mm in Sources */,
+				DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */,
 				DA419B6A11BA168A00B3050E /* GoBensonSolver.cpp in Sources */,
 				DA419B6B11BA168A00B3050E /* GoBlock.cpp in Sources */,
 				DA419B6C11BA168A00B3050E /* GoBoard.cpp in Sources */,

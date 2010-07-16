@@ -44,7 +44,7 @@
 		numberOfGames = 1;
 		boardSize = 19;
 		maxHandicap = 21;
-		stdHandicap = YES;
+		stdHandicap = NO;
 		timeValue = 90;
 		timeUnit = kTimePeriodDays;
 		japaneseTimeValue = 1;

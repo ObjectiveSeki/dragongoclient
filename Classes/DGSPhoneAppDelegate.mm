@@ -8,7 +8,7 @@
 
 #import "DGSPhoneAppDelegate.h"
 #import "CurrentGamesController.h"
-#import "Board.h"
+#import "FuegoBoard.h"
 
 @implementation DGSPhoneAppDelegate
 
@@ -34,7 +34,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[Board initFuego];
+	[FuegoBoard initFuego];
     // Override point for customization after application launch.
 	
 	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];
@@ -89,7 +89,7 @@
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
-	[Board finishFuego];
+	[FuegoBoard finishFuego];
 }
 
 

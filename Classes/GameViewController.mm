@@ -8,7 +8,7 @@
 
 #import "GameViewController.h"
 #import "LoginViewController.h"
-#import "Board.h"
+#import "FuegoBoard.h"
 
 @implementation GameViewController
 
@@ -51,29 +51,29 @@
 	dgs.delegate = self;
 }
 
-- (IBAction)undoMove {
-	[board undoLastMove];
-	[self setBoardState:kBoardStateStoneNotPlaced];
-	[[self navigationItem] setRightBarButtonItem:nil animated:YES];
-	[[self confirmButton] setEnabled:NO];
-	[[self boardView] setNeedsDisplay];
-	[[self passButton] setEnabled:YES];
-	[[self resignButton] setEnabled:YES];
+- (void)updateBoard {
+	if ([self.board canUndo]) {
+		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
+	} else {
+		[self.navigationItem setRightBarButtonItem:nil animated:YES];
+	}
+	[[self confirmButton] setEnabled:[self.board canSubmit]];
+	[[self passButton] setEnabled:[self.board canPassOrResign]];
+	[[self resignButton] setEnabled:[self.board canPassOrResign]];
+	[[self boardView] setNeedsDisplay]; // show just placed move
 }
 
 
-- (void)setMoveMade {
-	[[self navigationItem] setRightBarButtonItem:[self undoButton] animated:YES];
-	[[self confirmButton] setEnabled:YES];
-	[[self passButton] setEnabled:NO];
-	[[self resignButton] setEnabled:NO];
-	[[self boardView] setNeedsDisplay]; // show just placed move
-	[self setBoardState:kBoardStateStonePlaced];
+- (IBAction)undoMove {
+	[board undoLastMove];
+	[self updateBoard];
 }
 
 - (IBAction)confirmMove {
 	if ([self.board beginningOfHandicapGame]) {
 		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
+	} else if ([self.board gameEnded]) {
+		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
 	} else {
 		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
 	}
@@ -86,12 +86,12 @@
 
 - (IBAction)pass {
 	[board pass];
-	[self setMoveMade];
+	[self updateBoard];
 }
 
 - (IBAction)resign {
 	[board resign];
-	[self setMoveMade];
+	[self updateBoard];
 }
 
 - (void)notLoggedIn {
@@ -152,19 +152,21 @@
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
 	
-	if ([self boardState] == kBoardStateStoneNotPlaced) {
+	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded];
+	
+	if ([self boardState] == kBoardStateZoomedOut && canZoomIn) {
 		[self zoomToScale:1.0 center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
 		[[self passButton] setEnabled:NO];
 		[[self resignButton] setEnabled:NO];
+		[self.navigationItem setRightBarButtonItem:nil animated:YES];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
-		if ([view playStoneAtPoint:[touch locationInView:view]]) {
-			if ([self.board needsHandicapStones]) {
-				self.boardState = kBoardStateStoneNotPlaced;
-				[self.boardView setNeedsDisplay];
-			} else {
-				[self setMoveMade];
-			}
+		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
+		
+		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
+		if (markedDeadStones || playedStone) {
+			self.boardState = kBoardStateZoomedOut;
+			[self updateBoard];
 			[self zoomToScale:0.5 center:[touch locationInView:view] animated:YES];
 		}
 	}
@@ -192,13 +194,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[self setBoardState:kBoardStateStoneNotPlaced];
-	Board *theBoard = [[Board alloc] initWithSGFString:[game sgfString] boardSize:19];
+	[self setBoardState:kBoardStateZoomedOut];
+	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString] boardSize:19];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 	[theBoard release];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:[[self boardView] center] animated:NO];
+	[self updateBoard];
 }
 
 - (void)viewDidUnload {
