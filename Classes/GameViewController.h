@@ -23,6 +23,7 @@ enum BoardState {
 	IBOutlet GoBoardView *boardView;
 	IBOutlet UIScrollView *scrollView;
 	IBOutlet UIBarButtonItem *undoButton;
+	IBOutlet UIBarButtonItem *zoomOutButton;
 	IBOutlet UIBarButtonItem *confirmButton;
 	IBOutlet UIBarButtonItem *passButton;
 	IBOutlet UIBarButtonItem *resignButton;
@@ -38,12 +39,14 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UIScrollView *scrollView;
 @property(nonatomic) BoardState boardState;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *undoButton;
+@property(nonatomic, retain) IBOutlet UIBarButtonItem *zoomOutButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *confirmButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *passButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, retain) DGS *dgs;
 
 - (IBAction)undoMove;
+- (IBAction)zoomOut;
 - (IBAction)confirmMove;
 - (IBAction)pass;
 - (IBAction)resign;

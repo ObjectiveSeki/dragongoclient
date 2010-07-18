@@ -26,6 +26,8 @@
 @synthesize whiteName;
 @synthesize blackStatus;
 @synthesize whiteStatus;
+@synthesize blackCaptures;
+@synthesize whiteCaptures;
 
 @synthesize pointDistance;
 
@@ -233,6 +235,9 @@
 	[self.blackName setText:[self.board name:kMovePlayerBlack]];
 	[self.whiteName setText:[self.board name:kMovePlayerWhite]];
 	
+	self.blackCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerBlack]];	
+	self.whiteCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerWhite]];	
+	
 	if ([[[self board] currentMove] player] == kMovePlayerBlack) {
 		statusLabel = [self blackStatus];
 	} else {
@@ -295,6 +300,8 @@
 	self.whiteName = nil;
 	self.blackStatus = nil;
 	self.whiteStatus = nil;
+	self.blackCaptures = nil;
+	self.whiteCaptures = nil;
 	self.board = nil;
     [super dealloc];
 }

@@ -484,6 +484,10 @@
 		DAEA557811B8BFB900F4CCB3 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552611B8BFB900F4CCB3 /* tmbstr.c */; };
 		DAEA557911B8BFB900F4CCB3 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552811B8BFB900F4CCB3 /* utf8.c */; };
 		DAEA557A11B8BFB900F4CCB3 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552B11B8BFB900F4CCB3 /* win32tc.c */; };
+		DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
+		DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
+		DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
+		DAECBE2F11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
 		DAF9102811BB48A800FE7B96 /* GoBoardView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.mm */; };
 		DAF9102911BB48A800FE7B96 /* GoBoardView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.mm */; };
 		DAF9105E11BB5BBD00FE7B96 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */; };
@@ -863,6 +867,8 @@
 		DAEA552A11B8BFB900F4CCB3 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		DAEA552B11B8BFB900F4CCB3 /* win32tc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = win32tc.c; sourceTree = "<group>"; };
 		DAEA552C11B8BFB900F4CCB3 /* win32tc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win32tc.h; sourceTree = "<group>"; };
+		DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock.png"; sourceTree = "<group>"; };
+		DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock@2x.png"; sourceTree = "<group>"; };
 		DAF9102611BB48A800FE7B96 /* GoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardView.h; sourceTree = "<group>"; };
 		DAF9102711BB48A800FE7B96 /* GoBoardView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoBoardView.mm; sourceTree = "<group>"; };
 		DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -1050,6 +1056,8 @@
 		DA37D90511BF56BC00BC1445 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */,
+				DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */,
 				DA37D9C111BF6E5100BC1445 /* Board.png */,
 				DA37D90611BF56DA00BC1445 /* Black.png */,
 				DA37D90711BF56DA00BC1445 /* White.png */,
@@ -1624,6 +1632,8 @@
 				DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
 				DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
+				DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */,
+				DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1669,6 +1679,8 @@
 				DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
 				DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
 				DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
+				DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */,
+				DAECBE2F11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

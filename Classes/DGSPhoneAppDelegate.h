@@ -13,8 +13,7 @@
 	UIViewController *viewController;
 	UIImage *blackStone;
 	UIImage *whiteStone;
-	UIImage *boardImage;
-}
+	UIImage *boardImage;}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;

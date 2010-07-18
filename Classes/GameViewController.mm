@@ -18,6 +18,7 @@
 @synthesize scrollView;
 @synthesize boardState;
 @synthesize undoButton;
+@synthesize zoomOutButton;
 @synthesize confirmButton;
 @synthesize passButton;
 @synthesize resignButton;
@@ -69,45 +70,6 @@
 	[self updateBoard];
 }
 
-- (IBAction)confirmMove {
-	if ([self.board beginningOfHandicapGame]) {
-		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
-	} else if ([self.board gameEnded]) {
-		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
-	} else {
-		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
-	}
-}
-
-- (void)playedMove {
-
-	[[self navigationController] popViewControllerAnimated:YES];
-}
-
-- (IBAction)pass {
-	[board pass];
-	[self updateBoard];
-}
-
-- (IBAction)resign {
-	[board resign];
-	[self updateBoard];
-}
-
-- (void)notLoggedIn {
-	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	loginViewController.delegate = self;
-	[self presentModalViewController:loginViewController animated:YES];
-	[loginViewController notLoggedIn];
-	[loginViewController release];
-}
-
-- (void)loggedIn {
-	[self dismissModalViewControllerAnimated:YES];
-	[[self navigationController] popViewControllerAnimated:YES];
-}
-
-
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
 	
     CGRect zoomRect;
@@ -150,6 +112,54 @@
 	[self lockZoom];
 }
 
+- (void)zoomOut:(CGPoint)center {
+	self.boardState = kBoardStateZoomedOut;
+	[self zoomToScale:0.5 center:center animated:YES];
+	[self updateBoard];
+}
+
+- (IBAction)zoomOut {
+	[self zoomOut:[self.boardView center]];
+}
+
+- (IBAction)confirmMove {
+	if ([self.board beginningOfHandicapGame]) {
+		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
+	} else if ([self.board gameEnded]) {
+		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
+	} else {
+		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
+	}
+}
+
+- (void)playedMove {
+
+	[[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (IBAction)pass {
+	[board pass];
+	[self updateBoard];
+}
+
+- (IBAction)resign {
+	[board resign];
+	[self updateBoard];
+}
+
+- (void)notLoggedIn {
+	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	loginViewController.delegate = self;
+	[self presentModalViewController:loginViewController animated:YES];
+	[loginViewController notLoggedIn];
+	[loginViewController release];
+}
+
+- (void)loggedIn {
+	[self dismissModalViewControllerAnimated:YES];
+	[[self navigationController] popViewControllerAnimated:YES];
+}
+
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
 	
 	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded];
@@ -159,15 +169,13 @@
 		[self setBoardState:kBoardStateZoomedIn];
 		[[self passButton] setEnabled:NO];
 		[[self resignButton] setEnabled:NO];
-		[self.navigationItem setRightBarButtonItem:nil animated:YES];
+		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
 	} else if ([self boardState] == kBoardStateZoomedIn) {
 		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
 		
 		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
 		if (markedDeadStones || playedStone) {
-			self.boardState = kBoardStateZoomedOut;
-			[self updateBoard];
-			[self zoomToScale:0.5 center:[touch locationInView:view] animated:YES];
+			[self zoomOut:[touch locationInView:view]];
 		}
 	}
 }
@@ -212,6 +220,7 @@
 	self.game = nil;
 	self.board = nil;
 	self.undoButton = nil;
+	self.zoomOutButton = nil;
 	self.confirmButton = nil;
 	self.passButton = nil;
 	self.dgs = nil;

@@ -16,6 +16,8 @@
 	IBOutlet UILabel *whiteName;
 	IBOutlet UILabel *blackStatus;
 	IBOutlet UILabel *whiteStatus;
+	IBOutlet UILabel *blackCaptures;
+	IBOutlet UILabel *whiteCaptures;
 	int pointDistance;
 	int _margin;
 }
@@ -27,6 +29,8 @@
 @property(nonatomic, retain) IBOutlet UILabel *whiteName;
 @property(nonatomic, retain) IBOutlet UILabel *blackStatus;
 @property(nonatomic, retain) IBOutlet UILabel *whiteStatus;
+@property(nonatomic, retain) IBOutlet UILabel *blackCaptures;
+@property(nonatomic, retain) IBOutlet UILabel *whiteCaptures;
 @property(nonatomic, readonly) int pointDistance;
 
 - (bool)playStoneAtPoint:(CGPoint)point;
