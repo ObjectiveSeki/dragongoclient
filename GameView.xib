@@ -169,9 +169,9 @@
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
-								<object class="NSColor" key="IBUIShadowColor" id="616943592">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
+								<object class="NSColor" key="IBUIShadowColor" id="1070021662">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC45ODIwODMzMjA2IDAuODQxMzY2NzY3OSAwLjY5MTkzNTM2MDQAA</bytes>
 								</object>
 								<string key="IBUIShadowOffset">{0, 1}</string>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -198,7 +198,7 @@
 								</object>
 								<reference key="IBUITextColor" ref="181248688"/>
 								<nil key="IBUIHighlightedColor"/>
-								<reference key="IBUIShadowColor" ref="616943592"/>
+								<reference key="IBUIShadowColor" ref="1070021662"/>
 								<string key="IBUIShadowOffset">{0, 1}</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -219,7 +219,7 @@
 								<reference key="IBUIFont" ref="121939482"/>
 								<reference key="IBUITextColor" ref="181248688"/>
 								<nil key="IBUIHighlightedColor"/>
-								<reference key="IBUIShadowColor" ref="616943592"/>
+								<reference key="IBUIShadowColor" ref="1070021662"/>
 								<string key="IBUIShadowOffset">{0, 1}</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -242,7 +242,7 @@
 								<reference key="IBUIFont" ref="141632371"/>
 								<reference key="IBUITextColor" ref="181248688"/>
 								<nil key="IBUIHighlightedColor"/>
-								<reference key="IBUIShadowColor" ref="616943592"/>
+								<reference key="IBUIShadowColor" ref="1070021662"/>
 								<string key="IBUIShadowOffset">{0, 1}</string>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
@@ -261,7 +261,10 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">+10</string>
 								<reference key="IBUIFont" ref="121939482"/>
-								<reference key="IBUITextColor" ref="616943592"/>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
+								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>

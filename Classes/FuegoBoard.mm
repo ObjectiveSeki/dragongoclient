@@ -277,9 +277,23 @@
 	return NO;
 }
 
+- (bool)alreadyMarkedPointAtRow:(int)row column:(int)col {
+	for (Move *move in [self changedStones]) {
+		if ([move row] == row && [move col] == col) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
 - (bool)markDeadStonesAtRow:(int)row column:(int)col {
 	SgPoint point = SgPointUtil::Pt(col, row);
 	if (goGame->Board().Occupied(point)) {
+		
+		if ([self alreadyMarkedPointAtRow:row column:(int)col]) {
+			return NO;
+		}
+		
 		GoRegionBoard regionBoard(goGame->Board());
 		NSMutableArray *mutableChangedGroups = [self.changedGroups mutableCopy];
 		NSMutableArray *markedGroup = [[NSMutableArray alloc] init];
@@ -422,9 +436,9 @@
 - (int)captures:(MovePlayer)movePlayer {
 	SgBlackWhite player;
 	if (movePlayer == kMovePlayerBlack) {
-		player = SG_BLACK;
-	} else {
 		player = SG_WHITE;
+	} else {
+		player = SG_BLACK;
 	}
 	return goGame->Board().NumPrisoners(player);
 }
