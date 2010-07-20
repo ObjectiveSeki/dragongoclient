@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum _MovePlayer {
+	kMovePlayerNone,
 	kMovePlayerBlack,
 	kMovePlayerWhite
 } MovePlayer;

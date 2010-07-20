@@ -41,8 +41,10 @@
 	
 	if (SG_BLACK == player) {
 		movePlayer = kMovePlayerBlack;
-	} else {
+	} else if (SG_WHITE == player) {
 		movePlayer = kMovePlayerWhite;
+	} else {
+		movePlayer = kMovePlayerNone;
 	}
 	return movePlayer;
 }
@@ -347,18 +349,15 @@
 
 	GoBoardUtil::TrompTaylorScore(tempBoard, 6.5, &scoreBoard);
 	
-	for (SgSetIterator it(tempBoard.AllPoints()); it; ++it) {
-		if (scoreBoard[*it] != SG_EMPTY) {
-			
-			Move *move = [[Move alloc] init];
-			move.row = SgPointUtil::Row(*it);
-			move.col = SgPointUtil::Col(*it);
-			
-			move.player = [self playerForSgPlayer:scoreBoard[*it]];
-			
-			[points addObject:move];
-			[move release];
-		}
+	for (SgSetIterator it(tempBoard.AllPoints()); it; ++it) {			
+		Move *move = [[Move alloc] init];
+		move.row = SgPointUtil::Row(*it);
+		move.col = SgPointUtil::Col(*it);
+		
+		move.player = [self playerForSgPlayer:scoreBoard[*it]];
+		
+		[points addObject:move];
+		[move release];
 	}
 	return points;
 }

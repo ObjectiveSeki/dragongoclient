@@ -191,8 +191,10 @@
 	for (Move *move in territory) {
 		if ([move player] == kMovePlayerBlack) {
 			CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.3);
-		} else {
+		} else if ([move player] == kMovePlayerWhite) {
 			CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 0.3);
+		} else {
+			CGContextSetRGBFillColor(context, 1.0, 0.0, 0.0, 0.6);
 		}
 		
 		CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
