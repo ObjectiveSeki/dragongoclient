@@ -56,9 +56,10 @@
 		SgGameReader gameReader(input, boardSize);
 		SgNode *rootNode = gameReader.ReadGame();
 		int handicap = rootNode->GetIntProp(SG_PROP_HANDICAP);
+		double komi = rootNode->GetRealProp(SG_PROP_KOMI);
 		int size = rootNode->GetIntProp(SG_PROP_SIZE);
 		
-		goBoard = new GoBoard(size, GoSetup(), GoRules(handicap));
+		goBoard = new GoBoard(size, GoSetup(), GoRules(handicap, GoKomi(komi)));
 		goGame = new GoGameRecord(*goBoard);
 		goGame->InitFromRoot(rootNode, true);
 		
@@ -441,6 +442,19 @@
 		player = SG_BLACK;
 	}
 	return goGame->Board().NumPrisoners(player);
+}
+
+- (float)score {
+	
+	SgPointSet deadPoints;
+	float score = 0.0;
+	for (Move *move in [self deadStones]) {
+		deadPoints.Include(SgPointUtil::Pt([move col], [move row]));
+	}
+	
+	GoBoardUtil::ScorePosition(goGame->Board(), deadPoints, score);
+	return score;
+	
 }
 
 - (void)dealloc {

@@ -24,8 +24,8 @@
 
 @synthesize blackName;
 @synthesize whiteName;
-@synthesize blackStatus;
-@synthesize whiteStatus;
+@synthesize status;
+@synthesize statusView;
 @synthesize blackCaptures;
 @synthesize whiteCaptures;
 
@@ -226,32 +226,59 @@
 	}
 }
 
-- (void)updatePlayerInfo {
-	UILabel *statusLabel = nil;
-	[[self blackStatus] setText:@""];
-	[[self whiteStatus] setText:@""];
-	if ([self.board captures:kMovePlayerBlack]) {
-		
+- (void)hideStatusBar {
+	if (self.statusView.frame.origin.y >= 0) {
+		[GoBoardView animateWithDuration:0.5 animations:^() {
+			self.statusView.frame = CGRectMake(self.statusView.frame.origin.x, -self.statusView.frame.size.height, self.statusView.frame.size.width, self.statusView.frame.size.height);
+		}];
 	}
-	
+}
+
+- (void)showStatusBar {
+	if (self.statusView.frame.origin.y < 0) {
+		[GoBoardView animateWithDuration:0.5 animations:^() {
+			self.statusView.frame = CGRectMake(self.statusView.frame.origin.x, 0, self.statusView.frame.size.width, self.statusView.frame.size.height);
+		}];
+	}
+}
+
+- (void)updatePlayerInfo {
+	self.status.text = @"";
 	[self.blackName setText:[self.board name:kMovePlayerBlack]];
 	[self.whiteName setText:[self.board name:kMovePlayerWhite]];
 	
 	self.blackCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerBlack]];	
 	self.whiteCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerWhite]];	
 	
-	if ([[[self board] currentMove] player] == kMovePlayerBlack) {
-		statusLabel = [self blackStatus];
-	} else {
-		statusLabel = [self whiteStatus];
-	}
-	
 	if (![self.board gameEnded]) {
 		if ([[[self board] currentMove] moveType] == kMoveTypePass) {
-			[statusLabel setText:@"Pass"];
+			if ([self.board currentMove].player == kMovePlayerBlack) {
+				self.status.text = @"B Pass";
+			} else {
+				self.status.text = @"W Pass";
+			}
 		} else if ([[[self board] currentMove] moveType] == kMoveTypeResign) {
-			[statusLabel setText:@"Resign"];
+			if ([self.board currentMove].player == kMovePlayerBlack) {
+				self.status.text = @"B Resign";
+			} else {
+				self.status.text = @"W Resign";
+			}
 		}
+	} else {
+		float score = [self.board score];
+		if (score > 0) {
+			self.status.text = [NSString stringWithFormat:@"Score: B+%.1f", [self.board score]];
+		} else if (score < 0) {
+			self.status.text = [NSString stringWithFormat:@"Score: W+%.1f", -1.0 * [self.board score]];
+		} else {
+			self.status.text = @"Touch groups to mark them as dead";
+		}
+	}
+	
+	if (![self.status.text isEqual:@""]) {
+		[self showStatusBar];
+	} else {
+		[self hideStatusBar];
 	}
 }
 
@@ -300,8 +327,8 @@
 - (void)dealloc {
 	self.blackName = nil;
 	self.whiteName = nil;
-	self.blackStatus = nil;
-	self.whiteStatus = nil;
+	self.status = nil;
+	self.statusView = nil;
 	self.blackCaptures = nil;
 	self.whiteCaptures = nil;
 	self.board = nil;

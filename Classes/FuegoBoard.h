@@ -66,5 +66,6 @@
 
 - (NSString *)name:(MovePlayer)movePlayer;
 - (int)captures:(MovePlayer)movePlayer;
+- (float)score;
 
 @end

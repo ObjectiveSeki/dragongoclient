@@ -23,7 +23,7 @@
 @synthesize reloadingIndicator;
 @synthesize selectedCell;
 
-
+#define TEST_GAMES
 
 #pragma mark -
 #pragma mark View lifecycle

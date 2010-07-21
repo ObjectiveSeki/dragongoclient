@@ -14,8 +14,8 @@
 	IBOutlet id delegate;
 	IBOutlet UILabel *blackName;
 	IBOutlet UILabel *whiteName;
-	IBOutlet UILabel *blackStatus;
-	IBOutlet UILabel *whiteStatus;
+	IBOutlet UIView  *statusView;
+	IBOutlet UILabel *status;
 	IBOutlet UILabel *blackCaptures;
 	IBOutlet UILabel *whiteCaptures;
 	int pointDistance;
@@ -27,8 +27,8 @@
 
 @property(nonatomic, retain) IBOutlet UILabel *blackName;
 @property(nonatomic, retain) IBOutlet UILabel *whiteName;
-@property(nonatomic, retain) IBOutlet UILabel *blackStatus;
-@property(nonatomic, retain) IBOutlet UILabel *whiteStatus;
+@property(nonatomic, retain) IBOutlet UILabel *status;
+@property(nonatomic, retain) IBOutlet UIView *statusView;
 @property(nonatomic, retain) IBOutlet UILabel *blackCaptures;
 @property(nonatomic, retain) IBOutlet UILabel *whiteCaptures;
 @property(nonatomic, readonly) int pointDistance;
