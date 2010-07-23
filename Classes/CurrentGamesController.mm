@@ -23,14 +23,14 @@
 @synthesize reloadingIndicator;
 @synthesize selectedCell;
 
-#define TEST_GAMES
+
 
 #pragma mark -
 #pragma mark View lifecycle
 
 
 - (void)viewDidLoad {
-	self.title = @"Current Games";
+	self.title = @"My Games";
 	self.navigationItem.leftBarButtonItem = self.logoutButton;
 	self.navigationItem.rightBarButtonItem = self.refreshButton;
 	self.dgs = [[[DGS alloc] init] autorelease];

@@ -41,6 +41,14 @@
 }
 */
 
+// Is this board too small to justify zooming?
+- (BOOL)smallBoard {
+	return [self.board size] < 13;
+}
+
+- (float)zoomInScale {
+	return (float)[self.board size] / 19.0;
+}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -49,6 +57,7 @@
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	currentZoomScale = 1.0;
 	self.dgs = [[[DGS alloc] init] autorelease];
+	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [game opponent]];
 	dgs.delegate = self;
 }
 
@@ -107,6 +116,7 @@
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
 	[self unlockZoom];
 	currentZoomScale = scale;
+	NSLog(@"%f", scale);
 	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
 	[[self scrollView] zoomToRect:zoomRect animated:animated];
 	[self lockZoom];
@@ -114,7 +124,9 @@
 
 - (void)zoomOut:(CGPoint)center {
 	self.boardState = kBoardStateZoomedOut;
-	[self zoomToScale:0.5 center:center animated:YES];
+	if (currentZoomScale != 0.5) {
+		[self zoomToScale:0.5 center:center animated:YES];
+	}
 	[self updateBoard];
 }
 
@@ -164,13 +176,13 @@
 	
 	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded];
 	
-	if ([self boardState] == kBoardStateZoomedOut && canZoomIn) {
-		[self zoomToScale:1.0 center:[touch locationInView:view] animated:YES];
+	if (![self smallBoard] && [self boardState] == kBoardStateZoomedOut && canZoomIn) {
+		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
 		[[self passButton] setEnabled:NO];
 		[[self resignButton] setEnabled:NO];
 		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
-	} else if ([self boardState] == kBoardStateZoomedIn) {
+	} else if ([self smallBoard] || [self boardState] == kBoardStateZoomedIn) {
 		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
 		
 		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
@@ -207,6 +219,7 @@
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 	[theBoard release];
+	currentZoomScale = [self zoomInScale];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:[[self boardView] center] animated:NO];
 	[self updateBoard];

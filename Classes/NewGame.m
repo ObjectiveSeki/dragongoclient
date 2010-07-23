@@ -45,12 +45,12 @@
 		boardSize = 19;
 		maxHandicap = 21;
 		stdHandicap = NO;
-		timeValue = 90;
-		timeUnit = kTimePeriodDays;
+		timeValue = 3;
+		timeUnit = kTimePeriodMonths;
 		japaneseTimeValue = 1;
 		japaneseTimeUnit = kTimePeriodDays;
 		japaneseTimePeriods = 10;
-		canadianTimeValue = 1;
+		canadianTimeValue = 15;
 		canadianTimeUnit = kTimePeriodDays;
 		canadianTimePeriods = 15;
 		fischerTimeValue = 1;
@@ -64,7 +64,7 @@
 }
 
 - (NSString *)ruleSetValue {
-	NSString *ruleSetString;
+	NSString *ruleSetString = @"";
 	
 	switch(self.ruleSet) {
 		case kRuleSetJapanese:
@@ -78,7 +78,7 @@
 }
 
 - (NSString *)komiTypeValue {
-	NSString *komiTypeString;
+	NSString *komiTypeString = @"";
 	
 	switch(self.komiType) {
 		case kKomiTypeConventional:
@@ -92,7 +92,7 @@
 }
 
 - (NSString *)komiTypeString:(KomiType)aKomiType {
-	NSString *komiTypeString;
+	NSString *komiTypeString = @"";
 	
 	switch(aKomiType) {
 		case kKomiTypeConventional:
@@ -110,7 +110,7 @@
 }
 
 - (NSString *)jigoModeValue {
-	NSString *jigoModeString;
+	NSString *jigoModeString = @"";
 	
 	switch(self.jigoMode) {
 		case kJigoModeUnchanged:
@@ -127,7 +127,7 @@
 }
 
 - (NSString *)byoYomiTypeValue {
-	NSString *byoYomiString;
+	NSString *byoYomiString = @"";
 	
 	switch(self.byoYomiType) {
 		case kByoYomiTypeJapanese:
@@ -144,7 +144,7 @@
 }
 
 - (NSString *)byoYomiTypeString:(ByoYomiType)aByoYomiType {
-	NSString *byoYomiString;
+	NSString *byoYomiString = @"";
 	
 	switch(aByoYomiType) {
 		case kByoYomiTypeJapanese:
@@ -173,7 +173,7 @@
 }
 
 - (NSString *)timePeriodValue:(TimePeriod)value {
-	NSString *timePeriodString;
+	NSString *timePeriodString = @"";
 	
 	switch(value) {
 		case kTimePeriodHours:

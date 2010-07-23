@@ -67,6 +67,7 @@
 	float pointX = (col - 1) * pointDelta + [self minX];
 	float pointY = [self maxY] - ((row - 1) * pointDelta);
 	
+	// Add 0.5 so we snap to the pixel grid
 	return CGPointMake(pointX + 0.5, pointY + 0.5);
 }
 
@@ -75,7 +76,6 @@
 	float boardX = round((point.x - [self minX]) / pointDelta + 1);
 	float boardY = round(([self maxY] - point.y) / pointDelta + 1);
 	
-	// Add 0.5 so we snap to the pixel grid
 	return CGPointMake(boardX, boardY);
 }
 
@@ -94,10 +94,14 @@
 	[[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] boardImage] drawInRect:[self bounds]];
 	
 	CGContextSetLineWidth(context, 1.0);
-	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
-
+	
 	// draw all the lines on the X axis
 	for(int i = 1; i <= boardSize; i++) {
+		if (i == 1 || i == boardSize) {
+			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
+		} else {
+			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.7);
+		}
 		CGContextBeginPath(context);
 		CGPoint startPoint = [self pointForBoardRow:1 column:i];
 		CGPoint endPoint = [self pointForBoardRow:boardSize column:i];
@@ -108,6 +112,11 @@
 	
 	// draw all the lines on the Y axis
 	for(int i = 1; i <= boardSize; i++) {
+		if (i == 1 || i == boardSize) {
+			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
+		} else {
+			CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 0.7);
+		}
 		CGContextBeginPath(context);
 		CGPoint startPoint = [self pointForBoardRow:i column:1];
 		CGPoint endPoint = [self pointForBoardRow:i column:boardSize];

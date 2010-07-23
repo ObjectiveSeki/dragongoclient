@@ -44,6 +44,21 @@
 	return NO;
 }
 
+- (NSString *)error:(ASIHTTPRequest *)request {
+	NSString *urlString = [[request url] absoluteString];
+	NSString *errorString = nil;
+	
+	if (NSNotFound != [urlString rangeOfString:@"error.php"].location) {
+		NSError *error;
+		CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[request responseString] options:CXMLDocumentTidyHTML error:&error];
+		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&error];
+		if ([bodyElements count] > 0) {
+			errorString = [[bodyElements objectAtIndex:0] stringValue];
+		}
+	}
+	
+	return errorString;
+}
 
 - (NSURL *)URLWithPath:(NSString *)path {
 	//NSString *baseString = @"http://www.dragongoserver.net";
@@ -51,9 +66,16 @@
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	[alertView release];
+}
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-	if (NO == [self loggedIn:request]) {
+	NSString *errorString = [self error:request];
+	if (errorString) {
+		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+	} else if (NO == [self loggedIn:request]) {
 		[[self delegate] notLoggedIn];
 	} else {
 		SEL selector = NSSelectorFromString([[request userInfo] objectForKey:@"selector"]);
@@ -257,23 +279,23 @@
 	NSURL *url = [self URLWithPath:@"/add_to_waitingroom.php"];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
-	[request setPostValue:[game ruleSetValue] forKey:@"ruleset"];
+	//[request setPostValue:[game ruleSetValue] forKey:@"ruleset"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game boardSize]] forKey:@"size"];
-	[request setPostValue:[game komiTypeValue] forKey:@"cat_htype"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game adjustedHandicap]] forKey:@"adj_handicap"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game minHandicap]] forKey:@"min_handicap"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game maxHandicap]] forKey:@"max_handicap"];
+	[request setPostValue:[game komiTypeValue] forKey:@"handicap_type"];
+	//[request setPostValue:[NSString stringWithFormat:@"%d", [game adjustedHandicap]] forKey:@"adj_handicap"];
+	//[request setPostValue:[NSString stringWithFormat:@"%d", [game minHandicap]] forKey:@"min_handicap"];
+	//[request setPostValue:[NSString stringWithFormat:@"%d", [game maxHandicap]] forKey:@"max_handicap"];
 	[request setPostValue:[game boolValue:[game stdHandicap]] forKey:@"stdhandicap"];
-	[request setPostValue:[NSString stringWithFormat:@"%f", [game adjustedKomi]] forKey:@"adj_komi"];
-	[request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
+	//[request setPostValue:[NSString stringWithFormat:@"%f", [game adjustedKomi]] forKey:@"adj_komi"];
+	//[request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
 	[request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
-	[request setPostValue:[game byoYomiTypeValue] forKey:@"timeunit"];
+	[request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimeValue]] forKey:@"byotimevalue_jap"];
 	[request setPostValue:[game timePeriodValue:[game japaneseTimeUnit]] forKey:@"timeunit_jap"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimePeriods]] forKey:@"byoperiods_jap"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimeValue]] forKey:@"byotimevalue_can"];
-	[request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
+	[request setPostValue:[game timePeriodValue:[game canadianTimeUnit]] forKey:@"timeunit_can"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimePeriods]] forKey:@"byoperiods_can"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game fischerTimeValue]] forKey:@"byotimevalue_fis"];
 	[request setPostValue:[game timePeriodValue:[game fischerTimeUnit]] forKey:@"timeunit_fis"];
@@ -282,7 +304,7 @@
 	[request setPostValue:[game boolValue:[game rated]] forKey:@"rated"];
 	[request setPostValue:[game minimumRating] forKey:@"rating1"];
 	[request setPostValue:[game maximumRating] forKey:@"rating2"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game sameOpponent]] forKey:@"same_opp"];	
+	//[request setPostValue:[NSString stringWithFormat:@"%d", [game sameOpponent]] forKey:@"same_opp"];	
 	[request setPostValue:[game comment] forKey:@"comment"];
 	[request setPostValue:@"Add Game" forKey:@"add_game"];
 	
@@ -303,69 +325,67 @@
 	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:htmlString options:CXMLDocumentTidyHTML error:&error];
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameTable']/tr" error:&error];
 
-    if ([tableRows count] == 0) {
-		return games;
+    if ([tableRows count] >= 0) {
+	
+        // First row is the header
+        CXMLNode *headerRow = [tableRows objectAtIndex:0];
+        NSArray *columns = [headerRow nodesForXPath:@".//span[@class='Header']" error:&error];
+        
+        NSMutableArray *tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
+        for (CXMLNode *column in columns) {
+            [tableHeaders addObject:[column stringValue]];
+        }
+        
+        // trim the header row
+        NSRange range;
+        range.location = 1;
+        range.length = [tableRows count] - 1;
+        
+        for (CXMLNode *row in [tableRows subarrayWithRange:range]) {
+            
+            NSArray *columns = [row nodesForXPath:@"td" error:&error];
+            
+            // bad things happen if these counts aren't equal
+            if ([columns count] != [tableHeaders count]) {
+                continue;
+            }
+                
+            Game *game = [[Game alloc] init];
+            
+            for(int i = 0; i < [tableHeaders count]; i++) {
+                NSString *headerName = [tableHeaders objectAtIndex:i];
+                if ([headerName isEqual:@"ID"]) {
+                    CXMLNode *td = [columns objectAtIndex:i];
+                    NSString *data = [[[td nodesForXPath:@"a" error:&error] objectAtIndex:0] stringValue];
+                    game.gameId = [data integerValue];
+                } else if ([headerName isEqual:@"Opponent"]) {
+                    CXMLNode *td = [columns objectAtIndex:i];
+                    NSString *data = [[[td nodesForXPath:@"a/font" error:&error] objectAtIndex:0] stringValue];
+                    game.opponent = [data stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+                } else if ([headerName isEqual:@"sgf"]) {
+                    CXMLNode *td = [columns objectAtIndex:i];
+                    NSString *data = [[[td nodesForXPath:@"a/@href" error:&error] objectAtIndex:0] stringValue];
+                    game.sgfUrl = [self URLWithPath:data];
+                } else if ([headerName isEqual:@"Time remaining"]) {
+                    CXMLNode *td = [columns objectAtIndex:i];
+                    NSString *data = [td stringValue];
+                    game.time = data;
+                }  else if ([headerName isEqual:@"Col"]) {
+                    CXMLNode *td = [columns objectAtIndex:i];
+                    NSString *data = [[[td nodesForXPath:@"img/@alt" error:&error] objectAtIndex:0] stringValue];
+                    if ([data isEqual:@"b"]) {
+                        game.color = kMovePlayerBlack;
+                    } else {
+                        game.color = kMovePlayerWhite;
+                    }
+                }
+            }
+            
+            [games addObject:game];
+            [game release];
+            
+        }
 	}
-	
-	// First row is the header
-	CXMLNode *headerRow = [tableRows objectAtIndex:0];
-	NSArray *columns = [headerRow nodesForXPath:@".//span[@class='Header']" error:&error];
-	
-	NSMutableArray *tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
-	for (CXMLNode *column in columns) {
-		[tableHeaders addObject:[column stringValue]];
-	}
-	
-	// trim the header row
-	NSRange range;
-	range.location = 1;
-	range.length = [tableRows count] - 1;
-	
-	for (CXMLNode *row in [tableRows subarrayWithRange:range]) {
-		
-		NSArray *columns = [row nodesForXPath:@"td" error:&error];
-		
-		// bad things happen if these counts aren't equal
-		if ([columns count] != [tableHeaders count]) {
-			continue;
-		}
-			
-		Game *game = [[Game alloc] init];
-		
-		for(int i = 0; i < [tableHeaders count]; i++) {
-			NSString *headerName = [tableHeaders objectAtIndex:i];
-			if ([headerName isEqual:@"ID"]) {
-				CXMLNode *td = [columns objectAtIndex:i];
-				NSString *data = [[[td nodesForXPath:@"a" error:&error] objectAtIndex:0] stringValue];
-				game.gameId = [data integerValue];
-			} else if ([headerName isEqual:@"Opponent"]) {
-				CXMLNode *td = [columns objectAtIndex:i];
-				NSString *data = [[[td nodesForXPath:@"a/font" error:&error] objectAtIndex:0] stringValue];
-				game.opponent = [data stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if ([headerName isEqual:@"sgf"]) {
-				CXMLNode *td = [columns objectAtIndex:i];
-				NSString *data = [[[td nodesForXPath:@"a/@href" error:&error] objectAtIndex:0] stringValue];
-				game.sgfUrl = [self URLWithPath:data];
-			} else if ([headerName isEqual:@"Time remaining"]) {
-				CXMLNode *td = [columns objectAtIndex:i];
-				NSString *data = [td stringValue];
-				game.time = data;
-			}  else if ([headerName isEqual:@"Col"]) {
-				CXMLNode *td = [columns objectAtIndex:i];
-				NSString *data = [[[td nodesForXPath:@"img/@alt" error:&error] objectAtIndex:0] stringValue];
-				if ([data isEqual:@"b"]) {
-					game.color = kMovePlayerBlack;
-				} else {
-					game.color = kMovePlayerWhite;
-				}
-			}
-		}
-		
-		[games addObject:game];
-		[game release];
-		
-	}
-	
 	[doc release];
 	return games;
 }

@@ -10,13 +10,17 @@
 #import "CurrentGamesController.h"
 #import "DGSPhoneAppDelegate.h"
 #import "DGS.h"
+#import "TableCellFactory.h"
+
+typedef enum _LoginSection {
+	kLoginFieldSection,
+	kLoginButtonSection,
+} AddGameSection;
 
 @implementation LoginViewController
 
-@synthesize loggingInStatusView;
-@synthesize loginFieldsView;
-@synthesize usernameField;
-@synthesize passwordField;
+@synthesize username;
+@synthesize password;
 @synthesize delegate;
 @synthesize dgs;
 
@@ -35,27 +39,12 @@
 }
 
 - (void)notLoggedIn {
-	[[self loggingInStatusView] setHidden:YES];
-	[[self loginFieldsView] setHidden:NO];
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
-- (IBAction)loginWithUsernameAndPassword:(id)sender
+- (void)login
 {
-	[[self usernameField] resignFirstResponder];
-	[[self passwordField] resignFirstResponder];
-	[dgs loginWithUsername:[usernameField text] password:[passwordField text]];
-	[[self loggingInStatusView] setHidden:NO];
-	[[self loginFieldsView] setHidden:YES];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	if (textField == usernameField) {
-		[[self passwordField] becomeFirstResponder];
-	} else if (textField == passwordField) {
-		[self loginWithUsernameAndPassword:passwordField];
-	}
-	return YES;
+	[dgs loginWithUsername:self.username password:self.password];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -67,6 +56,144 @@
 	
 }
 
+#pragma mark -
+#pragma mark Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 2;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    if (section == kLoginFieldSection) {
+        return 2;
+    } else if (section == kLoginButtonSection) {
+        return 1;
+    }
+    return 1;
+}
+
+- (UITableViewCell *)defaultCell:(UITableView *)tableView {
+	static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }	
+	return cell;
+}
+
+- (TextCell *)textCell:(UITableView *)tableView {
+	static NSString *CellIdentifier = @"TextCell";
+    
+    TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+		cell = [TableCellFactory textCell];
+    }
+	
+	return cell;
+}
+
+- (void)setUsernameFromCell:(TextCell *)tableCell {
+	NSLog(@"%@", tableCell.textField.text);
+	self.username = tableCell.textField.text;
+}
+
+- (void)setPasswordFromCell:(TextCell *)tableCell {
+	NSLog(@"%@", tableCell.textField.text);
+	self.password = tableCell.textField.text;
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+	UITableViewCell *cell = [self defaultCell:tableView];
+	
+	if ([indexPath section] == kLoginFieldSection) {
+		if ([indexPath row] == 0) {
+			TextCell *cell = [self textCell:tableView];
+			cell.label.text = @"Username";
+			cell.textField.text = self.username;
+			cell.textField.keyboardType = UIKeyboardTypeDefault;
+			cell.textEditedSelector = @selector(setUsernameFromCell:);
+			return cell;
+		} else {
+			TextCell *cell = [self textCell:tableView];
+			cell.label.text = @"Password";
+			cell.textField.text = self.password;
+			cell.textField.keyboardType = UIKeyboardTypeDefault;
+			cell.textField.secureTextEntry = YES;
+			cell.textEditedSelector = @selector(setPasswordFromCell:);
+			return cell;
+		}
+	} else {
+		cell.textLabel.text = @"Login";
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
+	}
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if (section == kLoginFieldSection) {
+		return @"Please login to continue:";
+	} else {
+		return nil;
+	}
+
+}
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
+
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
+
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+
+#pragma mark -
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ([indexPath section] == kLoginButtonSection) {	
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		[self login];
+	}
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -87,10 +214,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-	self.loggingInStatusView = nil;
-	self.loginFieldsView = nil;
-	self.usernameField = nil;
-	self.passwordField = nil;
+	self.username = nil;
+	self.password = nil;
 	self.dgs = nil;
 }
 

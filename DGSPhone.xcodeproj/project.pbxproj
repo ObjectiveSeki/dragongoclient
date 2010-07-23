@@ -24,24 +24,12 @@
 		DA02D15B11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
 		DA02D15F11D99E8B00A9D887 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02D15E11D99E8B00A9D887 /* TableCells.xib */; };
 		DA02D16011D99E8B00A9D887 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02D15E11D99E8B00A9D887 /* TableCells.xib */; };
-		DA084DD011B5F4F100150EDC /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA38B1F411B59EBD00112AA4 /* MainWindow.xib */; };
-		DA084DD311B5F4F100150EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		DA084DD411B5F4F100150EDC /* DGSPhoneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */; };
-		DA084DD511B5F4F100150EDC /* LoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */; };
-		DA084DD811B5F4F100150EDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		DA084DD911B5F4F100150EDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		DA084DDA11B5F4F100150EDC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		DA137D6011BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
-		DA32E1AB11B5FF0000B6CB05 /* DGSPhoneTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */; };
-		DA37D90811BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
-		DA37D90911BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D90C11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90D11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
-		DA37D9C211BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA37D9C311BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA37D9C411BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
@@ -56,9 +44,6 @@
 		DA4176CA11B9FE5A00B3050E /* GtpEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176BA11B9FE5A00B3050E /* GtpEngine.cpp */; };
 		DA4176CB11B9FE5A00B3050E /* GtpInputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176BC11B9FE5A00B3050E /* GtpInputStream.cpp */; };
 		DA4176CC11B9FE5A00B3050E /* GtpOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176BE11B9FE5A00B3050E /* GtpOutputStream.cpp */; };
-		DA4176D011B9FE5A00B3050E /* GtpEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176BA11B9FE5A00B3050E /* GtpEngine.cpp */; };
-		DA4176D111B9FE5A00B3050E /* GtpInputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176BC11B9FE5A00B3050E /* GtpInputStream.cpp */; };
-		DA4176D211B9FE5A00B3050E /* GtpOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176BE11B9FE5A00B3050E /* GtpOutputStream.cpp */; };
 		DA41777611B9FE6500B3050E /* SgBoardConst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176DC11B9FE6500B3050E /* SgBoardConst.cpp */; };
 		DA41777711B9FE6500B3050E /* SgCmdLineOpt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E011B9FE6500B3050E /* SgCmdLineOpt.cpp */; };
 		DA41777811B9FE6500B3050E /* SgConnCompIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E211B9FE6500B3050E /* SgConnCompIterator.cpp */; };
@@ -151,54 +136,7 @@
 		DA4177FA11B9FE6500B3050E /* SgUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774311B9FE6500B3050E /* SgUtil.cpp */; };
 		DA4177FB11B9FE6500B3050E /* SgVectorUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774611B9FE6500B3050E /* SgVectorUtility.cpp */; };
 		DA4177FC11B9FE6500B3050E /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774811B9FE6500B3050E /* SgWrite.cpp */; };
-		DA41782811B9FE6500B3050E /* SgBoardConst.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176DC11B9FE6500B3050E /* SgBoardConst.cpp */; };
-		DA41782911B9FE6500B3050E /* SgCmdLineOpt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E011B9FE6500B3050E /* SgCmdLineOpt.cpp */; };
-		DA41782A11B9FE6500B3050E /* SgConnCompIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E211B9FE6500B3050E /* SgConnCompIterator.cpp */; };
-		DA41782B11B9FE6500B3050E /* SgDebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E411B9FE6500B3050E /* SgDebug.cpp */; };
-		DA41782C11B9FE6500B3050E /* SgEvaluatedMoves.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E711B9FE6500B3050E /* SgEvaluatedMoves.cpp */; };
-		DA41782D11B9FE6500B3050E /* SgException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176E911B9FE6500B3050E /* SgException.cpp */; };
-		DA41782E11B9FE6500B3050E /* SgFastLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176EB11B9FE6500B3050E /* SgFastLog.cpp */; };
-		DA41782F11B9FE6500B3050E /* SgGameReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176ED11B9FE6500B3050E /* SgGameReader.cpp */; };
-		DA41783011B9FE6500B3050E /* SgGameWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176EF11B9FE6500B3050E /* SgGameWriter.cpp */; };
-		DA41783111B9FE6500B3050E /* SgGtpClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176F111B9FE6500B3050E /* SgGtpClient.cpp */; };
-		DA41783211B9FE6500B3050E /* SgGtpCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176F311B9FE6500B3050E /* SgGtpCommands.cpp */; };
-		DA41783311B9FE6500B3050E /* SgGtpUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176F511B9FE6500B3050E /* SgGtpUtil.cpp */; };
-		DA41783411B9FE6500B3050E /* SgIncrementalStack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176F911B9FE6500B3050E /* SgIncrementalStack.cpp */; };
-		DA41783511B9FE6500B3050E /* SgInit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176FB11B9FE6500B3050E /* SgInit.cpp */; };
-		DA41783611B9FE6500B3050E /* SgMemCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA4176FF11B9FE6500B3050E /* SgMemCheck.cpp */; };
-		DA41783711B9FE6500B3050E /* SgMiaiMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770111B9FE6500B3050E /* SgMiaiMap.cpp */; };
-		DA41783811B9FE6500B3050E /* SgMiaiStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770311B9FE6500B3050E /* SgMiaiStrategy.cpp */; };
-		DA41783911B9FE6500B3050E /* SgMpiSynchronizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770611B9FE6500B3050E /* SgMpiSynchronizer.cpp */; };
-		DA41783A11B9FE6500B3050E /* SgNbIterator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770811B9FE6500B3050E /* SgNbIterator.cpp */; };
-		DA41783B11B9FE6500B3050E /* SgNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770A11B9FE6500B3050E /* SgNode.cpp */; };
-		DA41783C11B9FE6500B3050E /* SgNodeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770C11B9FE6500B3050E /* SgNodeUtil.cpp */; };
-		DA41783D11B9FE6500B3050E /* SgPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41770E11B9FE6500B3050E /* SgPoint.cpp */; };
-		DA41783E11B9FE6500B3050E /* SgPointSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771211B9FE6500B3050E /* SgPointSet.cpp */; };
-		DA41783F11B9FE6500B3050E /* SgPointSetUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771411B9FE6500B3050E /* SgPointSetUtil.cpp */; };
-		DA41784011B9FE6500B3050E /* SgProbCut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771611B9FE6500B3050E /* SgProbCut.cpp */; };
-		DA41784111B9FE6500B3050E /* SgProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771811B9FE6500B3050E /* SgProcess.cpp */; };
-		DA41784211B9FE6500B3050E /* SgProp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771A11B9FE6500B3050E /* SgProp.cpp */; };
-		DA41784311B9FE6500B3050E /* SgRandom.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771C11B9FE6500B3050E /* SgRandom.cpp */; };
-		DA41784411B9FE6500B3050E /* SgRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41771E11B9FE6500B3050E /* SgRect.cpp */; };
-		DA41784511B9FE6500B3050E /* SgSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41772111B9FE6500B3050E /* SgSearch.cpp */; };
-		DA41784611B9FE6500B3050E /* SgSearchControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41772311B9FE6500B3050E /* SgSearchControl.cpp */; };
-		DA41784711B9FE6500B3050E /* SgSearchStatistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41772511B9FE6500B3050E /* SgSearchStatistics.cpp */; };
-		DA41784811B9FE6500B3050E /* SgSearchTracer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41772711B9FE6500B3050E /* SgSearchTracer.cpp */; };
-		DA41784911B9FE6500B3050E /* SgSearchValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41772911B9FE6500B3050E /* SgSearchValue.cpp */; };
-		DA41784A11B9FE6500B3050E /* SgStrategy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773011B9FE6500B3050E /* SgStrategy.cpp */; };
-		DA41784B11B9FE6500B3050E /* SgStringUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773211B9FE6500B3050E /* SgStringUtil.cpp */; };
-		DA41784C11B9FE6500B3050E /* SgSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773411B9FE6500B3050E /* SgSystem.cpp */; };
-		DA41784D11B9FE6500B3050E /* SgTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773611B9FE6500B3050E /* SgTime.cpp */; };
-		DA41784E11B9FE6500B3050E /* SgTimeControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773811B9FE6500B3050E /* SgTimeControl.cpp */; };
-		DA41784F11B9FE6500B3050E /* SgTimeRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773B11B9FE6500B3050E /* SgTimeRecord.cpp */; };
-		DA41785011B9FE6500B3050E /* SgUctSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773D11B9FE6500B3050E /* SgUctSearch.cpp */; };
-		DA41785111B9FE6500B3050E /* SgUctTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41773F11B9FE6500B3050E /* SgUctTree.cpp */; };
-		DA41785211B9FE6500B3050E /* SgUctTreeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774111B9FE6500B3050E /* SgUctTreeUtil.cpp */; };
-		DA41785311B9FE6500B3050E /* SgUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774311B9FE6500B3050E /* SgUtil.cpp */; };
-		DA41785411B9FE6500B3050E /* SgVectorUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774611B9FE6500B3050E /* SgVectorUtility.cpp */; };
-		DA41785511B9FE6500B3050E /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA41774811B9FE6500B3050E /* SgWrite.cpp */; };
 		DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
-		DA419A6211BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419B6A11BA168A00B3050E /* GoBensonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0411BA168900B3050E /* GoBensonSolver.cpp */; };
 		DA419B6B11BA168A00B3050E /* GoBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0611BA168900B3050E /* GoBlock.cpp */; };
@@ -239,45 +177,6 @@
 		DA419B8E11BA168A00B3050E /* GoStaticSafetySolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5011BA168A00B3050E /* GoStaticSafetySolver.cpp */; };
 		DA419B8F11BA168A00B3050E /* GoTimeControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5211BA168A00B3050E /* GoTimeControl.cpp */; };
 		DA419B9011BA168A00B3050E /* GoUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5411BA168A00B3050E /* GoUtil.cpp */; };
-		DA419BA411BA168A00B3050E /* GoBensonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0411BA168900B3050E /* GoBensonSolver.cpp */; };
-		DA419BA511BA168A00B3050E /* GoBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0611BA168900B3050E /* GoBlock.cpp */; };
-		DA419BA611BA168A00B3050E /* GoBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0811BA168900B3050E /* GoBoard.cpp */; };
-		DA419BA711BA168A00B3050E /* GoBoardCheckPerformance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0A11BA168900B3050E /* GoBoardCheckPerformance.cpp */; };
-		DA419BA811BA168A00B3050E /* GoBoardHistory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0C11BA168900B3050E /* GoBoardHistory.cpp */; };
-		DA419BA911BA168A00B3050E /* GoBoardRestorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0E11BA168900B3050E /* GoBoardRestorer.cpp */; };
-		DA419BAA11BA168A00B3050E /* GoBoardSynchronizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1011BA168900B3050E /* GoBoardSynchronizer.cpp */; };
-		DA419BAB11BA168A00B3050E /* GoBoardUpdater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1211BA168900B3050E /* GoBoardUpdater.cpp */; };
-		DA419BAC11BA168A00B3050E /* GoBoardUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1411BA168900B3050E /* GoBoardUtil.cpp */; };
-		DA419BAD11BA168A00B3050E /* GoBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1611BA168900B3050E /* GoBook.cpp */; };
-		DA419BAE11BA168A00B3050E /* GoChain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1811BA168900B3050E /* GoChain.cpp */; };
-		DA419BAF11BA168A00B3050E /* GoEyeCount.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1A11BA168900B3050E /* GoEyeCount.cpp */; };
-		DA419BB011BA168A00B3050E /* GoEyeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1C11BA168900B3050E /* GoEyeUtil.cpp */; };
-		DA419BB111BA168A00B3050E /* GoGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B1E11BA168900B3050E /* GoGame.cpp */; };
-		DA419BB211BA168A00B3050E /* GoGtpCommandUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2011BA168900B3050E /* GoGtpCommandUtil.cpp */; };
-		DA419BB311BA168A00B3050E /* GoGtpEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2211BA168900B3050E /* GoGtpEngine.cpp */; };
-		DA419BB411BA168A00B3050E /* GoGtpExtraCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2411BA168900B3050E /* GoGtpExtraCommands.cpp */; };
-		DA419BB511BA168A00B3050E /* GoGtpTimeSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2611BA168900B3050E /* GoGtpTimeSettings.cpp */; };
-		DA419BB611BA168A00B3050E /* GoInfluence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2811BA168900B3050E /* GoInfluence.cpp */; };
-		DA419BB711BA168A00B3050E /* GoInit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2A11BA168900B3050E /* GoInit.cpp */; };
-		DA419BB811BA168A00B3050E /* GoKomi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2C11BA168900B3050E /* GoKomi.cpp */; };
-		DA419BB911BA168A00B3050E /* GoLadder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B2E11BA168900B3050E /* GoLadder.cpp */; };
-		DA419BBA11BA168A00B3050E /* GoMotive.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3111BA168900B3050E /* GoMotive.cpp */; };
-		DA419BBB11BA168A00B3050E /* GoNodeUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3411BA168900B3050E /* GoNodeUtil.cpp */; };
-		DA419BBC11BA168A00B3050E /* GoPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3611BA168900B3050E /* GoPlayer.cpp */; };
-		DA419BBD11BA168A00B3050E /* GoPlayerMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3811BA168900B3050E /* GoPlayerMove.cpp */; };
-		DA419BBE11BA168A00B3050E /* GoRegion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3A11BA168900B3050E /* GoRegion.cpp */; };
-		DA419BBF11BA168A00B3050E /* GoRegionBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3C11BA168900B3050E /* GoRegionBoard.cpp */; };
-		DA419BC011BA168A00B3050E /* GoRegionUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B3E11BA168900B3050E /* GoRegionUtil.cpp */; };
-		DA419BC111BA168A00B3050E /* GoRules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4011BA168900B3050E /* GoRules.cpp */; };
-		DA419BC211BA168A00B3050E /* GoSafetyCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4211BA168900B3050E /* GoSafetyCommands.cpp */; };
-		DA419BC311BA168A00B3050E /* GoSafetySolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4411BA168900B3050E /* GoSafetySolver.cpp */; };
-		DA419BC411BA168A00B3050E /* GoSafetyUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4611BA168A00B3050E /* GoSafetyUtil.cpp */; };
-		DA419BC511BA168A00B3050E /* GoSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4811BA168A00B3050E /* GoSearch.cpp */; };
-		DA419BC611BA168A00B3050E /* GoSetupUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4B11BA168A00B3050E /* GoSetupUtil.cpp */; };
-		DA419BC711BA168A00B3050E /* GoStaticLadder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B4E11BA168A00B3050E /* GoStaticLadder.cpp */; };
-		DA419BC811BA168A00B3050E /* GoStaticSafetySolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5011BA168A00B3050E /* GoStaticSafetySolver.cpp */; };
-		DA419BC911BA168A00B3050E /* GoTimeControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5211BA168A00B3050E /* GoTimeControl.cpp */; };
-		DA419BCA11BA168A00B3050E /* GoUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5411BA168A00B3050E /* GoUtil.cpp */; };
 		DA419BDE11BA168A00B3050E /* GoBensonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0411BA168900B3050E /* GoBensonSolver.cpp */; };
 		DA419BDF11BA168A00B3050E /* GoBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0611BA168900B3050E /* GoBlock.cpp */; };
 		DA419BE011BA168A00B3050E /* GoBoard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B0811BA168900B3050E /* GoBoard.cpp */; };
@@ -318,8 +217,6 @@
 		DA419C0311BA168A00B3050E /* GoTimeControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5211BA168A00B3050E /* GoTimeControl.cpp */; };
 		DA419C0411BA168A00B3050E /* GoUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA419B5411BA168A00B3050E /* GoUtil.cpp */; };
 		DA419D4711BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
-		DA419D4811BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
-		DA419D4911BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA419D4B11BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
@@ -329,7 +226,6 @@
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7CA4A811B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
-		DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA8366D011DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
@@ -340,20 +236,12 @@
 		DAC8689611B7477600A4DA7A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688C11B7477600A4DA7A /* ASINetworkQueue.m */; };
 		DAC8689711B7477600A4DA7A /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688E11B7477600A4DA7A /* ASINSStringAdditions.m */; };
 		DAC8689811B7477600A4DA7A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8689111B7477600A4DA7A /* Reachability.m */; };
-		DAC868A011B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
-		DAC868A111B7477600A4DA7A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
-		DAC868A211B7477600A4DA7A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
-		DAC868A311B7477600A4DA7A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688A11B7477600A4DA7A /* ASIInputStream.m */; };
-		DAC868A411B7477600A4DA7A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688C11B7477600A4DA7A /* ASINetworkQueue.m */; };
-		DAC868A511B7477600A4DA7A /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688E11B7477600A4DA7A /* ASINSStringAdditions.m */; };
-		DAC868A611B7477600A4DA7A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8689111B7477600A4DA7A /* Reachability.m */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
 		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
-		DADD18D411BC72730038F8BC /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
-		DADD18D511BC72730038F8BC /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
-		DADD18D611BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
+		DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
+		DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DADD18D711BC72730038F8BC /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
 		DADD18D811BC72730038F8BC /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
 		DADD18D911BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
@@ -362,10 +250,8 @@
 		DADD18DC11BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
-		DAEA518211B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
-		DAEA519C11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
 		DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
 		DAEA520711B890B800F4CCB3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */; };
 		DAEA525811B895A100F4CCB3 /* status.html in Resources */ = {isa = PBXBuildFile; fileRef = DAEA525711B895A100F4CCB3 /* status.html */; };
@@ -395,17 +281,6 @@
 		DAEA53E011B8B61000F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */; };
 		DAEA53E111B8B61000F4CCB3 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */; };
 		DAEA53E211B8B61000F4CCB3 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA537111B8AB6200F4CCB3 /* CTidy.m */; };
-		DAEA53E311B8B61100F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536C11B8AB6200F4CCB3 /* CXMLNode_XPathExtensions.m */; };
-		DAEA53E411B8B61100F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536A11B8AB6200F4CCB3 /* CXMLNode_PrivateExtensions.m */; };
-		DAEA53E511B8B61100F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535E11B8AB6200F4CCB3 /* CXMLNode_CreationExtensions.m */; };
-		DAEA53E611B8B61100F4CCB3 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536E11B8AB6200F4CCB3 /* CXMLNode.m */; };
-		DAEA53E711B8B61100F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536611B8AB6200F4CCB3 /* CXMLElement_ElementTreeExtensions.m */; };
-		DAEA53E811B8B61100F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536411B8AB6200F4CCB3 /* CXMLElement_CreationExtensions.m */; };
-		DAEA53E911B8B61100F4CCB3 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536811B8AB6200F4CCB3 /* CXMLElement.m */; };
-		DAEA53EA11B8B61100F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536011B8AB6200F4CCB3 /* CXMLDocument_PrivateExtensions.m */; };
-		DAEA53EB11B8B61100F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA535C11B8AB6200F4CCB3 /* CXMLDocument_CreationExtensions.m */; };
-		DAEA53EC11B8B61100F4CCB3 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA536211B8AB6200F4CCB3 /* CXMLDocument.m */; };
-		DAEA53ED11B8B61100F4CCB3 /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA537111B8AB6200F4CCB3 /* CTidy.m */; };
 		DAEA552D11B8BFB900F4CCB3 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FD11B8BFB800F4CCB3 /* access.c */; };
 		DAEA552E11B8BFB900F4CCB3 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FF11B8BFB800F4CCB3 /* alloc.c */; };
 		DAEA552F11B8BFB900F4CCB3 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550011B8BFB800F4CCB3 /* attrask.c */; };
@@ -458,43 +333,13 @@
 		DAEA555E11B8BFB900F4CCB3 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552611B8BFB900F4CCB3 /* tmbstr.c */; };
 		DAEA555F11B8BFB900F4CCB3 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552811B8BFB900F4CCB3 /* utf8.c */; };
 		DAEA556011B8BFB900F4CCB3 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552B11B8BFB900F4CCB3 /* win32tc.c */; };
-		DAEA556111B8BFB900F4CCB3 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FD11B8BFB800F4CCB3 /* access.c */; };
-		DAEA556211B8BFB900F4CCB3 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA54FF11B8BFB800F4CCB3 /* alloc.c */; };
-		DAEA556311B8BFB900F4CCB3 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550011B8BFB800F4CCB3 /* attrask.c */; };
-		DAEA556411B8BFB900F4CCB3 /* attrdict.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550111B8BFB800F4CCB3 /* attrdict.c */; };
-		DAEA556511B8BFB900F4CCB3 /* attrget.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550311B8BFB800F4CCB3 /* attrget.c */; };
-		DAEA556611B8BFB900F4CCB3 /* attrs.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550411B8BFB800F4CCB3 /* attrs.c */; };
-		DAEA556711B8BFB900F4CCB3 /* buffio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550611B8BFB900F4CCB3 /* buffio.c */; };
-		DAEA556811B8BFB900F4CCB3 /* charsets.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550711B8BFB900F4CCB3 /* charsets.c */; };
-		DAEA556911B8BFB900F4CCB3 /* clean.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550911B8BFB900F4CCB3 /* clean.c */; };
-		DAEA556A11B8BFB900F4CCB3 /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550B11B8BFB900F4CCB3 /* config.c */; };
-		DAEA556B11B8BFB900F4CCB3 /* entities.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550D11B8BFB900F4CCB3 /* entities.c */; };
-		DAEA556C11B8BFB900F4CCB3 /* fileio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA550F11B8BFB900F4CCB3 /* fileio.c */; };
-		DAEA556D11B8BFB900F4CCB3 /* iconvtc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551211B8BFB900F4CCB3 /* iconvtc.c */; };
-		DAEA556E11B8BFB900F4CCB3 /* istack.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551411B8BFB900F4CCB3 /* istack.c */; };
-		DAEA556F11B8BFB900F4CCB3 /* lexer.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551511B8BFB900F4CCB3 /* lexer.c */; };
-		DAEA557011B8BFB900F4CCB3 /* localize.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551711B8BFB900F4CCB3 /* localize.c */; };
-		DAEA557111B8BFB900F4CCB3 /* mappedio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551811B8BFB900F4CCB3 /* mappedio.c */; };
-		DAEA557211B8BFB900F4CCB3 /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551B11B8BFB900F4CCB3 /* parser.c */; };
-		DAEA557311B8BFB900F4CCB3 /* pprint.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551D11B8BFB900F4CCB3 /* pprint.c */; };
-		DAEA557411B8BFB900F4CCB3 /* streamio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA551F11B8BFB900F4CCB3 /* streamio.c */; };
-		DAEA557511B8BFB900F4CCB3 /* tagask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552111B8BFB900F4CCB3 /* tagask.c */; };
-		DAEA557611B8BFB900F4CCB3 /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552211B8BFB900F4CCB3 /* tags.c */; };
-		DAEA557711B8BFB900F4CCB3 /* tidylib.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552511B8BFB900F4CCB3 /* tidylib.c */; };
-		DAEA557811B8BFB900F4CCB3 /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552611B8BFB900F4CCB3 /* tmbstr.c */; };
-		DAEA557911B8BFB900F4CCB3 /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552811B8BFB900F4CCB3 /* utf8.c */; };
-		DAEA557A11B8BFB900F4CCB3 /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAEA552B11B8BFB900F4CCB3 /* win32tc.c */; };
 		DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
 		DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
 		DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
 		DAECBE2F11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
-		DAF9102811BB48A800FE7B96 /* GoBoardView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.mm */; };
 		DAF9102911BB48A800FE7B96 /* GoBoardView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.mm */; };
-		DAF9105E11BB5BBD00FE7B96 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */; };
 		DAF9105F11BB5BBD00FE7B96 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */; };
-		DAF9108D11BB5F0700FE7B96 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF9108C11BB5F0700FE7B96 /* GameView.xib */; };
 		DAF9108E11BB5F0700FE7B96 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF9108C11BB5F0700FE7B96 /* GameView.xib */; };
-		DAF911F411BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAF911F611BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 /* End PBXBuildFile section */
@@ -520,9 +365,7 @@
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		DA02D15E11D99E8B00A9D887 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DA084DE011B5F4F100150EDC /* DGSPhoneTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSPhoneTesting-Info.plist"; sourceTree = "<group>"; };
-		DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSPhoneTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
-		DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGSPhoneTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		DA37D9C111BF6E5100BC1445 /* Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Board.png; sourceTree = "<group>"; };
@@ -771,6 +614,8 @@
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DADD18D111BC72730038F8BC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = vendor/boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		DADD18D211BC72730038F8BC /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = vendor/boost/lib/libboost_system.a; sourceTree = "<group>"; };
 		DADD18D311BC72730038F8BC /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = vendor/boost/lib/libboost_thread.a; sourceTree = "<group>"; };
@@ -898,26 +743,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA084DD711B5F4F100150EDC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA084DD811B5F4F100150EDC /* Foundation.framework in Frameworks */,
-				DA084DD911B5F4F100150EDC /* UIKit.framework in Frameworks */,
-				DA084DDA11B5F4F100150EDC /* CoreGraphics.framework in Frameworks */,
-				DADD18D411BC72730038F8BC /* libboost_filesystem.a in Frameworks */,
-				DADD18D511BC72730038F8BC /* libboost_system.a in Frameworks */,
-				DADD18D611BC72730038F8BC /* libboost_thread.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA084DE411B5F52900150EDC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DA71CA8111B5E97F008696AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -953,8 +778,6 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* DGS.app */,
 				DA71CA8411B5E97F008696AC /* LogicTests.octest */,
-				DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */,
-				DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1078,6 +901,8 @@
 				DA419A6011BA0C0600B3050E /* FuegoBoard.mm */,
 				DAF911F211BB796900FE7B96 /* Move.h */,
 				DAF911F311BB796900FE7B96 /* Move.m */,
+				DACAEC4911F95FCD000E3C5D /* Account.h */,
+				DACAEC4A11F95FCD000E3C5D /* Account.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1539,41 +1364,6 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* DGS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA084DCE11B5F4F100150EDC /* DGSPhoneTesting */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA084DDB11B5F4F100150EDC /* Build configuration list for PBXNativeTarget "DGSPhoneTesting" */;
-			buildPhases = (
-				DA084DCF11B5F4F100150EDC /* Resources */,
-				DA084DD211B5F4F100150EDC /* Sources */,
-				DA084DD711B5F4F100150EDC /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DGSPhoneTesting;
-			productName = DGSPhone;
-			productReference = DA084E0A11B5F61C00150EDC /* DGSPhoneTesting.app */;
-			productType = "com.apple.product-type.application";
-		};
-		DA084DE611B5F52900150EDC /* DGSPhoneTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA084DF811B5F56D00150EDC /* Build configuration list for PBXNativeTarget "DGSPhoneTests" */;
-			buildPhases = (
-				DA084DE211B5F52900150EDC /* Resources */,
-				DA084DE311B5F52900150EDC /* Sources */,
-				DA084DE411B5F52900150EDC /* Frameworks */,
-				DA084DE511B5F52900150EDC /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DGSPhoneTests;
-			productName = DGSPhoneTests;
-			productReference = DA32E12611B5FB1100B6CB05 /* DGSPhoneTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 		DA71CA8311B5E97F008696AC /* LogicTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA71CA9611B5E9A0008696AC /* Build configuration list for PBXNativeTarget "LogicTests" */;
@@ -1600,14 +1390,15 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* DGS */,
 				DA71CA8311B5E97F008696AC /* LogicTests */,
-				DA084DCE11B5F4F100150EDC /* DGSPhoneTesting */,
-				DA084DE611B5F52900150EDC /* DGSPhoneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1634,29 +1425,6 @@
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 				DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */,
 				DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA084DCF11B5F4F100150EDC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA32E1AB11B5FF0000B6CB05 /* DGSPhoneTests.octest in Resources */,
-				DA084DD011B5F4F100150EDC /* MainWindow.xib in Resources */,
-				DA7CA4AA11B761E8004CD524 /* LoginView.xib in Resources */,
-				DA419D4911BB2DA400B3050E /* CurrentGamesView.xib in Resources */,
-				DAF9108D11BB5F0700FE7B96 /* GameView.xib in Resources */,
-				DA137D6011BE13CF00225C12 /* AppIcon.png in Resources */,
-				DA37D90811BF56DA00BC1445 /* Black.png in Resources */,
-				DA37D90911BF56DA00BC1445 /* White.png in Resources */,
-				DA37D9C211BF6E5100BC1445 /* Board.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA084DE211B5F52900150EDC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1687,19 +1455,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DA084DE511B5F52900150EDC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		DA71CA8211B5E97F008696AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1867,162 +1622,7 @@
 				DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */,
 				DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */,
 				DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA084DD211B5F4F100150EDC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA084DD311B5F4F100150EDC /* main.m in Sources */,
-				DA084DD411B5F4F100150EDC /* DGSPhoneAppDelegate.mm in Sources */,
-				DA084DD511B5F4F100150EDC /* LoginViewController.mm in Sources */,
-				DAC868A011B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */,
-				DAC868A111B7477600A4DA7A /* ASIFormDataRequest.m in Sources */,
-				DAC868A211B7477600A4DA7A /* ASIHTTPRequest.m in Sources */,
-				DAC868A311B7477600A4DA7A /* ASIInputStream.m in Sources */,
-				DAC868A411B7477600A4DA7A /* ASINetworkQueue.m in Sources */,
-				DAC868A511B7477600A4DA7A /* ASINSStringAdditions.m in Sources */,
-				DAC868A611B7477600A4DA7A /* Reachability.m in Sources */,
-				DAEA518211B88A1100F4CCB3 /* DGS.m in Sources */,
-				DAEA519C11B88D8300F4CCB3 /* Game.m in Sources */,
-				DAEA53E311B8B61100F4CCB3 /* CXMLNode_XPathExtensions.m in Sources */,
-				DAEA53E411B8B61100F4CCB3 /* CXMLNode_PrivateExtensions.m in Sources */,
-				DAEA53E511B8B61100F4CCB3 /* CXMLNode_CreationExtensions.m in Sources */,
-				DAEA53E611B8B61100F4CCB3 /* CXMLNode.m in Sources */,
-				DAEA53E711B8B61100F4CCB3 /* CXMLElement_ElementTreeExtensions.m in Sources */,
-				DAEA53E811B8B61100F4CCB3 /* CXMLElement_CreationExtensions.m in Sources */,
-				DAEA53E911B8B61100F4CCB3 /* CXMLElement.m in Sources */,
-				DAEA53EA11B8B61100F4CCB3 /* CXMLDocument_PrivateExtensions.m in Sources */,
-				DAEA53EB11B8B61100F4CCB3 /* CXMLDocument_CreationExtensions.m in Sources */,
-				DAEA53EC11B8B61100F4CCB3 /* CXMLDocument.m in Sources */,
-				DAEA53ED11B8B61100F4CCB3 /* CTidy.m in Sources */,
-				DAEA556111B8BFB900F4CCB3 /* access.c in Sources */,
-				DAEA556211B8BFB900F4CCB3 /* alloc.c in Sources */,
-				DAEA556311B8BFB900F4CCB3 /* attrask.c in Sources */,
-				DAEA556411B8BFB900F4CCB3 /* attrdict.c in Sources */,
-				DAEA556511B8BFB900F4CCB3 /* attrget.c in Sources */,
-				DAEA556611B8BFB900F4CCB3 /* attrs.c in Sources */,
-				DAEA556711B8BFB900F4CCB3 /* buffio.c in Sources */,
-				DAEA556811B8BFB900F4CCB3 /* charsets.c in Sources */,
-				DAEA556911B8BFB900F4CCB3 /* clean.c in Sources */,
-				DAEA556A11B8BFB900F4CCB3 /* config.c in Sources */,
-				DAEA556B11B8BFB900F4CCB3 /* entities.c in Sources */,
-				DAEA556C11B8BFB900F4CCB3 /* fileio.c in Sources */,
-				DAEA556D11B8BFB900F4CCB3 /* iconvtc.c in Sources */,
-				DAEA556E11B8BFB900F4CCB3 /* istack.c in Sources */,
-				DAEA556F11B8BFB900F4CCB3 /* lexer.c in Sources */,
-				DAEA557011B8BFB900F4CCB3 /* localize.c in Sources */,
-				DAEA557111B8BFB900F4CCB3 /* mappedio.c in Sources */,
-				DAEA557211B8BFB900F4CCB3 /* parser.c in Sources */,
-				DAEA557311B8BFB900F4CCB3 /* pprint.c in Sources */,
-				DAEA557411B8BFB900F4CCB3 /* streamio.c in Sources */,
-				DAEA557511B8BFB900F4CCB3 /* tagask.c in Sources */,
-				DAEA557611B8BFB900F4CCB3 /* tags.c in Sources */,
-				DAEA557711B8BFB900F4CCB3 /* tidylib.c in Sources */,
-				DAEA557811B8BFB900F4CCB3 /* tmbstr.c in Sources */,
-				DAEA557911B8BFB900F4CCB3 /* utf8.c in Sources */,
-				DAEA557A11B8BFB900F4CCB3 /* win32tc.c in Sources */,
-				DA4176D011B9FE5A00B3050E /* GtpEngine.cpp in Sources */,
-				DA4176D111B9FE5A00B3050E /* GtpInputStream.cpp in Sources */,
-				DA4176D211B9FE5A00B3050E /* GtpOutputStream.cpp in Sources */,
-				DA41782811B9FE6500B3050E /* SgBoardConst.cpp in Sources */,
-				DA41782911B9FE6500B3050E /* SgCmdLineOpt.cpp in Sources */,
-				DA41782A11B9FE6500B3050E /* SgConnCompIterator.cpp in Sources */,
-				DA41782B11B9FE6500B3050E /* SgDebug.cpp in Sources */,
-				DA41782C11B9FE6500B3050E /* SgEvaluatedMoves.cpp in Sources */,
-				DA41782D11B9FE6500B3050E /* SgException.cpp in Sources */,
-				DA41782E11B9FE6500B3050E /* SgFastLog.cpp in Sources */,
-				DA41782F11B9FE6500B3050E /* SgGameReader.cpp in Sources */,
-				DA41783011B9FE6500B3050E /* SgGameWriter.cpp in Sources */,
-				DA41783111B9FE6500B3050E /* SgGtpClient.cpp in Sources */,
-				DA41783211B9FE6500B3050E /* SgGtpCommands.cpp in Sources */,
-				DA41783311B9FE6500B3050E /* SgGtpUtil.cpp in Sources */,
-				DA41783411B9FE6500B3050E /* SgIncrementalStack.cpp in Sources */,
-				DA41783511B9FE6500B3050E /* SgInit.cpp in Sources */,
-				DA41783611B9FE6500B3050E /* SgMemCheck.cpp in Sources */,
-				DA41783711B9FE6500B3050E /* SgMiaiMap.cpp in Sources */,
-				DA41783811B9FE6500B3050E /* SgMiaiStrategy.cpp in Sources */,
-				DA41783911B9FE6500B3050E /* SgMpiSynchronizer.cpp in Sources */,
-				DA41783A11B9FE6500B3050E /* SgNbIterator.cpp in Sources */,
-				DA41783B11B9FE6500B3050E /* SgNode.cpp in Sources */,
-				DA41783C11B9FE6500B3050E /* SgNodeUtil.cpp in Sources */,
-				DA41783D11B9FE6500B3050E /* SgPoint.cpp in Sources */,
-				DA41783E11B9FE6500B3050E /* SgPointSet.cpp in Sources */,
-				DA41783F11B9FE6500B3050E /* SgPointSetUtil.cpp in Sources */,
-				DA41784011B9FE6500B3050E /* SgProbCut.cpp in Sources */,
-				DA41784111B9FE6500B3050E /* SgProcess.cpp in Sources */,
-				DA41784211B9FE6500B3050E /* SgProp.cpp in Sources */,
-				DA41784311B9FE6500B3050E /* SgRandom.cpp in Sources */,
-				DA41784411B9FE6500B3050E /* SgRect.cpp in Sources */,
-				DA41784511B9FE6500B3050E /* SgSearch.cpp in Sources */,
-				DA41784611B9FE6500B3050E /* SgSearchControl.cpp in Sources */,
-				DA41784711B9FE6500B3050E /* SgSearchStatistics.cpp in Sources */,
-				DA41784811B9FE6500B3050E /* SgSearchTracer.cpp in Sources */,
-				DA41784911B9FE6500B3050E /* SgSearchValue.cpp in Sources */,
-				DA41784A11B9FE6500B3050E /* SgStrategy.cpp in Sources */,
-				DA41784B11B9FE6500B3050E /* SgStringUtil.cpp in Sources */,
-				DA41784C11B9FE6500B3050E /* SgSystem.cpp in Sources */,
-				DA41784D11B9FE6500B3050E /* SgTime.cpp in Sources */,
-				DA41784E11B9FE6500B3050E /* SgTimeControl.cpp in Sources */,
-				DA41784F11B9FE6500B3050E /* SgTimeRecord.cpp in Sources */,
-				DA41785011B9FE6500B3050E /* SgUctSearch.cpp in Sources */,
-				DA41785111B9FE6500B3050E /* SgUctTree.cpp in Sources */,
-				DA41785211B9FE6500B3050E /* SgUctTreeUtil.cpp in Sources */,
-				DA41785311B9FE6500B3050E /* SgUtil.cpp in Sources */,
-				DA41785411B9FE6500B3050E /* SgVectorUtility.cpp in Sources */,
-				DA41785511B9FE6500B3050E /* SgWrite.cpp in Sources */,
-				DA419A6211BA0C0600B3050E /* FuegoBoard.mm in Sources */,
-				DA419BA411BA168A00B3050E /* GoBensonSolver.cpp in Sources */,
-				DA419BA511BA168A00B3050E /* GoBlock.cpp in Sources */,
-				DA419BA611BA168A00B3050E /* GoBoard.cpp in Sources */,
-				DA419BA711BA168A00B3050E /* GoBoardCheckPerformance.cpp in Sources */,
-				DA419BA811BA168A00B3050E /* GoBoardHistory.cpp in Sources */,
-				DA419BA911BA168A00B3050E /* GoBoardRestorer.cpp in Sources */,
-				DA419BAA11BA168A00B3050E /* GoBoardSynchronizer.cpp in Sources */,
-				DA419BAB11BA168A00B3050E /* GoBoardUpdater.cpp in Sources */,
-				DA419BAC11BA168A00B3050E /* GoBoardUtil.cpp in Sources */,
-				DA419BAD11BA168A00B3050E /* GoBook.cpp in Sources */,
-				DA419BAE11BA168A00B3050E /* GoChain.cpp in Sources */,
-				DA419BAF11BA168A00B3050E /* GoEyeCount.cpp in Sources */,
-				DA419BB011BA168A00B3050E /* GoEyeUtil.cpp in Sources */,
-				DA419BB111BA168A00B3050E /* GoGame.cpp in Sources */,
-				DA419BB211BA168A00B3050E /* GoGtpCommandUtil.cpp in Sources */,
-				DA419BB311BA168A00B3050E /* GoGtpEngine.cpp in Sources */,
-				DA419BB411BA168A00B3050E /* GoGtpExtraCommands.cpp in Sources */,
-				DA419BB511BA168A00B3050E /* GoGtpTimeSettings.cpp in Sources */,
-				DA419BB611BA168A00B3050E /* GoInfluence.cpp in Sources */,
-				DA419BB711BA168A00B3050E /* GoInit.cpp in Sources */,
-				DA419BB811BA168A00B3050E /* GoKomi.cpp in Sources */,
-				DA419BB911BA168A00B3050E /* GoLadder.cpp in Sources */,
-				DA419BBA11BA168A00B3050E /* GoMotive.cpp in Sources */,
-				DA419BBB11BA168A00B3050E /* GoNodeUtil.cpp in Sources */,
-				DA419BBC11BA168A00B3050E /* GoPlayer.cpp in Sources */,
-				DA419BBD11BA168A00B3050E /* GoPlayerMove.cpp in Sources */,
-				DA419BBE11BA168A00B3050E /* GoRegion.cpp in Sources */,
-				DA419BBF11BA168A00B3050E /* GoRegionBoard.cpp in Sources */,
-				DA419BC011BA168A00B3050E /* GoRegionUtil.cpp in Sources */,
-				DA419BC111BA168A00B3050E /* GoRules.cpp in Sources */,
-				DA419BC211BA168A00B3050E /* GoSafetyCommands.cpp in Sources */,
-				DA419BC311BA168A00B3050E /* GoSafetySolver.cpp in Sources */,
-				DA419BC411BA168A00B3050E /* GoSafetyUtil.cpp in Sources */,
-				DA419BC511BA168A00B3050E /* GoSearch.cpp in Sources */,
-				DA419BC611BA168A00B3050E /* GoSetupUtil.cpp in Sources */,
-				DA419BC711BA168A00B3050E /* GoStaticLadder.cpp in Sources */,
-				DA419BC811BA168A00B3050E /* GoStaticSafetySolver.cpp in Sources */,
-				DA419BC911BA168A00B3050E /* GoTimeControl.cpp in Sources */,
-				DA419BCA11BA168A00B3050E /* GoUtil.cpp in Sources */,
-				DA419D4811BB2DA400B3050E /* CurrentGamesController.mm in Sources */,
-				DAF9102811BB48A800FE7B96 /* GoBoardView.mm in Sources */,
-				DAF9105E11BB5BBD00FE7B96 /* GameViewController.mm in Sources */,
-				DAF911F411BB796900FE7B96 /* Move.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA084DE311B5F52900150EDC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2165,6 +1765,7 @@
 				DA02D14E11D99D7600A9D887 /* TableCellFactory.m in Sources */,
 				DA02D15B11D99E4500A9D887 /* TextCell.m in Sources */,
 				DA8366D011DC3606001A68F9 /* SelectCell.m in Sources */,
+				DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2212,7 +1813,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
-				PRODUCT_NAME = DGSPhone;
+				PRODUCT_NAME = DGS;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2223,6 +1824,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2;
@@ -2237,106 +1839,12 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.0;
-			};
-			name = Release;
-		};
-		DA084DDC11B5F4F100150EDC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				INFOPLIST_FILE = "DGSPhoneTesting-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
-				);
-				PRODUCT_NAME = DGSPhoneTesting;
-			};
-			name = Debug;
-		};
-		DA084DDD11B5F4F100150EDC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				INFOPLIST_FILE = "DGSPhone-Info copy.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
-				);
-				PRODUCT_NAME = DGSPhone;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		DA084DE811B5F52A00150EDC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = "DGSPhoneTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					UIKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = DGSPhoneTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		DA084DE911B5F52A00150EDC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				INFOPLIST_FILE = "DGSPhoneTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					UIKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = DGSPhoneTests;
-				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -2431,24 +1939,6 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DA084DDB11B5F4F100150EDC /* Build configuration list for PBXNativeTarget "DGSPhoneTesting" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA084DDC11B5F4F100150EDC /* Debug */,
-				DA084DDD11B5F4F100150EDC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DA084DF811B5F56D00150EDC /* Build configuration list for PBXNativeTarget "DGSPhoneTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA084DE811B5F52A00150EDC /* Debug */,
-				DA084DE911B5F52A00150EDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

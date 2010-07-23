@@ -19,6 +19,10 @@
     return self;
 }
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 
@@ -45,10 +49,13 @@
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+	return YES;
+}
+
+- (IBAction)textFieldChanged:(id)sender {
 	if (self.textEditedSelector) {
 		[[UIApplication sharedApplication] sendAction:self.textEditedSelector to:nil from:self forEvent:nil];
 	}
-	return YES;
 }
 
 - (void)dealloc {

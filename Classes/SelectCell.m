@@ -26,42 +26,66 @@
     return self;
 }
 
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	UITableView *tableView = (UITableView *)self.superview;
 	
 	int pickerViewHeight = 215;
+	int tableViewHeight = 416;
 	
 	if (selected && !self.picker) {
 		NSLog(@"selected %@", self.label.text);
-		tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height - pickerViewHeight);
-		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, 480.0 - pickerViewHeight, 320.0, pickerViewHeight)] autorelease];
+		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, tableViewHeight, 320.0, pickerViewHeight)] autorelease];
+		[tableView.superview addSubview:self.picker];
+
+		[UIView animateWithDuration:0.5 animations:^(void) {
+			tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight)));
+		}];
 
 		self.picker.showsSelectionIndicator = YES;
-		[[[UIApplication sharedApplication] keyWindow] addSubview:self.picker];
 		self.picker.dataSource = self;
 		self.picker.delegate = self;
 		for(int i = 0; i < [self.selectedOptions count]; i++) {
 			int row = [[self.options objectAtIndex:i] indexOfObject:[self.selectedOptions objectAtIndex:i]];
 			[self.picker selectRow:row inComponent:i animated:NO];
 		}
-		// move the cell to the middle
-		// if we're below the picker
-		float bottomOfCell = self.frame.origin.y + self.frame.size.height + 5;
-		float topOfPicker = tableView.frame.size.height - pickerViewHeight;
-		if (bottomOfCell > topOfPicker) {
-			CGPoint contentOffset = tableView.contentOffset;
-			contentOffset.y += bottomOfCell - topOfPicker;
-			[tableView setContentOffset:contentOffset animated:YES];
-		}
+		
+		[UIView animateWithDuration:0.5 animations:^(void) {
+			CGRect pickerViewFrame = self.picker.frame;
+			pickerViewFrame.origin.y = tableViewHeight - pickerViewHeight;
+			self.picker.frame = pickerViewFrame;
+		} completion:^(BOOL completed) {
+			CGRect tableViewFrame = tableView.frame;
+			tableViewFrame.size.height = tableViewHeight - pickerViewHeight;
+			tableView.frame = tableViewFrame;
+		}];
 		[super setSelected:YES animated:animated];
 	} else {
 		NSLog(@"deselected %@", self.label.text);
 		
 		if (self.picker) {
-			tableView.contentSize = CGSizeMake(tableView.frame.size.width, tableView.frame.size.height - pickerViewHeight);
-			[self.picker removeFromSuperview];
-			self.picker = nil;		
+			CGRect tableViewFrame = tableView.frame;
+			tableViewFrame.size.height = tableViewHeight;
+			tableView.frame = tableViewFrame;
+			// Apparently resetting the frame here also resets the 
+			// content offset. Manually setting it again here seems 
+			// to work though.
+			tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight)));
+			
+			[UIView animateWithDuration:0.5 animations:^(void) {
+				
+				tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight)));
+			}];
+			
+			[UIView animateWithDuration:0.5 animations:^(void) {
+				CGRect pickerViewFrame = self.picker.frame;
+				pickerViewFrame.origin.y = tableViewHeight;
+				self.picker.frame = pickerViewFrame;
+			} completion:^(BOOL finished) {
+				if (finished) {
+					[self.picker removeFromSuperview];
+					self.picker = nil;
+				}
+			}];
 		}
 		[super setSelected:NO animated:animated];
 	}
