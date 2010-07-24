@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="15"/>
+			<integer value="19"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -85,15 +85,6 @@
 								<int key="IBUISystemItemIdentifier">4</int>
 							</object>
 						</object>
-					</object>
-					<object class="IBUIActivityIndicatorView" id="807409679">
-						<reference key="NSNextResponder" ref="588525535"/>
-						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{142, 166}, {37, 37}}</string>
-						<reference key="NSSuperview" ref="588525535"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIStyle">0</int>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 416}</string>
@@ -168,14 +159,6 @@
 					<int key="connectionID">29</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">reloadingIndicator</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="807409679"/>
-					</object>
-					<int key="connectionID">37</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">refreshGames</string>
 						<reference key="source" ref="476629326"/>
@@ -226,7 +209,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="873029372"/>
-							<reference ref="807409679"/>
 							<reference ref="672913876"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -248,11 +230,6 @@
 						<int key="objectID">27</int>
 						<reference key="object" ref="1023437970"/>
 						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">36</int>
-						<reference key="object" ref="807409679"/>
-						<reference key="parent" ref="588525535"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
@@ -289,7 +266,6 @@
 					<string>25.IBPluginDependency</string>
 					<string>26.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
-					<string>36.IBPluginDependency</string>
 					<string>4.IBEditorWindowLastContentRect</string>
 					<string>4.IBPluginDependency</string>
 				</object>
@@ -298,8 +274,7 @@
 					<string>CurrentGamesController</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{607, 169}, {320, 480}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>{{424, 169}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -379,14 +354,12 @@
 							<string>gameTableView</string>
 							<string>logoutButton</string>
 							<string>refreshButton</string>
-							<string>reloadingIndicator</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITableView</string>
 							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
-							<string>UIActivityIndicatorView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -396,7 +369,6 @@
 							<string>gameTableView</string>
 							<string>logoutButton</string>
 							<string>refreshButton</string>
-							<string>reloadingIndicator</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -411,10 +383,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">refreshButton</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">reloadingIndicator</string>
-								<string key="candidateClassName">UIActivityIndicatorView</string>
 							</object>
 						</object>
 					</object>
@@ -529,14 +497,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="173005513">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UIResponder.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">UIActivityIndicatorView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">UIKit.framework/Headers/UIActivityIndicatorView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

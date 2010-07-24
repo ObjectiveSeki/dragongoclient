@@ -19,9 +19,9 @@
 }
 
 @property(nonatomic, retain) NSURL * sgfUrl;
-@property(nonatomic, retain) NSString * sgfString;
-@property(nonatomic, retain) NSString * opponent;
-@property(nonatomic, retain) NSString * time;
+@property(nonatomic, copy) NSString * sgfString;
+@property(nonatomic, copy) NSString * opponent;
+@property(nonatomic, copy) NSString * time;
 @property(nonatomic) int gameId;
 @property(nonatomic) MovePlayer color;
 

@@ -24,7 +24,7 @@
 
 - (id)init {
 	if ([super init]) {
-		
+		 [ASIHTTPRequest setDefaultTimeOutSeconds:15];
 	}
 	return self;
 }
@@ -55,6 +55,7 @@
 		if ([bodyElements count] > 0) {
 			errorString = [[bodyElements objectAtIndex:0] stringValue];
 		}
+		[doc release];
 	}
 	
 	return errorString;

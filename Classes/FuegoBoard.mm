@@ -49,11 +49,11 @@
 	return movePlayer;
 }
 
-- (id)initWithSGFString:(NSString *)sgfString boardSize:(int)boardSize {
+- (id)initWithSGFString:(NSString *)sgfString {
 	if ([super init]) {
 		std::string sgfStr([sgfString UTF8String]);
 		std::istringstream input(sgfStr);
-		SgGameReader gameReader(input, boardSize);
+		SgGameReader gameReader(input, 19);
 		SgNode *rootNode = gameReader.ReadGame();
 		int handicap = rootNode->GetIntProp(SG_PROP_HANDICAP);
 		double komi = rootNode->GetRealProp(SG_PROP_KOMI);

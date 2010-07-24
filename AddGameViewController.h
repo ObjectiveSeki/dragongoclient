@@ -11,12 +11,16 @@
 #import "NewGame.h"
 #import "LoginProtocol.h"
 #import "DGS.h"
+#import "SpinnerView.h"
 
 @interface AddGameViewController : UITableViewController <LoginProtocol> {
 	TextCell *descriptionCell;
 	NewGame *newGame;
 	DGS *dgs;
+	SpinnerView *spinnerView;
 }
+
+@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) TextCell *descriptionCell;
 @property(nonatomic, retain) NewGame *newGame;
@@ -29,3 +33,4 @@
 - (IBAction)addGame;
 
 @end
+

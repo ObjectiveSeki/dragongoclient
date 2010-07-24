@@ -11,13 +11,17 @@
 #import "DGSPhoneAppDelegate.h"
 #import "DGS.h"
 #import "TableCellFactory.h"
+#import "SpinnerView.h"
 
 typedef enum _LoginSection {
 	kLoginFieldSection,
 	kLoginButtonSection,
-} AddGameSection;
+	kSignupButtonSection
+} LoginSection;
 
 @implementation LoginViewController
+
+@synthesize spinnerView;
 
 @synthesize username;
 @synthesize password;
@@ -36,6 +40,8 @@ typedef enum _LoginSection {
 
 - (void)loggedIn {
 	[[self delegate] loggedIn];
+	[self.spinnerView dismiss];
+	self.spinnerView = nil;
 }
 
 - (void)notLoggedIn {
@@ -44,6 +50,9 @@ typedef enum _LoginSection {
 
 - (void)login
 {
+	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView.label.text = @"Logging in...";
+	[self.view resignFirstResponder];
 	[dgs loginWithUsername:self.username password:self.password];
 }
 
@@ -53,7 +62,6 @@ typedef enum _LoginSection {
 	self.dgs = [[[DGS alloc] init] autorelease];
 	self.dgs.delegate = self;
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-	
 }
 
 #pragma mark -
@@ -61,7 +69,7 @@ typedef enum _LoginSection {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 
@@ -71,7 +79,9 @@ typedef enum _LoginSection {
         return 2;
     } else if (section == kLoginButtonSection) {
         return 1;
-    }
+    } else if (section == kSignupButtonSection) {
+		return 1;
+	}
     return 1;
 }
 
@@ -97,12 +107,10 @@ typedef enum _LoginSection {
 }
 
 - (void)setUsernameFromCell:(TextCell *)tableCell {
-	NSLog(@"%@", tableCell.textField.text);
 	self.username = tableCell.textField.text;
 }
 
 - (void)setPasswordFromCell:(TextCell *)tableCell {
-	NSLog(@"%@", tableCell.textField.text);
 	self.password = tableCell.textField.text;
 }
 
@@ -128,9 +136,14 @@ typedef enum _LoginSection {
 			cell.textEditedSelector = @selector(setPasswordFromCell:);
 			return cell;
 		}
-	} else {
+	} else if ([indexPath section] == kLoginButtonSection) {
 		cell.textLabel.text = @"Login";
 		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.textColor = [UIColor colorWithRed:0.275 green:0.396 blue:0.620 alpha:1.0];
+	} else {
+		cell.textLabel.text = @"Sign up";
+		cell.textLabel.textAlignment = UITextAlignmentCenter;
+		cell.textLabel.textColor = [UIColor colorWithRed:0.275 green:0.396 blue:0.620 alpha:1.0];
 	}
     
     return cell;
@@ -192,6 +205,9 @@ typedef enum _LoginSection {
 	if ([indexPath section] == kLoginButtonSection) {	
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		[self login];
+	} else if ([indexPath section] == kSignupButtonSection) {	
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]];
 	}
 }
 
@@ -217,6 +233,7 @@ typedef enum _LoginSection {
 	self.username = nil;
 	self.password = nil;
 	self.dgs = nil;
+	self.spinnerView = nil;
 }
 
 
@@ -226,3 +243,4 @@ typedef enum _LoginSection {
 
 
 @end
+

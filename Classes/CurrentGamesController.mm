@@ -15,12 +15,14 @@
 #import "AddGameViewController.h"
 
 @implementation CurrentGamesController
+
+@synthesize spinnerView;
+
 @synthesize games;
 @synthesize refreshButton;
 @synthesize gameTableView;
 @synthesize logoutButton;
 @synthesize dgs;
-@synthesize reloadingIndicator;
 @synthesize selectedCell;
 
 
@@ -86,8 +88,13 @@
 
 - (IBAction)refreshGames {
 	[self setEnabled:NO];
+	
+	
+	[self.spinnerView dismiss];
+	self.spinnerView = nil;
+	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView.label.text = @"Reloading...";
 	[dgs getCurrentGames];
-	[[self reloadingIndicator] startAnimating];
 }
 
 - (void)gotCurrentGames:(NSArray *)currentGames {
@@ -110,7 +117,8 @@
 	[mutableCurrentGames release];
 #endif
 	
-	[[self reloadingIndicator] stopAnimating];
+	[self.spinnerView dismiss];
+	self.spinnerView = nil;
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 	[[self gameTableView] reloadData];
 	[self setEnabled:YES];
@@ -229,7 +237,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
-	
+	self.spinnerView = [SpinnerView showInView:self.view];
 #ifdef TEST_GAMES
 	Game *game = [self.games objectAtIndex:[indexPath row]];
 	if (game.gameId == 0) {
@@ -251,6 +259,8 @@
 }
 
 - (void)gotSgfForGame:(Game *)game {
+	[self.spinnerView dismiss];
+	self.spinnerView = nil;
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	// Navigation logic may go here. Create and push another view controller.
@@ -281,14 +291,14 @@
 	self.refreshButton = nil;
 	self.gameTableView = nil;
 	self.logoutButton = nil;
-	self.reloadingIndicator = nil;
 	self.dgs = nil;
 	self.selectedCell = nil;
-	
+	self.spinnerView = nil;
 }
 
 
 - (void)dealloc {
+
     [super dealloc];
 }
 

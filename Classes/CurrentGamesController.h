@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LoginProtocol.h"
 #import "DGS.h"
+#import "SpinnerView.h"
 
 
 @interface CurrentGamesController : UIViewController <LoginProtocol> {
@@ -17,15 +18,16 @@
 	IBOutlet UIBarButtonItem *refreshButton;
 	IBOutlet UIBarButtonItem *logoutButton;
 	IBOutlet UITableView *gameTableView;
-	IBOutlet UIActivityIndicatorView *reloadingIndicator;
 	UITableViewCell *selectedCell;
+	SpinnerView *spinnerView;
 }
+
+@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) NSArray *games;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *refreshButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *logoutButton;
 @property(nonatomic, retain) IBOutlet UITableView *gameTableView;
-@property(nonatomic, retain) IBOutlet UIActivityIndicatorView *reloadingIndicator;
 @property(nonatomic, retain) DGS *dgs;
 @property(nonatomic, retain) UITableViewCell *selectedCell;
 - (IBAction)refreshGames;
@@ -34,3 +36,4 @@
 - (void)notLoggedIn;
 
 @end
+

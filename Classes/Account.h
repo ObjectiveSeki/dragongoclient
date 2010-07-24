@@ -17,10 +17,10 @@
 	BOOL *acceptTerms;
 }
 
-@property(nonatomic, retain) NSString *username;
-@property(nonatomic, retain) NSString *name;
-@property(nonatomic, retain) NSString *password;
-@property(nonatomic, retain) NSString *passwordConfirm;
+@property(nonatomic, copy) NSString *username;
+@property(nonatomic, copy) NSString *name;
+@property(nonatomic, copy) NSString *password;
+@property(nonatomic, copy) NSString *passwordConfirm;
 @property(nonatomic, assign) BOOL *acceptTerms;
 
 @end

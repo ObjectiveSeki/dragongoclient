@@ -10,6 +10,7 @@
 #import "Game.h"
 #import "GoBoardView.h"
 #import "DGS.h"
+#import "SpinnerView.h"
 
 enum BoardState {
 	kBoardStateZoomedOut,
@@ -31,7 +32,10 @@ enum BoardState {
 	float maximumZoomScale;
 	float minimumZoomScale;
 	float currentZoomScale;
+	SpinnerView *spinnerView;
 }
+
+@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) Game *game;
 @property(nonatomic, retain) FuegoBoard *board;
@@ -55,3 +59,4 @@ enum BoardState {
 - (void)loggedIn;
 
 @end
+

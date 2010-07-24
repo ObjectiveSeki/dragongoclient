@@ -219,6 +219,8 @@
 		DA419D4711BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA419D4B11BB2DA400B3050E /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */; };
+		DA6F94FC11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
+		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
 		DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
 		DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
@@ -583,6 +585,8 @@
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
 		DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CurrentGamesController.mm; sourceTree = "<group>"; };
 		DA419D4511BB2DA400B3050E /* CurrentGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CurrentGamesView.xib; path = Classes/CurrentGamesView.xib; sourceTree = "<group>"; };
+		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
+		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		DA71CA8411B5E97F008696AC /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1340,6 +1344,8 @@
 			children = (
 				DAF9102611BB48A800FE7B96 /* GoBoardView.h */,
 				DAF9102711BB48A800FE7B96 /* GoBoardView.mm */,
+				DA6F94FA11FAA0670093751D /* SpinnerView.h */,
+				DA6F94FB11FAA0670093751D /* SpinnerView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1623,6 +1629,7 @@
 				DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */,
 				DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */,
 				DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */,
+				DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1766,6 +1773,7 @@
 				DA02D15B11D99E4500A9D887 /* TextCell.m in Sources */,
 				DA8366D011DC3606001A68F9 /* SelectCell.m in Sources */,
 				DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */,
+				DA6F94FC11FAA0670093751D /* SpinnerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

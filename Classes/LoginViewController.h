@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DGS.h"
+#import "SpinnerView.h"
 
 
 @interface LoginViewController : UITableViewController <LoginProtocol> {
@@ -15,7 +16,10 @@
 	IBOutlet NSString *password;
 	DGS *dgs;
 	id delegate;
+	SpinnerView *spinnerView;
 }
+
+@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) IBOutlet NSString *username;
 @property(nonatomic, retain) IBOutlet NSString *password;
@@ -25,3 +29,4 @@
 - (void)login;
 
 @end
+

@@ -90,11 +90,11 @@ typedef enum _ByoYomiType {
 @property(nonatomic, assign) TimePeriod fischerTimeUnit;
 @property(nonatomic, assign) BOOL weekendClock;
 @property(nonatomic, assign) BOOL rated;
-@property(nonatomic, retain) NSString *minimumRating;
-@property(nonatomic, retain) NSString *maximumRating;
+@property(nonatomic, copy) NSString *minimumRating;
+@property(nonatomic, copy) NSString *maximumRating;
 @property(nonatomic, assign) int minRatedGames;
 @property(nonatomic, assign) int sameOpponent;
-@property(nonatomic, retain) NSString *comment;
+@property(nonatomic, copy) NSString *comment;
 
 - (NSString *)ruleSetValue;
 

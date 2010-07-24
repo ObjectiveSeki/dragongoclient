@@ -12,6 +12,8 @@
 
 @implementation GameViewController
 
+@synthesize spinnerView;
+
 @synthesize game;
 @synthesize board;
 @synthesize boardView;
@@ -135,6 +137,8 @@
 }
 
 - (IBAction)confirmMove {
+	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView.label.text = @"Submitting...";
 	if ([self.board beginningOfHandicapGame]) {
 		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
 	} else if ([self.board gameEnded]) {
@@ -145,7 +149,8 @@
 }
 
 - (void)playedMove {
-
+	[self.spinnerView dismiss];
+	self.spinnerView = nil;
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -215,7 +220,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self setBoardState:kBoardStateZoomedOut];
-	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString] boardSize:19];
+	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 	[theBoard release];
@@ -237,12 +242,15 @@
 	self.confirmButton = nil;
 	self.passButton = nil;
 	self.dgs = nil;
+	self.spinnerView = nil;
 }
 
 
 - (void)dealloc {
+
     [super dealloc];
 }
 
 
 @end
+

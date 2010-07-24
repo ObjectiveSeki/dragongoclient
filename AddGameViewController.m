@@ -12,6 +12,9 @@
 
 
 @implementation AddGameViewController
+
+@synthesize spinnerView;
+
 @synthesize descriptionCell, newGame, dgs;
 
 #pragma mark -
@@ -77,10 +80,14 @@ typedef enum _AddGameSection {
 }
 
 - (void)addedGame {
+	[self.spinnerView dismiss];
+	self.spinnerView = nil;
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (IBAction)addGame {
+	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView.label.text = @"Posting...";
 	[self.dgs addGame:self.newGame];
 }
 
@@ -407,6 +414,7 @@ typedef enum _AddGameSection {
 	self.descriptionCell = nil;
 	self.newGame = nil;
 	self.dgs = nil;
+	self.spinnerView = nil;
 }
 
 
@@ -416,4 +424,5 @@ typedef enum _AddGameSection {
 
 
 @end
+
 
