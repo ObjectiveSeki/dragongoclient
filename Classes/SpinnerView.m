@@ -57,33 +57,24 @@
 }
 
 + (SpinnerView *)showInView:(UIView *)view {
-	CGRect rect = CGRectMake(view.center.x - 100, view.center.y - 100, 200, 200);
+	CGRect rect = CGRectMake(view.center.x - 60, view.center.y - 60, 120, 120);
 	SpinnerView *spinnerView = [[[SpinnerView alloc] initWithFrame:rect] autorelease];
 	spinnerView.alpha = 0.0;
+	spinnerView.transform = CGAffineTransformMakeScale(2,2);
 	[view addSubview:spinnerView];
 	[view bringSubviewToFront:spinnerView];
 	
-	[UIView animateWithDuration:0.2 animations:^(void) {
-		CGRect newFrame = spinnerView.frame;
-		newFrame.origin.x += newFrame.size.width / 4;
-		newFrame.origin.y += newFrame.size.height / 4;
-		newFrame.size.width /= 2;
-		newFrame.size.height /= 2;
-		spinnerView.frame = newFrame;
+	[UIView animateWithDuration:0.2 delay:0.0 options:0 animations:^(void) {
+		spinnerView.transform = CGAffineTransformMakeScale(1, 1);
 		spinnerView.alpha = 1.0;
-	}];
+	} completion:nil];
 	
 	return spinnerView;
 }
 
 - (void)dismiss {
 	[UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^(void) {
-		CGRect newFrame = self.frame;
-		newFrame.origin.x -= newFrame.size.width / 2;
-		newFrame.origin.y -= newFrame.size.height / 2;
-		newFrame.size.width *= 2;
-		newFrame.size.height *= 2;
-		self.frame = newFrame;
+		self.transform = CGAffineTransformMakeScale(2, 2);
 		self.alpha = 0.0;
 	} completion:^(BOOL completion) {
 		[self removeFromSuperview];
@@ -103,10 +94,9 @@
 
 - (void)layoutSubviews {
 	int spinnerSize = 37;
-	int textWidth = 80;
-	self.spinner.frame = CGRectMake((self.frame.size.width - spinnerSize) / 2, (self.frame.size.height - spinnerSize) / 2, spinnerSize, spinnerSize);
+	self.spinner.frame = CGRectMake((self.frame.size.width - spinnerSize) / 2, self.frame.size.height / 3.0, spinnerSize, spinnerSize);
 	
-	self.label.frame = CGRectMake((self.frame.size.width - textWidth) / 2, self.spinner.frame.origin.y + self.spinner.frame.size.height + 4, textWidth, 16);
+	self.label.frame = CGRectMake(8, self.frame.size.height - 8 - 16, self.frame.size.width - 16, 16);
 							
 }
 
