@@ -72,13 +72,19 @@
 	return spinnerView;
 }
 
-- (void)dismiss {
-	[UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^(void) {
-		self.transform = CGAffineTransformMakeScale(2, 2);
-		self.alpha = 0.0;
-	} completion:^(BOOL completion) {
+- (void)dismiss:(BOOL)animate {
+	if (animate) {
+		[UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^(void) {
+			self.transform = CGAffineTransformMakeScale(2, 2);
+			self.alpha = 0.0;
+		} completion:^(BOOL completion) {
+			[self removeFromSuperview];
+		}];
+	} else {
 		[self removeFromSuperview];
-	}];
+	}
+
+
 }
 
 

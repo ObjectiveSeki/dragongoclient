@@ -31,15 +31,12 @@
 
 - (BOOL)loggedIn:(ASIHTTPRequest *)request {
 	NSString *urlString = [[request url] absoluteString];
-	NSLog(@"%@", urlString);
 	
-	BOOL loggedOutURLNotFound = (NSNotFound == [urlString rangeOfString:@"error.php"].location && NSNotFound == [urlString rangeOfString:@"index.php"].location);
-	BOOL errorStatusNotFound = (NSNotFound == [[request responseString] rangeOfString:@"#Error:"].location);
+	BOOL loggedOutURLNotFound = (NSNotFound == [urlString rangeOfString:@"error.php?err=not_logged_in"].location && NSNotFound == [urlString rangeOfString:@"index.php"].location);
+	BOOL errorStatusNotFound = (NSNotFound == [[request responseString] rangeOfString:@"#Error: no_uid"].location);
 	
 	if (loggedOutURLNotFound && errorStatusNotFound) {
 		return YES;
-	} else {
-		NSLog(@"Unauthorized");
 	}
 	return NO;
 }
@@ -62,23 +59,24 @@
 }
 
 - (NSURL *)URLWithPath:(NSString *)path {
-	//NSString *baseString = @"http://www.dragongoserver.net";
-	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	NSString *baseString = @"http://www.dragongoserver.net";
+	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	[alertView release];
+	[[self delegate] requestCancelled];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
 	NSString *errorString = [self error:request];
-	if (errorString) {
-		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-	} else if (NO == [self loggedIn:request]) {
+	if (NO == [self loggedIn:request]) {
 		[[self delegate] notLoggedIn];
-	} else {
+	} else if (errorString) {
+		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+	}  else {
 		SEL selector = NSSelectorFromString([[request userInfo] objectForKey:@"selector"]);
 		if (selector && [self respondsToSelector:selector]) {
 			[self performSelector:selector withObject:request];
@@ -90,6 +88,7 @@
 {
 	NSError *error = [request error];
 	NSLog(@"%@", error);
+	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem connecting with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (void)logout {

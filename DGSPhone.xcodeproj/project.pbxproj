@@ -231,6 +231,10 @@
 		DA7CA4AC11B761E8004CD524 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CA4A611B761E8004CD524 /* LoginView.xib */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA8366D011DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
+		DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
+		DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
+		DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
+		DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DAC8689211B7477600A4DA7A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */; };
 		DAC8689311B7477600A4DA7A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688411B7477600A4DA7A /* ASIFormDataRequest.m */; };
 		DAC8689411B7477600A4DA7A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC8688611B7477600A4DA7A /* ASIHTTPRequest.m */; };
@@ -597,6 +601,8 @@
 		DA7CA4A611B761E8004CD524 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginView.xib; path = Classes/LoginView.xib; sourceTree = "<group>"; };
 		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
+		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DAC8688111B7477600A4DA7A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		DAC8688211B7477600A4DA7A /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		DAC8688311B7477600A4DA7A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -846,6 +852,8 @@
 				DAF9108C11BB5F0700FE7B96 /* GameView.xib */,
 				DA02D0AD11D98B0800A9D887 /* AddGameView.xib */,
 				DA02D15E11D99E8B00A9D887 /* TableCells.xib */,
+				DA8A962711FBB3D100B2E2C7 /* Default.png */,
+				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1431,6 +1439,8 @@
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 				DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */,
 				DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
+				DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */,
+				DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,6 +1465,8 @@
 				DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 				DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */,
 				DAECBE2F11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
+				DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */,
+				DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

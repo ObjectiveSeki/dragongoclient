@@ -10,7 +10,7 @@
 
 @implementation TableCellFactory
 
-- (TextCell *) newTextCell{
+- (TextCell *) textCell{
     [[NSBundle mainBundle] loadNibNamed:@"TableCells" owner:self options:nil];
     return textCell;
 }
@@ -18,12 +18,12 @@
 + (TextCell *) textCell
 {
     TableCellFactory *tcf = [[TableCellFactory alloc] init];
-    TextCell *textCell = [tcf newTextCell];
+    TextCell *textCell = [tcf textCell];
     [tcf release];
     return textCell;
 }
 
-- (SelectCell *) newSelectCell{
+- (SelectCell *) selectCell{
     [[NSBundle mainBundle] loadNibNamed:@"TableCells" owner:self options:nil];
     return selectCell;
 }

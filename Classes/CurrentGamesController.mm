@@ -49,21 +49,23 @@
 	[self refreshGames];
 }
 
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }
 */
-/*
+
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-*/
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -87,10 +89,9 @@
 }
 
 - (IBAction)refreshGames {
-	[self setEnabled:NO];
+	[self setEnabled:NO];	
 	
-	
-	[self.spinnerView dismiss];
+	[self.spinnerView dismiss:NO];
 	self.spinnerView = nil;
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Reloading...";
@@ -117,7 +118,7 @@
 	[mutableCurrentGames release];
 #endif
 	
-	[self.spinnerView dismiss];
+	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 	[[self gameTableView] reloadData];
@@ -135,6 +136,14 @@
 - (void)loggedIn {
 	[self dismissModalViewControllerAnimated:YES];
 	[self refreshGames];
+}
+
+- (void)requestCancelled {
+	[self.spinnerView dismiss:NO];
+	self.spinnerView = nil;
+	[self.selectedCell setAccessoryView:nil];
+	self.selectedCell = nil;
+	[self setEnabled:YES];
 }
 
 - (IBAction)logout {

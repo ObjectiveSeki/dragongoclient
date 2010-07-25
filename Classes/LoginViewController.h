@@ -27,6 +27,7 @@
 @property(nonatomic, assign) id delegate;
 
 - (void)login;
+- (void)requestCancelled;
 
 @end
 

@@ -13,5 +13,6 @@
 
 - (void)notLoggedIn;
 - (void)loggedIn;
+- (void)requestCancelled;
 
 @end

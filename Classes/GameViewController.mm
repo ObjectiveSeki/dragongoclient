@@ -139,6 +139,7 @@
 - (IBAction)confirmMove {
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Submitting...";
+	self.confirmButton.enabled = NO;
 	if ([self.board beginningOfHandicapGame]) {
 		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
 	} else if ([self.board gameEnded]) {
@@ -149,7 +150,7 @@
 }
 
 - (void)playedMove {
-	[self.spinnerView dismiss];
+	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;
 	[[self navigationController] popViewControllerAnimated:YES];
 }
@@ -175,6 +176,12 @@
 - (void)loggedIn {
 	[self dismissModalViewControllerAnimated:YES];
 	[[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void)requestCancelled {
+	[self.spinnerView dismiss:NO];
+	self.spinnerView = nil;
+	self.confirmButton.enabled = YES;
 }
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {

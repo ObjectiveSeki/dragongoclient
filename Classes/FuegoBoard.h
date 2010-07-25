@@ -28,7 +28,7 @@
 + (void)initFuego;
 + (void)finishFuego;
 
-- initWithSGFString:(NSString *)sgfString boardSize:(int)boardSize;
+- initWithSGFString:(NSString *)sgfString;
 
 - (int)size;
 - (NSArray *)moves;

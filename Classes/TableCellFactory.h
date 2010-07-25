@@ -15,8 +15,8 @@
 	IBOutlet SelectCell *selectCell;
 }
 
-- (TextCell *) newTextCell;
+- (TextCell *) textCell;
 + (TextCell *) textCell;
-- (SelectCell *) newSelectCell;
+- (SelectCell *) selectCell;
 + (SelectCell *) selectCell;
 @end

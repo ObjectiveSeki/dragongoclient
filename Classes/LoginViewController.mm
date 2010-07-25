@@ -40,7 +40,7 @@ typedef enum _LoginSection {
 
 - (void)loggedIn {
 	[[self delegate] loggedIn];
-	[self.spinnerView dismiss];
+	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;
 }
 
@@ -50,10 +50,15 @@ typedef enum _LoginSection {
 
 - (void)login
 {
+	[self.view resignFirstResponder];
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Logging in...";
-	[self.view resignFirstResponder];
 	[dgs loginWithUsername:self.username password:self.password];
+}
+
+- (void)requestCancelled {
+	[self.spinnerView dismiss:NO];
+	self.spinnerView = nil;
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

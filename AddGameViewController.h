@@ -28,6 +28,7 @@
 
 - (void)notLoggedIn;
 - (void)loggedIn;
+- (void)requestCancelled;
 - (void)addedGame;
 
 - (IBAction)addGame;

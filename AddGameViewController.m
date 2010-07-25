@@ -79,8 +79,13 @@ typedef enum _AddGameSection {
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+- (void)requestCancelled {
+	[self.spinnerView dismiss:NO];
+	self.spinnerView = nil;
+}
+
 - (void)addedGame {
-	[self.spinnerView dismiss];
+	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;
 	[[self navigationController] popViewControllerAnimated:YES];
 }

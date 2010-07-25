@@ -18,7 +18,7 @@
 @property (nonatomic, retain) UILabel *label;
 
 + (SpinnerView *)showInView:(UIView *)view;
-- (void)dismiss;
+- (void)dismiss:(BOOL)animate;
 
 @end
 
