@@ -31,7 +31,7 @@
 + (SelectCell *) selectCell
 {
     TableCellFactory *tcf = [[TableCellFactory alloc] init];
-    SelectCell *selectCell = [tcf newSelectCell];
+    SelectCell *selectCell = [tcf selectCell];
     [tcf release];
     return selectCell;
 }
