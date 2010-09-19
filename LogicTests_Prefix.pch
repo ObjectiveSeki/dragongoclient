@@ -1,0 +1,2 @@
+// needed for Tidy support in TouchXML
+#define TOUCHXMLUSETIDY 1

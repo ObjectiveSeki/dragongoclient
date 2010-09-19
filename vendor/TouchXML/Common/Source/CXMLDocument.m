@@ -50,6 +50,7 @@ if ((self = [super init]) != NULL)
 	if (inOptions & CXMLDocumentTidyHTML)
 		{
 		inString = [[CTidy tidy] tidyString:inString inputFormat:TidyFormat_HTML outputFormat:TidyFormat_XHTML diagnostics:NULL error:&theError];
+		inString = [inString stringByReplacingOccurrencesOfString:@"xmlns=\"http://www.w3.org/1999/xhtml\"" withString:@""]; // remove default namespace... ugh
 		}
 	else if (inOptions & CXMLDocumentTidyXML)
 		{

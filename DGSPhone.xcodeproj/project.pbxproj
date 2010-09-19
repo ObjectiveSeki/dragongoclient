@@ -143,9 +143,6 @@
 		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
 		DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
-		DADD18DA11BC72730038F8BC /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
-		DADD18DB11BC72730038F8BC /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
-		DADD18DC11BC72730038F8BC /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CDD11FD3C0B005922A3 /* Readme.md */; };
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
@@ -219,6 +216,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DA214FBC12458E8F00448955 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA58E8031245398B00387BB5 /* fuego */;
+			remoteInfo = fuego;
+		};
+		DA214FBE12458E9100448955 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAE9313D1245440500335F0F /* TouchXML */;
+			remoteInfo = TouchXML;
+		};
 		DA58E7E6124538C200387BB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -237,14 +248,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DAE9313D1245440500335F0F /* TouchXML */;
+			remoteGlobalIDString = DAE9313D1245440500335F0F;
 			remoteInfo = TouchXML;
 		};
 		DAE9329A1245492400335F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DA71CA8311B5E97F008696AC /* LogicTests */;
+			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
 			remoteInfo = LogicTests;
 		};
 /* End PBXContainerItemProxy section */
@@ -266,6 +277,8 @@
 		DA02D15811D99E4500A9D887 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
+		DA214FB512458E3000448955 /* TouchXML_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML_Prefix.pch; sourceTree = "<group>"; };
 		DA22A9CD11FD413200C88B31 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
@@ -677,9 +690,6 @@
 			files = (
 				DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */,
 				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
-				DADD18DA11BC72730038F8BC /* libboost_filesystem.a in Frameworks */,
-				DADD18DB11BC72730038F8BC /* libboost_system.a in Frameworks */,
-				DADD18DC11BC72730038F8BC /* libboost_thread.a in Frameworks */,
 				DAE932D21245501100335F0F /* libfuego.a in Frameworks */,
 				DAE932D31245501500335F0F /* libTouchXML.a in Frameworks */,
 			);
@@ -764,6 +774,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DA214FB412458E3000448955 /* LogicTests_Prefix.pch */,
+				DA214FB512458E3000448955 /* TouchXML_Prefix.pch */,
 				32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -1410,6 +1422,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				DA214FBD12458E8F00448955 /* PBXTargetDependency */,
+				DA214FBF12458E9100448955 /* PBXTargetDependency */,
 			);
 			name = LogicTests;
 			productName = LogicTests;
@@ -1716,6 +1730,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DA214FBD12458E8F00448955 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA58E8031245398B00387BB5 /* fuego */;
+			targetProxy = DA214FBC12458E8F00448955 /* PBXContainerItemProxy */;
+		};
+		DA214FBF12458E9100448955 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAE9313D1245440500335F0F /* TouchXML */;
+			targetProxy = DA214FBE12458E9100448955 /* PBXContainerItemProxy */;
+		};
 		DA58E7E7124538C200387BB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA58E77A124536DC00387BB5 /* AsiHTTPRequest */;
@@ -1903,6 +1927,8 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
@@ -1912,9 +1938,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 					"-framework",
 					Foundation,
 					"-framework",
@@ -1944,13 +1971,17 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
+				HEADER_SEARCH_PATHS = vendor/boost/include;
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 					"-framework",
 					Foundation,
 					"-framework",
@@ -1972,7 +2003,8 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_LDFLAGS = "-ObjC";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
 				PREBINDING = NO;
 				PRODUCT_NAME = TouchXML;
 			};
@@ -1985,7 +2017,8 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
 				PREBINDING = NO;
 				PRODUCT_NAME = TouchXML;
 				ZERO_LINK = NO;
