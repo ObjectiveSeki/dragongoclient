@@ -137,6 +137,7 @@
 		DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
 		DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
+		DA94CB7612469D230060FD44 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94CB7512469D230060FD44 /* SenTestingKit.framework */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
@@ -220,14 +221,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DA58E8031245398B00387BB5 /* fuego */;
+			remoteGlobalIDString = DA58E8031245398B00387BB5;
 			remoteInfo = fuego;
 		};
 		DA214FBE12458E9100448955 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DAE9313D1245440500335F0F /* TouchXML */;
+			remoteGlobalIDString = DAE9313D1245440500335F0F;
 			remoteInfo = TouchXML;
 		};
 		DA58E7E6124538C200387BB5 /* PBXContainerItemProxy */ = {
@@ -290,7 +291,6 @@
 		DA402AC611D30931005017C4 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
 		DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoard.mm; sourceTree = "<group>"; };
-		DA419A8D11BA0D5100B3050E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/gcc/powerpc-apple-darwin10/4.2.1/libstdc++.dylib"; sourceTree = SDKROOT; };
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
 		DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CurrentGamesController.mm; sourceTree = "<group>"; };
 		DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsiHTTPRequest.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -527,6 +527,7 @@
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
 		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DA94CB7512469D230060FD44 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -692,6 +693,7 @@
 				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
 				DAE932D21245501100335F0F /* libfuego.a in Frameworks */,
 				DAE932D31245501500335F0F /* libTouchXML.a in Frameworks */,
+				DA94CB7612469D230060FD44 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,13 +762,13 @@
 				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
 				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
 				DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */,
-				DA419A8D11BA0D5100B3050E /* libstdc++.dylib */,
 				DADD18D111BC72730038F8BC /* libboost_filesystem.a */,
 				DADD18D211BC72730038F8BC /* libboost_system.a */,
 				DADD18D311BC72730038F8BC /* libboost_thread.a */,
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
 				DA22A9CD11FD413200C88B31 /* Entitlements.plist */,
 				DAE932E21245510C00335F0F /* QuartzCore.framework */,
+				DA94CB7512469D230060FD44 /* SenTestingKit.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1454,6 +1456,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
@@ -1776,8 +1779,8 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
 					vendor/boost/include,
-					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1801,8 +1804,8 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
 					vendor/boost/include,
-					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1825,9 +1828,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -1840,9 +1844,11 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
@@ -1881,8 +1887,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
-					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2,
 					vendor/boost/include,
+					/usr/include/libxml2,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1900,7 +1906,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				HEADER_SEARCH_PATHS = vendor/boost/include;
+				HEADER_SEARCH_PATHS = (
+					vendor/boost/include,
+					/usr/include/libxml2,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
@@ -1919,8 +1928,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1932,13 +1941,9 @@
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
-					/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.0.sdk/usr/include/libxml2,
+					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "LogicTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
-				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1951,7 +1956,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos4.1;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1965,20 +1970,19 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				HEADER_SEARCH_PATHS = vendor/boost/include;
-				INFOPLIST_FILE = "LogicTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)\"",
+				HEADER_SEARCH_PATHS = (
+					vendor/boost/include,
+					/usr/include/libxml2,
 				);
+				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -1991,6 +1995,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
+				SDKROOT = iphoneos4.1;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
