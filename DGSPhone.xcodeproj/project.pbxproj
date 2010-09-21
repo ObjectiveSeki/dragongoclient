@@ -138,6 +138,12 @@
 		DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA94CB7612469D230060FD44 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA94CB7512469D230060FD44 /* SenTestingKit.framework */; };
+		DA94CBE2124839740060FD44 /* AddGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDC124839740060FD44 /* AddGameView.xib */; };
+		DA94CBE3124839740060FD44 /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDD124839740060FD44 /* CurrentGamesView.xib */; };
+		DA94CBE4124839740060FD44 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDE124839740060FD44 /* GameView.xib */; };
+		DA94CBE5124839740060FD44 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDF124839740060FD44 /* LoginView.xib */; };
+		DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE0124839740060FD44 /* MainWindow.xib */; };
+		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
@@ -251,13 +257,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = DAE9313D1245440500335F0F;
 			remoteInfo = TouchXML;
-		};
-		DAE9329A1245492400335F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
-			remoteInfo = LogicTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -528,6 +527,12 @@
 		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DA94CB7512469D230060FD44 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
+		DA94CBDC124839740060FD44 /* AddGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGameView.xib; sourceTree = "<group>"; };
+		DA94CBDD124839740060FD44 /* CurrentGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentGamesView.xib; sourceTree = "<group>"; };
+		DA94CBDE124839740060FD44 /* GameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
+		DA94CBDF124839740060FD44 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		DA94CBE0124839740060FD44 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -744,10 +749,9 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				DA58E7841245371700387BB5 /* Vendor */,
-				29B97317FDCFA39411CA2CEA /* DGSPhone */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */,
 				DA71CAA311B5EA50008696AC /* Foundation.framework */,
 				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
 				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
@@ -784,7 +788,7 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		29B97317FDCFA39411CA2CEA /* DGSPhone */ = {
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				DAE932BD12454CCA00335F0F /* XIBs */,
@@ -793,10 +797,11 @@
 				DA402AC611D30931005017C4 /* AppIcon@2x.png */,
 				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
+				DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */,
 				DA8A962711FBB3D100B2E2C7 /* Default.png */,
 				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
 			);
-			name = DGSPhone;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -1302,8 +1307,14 @@
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				DA94CBDC124839740060FD44 /* AddGameView.xib */,
+				DA94CBDD124839740060FD44 /* CurrentGamesView.xib */,
+				DA94CBDE124839740060FD44 /* GameView.xib */,
+				DA94CBDF124839740060FD44 /* LoginView.xib */,
+				DA94CBE0124839740060FD44 /* MainWindow.xib */,
+				DA94CBE1124839740060FD44 /* TableCells.xib */,
 			);
-			name = XIBs;
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
@@ -1371,7 +1382,6 @@
 				DA58E7E7124538C200387BB5 /* PBXTargetDependency */,
 				DAE931E5124545C200335F0F /* PBXTargetDependency */,
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
-				DAE9329B1245492400335F0F /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
@@ -1493,6 +1503,12 @@
 				DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */,
 				DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
+				DA94CBE2124839740060FD44 /* AddGameView.xib in Resources */,
+				DA94CBE3124839740060FD44 /* CurrentGamesView.xib in Resources */,
+				DA94CBE4124839740060FD44 /* GameView.xib in Resources */,
+				DA94CBE5124839740060FD44 /* LoginView.xib in Resources */,
+				DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */,
+				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1757,11 +1773,6 @@
 			isa = PBXTargetDependency;
 			target = DAE9313D1245440500335F0F /* TouchXML */;
 			targetProxy = DAE931E4124545C200335F0F /* PBXContainerItemProxy */;
-		};
-		DAE9329B1245492400335F0F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA71CA8311B5E97F008696AC /* LogicTests */;
-			targetProxy = DAE9329A1245492400335F0F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
