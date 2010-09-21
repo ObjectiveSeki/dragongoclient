@@ -32,7 +32,7 @@
 
 
 - (void)viewDidLoad {
-	self.title = @"My Games";
+	self.title = @"Your Move";
 	self.navigationItem.leftBarButtonItem = self.logoutButton;
 	self.navigationItem.rightBarButtonItem = self.refreshButton;
 	self.dgs = [[[DGS alloc] init] autorelease];

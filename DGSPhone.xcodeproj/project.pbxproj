@@ -752,6 +752,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				DA22A9CD11FD413200C88B31 /* Entitlements.plist */,
 				DA71CAA311B5EA50008696AC /* Foundation.framework */,
 				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
 				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
@@ -770,7 +771,6 @@
 				DADD18D211BC72730038F8BC /* libboost_system.a */,
 				DADD18D311BC72730038F8BC /* libboost_thread.a */,
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
-				DA22A9CD11FD413200C88B31 /* Entitlements.plist */,
 				DAE932E21245510C00335F0F /* QuartzCore.framework */,
 				DA94CB7512469D230060FD44 /* SenTestingKit.framework */,
 			);
@@ -1781,7 +1781,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Source/DGSPhone/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -1807,7 +1807,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Source/DGSPhone/Entitlements.plist";
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;

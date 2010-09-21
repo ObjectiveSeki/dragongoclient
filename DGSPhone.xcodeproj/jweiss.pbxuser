@@ -25,7 +25,7 @@
 		activeArchitecturePreference = armv7;
 		activeBuildConfigurationName = Debug;
 		activeExecutable = DA38B1D911B59DAE00112AA4 /* DGS */;
-		activeSDKPreference = iphonesimulator4.1;
+		activeSDKPreference = iphoneos4.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* DGS */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* DGS */,
@@ -120,35 +120,27 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 306625026;
-			PBXWorkspaceStateSaveDate = 306625026;
+			PBXPerProjectTemplateStateSaveDate = 306725592;
+			PBXWorkspaceStateSaveDate = 306725592;
 		};
 		perUserProjectItems = {
-			DA94CB7D12469D620060FD44 = DA94CB7D12469D620060FD44 /* PBXTextBookmark */;
-			DA94CB8212469DC40060FD44 = DA94CB8212469DC40060FD44 /* PBXTextBookmark */;
-			DA94CB8312469DC40060FD44 = DA94CB8312469DC40060FD44 /* PBXTextBookmark */;
-			DA94CB9812469EB70060FD44 = DA94CB9812469EB70060FD44 /* PBXTextBookmark */;
-			DA94CBA71246BA050060FD44 /* PBXTextBookmark */ = DA94CBA71246BA050060FD44 /* PBXTextBookmark */;
-			DA94CBC01246BC160060FD44 /* PBXTextBookmark */ = DA94CBC01246BC160060FD44 /* PBXTextBookmark */;
-			DA94CBC11246BC1D0060FD44 /* PBXTextBookmark */ = DA94CBC11246BC1D0060FD44 /* PBXTextBookmark */;
-			DA94CBC91248357D0060FD44 /* PBXTextBookmark */ = DA94CBC91248357D0060FD44 /* PBXTextBookmark */;
-			DA94CBCA124835800060FD44 /* PBXTextBookmark */ = DA94CBCA124835800060FD44 /* PBXTextBookmark */;
-			DA94CBCE124838A20060FD44 /* PBXTextBookmark */ = DA94CBCE124838A20060FD44 /* PBXTextBookmark */;
-			DA94CBCF124838A20060FD44 /* PBXTextBookmark */ = DA94CBCF124838A20060FD44 /* PBXTextBookmark */;
-			DA94CBD0124838A20060FD44 /* PBXTextBookmark */ = DA94CBD0124838A20060FD44 /* PBXTextBookmark */;
-			DA94CBD1124838A30060FD44 /* PBXTextBookmark */ = DA94CBD1124838A30060FD44 /* PBXTextBookmark */;
-			DA94CBD2124838E60060FD44 /* PBXTextBookmark */ = DA94CBD2124838E60060FD44 /* PBXTextBookmark */;
-			DA94CBD3124838E60060FD44 /* PBXTextBookmark */ = DA94CBD3124838E60060FD44 /* PBXTextBookmark */;
-			DA94CBD6124839480060FD44 /* PBXTextBookmark */ = DA94CBD6124839480060FD44 /* PBXTextBookmark */;
-			DA94CBD7124839480060FD44 /* PBXBookmark */ = DA94CBD7124839480060FD44 /* PBXBookmark */;
-			DA94CBD8124839480060FD44 /* PlistBookmark */ = DA94CBD8124839480060FD44 /* PlistBookmark */;
-			DA94CBD9124839480060FD44 /* PlistBookmark */ = DA94CBD9124839480060FD44 /* PlistBookmark */;
-			DA94CBDA124839480060FD44 /* PlistBookmark */ = DA94CBDA124839480060FD44 /* PlistBookmark */;
-			DA94CBDB124839600060FD44 /* PlistBookmark */ = DA94CBDB124839600060FD44 /* PlistBookmark */;
-			DA94CBEA124839870060FD44 /* PlistBookmark */ = DA94CBEA124839870060FD44 /* PlistBookmark */;
-			DA94CBEB124839870060FD44 /* PlistBookmark */ = DA94CBEB124839870060FD44 /* PlistBookmark */;
-			DA94CBEC124839890060FD44 /* PlistBookmark */ = DA94CBEC124839890060FD44 /* PlistBookmark */;
-			DA94CBF1124839A10060FD44 /* PlistBookmark */ = DA94CBF1124839A10060FD44 /* PlistBookmark */;
+			DA94CC1F124842760060FD44 = DA94CC1F124842760060FD44 /* PBXBookmark */;
+			DA94CC20124842760060FD44 = DA94CC20124842760060FD44 /* PBXBookmark */;
+			DA94CC29124842950060FD44 = DA94CC29124842950060FD44 /* PBXBookmark */;
+			DAAC52C1124842DF0099F9CB /* PBXBookmark */ = DAAC52C1124842DF0099F9CB /* PBXBookmark */;
+			DAAC52C2124842DF0099F9CB /* PBXBookmark */ = DAAC52C2124842DF0099F9CB /* PBXBookmark */;
+			DAAC52C5124842E20099F9CB /* PBXBookmark */ = DAAC52C5124842E20099F9CB /* PBXBookmark */;
+			DAAC52CE124842E40099F9CB /* PBXBookmark */ = DAAC52CE124842E40099F9CB /* PBXBookmark */;
+			DAAC52CF124842F10099F9CB /* PBXBookmark */ = DAAC52CF124842F10099F9CB /* PBXBookmark */;
+			DAAC52F4124843220099F9CB /* PBXBookmark */ = DAAC52F4124843220099F9CB /* PBXBookmark */;
+			DAAC52F5124843220099F9CB /* PlistBookmark */ = DAAC52F5124843220099F9CB /* PlistBookmark */;
+			DAAC52F6124843220099F9CB /* PlistBookmark */ = DAAC52F6124843220099F9CB /* PlistBookmark */;
+			DAAC5303124843960099F9CB /* PlistBookmark */ = DAAC5303124843960099F9CB /* PlistBookmark */;
+			DAAC5304124843960099F9CB /* PlistBookmark */ = DAAC5304124843960099F9CB /* PlistBookmark */;
+			DAAC5305124843960099F9CB /* PlistBookmark */ = DAAC5305124843960099F9CB /* PlistBookmark */;
+			DAAC5306124843960099F9CB /* PlistBookmark */ = DAAC5306124843960099F9CB /* PlistBookmark */;
+			DAAC5309124843BB0099F9CB /* PlistBookmark */ = DAAC5309124843BB0099F9CB /* PlistBookmark */;
+			DAAC530A124843CA0099F9CB /* PlistBookmark */ = DAAC530A124843CA0099F9CB /* PlistBookmark */;
 		};
 		sourceControlManager = DA38B1EA11B59DCF00112AA4 /* Source Control */;
 		userBuildSettings = {
@@ -333,9 +325,9 @@
 	};
 	DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {749, 4160}}";
-			sepNavSelRange = "{638, 0}";
-			sepNavVisRange = "{547, 311}";
+			sepNavIntBoundsRect = "{{0, 0}, {749, 4134}}";
+			sepNavSelRange = "{589, 0}";
+			sepNavVisRange = "{562, 297}";
 			sepNavWindowFrame = "{{15, 88}, {1027, 685}}";
 		};
 	};
@@ -468,169 +460,87 @@
 			sepNavWindowFrame = "{{38, 67}, {1027, 685}}";
 		};
 	};
-	DA94CB7D12469D620060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAEA525911B895ED00F4CCB3 /* DGSTests.h */;
-		name = "DGSTests.h: 2";
-		rLen = 0;
-		rLoc = 27;
-		rType = 0;
-		vrLen = 221;
-		vrLoc = 0;
-	};
-	DA94CB8212469DC40060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA58E8EC12453AAE00387BB5 /* SgBlackWhite.h */;
-		name = "SgBlackWhite.h: 10";
-		rLen = 0;
-		rLoc = 291;
-		rType = 0;
-		vrLen = 524;
-		vrLoc = 0;
-	};
-	DA94CB8312469DC40060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		comments = "Libxml/tree.h: No such file or directory";
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		rLen = 1;
-		rLoc = 31;
-		rType = 1;
-	};
-	DA94CB9812469EB70060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 37";
-		rLen = 0;
-		rLoc = 1411;
-		rType = 0;
-		vrLen = 787;
-		vrLoc = 746;
-	};
-	DA94CBA71246BA050060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 37";
-		rLen = 0;
-		rLoc = 1411;
-		rType = 0;
-		vrLen = 787;
-		vrLoc = 746;
-	};
-	DA94CBC01246BC160060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 28";
-		rLen = 0;
-		rLoc = 1241;
-		rType = 0;
-		vrLen = 787;
-		vrLoc = 746;
-	};
-	DA94CBC11246BC1D0060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 28";
-		rLen = 0;
-		rLoc = 1241;
-		rType = 0;
-		vrLen = 750;
-		vrLoc = 746;
-	};
-	DA94CBC91248357D0060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 28";
-		rLen = 0;
-		rLoc = 1241;
-		rType = 0;
-		vrLen = 204;
-		vrLoc = 1137;
-	};
-	DA94CBCA124835800060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 28";
-		rLen = 0;
-		rLoc = 1241;
-		rType = 0;
-		vrLen = 787;
-		vrLoc = 746;
-	};
-	DA94CBCE124838A20060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 28";
-		rLen = 0;
-		rLoc = 1241;
-		rType = 0;
-		vrLen = 787;
-		vrLoc = 746;
-	};
-	DA94CBCF124838A20060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
-		name = "CurrentGamesController.mm: 94";
-		rLen = 0;
-		rLoc = 2329;
-		rType = 0;
-		vrLen = 565;
-		vrLoc = 2001;
-	};
-	DA94CBD0124838A20060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
-		name = "CurrentGamesController.mm: 35";
-		rLen = 0;
-		rLoc = 638;
-		rType = 0;
-		vrLen = 459;
-		vrLoc = 401;
-	};
-	DA94CBD1124838A30060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
-		name = "CurrentGamesController.mm: 35";
-		rLen = 0;
-		rLoc = 638;
-		rType = 0;
-		vrLen = 436;
-		vrLoc = 401;
-	};
-	DA94CBD2124838E60060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DAE931561245443100335F0F /* CXMLNode.h */;
-		name = "CXMLNode.h: 28";
-		rLen = 0;
-		rLoc = 1241;
-		rType = 0;
-		vrLen = 204;
-		vrLoc = 1137;
-	};
-	DA94CBD3124838E60060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
-		name = "CurrentGamesController.mm: 35";
-		rLen = 0;
-		rLoc = 638;
-		rType = 0;
-		vrLen = 312;
-		vrLoc = 547;
-	};
-	DA94CBD6124839480060FD44 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
-		name = "CurrentGamesController.mm: 35";
-		rLen = 0;
-		rLoc = 635;
-		rType = 0;
-		vrLen = 458;
-		vrLoc = 401;
-	};
-	DA94CBD7124839480060FD44 /* PBXBookmark */ = {
+	DA94CC1F124842760060FD44 /* PBXBookmark */ = {
 		isa = PBXBookmark;
-		fRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */;
+		fRef = DA8A962711FBB3D100B2E2C7 /* Default.png */;
 	};
-	DA94CBD8124839480060FD44 /* PlistBookmark */ = {
+	DA94CC20124842760060FD44 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DA94CC29124842950060FD44 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52C1124842DF0099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52C2124842DF0099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52C5124842E20099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52CE124842E40099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52CF124842F10099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52F4124843220099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC52F5124843220099F9CB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = DA22A9CD11FD413200C88B31 /* Entitlements.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/jweiss/Source/dragongoclient/Entitlements.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	DAAC52F6124843220099F9CB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = DA22A9CD11FD413200C88B31 /* Entitlements.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/jweiss/Source/dragongoclient/Entitlements.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	DAAC5303124843960099F9CB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = DA22A9CD11FD413200C88B31 /* Entitlements.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/jweiss/Source/dragongoclient/Entitlements.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	DAAC5304124843960099F9CB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	DAAC5305124843960099F9CB /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
 		fallbackIsa = PBXBookmark;
@@ -641,86 +551,36 @@
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
-	DA94CBD9124839480060FD44 /* PlistBookmark */ = {
+	DAAC5306124843960099F9CB /* PlistBookmark */ = {
 		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
+		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
 		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
+		name = "/Users/jweiss/Source/dragongoclient/LogicTests-Info.plist";
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
-	DA94CBDA124839480060FD44 /* PlistBookmark */ = {
+	DAAC5309124843BB0099F9CB /* PlistBookmark */ = {
 		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
+		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
-			NSMainNibFile,
 		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
+		name = "/Users/jweiss/Source/dragongoclient/LogicTests-Info.plist";
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
-	DA94CBDB124839600060FD44 /* PlistBookmark */ = {
+	DAAC530A124843CA0099F9CB /* PlistBookmark */ = {
 		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
+		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
-			NSMainNibFile,
 		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	DA94CBEA124839870060FD44 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			NSMainNibFile,
-		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
-		rLen = 10;
-		rLoc = 0;
-	};
-	DA94CBEB124839870060FD44 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			NSMainNibFile,
-		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	DA94CBEC124839890060FD44 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			NSMainNibFile,
-		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	DA94CBF1124839A10060FD44 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* DGSPhone-Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-			NSMainNibFile,
-		);
-		name = "/Users/jweiss/Source/dragongoclient/DGSPhone-Info.plist";
+		name = "/Users/jweiss/Source/dragongoclient/LogicTests-Info.plist";
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
