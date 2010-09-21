@@ -141,6 +141,9 @@
 			DAAC5306124843960099F9CB /* PlistBookmark */ = DAAC5306124843960099F9CB /* PlistBookmark */;
 			DAAC5309124843BB0099F9CB /* PlistBookmark */ = DAAC5309124843BB0099F9CB /* PlistBookmark */;
 			DAAC530A124843CA0099F9CB /* PlistBookmark */ = DAAC530A124843CA0099F9CB /* PlistBookmark */;
+			DAAC530C1248440A0099F9CB /* PBXBookmark */ = DAAC530C1248440A0099F9CB /* PBXBookmark */;
+			DAAC530D1248440A0099F9CB /* PlistBookmark */ = DAAC530D1248440A0099F9CB /* PlistBookmark */;
+			DAAC530E1248440F0099F9CB /* PlistBookmark */ = DAAC530E1248440F0099F9CB /* PlistBookmark */;
 		};
 		sourceControlManager = DA38B1EA11B59DCF00112AA4 /* Source Control */;
 		userBuildSettings = {
@@ -574,6 +577,32 @@
 		rLoc = 9223372036854775807;
 	};
 	DAAC530A124843CA0099F9CB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/jweiss/Source/dragongoclient/LogicTests-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	DAAC530C1248440A0099F9CB /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */;
+	};
+	DAAC530D1248440A0099F9CB /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/jweiss/Source/dragongoclient/LogicTests-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	DAAC530E1248440F0099F9CB /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */;
 		fallbackIsa = PBXBookmark;

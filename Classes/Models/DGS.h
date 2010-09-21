@@ -17,6 +17,10 @@
 
 @property(nonatomic, assign) id <LoginProtocol> delegate;
 
+
+// Logic tests can't test anything that uses the native iPhone functionality.
+// Therefore, we don't want to compile anything that hits the network
+// if we're building the logic tests bundle. It should define LOGIC_TEST_MODE.
 #ifndef LOGIC_TEST_MODE
 
 - (void)logout;
@@ -32,7 +36,7 @@
 
 - (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
 
-// Internal
+// Internal, but these have to be exposed so the logic tests can hit them
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
 - (NSArray *)gamesFromTable:(NSString *)htmlString;
 

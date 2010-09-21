@@ -20,6 +20,13 @@
 @synthesize delegate;
 
 
+// This returns the base path onto which all of the urls used 
+// in this class refer. This is so that you can run your own
+// DGS instance and play with it without ruining your own games.
+//
+// WARNING: the current CVS checkout of DGS differs significantly
+// from the running version -- therefore, you may run into bugs when
+// switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
 	NSString *baseString = @"http://www.dragongoserver.net";
 	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
@@ -35,18 +42,29 @@
 	return self;
 }
 
+// Is the user currently logged in through their cookie? YES if so,
+// NO if not. 
 - (BOOL)loggedIn:(ASIHTTPRequest *)request {
 	NSString *urlString = [[request url] absoluteString];
 	
-	BOOL loggedOutURLNotFound = (NSNotFound == [urlString rangeOfString:@"error.php?err=not_logged_in"].location && NSNotFound == [urlString rangeOfString:@"index.php"].location);
+	// Use a simple heuristic here. If we are hitting a normal HTML page, we
+	// can figure out if the user is logged in by checking if we ended up on index.php
+	// or error.php (in the case where the error is not_logged_in)
+	BOOL notOnErrorPageOrIndex = (NSNotFound == [urlString rangeOfString:@"error.php?err=not_logged_in"].location && NSNotFound == [urlString rangeOfString:@"index.php"].location);
+	
+	// If we're using the DGS api, it will return the string 'Error: no_uid' if we
+	// aren't logged in.
 	BOOL errorStatusNotFound = (NSNotFound == [[request responseString] rangeOfString:@"#Error: no_uid"].location);
 	
-	if (loggedOutURLNotFound && errorStatusNotFound) {
+	if (notOnErrorPageOrIndex && errorStatusNotFound) {
 		return YES;
 	}
 	return NO;
 }
 
+
+// Checks the request body to see if it contains an error. If so,
+// return the error string. Otherwise, returns nil.
 - (NSString *)error:(ASIHTTPRequest *)request {
 	NSString *urlString = [[request url] absoluteString];
 	NSString *errorString = nil;
@@ -283,6 +301,8 @@
 
 #endif
 
+// This takes the CSV data that the DGS API hands back to us and transforms
+// it into a list of Game objects. 
 - (NSArray *)gamesFromCSV:(NSString *)csvData {
 	NSMutableArray *games = [NSMutableArray array];
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
@@ -311,6 +331,14 @@
 	return games;
 }
 
+// Parses a list of games from the table on the 'status' page of 
+// Dragon Go Server. This works, and provides a lot more information
+// than quick_status's comma separated data. Unfortunately, the table 
+// columns aren't marked in any consistent way I can find, so I either 
+// have to use the ordering of the table cells (which the user can change)
+// or the titles of the first row of table cells (which the user can change
+// by changing their language). I haven't been able to figure out a way 
+// around this, so this code sits here, unused -- for now.
 - (NSArray *)gamesFromTable:(NSString *)htmlString {
 	NSMutableArray *games = [NSMutableArray array];
 	NSError *error;
@@ -382,6 +410,9 @@
 	return games;
 }
 
+// This converts an integer row and column representing a board position and
+// and returns a two-character string representing the coordinates that DGS
+// uses. This can be passed directly to DGS to represent a board position.
 - (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize
 {
 	char rowChar = 'a' + (boardSize - row);
