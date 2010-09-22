@@ -3,7 +3,7 @@
 //  DGSPhone
 //
 //  Created by Justin Weiss on 7/23/10.
-//  Copyright 2010 Avvo. All rights reserved.
+//  Copyright 2010 Justin Weiss. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

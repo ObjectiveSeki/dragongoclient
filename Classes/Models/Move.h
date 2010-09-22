@@ -1,9 +1,12 @@
 //
 //  Move.h
-//  DGSPhone
+//
+//  A simple data structure representing the placement 
+//  (or not) of a stone on the board. Also represents 
+//  pass and resign moves.
 //
 //  Created by Justin Weiss on 6/5/10.
-//  Copyright 2010 Avvo. All rights reserved.
+//  Copyright 2010 Justin Weiss. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

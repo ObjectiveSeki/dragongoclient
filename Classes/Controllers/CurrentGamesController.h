@@ -3,7 +3,7 @@
 //  DGSPhone
 //
 //  Created by Justin Weiss on 6/5/10.
-//  Copyright 2010 Avvo. All rights reserved.
+//  Copyright 2010 Justin Weiss. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,6 +20,7 @@
 	IBOutlet UITableView *gameTableView;
 	UITableViewCell *selectedCell;
 	SpinnerView *spinnerView;
+	UIAlertView *logoutConfirmation;
 }
 
 @property (nonatomic, retain) SpinnerView *spinnerView;
@@ -30,9 +31,13 @@
 @property(nonatomic, retain) IBOutlet UITableView *gameTableView;
 @property(nonatomic, retain) DGS *dgs;
 @property(nonatomic, retain) UITableViewCell *selectedCell;
+@property(nonatomic, retain) UIAlertView *logoutConfirmation;
+
+
 - (IBAction)refreshGames;
 - (IBAction)logout;
 - (IBAction)addGame;
+
 - (void)notLoggedIn;
 - (void)requestCancelled;
 

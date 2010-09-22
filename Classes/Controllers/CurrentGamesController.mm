@@ -1,10 +1,10 @@
-//
-//  CurrentGamesController.mm
-//  DGSPhone
-//
-//  Created by Justin Weiss on 6/5/10.
-//  Copyright 2010 Avvo. All rights reserved.
-//
+// 
+// CurrentGamesController
+// 
+// Controller driving the list of games which are ready for moves.
+// If TEST_GAMES is defined, the game list will also contain a bunch
+// of SGFs at various points in the game, for testing the game views.
+// 
 
 #import "CurrentGamesController.h"
 #import "DGS.h"
@@ -24,7 +24,7 @@
 @synthesize logoutButton;
 @synthesize dgs;
 @synthesize selectedCell;
-
+@synthesize logoutConfirmation;
 
 
 #pragma mark -
@@ -146,8 +146,22 @@
 	[self setEnabled:YES];
 }
 
+// Handles dismissing the logout confirmation.
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (alertView == self.logoutConfirmation) {
+		if (buttonIndex != alertView.cancelButtonIndex) {
+			[self setEnabled:NO];
+			self.spinnerView = [SpinnerView showInView:self.view];
+			self.spinnerView.label.text = @"Logging out...";
+			[dgs logout];
+		}
+		self.logoutConfirmation = nil;
+	}
+}
+
 - (IBAction)logout {
-	[dgs logout];
+	self.logoutConfirmation = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil];
+	[self.logoutConfirmation show];
 }
 
 - (IBAction)addGame {
@@ -300,6 +314,7 @@
 	self.dgs = nil;
 	self.selectedCell = nil;
 	self.spinnerView = nil;
+	self.logoutConfirmation = nil;
 }
 
 

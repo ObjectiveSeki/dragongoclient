@@ -3,7 +3,7 @@
 //  BACEstimator
 //
 //  Created by Justin Weiss on 7/18/08.
-//  Copyright 2008 Avvo. All rights reserved.
+//  Copyright 2008 Justin Weiss. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

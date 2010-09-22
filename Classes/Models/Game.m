@@ -1,9 +1,11 @@
 //
 //  Game.m
-//  DGSPhone
+//
+//	Represents a game, as DGS sees it. This is pretty much a struct, 
+//  all of the complicated logic is inside FuegoBoard.
 //
 //  Created by Justin Weiss on 6/3/10.
-//  Copyright 2010 Avvo. All rights reserved.
+//  Copyright 2010 Justin Weiss. All rights reserved.
 //
 
 #import "Game.h"

@@ -1,9 +1,10 @@
 //
 //  FuegoBoard.h
-//  DGSPhone
+// 
+//  An Objective-C wrapper around the logic in libfuego.
 //
 //  Created by Justin Weiss on 6/4/10.
-//  Copyright 2010 Avvo. All rights reserved.
+//  Copyright 2010 Justin Weiss. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
