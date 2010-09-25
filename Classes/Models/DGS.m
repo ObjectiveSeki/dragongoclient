@@ -50,16 +50,16 @@
 	// Use a simple heuristic here. If we are hitting a normal HTML page, we
 	// can figure out if the user is logged in by checking if we ended up on index.php
 	// or error.php (in the case where the error is not_logged_in)
-	BOOL notOnErrorPageOrIndex = (NSNotFound == [urlString rangeOfString:@"error.php?err=not_logged_in"].location && NSNotFound == [urlString rangeOfString:@"index.php"].location);
+	BOOL onErrorPageOrIndex = (NSNotFound != [urlString rangeOfString:@"error.php?err=not_logged_in"].location || NSNotFound != [urlString rangeOfString:@"index.php"].location);
 	
-	// If we're using the DGS api, it will return the string 'Error: no_uid' if we
-	// aren't logged in.
-	BOOL errorStatusNotFound = (NSNotFound == [[request responseString] rangeOfString:@"#Error: no_uid"].location);
+	// If we're using the DGS api, it will return the string 'Error: no_uid' or 'Error: not_logged_in' if we aren't logged in.
+	BOOL noUID = (NSNotFound != [[request responseString] rangeOfString:@"#Error: no_uid"].location);
+	BOOL notLoggedIn = (NSNotFound != [[request responseString] rangeOfString:@"#Error: not_logged_in"].location);
 	
-	if (notOnErrorPageOrIndex && errorStatusNotFound) {
-		return YES;
+	if (onErrorPageOrIndex || noUID || notLoggedIn ) {
+		return NO;
 	}
-	return NO;
+	return YES;
 }
 
 
@@ -89,6 +89,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+	NSLog(@"%@", [request responseString]);
 	NSString *errorString = [self error:request];
 	if (NO == [self loggedIn:request]) {
 		[[self delegate] notLoggedIn];
