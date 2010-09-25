@@ -33,9 +33,6 @@
 		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA58E7D11245381600387BB5 /* libAsiHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */; };
-		DA58E808124539B700387BB5 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
-		DA58E809124539B700387BB5 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
-		DA58E80A124539B700387BB5 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
 		DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DA58E87A12453A9B00387BB5 /* GoBensonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81312453A9B00387BB5 /* GoBensonSolver.cpp */; };
 		DA58E87C12453A9B00387BB5 /* GoBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81512453A9B00387BB5 /* GoBlock.cpp */; };
@@ -144,6 +141,9 @@
 		DA94CBE5124839740060FD44 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDF124839740060FD44 /* LoginView.xib */; };
 		DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE0124839740060FD44 /* MainWindow.xib */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
+		DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
+		DAAC543F124CFC490099F9CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
+		DAAC5440124CFC490099F9CB /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
@@ -190,7 +190,6 @@
 		DAE931D81245446900335F0F /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A41245446900335F0F /* tmbstr.c */; };
 		DAE931DA1245446900335F0F /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A61245446900335F0F /* utf8.c */; };
 		DAE931DD1245446900335F0F /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A91245446900335F0F /* win32tc.c */; };
-		DAE931E6124545CA00335F0F /* libTouchXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE9313E1245440500335F0F /* libTouchXML.a */; };
 		DAE932AA12454A2900335F0F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DAE932A912454A2900335F0F /* LICENSE */; };
 		DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE932C112454E4800335F0F /* AddGameViewController.m */; };
 		DAE932C712454F7900335F0F /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DA58E7B1124537CD00387BB5 /* ASIAuthenticationDialog.m */; };
@@ -669,7 +668,6 @@
 				DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */,
 				DA58E7D11245381600387BB5 /* libAsiHTTPRequest.a in Frameworks */,
 				DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */,
-				DAE931E6124545CA00335F0F /* libTouchXML.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,9 +682,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA58E808124539B700387BB5 /* libboost_filesystem.a in Frameworks */,
-				DA58E809124539B700387BB5 /* libboost_system.a in Frameworks */,
-				DA58E80A124539B700387BB5 /* libboost_thread.a in Frameworks */,
+				DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */,
+				DAAC543F124CFC490099F9CB /* libboost_system.a in Frameworks */,
+				DAAC5440124CFC490099F9CB /* libboost_thread.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1796,8 +1794,12 @@
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
 			};
@@ -1821,8 +1823,12 @@
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
