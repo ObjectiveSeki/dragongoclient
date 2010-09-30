@@ -19,3 +19,8 @@ Features
 
 Screenshots
 -----------
+
+<img src="http://dgs.uberweiss.net/dgs1.png">
+<img src="http://dgs.uberweiss.net/dgs2.png">
+<img src="http://dgs.uberweiss.net/dgs3.png">
+<img src="http://dgs.uberweiss.net/dgs4.png">
