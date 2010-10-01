@@ -26,7 +26,7 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = DA38B1D911B59DAE00112AA4 /* DGS */;
 		activeSDKPreference = iphonesimulator4.1;
-		activeTarget = 1D6058900D05DD3D006BFB54 /* DGS */;
+		activeTarget = DA71CA8311B5E97F008696AC /* LogicTests */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* DGS */,
 		);
@@ -161,6 +161,14 @@
 			DACE11F112557824006C9598 /* PBXTextBookmark */ = DACE11F112557824006C9598 /* PBXTextBookmark */;
 			DACE11F212557825006C9598 /* PBXTextBookmark */ = DACE11F212557825006C9598 /* PBXTextBookmark */;
 			DACE11F512557864006C9598 /* PBXTextBookmark */ = DACE11F512557864006C9598 /* PBXTextBookmark */;
+			DACE11F6125578E8006C9598 /* PBXTextBookmark */ = DACE11F6125578E8006C9598 /* PBXTextBookmark */;
+			DACE11F7125578E8006C9598 /* PBXTextBookmark */ = DACE11F7125578E8006C9598 /* PBXTextBookmark */;
+			DACE11FA12557934006C9598 /* PBXTextBookmark */ = DACE11FA12557934006C9598 /* PBXTextBookmark */;
+			DACE11FB12557934006C9598 /* PBXTextBookmark */ = DACE11FB12557934006C9598 /* PBXTextBookmark */;
+			DACE11FC12557934006C9598 /* PBXTextBookmark */ = DACE11FC12557934006C9598 /* PBXTextBookmark */;
+			DACE11FD12557934006C9598 /* PBXTextBookmark */ = DACE11FD12557934006C9598 /* PBXTextBookmark */;
+			DACE11FE12557938006C9598 /* PBXTextBookmark */ = DACE11FE12557938006C9598 /* PBXTextBookmark */;
+			DACE11FF12557938006C9598 /* PBXTextBookmark */ = DACE11FF12557938006C9598 /* PBXTextBookmark */;
 		};
 		sourceControlManager = DA38B1EA11B59DCF00112AA4 /* Source Control */;
 		userBuildSettings = {
@@ -399,9 +407,9 @@
 	};
 	DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {646, 6305}}";
-			sepNavSelRange = "{6358, 0}";
-			sepNavVisRange = "{6197, 435}";
+			sepNavIntBoundsRect = "{{0, 0}, {853, 6305}}";
+			sepNavSelRange = "{6346, 0}";
+			sepNavVisRange = "{6213, 211}";
 			sepNavWindowFrame = "{{38, 67}, {1027, 685}}";
 		};
 	};
@@ -849,6 +857,86 @@
 		vrLen = 435;
 		vrLoc = 6197;
 	};
+	DACE11F6125578E8006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
+		name = "CurrentGamesController.mm: 156";
+		rLen = 0;
+		rLoc = 4531;
+		rType = 0;
+		vrLen = 395;
+		vrLoc = 3888;
+	};
+	DACE11F7125578E8006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */;
+		name = "FuegoBoard.mm: 269";
+		rLen = 0;
+		rLoc = 6346;
+		rType = 0;
+		vrLen = 211;
+		vrLoc = 6213;
+	};
+	DACE11FA12557934006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */;
+		name = "FuegoBoard.mm: 269";
+		rLen = 0;
+		rLoc = 6346;
+		rType = 0;
+		vrLen = 413;
+		vrLoc = 6197;
+	};
+	DACE11FB12557934006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */;
+		name = "DGSTests.m: 18";
+		rLen = 52;
+		rLoc = 407;
+		rType = 0;
+		vrLen = 469;
+		vrLoc = 0;
+	};
+	DACE11FC12557934006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */;
+		name = "DGSTests.m: 23";
+		rLen = 0;
+		rLoc = 540;
+		rType = 0;
+		vrLen = 642;
+		vrLoc = 178;
+	};
+	DACE11FD12557934006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */;
+		name = "DGSTests.m: 23";
+		rLen = 0;
+		rLoc = 540;
+		rType = 0;
+		vrLen = 637;
+		vrLoc = 178;
+	};
+	DACE11FE12557938006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */;
+		name = "FuegoBoard.mm: 269";
+		rLen = 0;
+		rLoc = 6346;
+		rType = 0;
+		vrLen = 211;
+		vrLoc = 6213;
+	};
+	DACE11FF12557938006C9598 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */;
+		name = "DGSTests.m: 23";
+		rLen = 0;
+		rLoc = 540;
+		rType = 0;
+		vrLen = 496;
+		vrLoc = 319;
+	};
 	DADB15BA11F69763006EF644 /* GoBoardUtil.cpp:818 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
@@ -1030,9 +1118,9 @@
 	};
 	DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {705, 390}}";
-			sepNavSelRange = "{407, 52}";
-			sepNavVisRange = "{0, 798}";
+			sepNavIntBoundsRect = "{{0, 0}, {853, 390}}";
+			sepNavSelRange = "{540, 0}";
+			sepNavVisRange = "{319, 496}";
 			sepNavWindowFrame = "{{15, 88}, {1027, 685}}";
 		};
 	};

@@ -20,7 +20,7 @@
 }
 
 - (void)testBoardCoords {
-	DGS *dgs = [[DGS alloc] init];
+	DGS *dgs = [[[DGS alloc] init] autorelease];
 	STAssertEqualObjects(@"ss", [dgs sgfCoordsWithRow:1 column:19 boardSize:19], nil, nil );
 	STAssertEqualObjects(@"aa", [dgs sgfCoordsWithRow:19 column:1 boardSize:19], nil, nil );
 	STAssertEqualObjects(@"ab", [dgs sgfCoordsWithRow:18 column:1 boardSize:19], nil, nil );
