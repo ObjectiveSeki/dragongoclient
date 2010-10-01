@@ -265,6 +265,11 @@
 }
 
 - (bool)playStoneAtRow:(int)row column:(int)col {
+	
+	if (row <= 0 || row > [self size] || col <= 0 || col > [self size]) {
+		return NO;
+	}
+	
 	if (![self canPlayMove]) {
 		return NO;
 	}
