@@ -28,26 +28,47 @@
 @property(nonatomic, retain) NSArray *markedGroups;
 @property(nonatomic, retain) NSArray *changedGroups;
 
+// Must be called after loading but before using this class
 + (void)initFuego;
+
+// Must be called when you're done using this class
 + (void)finishFuego;
 
 - initWithSGFString:(NSString *)sgfString;
 
+// Properties
+- (NSString *)comment;
 - (bool)gameEnded;
 - (int)size;
 - (NSArray *)moves;
 - (int)moveNumber;
+
+// The most recently played move
 - (Move *)currentMove;
+
+// The second-to-most recently played move
 - (Move *)lastMove;
+
+// Stones that were marked on the last turn. We need to keep
+// track of this group so that we can allow the player to
+// unmark stones
 - (NSArray *)markedStones;
+
+// Stones whose status has changed (marked vs unmarked)
+// since the last turn
 - (NSArray *)changedStones;
+
+// Marked stones whose status has not changed, and unmarked 
+// stones whose status has changed
 - (NSArray *)deadStones;
+- (int)handicap;
+
+// Commands
 - (void)undoLastMove;
 - (bool)playStoneAtRow:(int)row column:(int)col;
 - (bool)markDeadStonesAtRow:(int)row column:(int)col;
 - (void)pass;
 - (void)resign;
-- (int)handicap;
 
 // NO if the game has a handicap and the handicap stones have just been placed
 - (bool)beginningOfHandicapGame;

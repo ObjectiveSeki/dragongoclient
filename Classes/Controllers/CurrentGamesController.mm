@@ -2,7 +2,7 @@
 // CurrentGamesController
 // 
 // Controller driving the list of games which are ready for moves.
-// If TEST_GAMES is defined, the game list will also contain a bunch
+// If TEST_GAMES is set, the game list will also contain a bunch
 // of SGFs at various points in the game, for testing the game views.
 // 
 
@@ -17,6 +17,10 @@
 #if defined (CONFIGURATION_Adhoc)
 #import "BWHockeyController.h"
 #endif
+
+// set to '1' to see SGFs that test various aspects of 
+// the board view.
+#define TEST_GAMES 0
 
 @implementation CurrentGamesController
 
@@ -123,9 +127,9 @@
 - (void)gotCurrentGames:(NSArray *)currentGames {
 	self.games = currentGames;
 	
-#ifdef TEST_GAMES
+#if TEST_GAMES
 	
-	NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200",  nil];
+	NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", nil];
 	NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
 	for (NSString *name in testGames) {
 		Game *game = [[Game alloc] init];
@@ -282,7 +286,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
-#ifdef TEST_GAMES
+#if TEST_GAMES
 	Game *game = [self.games objectAtIndex:[indexPath row]];
 	if (game.gameId == 0) {
 		[self gotSgfForGame:game];
@@ -297,7 +301,7 @@
 	[activityView startAnimating];
 	[self.selectedCell setAccessoryView:activityView];
 	[activityView release];
-#ifdef TEST_GAMES
+#if TEST_GAMES
 	}
 #endif
 }

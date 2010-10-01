@@ -177,6 +177,7 @@
 		DACD4361125B6790001F1F01 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD434A125B6790001F1F01 /* SBJsonWriter.m */; };
 		DACD4362125B6790001F1F01 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */; };
 		DACD4363125B6790001F1F01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */; };
+		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CDD11FD3C0B005922A3 /* Readme.md */; };
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
@@ -607,6 +608,7 @@
 		DACD434A125B6790001F1F01 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
 		DADD18D111BC72730038F8BC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = vendor/boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		DADD18D211BC72730038F8BC /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = vendor/boost/lib/libboost_system.a; sourceTree = "<group>"; };
 		DADD18D311BC72730038F8BC /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = vendor/boost/lib/libboost_thread.a; sourceTree = "<group>"; };
@@ -1457,6 +1459,7 @@
 			children = (
 				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
 				DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */,
+				DACE119A1255754A006C9598 /* Game with Message.sgf */,
 				DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */,
 				DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */,
 				DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */,
@@ -1686,6 +1689,7 @@
 				DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */,
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
+				DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

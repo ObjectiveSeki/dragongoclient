@@ -40,8 +40,6 @@ static bool fuegoInitialized = NO;
 	SgFini();
 }
 
-
-
 - (MovePlayer)playerForSgPlayer:(SgBlackWhite)player {
 	MovePlayer movePlayer;
 	
@@ -132,6 +130,16 @@ static bool fuegoInitialized = NO;
 		}
 	}
 	return self;
+}
+
+- (NSString *)comment {
+	if (goGame->CurrentNode()->HasProp(SG_PROP_COMMENT)) {
+		std::string commentString;
+		goGame->CurrentNode()->GetStringProp(SG_PROP_COMMENT, &commentString);
+		NSString *comment = [NSString stringWithUTF8String:commentString.c_str()];
+		return comment;
+	}
+	return nil;
 }
 
 - (bool)beginningOfHandicapGame {

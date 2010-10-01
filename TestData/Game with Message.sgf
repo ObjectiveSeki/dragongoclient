@@ -1,0 +1,25 @@
+(
+;FF[4]GM[1]
+AP[DGS:1.0.15]
+PC[Dragon Go Server: http://localhost.local/~jweiss/DragonGoServer/]
+DT[2010-09-30,2010-09-30]
+GN[test1-test2-1-20100930]
+SO[http://localhost.local/~jweiss/DragonGoServer/game.php?gid=1]
+PB[test2 (test2)]
+PW[test1 (test1)]
+BR[?]
+WR[?]
+GC[Game ID: 1
+Rated: N
+
+White Start Rating: ?
+Black Start Rating: ?]
+OT[30 days with 1 day extra per move]
+RU[Japanese]
+SZ[19]
+KM[6.5]
+;B[dd]
+C[test2: Have a good game!]
+;W[pp]
+C[test1: You too! This is a longer part of the message.]
+)

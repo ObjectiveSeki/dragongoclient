@@ -11,8 +11,6 @@
 #import "DGSPhoneAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define MARGIN_X 40
-#define MARGIN_Y 40
 #define HANDICAP_MARKER_RADIUS 0.16
 #define LAST_MOVE_RADIUS 0.25
 #define X_MARKER_RADIUS 0.22
@@ -259,6 +257,8 @@
 	self.blackCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerBlack]];	
 	self.whiteCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerWhite]];	
 	
+	NSString *comment = [self.board comment];
+	
 	if (![self.board gameEnded]) {
 		if ([[[self board] currentMove] moveType] == kMoveTypePass) {
 			if ([self.board currentMove].player == kMovePlayerBlack) {
@@ -272,6 +272,8 @@
 			} else {
 				self.status.text = @"W Resign";
 			}
+		} else if (comment) {
+			self.status.text = comment;
 		}
 	} else {
 		float score = [self.board score];
@@ -299,7 +301,7 @@
 	// we need to make a guess first, then calculate the actual margins based on the
 	// point distance we calculate. The reason these are different are due to rounding 
 	// errors when we snap the board distance to device pixels.
-	_margin = 40;
+	_margin = 50;
 	pointDistance = 2 * round((float)([self maxX] - [self minX]) / (self.board.size - 1) / 2.0);
 	_margin = (self.bounds.size.width - (pointDistance * (self.board.size - 1))) / 2.0;
 	
