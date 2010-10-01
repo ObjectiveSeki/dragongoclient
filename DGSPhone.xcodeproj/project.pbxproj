@@ -122,6 +122,7 @@
 		DA58E9FA12453AAE00387BB5 /* SgVectorUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E95812453AAE00387BB5 /* SgVectorUtility.cpp */; };
 		DA58E9FC12453AAE00387BB5 /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E95A12453AAE00387BB5 /* SgWrite.cpp */; };
 		DA58EA2C12453B1900387BB5 /* SgSearchValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E93B12453AAE00387BB5 /* SgSearchValue.cpp */; };
+		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
 		DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
@@ -513,6 +514,7 @@
 		DA58E95912453AAE00387BB5 /* SgVectorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgVectorUtility.h; sourceTree = "<group>"; };
 		DA58E95A12453AAE00387BB5 /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA58E95B12453AAE00387BB5 /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
+		DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Pass Should Be Move 200.sgf"; sourceTree = "<group>"; };
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -1318,6 +1320,7 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */,
 				DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */,
 				DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */,
 				DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */,
@@ -1507,6 +1510,7 @@
 				DA94CBE5124839740060FD44 /* LoginView.xib in Resources */,
 				DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */,
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
+				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

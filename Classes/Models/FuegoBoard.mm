@@ -24,6 +24,7 @@
 @synthesize resignMove;
 @synthesize markedGroups;
 @synthesize changedGroups;
+@synthesize gameEnded;
 
 + (void)initFuego {
 	SgInit();
@@ -52,6 +53,7 @@
 
 - (id)initWithSGFString:(NSString *)sgfString {
 	if ([super init]) {
+		self.gameEnded = NO;
 		std::string sgfStr([sgfString UTF8String]);
 		std::istringstream input(sgfStr);
 		SgGameReader gameReader(input, 19);
@@ -100,6 +102,14 @@
 		
 		self.changedGroups = [NSArray array];
 		
+		// We have to set game ended here. We have special logic
+		// that goes around this state that we only want to execute
+		// if the game is over at the time we download the sgf from DGS,
+		// not if the player him/herself makes the 2nd pass.
+		if (goGame->EndOfGame()) {
+			self.gameEnded = YES;
+		}
+		
 		// If we just placed handicap stones, it should be W's turn to play
 		// Not sure why Fuego doesn't handle this...
 		if ([self beginningOfHandicapGame]) {
@@ -115,10 +125,6 @@
 
 - (bool)needsHandicapStones {
 	return [self moveNumber] < [self handicap];
-}
-
-- (bool)gameEnded {
-	return goGame->EndOfGame();
 }
 
 - (NSArray *)handicapStones {

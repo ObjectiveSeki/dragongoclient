@@ -103,7 +103,7 @@
 	
 #ifdef TEST_GAMES
 	
-	NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", nil];
+	NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200",  nil];
 	NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
 	for (NSString *name in testGames) {
 		Game *game = [[Game alloc] init];

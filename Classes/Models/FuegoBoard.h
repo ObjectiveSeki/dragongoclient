@@ -20,11 +20,13 @@
 	Move *resignMove;
 	NSArray *markedGroups;
 	NSArray *changedGroups;
+	bool gameEnded;
 }
 
 @property(nonatomic, retain) Move *resignMove;
 @property(nonatomic, retain) NSArray *markedGroups;
 @property(nonatomic, retain) NSArray *changedGroups;
+@property(nonatomic, assign) bool gameEnded;
 
 + (void)initFuego;
 + (void)finishFuego;
