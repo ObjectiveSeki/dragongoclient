@@ -28,8 +28,8 @@
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
-	NSString *baseString = @"http://www.dragongoserver.net";
-	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	//NSString *baseString = @"http://www.dragongoserver.net";
+	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
@@ -184,7 +184,9 @@
 }
 
 - (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
-	int lastMoveNumber = moveNumber; // TODO: For some reason this doesn't need to lose one number?
+	// For the endgame, adding dead stones doesn't add moves to the SGF, so we 
+	// don't subtract 1 from the moveNumber.
+	int lastMoveNumber = moveNumber; 
 	NSURL *url = [self URLWithPath:@"/game.php"];
 	
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];

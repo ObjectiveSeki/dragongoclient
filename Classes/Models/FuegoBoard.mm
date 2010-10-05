@@ -19,6 +19,8 @@
 #import "DGS.h"
 #include <sstream>
 
+static bool fuegoInitialized = NO;
+
 @implementation FuegoBoard
 
 @synthesize resignMove;
@@ -27,8 +29,11 @@
 @synthesize gameEnded;
 
 + (void)initFuego {
-	SgInit();
-	GoInit();
+	if (!fuegoInitialized) {
+		SgInit();
+		GoInit();
+		fuegoInitialized = YES;
+	}
 }
 
 + (void)finishFuego {
@@ -54,6 +59,7 @@
 - (id)initWithSGFString:(NSString *)sgfString {
 	if ([super init]) {
 		self.gameEnded = NO;
+		scoringMoves = 0;
 		std::string sgfStr([sgfString UTF8String]);
 		std::istringstream input(sgfStr);
 		SgGameReader gameReader(input, 19);
@@ -72,6 +78,16 @@
 		// Fast-forward to the end of the game
 		while (goGame->CanGoInDirection(SgNode::NEXT)) {
 			goGame->GoInDirection(SgNode::NEXT);
+			
+			// We have to add extra move counts for scoring steps
+			if (goGame->CurrentNode()->HasProp(SG_PROP_NAME) && !goGame->CurrentNode()->HasProp(SG_PROP_MOVE)) {
+				std::string propName;
+				goGame->CurrentNode()->GetStringProp(SG_PROP_NAME, &propName);
+				
+				if (propName == "B SCORE" || propName == "W SCORE") {
+					scoringMoves++;
+				}
+			}
 		}
 		
 		// used to track changes for undo
@@ -267,6 +283,7 @@
 	if (self.resignMove) {
 		++moveNumber;
 	}
+	moveNumber += scoringMoves;
 	return moveNumber;
 }
 

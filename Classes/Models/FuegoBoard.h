@@ -21,6 +21,7 @@
 	NSArray *markedGroups;
 	NSArray *changedGroups;
 	bool gameEnded;
+	int scoringMoves;
 }
 
 @property(nonatomic, retain) Move *resignMove;

@@ -123,6 +123,10 @@
 		DA58E9FC12453AAE00387BB5 /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E95A12453AAE00387BB5 /* SgWrite.cpp */; };
 		DA58EA2C12453B1900387BB5 /* SgSearchValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E93B12453AAE00387BB5 /* SgSearchValue.cpp */; };
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
+		DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */; };
+		DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
+		DA667C3E125A296D00CA9A13 /* XCodeTestFix.m in Sources */ = {isa = PBXBuildFile; fileRef = DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */; };
+		DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
 		DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
@@ -250,6 +254,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DA58E8031245398B00387BB5;
 			remoteInfo = fuego;
+		};
+		DA667CF3125AC41200CA9A13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA71CA8311B5E97F008696AC /* LogicTests */;
+			remoteInfo = LogicTests;
 		};
 		DAE931E4124545C200335F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -515,6 +526,10 @@
 		DA58E95A12453AAE00387BB5 /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA58E95B12453AAE00387BB5 /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
 		DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Pass Should Be Move 200.sgf"; sourceTree = "<group>"; };
+		DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoardTests.h; sourceTree = "<group>"; };
+		DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoardTests.mm; sourceTree = "<group>"; };
+		DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Scoring Should Be Move 202.sgf"; sourceTree = "<group>"; };
+		DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCodeTestFix.m; sourceTree = "<group>"; };
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -1174,6 +1189,9 @@
 			children = (
 				DAEA525911B895ED00F4CCB3 /* DGSTests.h */,
 				DAEA525A11B895ED00F4CCB3 /* DGSTests.m */,
+				DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */,
+				DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */,
+				DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -1320,6 +1338,7 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
 				DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */,
 				DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */,
 				DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */,
@@ -1383,6 +1402,7 @@
 				DA58E7E7124538C200387BB5 /* PBXTargetDependency */,
 				DAE931E5124545C200335F0F /* PBXTargetDependency */,
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
+				DA667CF4125AC41200CA9A13 /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
@@ -1535,6 +1555,8 @@
 				DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */,
 				DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */,
 				DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */,
+				DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */,
+				DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1701,6 +1723,8 @@
 				DAF911F611BB796900FE7B96 /* Move.m in Sources */,
 				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
 				DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */,
+				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */,
+				DA667C3E125A296D00CA9A13 /* XCodeTestFix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1770,6 +1794,11 @@
 			isa = PBXTargetDependency;
 			target = DA58E8031245398B00387BB5 /* fuego */;
 			targetProxy = DA58E80B12453A3400387BB5 /* PBXContainerItemProxy */;
+		};
+		DA667CF4125AC41200CA9A13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA71CA8311B5E97F008696AC /* LogicTests */;
+			targetProxy = DA667CF3125AC41200CA9A13 /* PBXContainerItemProxy */;
 		};
 		DAE931E5124545C200335F0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
