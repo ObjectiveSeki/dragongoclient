@@ -26,7 +26,6 @@ static bool fuegoInitialized = NO;
 @synthesize resignMove;
 @synthesize markedGroups;
 @synthesize changedGroups;
-@synthesize gameEnded;
 
 + (void)initFuego {
 	if (!fuegoInitialized) {
@@ -58,7 +57,7 @@ static bool fuegoInitialized = NO;
 
 - (id)initWithSGFString:(NSString *)sgfString {
 	if ([super init]) {
-		self.gameEnded = NO;
+		_gameEnded = NO;
 		scoringMoves = 0;
 		std::string sgfStr([sgfString UTF8String]);
 		std::istringstream input(sgfStr);
@@ -123,7 +122,7 @@ static bool fuegoInitialized = NO;
 		// if the game is over at the time we download the sgf from DGS,
 		// not if the player him/herself makes the 2nd pass.
 		if (goGame->EndOfGame()) {
-			self.gameEnded = YES;
+			_gameEnded = YES;
 		}
 		
 		// If we just placed handicap stones, it should be W's turn to play
@@ -149,6 +148,10 @@ static bool fuegoInitialized = NO;
 	} else {
 		return nil;
 	}
+}
+
+- (bool)gameEnded {
+	return _gameEnded && goGame->EndOfGame();
 }
 
 - (NSArray *)flatten:(NSArray *)arrayOfArrays {
@@ -308,6 +311,9 @@ static bool fuegoInitialized = NO;
 }
 
 - (bool)alreadyMarkedPointAtRow:(int)row column:(int)col {
+	if (row <= 0 || row > [self size] || col <= 0 || col > [self size]) {
+		return NO;
+	}
 	for (Move *move in [self changedStones]) {
 		if ([move row] == row && [move col] == col) {
 			return YES;
@@ -317,6 +323,9 @@ static bool fuegoInitialized = NO;
 }
 
 - (bool)markDeadStonesAtRow:(int)row column:(int)col {
+	if (row <= 0 || row > [self size] || col <= 0 || col > [self size]) {
+		return NO;
+	}
 	SgPoint point = SgPointUtil::Pt(col, row);
 	if (goGame->Board().Occupied(point)) {
 		
@@ -442,9 +451,7 @@ static bool fuegoInitialized = NO;
 }
 
 - (bool)canSubmit {
-	if ([[self currentMove] moveType] != kMoveTypeMove) {
-		return YES;
-	} else if ([self handicap] && [self needsHandicapStones]) {
+	if ([self handicap] && [self needsHandicapStones]) {
 		return NO;
 	} else if ([self canUndo]) {
 		return YES;

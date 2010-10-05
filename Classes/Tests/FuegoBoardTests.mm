@@ -28,9 +28,13 @@
 - (void)testGameStateAfterPasses {
 	NSString *sgfString = [self stringForSgfFile:@"Pass Should Be Move 200"];
 	FuegoBoard *board = [[FuegoBoard alloc] initWithSGFString:sgfString];
+
+	STAssertFalse([board canUndo], nil);
+	STAssertFalse([board canSubmit], nil);
 	
 	[board pass];
 	
+	STAssertTrue([board canSubmit], nil);
 	STAssertEquals([board moveNumber], 201, nil);
 	STAssertFalse([board gameEnded], nil);
 	
@@ -52,6 +56,23 @@
 	STAssertEquals([otherBoard moveNumber], 15, nil);
 	
 	[otherBoard release];
+}
+
+- (void)testPlayMoveAfterScoring {
+	NSString *sgfString = [self stringForSgfFile:@"Scoring Should Be Move 202"];
+	FuegoBoard *board = [[FuegoBoard alloc] initWithSGFString:sgfString];
+	
+	STAssertTrue([board gameEnded], nil);
+	
+	[board playStoneAtRow:1 column:1];
+	
+	STAssertFalse([board gameEnded], nil);
+	STAssertEquals([board moveNumber], 203, nil);
+	
+	[board undoLastMove];
+	STAssertTrue([board gameEnded], nil);
+	
+	[board release];
 }
 
 @end

@@ -20,20 +20,20 @@
 	Move *resignMove;
 	NSArray *markedGroups;
 	NSArray *changedGroups;
-	bool gameEnded;
+	bool _gameEnded;
 	int scoringMoves;
 }
 
 @property(nonatomic, retain) Move *resignMove;
 @property(nonatomic, retain) NSArray *markedGroups;
 @property(nonatomic, retain) NSArray *changedGroups;
-@property(nonatomic, assign) bool gameEnded;
 
 + (void)initFuego;
 + (void)finishFuego;
 
 - initWithSGFString:(NSString *)sgfString;
 
+- (bool)gameEnded;
 - (int)size;
 - (NSArray *)moves;
 - (int)moveNumber;
