@@ -1841,7 +1841,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Justin Weiss";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1862,7 +1862,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FEC08AF3-3A44-4C72-9D60-439CC8D620F0";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1968,6 +1968,146 @@
 			};
 			name = Release;
 		};
+		DA667DC0125AE40300CA9A13 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.1;
+			};
+			name = Adhoc;
+		};
+		DA667DC1125AE40300CA9A13 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Justin Weiss";
+				COPY_PHASE_STRIP = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					/usr/include/libxml2,
+					vendor/boost/include,
+				);
+				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"-ObjC",
+				);
+				PRODUCT_NAME = DGS;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4D3CC274-B57E-4C7E-A1A2-2BBD7AFCC56A";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Adhoc;
+		};
+		DA667DC2125AE40300CA9A13 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Source/DGSPhone/Entitlements.plist";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				HEADER_SEARCH_PATHS = (
+					vendor/boost/include,
+					/usr/include/libxml2,
+				);
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-force_load",
+					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"-ObjC",
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				SDKROOT = iphoneos4.1;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Adhoc;
+		};
+		DA667DC3125AE40300CA9A13 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				PRODUCT_NAME = AsiHTTPRequest;
+				ZERO_LINK = NO;
+			};
+			name = Adhoc;
+		};
+		DA667DC4125AE40300CA9A13 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				HEADER_SEARCH_PATHS = (
+					vendor/boost/include,
+					/usr/include/libxml2,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor/boost/lib\"",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = fuego;
+				ZERO_LINK = NO;
+			};
+			name = Adhoc;
+		};
+		DA667DC5125AE40300CA9A13 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
+				PREBINDING = NO;
+				PRODUCT_NAME = TouchXML;
+				ZERO_LINK = NO;
+			};
+			name = Adhoc;
+		};
 		DA71CA8511B5E97F008696AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2027,6 +2167,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2087,6 +2228,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
+				DA667DC1125AE40300CA9A13 /* Adhoc */,
 				1D6058950D05DD3E006BFB54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2096,6 +2238,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
+				DA667DC0125AE40300CA9A13 /* Adhoc */,
 				C01FCF5008A954540054247B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2105,6 +2248,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA58E77C124536DE00387BB5 /* Debug */,
+				DA667DC3125AE40300CA9A13 /* Adhoc */,
 				DA58E77D124536DE00387BB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2114,6 +2258,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA58E8051245398C00387BB5 /* Debug */,
+				DA667DC4125AE40300CA9A13 /* Adhoc */,
 				DA58E8061245398C00387BB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2123,6 +2268,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA71CA8511B5E97F008696AC /* Debug */,
+				DA667DC2125AE40300CA9A13 /* Adhoc */,
 				DA71CA8611B5E97F008696AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2132,6 +2278,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DAE9313F1245440600335F0F /* Debug */,
+				DA667DC5125AE40300CA9A13 /* Adhoc */,
 				DAE931401245440600335F0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
