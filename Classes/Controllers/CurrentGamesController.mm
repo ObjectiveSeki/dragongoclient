@@ -14,6 +14,10 @@
 #import "DGSPhoneAppDelegate.h"
 #import "AddGameViewController.h"
 
+#if defined (CONFIGURATION_Adhoc)
+#import "BWHockeyController.h"
+#endif
+
 @implementation CurrentGamesController
 
 @synthesize spinnerView;
@@ -25,6 +29,7 @@
 @synthesize dgs;
 @synthesize selectedCell;
 @synthesize logoutConfirmation;
+@synthesize bottomToolbar;
 
 
 #pragma mark -
@@ -41,8 +46,25 @@
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+#ifdef CONFIGURATION_Adhoc
+	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
+	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
+	[toolbarItems insertObject:updateButton atIndex:0];
+	[self.bottomToolbar setItems:toolbarItems];
+	[toolbarItems release];
+	[updateButton release];
+#endif
 }
 
+
+#if defined (CONFIGURATION_Adhoc)
+- (void)openUpdateController {
+	BWHockeyViewController *controller = [[BWHockeyViewController alloc] init:[BWHockeyController sharedHockeyController] modal:NO];
+	[self.navigationController pushViewController:controller animated:YES];
+	[controller release];
+}
+#endif
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -315,6 +337,7 @@
 	self.selectedCell = nil;
 	self.spinnerView = nil;
 	self.logoutConfirmation = nil;
+	self.bottomToolbar = nil;
 }
 
 

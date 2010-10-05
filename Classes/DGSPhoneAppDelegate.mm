@@ -10,6 +10,10 @@
 #import "CurrentGamesController.h"
 #import "FuegoBoard.h"
 
+#if defined (CONFIGURATION_Adhoc)
+#import "BWHockeyController.h"
+#endif
+
 @implementation DGSPhoneAppDelegate
 
 @synthesize window;
@@ -36,6 +40,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
     // Override point for customization after application launch.
+	
+#if defined (CONFIGURATION_Adhoc)
+    [[BWHockeyController sharedHockeyController] setBetaURL:@"http://dgs.uberweiss.net/beta/index.php"];
+#endif
 	
 	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];
 	[self setWhiteStone:[UIImage imageNamed:@"White.png"]];

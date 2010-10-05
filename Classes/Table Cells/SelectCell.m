@@ -33,7 +33,6 @@
 	int tableViewHeight = 416;
 	
 	if (selected && !self.picker) {
-		NSLog(@"selected %@", self.label.text);
 		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, tableViewHeight, 320.0, pickerViewHeight)] autorelease];
 		[tableView.superview addSubview:self.picker];
 
@@ -60,8 +59,6 @@
 		}];
 		[super setSelected:YES animated:animated];
 	} else {
-		NSLog(@"deselected %@", self.label.text);
-		
 		if (self.picker) {
 			CGRect tableViewFrame = tableView.frame;
 			tableViewFrame.size.height = tableViewHeight;

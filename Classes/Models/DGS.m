@@ -89,7 +89,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-	NSLog(@"%@", [request responseString]);
+	//NSLog(@"%@", [request responseString]);
 	NSString *errorString = [self error:request];
 	if (NO == [self loggedIn:request]) {
 		[[self delegate] notLoggedIn];
@@ -106,7 +106,6 @@
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
 	NSError *error = [request error];
-	NSLog(@"%@", error);
 	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem connecting with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 

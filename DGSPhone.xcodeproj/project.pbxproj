@@ -155,6 +155,28 @@
 		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
 		DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
+		DACD434E125B6790001F1F01 /* BWGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4334125B6790001F1F01 /* BWGlobal.h */; };
+		DACD434F125B6790001F1F01 /* BWHockeyController.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4335125B6790001F1F01 /* BWHockeyController.h */; };
+		DACD4350125B6790001F1F01 /* BWHockeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4336125B6790001F1F01 /* BWHockeyController.m */; };
+		DACD4351125B6790001F1F01 /* BWHockeyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4337125B6790001F1F01 /* BWHockeyViewController.h */; };
+		DACD4352125B6790001F1F01 /* BWHockeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4338125B6790001F1F01 /* BWHockeyViewController.m */; };
+		DACD4353125B6790001F1F01 /* BWWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD433A125B6790001F1F01 /* BWWebViewController.h */; };
+		DACD4354125B6790001F1F01 /* BWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD433B125B6790001F1F01 /* BWWebViewController.m */; };
+		DACD4355125B6790001F1F01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD433D125B6790001F1F01 /* JSON.h */; };
+		DACD4356125B6790001F1F01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD433F125B6790001F1F01 /* NSObject+SBJSON.h */; };
+		DACD4357125B6790001F1F01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4340125B6790001F1F01 /* NSObject+SBJSON.m */; };
+		DACD4358125B6790001F1F01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4341125B6790001F1F01 /* NSString+SBJSON.h */; };
+		DACD4359125B6790001F1F01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4342125B6790001F1F01 /* NSString+SBJSON.m */; };
+		DACD435A125B6790001F1F01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4343125B6790001F1F01 /* SBJSON.h */; };
+		DACD435B125B6790001F1F01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4344125B6790001F1F01 /* SBJSON.m */; };
+		DACD435C125B6790001F1F01 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4345125B6790001F1F01 /* SBJsonBase.h */; };
+		DACD435D125B6790001F1F01 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4346125B6790001F1F01 /* SBJsonBase.m */; };
+		DACD435E125B6790001F1F01 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4347125B6790001F1F01 /* SBJsonParser.h */; };
+		DACD435F125B6790001F1F01 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4348125B6790001F1F01 /* SBJsonParser.m */; };
+		DACD4360125B6790001F1F01 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4349125B6790001F1F01 /* SBJsonWriter.h */; };
+		DACD4361125B6790001F1F01 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD434A125B6790001F1F01 /* SBJsonWriter.m */; };
+		DACD4362125B6790001F1F01 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */; };
+		DACD4363125B6790001F1F01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CDD11FD3C0B005922A3 /* Readme.md */; };
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
@@ -260,6 +282,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
 			remoteInfo = LogicTests;
+		};
+		DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DACD432A125B6771001F1F01;
+			remoteInfo = Hockey;
 		};
 		DAE931E4124545C200335F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -554,6 +583,30 @@
 		DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		DACD432B125B6771001F1F01 /* libHockey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHockey.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DACD4334125B6790001F1F01 /* BWGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWGlobal.h; path = vendor/Hockey/client/BWGlobal.h; sourceTree = "<group>"; };
+		DACD4335125B6790001F1F01 /* BWHockeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyController.h; path = vendor/Hockey/client/BWHockeyController.h; sourceTree = "<group>"; };
+		DACD4336125B6790001F1F01 /* BWHockeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyController.m; path = vendor/Hockey/client/BWHockeyController.m; sourceTree = "<group>"; };
+		DACD4337125B6790001F1F01 /* BWHockeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyViewController.h; path = vendor/Hockey/client/BWHockeyViewController.h; sourceTree = "<group>"; };
+		DACD4338125B6790001F1F01 /* BWHockeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyViewController.m; path = vendor/Hockey/client/BWHockeyViewController.m; sourceTree = "<group>"; };
+		DACD433A125B6790001F1F01 /* BWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWWebViewController.h; sourceTree = "<group>"; };
+		DACD433B125B6790001F1F01 /* BWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWWebViewController.m; sourceTree = "<group>"; };
+		DACD433D125B6790001F1F01 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		DACD433E125B6790001F1F01 /* License.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
+		DACD433F125B6790001F1F01 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		DACD4340125B6790001F1F01 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		DACD4341125B6790001F1F01 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		DACD4342125B6790001F1F01 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		DACD4343125B6790001F1F01 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		DACD4344125B6790001F1F01 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		DACD4345125B6790001F1F01 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		DACD4346125B6790001F1F01 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		DACD4347125B6790001F1F01 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		DACD4348125B6790001F1F01 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		DACD4349125B6790001F1F01 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		DACD434A125B6790001F1F01 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		DADD18D111BC72730038F8BC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = vendor/boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
 		DADD18D211BC72730038F8BC /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = vendor/boost/lib/libboost_system.a; sourceTree = "<group>"; };
 		DADD18D311BC72730038F8BC /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = vendor/boost/lib/libboost_thread.a; sourceTree = "<group>"; };
@@ -715,6 +768,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DACD4329125B6771001F1F01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAE9313C1245440500335F0F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -748,6 +808,7 @@
 				DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */,
 				DA58E8041245398B00387BB5 /* libfuego.a */,
 				DAE9313E1245440500335F0F /* libTouchXML.a */,
+				DACD432B125B6771001F1F01 /* libHockey.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -897,6 +958,7 @@
 		DA58E7841245371700387BB5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				DACD4315125B6754001F1F01 /* Hockey */,
 				DAE93138124543E400335F0F /* TouchXML */,
 				DA58E80F12453A8400387BB5 /* Fuego */,
 				DA58E7851245371E00387BB5 /* ASIHttpRequest */,
@@ -1194,6 +1256,63 @@
 			name = Logic;
 			sourceTree = "<group>";
 		};
+		DACD4315125B6754001F1F01 /* Hockey */ = {
+			isa = PBXGroup;
+			children = (
+				DACD4334125B6790001F1F01 /* BWGlobal.h */,
+				DACD4335125B6790001F1F01 /* BWHockeyController.h */,
+				DACD4336125B6790001F1F01 /* BWHockeyController.m */,
+				DACD4337125B6790001F1F01 /* BWHockeyViewController.h */,
+				DACD4338125B6790001F1F01 /* BWHockeyViewController.m */,
+				DACD4339125B6790001F1F01 /* BWWebViewController */,
+				DACD433C125B6790001F1F01 /* JSON */,
+				DACD434B125B6790001F1F01 /* NSString+URLEncoding */,
+			);
+			name = Hockey;
+			sourceTree = "<group>";
+		};
+		DACD4339125B6790001F1F01 /* BWWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DACD433A125B6790001F1F01 /* BWWebViewController.h */,
+				DACD433B125B6790001F1F01 /* BWWebViewController.m */,
+			);
+			name = BWWebViewController;
+			path = vendor/Hockey/client/BWWebViewController;
+			sourceTree = "<group>";
+		};
+		DACD433C125B6790001F1F01 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				DACD433D125B6790001F1F01 /* JSON.h */,
+				DACD433E125B6790001F1F01 /* License.md */,
+				DACD433F125B6790001F1F01 /* NSObject+SBJSON.h */,
+				DACD4340125B6790001F1F01 /* NSObject+SBJSON.m */,
+				DACD4341125B6790001F1F01 /* NSString+SBJSON.h */,
+				DACD4342125B6790001F1F01 /* NSString+SBJSON.m */,
+				DACD4343125B6790001F1F01 /* SBJSON.h */,
+				DACD4344125B6790001F1F01 /* SBJSON.m */,
+				DACD4345125B6790001F1F01 /* SBJsonBase.h */,
+				DACD4346125B6790001F1F01 /* SBJsonBase.m */,
+				DACD4347125B6790001F1F01 /* SBJsonParser.h */,
+				DACD4348125B6790001F1F01 /* SBJsonParser.m */,
+				DACD4349125B6790001F1F01 /* SBJsonWriter.h */,
+				DACD434A125B6790001F1F01 /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			path = vendor/Hockey/client/JSON;
+			sourceTree = "<group>";
+		};
+		DACD434B125B6790001F1F01 /* NSString+URLEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */,
+				DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */,
+			);
+			name = "NSString+URLEncoding";
+			path = "vendor/Hockey/client/NSString+URLEncoding";
+			sourceTree = "<group>";
+		};
 		DAE93138124543E400335F0F /* TouchXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -1376,6 +1495,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DACD4327125B6771001F1F01 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DACD434E125B6790001F1F01 /* BWGlobal.h in Headers */,
+				DACD434F125B6790001F1F01 /* BWHockeyController.h in Headers */,
+				DACD4351125B6790001F1F01 /* BWHockeyViewController.h in Headers */,
+				DACD4353125B6790001F1F01 /* BWWebViewController.h in Headers */,
+				DACD4355125B6790001F1F01 /* JSON.h in Headers */,
+				DACD4356125B6790001F1F01 /* NSObject+SBJSON.h in Headers */,
+				DACD4358125B6790001F1F01 /* NSString+SBJSON.h in Headers */,
+				DACD435A125B6790001F1F01 /* SBJSON.h in Headers */,
+				DACD435C125B6790001F1F01 /* SBJsonBase.h in Headers */,
+				DACD435E125B6790001F1F01 /* SBJsonParser.h in Headers */,
+				DACD4360125B6790001F1F01 /* SBJsonWriter.h in Headers */,
+				DACD4362125B6790001F1F01 /* NSString+URLEncoding.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAE9313A1245440500335F0F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1401,6 +1539,7 @@
 				DAE931E5124545C200335F0F /* PBXTargetDependency */,
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
 				DA667CF4125AC41200CA9A13 /* PBXTargetDependency */,
+				DACD4365125B67DD001F1F01 /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
@@ -1461,6 +1600,23 @@
 			productReference = DA71CA8411B5E97F008696AC /* LogicTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		DACD432A125B6771001F1F01 /* Hockey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DACD4330125B6783001F1F01 /* Build configuration list for PBXNativeTarget "Hockey" */;
+			buildPhases = (
+				DACD4327125B6771001F1F01 /* Headers */,
+				DACD4328125B6771001F1F01 /* Sources */,
+				DACD4329125B6771001F1F01 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hockey;
+			productName = Hockey;
+			productReference = DACD432B125B6771001F1F01 /* libHockey.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		DAE9313D1245440500335F0F /* TouchXML */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAE931421245442200335F0F /* Build configuration list for PBXNativeTarget "TouchXML" */;
@@ -1499,6 +1655,7 @@
 				DA58E77A124536DC00387BB5 /* AsiHTTPRequest */,
 				DA58E8031245398B00387BB5 /* fuego */,
 				DAE9313D1245440500335F0F /* TouchXML */,
+				DACD432A125B6771001F1F01 /* Hockey */,
 			);
 		};
 /* End PBXProject section */
@@ -1726,6 +1883,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DACD4328125B6771001F1F01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DACD4350125B6790001F1F01 /* BWHockeyController.m in Sources */,
+				DACD4352125B6790001F1F01 /* BWHockeyViewController.m in Sources */,
+				DACD4354125B6790001F1F01 /* BWWebViewController.m in Sources */,
+				DACD4357125B6790001F1F01 /* NSObject+SBJSON.m in Sources */,
+				DACD4359125B6790001F1F01 /* NSString+SBJSON.m in Sources */,
+				DACD435B125B6790001F1F01 /* SBJSON.m in Sources */,
+				DACD435D125B6790001F1F01 /* SBJsonBase.m in Sources */,
+				DACD435F125B6790001F1F01 /* SBJsonParser.m in Sources */,
+				DACD4361125B6790001F1F01 /* SBJsonWriter.m in Sources */,
+				DACD4363125B6790001F1F01 /* NSString+URLEncoding.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DAE9313B1245440500335F0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1797,6 +1971,11 @@
 			isa = PBXTargetDependency;
 			target = DA71CA8311B5E97F008696AC /* LogicTests */;
 			targetProxy = DA667CF3125AC41200CA9A13 /* PBXContainerItemProxy */;
+		};
+		DACD4365125B67DD001F1F01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DACD432A125B6771001F1F01 /* Hockey */;
+			targetProxy = DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */;
 		};
 		DAE931E5124545C200335F0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1995,6 +2174,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = CONFIGURATION_Adhoc;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
@@ -2006,6 +2186,8 @@
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				OTHER_LDFLAGS = (
+					"-force_load",
+					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libHockey.a",
 					"-force_load",
 					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
 					"-ObjC",
@@ -2192,6 +2374,40 @@
 			};
 			name = Release;
 		};
+		DACD432C125B6772001F1F01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				PRODUCT_NAME = Hockey;
+			};
+			name = Debug;
+		};
+		DACD432D125B6772001F1F01 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				PREBINDING = NO;
+				PRODUCT_NAME = Hockey;
+			};
+			name = Adhoc;
+		};
+		DACD432E125B6772001F1F01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PREBINDING = NO;
+				PRODUCT_NAME = Hockey;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		DAE9313F1245440600335F0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2270,6 +2486,16 @@
 				DA71CA8511B5E97F008696AC /* Debug */,
 				DA667DC2125AE40300CA9A13 /* Adhoc */,
 				DA71CA8611B5E97F008696AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DACD4330125B6783001F1F01 /* Build configuration list for PBXNativeTarget "Hockey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DACD432C125B6772001F1F01 /* Debug */,
+				DACD432D125B6772001F1F01 /* Adhoc */,
+				DACD432E125B6772001F1F01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

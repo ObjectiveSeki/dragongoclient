@@ -118,7 +118,7 @@
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
 	[self unlockZoom];
 	currentZoomScale = scale;
-	NSLog(@"%f", scale);
+	//NSLog(@"%f", scale);
 	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
 	[[self scrollView] zoomToRect:zoomRect animated:animated];
 	[self lockZoom];

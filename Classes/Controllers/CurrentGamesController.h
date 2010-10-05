@@ -15,6 +15,7 @@
 @interface CurrentGamesController : UIViewController <LoginProtocol> {
 	NSArray *games;
 	DGS *dgs;
+	IBOutlet UIToolbar *bottomToolbar;
 	IBOutlet UIBarButtonItem *refreshButton;
 	IBOutlet UIBarButtonItem *logoutButton;
 	IBOutlet UITableView *gameTableView;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) NSArray *games;
+@property(nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *refreshButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *logoutButton;
 @property(nonatomic, retain) IBOutlet UITableView *gameTableView;
