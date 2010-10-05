@@ -28,8 +28,8 @@
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
-	//NSString *baseString = @"http://www.dragongoserver.net";
-	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	NSString *baseString = @"http://www.dragongoserver.net";
+	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
