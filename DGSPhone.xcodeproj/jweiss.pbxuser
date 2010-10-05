@@ -25,7 +25,7 @@
 		activeArchitecturePreference = armv7;
 		activeBuildConfigurationName = Debug;
 		activeExecutable = DA38B1D911B59DAE00112AA4 /* DGS */;
-		activeSDKPreference = iphonesimulator4.1;
+		activeSDKPreference = iphoneos4.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* DGS */;
 		addToTargets = (
 			DA71CA8311B5E97F008696AC /* LogicTests */,
@@ -332,6 +332,15 @@
 			DA667D56125ACA5B00CA9A13 /* PBXTextBookmark */ = DA667D56125ACA5B00CA9A13 /* PBXTextBookmark */;
 			DA667D57125ACA5B00CA9A13 /* PBXTextBookmark */ = DA667D57125ACA5B00CA9A13 /* PBXTextBookmark */;
 			DA667D58125ACA5B00CA9A13 /* PBXTextBookmark */ = DA667D58125ACA5B00CA9A13 /* PBXTextBookmark */;
+			DA667D6E125ACB2300CA9A13 /* PBXTextBookmark */ = DA667D6E125ACB2300CA9A13 /* PBXTextBookmark */;
+			DA667D6F125ACB2300CA9A13 /* PBXTextBookmark */ = DA667D6F125ACB2300CA9A13 /* PBXTextBookmark */;
+			DA667D70125ACB2300CA9A13 /* PBXTextBookmark */ = DA667D70125ACB2300CA9A13 /* PBXTextBookmark */;
+			DA667DA9125ACF8300CA9A13 /* PBXTextBookmark */ = DA667DA9125ACF8300CA9A13 /* PBXTextBookmark */;
+			DA667DAA125ACF8300CA9A13 /* XCBuildMessageTextBookmark */ = DA667DAA125ACF8300CA9A13 /* XCBuildMessageTextBookmark */;
+			DA667DAB125ACF8300CA9A13 /* PBXTextBookmark */ = DA667DAB125ACF8300CA9A13 /* PBXTextBookmark */;
+			DA667DAC125ACF8500CA9A13 /* PBXTextBookmark */ = DA667DAC125ACF8500CA9A13 /* PBXTextBookmark */;
+			DA667DAD125ACF8500CA9A13 /* PBXTextBookmark */ = DA667DAD125ACF8500CA9A13 /* PBXTextBookmark */;
+			DA667DB0125ACF9300CA9A13 /* PBXTextBookmark */ = DA667DB0125ACF9300CA9A13 /* PBXTextBookmark */;
 			DA94CC1F124842760060FD44 = DA94CC1F124842760060FD44 /* PBXBookmark */;
 			DAAC52F4124843220099F9CB = DAAC52F4124843220099F9CB /* PBXBookmark */;
 			DAAC5303124843960099F9CB = DAAC5303124843960099F9CB /* PlistBookmark */;
@@ -519,9 +528,9 @@
 	};
 	DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {646, 6552}}";
+			sepNavIntBoundsRect = "{{0, 0}, {853, 6708}}";
 			sepNavSelRange = "{7885, 0}";
-			sepNavVisRange = "{8720, 452}";
+			sepNavVisRange = "{8793, 252}";
 			sepNavWindowFrame = "{{38, 67}, {1027, 685}}";
 		};
 	};
@@ -1137,7 +1146,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 499;
 		vrLoc = 581;
@@ -1297,7 +1306,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 564;
 		vrLoc = 515;
@@ -1464,7 +1473,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 742;
 		vrLoc = 321;
@@ -1474,7 +1483,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 690;
 		vrLoc = 321;
@@ -1484,7 +1493,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 413;
 		vrLoc = 650;
@@ -1494,7 +1503,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 787;
 		vrLoc = 6719;
@@ -1504,7 +1513,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 787;
 		vrLoc = 6719;
@@ -1514,7 +1523,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 808;
 		vrLoc = 6452;
@@ -1524,7 +1533,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 808;
 		vrLoc = 6452;
@@ -1534,7 +1543,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 2252;
@@ -1544,7 +1553,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 777;
 		vrLoc = 1011;
@@ -1634,7 +1643,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 990;
@@ -1712,7 +1721,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 513;
 		vrLoc = 2252;
@@ -1792,7 +1801,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 739;
 		vrLoc = 321;
@@ -1802,7 +1811,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 690;
 		vrLoc = 321;
@@ -1812,7 +1821,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 479;
 		vrLoc = 581;
@@ -1822,7 +1831,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 632;
 		vrLoc = 447;
@@ -1832,7 +1841,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 479;
 		vrLoc = 581;
@@ -1857,7 +1866,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 632;
 		vrLoc = 447;
@@ -1957,7 +1966,7 @@
 		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
 		name = "DGS.m: 31";
 		rLen = 0;
-		rLoc = 733;
+		rLoc = 731;
 		rType = 0;
 		vrLen = 479;
 		vrLoc = 581;
@@ -2031,9 +2040,9 @@
 	};
 	DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {646, 1989}}";
-			sepNavSelRange = "{281, 0}";
-			sepNavVisRange = "{2786, 609}";
+			sepNavIntBoundsRect = "{{0, 0}, {646, 1911}}";
+			sepNavSelRange = "{187, 0}";
+			sepNavVisRange = "{0, 752}";
 		};
 	};
 	DA667C67125A2AB100CA9A13 /* PBXTextBookmark */ = {
@@ -2822,6 +2831,95 @@
 		vrLen = 419;
 		vrLoc = 483;
 	};
+	DA667D6E125ACB2300CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */;
+		name = "CurrentGamesController.mm: 29";
+		rLen = 0;
+		rLoc = 684;
+		rType = 0;
+		vrLen = 419;
+		vrLoc = 483;
+	};
+	DA667D6F125ACB2300CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
+		name = "DGS.m: 38";
+		rLen = 101;
+		rLoc = 977;
+		rType = 0;
+		vrLen = 535;
+		vrLoc = 730;
+	};
+	DA667D70125ACB2300CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
+		name = "DGS.m: 32";
+		rLen = 0;
+		rLoc = 791;
+		rType = 0;
+		vrLen = 693;
+		vrLoc = 515;
+	};
+	DA667DA9125ACF8300CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DAEA518011B88A1100F4CCB3 /* DGS.m */;
+		name = "DGS.m: 36";
+		rLen = 0;
+		rLoc = 968;
+		rType = 0;
+		vrLen = 693;
+		vrLoc = 515;
+	};
+	DA667DAA125ACF8300CA9A13 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Compile /Users/jweiss/Source/dragongoclient/Classes/Tests/XCodeTestFix.m";
+		fRef = DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 0;
+		rType = 1;
+	};
+	DA667DAB125ACF8300CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */;
+		name = "XCodeTestFix.m: 6";
+		rLen = 0;
+		rLoc = 187;
+		rType = 0;
+		vrLen = 752;
+		vrLoc = 0;
+	};
+	DA667DAC125ACF8500CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */;
+		name = "FuegoBoard.mm: 328";
+		rLen = 0;
+		rLoc = 7885;
+		rType = 0;
+		vrLen = 252;
+		vrLoc = 8793;
+	};
+	DA667DAD125ACF8500CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */;
+		name = "XCodeTestFix.m: 6";
+		rLen = 0;
+		rLoc = 187;
+		rType = 0;
+		vrLen = 344;
+		vrLoc = 0;
+	};
+	DA667DB0125ACF9300CA9A13 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */;
+		name = "XCodeTestFix.m: 6";
+		rLen = 0;
+		rLoc = 187;
+		rType = 0;
+		vrLen = 752;
+		vrLoc = 0;
+	};
 	DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {912, 325}}";
@@ -3209,9 +3307,9 @@
 	};
 	DAEA518011B88A1100F4CCB3 /* DGS.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {646, 5811}}";
-			sepNavSelRange = "{977, 101}";
-			sepNavVisRange = "{730, 535}";
+			sepNavIntBoundsRect = "{{0, 0}, {646, 5772}}";
+			sepNavSelRange = "{968, 0}";
+			sepNavVisRange = "{515, 693}";
 			sepNavWindowFrame = "{{15, 88}, {1027, 685}}";
 		};
 	};
