@@ -2193,7 +2193,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4D3CC274-B57E-4C7E-A1A2-2BBD7AFCC56A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "86D71C5F-3A32-4517-8E61-FB091B19665C";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Adhoc;
