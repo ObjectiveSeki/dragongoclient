@@ -141,7 +141,7 @@
 							<object class="IBUIImageView" id="274130159">
 								<reference key="NSNextResponder" ref="358673059"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{296, 4}, {18, 12}}</string>
+								<string key="NSFrame">{{292, 2}, {22, 16}}</string>
 								<reference key="NSSuperview" ref="358673059"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -617,26 +617,31 @@
 							<reference ref="480061833"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Information Bar</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">33</int>
 						<reference key="object" ref="210881115"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">Black Stone Image</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">34</int>
 						<reference key="object" ref="673644675"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">White Stone Image</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">38</int>
 						<reference key="object" ref="480061833"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">Black Name</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">42</int>
 						<reference key="object" ref="987704551"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">White Name</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">47</int>
@@ -647,16 +652,19 @@
 						<int key="objectID">52</int>
 						<reference key="object" ref="768023238"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">Black Captures</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">53</int>
 						<reference key="object" ref="907160442"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">White Captures</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">56</int>
 						<reference key="object" ref="62811335"/>
 						<reference key="parent" ref="539373879"/>
+						<string key="objectName">Board Dock Background</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">58</int>
@@ -672,16 +680,19 @@
 							<reference ref="274130159"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Status Bar</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">65</int>
 						<reference key="object" ref="432831473"/>
 						<reference key="parent" ref="358673059"/>
+						<string key="objectName">Status/Message</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">68</int>
 						<reference key="object" ref="274130159"/>
 						<reference key="parent" ref="358673059"/>
+						<string key="objectName">Message Indicator</string>
 					</object>
 				</object>
 			</object>
@@ -752,7 +763,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDagAAwYAAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABDkYAAwYAAAA</bytes>
 					</object>
 				</object>
 			</object>
