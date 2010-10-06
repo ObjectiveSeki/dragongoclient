@@ -13,13 +13,18 @@
 	UIViewController *viewController;
 	UIImage *blackStone;
 	UIImage *whiteStone;
-	UIImage *boardImage;}
+	UIImage *boardImage;
+	UIImage *messageOff;
+	UIImage *messageOn;
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 @property (nonatomic, retain) UIImage *blackStone;
 @property (nonatomic, retain) UIImage *whiteStone;
 @property (nonatomic, retain) UIImage *boardImage;
+@property (nonatomic, retain) UIImage *messageOff;
+@property (nonatomic, retain) UIImage *messageOn;
 
 - (void)replaceViewController:(UIViewController *)aViewController;
 

@@ -20,7 +20,7 @@
 
 // set to '1' to see SGFs that test various aspects of 
 // the board view.
-#define TEST_GAMES 0
+#define TEST_GAMES 1
 
 @implementation CurrentGamesController
 

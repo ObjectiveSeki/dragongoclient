@@ -138,6 +138,14 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
+							<object class="IBUIImageView" id="274130159">
+								<reference key="NSNextResponder" ref="358673059"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{296, 4}, {18, 12}}</string>
+								<reference key="NSSuperview" ref="358673059"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							</object>
 						</object>
 						<string key="NSFrame">{{0, -20}, {320, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
@@ -311,11 +319,9 @@
 				<int key="IBUISystemItemIdentifier">21</int>
 			</object>
 			<object class="IBUIView" id="193689713">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{335, 190}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -502,6 +508,14 @@
 					</object>
 					<int key="connectionID">67</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">messageIndicator</string>
+						<reference key="source" ref="941288829"/>
+						<reference key="destination" ref="274130159"/>
+					</object>
+					<int key="connectionID">70</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -655,12 +669,18 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="432831473"/>
+							<reference ref="274130159"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">65</int>
 						<reference key="object" ref="432831473"/>
+						<reference key="parent" ref="358673059"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">68</int>
+						<reference key="object" ref="274130159"/>
 						<reference key="parent" ref="358673059"/>
 					</object>
 				</object>
@@ -696,6 +716,8 @@
 					<string>64.IBPluginDependency</string>
 					<string>65.IBPluginDependency</string>
 					<string>65.IBViewBoundsToFrameTransform</string>
+					<string>68.IBPluginDependency</string>
+					<string>68.IBViewBoundsToFrameTransform</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -728,6 +750,10 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUEgAAAAAAAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABDagAAwYAAAA</bytes>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -746,7 +772,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">67</int>
+			<int key="maxID">70</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -897,6 +923,7 @@
 							<string>blackCaptures</string>
 							<string>blackName</string>
 							<string>delegate</string>
+							<string>messageIndicator</string>
 							<string>status</string>
 							<string>statusView</string>
 							<string>whiteCaptures</string>
@@ -907,6 +934,7 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>id</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -920,6 +948,7 @@
 							<string>blackCaptures</string>
 							<string>blackName</string>
 							<string>delegate</string>
+							<string>messageIndicator</string>
 							<string>status</string>
 							<string>statusView</string>
 							<string>whiteCaptures</string>
@@ -938,6 +967,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>
 								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">messageIndicator</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">status</string>
@@ -960,6 +993,27 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/Views/GoBoardView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">vendor/Hockey/client/BWHockeyController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">vendor/Hockey/client/JSON/NSObject+SBJSON.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">vendor/Hockey/client/JSON/SBJsonWriter.h</string>
 					</object>
 				</object>
 			</object>

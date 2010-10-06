@@ -146,6 +146,10 @@
 		DA94CBE5124839740060FD44 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDF124839740060FD44 /* LoginView.xib */; };
 		DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE0124839740060FD44 /* MainWindow.xib */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
+		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
+		DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC44125C2725002EB162 /* Message on@2x.png */; };
+		DAA7B8D7125C20440002754F /* Message off.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D5125C20440002754F /* Message off.png */; };
+		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
 		DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
 		DAAC543F124CFC490099F9CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
 		DAAC5440124CFC490099F9CB /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
@@ -578,6 +582,10 @@
 		DA94CBDF124839740060FD44 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		DA94CBE0124839740060FD44 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
+		DA98EC43125C2725002EB162 /* Message off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off@2x.png"; sourceTree = "<group>"; };
+		DA98EC44125C2725002EB162 /* Message on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on@2x.png"; sourceTree = "<group>"; };
+		DAA7B8D5125C20440002754F /* Message off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off.png"; sourceTree = "<group>"; };
+		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -906,6 +914,10 @@
 		DA37D90511BF56BC00BC1445 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAA7B8D5125C20440002754F /* Message off.png */,
+				DA98EC43125C2725002EB162 /* Message off@2x.png */,
+				DA98EC44125C2725002EB162 /* Message on@2x.png */,
+				DAA7B8D6125C20440002754F /* Message on.png */,
 				DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */,
 				DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */,
 				DA37D9C111BF6E5100BC1445 /* Board.png */,
@@ -1690,6 +1702,10 @@
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 				DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */,
+				DAA7B8D7125C20440002754F /* Message off.png in Resources */,
+				DAA7B8D8125C20440002754F /* Message on.png in Resources */,
+				DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */,
+				DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

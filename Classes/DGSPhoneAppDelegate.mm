@@ -21,6 +21,8 @@
 @synthesize blackStone;
 @synthesize whiteStone;
 @synthesize boardImage;
+@synthesize messageOff;
+@synthesize messageOn;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -48,6 +50,8 @@
 	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];
 	[self setWhiteStone:[UIImage imageNamed:@"White.png"]];
 	[self setBoardImage:[UIImage imageNamed:@"Board.png"]];
+	[self setMessageOff:[UIImage imageNamed:@"Message off.png"]];
+	[self setMessageOn:[UIImage imageNamed:@"Message on.png"]];
 	
 	
 	CurrentGamesController *gamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
@@ -115,6 +119,8 @@
 	[blackStone release];
 	[whiteStone release];
 	[boardImage release];
+	[messageOn release];
+	[messageOff	release];
     [window release];
     [super dealloc];
 }

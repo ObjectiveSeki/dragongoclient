@@ -26,6 +26,7 @@
 @synthesize statusView;
 @synthesize blackCaptures;
 @synthesize whiteCaptures;
+@synthesize messageIndicator;
 
 @synthesize pointDistance;
 
@@ -259,6 +260,12 @@
 	
 	NSString *comment = [self.board comment];
 	
+	if (comment) {
+		self.messageIndicator.image = [(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] messageOn];
+	} else {
+		self.messageIndicator.image = [(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] messageOff];	
+	}
+	
 	if (![self.board gameEnded]) {
 		if ([[[self board] currentMove] moveType] == kMoveTypePass) {
 			if ([self.board currentMove].player == kMovePlayerBlack) {
@@ -343,6 +350,7 @@
 	self.blackCaptures = nil;
 	self.whiteCaptures = nil;
 	self.board = nil;
+	self.messageIndicator = nil;
     [super dealloc];
 }
 
