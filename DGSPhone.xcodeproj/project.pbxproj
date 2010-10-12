@@ -242,6 +242,8 @@
 		DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */; };
 		DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526A11B8977B00F4CCB3 /* Foundation.framework */; };
 		DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
+		DAEB649D125E1C3D00A915EB /* Resign.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB649C125E1C3D00A915EB /* Resign.png */; };
+		DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB64A9125E202800A915EB /* Resign@2x.png */; };
 		DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
 		DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
 		DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
@@ -721,6 +723,8 @@
 		DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
+		DAEB649C125E1C3D00A915EB /* Resign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resign.png; sourceTree = "<group>"; };
+		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
 		DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock.png"; sourceTree = "<group>"; };
 		DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock@2x.png"; sourceTree = "<group>"; };
 		DAF9102611BB48A800FE7B96 /* GoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardView.h; sourceTree = "<group>"; };
@@ -914,6 +918,8 @@
 		DA37D90511BF56BC00BC1445 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAEB649C125E1C3D00A915EB /* Resign.png */,
+				DAEB64A9125E202800A915EB /* Resign@2x.png */,
 				DAA7B8D5125C20440002754F /* Message off.png */,
 				DA98EC43125C2725002EB162 /* Message off@2x.png */,
 				DA98EC44125C2725002EB162 /* Message on@2x.png */,
@@ -1706,6 +1712,8 @@
 				DAA7B8D8125C20440002754F /* Message on.png in Resources */,
 				DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */,
 				DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */,
+				DAEB649D125E1C3D00A915EB /* Resign.png in Resources */,
+				DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

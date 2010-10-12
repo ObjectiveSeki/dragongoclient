@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48+devel r9814"
+   sodipodi:docname="resign.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.44752604"
+     inkscape:cx="397.25446"
+     inkscape:cy="504.55502"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1175"
+     inkscape:window-height="735"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Background"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;fill-opacity:0;stroke:none"
+       id="rect3890"
+       width="450"
+       height="450"
+       x="105.86234"
+       y="295.29651"
+       rx="0"
+       ry="0"
+       inkscape:export-filename="/Users/jweiss/Desktop/Resign.png"
+       inkscape:export-xdpi="8"
+       inkscape:export-ydpi="8" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Object">
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="M 381.28125 297.78125 C 346.25073 314.30364 324.99929 354.66506 289.96875 371.1875 C 255.27924 387.54904 236.01428 347.27282 201.625 362.53125 L 201.53125 362.34375 L 167.125 378.03125 L 337.1875 738.8125 L 371.59375 723.125 L 281.15625 531.28125 C 315.49079 516.12983 334.77741 556.3477 369.4375 540 C 404.46805 523.4776 425.71948 483.11617 460.75 466.59375 L 381.28125 297.78125 z "
+       id="rect3071"
+       inkscape:export-filename="/Users/jweiss/Desktop/Resign.png"
+       inkscape:export-xdpi="8"
+       inkscape:export-ydpi="8" />
+  </g>
+</svg>
