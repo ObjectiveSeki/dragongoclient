@@ -53,6 +53,11 @@
 	CurrentGamesController *gamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gamesController];
 	[self replaceViewController:navigationController];
+	
+	if ([window respondsToSelector:@selector(setRootViewController:)]) {
+		[window setRootViewController:gamesController];
+	}
+	
 	[navigationController release];
 	[gamesController release];
 

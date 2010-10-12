@@ -137,6 +137,7 @@
 	NSURL *url = [self URLWithPath:@"/quick_status.php"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setUserInfo:[NSDictionary dictionaryWithObject:@"gotCurrentGames:" forKey:@"selector"]];
+	[request setCachePolicy:ASIIgnoreCachePolicy];
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
@@ -316,7 +317,7 @@
 			NSString *opponentString = [cols objectAtIndex:2];
 			[game setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
 			
-			[game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d", [game gameId]]]];
+			[game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1", [game gameId]]]];
 			if ([[cols objectAtIndex:3] isEqual:@"'W'"]) {
 				[game setColor:kMovePlayerWhite];
 			} else {
