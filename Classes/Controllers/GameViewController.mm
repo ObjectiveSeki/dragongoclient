@@ -237,19 +237,24 @@
 	[self updateBoard];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.boardView setBoard:nil];
+	self.board = nil;
+}
+
 - (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+	// Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 	self.boardView = nil;
 	self.game = nil;
-	self.board = nil;
 	self.undoButton = nil;
 	self.zoomOutButton = nil;
 	self.confirmButton = nil;
 	self.passButton = nil;
 	self.dgs = nil;
 	self.spinnerView = nil;
+    [super viewDidUnload];
 }
 
 

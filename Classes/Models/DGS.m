@@ -137,6 +137,7 @@
 	NSURL *url = [self URLWithPath:@"/quick_status.php"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setUserInfo:[NSDictionary dictionaryWithObject:@"gotCurrentGames:" forKey:@"selector"]];
+	[request setCachePolicy:ASIIgnoreCachePolicy];
 	[request setDelegate:self];
 	[request startAsynchronous];
 }
