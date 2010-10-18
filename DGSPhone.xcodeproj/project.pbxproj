@@ -148,6 +148,8 @@
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
 		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
 		DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC44125C2725002EB162 /* Message on@2x.png */; };
+		DA9BAD1C126B6FB5008ED2B4 /* Pass.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9BAD1A126B6FB5008ED2B4 /* Pass.png */; };
+		DA9BAD1D126B6FB5008ED2B4 /* Pass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */; };
 		DAA7B8D7125C20440002754F /* Message off.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D5125C20440002754F /* Message off.png */; };
 		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
 		DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
@@ -586,6 +588,8 @@
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DA98EC43125C2725002EB162 /* Message off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off@2x.png"; sourceTree = "<group>"; };
 		DA98EC44125C2725002EB162 /* Message on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on@2x.png"; sourceTree = "<group>"; };
+		DA9BAD1A126B6FB5008ED2B4 /* Pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pass.png; sourceTree = "<group>"; };
+		DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pass@2x.png"; sourceTree = "<group>"; };
 		DAA7B8D5125C20440002754F /* Message off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off.png"; sourceTree = "<group>"; };
 		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -918,6 +922,8 @@
 		DA37D90511BF56BC00BC1445 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DA9BAD1A126B6FB5008ED2B4 /* Pass.png */,
+				DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */,
 				DAEB649C125E1C3D00A915EB /* Resign.png */,
 				DAEB64A9125E202800A915EB /* Resign@2x.png */,
 				DAA7B8D5125C20440002754F /* Message off.png */,
@@ -1714,6 +1720,8 @@
 				DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */,
 				DAEB649D125E1C3D00A915EB /* Resign.png in Resources */,
 				DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */,
+				DA9BAD1C126B6FB5008ED2B4 /* Pass.png in Resources */,
+				DA9BAD1D126B6FB5008ED2B4 /* Pass@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2086,7 +2094,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -2103,7 +2111,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -2188,7 +2196,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Adhoc;
 		};
