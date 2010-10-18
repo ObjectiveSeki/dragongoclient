@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="12"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -165,20 +165,8 @@
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
-							<object class="IBUIImageView" id="274130159">
-								<reference key="NSNextResponder" ref="358673059"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{292, 2}, {22, 16}}</string>
-								<reference key="NSSuperview" ref="358673059"/>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Message on.png</string>
-								</object>
-							</object>
 						</object>
-						<string key="NSFrameSize">{320, 20}</string>
+						<string key="NSFrame">{{0, -20}, {320, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -539,14 +527,6 @@
 					</object>
 					<int key="connectionID">67</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">messageIndicator</string>
-						<reference key="source" ref="941288829"/>
-						<reference key="destination" ref="274130159"/>
-					</object>
-					<int key="connectionID">70</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -715,7 +695,6 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="432831473"/>
-							<reference ref="274130159"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Status Bar</string>
@@ -725,12 +704,6 @@
 						<reference key="object" ref="432831473"/>
 						<reference key="parent" ref="358673059"/>
 						<string key="objectName">Status/Message</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">68</int>
-						<reference key="object" ref="274130159"/>
-						<reference key="parent" ref="358673059"/>
-						<string key="objectName">Message Indicator</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">75</int>
@@ -786,8 +759,6 @@
 					<string>64.IBPluginDependency</string>
 					<string>65.IBPluginDependency</string>
 					<string>65.IBViewBoundsToFrameTransform</string>
-					<string>68.IBPluginDependency</string>
-					<string>68.IBViewBoundsToFrameTransform</string>
 					<string>75.IBPluginDependency</string>
 					<string>76.IBPluginDependency</string>
 					<string>77.IBPluginDependency</string>
@@ -826,10 +797,6 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AUEgAAAAAAAAA</bytes>
-					</object>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABDdAAAwhAAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1354,7 +1321,6 @@
 				<string>Black.png</string>
 				<string>Board dock.png</string>
 				<string>Message off.png</string>
-				<string>Message on.png</string>
 				<string>Pass.png</string>
 				<string>Resign.png</string>
 				<string>White.png</string>
@@ -1363,10 +1329,9 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{64, 64}</string>
 				<string>{320, 52}</string>
-				<string>{20, 20}</string>
-				<string>{20, 20}</string>
-				<string>{20, 20}</string>
-				<string>{20, 20}</string>
+				<string>{30, 30}</string>
+				<string>{30, 30}</string>
+				<string>{30, 30}</string>
 				<string>{64, 64}</string>
 			</object>
 		</object>
