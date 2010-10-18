@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1"/>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -60,10 +60,11 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUIToolbar" ref="430952130"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="151983076">
+							<object class="IBUIBarButtonItem" id="76464781">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">27</float>
 								<reference key="IBUIToolbar" ref="430952130"/>
-								<int key="IBUISystemItemIdentifier">5</int>
+								<int key="IBUISystemItemIdentifier">6</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="40058354">
 								<object class="NSCustomResource" key="IBUIImage">
@@ -73,10 +74,11 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUIToolbar" ref="430952130"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="981289933">
+							<object class="IBUIBarButtonItem" id="287193383">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">18</float>
 								<reference key="IBUIToolbar" ref="430952130"/>
-								<int key="IBUISystemItemIdentifier">5</int>
+								<int key="IBUISystemItemIdentifier">6</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="317110225">
 								<object class="NSCustomResource" key="IBUIImage">
@@ -84,12 +86,8 @@
 									<string key="NSResourceName">Message off.png</string>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<float key="IBUIWidth">48</float>
 								<reference key="IBUIToolbar" ref="430952130"/>
-							</object>
-							<object class="IBUIBarButtonItem" id="375983635">
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUIToolbar" ref="430952130"/>
-								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
 							<object class="IBUIBarButtonItem" id="681054920">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -527,6 +525,22 @@
 					</object>
 					<int key="connectionID">67</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">messageButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="317110225"/>
+					</object>
+					<int key="connectionID">79</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">toggleMessageWindow</string>
+						<reference key="source" ref="317110225"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">80</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -569,10 +583,9 @@
 							<reference ref="528963935"/>
 							<reference ref="796793879"/>
 							<reference ref="40058354"/>
-							<reference ref="151983076"/>
-							<reference ref="375983635"/>
-							<reference ref="981289933"/>
 							<reference ref="317110225"/>
+							<reference ref="287193383"/>
+							<reference ref="76464781"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -597,6 +610,7 @@
 						<int key="objectID">18</int>
 						<reference key="object" ref="689367004"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Undo Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">21</int>
@@ -607,11 +621,13 @@
 						<int key="objectID">22</int>
 						<reference key="object" ref="528963935"/>
 						<reference key="parent" ref="430952130"/>
+						<string key="objectName">Submit Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">25</int>
 						<reference key="object" ref="796793879"/>
 						<reference key="parent" ref="430952130"/>
+						<string key="objectName">Pass Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">30</int>
@@ -665,6 +681,7 @@
 						<int key="objectID">47</int>
 						<reference key="object" ref="40058354"/>
 						<reference key="parent" ref="430952130"/>
+						<string key="objectName">Resign Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">52</int>
@@ -688,6 +705,7 @@
 						<int key="objectID">58</int>
 						<reference key="object" ref="145129378"/>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">Zoom Out Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">64</int>
@@ -706,23 +724,19 @@
 						<string key="objectName">Status/Message</string>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">75</int>
-						<reference key="object" ref="151983076"/>
-						<reference key="parent" ref="430952130"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">76</int>
-						<reference key="object" ref="375983635"/>
-						<reference key="parent" ref="430952130"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">77</int>
-						<reference key="object" ref="981289933"/>
-						<reference key="parent" ref="430952130"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">78</int>
 						<reference key="object" ref="317110225"/>
+						<reference key="parent" ref="430952130"/>
+						<string key="objectName">Message Button</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">81</int>
+						<reference key="object" ref="287193383"/>
+						<reference key="parent" ref="430952130"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">82</int>
+						<reference key="object" ref="76464781"/>
 						<reference key="parent" ref="430952130"/>
 					</object>
 				</object>
@@ -759,10 +773,9 @@
 					<string>64.IBPluginDependency</string>
 					<string>65.IBPluginDependency</string>
 					<string>65.IBViewBoundsToFrameTransform</string>
-					<string>75.IBPluginDependency</string>
-					<string>76.IBPluginDependency</string>
-					<string>77.IBPluginDependency</string>
 					<string>78.IBPluginDependency</string>
+					<string>81.IBPluginDependency</string>
+					<string>82.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -801,7 +814,6 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -820,7 +832,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">78</int>
+			<int key="maxID">82</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -835,11 +847,13 @@
 							<string>confirmMove</string>
 							<string>pass</string>
 							<string>resign</string>
+							<string>toggleMessageWindow</string>
 							<string>undoMove</string>
 							<string>zoomOut</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -854,6 +868,7 @@
 							<string>confirmMove</string>
 							<string>pass</string>
 							<string>resign</string>
+							<string>toggleMessageWindow</string>
 							<string>undoMove</string>
 							<string>zoomOut</string>
 						</object>
@@ -872,6 +887,10 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">toggleMessageWindow</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">undoMove</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -887,6 +906,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>boardView</string>
 							<string>confirmButton</string>
+							<string>messageButton</string>
 							<string>passButton</string>
 							<string>resignButton</string>
 							<string>scrollView</string>
@@ -896,6 +916,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>GoBoardView</string>
+							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
@@ -910,6 +931,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>boardView</string>
 							<string>confirmButton</string>
+							<string>messageButton</string>
 							<string>passButton</string>
 							<string>resignButton</string>
 							<string>scrollView</string>
@@ -924,6 +946,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">confirmButton</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">messageButton</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -971,7 +997,6 @@
 							<string>blackCaptures</string>
 							<string>blackName</string>
 							<string>delegate</string>
-							<string>messageIndicator</string>
 							<string>status</string>
 							<string>statusView</string>
 							<string>whiteCaptures</string>
@@ -982,7 +1007,6 @@
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>id</string>
-							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UIView</string>
 							<string>UILabel</string>
@@ -996,7 +1020,6 @@
 							<string>blackCaptures</string>
 							<string>blackName</string>
 							<string>delegate</string>
-							<string>messageIndicator</string>
 							<string>status</string>
 							<string>statusView</string>
 							<string>whiteCaptures</string>
@@ -1015,10 +1038,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">delegate</string>
 								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">messageIndicator</string>
-								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">status</string>

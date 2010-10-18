@@ -16,7 +16,6 @@
 	IBOutlet UILabel *whiteName;
 	IBOutlet UIView  *statusView;
 	IBOutlet UILabel *status;
-	IBOutlet UIImageView *messageIndicator;
 	IBOutlet UILabel *blackCaptures;
 	IBOutlet UILabel *whiteCaptures;
 	int pointDistance;
@@ -30,7 +29,6 @@
 @property(nonatomic, retain) IBOutlet UILabel *whiteName;
 @property(nonatomic, retain) IBOutlet UILabel *status;
 @property(nonatomic, retain) IBOutlet UIView *statusView;
-@property(nonatomic, retain) IBOutlet UIImageView *messageIndicator;
 @property(nonatomic, retain) IBOutlet UILabel *blackCaptures;
 @property(nonatomic, retain) IBOutlet UILabel *whiteCaptures;
 @property(nonatomic, readonly) int pointDistance;

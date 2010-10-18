@@ -24,6 +24,7 @@
 @synthesize confirmButton;
 @synthesize passButton;
 @synthesize resignButton;
+@synthesize messageButton;
 @synthesize	dgs;
 
 
@@ -165,6 +166,14 @@
 	[self updateBoard];
 }
 
+- (IBAction)toggleMessageWindow {
+	if (self.messageButton.style == UIBarButtonItemStylePlain) {
+		self.messageButton.style = UIBarButtonItemStyleBordered;
+	} else {
+		self.messageButton.style = UIBarButtonItemStylePlain;
+	}
+}
+
 - (void)notLoggedIn {
 	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	loginViewController.delegate = self;
@@ -230,6 +239,11 @@
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
+
+	if ([theBoard comment]) {
+		self.messageButton.image = [UIImage imageNamed:@"Message on.png"];
+	}
+
 	[theBoard release];
 	currentZoomScale = [self zoomInScale];
 	[self lockZoom];
@@ -252,6 +266,8 @@
 	self.zoomOutButton = nil;
 	self.confirmButton = nil;
 	self.passButton = nil;
+	self.resignButton = nil;
+	self.messageButton = nil;
 	self.dgs = nil;
 	self.spinnerView = nil;
     [super viewDidUnload];
