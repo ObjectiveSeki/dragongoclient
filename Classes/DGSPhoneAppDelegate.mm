@@ -25,18 +25,6 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (void)replaceViewController:(UIViewController *)aViewController {
-	UIView *oldView = nil;
-	if ([[window subviews] count] > 0) {
-		oldView = [[window subviews] objectAtIndex:0];
-	}
-	[self setViewController:aViewController];
-	[window addSubview:[aViewController view]];
-	if (oldView) {
-		[oldView removeFromSuperview];
-	}
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
     // Override point for customization after application launch.
@@ -52,10 +40,9 @@
 	
 	CurrentGamesController *gamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:gamesController];
-	[self replaceViewController:navigationController];
 	
 	if ([window respondsToSelector:@selector(setRootViewController:)]) {
-		[window setRootViewController:gamesController];
+		[window setRootViewController:navigationController];
 	}
 	
 	[navigationController release];
