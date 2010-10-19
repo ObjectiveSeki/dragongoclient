@@ -168,6 +168,9 @@
 	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
 	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
+	if ([comment length] > 0) {
+		[request setPostValue:comment forKey:@"message"];
+	}
 	[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
 	[request setPostValue:@"handicap" forKey:@"action"];
 	
@@ -194,6 +197,9 @@
 	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
 	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
 	[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+	if ([comment length] > 0) {
+		[request setPostValue:comment forKey:@"message"];
+	}
 	[request setPostValue:@"done" forKey:@"action"];
 	
 	if ([changedStones count] > 0) {
@@ -226,6 +232,10 @@
 		[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"sgf_move"];
 		
 		[request setPostValue:[self sgfCoordsWithRow:[lastMove row] column:[lastMove col] boardSize:[lastMove boardSize]] forKey:@"sgf_prev"];
+		if ([comment length] > 0) {
+			[request setPostValue:comment forKey:@"message"];
+		}
+		
 		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
 		[request setDelegate:self];
 		
@@ -241,6 +251,9 @@
 		[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
 		[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
 		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+		if ([comment length] > 0) {
+			[request setPostValue:comment forKey:@"message"];
+		}
 		if ([move moveType] == kMoveTypePass) {
 			[request setPostValue:@"pass" forKey:@"action"];
 		} else if ([move moveType] == kMoveTypeResign) {

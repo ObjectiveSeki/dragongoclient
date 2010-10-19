@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3753"
+   version="1.1"
+   inkscape:version="0.48.0 r9654"
+   sodipodi:docname="message views.svg">
+  <defs
+     id="defs3755">
+    <linearGradient
+       id="linearGradient4317">
+      <stop
+         id="stop4319"
+         offset="0"
+         style="stop-color:#b0bccd;stop-opacity:1;" />
+      <stop
+         style="stop-color:#879ab3;stop-opacity:1;"
+         offset="0.47999999"
+         id="stop4325" />
+      <stop
+         style="stop-color:#8094ae;stop-opacity:1;"
+         offset="0.51999998"
+         id="stop4323" />
+      <stop
+         style="stop-color:#6d83a1;stop-opacity:1;"
+         offset="1"
+         id="stop4321" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4271">
+      <stop
+         style="stop-color:#e8e8e8;stop-opacity:1;"
+         offset="0"
+         id="stop4273" />
+      <stop
+         id="stop4283"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4271"
+       id="linearGradient4281"
+       x1="331.42856"
+       y1="428.49484"
+       x2="331.42856"
+       y2="188.07004"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1597633,0,0,1.1597633,-15.063397,-68.296347)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4317"
+       id="linearGradient4315"
+       x1="-209.78571"
+       y1="611.64789"
+       x2="-209.78571"
+       y2="641.04626"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.8290598,0,0,2.94,804.83762,-1331.9825)" />
+    <filter
+       id="filter4755"
+       inkscape:label="Inner Shadow"
+       inkscape:menu="Shadows and Glows"
+       inkscape:menu-tooltip="Adds a colorizable drop shadow inside"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur4757"
+         stdDeviation="4"
+         result="result8" />
+      <feOffset
+         id="feOffset4759"
+         dx="0"
+         dy="2"
+         result="result11" />
+      <feComposite
+         id="feComposite4761"
+         in2="result11"
+         result="result6"
+         in="SourceGraphic"
+         operator="in" />
+      <feFlood
+         id="feFlood4763"
+         result="result10"
+         in="result6"
+         flood-opacity="1"
+         flood-color="rgb(0,0,0)" />
+      <feBlend
+         id="feBlend4765"
+         in2="result10"
+         mode="normal"
+         in="result6"
+         result="result12" />
+      <feComposite
+         id="feComposite4767"
+         in2="SourceGraphic"
+         result="result2"
+         operator="in" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="226.63136"
+     inkscape:cy="1130.0922"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1056"
+     inkscape:window-height="709"
+     inkscape:window-x="20"
+     inkscape:window-y="12"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata3758">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:url(#linearGradient4281);fill-opacity:1;stroke:none"
+       id="rect3761"
+       width="560"
+       height="276"
+       x="94.285713"
+       y="151.48463"
+       ry="36.449699"
+       inkscape:export-filename="/Users/jweiss/Source/dragongoclient/Images/Message background.png"
+       inkscape:export-xdpi="45"
+       inkscape:export-ydpi="45" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4416"
+       d="m -321.5,-4779.1378 636.74654,0"
+       style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Text Field BG">
+    <rect
+       style="fill:url(#linearGradient4315);fill-opacity:1;stroke:none"
+       id="rect4307"
+       width="640"
+       height="84"
+       x="-322"
+       y="468.36218" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -321.49824,466.86218 638.99648,0"
+       id="path4414"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4418"
+       d="m -321.49824,467.86218 638.99648,0"
+       style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text Field">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;"
+       id="rect4717"
+       width="568"
+       height="52"
+       x="-300"
+       y="482.36218"
+       ry="26" />
+    <rect
+       ry="26"
+       y="482.36218"
+       x="-300"
+       height="52"
+       width="596"
+       id="rect4591"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter4755)" />
+  </g>
+</svg>

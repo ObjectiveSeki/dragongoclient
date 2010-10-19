@@ -25,8 +25,10 @@
 @synthesize passButton;
 @synthesize resignButton;
 @synthesize messageButton;
+@synthesize messageView;
+@synthesize messageTextView;
+@synthesize messageField;
 @synthesize	dgs;
-
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -76,9 +78,17 @@
 	[[self boardView] setNeedsDisplay]; // show just placed move
 }
 
+// Sets the 'message waiting' toolbar indicator based on the value of hasMessage.
+- (void)setMessageIconState:(BOOL)hasMessage {
+	if (hasMessage) {
+		self.messageButton.image = [UIImage imageNamed:@"Message on.png"];
+	} else {
+		self.messageButton.image = [UIImage imageNamed:@"Message off.png"];
+	}
+}
 
 - (IBAction)undoMove {
-	[board undoLastMove];
+	[self.board undoLastMove];
 	[self updateBoard];
 }
 
@@ -142,11 +152,11 @@
 	self.spinnerView.label.text = @"Submitting...";
 	self.confirmButton.enabled = NO;
 	if ([self.board beginningOfHandicapGame]) {
-		[self.dgs playHandicapStones:[self.board handicapStones] comment:nil gameId:self.game.gameId];
+		[self.dgs playHandicapStones:[self.board handicapStones] comment:self.messageField.text gameId:self.game.gameId];
 	} else if ([self.board gameEnded]) {
-		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
+		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId];
 	} else {
-		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:nil gameId:self.game.gameId];
+		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId];
 	}
 }
 
@@ -157,21 +167,32 @@
 }
 
 - (IBAction)pass {
-	[board pass];
+	[self.board pass];
 	[self updateBoard];
 }
 
 - (IBAction)resign {
-	[board resign];
+	[self.board resign];
 	[self updateBoard];
 }
 
-- (IBAction)toggleMessageWindow {
-	if (self.messageButton.style == UIBarButtonItemStylePlain) {
-		self.messageButton.style = UIBarButtonItemStyleBordered;
-	} else {
-		self.messageButton.style = UIBarButtonItemStylePlain;
-	}
+- (IBAction)showMessageWindow {
+	[self.view addSubview:self.messageView];
+	[self.messageField becomeFirstResponder];
+	[UIView animateWithDuration:0.3 animations:^() {
+		self.messageView.alpha = 1.0;
+	}];
+}
+
+- (IBAction)hideMessageWindow {
+	[self.messageField resignFirstResponder];
+	[self setMessageIconState:([self.board comment] || self.messageField.text.length > 0)];
+	
+	[UIView animateWithDuration:0.3 animations:^() {
+		self.messageView.alpha = 0.0;
+	} completion:^(BOOL completion) {
+		[self.messageView removeFromSuperview];
+	}];
 }
 
 - (void)notLoggedIn {
@@ -241,7 +262,10 @@
 	[self setBoard:theBoard];
 
 	if ([theBoard comment]) {
-		self.messageButton.image = [UIImage imageNamed:@"Message on.png"];
+		[self setMessageIconState:YES];
+		self.messageTextView.text = [theBoard comment];
+	} else {
+		self.messageTextView.hidden = YES;
 	}
 
 	[theBoard release];
@@ -268,6 +292,9 @@
 	self.passButton = nil;
 	self.resignButton = nil;
 	self.messageButton = nil;
+	self.messageView = nil;
+	self.messageTextView = nil;
+	self.messageField = nil;
 	self.dgs = nil;
 	self.spinnerView = nil;
     [super viewDidUnload];

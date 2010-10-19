@@ -13,7 +13,7 @@
    height="1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48+devel r9814"
+   inkscape:version="0.48.0 r9654"
    sodipodi:docname="resign.svg">
   <defs
      id="defs4" />
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.44752604"
-     inkscape:cx="397.25446"
+     inkscape:cx="88.356206"
      inkscape:cy="504.55502"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
@@ -52,7 +52,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#000000;fill-opacity:0;stroke:none"
+       style="fill:#cccccc;fill-opacity:0;stroke:none"
        id="rect3890"
        width="450"
        height="450"
@@ -60,9 +60,9 @@
        y="295.29651"
        rx="0"
        ry="0"
-       inkscape:export-filename="/Users/jweiss/Desktop/Resign.png"
-       inkscape:export-xdpi="8"
-       inkscape:export-ydpi="8" />
+       inkscape:export-filename="/Users/jweiss/Source/dragongoclient/Images/Resign@2x.png"
+       inkscape:export-xdpi="12"
+       inkscape:export-ydpi="12" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -70,10 +70,11 @@
      inkscape:label="Object">
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:none"
-       d="M 381.28125 297.78125 C 346.25073 314.30364 324.99929 354.66506 289.96875 371.1875 C 255.27924 387.54904 236.01428 347.27282 201.625 362.53125 L 201.53125 362.34375 L 167.125 378.03125 L 337.1875 738.8125 L 371.59375 723.125 L 281.15625 531.28125 C 315.49079 516.12983 334.77741 556.3477 369.4375 540 C 404.46805 523.4776 425.71948 483.11617 460.75 466.59375 L 381.28125 297.78125 z "
+       d="m 516.76279,469.63894 c -31.42726,-18.26238 -74.61536,-13.77903 -106.04268,-32.04141 -31.12132,-18.08463 -9.15506,-53.44927 -39.24252,-71.8706 l 0.10017,-0.16769 -30.43748,-18.21418 -198.07531,314.87171 30.43749,18.21417 105.32167,-167.43734 c 29.97376,18.43441 8.06522,53.78565 39.16017,71.85491 31.42729,18.26242 74.61539,13.77905 106.04268,32.04143 l 92.73581,-147.251 z"
        id="rect3071"
-       inkscape:export-filename="/Users/jweiss/Desktop/Resign.png"
-       inkscape:export-xdpi="8"
-       inkscape:export-ydpi="8" />
+       inkscape:export-filename="/Users/jweiss/Source/dragongoclient/Images/Resign@2x.png"
+       inkscape:export-xdpi="12"
+       inkscape:export-ydpi="12"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
