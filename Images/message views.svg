@@ -26,11 +26,11 @@
          style="stop-color:#b0bccd;stop-opacity:1;" />
       <stop
          style="stop-color:#879ab3;stop-opacity:1;"
-         offset="0.47999999"
+         offset="0.5"
          id="stop4325" />
       <stop
          style="stop-color:#8094ae;stop-opacity:1;"
-         offset="0.51999998"
+         offset="0.5"
          id="stop4323" />
       <stop
          style="stop-color:#6d83a1;stop-opacity:1;"
@@ -69,40 +69,40 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(3.8290598,0,0,2.94,804.83762,-1331.9825)" />
     <filter
-       id="filter4755"
+       id="filter3797"
        inkscape:label="Inner Shadow"
        inkscape:menu="Shadows and Glows"
        inkscape:menu-tooltip="Adds a colorizable drop shadow inside"
        color-interpolation-filters="sRGB">
       <feGaussianBlur
-         id="feGaussianBlur4757"
+         id="feGaussianBlur3799"
          stdDeviation="4"
          result="result8" />
       <feOffset
-         id="feOffset4759"
+         id="feOffset3801"
          dx="0"
          dy="2"
          result="result11" />
       <feComposite
-         id="feComposite4761"
+         id="feComposite3803"
          in2="result11"
          result="result6"
          in="SourceGraphic"
          operator="in" />
       <feFlood
-         id="feFlood4763"
+         id="feFlood3805"
          result="result10"
          in="result6"
          flood-opacity="1"
          flood-color="rgb(0,0,0)" />
       <feBlend
-         id="feBlend4765"
+         id="feBlend3807"
          in2="result10"
          mode="normal"
          in="result6"
          result="result12" />
       <feComposite
-         id="feComposite4767"
+         id="feComposite3809"
          in2="SourceGraphic"
          result="result2"
          operator="in" />
@@ -115,11 +115,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="226.63136"
-     inkscape:cy="1130.0922"
+     inkscape:zoom="0.7"
+     inkscape:cx="-174.07321"
+     inkscape:cy="586.71386"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1056"
      inkscape:window-height="709"
@@ -164,42 +164,37 @@
      id="layer2"
      inkscape:label="Text Field BG">
     <rect
-       style="fill:url(#linearGradient4315);fill-opacity:1;stroke:none"
+       style="fill:url(#linearGradient4315);fill-opacity:1.0;stroke:none"
        id="rect4307"
        width="640"
        height="84"
        x="-322"
-       y="468.36218" />
+       y="468.36218"
+       inkscape:export-filename="/Users/jweiss/Source/dragongoclient/Images/Message Input@2x.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -321.49824,466.86218 638.99648,0"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m -321.00155,465.36218 638.0031,0"
        id="path4414"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
        id="path4418"
-       d="m -321.49824,467.86218 638.99648,0"
-       style="fill:none;stroke:#ffffff;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+       d="m -321.00155,467.36218 638.0031,0"
+       style="fill:none;stroke:#cdd5df;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Text Field">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:none;"
+       style="fill:#ffffff;fill-opacity:1;stroke:#6a7598;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3797)"
        id="rect4717"
-       width="568"
+       width="596.57141"
        height="52"
        x="-300"
        y="482.36218"
        ry="26" />
-    <rect
-       ry="26"
-       y="482.36218"
-       x="-300"
-       height="52"
-       width="596"
-       id="rect4591"
-       style="fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter4755)" />
   </g>
 </svg>
