@@ -19,6 +19,17 @@
   <defs
      id="defs3755">
     <linearGradient
+       id="linearGradient3775">
+      <stop
+         style="stop-color:#ebeded;stop-opacity:1;"
+         offset="0"
+         id="stop3777" />
+      <stop
+         id="stop3783"
+         offset="1"
+         style="stop-color:#c0c2c6;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient4317">
       <stop
          id="stop4319"
@@ -60,7 +71,7 @@
        gradientTransform="matrix(1.1597633,0,0,1.1597633,-15.063397,-68.296347)" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient4317"
+       xlink:href="#linearGradient3775"
        id="linearGradient4315"
        x1="-209.78571"
        y1="611.64789"
@@ -116,8 +127,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-174.07321"
-     inkscape:cy="586.71386"
+     inkscape:cx="-246.88995"
+     inkscape:cy="712.31967"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -174,7 +185,7 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#a6a6a6;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m -321.00155,465.36218 638.0031,0"
        id="path4414"
        inkscape:connector-curvature="0" />
@@ -182,19 +193,21 @@
        inkscape:connector-curvature="0"
        id="path4418"
        d="m -321.00155,467.36218 638.0031,0"
-       style="fill:none;stroke:#cdd5df;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="Text Field">
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#6a7598;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3797)"
+       style="fill:#ffffff;fill-opacity:1;stroke:#acaeb3;stroke-width:0.94949114;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3797)"
        id="rect4717"
        width="596.57141"
        height="52"
        x="-300"
        y="482.36218"
-       ry="26" />
+       ry="26"
+       transform="matrix(1,0,0,1.1092211,0,-53.210893)"
+       rx="26" />
   </g>
 </svg>
