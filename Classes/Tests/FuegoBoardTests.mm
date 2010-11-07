@@ -21,7 +21,7 @@
 }
 
 - (NSString *)stringForSgfFile:(NSString *)sgfFilename {
-	NSString * sgfFile = [NSString stringWithContentsOfFile:[[NSBundle bundleForClass:[self class] ] pathForResource:sgfFilename ofType:@"sgf"]];
+	NSString * sgfFile = [NSString stringWithContentsOfFile:[[NSBundle bundleForClass:[self class] ] pathForResource:sgfFilename ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
 	return sgfFile;
 }
 

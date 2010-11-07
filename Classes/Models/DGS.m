@@ -13,6 +13,8 @@
 #ifndef LOGIC_TEST_MODE
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+
+typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 #endif
 
 @implementation DGS
@@ -96,17 +98,23 @@
 	} else if (errorString) {
 		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 	}  else {
-		SEL selector = NSSelectorFromString([[request userInfo] objectForKey:@"selector"]);
-		if (selector && [self respondsToSelector:selector]) {
-			[self performSelector:selector withObject:request];
+
+		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
+		
+		if (onSuccess) {
+			onSuccess(request);
+		} else {
+			SEL selector = NSSelectorFromString([[request userInfo] objectForKey:@"selector"]);
+			if (selector && [self respondsToSelector:selector]) {
+				[self performSelector:selector withObject:request];
+			}
 		}
 	}
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-	NSError *error = [request error];
-	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem connecting with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (void)logout {
@@ -133,31 +141,30 @@
 	[[self delegate] loggedIn];
 }
 
-- (void)getCurrentGames {
+
+- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess {
+	[request setUserInfo:[NSDictionary dictionaryWithObject:[onSuccess copy] forKey:@"onSuccess"]];
+	[request setDelegate:self];
+	[request startAsynchronous];
+}
+
+- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
 	NSURL *url = [self URLWithPath:@"/quick_status.php"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	[request setUserInfo:[NSDictionary dictionaryWithObject:@"gotCurrentGames:" forKey:@"selector"]];
 	[request setCachePolicy:ASIIgnoreCachePolicy];
-	[request setDelegate:self];
-	[request startAsynchronous];
+	
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		NSArray *gameList = [self gamesFromCSV:[request responseString]];
+		onSuccess(gameList);
+	}];
 }
 
-- (void)gotCurrentGames:(ASIHTTPRequest *)request {
-	NSArray *gameList = [self gamesFromCSV:[request responseString]];
-	[[self delegate] gotCurrentGames:gameList];
-}
-
-- (void)getSgfForGame:(Game *)game {
+- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
-	[request setUserInfo:[NSDictionary dictionaryWithObjectsAndKeys:@"gotSgfForGame:", @"selector", game, @"game", nil]];
-	[request setDelegate:self];
-	[request startAsynchronous];
-}
-
-- (void)gotSgfForGame:(ASIHTTPRequest *)request {
-	Game *game = [[request userInfo] objectForKey:@"game"];
-	[game setSgfString:[request responseString]];
-	[[self delegate] gotSgfForGame:game];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		[game setSgfString:[request responseString]];
+		onSuccess(game);
+	}];
 }
 
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId {
@@ -271,7 +278,7 @@
 	[[self delegate] playedMove];
 }
 
-- (void)addGame:(NewGame *)game {
+- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
 	NSURL *url = [self URLWithPath:@"/add_to_waitingroom.php"];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
@@ -304,15 +311,9 @@
 	[request setPostValue:[game comment] forKey:@"comment"];
 	[request setPostValue:@"Add Game" forKey:@"add_game"];
 	
-	
-	[request setUserInfo:[NSDictionary dictionaryWithObject:@"addedGame:" forKey:@"selector"]];
-	[request setDelegate:self];
-	
-	[request startAsynchronous];
-}
-
-- (void)addedGame:(ASIHTTPRequest *)request {
-	[[self delegate] addedGame];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		onSuccess();
+	}];
 }
 
 #endif

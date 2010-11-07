@@ -26,7 +26,5 @@
 @property (nonatomic, retain) UIImage *messageOff;
 @property (nonatomic, retain) UIImage *messageOn;
 
-- (void)replaceViewController:(UIViewController *)aViewController;
-
 @end
 

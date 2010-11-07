@@ -84,16 +84,14 @@ typedef enum _AddGameSection {
 	self.spinnerView = nil;
 }
 
-- (void)addedGame {
-	[self.spinnerView dismiss:YES];
-	self.spinnerView = nil;
-	[[self navigationController] popViewControllerAnimated:YES];
-}
-
 - (IBAction)addGame {
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Posting...";
-	[self.dgs addGame:self.newGame];
+	[self.dgs addGame:self.newGame onSuccess:^() {
+		[self.spinnerView dismiss:YES];
+		self.spinnerView = nil;
+		[[self navigationController] popViewControllerAnimated:YES];
+	}];
 }
 
 #pragma mark -
@@ -426,7 +424,6 @@ typedef enum _AddGameSection {
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end
 

@@ -11,7 +11,7 @@
 @implementation DGSTests
 
 - (void)testParseGames {
-	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/status.html"];
+	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/status.html" encoding:NSUTF8StringEncoding error:NULL];
 	DGS *dgs = [[DGS alloc] init];
 	NSArray *games = [dgs gamesFromTable:testData];
 	[dgs release];

@@ -121,34 +121,32 @@
 	self.spinnerView = nil;
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Reloading...";
-	[dgs getCurrentGames];
-}
-
-- (void)gotCurrentGames:(NSArray *)currentGames {
-	self.games = currentGames;
-	
+	[dgs getCurrentGames:^(NSArray *currentGames) {
+		self.games = currentGames;
+		
 #if TEST_GAMES
-	
-	NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", nil];
-	NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
-	for (NSString *name in testGames) {
-		Game *game = [[Game alloc] init];
-		game.opponent = name;
-		game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"]];
-		game.color = kMovePlayerBlack;
-		game.time = @"Test";
-		[mutableCurrentGames addObject:game];
-		[game release];
-	}
-	self.games = mutableCurrentGames;
-	[mutableCurrentGames release];
+		
+		NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", nil];
+		NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
+		for (NSString *name in testGames) {
+			Game *game = [[Game alloc] init];
+			game.opponent = name;
+			game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
+			game.color = kMovePlayerBlack;
+			game.time = @"Test";
+			[mutableCurrentGames addObject:game];
+			[game release];
+		}
+		self.games = mutableCurrentGames;
+		[mutableCurrentGames release];
 #endif
-	
-	[self.spinnerView dismiss:YES];
-	self.spinnerView = nil;
-	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-	[[self gameTableView] reloadData];
-	[self setEnabled:YES];
+		
+		[self.spinnerView dismiss:YES];
+		self.spinnerView = nil;
+		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+		[[self gameTableView] reloadData];
+		[self setEnabled:YES];
+	}];
 }
 
 - (void)notLoggedIn {
@@ -284,27 +282,7 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self setEnabled:NO];
-#if TEST_GAMES
-	Game *game = [self.games objectAtIndex:[indexPath row]];
-	if (game.gameId == 0) {
-		[self gotSgfForGame:game];
-	} else {
-#endif
-	
-	[dgs getSgfForGame:[self.games objectAtIndex:[indexPath row]]];
-	
-	self.selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-	UIActivityIndicatorView *activityView = 
-    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	[activityView startAnimating];
-	[self.selectedCell setAccessoryView:activityView];
-	[activityView release];
-#if TEST_GAMES
-	}
-#endif
-}
+
 
 - (void)gotSgfForGame:(Game *)game {
 	[self.selectedCell setAccessoryView:nil];
@@ -319,6 +297,30 @@
 	[self setEnabled:YES];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self setEnabled:NO];
+	self.selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+	UIActivityIndicatorView *activityView = 
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[activityView startAnimating];
+	[self.selectedCell setAccessoryView:activityView];
+	[activityView release];
+	
+#if TEST_GAMES
+	Game *game = [self.games objectAtIndex:[indexPath row]];
+	if (game.gameId == 0) {
+		[self gotSgfForGame:game];
+	} else {
+#endif
+	
+	[dgs getSgfForGame:[self.games objectAtIndex:[indexPath row]] onSuccess:^(Game *game) {
+		[self gotSgfForGame:game];
+	}];
+	
+#if TEST_GAMES
+	}
+#endif
+}
 
 #pragma mark -
 #pragma mark Memory management

@@ -125,7 +125,6 @@
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */; };
 		DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
-		DA667C3E125A296D00CA9A13 /* XCodeTestFix.m in Sources */ = {isa = PBXBuildFile; fileRef = DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */; };
 		DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
@@ -570,7 +569,6 @@
 		DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoardTests.h; sourceTree = "<group>"; };
 		DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoardTests.mm; sourceTree = "<group>"; };
 		DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Scoring Should Be Move 202.sgf"; sourceTree = "<group>"; };
-		DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCodeTestFix.m; sourceTree = "<group>"; };
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -1289,7 +1287,6 @@
 				DAEA525A11B895ED00F4CCB3 /* DGSTests.m */,
 				DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */,
 				DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */,
-				DA667C3D125A296D00CA9A13 /* XCodeTestFix.m */,
 			);
 			name = Logic;
 			sourceTree = "<group>";
@@ -1931,7 +1928,6 @@
 				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
 				DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */,
 				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */,
-				DA667C3E125A296D00CA9A13 /* XCodeTestFix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
