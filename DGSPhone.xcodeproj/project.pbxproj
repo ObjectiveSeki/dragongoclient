@@ -2110,7 +2110,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -2127,7 +2127,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
@@ -2212,7 +2212,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 			};
 			name = Adhoc;
 		};
@@ -2286,7 +2286,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphoneos4.1;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -2379,7 +2378,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphoneos4.1;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -2420,7 +2418,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
-				SDKROOT = iphoneos4.1;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};

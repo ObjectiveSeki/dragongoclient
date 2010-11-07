@@ -28,6 +28,7 @@
 @synthesize messageView;
 @synthesize messageTextView;
 @synthesize messageField;
+@synthesize messageDisplayView;
 @synthesize	dgs;
 
 /*
@@ -260,12 +261,12 @@
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
-
+	
 	if ([theBoard comment]) {
 		[self setMessageIconState:YES];
 		self.messageTextView.text = [theBoard comment];
 	} else {
-		self.messageTextView.hidden = YES;
+		self.messageDisplayView.hidden = YES;
 	}
 
 	[theBoard release];
@@ -295,6 +296,7 @@
 	self.messageView = nil;
 	self.messageTextView = nil;
 	self.messageField = nil;
+	self.messageDisplayView = nil;
 	self.dgs = nil;
 	self.spinnerView = nil;
     [super viewDidUnload];
