@@ -143,7 +143,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 
 
 - (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess {
-	[request setUserInfo:[NSDictionary dictionaryWithObject:[onSuccess copy] forKey:@"onSuccess"]];
+	[request setUserInfo:[NSDictionary dictionaryWithObject:[[onSuccess copy] autorelease] forKey:@"onSuccess"]];
 	[request setDelegate:self];
 	[request startAsynchronous];
 }

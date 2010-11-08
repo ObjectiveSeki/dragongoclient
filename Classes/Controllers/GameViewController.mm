@@ -178,7 +178,7 @@
 }
 
 - (IBAction)showMessageWindow {
-	[self.view addSubview:self.messageView];
+	[self.navigationController.view addSubview:self.messageView];
 	[self.messageField becomeFirstResponder];
 	[UIView animateWithDuration:0.3 animations:^() {
 		self.messageView.alpha = 1.0;

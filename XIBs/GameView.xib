@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="1"/>
 			<integer value="96"/>
-			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -397,7 +397,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{20, 11}, {280, 138}}</string>
+						<string key="NSFrame">{{20, 75}, {280, 138}}</string>
 						<reference key="NSSuperview" ref="887966378"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -409,7 +409,7 @@
 					<object class="IBUIImageView" id="628756447">
 						<reference key="NSNextResponder" ref="887966378"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 157}, {320, 43}}</string>
+						<string key="NSFrame">{{0, 221}, {320, 43}}</string>
 						<reference key="NSSuperview" ref="887966378"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -421,7 +421,7 @@
 					<object class="IBUITextField" id="852898643">
 						<reference key="NSNextResponder" ref="887966378"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{25, 162}, {268, 33}}</string>
+						<string key="NSFrame">{{25, 226}, {268, 33}}</string>
 						<reference key="NSSuperview" ref="887966378"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -447,7 +447,7 @@
 						</object>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 416}</string>
+				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -1017,7 +1017,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{510, 220}, {320, 416}}</string>
+					<string>{{727, 176}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABC6AAAxCbAAA</bytes>
