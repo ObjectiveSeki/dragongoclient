@@ -29,6 +29,7 @@
 @synthesize messageTextView;
 @synthesize messageField;
 @synthesize messageDisplayView;
+@synthesize messageInputView;
 @synthesize	dgs;
 
 /*
@@ -177,8 +178,56 @@
 	[self updateBoard];
 }
 
+- (void)keyboardWillBeShown:(NSNotification *)notification {
+	float totalHeight = self.messageView.frame.size.height;
+	CGRect frame = self.messageInputView.frame;
+	frame.origin.y = totalHeight - frame.size.height;
+	self.messageInputView.frame = frame;
+	CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+	[UIView animateWithDuration:0.3 animations:^() {
+		CGRect newFrame = self.messageInputView.frame;
+		newFrame.origin.y = totalHeight - kbSize.height - frame.size.height;
+		self.messageInputView.frame = newFrame;
+	}];
+}
+
+- (void)keyboardWillBeHidden:(NSNotification *)notification {
+	float totalHeight = self.messageView.frame.size.height;
+	
+	[UIView animateWithDuration:0.3 animations:^() {
+		CGRect frame = self.messageInputView.frame;
+		frame.origin.y = totalHeight - frame.size.height;
+		self.messageInputView.frame = frame;
+	}];
+}
+
+// Call this method somewhere in your view controller setup code.
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillBeShown:)
+												 name:UIKeyboardWillShowNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillBeHidden:)
+												 name:UIKeyboardWillHideNotification object:nil];
+	
+}
+
+// Call this method somewhere in your view controller setup code.
+- (void)removeKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+													name:UIKeyboardDidShowNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver:self
+													name:UIKeyboardWillHideNotification object:nil];
+	
+}
+
 - (IBAction)showMessageWindow {
 	[self.navigationController.view addSubview:self.messageView];
+	[self registerForKeyboardNotifications];
 	[self.messageField becomeFirstResponder];
 	[UIView animateWithDuration:0.3 animations:^() {
 		self.messageView.alpha = 1.0;
@@ -187,6 +236,7 @@
 
 - (IBAction)hideMessageWindow {
 	[self.messageField resignFirstResponder];
+	[self removeKeyboardNotifications];
 	[self setMessageIconState:([self.board comment] || self.messageField.text.length > 0)];
 	
 	[UIView animateWithDuration:0.3 animations:^() {
@@ -277,16 +327,16 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillAppear:animated];
+	[super viewWillDisappear:animated];
 	[self.boardView setBoard:nil];
 	self.board = nil;
+	[self removeKeyboardNotifications];
 }
 
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 	self.boardView = nil;
-	self.game = nil;
 	self.undoButton = nil;
 	self.zoomOutButton = nil;
 	self.confirmButton = nil;
@@ -297,14 +347,15 @@
 	self.messageTextView = nil;
 	self.messageField = nil;
 	self.messageDisplayView = nil;
-	self.dgs = nil;
+	self.messageInputView = nil;
 	self.spinnerView = nil;
     [super viewDidUnload];
 }
 
 
 - (void)dealloc {
-
+	self.game = nil;
+	self.dgs = nil;
     [super dealloc];
 }
 

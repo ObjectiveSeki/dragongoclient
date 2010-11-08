@@ -33,6 +33,7 @@ enum BoardState {
 	IBOutlet UITextView *messageTextView;
 	IBOutlet UITextField *messageField;
 	IBOutlet UIView *messageDisplayView;
+	IBOutlet UIView *messageInputView;
 	BoardState boardState;
 	float maximumZoomScale;
 	float minimumZoomScale;
@@ -57,6 +58,7 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UITextView *messageTextView;
 @property(nonatomic, retain) IBOutlet UITextField *messageField;
 @property(nonatomic, retain) IBOutlet UIView *messageDisplayView;
+@property(nonatomic, retain) IBOutlet UIView *messageInputView;
 @property(nonatomic, retain) DGS *dgs;
 
 - (IBAction)undoMove;

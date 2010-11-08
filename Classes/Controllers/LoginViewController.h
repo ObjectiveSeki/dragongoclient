@@ -12,8 +12,8 @@
 
 
 @interface LoginViewController : UITableViewController <LoginProtocol> {
-	IBOutlet NSString *username;
-	IBOutlet NSString *password;
+	NSString *username;
+	NSString *password;
 	DGS *dgs;
 	id delegate;
 	SpinnerView *spinnerView;
@@ -21,8 +21,8 @@
 
 @property (nonatomic, retain) SpinnerView *spinnerView;
 
-@property(nonatomic, retain) IBOutlet NSString *username;
-@property(nonatomic, retain) IBOutlet NSString *password;
+@property(nonatomic, copy) NSString *username;
+@property(nonatomic, copy) NSString *password;
 @property(nonatomic, retain) DGS *dgs;
 @property(nonatomic, assign) id delegate;
 

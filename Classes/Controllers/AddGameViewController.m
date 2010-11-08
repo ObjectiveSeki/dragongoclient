@@ -415,13 +415,13 @@ typedef enum _AddGameSection {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.descriptionCell = nil;
-	self.newGame = nil;
-	self.dgs = nil;
 	self.spinnerView = nil;
 }
 
 
 - (void)dealloc {
+	self.newGame = nil;
+	self.dgs = nil;
     [super dealloc];
 }
 

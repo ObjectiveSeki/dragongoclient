@@ -18,11 +18,11 @@
 @synthesize acceptTerms;
 
 - (void)dealloc {
-	[super dealloc];
 	self.username = nil;
 	self.password = nil;
 	self.passwordConfirm = nil;
 	self.name = nil;
+	[super dealloc];
 }
 
 @end

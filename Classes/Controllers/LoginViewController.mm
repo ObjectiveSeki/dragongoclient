@@ -53,7 +53,7 @@ typedef enum _LoginSection {
 	[self.view resignFirstResponder];
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Logging in...";
-	[dgs loginWithUsername:self.username password:self.password];
+	[self.dgs loginWithUsername:self.username password:self.password];
 }
 
 - (void)requestCancelled {
@@ -235,14 +235,14 @@ typedef enum _LoginSection {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-	self.username = nil;
-	self.password = nil;
-	self.dgs = nil;
 	self.spinnerView = nil;
 }
 
 
 - (void)dealloc {
+	self.username = nil;
+	self.password = nil;
+	self.dgs = nil;
     [super dealloc];
 }
 

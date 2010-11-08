@@ -121,7 +121,7 @@
 	self.spinnerView = nil;
 	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = @"Reloading...";
-	[dgs getCurrentGames:^(NSArray *currentGames) {
+	[self.dgs getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
 		
 #if TEST_GAMES
@@ -335,11 +335,9 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-	self.games = nil;
 	self.refreshButton = nil;
 	self.gameTableView = nil;
 	self.logoutButton = nil;
-	self.dgs = nil;
 	self.selectedCell = nil;
 	self.spinnerView = nil;
 	self.logoutConfirmation = nil;
@@ -348,7 +346,8 @@
 
 
 - (void)dealloc {
-
+	self.games = nil;
+	self.dgs = nil;
     [super dealloc];
 }
 
