@@ -297,15 +297,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	NSURL *url = [self URLWithPath:@"/add_to_waitingroom.php"];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
-	//[request setPostValue:[game ruleSetValue] forKey:@"ruleset"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game boardSize]] forKey:@"size"];
 	[request setPostValue:[game komiTypeValue] forKey:@"handicap_type"];
-	//[request setPostValue:[NSString stringWithFormat:@"%d", [game adjustedHandicap]] forKey:@"adj_handicap"];
-	//[request setPostValue:[NSString stringWithFormat:@"%d", [game minHandicap]] forKey:@"min_handicap"];
-	//[request setPostValue:[NSString stringWithFormat:@"%d", [game maxHandicap]] forKey:@"max_handicap"];
 	[request setPostValue:[game boolValue:[game stdHandicap]] forKey:@"stdhandicap"];
-	//[request setPostValue:[NSString stringWithFormat:@"%f", [game adjustedKomi]] forKey:@"adj_komi"];
-	//[request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
 	[request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
 	[request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
@@ -317,12 +311,11 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimePeriods]] forKey:@"byoperiods_can"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", [game fischerTimeValue]] forKey:@"byotimevalue_fis"];
 	[request setPostValue:[game timePeriodValue:[game fischerTimeUnit]] forKey:@"timeunit_fis"];
-
+	
 	[request setPostValue:[game boolValue:[game weekendClock]] forKey:@"weekendclock"];
 	[request setPostValue:[game boolValue:[game rated]] forKey:@"rated"];
 	[request setPostValue:[game minimumRating] forKey:@"rating1"];
 	[request setPostValue:[game maximumRating] forKey:@"rating2"];
-	//[request setPostValue:[NSString stringWithFormat:@"%d", [game sameOpponent]] forKey:@"same_opp"];	
 	[request setPostValue:[game comment] forKey:@"comment"];
 	[request setPostValue:@"Add Game" forKey:@"add_game"];
 	
