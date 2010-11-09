@@ -44,6 +44,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	return self;
 }
 
+#pragma mark -
+#pragma mark Request handling
+
 // Is the user currently logged in through their cookie? YES if so,
 // NO if not. 
 - (BOOL)loggedIn:(ASIHTTPRequest *)request {
@@ -64,7 +67,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	return YES;
 }
 
-
 // Checks the request body to see if it contains an error. If so,
 // return the error string. Otherwise, returns nil.
 - (NSString *)error:(ASIHTTPRequest *)request {
@@ -84,11 +86,14 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	return errorString;
 }
 
+// Called when the AlertView containing an error message is dismissed.
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	[alertView release];
 	[[self delegate] requestCancelled];
 }
 
+// Called when an ASIHTTPRequest finishes. Handles being logged out, 
+// error messages, and successes. 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
 	//NSLog(@"%@", [request responseString]);
@@ -103,28 +108,50 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 		
 		if (onSuccess) {
 			onSuccess(request);
-		} else {
-			SEL selector = NSSelectorFromString([[request userInfo] objectForKey:@"selector"]);
-			if (selector && [self respondsToSelector:selector]) {
-				[self performSelector:selector withObject:request];
-			}
 		}
 	}
 }
 
+// Called when a request fails entirely.
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
 	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
-- (void)logout {
-	NSURL *url = [self URLWithPath:@"/index.php?logout=t"];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	[request setDelegate:self];
+// Starts an asynchronous request, calling onSuccess when the request finishes.
+- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess {
+	
+	NSMutableDictionary *userInfo = [request.userInfo mutableCopy];
+	
+	if (!userInfo) {
+		userInfo = [[NSMutableDictionary alloc] init];
+	}
+	
+	if (onSuccess) {
+		[userInfo setObject:[[onSuccess copy] autorelease] forKey:@"onSuccess"];
+	}
+	
+	request.userInfo = userInfo;
+	[userInfo release];
+	
+	request.delegate = self;
 	[request startAsynchronous];
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password 
+#pragma mark -
+#pragma mark DGS Calls
+
+
+- (void)logout {
+	NSURL *url = [self URLWithPath:@"/index.php?logout=t"];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+
+	// Success is meaningless here, since we have special handling for being
+	// logged out during a request
+	[self performRequest:request onSuccess:nil];
+}
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password
 {
 	
 	NSURL *url = [self URLWithPath:@"/login.php"];
@@ -132,20 +159,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:username forKey:@"userid"];
 	[request setPostValue:password forKey:@"passwd"];
-	[request setUserInfo:[NSDictionary dictionaryWithObject:@"didLogin:" forKey:@"selector"]];
-	[request setDelegate:self];
-	[request startAsynchronous];
-}
-
-- (void)didLogin:(ASIHTTPRequest *)request {
-	[[self delegate] loggedIn];
-}
-
-
-- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess {
-	[request setUserInfo:[NSDictionary dictionaryWithObject:[[onSuccess copy] autorelease] forKey:@"onSuccess"]];
-	[request setDelegate:self];
-	[request startAsynchronous];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		[self.delegate loggedIn];
+	}];
 }
 
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
@@ -167,7 +183,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	}];
 }
 
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId {
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
 	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
 	NSURL *url = [self URLWithPath:@"/game.php"];
 	
@@ -178,7 +194,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	if ([comment length] > 0) {
 		[request setPostValue:comment forKey:@"message"];
 	}
-	[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
 	[request setPostValue:@"handicap" forKey:@"action"];
 	
 	NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
@@ -189,11 +204,13 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	
 	[request setPostValue:moveString forKey:@"stonestring"];
 	[moveString release];
-	[request setDelegate:self];
-	[request startAsynchronous];
+
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		onSuccess();
+	}];
 }
 
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we 
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber; 
@@ -203,7 +220,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
 	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
 	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
-	[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
 	if ([comment length] > 0) {
 		[request setPostValue:comment forKey:@"message"];
 	}
@@ -219,11 +235,13 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 		[request setPostValue:moveString forKey:@"stonestring"];
 		[moveString release];
 	}
-	[request setDelegate:self];
-	[request startAsynchronous];
+	
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		onSuccess();
+	}];
 }
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId {
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
 	
 	if (lastMove && [lastMove moveType] == kMoveTypeMove && [move moveType] == kMoveTypeMove) {
 		NSURL *url = [self URLWithPath:@"/quick_play.php"];
@@ -243,10 +261,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 			[request setPostValue:comment forKey:@"message"];
 		}
 		
-		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
-		[request setDelegate:self];
-		
-		[request startAsynchronous];
+		[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+			onSuccess();
+		}];
 		
 	} else {
 		// can't respond using quick_play.php
@@ -257,7 +274,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
 		[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
 		[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
-		[request setUserInfo:[NSDictionary dictionaryWithObject:@"playedMove:" forKey:@"selector"]];
+
 		if ([comment length] > 0) {
 			[request setPostValue:comment forKey:@"message"];
 		}
@@ -269,13 +286,11 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 			[request setPostValue:@"domove" forKey:@"action"];
 			[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"coord"];
 		}
-		[request setDelegate:self];
-		[request startAsynchronous];
+		
+		[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+			onSuccess();
+		}];
 	}
-}
-
-- (void)playedMove:(ASIHTTPRequest *)request {
-	[[self delegate] playedMove];
 }
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
@@ -317,6 +332,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 }
 
 #endif
+
+#pragma mark -
+#pragma mark Helper functions
 
 // This takes the CSV data that the DGS API hands back to us and transforms
 // it into a list of Game objects. 

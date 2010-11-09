@@ -149,23 +149,28 @@
 	[self zoomOut:[self.boardView center]];
 }
 
-- (IBAction)confirmMove {
-	self.spinnerView = [SpinnerView showInView:self.view];
-	self.spinnerView.label.text = @"Submitting...";
-	self.confirmButton.enabled = NO;
-	if ([self.board beginningOfHandicapGame]) {
-		[self.dgs playHandicapStones:[self.board handicapStones] comment:self.messageField.text gameId:self.game.gameId];
-	} else if ([self.board gameEnded]) {
-		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId];
-	} else {
-		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId];
-	}
-}
-
 - (void)playedMove {
 	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;
 	[[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (IBAction)confirmMove {
+	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView.label.text = @"Submitting...";
+	self.confirmButton.enabled = NO;
+	
+	void (^onSuccess)() = ^() {
+		[self playedMove];
+	};
+	
+	if ([self.board beginningOfHandicapGame]) {
+		[self.dgs playHandicapStones:[self.board handicapStones] comment:self.messageField.text gameId:self.game.gameId onSuccess:onSuccess];
+	} else if ([self.board gameEnded]) {
+		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId onSuccess:onSuccess];
+	} else {
+		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId onSuccess:onSuccess];
+	}
 }
 
 - (IBAction)pass {

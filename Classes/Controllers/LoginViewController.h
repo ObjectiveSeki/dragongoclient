@@ -10,7 +10,6 @@
 #import "DGS.h"
 #import "SpinnerView.h"
 
-
 @interface LoginViewController : UITableViewController <LoginProtocol> {
 	NSString *username;
 	NSString *password;
@@ -27,6 +26,7 @@
 @property(nonatomic, assign) id delegate;
 
 - (void)login;
+- (void)notLoggedIn;
 - (void)requestCancelled;
 
 @end
