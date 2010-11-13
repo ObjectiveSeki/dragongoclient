@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1056</int>
-		<string key="IBDocument.SystemVersion">10F3061</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -12,8 +12,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="96"/>
 			<integer value="1"/>
-			<integer value="83"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -367,7 +367,7 @@
 							<object class="IBUIImageView" id="269986168">
 								<reference key="NSNextResponder" ref="341481516"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{280, 138}</string>
+								<string key="NSFrame">{{0, 12}, {280, 173}}</string>
 								<reference key="NSSuperview" ref="341481516"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -379,7 +379,7 @@
 							<object class="IBUITextView" id="580465619">
 								<reference key="NSNextResponder" ref="341481516"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{18, 9}, {244, 121}}</string>
+								<string key="NSFrame">{{18, 20}, {244, 157}}</string>
 								<reference key="NSSuperview" ref="341481516"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -397,7 +397,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrame">{{20, 75}, {280, 138}}</string>
+						<string key="NSFrame">{{20, 28}, {280, 185}}</string>
 						<reference key="NSSuperview" ref="887966378"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -426,7 +426,7 @@
 							<object class="IBUITextField" id="852898643">
 								<reference key="NSNextResponder" ref="465496910"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 5}, {268, 33}}</string>
+								<string key="NSFrame">{{20, 6}, {268, 33}}</string>
 								<reference key="NSSuperview" ref="465496910"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">1</int>
@@ -1680,7 +1680,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{64, 64}</string>
 				<string>{320, 52}</string>
-				<string>{280, 138}</string>
+				<string>{280, 193}</string>
 				<string>{320, 44}</string>
 				<string>{30, 30}</string>
 				<string>{30, 30}</string>

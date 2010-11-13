@@ -79,7 +79,7 @@
        x2="331.42856"
        y2="188.07004"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.1597633,0,0,1.1597633,-15.063397,-68.296347)" />
+       gradientTransform="matrix(1.1597633,0,0,1.4539062,-15.063397,-194.0379)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3775"
@@ -138,10 +138,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="-39.332477"
+     inkscape:cx="205.94858"
      inkscape:cy="712.31967"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1056"
      inkscape:window-height="709"
@@ -168,10 +168,10 @@
        style="fill:url(#linearGradient4281);fill-opacity:1;stroke:none"
        id="rect3761"
        width="560"
-       height="276"
+       height="346"
        x="94.285713"
-       y="151.48463"
-       ry="36.449699"
+       y="81.484634"
+       ry="53.429195"
        inkscape:export-filename="/Users/jweiss/Source/dragongoclient/Images/Message background.png"
        inkscape:export-xdpi="45"
        inkscape:export-ydpi="45" />
