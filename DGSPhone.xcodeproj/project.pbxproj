@@ -16,6 +16,7 @@
 		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
+		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
@@ -327,6 +328,8 @@
 		DA02D14C11D99D7600A9D887 /* TableCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellFactory.m; sourceTree = "<group>"; };
 		DA02D15811D99E4500A9D887 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
 		DA214FB512458E3000448955 /* TouchXML_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML_Prefix.pch; sourceTree = "<group>"; };
@@ -1510,6 +1513,8 @@
 				DAF9102711BB48A800FE7B96 /* GoBoardView.mm */,
 				DA6F94FA11FAA0670093751D /* SpinnerView.h */,
 				DA6F94FB11FAA0670093751D /* SpinnerView.m */,
+				DA1341A91292323300D2A4BF /* MessageView.h */,
+				DA1341AA1292323300D2A4BF /* MessageView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1804,6 +1809,7 @@
 				DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */,
 				DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */,
 				DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */,
+				DA1341AB1292323300D2A4BF /* MessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,10 +26,6 @@
 @synthesize resignButton;
 @synthesize messageButton;
 @synthesize messageView;
-@synthesize messageTextView;
-@synthesize messageField;
-@synthesize messageDisplayView;
-@synthesize messageInputView;
 @synthesize	dgs;
 
 /*
@@ -160,16 +156,18 @@
 	self.spinnerView.label.text = @"Submitting...";
 	self.confirmButton.enabled = NO;
 	
+	NSString *reply = self.messageView.reply;
+	
 	void (^onSuccess)() = ^() {
 		[self playedMove];
 	};
 	
 	if ([self.board beginningOfHandicapGame]) {
-		[self.dgs playHandicapStones:[self.board handicapStones] comment:self.messageField.text gameId:self.game.gameId onSuccess:onSuccess];
+		[self.dgs playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	} else if ([self.board gameEnded]) {
-		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId onSuccess:onSuccess];
+		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	} else {
-		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:self.messageField.text gameId:self.game.gameId onSuccess:onSuccess];
+		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	}
 }
 
@@ -183,72 +181,14 @@
 	[self updateBoard];
 }
 
-- (void)keyboardWillBeShown:(NSNotification *)notification {
-	float totalHeight = self.messageView.frame.size.height;
-	CGRect frame = self.messageInputView.frame;
-	frame.origin.y = totalHeight - frame.size.height;
-	self.messageInputView.frame = frame;
-	CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-	[UIView animateWithDuration:0.3 animations:^() {
-		CGRect newFrame = self.messageInputView.frame;
-		newFrame.origin.y = totalHeight - kbSize.height - frame.size.height;
-		self.messageInputView.frame = newFrame;
-	}];
-}
-
-- (void)keyboardWillBeHidden:(NSNotification *)notification {
-	float totalHeight = self.messageView.frame.size.height;
-	
-	[UIView animateWithDuration:0.3 animations:^() {
-		CGRect frame = self.messageInputView.frame;
-		frame.origin.y = totalHeight - frame.size.height;
-		self.messageInputView.frame = frame;
-	}];
-}
-
-// Call this method somewhere in your view controller setup code.
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(keyboardWillBeShown:)
-												 name:UIKeyboardWillShowNotification object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(keyboardWillBeHidden:)
-												 name:UIKeyboardWillHideNotification object:nil];
-	
-}
-
-// Call this method somewhere in your view controller setup code.
-- (void)removeKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-													name:UIKeyboardDidShowNotification object:nil];
-	
-	[[NSNotificationCenter defaultCenter] removeObserver:self
-													name:UIKeyboardWillHideNotification object:nil];
-	
-}
-
 - (IBAction)showMessageWindow {
 	[self.navigationController.view addSubview:self.messageView];
-	[self registerForKeyboardNotifications];
-	[self.messageField becomeFirstResponder];
-	[UIView animateWithDuration:0.3 animations:^() {
-		self.messageView.alpha = 1.0;
-	}];
+	[self.messageView show];
 }
 
 - (IBAction)hideMessageWindow {
-	[self.messageField resignFirstResponder];
-	[self removeKeyboardNotifications];
-	[self setMessageIconState:([self.board comment] || self.messageField.text.length > 0)];
-	
-	[UIView animateWithDuration:0.3 animations:^() {
-		self.messageView.alpha = 0.0;
-	} completion:^(BOOL completion) {
-		[self.messageView removeFromSuperview];
-	}];
+	[self.messageView hide];
+	[self setMessageIconState:[self.messageView hasMessage]];
 }
 
 - (void)notLoggedIn {
@@ -319,9 +259,7 @@
 	
 	if ([theBoard comment]) {
 		[self setMessageIconState:YES];
-		self.messageTextView.text = [theBoard comment];
-	} else {
-		self.messageDisplayView.hidden = YES;
+		self.messageView.message = [theBoard comment];
 	}
 
 	[theBoard release];
@@ -335,7 +273,6 @@
 	[super viewWillDisappear:animated];
 	[self.boardView setBoard:nil];
 	self.board = nil;
-	[self removeKeyboardNotifications];
 }
 
 - (void)viewDidUnload {
@@ -349,10 +286,6 @@
 	self.resignButton = nil;
 	self.messageButton = nil;
 	self.messageView = nil;
-	self.messageTextView = nil;
-	self.messageField = nil;
-	self.messageDisplayView = nil;
-	self.messageInputView = nil;
 	self.spinnerView = nil;
     [super viewDidUnload];
 }

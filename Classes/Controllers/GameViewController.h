@@ -11,6 +11,7 @@
 #import "GoBoardView.h"
 #import "DGS.h"
 #import "SpinnerView.h"
+#import "MessageView.h"
 
 enum BoardState {
 	kBoardStateZoomedOut,
@@ -29,11 +30,7 @@ enum BoardState {
 	IBOutlet UIBarButtonItem *passButton;
 	IBOutlet UIBarButtonItem *resignButton;
 	IBOutlet UIBarButtonItem *messageButton;
-	IBOutlet UIView *messageView;
-	IBOutlet UITextView *messageTextView;
-	IBOutlet UITextField *messageField;
-	IBOutlet UIView *messageDisplayView;
-	IBOutlet UIView *messageInputView;
+	IBOutlet MessageView *messageView;
 	BoardState boardState;
 	float maximumZoomScale;
 	float minimumZoomScale;
@@ -54,11 +51,7 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *passButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *messageButton;
-@property(nonatomic, retain) IBOutlet UIView *messageView;
-@property(nonatomic, retain) IBOutlet UITextView *messageTextView;
-@property(nonatomic, retain) IBOutlet UITextField *messageField;
-@property(nonatomic, retain) IBOutlet UIView *messageDisplayView;
-@property(nonatomic, retain) IBOutlet UIView *messageInputView;
+@property(nonatomic, retain) IBOutlet MessageView *messageView;
 @property(nonatomic, retain) DGS *dgs;
 
 - (IBAction)undoMove;
