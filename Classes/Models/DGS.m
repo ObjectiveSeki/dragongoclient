@@ -173,7 +173,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
 	NSURL *url = [self URLWithPath:@"/quick_status.php"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	[request setCachePolicy:ASIIgnoreCachePolicy];
+	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
 		NSArray *gameList = [self gamesFromCSV:[request responseString]];

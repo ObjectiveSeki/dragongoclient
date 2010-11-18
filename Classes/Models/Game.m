@@ -9,8 +9,6 @@
 //
 
 #import "Game.h"
-#import	"ASIHTTPRequest.h"
-#import	"ASIFormDataRequest.h"
 #import "DGS.h"
 
 @implementation Game
