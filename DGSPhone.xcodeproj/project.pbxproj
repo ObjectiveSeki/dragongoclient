@@ -16,6 +16,30 @@
 		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
+		DA08A5751294CD930098A0C6 /* BWGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5551294CD930098A0C6 /* BWGlobal.h */; };
+		DA08A5761294CD930098A0C6 /* BWHockeyController.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5561294CD930098A0C6 /* BWHockeyController.h */; };
+		DA08A5771294CD930098A0C6 /* BWHockeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5571294CD930098A0C6 /* BWHockeyController.m */; };
+		DA08A5781294CD930098A0C6 /* BWHockeyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5581294CD930098A0C6 /* BWHockeyViewController.h */; };
+		DA08A5791294CD930098A0C6 /* BWHockeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5591294CD930098A0C6 /* BWHockeyViewController.m */; };
+		DA08A57A1294CD930098A0C6 /* BWWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A55B1294CD930098A0C6 /* BWWebViewController.h */; };
+		DA08A57B1294CD930098A0C6 /* BWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A55C1294CD930098A0C6 /* BWWebViewController.m */; };
+		DA08A57C1294CD930098A0C6 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5641294CD930098A0C6 /* JSON.h */; };
+		DA08A57D1294CD930098A0C6 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5661294CD930098A0C6 /* NSObject+SBJSON.h */; };
+		DA08A57E1294CD930098A0C6 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5671294CD930098A0C6 /* NSObject+SBJSON.m */; };
+		DA08A57F1294CD930098A0C6 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5681294CD930098A0C6 /* NSString+SBJSON.h */; };
+		DA08A5801294CD930098A0C6 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5691294CD930098A0C6 /* NSString+SBJSON.m */; };
+		DA08A5811294CD930098A0C6 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A56A1294CD930098A0C6 /* SBJSON.h */; };
+		DA08A5821294CD930098A0C6 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A56B1294CD930098A0C6 /* SBJSON.m */; };
+		DA08A5831294CD930098A0C6 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A56C1294CD930098A0C6 /* SBJsonBase.h */; };
+		DA08A5841294CD930098A0C6 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A56D1294CD930098A0C6 /* SBJsonBase.m */; };
+		DA08A5851294CD930098A0C6 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A56E1294CD930098A0C6 /* SBJsonParser.h */; };
+		DA08A5861294CD930098A0C6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A56F1294CD930098A0C6 /* SBJsonParser.m */; };
+		DA08A5871294CD930098A0C6 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5701294CD930098A0C6 /* SBJsonWriter.h */; };
+		DA08A5881294CD930098A0C6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5711294CD930098A0C6 /* SBJsonWriter.m */; };
+		DA08A5891294CD930098A0C6 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5731294CD930098A0C6 /* NSString+URLEncoding.h */; };
+		DA08A58A1294CD930098A0C6 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5741294CD930098A0C6 /* NSString+URLEncoding.m */; };
+		DA08A5971294CE000098A0C6 /* Hockey.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA08A55E1294CD930098A0C6 /* Hockey.strings */; };
+		DA08A5981294CE150098A0C6 /* Hockey.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA08A5611294CD930098A0C6 /* Hockey.strings */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
@@ -161,28 +185,6 @@
 		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
 		DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
-		DACD434E125B6790001F1F01 /* BWGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4334125B6790001F1F01 /* BWGlobal.h */; };
-		DACD434F125B6790001F1F01 /* BWHockeyController.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4335125B6790001F1F01 /* BWHockeyController.h */; };
-		DACD4350125B6790001F1F01 /* BWHockeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4336125B6790001F1F01 /* BWHockeyController.m */; };
-		DACD4351125B6790001F1F01 /* BWHockeyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4337125B6790001F1F01 /* BWHockeyViewController.h */; };
-		DACD4352125B6790001F1F01 /* BWHockeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4338125B6790001F1F01 /* BWHockeyViewController.m */; };
-		DACD4353125B6790001F1F01 /* BWWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD433A125B6790001F1F01 /* BWWebViewController.h */; };
-		DACD4354125B6790001F1F01 /* BWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD433B125B6790001F1F01 /* BWWebViewController.m */; };
-		DACD4355125B6790001F1F01 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD433D125B6790001F1F01 /* JSON.h */; };
-		DACD4356125B6790001F1F01 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD433F125B6790001F1F01 /* NSObject+SBJSON.h */; };
-		DACD4357125B6790001F1F01 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4340125B6790001F1F01 /* NSObject+SBJSON.m */; };
-		DACD4358125B6790001F1F01 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4341125B6790001F1F01 /* NSString+SBJSON.h */; };
-		DACD4359125B6790001F1F01 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4342125B6790001F1F01 /* NSString+SBJSON.m */; };
-		DACD435A125B6790001F1F01 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4343125B6790001F1F01 /* SBJSON.h */; };
-		DACD435B125B6790001F1F01 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4344125B6790001F1F01 /* SBJSON.m */; };
-		DACD435C125B6790001F1F01 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4345125B6790001F1F01 /* SBJsonBase.h */; };
-		DACD435D125B6790001F1F01 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4346125B6790001F1F01 /* SBJsonBase.m */; };
-		DACD435E125B6790001F1F01 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4347125B6790001F1F01 /* SBJsonParser.h */; };
-		DACD435F125B6790001F1F01 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD4348125B6790001F1F01 /* SBJsonParser.m */; };
-		DACD4360125B6790001F1F01 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD4349125B6790001F1F01 /* SBJsonWriter.h */; };
-		DACD4361125B6790001F1F01 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD434A125B6790001F1F01 /* SBJsonWriter.m */; };
-		DACD4362125B6790001F1F01 /* NSString+URLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */; };
-		DACD4363125B6790001F1F01 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
 		DAD3634B126D4A9C00589A32 /* Message background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36349126D4A9C00589A32 /* Message background.png */; };
 		DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD3634A126D4A9C00589A32 /* Message background@2x.png */; };
@@ -328,6 +330,31 @@
 		DA02D14C11D99D7600A9D887 /* TableCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellFactory.m; sourceTree = "<group>"; };
 		DA02D15811D99E4500A9D887 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		DA08A5551294CD930098A0C6 /* BWGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWGlobal.h; path = vendor/Hockey/client/BWGlobal.h; sourceTree = "<group>"; };
+		DA08A5561294CD930098A0C6 /* BWHockeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyController.h; path = vendor/Hockey/client/BWHockeyController.h; sourceTree = "<group>"; };
+		DA08A5571294CD930098A0C6 /* BWHockeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyController.m; path = vendor/Hockey/client/BWHockeyController.m; sourceTree = "<group>"; };
+		DA08A5581294CD930098A0C6 /* BWHockeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyViewController.h; path = vendor/Hockey/client/BWHockeyViewController.h; sourceTree = "<group>"; };
+		DA08A5591294CD930098A0C6 /* BWHockeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyViewController.m; path = vendor/Hockey/client/BWHockeyViewController.m; sourceTree = "<group>"; };
+		DA08A55B1294CD930098A0C6 /* BWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWWebViewController.h; sourceTree = "<group>"; };
+		DA08A55C1294CD930098A0C6 /* BWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWWebViewController.m; sourceTree = "<group>"; };
+		DA08A55F1294CD930098A0C6 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Hockey.strings; sourceTree = "<group>"; };
+		DA08A5621294CD930098A0C6 /* German */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = German; path = Hockey.strings; sourceTree = "<group>"; };
+		DA08A5641294CD930098A0C6 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		DA08A5651294CD930098A0C6 /* License.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
+		DA08A5661294CD930098A0C6 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		DA08A5671294CD930098A0C6 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		DA08A5681294CD930098A0C6 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		DA08A5691294CD930098A0C6 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		DA08A56A1294CD930098A0C6 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		DA08A56B1294CD930098A0C6 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		DA08A56C1294CD930098A0C6 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		DA08A56D1294CD930098A0C6 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		DA08A56E1294CD930098A0C6 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		DA08A56F1294CD930098A0C6 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		DA08A5701294CD930098A0C6 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		DA08A5711294CD930098A0C6 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		DA08A5731294CD930098A0C6 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		DA08A5741294CD930098A0C6 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
@@ -604,29 +631,6 @@
 		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DACD432B125B6771001F1F01 /* libHockey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHockey.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DACD4334125B6790001F1F01 /* BWGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWGlobal.h; path = vendor/Hockey/client/BWGlobal.h; sourceTree = "<group>"; };
-		DACD4335125B6790001F1F01 /* BWHockeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyController.h; path = vendor/Hockey/client/BWHockeyController.h; sourceTree = "<group>"; };
-		DACD4336125B6790001F1F01 /* BWHockeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyController.m; path = vendor/Hockey/client/BWHockeyController.m; sourceTree = "<group>"; };
-		DACD4337125B6790001F1F01 /* BWHockeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyViewController.h; path = vendor/Hockey/client/BWHockeyViewController.h; sourceTree = "<group>"; };
-		DACD4338125B6790001F1F01 /* BWHockeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyViewController.m; path = vendor/Hockey/client/BWHockeyViewController.m; sourceTree = "<group>"; };
-		DACD433A125B6790001F1F01 /* BWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWWebViewController.h; sourceTree = "<group>"; };
-		DACD433B125B6790001F1F01 /* BWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWWebViewController.m; sourceTree = "<group>"; };
-		DACD433D125B6790001F1F01 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		DACD433E125B6790001F1F01 /* License.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.md; sourceTree = "<group>"; };
-		DACD433F125B6790001F1F01 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		DACD4340125B6790001F1F01 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		DACD4341125B6790001F1F01 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		DACD4342125B6790001F1F01 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		DACD4343125B6790001F1F01 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		DACD4344125B6790001F1F01 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		DACD4345125B6790001F1F01 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		DACD4346125B6790001F1F01 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		DACD4347125B6790001F1F01 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		DACD4348125B6790001F1F01 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		DACD4349125B6790001F1F01 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		DACD434A125B6790001F1F01 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
-		DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
 		DAD36349126D4A9C00589A32 /* Message background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background.png"; sourceTree = "<group>"; };
 		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
@@ -926,6 +930,66 @@
 				DA8366CE11DC3606001A68F9 /* SelectCell.m */,
 			);
 			path = "Table Cells";
+			sourceTree = "<group>";
+		};
+		DA08A55A1294CD930098A0C6 /* BWWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA08A55B1294CD930098A0C6 /* BWWebViewController.h */,
+				DA08A55C1294CD930098A0C6 /* BWWebViewController.m */,
+			);
+			name = BWWebViewController;
+			path = vendor/Hockey/client/BWWebViewController;
+			sourceTree = "<group>";
+		};
+		DA08A55D1294CD930098A0C6 /* English.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				DA08A55E1294CD930098A0C6 /* Hockey.strings */,
+			);
+			name = English.lproj;
+			path = vendor/Hockey/client/English.lproj;
+			sourceTree = "<group>";
+		};
+		DA08A5601294CD930098A0C6 /* German.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				DA08A5611294CD930098A0C6 /* Hockey.strings */,
+			);
+			name = German.lproj;
+			path = vendor/Hockey/client/German.lproj;
+			sourceTree = "<group>";
+		};
+		DA08A5631294CD930098A0C6 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				DA08A5641294CD930098A0C6 /* JSON.h */,
+				DA08A5651294CD930098A0C6 /* License.md */,
+				DA08A5661294CD930098A0C6 /* NSObject+SBJSON.h */,
+				DA08A5671294CD930098A0C6 /* NSObject+SBJSON.m */,
+				DA08A5681294CD930098A0C6 /* NSString+SBJSON.h */,
+				DA08A5691294CD930098A0C6 /* NSString+SBJSON.m */,
+				DA08A56A1294CD930098A0C6 /* SBJSON.h */,
+				DA08A56B1294CD930098A0C6 /* SBJSON.m */,
+				DA08A56C1294CD930098A0C6 /* SBJsonBase.h */,
+				DA08A56D1294CD930098A0C6 /* SBJsonBase.m */,
+				DA08A56E1294CD930098A0C6 /* SBJsonParser.h */,
+				DA08A56F1294CD930098A0C6 /* SBJsonParser.m */,
+				DA08A5701294CD930098A0C6 /* SBJsonWriter.h */,
+				DA08A5711294CD930098A0C6 /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			path = vendor/Hockey/client/JSON;
+			sourceTree = "<group>";
+		};
+		DA08A5721294CD930098A0C6 /* NSString+URLEncoding */ = {
+			isa = PBXGroup;
+			children = (
+				DA08A5731294CD930098A0C6 /* NSString+URLEncoding.h */,
+				DA08A5741294CD930098A0C6 /* NSString+URLEncoding.m */,
+			);
+			name = "NSString+URLEncoding";
+			path = "vendor/Hockey/client/NSString+URLEncoding";
 			sourceTree = "<group>";
 		};
 		DA37D90511BF56BC00BC1445 /* Images */ = {
@@ -1297,58 +1361,18 @@
 		DACD4315125B6754001F1F01 /* Hockey */ = {
 			isa = PBXGroup;
 			children = (
-				DACD4334125B6790001F1F01 /* BWGlobal.h */,
-				DACD4335125B6790001F1F01 /* BWHockeyController.h */,
-				DACD4336125B6790001F1F01 /* BWHockeyController.m */,
-				DACD4337125B6790001F1F01 /* BWHockeyViewController.h */,
-				DACD4338125B6790001F1F01 /* BWHockeyViewController.m */,
-				DACD4339125B6790001F1F01 /* BWWebViewController */,
-				DACD433C125B6790001F1F01 /* JSON */,
-				DACD434B125B6790001F1F01 /* NSString+URLEncoding */,
+				DA08A5551294CD930098A0C6 /* BWGlobal.h */,
+				DA08A5561294CD930098A0C6 /* BWHockeyController.h */,
+				DA08A5571294CD930098A0C6 /* BWHockeyController.m */,
+				DA08A5581294CD930098A0C6 /* BWHockeyViewController.h */,
+				DA08A5591294CD930098A0C6 /* BWHockeyViewController.m */,
+				DA08A55A1294CD930098A0C6 /* BWWebViewController */,
+				DA08A55D1294CD930098A0C6 /* English.lproj */,
+				DA08A5601294CD930098A0C6 /* German.lproj */,
+				DA08A5631294CD930098A0C6 /* JSON */,
+				DA08A5721294CD930098A0C6 /* NSString+URLEncoding */,
 			);
 			name = Hockey;
-			sourceTree = "<group>";
-		};
-		DACD4339125B6790001F1F01 /* BWWebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				DACD433A125B6790001F1F01 /* BWWebViewController.h */,
-				DACD433B125B6790001F1F01 /* BWWebViewController.m */,
-			);
-			name = BWWebViewController;
-			path = vendor/Hockey/client/BWWebViewController;
-			sourceTree = "<group>";
-		};
-		DACD433C125B6790001F1F01 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				DACD433D125B6790001F1F01 /* JSON.h */,
-				DACD433E125B6790001F1F01 /* License.md */,
-				DACD433F125B6790001F1F01 /* NSObject+SBJSON.h */,
-				DACD4340125B6790001F1F01 /* NSObject+SBJSON.m */,
-				DACD4341125B6790001F1F01 /* NSString+SBJSON.h */,
-				DACD4342125B6790001F1F01 /* NSString+SBJSON.m */,
-				DACD4343125B6790001F1F01 /* SBJSON.h */,
-				DACD4344125B6790001F1F01 /* SBJSON.m */,
-				DACD4345125B6790001F1F01 /* SBJsonBase.h */,
-				DACD4346125B6790001F1F01 /* SBJsonBase.m */,
-				DACD4347125B6790001F1F01 /* SBJsonParser.h */,
-				DACD4348125B6790001F1F01 /* SBJsonParser.m */,
-				DACD4349125B6790001F1F01 /* SBJsonWriter.h */,
-				DACD434A125B6790001F1F01 /* SBJsonWriter.m */,
-			);
-			name = JSON;
-			path = vendor/Hockey/client/JSON;
-			sourceTree = "<group>";
-		};
-		DACD434B125B6790001F1F01 /* NSString+URLEncoding */ = {
-			isa = PBXGroup;
-			children = (
-				DACD434C125B6790001F1F01 /* NSString+URLEncoding.h */,
-				DACD434D125B6790001F1F01 /* NSString+URLEncoding.m */,
-			);
-			name = "NSString+URLEncoding";
-			path = "vendor/Hockey/client/NSString+URLEncoding";
 			sourceTree = "<group>";
 		};
 		DAE93138124543E400335F0F /* TouchXML */ = {
@@ -1540,18 +1564,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DACD434E125B6790001F1F01 /* BWGlobal.h in Headers */,
-				DACD434F125B6790001F1F01 /* BWHockeyController.h in Headers */,
-				DACD4351125B6790001F1F01 /* BWHockeyViewController.h in Headers */,
-				DACD4353125B6790001F1F01 /* BWWebViewController.h in Headers */,
-				DACD4355125B6790001F1F01 /* JSON.h in Headers */,
-				DACD4356125B6790001F1F01 /* NSObject+SBJSON.h in Headers */,
-				DACD4358125B6790001F1F01 /* NSString+SBJSON.h in Headers */,
-				DACD435A125B6790001F1F01 /* SBJSON.h in Headers */,
-				DACD435C125B6790001F1F01 /* SBJsonBase.h in Headers */,
-				DACD435E125B6790001F1F01 /* SBJsonParser.h in Headers */,
-				DACD4360125B6790001F1F01 /* SBJsonWriter.h in Headers */,
-				DACD4362125B6790001F1F01 /* NSString+URLEncoding.h in Headers */,
+				DA08A5751294CD930098A0C6 /* BWGlobal.h in Headers */,
+				DA08A5761294CD930098A0C6 /* BWHockeyController.h in Headers */,
+				DA08A5781294CD930098A0C6 /* BWHockeyViewController.h in Headers */,
+				DA08A57A1294CD930098A0C6 /* BWWebViewController.h in Headers */,
+				DA08A57C1294CD930098A0C6 /* JSON.h in Headers */,
+				DA08A57D1294CD930098A0C6 /* NSObject+SBJSON.h in Headers */,
+				DA08A57F1294CD930098A0C6 /* NSString+SBJSON.h in Headers */,
+				DA08A5811294CD930098A0C6 /* SBJSON.h in Headers */,
+				DA08A5831294CD930098A0C6 /* SBJsonBase.h in Headers */,
+				DA08A5851294CD930098A0C6 /* SBJsonParser.h in Headers */,
+				DA08A5871294CD930098A0C6 /* SBJsonWriter.h in Headers */,
+				DA08A5891294CD930098A0C6 /* NSString+URLEncoding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1686,6 +1710,8 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				English,
+				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -1706,6 +1732,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA08A5981294CE150098A0C6 /* Hockey.strings in Resources */,
+				DA08A5971294CE000098A0C6 /* Hockey.strings in Resources */,
 				DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */,
 				DA37D90A11BF56DA00BC1445 /* Black.png in Resources */,
 				DA37D90B11BF56DA00BC1445 /* White.png in Resources */,
@@ -1941,16 +1969,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DACD4350125B6790001F1F01 /* BWHockeyController.m in Sources */,
-				DACD4352125B6790001F1F01 /* BWHockeyViewController.m in Sources */,
-				DACD4354125B6790001F1F01 /* BWWebViewController.m in Sources */,
-				DACD4357125B6790001F1F01 /* NSObject+SBJSON.m in Sources */,
-				DACD4359125B6790001F1F01 /* NSString+SBJSON.m in Sources */,
-				DACD435B125B6790001F1F01 /* SBJSON.m in Sources */,
-				DACD435D125B6790001F1F01 /* SBJsonBase.m in Sources */,
-				DACD435F125B6790001F1F01 /* SBJsonParser.m in Sources */,
-				DACD4361125B6790001F1F01 /* SBJsonWriter.m in Sources */,
-				DACD4363125B6790001F1F01 /* NSString+URLEncoding.m in Sources */,
+				DA08A5771294CD930098A0C6 /* BWHockeyController.m in Sources */,
+				DA08A5791294CD930098A0C6 /* BWHockeyViewController.m in Sources */,
+				DA08A57B1294CD930098A0C6 /* BWWebViewController.m in Sources */,
+				DA08A57E1294CD930098A0C6 /* NSObject+SBJSON.m in Sources */,
+				DA08A5801294CD930098A0C6 /* NSString+SBJSON.m in Sources */,
+				DA08A5821294CD930098A0C6 /* SBJSON.m in Sources */,
+				DA08A5841294CD930098A0C6 /* SBJsonBase.m in Sources */,
+				DA08A5861294CD930098A0C6 /* SBJsonParser.m in Sources */,
+				DA08A5881294CD930098A0C6 /* SBJsonWriter.m in Sources */,
+				DA08A58A1294CD930098A0C6 /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2037,6 +2065,25 @@
 			targetProxy = DAE931E4124545C200335F0F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DA08A55E1294CD930098A0C6 /* Hockey.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA08A55F1294CD930098A0C6 /* English */,
+			);
+			name = Hockey.strings;
+			sourceTree = "<group>";
+		};
+		DA08A5611294CD930098A0C6 /* Hockey.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA08A5621294CD930098A0C6 /* German */,
+			);
+			name = Hockey.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
