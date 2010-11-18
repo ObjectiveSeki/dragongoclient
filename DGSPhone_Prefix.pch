@@ -6,3 +6,23 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+#ifdef CONFIGURATION_Debug
+#define DEBUG
+#define LOGGING
+#endif
+
+#ifdef CONFIGURATION_Adhoc
+#endif
+
+#define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
+
+#ifdef LOGGING
+#	define JWLog(fmt, ...) { \
+  NSLog((@"[%@] [%s:%d] " fmt), [NSDate date], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); \
+  NSString *logData = [NSString stringWithFormat:(@"%@ %s:%d: " fmt "\n"), [NSDate date], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]; \
+  [[DGSAppDelegate logFile] writeData:[logData dataUsingEncoding:NSUTF8StringEncoding]]; \
+}
+#else
+#	define JWLog(...)
+#endif

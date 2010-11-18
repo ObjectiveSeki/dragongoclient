@@ -20,7 +20,7 @@
 
 // set to '1' to see SGFs that test various aspects of 
 // the board view.
-#define TEST_GAMES 1
+#define TEST_GAMES 0
 
 @implementation CurrentGamesController
 
@@ -51,13 +51,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-#ifdef CONFIGURATION_Adhoc
-	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
+#if defined(CONFIGURATION_Adhoc)
 	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
+	
+	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
 	[toolbarItems insertObject:updateButton atIndex:0];
-	[self.bottomToolbar setItems:toolbarItems];
-	[toolbarItems release];
 	[updateButton release];
+	
+	[self.bottomToolbar setItems:toolbarItems];
+	[toolbarItems release];	
 #endif
 }
 
@@ -72,6 +74,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+	JWLog("Showing current games view and refreshing games...");
 	[self refreshGames];
 }
 
@@ -159,7 +162,6 @@
 
 - (void)loggedIn {
 	[self dismissModalViewControllerAnimated:YES];
-	[self refreshGames];
 }
 
 - (void)requestCancelled {

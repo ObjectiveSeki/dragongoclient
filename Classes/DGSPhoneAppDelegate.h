@@ -16,6 +16,7 @@
 	UIImage *boardImage;
 	UIImage *messageOff;
 	UIImage *messageOn;
+	NSFileHandle *logFile;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -25,6 +26,10 @@
 @property (nonatomic, retain) UIImage *boardImage;
 @property (nonatomic, retain) UIImage *messageOff;
 @property (nonatomic, retain) UIImage *messageOn;
+@property (nonatomic, retain) NSFileHandle *logFile;
+
+
+- (NSString *)logFilePath;
 
 @end
 

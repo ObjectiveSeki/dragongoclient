@@ -13,6 +13,7 @@
 #ifndef LOGIC_TEST_MODE
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+#import "DGSPhoneAppDelegate.h"
 
 typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 #endif
@@ -99,11 +100,14 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	//NSLog(@"%@", [request responseString]);
 	NSString *errorString = [self error:request];
 	if (NO == [self loggedIn:request]) {
+		JWLog(@"Not logged in during request: %@", [request url]);
 		[[self delegate] notLoggedIn];
 	} else if (errorString) {
+		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
+		
 		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 	}  else {
-
+		JWLog(@"%@: %@", [request url], [request responseString]);
 		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
 		
 		if (onSuccess) {
@@ -115,11 +119,13 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 // Called when a request fails entirely.
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+	JWLog(@"Request failed: %@", [request url]);
 	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 // Starts an asynchronous request, calling onSuccess when the request finishes.
 - (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess {
+	JWLog(@"Performing request: %@", [request url]);
 	
 	NSMutableDictionary *userInfo = [request.userInfo mutableCopy];
 	
