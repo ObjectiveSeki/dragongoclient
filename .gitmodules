@@ -1,0 +1,3 @@
+[submodule "vendor/Hockey"]
+	path = vendor/Hockey
+	url = https://github.com/TheRealKerni/Hockey.git
