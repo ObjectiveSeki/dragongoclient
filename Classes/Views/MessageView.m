@@ -15,6 +15,8 @@
 @synthesize message;
 @synthesize reply;
 
+@synthesize onHide;
+
 - (id)initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
@@ -72,7 +74,12 @@
 	
 }
 
-- (void)show {
+- (BOOL)hasMessage {
+	return (self.message.length > 0 || self.reply.length > 0);
+}
+
+- (void)show:(void (^)(BOOL hasMessage))_onHide {
+	self.onHide = _onHide;
 	[self registerForKeyboardNotifications];
 	[self.messageField becomeFirstResponder];
 	if (self.message) {
@@ -86,8 +93,9 @@
 	}];
 }
 
-- (void)hide {
+- (IBAction)hide {
 	self.reply = self.messageField.text;
+	self.onHide([self hasMessage]);
 	[self.messageField resignFirstResponder];
 	[self removeKeyboardNotifications];
 	
@@ -98,8 +106,9 @@
 	}];
 }
 
-- (BOOL)hasMessage {
-	return (self.message.length > 0 || self.reply.length > 0);
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[self hide];
 }
 
 /*
@@ -117,6 +126,7 @@
 	self.messageField = nil;
 	self.messageDisplayView = nil;
 	self.messageInputView = nil;
+	self.onHide = nil;
 	
 	self.message = nil;
 	self.reply = nil;

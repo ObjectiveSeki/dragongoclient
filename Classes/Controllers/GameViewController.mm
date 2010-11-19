@@ -183,12 +183,9 @@
 
 - (IBAction)showMessageWindow {
 	[self.navigationController.view addSubview:self.messageView];
-	[self.messageView show];
-}
-
-- (IBAction)hideMessageWindow {
-	[self.messageView hide];
-	[self setMessageIconState:[self.messageView hasMessage]];
+	[self.messageView show:^(BOOL hasMessage) {
+		[self setMessageIconState:hasMessage];
+	}];
 }
 
 - (void)notLoggedIn {

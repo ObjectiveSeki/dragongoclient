@@ -89,7 +89,7 @@
 
 - (void)drawBoardGrid:(CGContextRef)context boardSize:(int)boardSize {
 	
-	[[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] boardImage] drawInRect:[self bounds]];
+	[[DGSAppDelegate boardImage] drawInRect:[self bounds]];
 	
 	CGContextSetLineWidth(context, 1.0);
 	
@@ -157,9 +157,9 @@
 		if ([move moveType] == kMoveTypeMove) {
 
 			if ([move player] == kMovePlayerBlack) {
-				stoneImage = [(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone];
+				stoneImage = [DGSAppDelegate blackStone];
 			} else {
-				stoneImage = [(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone];
+				stoneImage = [DGSAppDelegate whiteStone];
 			}
 
 			CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];

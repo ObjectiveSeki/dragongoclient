@@ -60,7 +60,6 @@ enum BoardState {
 - (IBAction)pass;
 - (IBAction)resign;
 - (IBAction)showMessageWindow;
-- (IBAction)hideMessageWindow;
 
 - (void)notLoggedIn;
 - (void)loggedIn;
