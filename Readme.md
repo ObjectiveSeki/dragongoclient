@@ -15,6 +15,7 @@ Features
 * See the games that are waiting for your move
 * Tap-to-zoom makes it simple to play the right move, every time
 * Supports the entire game flow, from placing handicap stones to scoring
+* Read, write, and respond to messages from opponents all over the world
 * Post new games that Dragon Go Server users can join
 
 Screenshots
