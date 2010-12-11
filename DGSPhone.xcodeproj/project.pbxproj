@@ -627,7 +627,7 @@
 		DA58E95B12453AAE00387BB5 /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
 		DA5D33E512B1EBAE001271D3 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
 		DA5D33E612B1EBAE001271D3 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
-		DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainTabViewController.xib; path = ../Classes/Controllers/MainTabViewController.xib; sourceTree = "<group>"; };
+		DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTabViewController.xib; sourceTree = "<group>"; };
 		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
 		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
 		DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Pass Should Be Move 200.sgf"; sourceTree = "<group>"; };
@@ -1551,13 +1551,13 @@
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */,
 				DA94CBDC124839740060FD44 /* AddGameView.xib */,
 				DA94CBDD124839740060FD44 /* CurrentGamesView.xib */,
 				DA94CBDE124839740060FD44 /* GameView.xib */,
 				DA94CBDF124839740060FD44 /* LoginView.xib */,
 				DA94CBE0124839740060FD44 /* MainWindow.xib */,
 				DA94CBE1124839740060FD44 /* TableCells.xib */,
+				DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
