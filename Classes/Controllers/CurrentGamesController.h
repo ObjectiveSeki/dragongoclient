@@ -22,6 +22,7 @@
 	UITableViewCell *selectedCell;
 	SpinnerView *spinnerView;
 	UIAlertView *logoutConfirmation;
+	UIViewController *tabViewController;
 }
 
 @property (nonatomic, retain) SpinnerView *spinnerView;
@@ -34,6 +35,7 @@
 @property(nonatomic, retain) DGS *dgs;
 @property(nonatomic, retain) UITableViewCell *selectedCell;
 @property(nonatomic, retain) UIAlertView *logoutConfirmation;
+@property(nonatomic, assign) UIViewController *tabViewController;
 
 
 - (IBAction)refreshGames;

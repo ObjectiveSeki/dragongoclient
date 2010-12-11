@@ -173,6 +173,10 @@
 		DA58E9FA12453AAE00387BB5 /* SgVectorUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E95812453AAE00387BB5 /* SgVectorUtility.cpp */; };
 		DA58E9FC12453AAE00387BB5 /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E95A12453AAE00387BB5 /* SgWrite.cpp */; };
 		DA58EA2C12453B1900387BB5 /* SgSearchValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E93B12453AAE00387BB5 /* SgSearchValue.cpp */; };
+		DA5D33E812B1EBAE001271D3 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D33E612B1EBAE001271D3 /* MainTabViewController.m */; };
+		DA5D33E912B1EBAE001271D3 /* MainTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */; };
+		DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D350C12B20A8F001271D3 /* Moves@2x.png */; };
+		DA5D351312B20A9D001271D3 /* Moves.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D351212B20A9A001271D3 /* Moves.png */; };
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */; };
 		DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
@@ -621,6 +625,11 @@
 		DA58E95912453AAE00387BB5 /* SgVectorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgVectorUtility.h; sourceTree = "<group>"; };
 		DA58E95A12453AAE00387BB5 /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA58E95B12453AAE00387BB5 /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
+		DA5D33E512B1EBAE001271D3 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
+		DA5D33E612B1EBAE001271D3 /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
+		DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainTabViewController.xib; path = ../Classes/Controllers/MainTabViewController.xib; sourceTree = "<group>"; };
+		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
+		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
 		DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Pass Should Be Move 200.sgf"; sourceTree = "<group>"; };
 		DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoardTests.h; sourceTree = "<group>"; };
 		DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoardTests.mm; sourceTree = "<group>"; };
@@ -1050,6 +1059,8 @@
 				DA37D9C111BF6E5100BC1445 /* Board.png */,
 				DA37D90611BF56DA00BC1445 /* Black.png */,
 				DA37D90711BF56DA00BC1445 /* White.png */,
+				DA5D350C12B20A8F001271D3 /* Moves@2x.png */,
+				DA5D351212B20A9A001271D3 /* Moves.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1084,6 +1095,8 @@
 				DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */,
 				DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */,
 				DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */,
+				DA5D33E512B1EBAE001271D3 /* MainTabViewController.h */,
+				DA5D33E612B1EBAE001271D3 /* MainTabViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1538,6 +1551,7 @@
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */,
 				DA94CBDC124839740060FD44 /* AddGameView.xib */,
 				DA94CBDD124839740060FD44 /* CurrentGamesView.xib */,
 				DA94CBDE124839740060FD44 /* GameView.xib */,
@@ -1817,6 +1831,9 @@
 				DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */,
 				DAD36369126D586600589A32 /* Message input.png in Resources */,
 				DAD3636A126D586600589A32 /* Message input@2x.png in Resources */,
+				DA5D33E912B1EBAE001271D3 /* MainTabViewController.xib in Resources */,
+				DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */,
+				DA5D351312B20A9D001271D3 /* Moves.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1887,6 +1904,7 @@
 				DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */,
 				DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */,
 				DA1341AB1292323300D2A4BF /* MessageView.m in Sources */,
+				DA5D33E812B1EBAE001271D3 /* MainTabViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

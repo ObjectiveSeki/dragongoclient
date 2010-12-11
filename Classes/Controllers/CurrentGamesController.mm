@@ -30,6 +30,7 @@
 @synthesize selectedCell;
 @synthesize logoutConfirmation;
 @synthesize bottomToolbar;
+@synthesize tabViewController;
 
 
 #pragma mark -
@@ -151,13 +152,13 @@
 - (void)notLoggedIn {
 	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	loginViewController.delegate = self;
-	[self presentModalViewController:loginViewController animated:YES];
+	[self.tabViewController presentModalViewController:loginViewController animated:YES];
 	[loginViewController notLoggedIn];
 	[loginViewController release];
 }
 
 - (void)loggedIn {
-	[self dismissModalViewControllerAnimated:YES];
+	[self.tabViewController dismissModalViewControllerAnimated:YES];
 }
 
 - (void)requestCancelled {
@@ -290,7 +291,7 @@
 	// ...
 	// Pass the selected object to the new view controller.
 	[gameViewController setGame:game];
-	[self.navigationController pushViewController:gameViewController animated:YES];
+	[self.tabViewController.navigationController pushViewController:gameViewController animated:YES];
 	[gameViewController release];
 	[self setEnabled:YES];
 }
@@ -346,6 +347,7 @@
 - (void)dealloc {
 	self.games = nil;
 	self.dgs = nil;
+	self.tabViewController = nil;
     [super dealloc];
 }
 
