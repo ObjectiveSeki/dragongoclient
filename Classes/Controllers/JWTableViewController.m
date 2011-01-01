@@ -46,10 +46,13 @@
     return self.tableSections.count;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	return [[self.tableSections objectAtIndex:section] headerString];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [[[self.tableSections objectAtIndex:section] tableRows] count];
+	return [[[self.tableSections objectAtIndex:section] tableRows] count];
 }
 
 - (TableRow *)rowDataForIndexPath:(NSIndexPath *)indexPath {
@@ -64,7 +67,11 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+		if (rowData.cellInit) {
+			cell = rowData.cellInit();
+		} else {
+			cell = [[[rowData.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+		}
 	}
     
     // Configure the cell...
@@ -119,14 +126,10 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+	TableRow *rowData = [self rowDataForIndexPath:indexPath];
+	rowData.cellTouched(selectedCell);
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

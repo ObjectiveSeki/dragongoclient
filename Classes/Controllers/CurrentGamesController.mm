@@ -12,7 +12,6 @@
 #import "GameViewController.h"
 #import "LoginViewController.h"
 #import "DGSPhoneAppDelegate.h"
-#import "AddGameViewController.h"
 
 #if defined (CONFIGURATION_Adhoc)
 #import "BWHockeyController.h"
@@ -113,6 +112,37 @@
 	}
 }
 
+- (void)buildTableCells {
+	NSMutableArray *sections = [NSMutableArray array];
+	TableSection *firstSection = [[TableSection alloc] init];
+	
+	for (Game *game in self.games) {
+		TableRow *row = [[TableRow alloc] init];
+		row.cellClass = [UITableViewCell class];
+		row.cellInit = ^() {
+			return [[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+		};
+		row.cellSetup = ^(UITableViewCell *cell) {
+			if ([game color] == kMovePlayerBlack) {
+				[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone]];
+			} else {
+				[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone]];
+			}
+			[[cell textLabel] setText: [game opponent]];
+			[[cell detailTextLabel] setText:[game time]];
+			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+		};
+		[firstSection addRow:row];
+		[row release];		
+	}
+	
+	[sections addObject:firstSection];
+	
+	self.tableSections = sections;
+	
+	[firstSection release];	
+}
+
 - (IBAction)refreshGames {
 	[self setEnabled:NO];	
 	
@@ -143,6 +173,9 @@
 		[self.spinnerView dismiss:YES];
 		self.spinnerView = nil;
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+		
+		[self buildTableCells];
+		
 		[[self gameTableView] reloadData];
 		[self setEnabled:YES];
 	}];
@@ -186,97 +219,6 @@
 	[self.logoutConfirmation show];
 }
 
-- (IBAction)addGame {
-	AddGameViewController *addGameController = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
-	[[self navigationController] pushViewController:addGameController animated:YES];
-	[addGameController release];
-}
-
-#pragma mark -
-#pragma mark Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-	if (self.games) {
-		return [self.games count];
-	}
-	else {
-		return 0;
-	}
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Configure the cell...
-	Game *game = [games objectAtIndex:[indexPath row]];
-	if ([game color] == kMovePlayerBlack) {
-		[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone]];
-	} else {
-		[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone]];
-	}
-    [[cell textLabel] setText: [game opponent]];
-	[[cell detailTextLabel] setText:[game time]];
-	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-	
-    return cell;
-}
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark -
 #pragma mark Table view delegate
 
@@ -297,7 +239,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
-	self.selectedCell = [tableView cellForRowAtIndexPath:indexPath];
 	UIActivityIndicatorView *activityView = 
     [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	[activityView startAnimating];

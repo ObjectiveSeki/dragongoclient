@@ -39,7 +39,6 @@
 
 - (IBAction)refreshGames;
 - (IBAction)logout;
-- (IBAction)addGame;
 
 - (void)notLoggedIn;
 - (void)requestCancelled;

@@ -1,6 +1,6 @@
 
 #import "DGSGamesController.h"
-
+#import "AddGameViewController.h"
 
 @implementation DGSGamesController
 
@@ -29,18 +29,35 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	NSMutableArray *sections = [NSMutableArray array];
-	TableSection *firstSection = [[TableSection alloc] init];
+	TableSection *newGameSection = [[TableSection alloc] init];
+	newGameSection.headerString = @"New Game";
 	TableRow *firstRow = [[TableRow alloc] init];
 	firstRow.cellClass = [UITableViewCell class];
 	firstRow.cellSetup = ^(UITableViewCell *cell) {
-		cell.textLabel.text = @"Test Cell";
+		cell.textLabel.text = @"Create a new game";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	};
-	[firstSection addRow:firstRow];
-	[sections addObject:firstSection];
+	firstRow.cellTouched = ^(UITableViewCell *cell) {
+		AddGameViewController *addGameController = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
+		[[self.tabViewController navigationController] pushViewController:addGameController animated:YES];
+		[addGameController release];
+	};
+	[newGameSection addRow:firstRow];
+	[firstRow release];
+	
+	TableRow *joinGameRow = [[TableRow alloc] init];
+	joinGameRow.cellClass = [UITableViewCell class];
+	joinGameRow.cellSetup = ^(UITableViewCell *cell) {
+		cell.textLabel.text = @"Join a game";
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	};
+	[newGameSection addRow:joinGameRow];
+	[joinGameRow release];
+	
+	[sections addObject:newGameSection];
 	self.tableSections = sections;
 	
-	[firstRow release];
-	[firstSection release];
+	[newGameSection release];
 }
 
 

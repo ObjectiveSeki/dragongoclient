@@ -7,10 +7,14 @@
 
 @interface TableRow : NSObject {
 	Class cellClass;
+	UITableViewCell *(^cellInit)();
 	void (^cellSetup)(UITableViewCell *cell);
+	void (^cellTouched)(UITableViewCell *cell);
 }
 
 @property (nonatomic, assign) Class cellClass;
-@property (nonatomic, retain) void (^cellSetup)(UITableViewCell *cell);
+@property (nonatomic, copy) UITableViewCell *(^cellInit)();
+@property (nonatomic, copy) void (^cellSetup)(UITableViewCell *cell);
+@property (nonatomic, copy) void (^cellTouched)(UITableViewCell *cell);
 
 @end
