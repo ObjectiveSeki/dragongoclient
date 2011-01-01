@@ -26,4 +26,13 @@
 	STAssertEqualObjects(@"ab", [dgs sgfCoordsWithRow:18 column:1 boardSize:19], nil, nil );
 }
 
+//- (void)testParseWaitingRoom {
+//	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/waiting.html" encoding:NSUTF8StringEncoding error:NULL];
+//	DGS *dgs = [[DGS alloc] init];
+//	NSArray *games = [dgs gamesFromTable:testData];
+//	[dgs release];
+//	NSUInteger expectedCount = 3;
+//	STAssertEquals([games count], expectedCount, nil);
+//}
+
 @end

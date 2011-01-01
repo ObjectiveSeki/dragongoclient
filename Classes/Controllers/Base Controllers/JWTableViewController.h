@@ -7,7 +7,7 @@
 #import "TableSection.h"
 #import "TableRow.h"
 
-@interface JWTableViewController : RootViewController {
+@interface JWTableViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
 	NSArray *tableSections;
 }
 

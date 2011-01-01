@@ -289,6 +289,7 @@
 		DAF9105F11BB5BBD00FE7B96 /* GameViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */; };
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAF911F611BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
+		DAFADA4F12CF0EF100985126 /* waiting.html in Resources */ = {isa = PBXBuildFile; fileRef = DAFADA4E12CF0EF100985126 /* waiting.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -802,6 +803,7 @@
 		DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameViewController.mm; sourceTree = "<group>"; };
 		DAF911F211BB796900FE7B96 /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
 		DAF911F311BB796900FE7B96 /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
+		DAFADA4E12CF0EF100985126 /* waiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = waiting.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1108,6 +1110,7 @@
 		DA38B20311B59FB400112AA4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DAFADA3B12CEE96000985126 /* Base Controllers */,
 				DAE932C012454E4800335F0F /* AddGameViewController.h */,
 				DAE932C112454E4800335F0F /* AddGameViewController.m */,
 				DA38B1F711B59F2F00112AA4 /* LoginViewController.h */,
@@ -1120,10 +1123,6 @@
 				DA5D33E612B1EBAE001271D3 /* MainTabViewController.m */,
 				DA82C3F312CE7FF80059DAF0 /* DGSGamesController.h */,
 				DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */,
-				DA82C41912CEA5310059DAF0 /* RootViewController.h */,
-				DA82C41A12CEA5310059DAF0 /* RootViewController.m */,
-				DA82C4A912CECC570059DAF0 /* JWTableViewController.h */,
-				DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1593,6 +1592,7 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				DAFADA4E12CF0EF100985126 /* waiting.html */,
 				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
 				DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */,
 				DACE119A1255754A006C9598 /* Game with Message.sgf */,
@@ -1617,6 +1617,17 @@
 				DA1341AA1292323300D2A4BF /* MessageView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DAFADA3B12CEE96000985126 /* Base Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA82C41912CEA5310059DAF0 /* RootViewController.h */,
+				DA82C41A12CEA5310059DAF0 /* RootViewController.m */,
+				DA82C4A912CECC570059DAF0 /* JWTableViewController.h */,
+				DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */,
+			);
+			path = "Base Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1889,6 +1900,7 @@
 				DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */,
 				DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */,
 				DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
+				DAFADA4F12CF0EF100985126 /* waiting.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

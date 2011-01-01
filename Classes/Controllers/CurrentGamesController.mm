@@ -124,13 +124,33 @@
 		};
 		row.cellSetup = ^(UITableViewCell *cell) {
 			if ([game color] == kMovePlayerBlack) {
-				[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] blackStone]];
+				[[cell imageView] setImage:[DGSAppDelegate blackStone]];
 			} else {
-				[[cell imageView] setImage:[(DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate] whiteStone]];
+				[[cell imageView] setImage:[DGSAppDelegate whiteStone]];
 			}
 			[[cell textLabel] setText: [game opponent]];
 			[[cell detailTextLabel] setText:[game time]];
 			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+		};
+		row.cellTouched = ^(UITableViewCell *cell) {
+			self.selectedCell = cell;
+			UIActivityIndicatorView *activityView = 
+			[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+			[activityView startAnimating];
+			[cell setAccessoryView:activityView];
+			[activityView release];
+			
+#if TEST_GAMES
+			if (game.gameId == 0) {
+				[self gotSgfForGame:game];
+			} else {
+#endif
+				[dgs getSgfForGame:game onSuccess:^(Game *game) {
+					[self gotSgfForGame:game];
+				}];
+#if TEST_GAMES
+			}
+#endif
 		};
 		[firstSection addRow:row];
 		[row release];		
@@ -239,26 +259,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
-	UIActivityIndicatorView *activityView = 
-    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	[activityView startAnimating];
-	[self.selectedCell setAccessoryView:activityView];
-	[activityView release];
-	
-#if TEST_GAMES
-	Game *game = [self.games objectAtIndex:[indexPath row]];
-	if (game.gameId == 0) {
-		[self gotSgfForGame:game];
-	} else {
-#endif
-	
-	[dgs getSgfForGame:[self.games objectAtIndex:[indexPath row]] onSuccess:^(Game *game) {
-		[self gotSgfForGame:game];
-	}];
-	
-#if TEST_GAMES
-	}
-#endif
+	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark -

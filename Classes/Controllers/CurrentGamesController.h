@@ -43,6 +43,8 @@
 - (void)notLoggedIn;
 - (void)requestCancelled;
 
+- (void)gotSgfForGame:(Game *)game;
+
 @end
 
 

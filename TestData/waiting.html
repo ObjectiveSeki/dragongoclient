@@ -1,0 +1,597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+ <META http-equiv="content-type" content="text/html;charset=iso-8859-1">
+ <META NAME="DESCRIPTION" CONTENT="To play go on a turn by turn basis.">
+ <TITLE>DGS - Suitable waiting games (Handicap, Rating range)</TITLE>
+ <LINK REL="shortcut icon" HREF="images/favicon.ico" TYPE="image/x-icon">
+ <link rel="stylesheet" type="text/css" media="screen" href="skins/dragon/screen.css">
+ <link rel="stylesheet" type="text/css" media="print" href="skins/dragon/print.css">
+ <STYLE TYPE="text/css">
+table.Table a.Button { color: white;}
+table.Table td.Button { background-image: url(images/button0.gif);}
+ </STYLE>
+</HEAD>
+<BODY id="DGS">
+
+
+<table id='pageHead'>
+ <tr>
+  <td class=ServerHome><A id='homeId' href="http://www.dragongoserver.net/index.php">Dragon Go Server</A></td>
+  <td class=LoginBox>Logged in as: <A id='loggedId' href="status.php">justinweiss</A></td>
+ </tr>
+</table>
+
+<table id='pageLayout'>
+ <tr class=LayoutVertical>
+  <td class=Menu rowspan=2>
+
+<table id="pageMenu" class=MenuVertical>
+ <tr>
+  <td class=Logo1><img src="images/dragonlogo_bl.jpg" alt="Dragon"></td>
+ </tr><tr>
+  <td align=left nowrap><a href="status.php" accesskey="s" title="[&amp;s]" class="strong">Status</a><br><a href="waiting_room.php" accesskey="r" title="[&amp;r]">Waiting room</a><br><a href="userinfo.php" accesskey="p" title="[&amp;p]">User info</a><br></td>
+ </tr><tr>
+  <td height=1><img height=1 src="images/dot.gif" alt=""></td>
+ </tr><tr>
+  <td align=left nowrap><a href="list_messages.php" accesskey="b" title="[&amp;b]">Messages</a><br><a href="message.php?mode=NewMessage" accesskey="m" title="[&amp;m]">Send a message</a><br><a href="message.php?mode=Invite" accesskey="i" title="[&amp;i]">Invite</a><br></td>
+ </tr><tr>
+  <td height=1><img height=1 src="images/dot.gif" alt=""></td>
+ </tr><tr>
+  <td align=left nowrap><a href="users.php" accesskey="u" title="[&amp;u]">Users</a><br><a href="list_contacts.php" accesskey="c" title="[&amp;c]">Contacts</a><br><a href="show_games.php?uid=all" accesskey="g" title="[&amp;g]">Games</a><br></td>
+ </tr><tr>
+  <td height=1><img height=1 src="images/dot.gif" alt=""></td>
+ </tr><tr>
+  <td align=left nowrap><a href="forum/index.php" accesskey="f" title="[&amp;f]">Forums</a><br><a href="faq.php" accesskey="q" title="[&amp;q]">FAQ</a><br><a href="docs.php" accesskey="d" title="[&amp;d]">Docs</a><br></td>
+ </tr><tr>
+  <td class=Logo2><img src="images/dragonlogo_br.jpg" alt="Dragon"></td>
+ </tr>
+</table>
+
+  </td>
+  <td id="pageBody">
+
+<h3 class=Header>Suitable waiting games (Handicap, Rating range)</h3>
+
+
+<FORM id="tableFACForm" name="tableFAC" class="FormTableFAC" action="waiting_room.php" method="GET"><table id='waitingroomTable' class=Table>
+ <tr id="TableHead" class=Head>
+  <th id="Col0" scope=col class="Button"><div><img class=MinWidth src='images/dot.gif' width=96 height=0 alt=''><span class="Header">Info</span></div></th>
+  <th id="Col1" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=other_name&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col1" title="Sort">Name</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=1#Col0" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col15" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=other_country&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col15" title="Sort">Country</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=15#Col1" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col3" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=other_rating&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col3" title="Sort">Rating</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=3#Col15" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/sort1d.gif" alt="1d" class="Sort"></span></span></div></th>
+  <th id="Col4" scope=col><div><span class="Header">Comment</span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=4#Col3" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col7" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=Size&amp;desc1=1&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col7" title="Sort">Size</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=7#Col4" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col5" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=Handicaptype&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col5" title="Sort">Type</a></span></div></th>
+  <th id="Col14" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=Handicap&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col14" title="Sort">H</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=14#Col5" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col6" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=Komi&amp;desc1=1&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col6" title="Sort">Komi</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=6#Col14" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col8" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=Ratingmin-Ratingmax&amp;desc1=1&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col8" title="Sort">Rating range</a></span></div></th>
+  <th id="Col9" scope=col><div><span class="Header">Time limit</span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=9#Col8" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col10" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=nrGames&amp;desc1=1&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col10" title="Sort">#G</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=10#Col9" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+  <th id="Col11" scope=col><div><span class="Header"><a href="waiting_room.php?sort1=Rated&amp;desc1=1&amp;sort2=other_rating&amp;desc2=1&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0#Col11" title="Sort">Rated</a></span><span class=Tool><a href="waiting_room.php?sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0&amp;del=11#Col10" title="Hide"><img src="images/remove.gif" alt="x" class="Hide"></a><span><img src="images/dot.gif" alt="" class="Sort"></span></span></div></th>
+ </tr>
+<tr id="TableFilter" class=Filter><td></td><td class=Filter><div><input name="sf1" type="text" size="8" value="" title="Syntax[TEXT]: foo, -bar, baz-, boo-far, fa*z*"></div></td>
+<td class=ShowFilter><a href="waiting_room.php?action_af=1&amp;togglefid=15&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;maxrows=20&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;showhc=0" title="Show"><font color="blue">+</font></a></td>
+<td class=Filter><div><input name="sf3" type="text" size="8" value="" title="Syntax[RATING]: 2d, -7k, 18k-, 28k-1d; 8k (+28%), 4k-59%"></div></td>
+<td></td><td class=Filter><div><input name="sf7" type="text" size="4" value="" title="Syntax[NUM]: 3, -14, 1-5, 9-"></div></td>
+<td class=Filter><div><select name="handi" size="1">
+  <option value="0">All</option>
+  <option value="1" selected>Suitable</option>
+  <option value="2">Conventional</option>
+  <option value="3">Proper</option>
+  <option value="4">Even game</option>
+  <option value="5">Double game</option>
+
+</select></div></td>
+<td></td><td class=Filter><div><input name="sf6" type="text" size="4" value="" title="Syntax[NUM]: 3, -14, 1-5, 9-"></div></td>
+<td class=Filter><div><input type="checkbox" name="good" value="1" checked>Only suitable</div></td>
+<td class=Filter><div><select name="sf9" size="1">
+  <option value="0" selected>All</option>
+  <option value="1">Japanese</option>
+  <option value="2">Canadian</option>
+  <option value="3">Fischer</option>
+
+</select></div></td>
+<td></td><td class=Filter><div><select name="sf11" size="1">
+  <option value="0" selected>All</option>
+  <option value="1">Yes</option>
+  <option value="2">No</option>
+
+</select></div></td>
+</tr>
+ <tr class=Row1 ondblclick="javascript:this.className=((this.className=='Row1')?'HilRow1':'Row1');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124895#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58898" class=User>gowc2011</A></td>
+  <td><img title="China" alt="China" src="images/flags/cn.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=58898">1&nbsp;dan&nbsp;(0%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>3</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row2 ondblclick="javascript:this.className=((this.className=='Row2')?'HilRow2':'Row2');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124970#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=34579" class=User>Lord Hornblower</A></td>
+  <td></td>
+  <td><a class=Rating href="ratinggraph.php?uid=34579">3&nbsp;kyu&nbsp;(+42%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Even game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>---</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row3 ondblclick="javascript:this.className=((this.className=='Row3')?'HilRow3':'Row3');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124573#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=51884" class=User>Václav Bouèek</A></td>
+  <td><img title="Czech Republic" alt="Czech Republic" src="images/flags/cz.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=51884">9&nbsp;kyu&nbsp;(-11%)</a></td>
+  <td></td>
+  <td>13</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>15 kyu - 9 dan</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>5</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row4 ondblclick="javascript:this.className=((this.className=='Row4')?'HilRow4':'Row4');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124959#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=59063" class=User>Radek Pelikan</A></td>
+  <td><img title="Czech Republic" alt="Czech Republic" src="images/flags/cz.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=59063">9&nbsp;kyu&nbsp;(-33%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 12h + 1d * 10</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row1 ondblclick="javascript:this.className=((this.className=='Row1')?'HilRow1':'Row1');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124971#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=3757" class=User>mike</A></td>
+  <td><img title="United States" alt="United States" src="images/flags/us.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=3757">15&nbsp;kyu&nbsp;(-43%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Double game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>15 kyu - 13 kyu</td>
+  <td>F: 10d + 1d</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row2 ondblclick="javascript:this.className=((this.className=='Row2')?'HilRow2':'Row2');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124917#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58549" class=User>lesenv</A></td>
+  <td></td>
+  <td><a class=Rating href="ratinggraph.php?uid=58549">17&nbsp;kyu&nbsp;(-22%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Proper</td>
+  <td>---</td>
+  <td>---</td>
+  <td>19 kyu - 14 kyu</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>6</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row3 ondblclick="javascript:this.className=((this.className=='Row3')?'HilRow3':'Row3');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124918#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58549" class=User>lesenv</A></td>
+  <td></td>
+  <td><a class=Rating href="ratinggraph.php?uid=58549">17&nbsp;kyu&nbsp;(-22%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Double game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>19 kyu - 14 kyu</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>9</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row4 ondblclick="javascript:this.className=((this.className=='Row4')?'HilRow4':'Row4');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124888#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=57212" class=User>Loaden</A></td>
+  <td></td>
+  <td><a class=Rating href="ratinggraph.php?uid=57212">18&nbsp;kyu&nbsp;(+20%)</a></td>
+  <td>Let&#039;s happy go!</td>
+  <td>19</td>
+  <td>Even game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>20 kyu - 1 kyu</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>3</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row1 ondblclick="javascript:this.className=((this.className=='Row1')?'HilRow1':'Row1');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124903#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=52718" class=User>El Stupido</A></td>
+  <td><img title="Esperanto" alt="Esperanto" src="images/flags/eo.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=52718">23&nbsp;kyu&nbsp;(-33%)</a></td>
+  <td></td>
+  <td>15</td>
+  <td>Proper</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 15d + 1d * 4</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row2 ondblclick="javascript:this.className=((this.className=='Row2')?'HilRow2':'Row2');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124967#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=20898" class=User>Steven</A></td>
+  <td><img title="United States" alt="United States" src="images/flags/us.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=20898">24&nbsp;kyu&nbsp;(-36%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row3 ondblclick="javascript:this.className=((this.className=='Row3')?'HilRow3':'Row3');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124827#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58980" class=User>ruslan</A></td>
+  <td><img title="Russia" alt="Russia" src="images/flags/ru.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=58980">25&nbsp;kyu&nbsp;(0%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row4 ondblclick="javascript:this.className=((this.className=='Row4')?'HilRow4':'Row4');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124828#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58980" class=User>ruslan</A></td>
+  <td><img title="Russia" alt="Russia" src="images/flags/ru.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=58980">25&nbsp;kyu&nbsp;(0%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>2</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row1 ondblclick="javascript:this.className=((this.className=='Row1')?'HilRow1':'Row1');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124831#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58980" class=User>ruslan</A></td>
+  <td><img title="Russia" alt="Russia" src="images/flags/ru.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=58980">25&nbsp;kyu&nbsp;(0%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Proper</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>J: 90d + 2d * 10</td>
+  <td>1</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row2 ondblclick="javascript:this.className=((this.className=='Row2')?'HilRow2':'Row2');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124636#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=5795" class=User>houtzager</A></td>
+  <td><img title="Netherlands" alt="Netherlands" src="images/flags/nl.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=5795">26&nbsp;kyu&nbsp;(+35%)</a></td>
+  <td></td>
+  <td>13</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>F: 5d + 1d</td>
+  <td>2</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row3 ondblclick="javascript:this.className=((this.className=='Row3')?'HilRow3':'Row3');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124670#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=56930" class=User>kyuatari</A></td>
+  <td><img title="Earth" alt="Earth" src="images/flags/__.gif"></td>
+  <td><a class=Rating href="ratinggraph.php?uid=56930">26&nbsp;kyu&nbsp;(-3%)</a></td>
+  <td></td>
+  <td>19</td>
+  <td>Conventional</td>
+  <td>---</td>
+  <td>---</td>
+  <td>27 kyu - 9 dan</td>
+  <td>F: 3d + 1d</td>
+  <td>4</td>
+  <td>Yes</td>
+ </tr>
+ <tr class=Row4 ondblclick="javascript:this.className=((this.className=='Row4')?'HilRow4':'Row4');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124949#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=24178" class=User>guestpass</A></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>19</td>
+  <td>Even game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>---</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>1</td>
+  <td>No</td>
+ </tr>
+ <tr class=Row1 ondblclick="javascript:this.className=((this.className=='Row1')?'HilRow1':'Row1');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124924#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=59050" class=User>Packman</A></td>
+  <td><img title="Poland" alt="Poland" src="images/flags/pl.gif"></td>
+  <td></td>
+  <td></td>
+  <td>19</td>
+  <td>Even game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>25 kyu - 9 dan</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>1</td>
+  <td>No</td>
+ </tr>
+ <tr class=Row2 ondblclick="javascript:this.className=((this.className=='Row2')?'HilRow2':'Row2');">
+  <td class=Button><a class=Button href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1&amp;sf_init=1&amp;sf_act=7671&amp;sf_hc=-1728828996&amp;info=124781#joingameForm">Info</a></td>
+  <td><A href="userinfo.php?uid=58790" class=User>Joseph</A></td>
+  <td><img title="United States" alt="United States" src="images/flags/us.gif"></td>
+  <td></td>
+  <td></td>
+  <td>13</td>
+  <td>Even game</td>
+  <td>0</td>
+  <td>6.5</td>
+  <td>20 kyu - 14 kyu</td>
+  <td>J: 90d + 1d * 10</td>
+  <td>1</td>
+  <td>No</td>
+ </tr>
+</table>
+<div id='tableFAC'><input type="submit" name="search_f" value="Search" accesskey="x"><input type="submit" name="reset_f" value="Reset search" accesskey="e">&nbsp;&nbsp;&nbsp;<SELECT name="maxrows" size="1" >
+<OPTION value="5">5</OPTION>
+<OPTION value="10">10</OPTION>
+<OPTION value="15">15</OPTION>
+<OPTION value="20" selected>20</OPTION>
+<OPTION value="25">25</OPTION>
+<OPTION value="30">30</OPTION>
+<OPTION value="40">40</OPTION>
+<OPTION value="50">50</OPTION>
+<OPTION value="75">75</OPTION>
+<OPTION value="100">100</OPTION>
+</SELECT><INPUT type="submit" name="showrows" value="Show Rows">&nbsp;&nbsp;&nbsp;<SELECT name="add" size="1" >
+<OPTION value="13">Std.Placem.</OPTION>
+<OPTION value="2">Userid</OPTION>
+<OPTION value="12">Wk.Clock</OPTION>
+<OPTION value="0" selected></OPTION>
+<OPTION value="-1">All columns</OPTION>
+</SELECT><INPUT type="submit" name="addcol" value="Add Column"></div><input type="hidden" name="sort1" value="other_rating"><input type="hidden" name="desc1" value="1"><input type="hidden" name="sort2" value="other_handle"><input type="hidden" name="sf_init" value="1"><input type="hidden" name="sf_act" value="7671"><input type="hidden" name="sf_hc" value="-1728828996"><input type="hidden" name="showhc" value="0">
+</FORM>
+<FORM id="addgameForm" name="addgame" class="FormClass" action="add_to_waitingroom.php" method="POST"><TABLE  class="FormClass">
+<TR><TD class="FormHeader" colspan="2"><h3 class=Header>Add new game:</h3></TD></TR>
+<TR><TD class="FormDescription">Number of games to add:</TD><TD class="FormSelectbox"><SELECT name="nrGames" size="1"  tabindex="1">
+<OPTION value="1" selected>1</OPTION>
+<OPTION value="2">2</OPTION>
+<OPTION value="3">3</OPTION>
+<OPTION value="4">4</OPTION>
+<OPTION value="5">5</OPTION>
+<OPTION value="6">6</OPTION>
+<OPTION value="7">7</OPTION>
+<OPTION value="8">8</OPTION>
+<OPTION value="9">9</OPTION>
+<OPTION value="10">10</OPTION>
+</SELECT></TD></TR>
+<TR><td colspan=2 height="20px"></td></TR>
+<TR><TD class="FormDescription">Board size:</TD><TD class="FormSelectbox"><SELECT name="size" size="1"  tabindex="2">
+<OPTION value="5">5</OPTION>
+<OPTION value="6">6</OPTION>
+<OPTION value="7">7</OPTION>
+<OPTION value="8">8</OPTION>
+<OPTION value="9">9</OPTION>
+<OPTION value="10">10</OPTION>
+<OPTION value="11">11</OPTION>
+<OPTION value="12">12</OPTION>
+<OPTION value="13">13</OPTION>
+<OPTION value="14">14</OPTION>
+<OPTION value="15">15</OPTION>
+<OPTION value="16">16</OPTION>
+<OPTION value="17">17</OPTION>
+<OPTION value="18">18</OPTION>
+<OPTION value="19" selected>19</OPTION>
+<OPTION value="20">20</OPTION>
+<OPTION value="21">21</OPTION>
+<OPTION value="22">22</OPTION>
+<OPTION value="23">23</OPTION>
+<OPTION value="24">24</OPTION>
+<OPTION value="25">25</OPTION>
+</SELECT></TD></TR>
+<TR><td colspan=2 height="20px"></td></TR>
+<TR><TD class="FormDescription">Conventional handicap (komi 0.5 if not even):</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="handicap_type" value="conv" checked tabindex="3"> </TD></TR>
+<TR><TD class="FormDescription">Proper handicap (komi adjusted by system):</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="handicap_type" value="proper" tabindex="4"> </TD></TR>
+<TR><TD class="FormDescription">Even game with nigiri:</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="handicap_type" value="nigiri" tabindex="5"> <span class=BoxLabel1>&nbsp;&nbsp;&nbsp;Komi</span><INPUT type="text" name="komi_n" value="6.5" tabindex="6" size="5" maxlength="5"></TD></TR>
+<TR><TD class="FormDescription">Double game:</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="handicap_type" value="double" tabindex="7"> <span class=BoxLabel1>&nbsp;&nbsp;&nbsp;Handicap</span><SELECT name="handicap_d" size="1"  tabindex="8">
+<OPTION value="0" selected>0</OPTION>
+<OPTION value="2">2</OPTION>
+<OPTION value="3">3</OPTION>
+<OPTION value="4">4</OPTION>
+<OPTION value="5">5</OPTION>
+<OPTION value="6">6</OPTION>
+<OPTION value="7">7</OPTION>
+<OPTION value="8">8</OPTION>
+<OPTION value="9">9</OPTION>
+<OPTION value="10">10</OPTION>
+<OPTION value="11">11</OPTION>
+<OPTION value="12">12</OPTION>
+<OPTION value="13">13</OPTION>
+<OPTION value="14">14</OPTION>
+<OPTION value="15">15</OPTION>
+<OPTION value="16">16</OPTION>
+<OPTION value="17">17</OPTION>
+<OPTION value="18">18</OPTION>
+<OPTION value="19">19</OPTION>
+<OPTION value="20">20</OPTION>
+<OPTION value="21">21</OPTION>
+</SELECT><span class=BoxLabel1>&nbsp;&nbsp;&nbsp;Komi</span><INPUT type="text" name="komi_d" value="6.5" tabindex="9" size="5" maxlength="5"></TD></TR>
+<TR><TD class="FormDescription">Standard placement:</TD><TD class="FormCheckbox"><INPUT type="checkbox" name="stdhandicap" value="Y" tabindex="10"></TD></TR>
+<TR><td colspan=2 height="20px"></td></TR>
+<TR><TD class="FormDescription">Main time:</TD><TD class="FormTextinput"><INPUT type="text" name="timevalue" value="3" tabindex="11" size="5" maxlength="5"><SELECT name="timeunit" size="1"  tabindex="12">
+<OPTION value="hours">hours</OPTION>
+<OPTION value="days">days</OPTION>
+<OPTION value="months" selected>months</OPTION>
+</SELECT></TD></TR>
+<TR><TD class="FormDescription">Japanese byoyomi:</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="byoyomitype" value="JAP" checked tabindex="13"> <INPUT type="text" name="byotimevalue_jap" value="1" tabindex="14" size="5" maxlength="5"><SELECT name="timeunit_jap" size="1"  tabindex="15">
+<OPTION value="hours">hours</OPTION>
+<OPTION value="days" selected>days</OPTION>
+<OPTION value="months">months</OPTION>
+</SELECT><span class=BoxLabel0>with</span><INPUT type="text" name="byoperiods_jap" value="10" tabindex="16" size="5" maxlength="5"><span class=BoxLabel0>extra periods</span></TD></TR>
+<TR><TD class="FormDescription">Canadian byoyomi:</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="byoyomitype" value="CAN" tabindex="17"> <INPUT type="text" name="byotimevalue_can" value="15" tabindex="18" size="5" maxlength="5"><SELECT name="timeunit_can" size="1"  tabindex="19">
+<OPTION value="hours">hours</OPTION>
+<OPTION value="days" selected>days</OPTION>
+<OPTION value="months">months</OPTION>
+</SELECT><span class=BoxLabel0>for</span><INPUT type="text" name="byoperiods_can" value="15" tabindex="20" size="5" maxlength="5"><span class=BoxLabel0>stones</span></TD></TR>
+<TR><TD class="FormDescription">Fischer time:</TD><TD class="FormRadiobuttons"><INPUT type="radio" name="byoyomitype" value="FIS" tabindex="21"> <INPUT type="text" name="byotimevalue_fis" value="1" tabindex="22" size="5" maxlength="5"><SELECT name="timeunit_fis" size="1"  tabindex="23">
+<OPTION value="hours">hours</OPTION>
+<OPTION value="days" selected>days</OPTION>
+<OPTION value="months">months</OPTION>
+</SELECT><span class=BoxLabel0>extra per move</span></TD></TR>
+<TR><td colspan=2 height="20px"></td></TR>
+<TR><TD class="FormDescription">Clock runs on weekends:</TD><TD class="FormCheckbox"><INPUT type="checkbox" name="weekendclock" value="Y" checked tabindex="24"></TD></TR>
+<TR><TD class="FormDescription">Rated game:</TD><TD class="FormCheckbox"><INPUT type="checkbox" name="rated" value="Y" checked tabindex="25"></TD></TR>
+<TR><TD class="FormDescription">Require rated opponent:</TD><TD class="FormCheckbox"><INPUT type="checkbox" name="must_be_rated" value="Y" tabindex="26"><span class=BoxLabel1>&nbsp;&nbsp;&nbsp;If yes, rating between</span><SELECT name="rating1" size="1"  tabindex="27">
+<OPTION value="9 dan">9 dan</OPTION>
+<OPTION value="8 dan">8 dan</OPTION>
+<OPTION value="7 dan">7 dan</OPTION>
+<OPTION value="6 dan">6 dan</OPTION>
+<OPTION value="5 dan">5 dan</OPTION>
+<OPTION value="4 dan">4 dan</OPTION>
+<OPTION value="3 dan">3 dan</OPTION>
+<OPTION value="2 dan">2 dan</OPTION>
+<OPTION value="1 dan">1 dan</OPTION>
+<OPTION value="1 kyu">1 kyu</OPTION>
+<OPTION value="2 kyu">2 kyu</OPTION>
+<OPTION value="3 kyu">3 kyu</OPTION>
+<OPTION value="4 kyu">4 kyu</OPTION>
+<OPTION value="5 kyu">5 kyu</OPTION>
+<OPTION value="6 kyu">6 kyu</OPTION>
+<OPTION value="7 kyu">7 kyu</OPTION>
+<OPTION value="8 kyu">8 kyu</OPTION>
+<OPTION value="9 kyu">9 kyu</OPTION>
+<OPTION value="10 kyu">10 kyu</OPTION>
+<OPTION value="11 kyu">11 kyu</OPTION>
+<OPTION value="12 kyu">12 kyu</OPTION>
+<OPTION value="13 kyu">13 kyu</OPTION>
+<OPTION value="14 kyu">14 kyu</OPTION>
+<OPTION value="15 kyu">15 kyu</OPTION>
+<OPTION value="16 kyu">16 kyu</OPTION>
+<OPTION value="17 kyu">17 kyu</OPTION>
+<OPTION value="18 kyu">18 kyu</OPTION>
+<OPTION value="19 kyu">19 kyu</OPTION>
+<OPTION value="20 kyu">20 kyu</OPTION>
+<OPTION value="21 kyu">21 kyu</OPTION>
+<OPTION value="22 kyu">22 kyu</OPTION>
+<OPTION value="23 kyu">23 kyu</OPTION>
+<OPTION value="24 kyu">24 kyu</OPTION>
+<OPTION value="25 kyu">25 kyu</OPTION>
+<OPTION value="26 kyu">26 kyu</OPTION>
+<OPTION value="27 kyu">27 kyu</OPTION>
+<OPTION value="28 kyu">28 kyu</OPTION>
+<OPTION value="29 kyu">29 kyu</OPTION>
+<OPTION value="30 kyu" selected>30 kyu</OPTION>
+</SELECT><span class=BoxLabel0>and</span><SELECT name="rating2" size="1"  tabindex="28">
+<OPTION value="9 dan" selected>9 dan</OPTION>
+<OPTION value="8 dan">8 dan</OPTION>
+<OPTION value="7 dan">7 dan</OPTION>
+<OPTION value="6 dan">6 dan</OPTION>
+<OPTION value="5 dan">5 dan</OPTION>
+<OPTION value="4 dan">4 dan</OPTION>
+<OPTION value="3 dan">3 dan</OPTION>
+<OPTION value="2 dan">2 dan</OPTION>
+<OPTION value="1 dan">1 dan</OPTION>
+<OPTION value="1 kyu">1 kyu</OPTION>
+<OPTION value="2 kyu">2 kyu</OPTION>
+<OPTION value="3 kyu">3 kyu</OPTION>
+<OPTION value="4 kyu">4 kyu</OPTION>
+<OPTION value="5 kyu">5 kyu</OPTION>
+<OPTION value="6 kyu">6 kyu</OPTION>
+<OPTION value="7 kyu">7 kyu</OPTION>
+<OPTION value="8 kyu">8 kyu</OPTION>
+<OPTION value="9 kyu">9 kyu</OPTION>
+<OPTION value="10 kyu">10 kyu</OPTION>
+<OPTION value="11 kyu">11 kyu</OPTION>
+<OPTION value="12 kyu">12 kyu</OPTION>
+<OPTION value="13 kyu">13 kyu</OPTION>
+<OPTION value="14 kyu">14 kyu</OPTION>
+<OPTION value="15 kyu">15 kyu</OPTION>
+<OPTION value="16 kyu">16 kyu</OPTION>
+<OPTION value="17 kyu">17 kyu</OPTION>
+<OPTION value="18 kyu">18 kyu</OPTION>
+<OPTION value="19 kyu">19 kyu</OPTION>
+<OPTION value="20 kyu">20 kyu</OPTION>
+<OPTION value="21 kyu">21 kyu</OPTION>
+<OPTION value="22 kyu">22 kyu</OPTION>
+<OPTION value="23 kyu">23 kyu</OPTION>
+<OPTION value="24 kyu">24 kyu</OPTION>
+<OPTION value="25 kyu">25 kyu</OPTION>
+<OPTION value="26 kyu">26 kyu</OPTION>
+<OPTION value="27 kyu">27 kyu</OPTION>
+<OPTION value="28 kyu">28 kyu</OPTION>
+<OPTION value="29 kyu">29 kyu</OPTION>
+<OPTION value="30 kyu">30 kyu</OPTION>
+</SELECT></TD></TR>
+<TR><td colspan=2 height="20px"></td></TR>
+<TR><TD class="FormDescription">Comment:</TD><TD class="FormTextinput"><INPUT type="text" name="comment" value="" tabindex="29" size="40" maxlength="40"></TD></TR>
+<TR><td colspan=2 height="20px"></td></TR>
+<TR><TD class="FormSubmitbutton" colspan="2"><INPUT type="submit" name="add_game" value="Add Game" tabindex="30"></TD></TR>
+</TABLE>
+</FORM>
+  </td>
+ </tr><tr class=Links>
+  <td class=Links>
+
+<table id="pageLinks" class=Links>
+ <tr>
+  <td width="50%"><a href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=0&amp;good=0&amp;showhc=1" accesskey="1" title="[&amp;1]">Show all games</a></td>
+  <td width="50%"><a href="waiting_room.php?maxrows=20&amp;sort1=other_rating&amp;desc1=1&amp;sort2=other_handle&amp;handi=1&amp;good=1" accesskey="2" title="[&amp;2]">Show all suitable games</a></td>
+ </tr>
+</table>
+
+  </td>
+ </tr>
+</table>
+
+<table id='pageFoot'>
+ <tr>
+  <td class=ServerHome><A href="index.php">Dragon Go Server</A></td>
+  <td class=PageTime>Page time <span id="pageTime">2010-12-31 23:26</span><br><span class=PageLapse>Page created in <span id="pageLapse"> 40.15 ms</span></span></td>
+  <td class=LoginBox><a href="index.php?logout=t" accesskey="o" title="[&amp;o]">Logout</a></td>
+ </tr>
+</table>
+<table class=HostedBy>
+ <tr>
+  <td id='hostedBy'>Hosted by&nbsp;&nbsp;<a href="http://www.samurajdata.se" target="_blank"><img src="images/samurajlogo.gif" alt="Samuraj Logo" width=160 height=20 border=0 align=middle></a></td>
+ </tr>
+</table>
+</BODY>
+</HTML>
