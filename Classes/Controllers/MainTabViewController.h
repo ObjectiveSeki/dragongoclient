@@ -7,9 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CurrentGamesController.h"
+#import "DGSGamesController.h"
 
 @interface MainTabViewController : UIViewController {
 	CurrentGamesController *currentGamesController;
+	DGSGamesController *dgsGamesController;
 	UIViewController *selectedViewController;
 	UITabBar *tabBar;
 	UITabBarItem *currentGamesTab;
@@ -17,6 +19,7 @@
 }
 
 @property(nonatomic, retain) CurrentGamesController *currentGamesController;
+@property(nonatomic, retain) DGSGamesController *dgsGamesController;
 @property(nonatomic, retain) UIViewController *selectedViewController;
 @property(nonatomic, retain) IBOutlet UITabBar *tabBar;
 @property(nonatomic, retain) IBOutlet UITabBarItem *currentGamesTab;

@@ -30,7 +30,6 @@
 @synthesize selectedCell;
 @synthesize logoutConfirmation;
 @synthesize bottomToolbar;
-@synthesize tabViewController;
 
 
 #pragma mark -

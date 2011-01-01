@@ -41,18 +41,10 @@
 	
 	CGContextBeginPath(context);
 	CGContextMoveToPoint(context, roundedRect.origin.x, roundedRect.origin.y + radius);
-	CGContextAddLineToPoint(context, roundedRect.origin.x, roundedRect.origin.y + roundedRect.size.height - radius);
-	
 	CGContextAddArcToPoint(context, roundedRect.origin.x, roundedRect.origin.y + roundedRect.size.height, roundedRect.origin.x + radius, roundedRect.origin.y + roundedRect.size.height, radius);
-	CGContextAddLineToPoint(context, roundedRect.origin.x + roundedRect.size.width - radius, roundedRect.origin.y + roundedRect.size.height);
-	
 	CGContextAddArcToPoint(context, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y + roundedRect.size.height, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y + roundedRect.size.height - radius, radius);
-	CGContextAddLineToPoint(context, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y + radius);	
-	
 	CGContextAddArcToPoint(context, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y, roundedRect.origin.x + roundedRect.size.width - radius, roundedRect.origin.y, radius);
-	CGContextAddLineToPoint(context, roundedRect.origin.x + radius, roundedRect.origin.y);	
 	CGContextAddArcToPoint(context, roundedRect.origin.x, roundedRect.origin.y, roundedRect.origin.x, roundedRect.origin.y + radius, radius);
-	
 	CGContextFillPath(context);
 }
 

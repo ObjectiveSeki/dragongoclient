@@ -188,6 +188,12 @@
 		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
+		DA82C3F512CE7FF80059DAF0 /* DGSGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */; };
+		DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */; };
+		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
+		DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C41A12CEA5310059DAF0 /* RootViewController.m */; };
+		DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C42F12CEA8510059DAF0 /* TableSection.m */; };
+		DA82C4AB12CECC570059DAF0 /* JWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
 		DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
@@ -642,6 +648,17 @@
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
+		DA82C3F312CE7FF80059DAF0 /* DGSGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSGamesController.h; sourceTree = "<group>"; };
+		DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSGamesController.m; sourceTree = "<group>"; };
+		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
+		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
+		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
+		DA82C41912CEA5310059DAF0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		DA82C41A12CEA5310059DAF0 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		DA82C42E12CEA8510059DAF0 /* TableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableSection.h; sourceTree = "<group>"; };
+		DA82C42F12CEA8510059DAF0 /* TableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSection.m; sourceTree = "<group>"; };
+		DA82C4A912CECC570059DAF0 /* JWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWTableViewController.h; sourceTree = "<group>"; };
+		DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWTableViewController.m; sourceTree = "<group>"; };
 		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
 		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -1080,6 +1097,10 @@
 				DAF911F311BB796900FE7B96 /* Move.m */,
 				DACAEC4911F95FCD000E3C5D /* Account.h */,
 				DACAEC4A11F95FCD000E3C5D /* Account.m */,
+				DA82C3FD12CEA1300059DAF0 /* TableRow.h */,
+				DA82C3FE12CEA1300059DAF0 /* TableRow.m */,
+				DA82C42E12CEA8510059DAF0 /* TableSection.h */,
+				DA82C42F12CEA8510059DAF0 /* TableSection.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1097,6 +1118,12 @@
 				DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */,
 				DA5D33E512B1EBAE001271D3 /* MainTabViewController.h */,
 				DA5D33E612B1EBAE001271D3 /* MainTabViewController.m */,
+				DA82C3F312CE7FF80059DAF0 /* DGSGamesController.h */,
+				DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */,
+				DA82C41912CEA5310059DAF0 /* RootViewController.h */,
+				DA82C41A12CEA5310059DAF0 /* RootViewController.m */,
+				DA82C4A912CECC570059DAF0 /* JWTableViewController.h */,
+				DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1558,6 +1585,7 @@
 				DA94CBE0124839740060FD44 /* MainWindow.xib */,
 				DA94CBE1124839740060FD44 /* TableCells.xib */,
 				DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */,
+				DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -1834,6 +1862,7 @@
 				DA5D33E912B1EBAE001271D3 /* MainTabViewController.xib in Resources */,
 				DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */,
 				DA5D351312B20A9D001271D3 /* Moves.png in Resources */,
+				DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1905,6 +1934,11 @@
 				DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */,
 				DA1341AB1292323300D2A4BF /* MessageView.m in Sources */,
 				DA5D33E812B1EBAE001271D3 /* MainTabViewController.m in Sources */,
+				DA82C3F512CE7FF80059DAF0 /* DGSGamesController.m in Sources */,
+				DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */,
+				DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */,
+				DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */,
+				DA82C4AB12CECC570059DAF0 /* JWTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

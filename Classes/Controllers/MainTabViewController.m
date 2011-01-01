@@ -6,11 +6,11 @@
 //
 
 #import "MainTabViewController.h"
-#import "CurrentGamesController.h"
 
 @implementation MainTabViewController
 
 @synthesize currentGamesController;
+@synthesize dgsGamesController;
 @synthesize selectedViewController;
 @synthesize tabBar;
 @synthesize currentGamesTab;
@@ -33,6 +33,8 @@
     [super viewDidLoad];
 	self.currentGamesController = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
 	self.currentGamesController.tabViewController = self;
+	self.dgsGamesController = [[DGSGamesController alloc] initWithNibName:@"DGSGamesView" bundle:nil];
+	self.dgsGamesController.tabViewController = self;
 	self.tabBar.selectedItem = self.currentGamesTab;
 	[self setViewController:self.currentGamesController callbacks:NO];
 }
@@ -78,6 +80,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 	self.currentGamesController = nil;
+	self.dgsGamesController = nil;
 	self.selectedViewController = nil;
 	self.tabBar = nil;
 	self.otherGamesTab = nil;
@@ -113,6 +116,8 @@
 
 	if (item == self.currentGamesTab) {
 		[self setViewController:self.currentGamesController callbacks:YES];
+	} else if (item == self.otherGamesTab) {
+		[self setViewController:self.dgsGamesController callbacks:YES];
 	} else {
 		[self setViewController:nil callbacks:YES];
 	}
