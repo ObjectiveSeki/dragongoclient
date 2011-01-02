@@ -1,6 +1,7 @@
 
 #import "DGSGamesController.h"
 #import "AddGameViewController.h"
+#import "WaitingRoomGamesController.h"
 
 @implementation DGSGamesController
 
@@ -34,7 +35,7 @@
 	TableRow *firstRow = [[TableRow alloc] init];
 	firstRow.cellClass = [UITableViewCell class];
 	firstRow.cellSetup = ^(UITableViewCell *cell) {
-		cell.textLabel.text = @"Create a new game";
+		cell.textLabel.text = @"Create a game";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	};
 	firstRow.cellTouched = ^(UITableViewCell *cell) {
@@ -50,6 +51,11 @@
 	joinGameRow.cellSetup = ^(UITableViewCell *cell) {
 		cell.textLabel.text = @"Join a game";
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	};
+	joinGameRow.cellTouched = ^(UITableViewCell *cell) {
+		WaitingRoomGamesController *waitingRoomGamesController = [[WaitingRoomGamesController alloc] initWithNibName:@"WaitingRoomGamesView" bundle:nil];
+		[[self.tabViewController navigationController] pushViewController:waitingRoomGamesController animated:YES];
+		[waitingRoomGamesController release];
 	};
 	[newGameSection addRow:joinGameRow];
 	[joinGameRow release];

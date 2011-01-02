@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Game.h"
 
 typedef enum _KomiType {
 	kKomiTypeConventional,
@@ -36,7 +37,7 @@ typedef enum _ByoYomiType {
 	kByoYomiTypeFischer
 } ByoYomiType;
 
-@interface NewGame : NSObject {
+@interface NewGame : Game {
 	int numberOfGames;
 	RuleSet ruleSet;
 	int boardSize;

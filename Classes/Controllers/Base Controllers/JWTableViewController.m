@@ -4,6 +4,7 @@
 
 @implementation JWTableViewController
 @synthesize tableSections;
+@synthesize tableView;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -60,12 +61,12 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	TableRow *rowData = [self rowDataForIndexPath:indexPath];
     NSString *cellIdentifier = NSStringFromClass(rowData.cellClass);
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
 		if (rowData.cellInit) {
 			cell = rowData.cellInit();
@@ -125,11 +126,13 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell *selectedCell = [theTableView cellForRowAtIndexPath:indexPath];
 	TableRow *rowData = [self rowDataForIndexPath:indexPath];
-	rowData.cellTouched(selectedCell);
-	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	if (rowData.cellTouched) {
+		rowData.cellTouched(selectedCell);
+	}
+	[theTableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -144,6 +147,7 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 	self.tableSections = nil;
+	self.tableView = nil;
 }
 
 

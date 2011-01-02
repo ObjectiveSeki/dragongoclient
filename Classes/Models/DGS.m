@@ -8,6 +8,7 @@
 
 #import "DGS.h"
 #import "CXMLDocument.h"
+#import "CXMLElement.h"
 #import "NewGame.h"
 
 #ifndef LOGIC_TEST_MODE
@@ -31,8 +32,8 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
-	//NSString *baseString = @"http://www.dragongoserver.net";
-	NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	NSString *baseString = @"http://www.dragongoserver.net";
+	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
@@ -177,6 +178,17 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
 		NSArray *gameList = [self gamesFromCSV:[request responseString]];
+		onSuccess(gameList);
+	}];
+}
+
+- (void)getWaitingRoomGames:(void (^)(NSArray *gameList))onSuccess {
+	NSURL *url = [self URLWithPath:@"/waiting_room.php"];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
+	
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		NSArray *gameList = [self gamesFromWaitingRoomTable:[request responseString]];
 		onSuccess(gameList);
 	}];
 }
@@ -442,6 +454,102 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	}
 	[doc release];
 	return games;
+}
+
+// Parses a list of games from the waiting room. This uses the 
+// markings on the 'th' row to guess which columns hold the data we're
+// looking for. This may or may not be consistent, which is kinda rough,
+// but we'll figure those problems out as we reach them.
+- (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString {
+	NSMutableArray *games = [NSMutableArray array];
+	NSError *error;
+	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
+		
+	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='waitingroomTable']/tr" error:&error];
+    if ([tableRows count] > 0) {
+
+        // First row is the header
+        CXMLNode *headerRow = [tableRows objectAtIndex:0];
+        NSArray *columns = [headerRow nodesForXPath:@".//th" error:&error];
+        
+        NSMutableArray *tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
+        for (CXMLElement *column in columns) {
+            [tableHeaders addObject:column];
+        }
+        
+        // trim the header row
+        NSRange range;
+        range.location = 1;
+        range.length = [tableRows count] - 1;
+        
+        for (CXMLElement *row in [tableRows subarrayWithRange:range]) {
+			
+			if ([[[row attributeForName:@"id"] stringValue] isEqualToString:@"TableFilter"]) {
+				continue;
+			}
+
+            NSArray *columns = [row nodesForXPath:@"td" error:&error];
+            
+            // bad things happen if these counts aren't equal
+            if ([columns count] != [tableHeaders count]) {
+                continue;
+            }
+			
+            NewGame *game = [[NewGame alloc] init];
+            
+            for(int i = 0; i < [tableHeaders count]; i++) {
+                CXMLElement *header = [tableHeaders objectAtIndex:i];
+				CXMLNode *td = [columns objectAtIndex:i];
+				
+				if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col1"]) {
+					NSString *data = [[[td nodesForXPath:@"a" error:&error] lastObject] stringValue];
+                    game.opponent = data;
+				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col7"]) {
+					game.boardSize = [[td stringValue] intValue];
+				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col3"]) {
+					game.opponentRating = [[[[td nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col9"]) {
+					game.time = [td stringValue];
+				}
+            }
+            
+            [games addObject:game];
+            [game release];
+        }
+	}
+	[doc release];
+	return games;
+}
+
+// Parses details from a waiting room game into a game object. 
+// This will probably have issues with running in other languages that
+// I'll have to figure out, and it's also kinda fragile, but I'm not
+// sure I have any other options.
+- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString {
+	NSError *error;
+	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
+	NewGame *game;
+	
+	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameInfos']/tr" error:&error];
+    if ([tableRows count] > 0) {
+		game = [[[NewGame alloc] init] autorelease];
+		
+		for(int i = 0; i < [tableRows count]; i++) {
+			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
+
+			if (i == 2) {
+				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+			} else if (i == 3) {
+				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+			} else if (i == 4) {
+				game.boardSize = [[[rowData lastObject] stringValue] intValue];
+			} else if (i == 12) {
+				game.comment = [[rowData lastObject] stringValue];
+			}
+		}
+	}
+	[doc release];
+	return game;
 }
 
 // This converts an integer row and column representing a board position and

@@ -10,5 +10,6 @@
 
 - (void)testParseGames;
 - (void)testBoardCoords;
+- (void)testParseWaitingRoom;
 
 @end

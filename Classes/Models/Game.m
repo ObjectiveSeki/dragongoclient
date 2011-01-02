@@ -19,12 +19,14 @@
 @synthesize gameId;
 @synthesize time;
 @synthesize color;
+@synthesize opponentRating;
 
 - (void)dealloc {
 	[sgfString release];
 	[sgfUrl release];
 	[opponent release];
 	[time release];
+	self.opponentRating = nil;
 	[super dealloc];
 }
 

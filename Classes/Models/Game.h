@@ -17,6 +17,7 @@
 	NSString * sgfString;
 	NSString * opponent;
 	NSString * time;
+	NSString * opponentRating;
 	MovePlayer color;
 }
 
@@ -24,6 +25,7 @@
 @property(nonatomic, copy) NSString * sgfString;
 @property(nonatomic, copy) NSString * opponent;
 @property(nonatomic, copy) NSString * time;
+@property(nonatomic, copy) NSString * opponentRating;
 @property(nonatomic) int gameId;
 @property(nonatomic) MovePlayer color;
 

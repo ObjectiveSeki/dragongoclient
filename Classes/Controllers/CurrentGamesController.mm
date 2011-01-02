@@ -257,9 +257,9 @@
 	[self setEnabled:YES];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
-	[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+	[super tableView:theTableView didSelectRowAtIndexPath:indexPath];
 }
 
 #pragma mark -

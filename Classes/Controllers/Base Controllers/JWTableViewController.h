@@ -9,9 +9,11 @@
 
 @interface JWTableViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
 	NSArray *tableSections;
+	IBOutlet UITableView *tableView;
 }
 
 @property (nonatomic, retain) NSArray *tableSections;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 - (TableRow *)rowDataForIndexPath:(NSIndexPath *)indexPath;
 

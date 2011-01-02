@@ -29,6 +29,7 @@
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess;
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
+- (void)getWaitingRoomGames:(void (^)(NSArray *gameList))onSuccess;
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
@@ -41,5 +42,6 @@
 // Internal, but these have to be exposed so the logic tests can hit them
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
 - (NSArray *)gamesFromTable:(NSString *)htmlString;
+- (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString;
 
 @end
