@@ -69,15 +69,6 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<reference key="IBUITabBar" ref="870186921"/>
 							</object>
-							<object class="IBUITabBarItem" id="779340626">
-								<string key="IBUITitle">Messages</string>
-								<object class="NSCustomResource" key="IBUIImage">
-									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">Message on.png</string>
-								</object>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUITabBar" ref="870186921"/>
-							</object>
 						</object>
 					</object>
 				</object>
@@ -174,7 +165,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="946772892"/>
 							<reference ref="666580737"/>
-							<reference ref="779340626"/>
 						</object>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -188,11 +178,6 @@
 						<reference key="object" ref="666580737"/>
 						<reference key="parent" ref="870186921"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">11</int>
-						<reference key="object" ref="779340626"/>
-						<reference key="parent" ref="870186921"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -203,7 +188,6 @@
 					<string>-2.CustomClassName</string>
 					<string>1.IBEditorWindowLastContentRect</string>
 					<string>1.IBPluginDependency</string>
-					<string>11.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>4.IBViewBoundsToFrameTransform</string>
 					<string>5.IBPluginDependency</string>
@@ -214,7 +198,6 @@
 					<string>MainTabViewController</string>
 					<string>UIResponder</string>
 					<string>{{358, 138}, {320, 480}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -530,20 +513,11 @@
 			<integer value="3000" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<string key="IBDocument.LastKnownRelativeProjectPath">../../DGSPhone.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../DGSPhone.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>Message on.png</string>
-				<string>Moves.png</string>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{30, 30}</string>
-				<string>{30, 30}</string>
-			</object>
+			<string key="NS.key.0">Moves.png</string>
+			<string key="NS.object.0">{30, 30}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>

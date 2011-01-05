@@ -467,22 +467,23 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 		
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='waitingroomTable']/tr" error:&error];
     if ([tableRows count] > 0) {
-
-        // First row is the header
-        CXMLNode *headerRow = [tableRows objectAtIndex:0];
-        NSArray *columns = [headerRow nodesForXPath:@".//th" error:&error];
         
-        NSMutableArray *tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
-        for (CXMLElement *column in columns) {
-            [tableHeaders addObject:column];
-        }
+        NSMutableArray *tableHeaders = nil;
         
-        // trim the header row
-        NSRange range;
-        range.location = 1;
-        range.length = [tableRows count] - 1;
-        
-        for (CXMLElement *row in [tableRows subarrayWithRange:range]) {
+        for (CXMLElement *row in tableRows) {
+			
+			// headers come first
+			if (!tableHeaders) {
+				NSArray *columns = [row nodesForXPath:@".//th" error:&error];
+				if ([columns count] > 0) {
+					tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
+					for (CXMLElement *column in columns) {
+						[tableHeaders addObject:column];
+					}
+				} else {
+					continue; // if we don't have table headers yet, keep searching for them
+				}
+			}
 			
 			if ([[[row attributeForName:@"id"] stringValue] isEqualToString:@"TableFilter"]) {
 				continue;
@@ -512,8 +513,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 					game.time = [td stringValue];
 				}
             }
-            
-            [games addObject:game];
+            if ([game.opponent length] > 0) {
+				[games addObject:game];				
+			}
             [game release];
         }
 	}
@@ -545,7 +547,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 				game.boardSize = [[[rowData lastObject] stringValue] intValue];
 			} else if (i == 12) {
 				game.comment = [[rowData lastObject] stringValue];
-			}
+			} 
 		}
 	}
 	[doc release];

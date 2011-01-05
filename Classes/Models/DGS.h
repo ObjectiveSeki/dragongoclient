@@ -43,5 +43,6 @@
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
 - (NSArray *)gamesFromTable:(NSString *)htmlString;
 - (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString;
+- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString;
 
 @end
