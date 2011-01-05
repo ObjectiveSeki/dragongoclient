@@ -86,6 +86,8 @@
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */; };
 		DA5218EB12CFA42A00000147 /* WaitingRoomGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */; };
+		DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */; };
+		DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */; };
 		DA58E7D11245381600387BB5 /* libAsiHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */; };
 		DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DA58E87A12453A9B00387BB5 /* GoBensonSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA58E81312453A9B00387BB5 /* GoBensonSolver.cpp */; };
@@ -435,6 +437,9 @@
 		DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingRoomGamesController.h; sourceTree = "<group>"; };
 		DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingRoomGamesController.m; sourceTree = "<group>"; };
 		DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitingRoomGamesView.xib; sourceTree = "<group>"; };
+		DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinWaitingRoomGameController.h; sourceTree = "<group>"; };
+		DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinWaitingRoomGameController.m; sourceTree = "<group>"; };
+		DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinWaitingRoomGameView.xib; sourceTree = "<group>"; };
 		DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsiHTTPRequest.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58E8041245398B00387BB5 /* libfuego.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfuego.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58E81212453A9B00387BB5 /* GoAssertBoardRestored.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoAssertBoardRestored.h; sourceTree = "<group>"; };
@@ -1132,6 +1137,8 @@
 				DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */,
 				DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */,
 				DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */,
+				DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */,
+				DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1595,6 +1602,7 @@
 				DA5D33E712B1EBAE001271D3 /* MainTabViewController.xib */,
 				DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */,
 				DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */,
+				DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -1886,6 +1894,7 @@
 				DA5D351312B20A9D001271D3 /* Moves.png in Resources */,
 				DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */,
 				DA5218EB12CFA42A00000147 /* WaitingRoomGamesView.xib in Resources */,
+				DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1965,6 +1974,7 @@
 				DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */,
 				DA82C4AB12CECC570059DAF0 /* JWTableViewController.m in Sources */,
 				DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */,
+				DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

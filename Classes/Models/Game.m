@@ -17,11 +17,13 @@
 @synthesize sgfString;
 @synthesize opponent;
 @synthesize gameId;
+@synthesize detailUrl;
 @synthesize time;
 @synthesize color;
 @synthesize opponentRating;
 
 - (void)dealloc {
+	self.detailUrl = nil;
 	[sgfString release];
 	[sgfUrl release];
 	[opponent release];

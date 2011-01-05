@@ -193,6 +193,16 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	}];
 }
 
+- (void)getWaitingRoomGameDetailsForGame:(Game *)game onSuccess:(void (^)(NewGame *game))onSuccess {
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.detailUrl];
+	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
+	
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		NewGame *gameDetails = [self gamesFromWaitingRoomDetailTable:[request responseString]];
+		onSuccess(gameDetails);
+	}];
+}
+
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
@@ -501,8 +511,12 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
             for(int i = 0; i < [tableHeaders count]; i++) {
                 CXMLElement *header = [tableHeaders objectAtIndex:i];
 				CXMLNode *td = [columns objectAtIndex:i];
-				
-				if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col1"]) {
+				if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col0"] || 
+					[[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col17"]) {
+					CXMLElement *link = [[td nodesForXPath:@"a" error:&error] lastObject];
+					NSString *href = [[link attributeForName:@"href"] stringValue];
+					game.detailUrl = [self URLWithPath:[NSString stringWithFormat:@"/%@", href]];
+				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col1"]) {
 					NSString *data = [[[td nodesForXPath:@"a" error:&error] lastObject] stringValue];
                     game.opponent = data;
 				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col7"]) {
@@ -530,9 +544,10 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 - (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString {
 	NSError *error;
 	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
-	NewGame *game;
+	NewGame *game = nil;
 	
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameInfos']/tr" error:&error];
+	
     if ([tableRows count] > 0) {
 		game = [[[NewGame alloc] init] autorelease];
 		

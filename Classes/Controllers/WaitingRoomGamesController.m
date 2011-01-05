@@ -1,6 +1,6 @@
 
 #import "WaitingRoomGamesController.h"
-
+#import "JoinWaitingRoomGameController.h"
 
 @implementation WaitingRoomGamesController
 
@@ -40,6 +40,15 @@
 				[[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@", game.opponent, ratingString]];
 				[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%dx%d | %@", game.boardSize, game.boardSize, game.time]];
 				[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+			};
+			row.cellTouched = ^(UITableViewCell *cell) {
+				[dgs getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
+					
+					JoinWaitingRoomGameController *controller = [[JoinWaitingRoomGameController alloc] initWithNibName:@"JoinWaitingRoomGameView" bundle:nil];
+					controller.game = gameDetails;
+					[self.navigationController pushViewController:controller animated:YES];
+					[controller release];
+				}];
 			};
 			[mainSection addRow:row];
 			[row release];

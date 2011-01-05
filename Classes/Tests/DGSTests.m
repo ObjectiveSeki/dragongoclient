@@ -36,6 +36,7 @@
 	[dgs release];
 	NSUInteger expectedCount = 18;
 	STAssertEquals([games count], expectedCount, nil);
+	STAssertNotNil([[games objectAtIndex:0] detailUrl], nil);
 	STAssertEqualObjects([[games objectAtIndex:0] opponent], @"gowc2011", nil);
 	STAssertEquals([[games objectAtIndex:0] boardSize], 19, nil);
 	STAssertEqualObjects([[games objectAtIndex:0] opponentRating], @"1 dan (0%)", nil);
