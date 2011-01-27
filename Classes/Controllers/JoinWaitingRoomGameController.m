@@ -23,27 +23,60 @@
 }
 */
 
-
-- (TableSection *)commentSection {
+// Builds a table section with the supplied title and rows. Rows are an array of two-
+// element arrays, where the first element is a key and the second a value. All rows
+// use the TableViewCellStyleValue1 style.
+- (TableSection *)basicSectionWithTitle:(NSString *)sectionTitle rows:(NSArray *)rows {
 	TableSection *section = [[[TableSection alloc] init] autorelease];
-	section.headerString = @"Comment";
-
-	TableRow *commentRow = [[TableRow alloc] init];
-	commentRow.cellClass = [UITableViewCell class];
-	commentRow.cellInit = ^() {
-		return (UITableViewCell *)[[[commentRow.cellClass alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NSStringFromClass(commentRow.cellClass)] autorelease];
-	};
-	commentRow.cellSetup = ^(UITableViewCell *cell) {
-		cell.textLabel.text = @"Comment";
-		cell.detailTextLabel.text = self.game.comment;
-	};
-	[section addRow:commentRow];
-	[commentRow release];
+	section.headerString = sectionTitle;
+	for (NSArray *rowInfo in rows) {
+		TableRow *row = [[TableRow alloc] init];
+		row.cellClass = [UITableViewCell class];
+		row.cellInit = ^() {
+			return (UITableViewCell *)[[[row.cellClass alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+		};
+		row.cellSetup = ^(UITableViewCell *cell) {
+			cell.textLabel.text = [rowInfo objectAtIndex:0];
+			if ([rowInfo count] > 1) {
+				cell.detailTextLabel.text = [rowInfo lastObject];				
+			}
+		};
+		[section addRow:row];
+		[row release];
+	}
 	return section;
 }
 
-- (void)opponentSection {
+- (TableSection *)commentSection {
+	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
 	
+	[rows addObject:[NSArray arrayWithObjects:@"Comment", self.game.comment, nil]];
+	
+	return [self basicSectionWithTitle:nil rows:rows];
+}
+
+- (TableSection *)opponentSection {
+	
+	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:2];
+	
+	[rows addObject:[NSArray arrayWithObjects:@"Name", self.game.opponent, nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Rating", self.game.opponentRating, nil]];
+	
+	return [self basicSectionWithTitle:@"Opponent" rows:rows];
+}
+
+- (TableSection *)gameSection {
+	
+	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:6];
+	
+	[rows addObject:[NSArray arrayWithObjects:@"Board Size", [NSString stringWithFormat:@"%dx%d", self.game.boardSize, self.game.boardSize], nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Rated", self.game.ratedString, nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Time", self.game.time, nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Weekend Clock", self.game.weekendClockString, nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Type", self.game.komiTypeName, nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.adjustedKomi], nil]];
+	
+	return [self basicSectionWithTitle:@"Game Information" rows:rows];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -51,7 +84,11 @@
     [super viewDidLoad];
 	
 	NSMutableArray *sections = [NSMutableArray array];
-	[sections addObject:[self commentSection]];
+	if (self.game.comment) {
+		[sections addObject:[self commentSection]];
+	}
+	[sections addObject:[self opponentSection]];
+	[sections addObject:[self gameSection]];
 	self.tableSections = sections;
 }
 

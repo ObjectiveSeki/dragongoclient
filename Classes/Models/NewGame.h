@@ -66,6 +66,12 @@ typedef enum _ByoYomiType {
 	int minRatedGames;
 	int sameOpponent;
 	NSString *comment;
+	
+	// String values, for things we can't parse
+	NSString *ratedString;
+	NSString *stdHandicapString;
+	NSString *weekendClockString;
+	NSString *komiTypeName;
 }
 
 @property(nonatomic, assign) int numberOfGames;
@@ -96,6 +102,10 @@ typedef enum _ByoYomiType {
 @property(nonatomic, assign) int minRatedGames;
 @property(nonatomic, assign) int sameOpponent;
 @property(nonatomic, copy) NSString *comment;
+@property(nonatomic, copy) NSString *ratedString;
+@property(nonatomic, copy) NSString *stdHandicapString;
+@property(nonatomic, copy) NSString *weekendClockString;
+@property(nonatomic, copy) NSString *komiTypeName;
 
 - (NSString *)ruleSetValue;
 

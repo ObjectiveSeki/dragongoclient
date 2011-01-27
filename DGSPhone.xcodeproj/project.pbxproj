@@ -70,6 +70,7 @@
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2A2AC212D010A600774A54 /* waiting-detail.html */; };
+		DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D90C11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
@@ -312,6 +313,13 @@
 			remoteGlobalIDString = DAE9313D1245440500335F0F;
 			remoteInfo = TouchXML;
 		};
+		DA2ED7F112EC18BF00E0D8BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
+			remoteInfo = LogicTests;
+		};
 		DA58E7E6124538C200387BB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -325,13 +333,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = DA58E8031245398B00387BB5;
 			remoteInfo = fuego;
-		};
-		DA667CF3125AC41200CA9A13 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
-			remoteInfo = LogicTests;
 		};
 		DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -422,6 +423,7 @@
 		DA214FB512458E3000448955 /* TouchXML_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML_Prefix.pch; sourceTree = "<group>"; };
 		DA22A9CD11FD413200C88B31 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		DA2A2AC212D010A600774A54 /* waiting-detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail.html"; sourceTree = "<group>"; };
+		DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail-cn.html"; sourceTree = "<group>"; };
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		DA37D9C111BF6E5100BC1445 /* Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Board.png; sourceTree = "<group>"; };
@@ -1610,6 +1612,7 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */,
 				DA2A2AC212D010A600774A54 /* waiting-detail.html */,
 				DAFADA4E12CF0EF100985126 /* waiting.html */,
 				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
@@ -1724,8 +1727,8 @@
 				DA58E7E7124538C200387BB5 /* PBXTargetDependency */,
 				DAE931E5124545C200335F0F /* PBXTargetDependency */,
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
-				DA667CF4125AC41200CA9A13 /* PBXTargetDependency */,
 				DACD4365125B67DD001F1F01 /* PBXTargetDependency */,
+				DA2ED7F212EC18BF00E0D8BA /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
@@ -1923,6 +1926,7 @@
 				DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 				DAFADA4F12CF0EF100985126 /* waiting.html in Resources */,
 				DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */,
+				DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2179,6 +2183,11 @@
 			target = DAE9313D1245440500335F0F /* TouchXML */;
 			targetProxy = DA214FBE12458E9100448955 /* PBXContainerItemProxy */;
 		};
+		DA2ED7F212EC18BF00E0D8BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA71CA8311B5E97F008696AC /* LogicTests */;
+			targetProxy = DA2ED7F112EC18BF00E0D8BA /* PBXContainerItemProxy */;
+		};
 		DA58E7E7124538C200387BB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA58E77A124536DC00387BB5 /* AsiHTTPRequest */;
@@ -2188,11 +2197,6 @@
 			isa = PBXTargetDependency;
 			target = DA58E8031245398B00387BB5 /* fuego */;
 			targetProxy = DA58E80B12453A3400387BB5 /* PBXContainerItemProxy */;
-		};
-		DA667CF4125AC41200CA9A13 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA71CA8311B5E97F008696AC /* LogicTests */;
-			targetProxy = DA667CF3125AC41200CA9A13 /* PBXContainerItemProxy */;
 		};
 		DACD4365125B67DD001F1F01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

@@ -14,6 +14,8 @@
 #import "BWHockeyController.h"
 #endif
 
+#define THROTTLE_RATE 5*60 // 5 minutes
+
 @implementation DGSPhoneAppDelegate
 
 @synthesize window;
@@ -24,6 +26,7 @@
 @synthesize messageOff;
 @synthesize messageOn;
 @synthesize logFile;
+@synthesize nextRefreshTime;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -90,6 +93,17 @@
 	return YES;
 }
 
+- (void)invalidateThrottle {
+	self.nextRefreshTime = [NSDate date];
+}
+
+- (void)resetThrottle {
+	self.nextRefreshTime = [NSDate dateWithTimeIntervalSinceNow:THROTTLE_RATE];
+}
+
+- (BOOL)refreshThrottled {
+	return [[NSDate date] timeIntervalSinceDate:self.nextRefreshTime] < 0;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -151,6 +165,7 @@
 
 
 - (void)dealloc {
+	self.nextRefreshTime = nil;
 	[blackStone release];
 	[whiteStone release];
 	[boardImage release];

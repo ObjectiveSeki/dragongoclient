@@ -30,7 +30,7 @@
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
 - (void)getWaitingRoomGames:(void (^)(NSArray *gameList))onSuccess;
-- (void)getWaitingRoomGameDetailsForGame:(Game *)game onSuccess:(void (^)(NewGame *game))onSuccess;
+- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess;
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
@@ -44,6 +44,6 @@
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
 - (NSArray *)gamesFromTable:(NSString *)htmlString;
 - (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString;
-- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString;
+- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game;
 
 @end

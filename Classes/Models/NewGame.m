@@ -39,6 +39,11 @@
 @synthesize sameOpponent;
 @synthesize comment;
 
+@synthesize ratedString;
+@synthesize stdHandicapString;
+@synthesize weekendClockString;
+@synthesize komiTypeName;
+
 - (id)init {
 	if ([super init]) {
 		numberOfGames = 1;
@@ -194,6 +199,11 @@
     self.comment = nil;
 	self.minimumRating = nil;
 	self.maximumRating = nil;
+	
+	self.ratedString = nil;
+	self.stdHandicapString = nil;
+	self.weekendClockString = nil;
+	self.komiTypeName = nil;
     [super dealloc];
 }
 

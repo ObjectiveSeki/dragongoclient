@@ -39,6 +39,8 @@ typedef enum _LoginSection {
 */
 
 - (void)loggedIn {
+	// force a refresh
+	[DGSAppDelegate invalidateThrottle];
 	[[self delegate] loggedIn];
 	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;

@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "LoginViewController.h"
 #import "FuegoBoard.h"
+#import "DGSPhoneAppDelegate.h"
 
 @implementation GameViewController
 
@@ -148,6 +149,7 @@
 - (void)playedMove {
 	[self.spinnerView dismiss:YES];
 	self.spinnerView = nil;
+	[DGSAppDelegate invalidateThrottle];
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 

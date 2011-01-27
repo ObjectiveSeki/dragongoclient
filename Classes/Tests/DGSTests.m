@@ -47,12 +47,31 @@
 	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/waiting-detail.html" encoding:NSISOLatin1StringEncoding error:nil];
 	
 	DGS *dgs = [[DGS alloc] init];
-	NewGame *game = [dgs gamesFromWaitingRoomDetailTable:testData];
+	NewGame *game = [dgs gamesFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
 	[dgs release];
 	STAssertEqualObjects(game.opponent, @"lesenv (lesenv)", nil);
 	STAssertEquals(game.boardSize, 13, nil);
 	STAssertEqualObjects(game.opponentRating, @"17 kyu (-22%)", nil);
 	STAssertEqualObjects(game.comment, @"At least one diagonal fuseki please!", nil);
+	STAssertEqualObjects(game.ratedString, @"Yes", nil);
+	STAssertEqualObjects(game.weekendClockString, @"Yes", nil);
+	STAssertEqualObjects(game.komiTypeName, @"Proper handicap", nil);
+	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.0, (CGFloat)0.25, nil);
+	
+	testData = [NSString stringWithContentsOfFile:@"TestData/waiting-detail-cn.html" encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_CN) error:nil];
+	
+	dgs = [[DGS alloc] init];
+	game = [dgs gamesFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
+	[dgs release];
+	STAssertEqualObjects(game.opponent, @"Loaden (Loaden)", nil);
+	STAssertEquals(game.boardSize, 19, nil);
+	STAssertEqualObjects(game.opponentRating, @"16 级 (-49%)", nil);
+	STAssertEqualObjects(game.comment, @"Let's happy go!", nil);
+	STAssertEqualObjects(game.ratedString, @"是", nil);
+	STAssertEqualObjects(game.weekendClockString, @"是", nil);
+	STAssertEqualObjects(game.komiTypeName, @"猜子分先", nil);
+	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.5, (CGFloat)0.25, nil);
+	
 }
 
 @end

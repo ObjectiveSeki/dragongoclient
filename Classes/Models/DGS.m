@@ -193,12 +193,12 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	}];
 }
 
-- (void)getWaitingRoomGameDetailsForGame:(Game *)game onSuccess:(void (^)(NewGame *game))onSuccess {
+- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess {
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.detailUrl];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
-		NewGame *gameDetails = [self gamesFromWaitingRoomDetailTable:[request responseString]];
+		NewGame *gameDetails = [self gamesFromWaitingRoomDetailTable:[request responseString] game:game];
 		onSuccess(gameDetails);
 	}];
 }
@@ -541,28 +541,61 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 // This will probably have issues with running in other languages that
 // I'll have to figure out, and it's also kinda fragile, but I'm not
 // sure I have any other options.
-- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString {
+- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game {
 	NSError *error;
 	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
-	NewGame *game = nil;
-	
+
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameInfos']/tr" error:&error];
 	
     if ([tableRows count] > 0) {
-		game = [[[NewGame alloc] init] autorelease];
 		
-		for(int i = 0; i < [tableRows count]; i++) {
-			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
-
-			if (i == 2) {
-				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 3) {
-				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 4) {
-				game.boardSize = [[[rowData lastObject] stringValue] intValue];
-			} else if (i == 12) {
-				game.comment = [[rowData lastObject] stringValue];
-			} 
+		// There are different row counts depending on if it's an even game or a
+		// conventional/proper handicap game. We have to parse the rows differently 
+		// depending on what type of game it is.
+		if ([tableRows count] == 14) { // Even game
+			for(int i = 0; i < [tableRows count]; i++) {
+				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
+				
+				if (i == 2) {
+					game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if (i == 3) {
+					game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if (i == 4) {
+					game.boardSize = [[[rowData lastObject] stringValue] intValue];
+				} else if (i == 5) {
+					game.komiTypeName = [[rowData lastObject] stringValue];
+				} else if (i == 6) {				
+					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+				} else if (i == 11) {
+					game.ratedString = [[rowData lastObject] stringValue];
+				} else if (i == 12) {
+					game.weekendClockString = [[rowData lastObject] stringValue];
+				} else if (i == 13) {
+					game.comment = [[rowData lastObject] stringValue];
+				} 
+			}			
+		} else if ([tableRows count] == 17) { // Handicap game
+			for(int i = 0; i < [tableRows count]; i++) {
+				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
+				
+				if (i == 2) {
+					game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if (i == 3) {
+					game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if (i == 4) {
+					game.boardSize = [[[rowData lastObject] stringValue] intValue];
+				} else if (i == 5) {
+					game.komiTypeName = [[rowData lastObject] stringValue];
+				} else if (i == 10) {
+					game.ratedString = [[rowData lastObject] stringValue];
+				} else if (i == 11) {
+					game.weekendClockString = [[rowData lastObject] stringValue];
+				} else if (i == 12) {
+					game.comment = [[rowData lastObject] stringValue];
+				} else if (i == 16) {
+					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+				}  
+			}
 		}
 	}
 	[doc release];

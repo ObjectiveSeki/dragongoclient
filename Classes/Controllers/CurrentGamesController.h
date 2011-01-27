@@ -23,6 +23,7 @@
 	UITableViewCell *selectedCell;
 	SpinnerView *spinnerView;
 	UIAlertView *logoutConfirmation;
+	NSDate *nextRefreshTime;
 }
 
 @property (nonatomic, retain) SpinnerView *spinnerView;
@@ -36,7 +37,10 @@
 @property(nonatomic, retain) UITableViewCell *selectedCell;
 @property(nonatomic, retain) UIAlertView *logoutConfirmation;
 
+// Refresh games list only after a certain amount of time has passed
+- (IBAction)refreshGamesWithThrottling;
 
+// Refresh games list unconditionally
 - (IBAction)refreshGames;
 - (IBAction)logout;
 

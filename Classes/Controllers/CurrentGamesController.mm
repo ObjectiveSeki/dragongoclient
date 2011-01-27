@@ -30,7 +30,6 @@
 @synthesize logoutConfirmation;
 @synthesize bottomToolbar;
 
-
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -70,13 +69,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	JWLog("Showing current games view and refreshing games...");
-	[self refreshGames];
+	[self refreshGamesWithThrottling];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGamesWithThrottling) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 /*
@@ -139,18 +138,13 @@
 			[activityView startAnimating];
 			[cell setAccessoryView:activityView];
 			[activityView release];
-			
-#if TEST_GAMES
-			if (game.gameId == 0) {
+			if (game.sgfString) {
 				[self gotSgfForGame:game];
 			} else {
-#endif
 				[dgs getSgfForGame:game onSuccess:^(Game *game) {
 					[self gotSgfForGame:game];
 				}];
-#if TEST_GAMES
 			}
-#endif
 		};
 		[firstSection addRow:row];
 		[row release];		
@@ -163,7 +157,17 @@
 	[firstSection release];	
 }
 
+- (IBAction)refreshGamesWithThrottling {
+	if ([DGSAppDelegate refreshThrottled]) {
+		// skip automatic refreshing so we don't hurt DGS
+	} else {
+		[self refreshGames];
+	}
+
+}
+
 - (IBAction)refreshGames {
+	[DGSAppDelegate resetThrottle];
 	[self setEnabled:NO];	
 	
 	[self.spinnerView dismiss:NO];
