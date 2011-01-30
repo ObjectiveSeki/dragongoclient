@@ -16,7 +16,7 @@
 #import "ASIFormDataRequest.h"
 #import "DGSPhoneAppDelegate.h"
 
-typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
+typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseString);
 #endif
 
 @implementation DGS
@@ -32,8 +32,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
-	NSString *baseString = @"http://www.dragongoserver.net";
-	//NSString *baseString = @"http://localhost.local/~jweiss/DragonGoServer";
+	NSString *baseString = DGS_SITE;
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
 }
 
@@ -51,7 +50,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 
 // Is the user currently logged in through their cookie? YES if so,
 // NO if not. 
-- (BOOL)loggedIn:(ASIHTTPRequest *)request {
+- (BOOL)loggedIn:(ASIHTTPRequest *)request responseString:(NSString *)responseString {
 	NSString *urlString = [[request url] absoluteString];
 	
 	// Use a simple heuristic here. If we are hitting a normal HTML page, we
@@ -60,8 +59,8 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	BOOL onErrorPageOrIndex = (NSNotFound != [urlString rangeOfString:@"error.php?err=not_logged_in"].location || NSNotFound != [urlString rangeOfString:@"index.php"].location);
 	
 	// If we're using the DGS api, it will return the string 'Error: no_uid' or 'Error: not_logged_in' if we aren't logged in.
-	BOOL noUID = (NSNotFound != [[request responseString] rangeOfString:@"#Error: no_uid"].location);
-	BOOL notLoggedIn = (NSNotFound != [[request responseString] rangeOfString:@"#Error: not_logged_in"].location);
+	BOOL noUID = (NSNotFound != [responseString rangeOfString:@"#Error: no_uid"].location);
+	BOOL notLoggedIn = (NSNotFound != [responseString rangeOfString:@"#Error: not_logged_in"].location);
 	
 	if (onErrorPageOrIndex || noUID || notLoggedIn ) {
 		return NO;
@@ -71,13 +70,13 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 
 // Checks the request body to see if it contains an error. If so,
 // return the error string. Otherwise, returns nil.
-- (NSString *)error:(ASIHTTPRequest *)request {
+- (NSString *)error:(ASIHTTPRequest *)request responseString:(NSString *)responseString {
 	NSString *urlString = [[request url] absoluteString];
 	NSString *errorString = nil;
 	
 	if (NSNotFound != [urlString rangeOfString:@"error.php"].location) {
 		NSError *error;
-		CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[request responseString] options:CXMLDocumentTidyHTML error:&error];
+		CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:responseString options:CXMLDocumentTidyHTML error:&error];
 		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&error];
 		if ([bodyElements count] > 0) {
 			errorString = [[bodyElements objectAtIndex:0] stringValue];
@@ -94,25 +93,60 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	[[self delegate] requestCancelled];
 }
 
+- (NSString *)lossyStringFromData:(NSData *)data encoding:(NSStringEncoding)encoding replaceString:(NSString *)replacement {
+	NSMutableString *output = [NSMutableString stringWithCapacity:[data length]];
+	int pos = 0;
+	int lookahead = 1;
+	while (pos + lookahead <= [data length]) {
+		NSRange currentRange = NSMakeRange(pos, lookahead);
+		NSData *possibleChar = [data subdataWithRange:currentRange];
+		NSString *str = [[NSString alloc] initWithData:possibleChar encoding:encoding];
+		if (str) {
+			[output appendString:str];
+			pos += lookahead;
+			lookahead = 1;
+		} else {
+			lookahead += 1;
+			if (lookahead > 4) {
+				[output appendString:replacement];
+				// skip to the next possible char
+				lookahead = 1;
+				pos += 1;
+			}
+		}
+	}
+	return output;
+}
+
 // Called when an ASIHTTPRequest finishes. Handles being logged out, 
 // error messages, and successes. 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-	//NSLog(@"%@", [request responseString]);
-	NSString *errorString = [self error:request];
-	if (NO == [self loggedIn:request]) {
-		JWLog(@"Not logged in during request: %@", [request url]);
-		[[self delegate] notLoggedIn];
-	} else if (errorString) {
+	NSString *responseString = [request responseString];
+	if (!responseString) {
+		// If there are invalid characters in the encoding we're given, 
+		// [request responseString] returns nil. We still want to get the 
+		// data that's valid out of the page, though, and Apple doesn't
+		// expose that functionality publicly. So instead, we'll call my 
+		// brain-dead dumb slow function to extract as much data as we can. 
+		// Hopefully it's not too bad.
+		responseString = [self lossyStringFromData:[request responseData] encoding:[request responseEncoding] replaceString:@"?"];
+	}
+	JWLog(@"%@: %@", [request url], responseString);
+	NSString *errorString = [self error:request responseString:responseString];
+	
+	if (errorString) {
 		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
 		
 		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-	}  else {
-		JWLog(@"%@: %@", [request url], [request responseString]);
+	} else if (NO == [self loggedIn:request responseString:responseString]) {
+		JWLog(@"Not logged in during request: %@", [request url]);
+		[[self delegate] notLoggedIn];
+	} else {
 		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
 		
 		if (onSuccess) {
-			onSuccess(request);
+			onSuccess(request, responseString);
 		}
 	}
 }
@@ -166,7 +200,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:username forKey:@"userid"];
 	[request setPostValue:password forKey:@"passwd"];
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		[self.delegate loggedIn];
 	}];
 }
@@ -176,8 +210,8 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
-		NSArray *gameList = [self gamesFromCSV:[request responseString]];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+		NSArray *gameList = [self gamesFromCSV:responseString];
 		onSuccess(gameList);
 	}];
 }
@@ -187,8 +221,8 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
-		NSArray *gameList = [self gamesFromWaitingRoomTable:[request responseString]];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+		NSArray *gameList = [self gamesFromWaitingRoomTable:responseString];
 		onSuccess(gameList);
 	}];
 }
@@ -197,16 +231,30 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.detailUrl];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
-		NewGame *gameDetails = [self gamesFromWaitingRoomDetailTable:[request responseString] game:game];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+		NewGame *gameDetails = [self gameFromWaitingRoomDetailTable:responseString game:game];
 		onSuccess(gameDetails);
+	}];
+}
+
+- (void)joinWaitingRoomGame:(int)gameId comment:(NSString *)comment onSuccess:(void (^)())onSuccess {
+	
+	NSURL *url = [self URLWithPath:@"/join_waitingroom_game.php"];
+	
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"id"];
+	[request setPostValue:comment forKey:@"reply"];
+	[request setPostValue:@"Join" forKey:@"join"];
+	
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+		onSuccess();
 	}];
 }
 
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
-		[game setSgfString:[request responseString]];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+		[game setSgfString:responseString];
 		onSuccess(game);
 	}];
 }
@@ -233,7 +281,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	[request setPostValue:moveString forKey:@"stonestring"];
 	[moveString release];
 
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
 	}];
 }
@@ -264,7 +312,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 		[moveString release];
 	}
 	
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
 	}];
 }
@@ -289,7 +337,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 			[request setPostValue:comment forKey:@"message"];
 		}
 		
-		[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 			onSuccess();
 		}];
 		
@@ -315,7 +363,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 			[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"coord"];
 		}
 		
-		[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+		[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 			onSuccess();
 		}];
 	}
@@ -347,7 +395,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	[request setPostValue:[game comment] forKey:@"comment"];
 	[request setPostValue:@"Add Game" forKey:@"add_game"];
 	
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request) {
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
 	}];
 }
@@ -537,16 +585,69 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 	return games;
 }
 
+// The newer versions of DGS have these items in a different order.
+- (NewGame *)gameFromNewWaitingRoomDetailTable:(NSArray *)tableRows game:(NewGame *)game {
+	NSError *error;
+	// There are different row counts depending on if it's an even game or a
+	// conventional/proper handicap game. We have to parse the rows differently 
+	// depending on what type of game it is.
+	if ([tableRows count] == 16) { // Even game
+		for(int i = 0; i < [tableRows count]; i++) {
+			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
+			
+			if (i == 2) {
+				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+			} else if (i == 3) {
+				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+			} else if (i == 5) {
+				game.boardSize = [[[rowData lastObject] stringValue] intValue];
+			} else if (i == 6) {
+				game.komiTypeName = [[rowData lastObject] stringValue];
+			} else if (i == 9) {				
+				game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+			} else if (i == 13) {
+				game.ratedString = [[rowData lastObject] stringValue];
+			} else if (i == 14) {
+				game.weekendClockString = [[rowData lastObject] stringValue];
+			} else if (i == 15) {
+				game.comment = [[rowData lastObject] stringValue];
+			} 
+		}			
+	} else if ([tableRows count] == 17 || [tableRows count] == 13) { // Handicap game
+		for(int i = 0; i < [tableRows count]; i++) {
+			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
+			
+			if (i == 2) {
+				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+			} else if (i == 3) {
+				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+			} else if (i == 5) {
+				game.boardSize = [[[rowData lastObject] stringValue] intValue];
+			} else if (i == 6) {
+				game.komiTypeName = [[rowData lastObject] stringValue];
+			} else if (i == 10) {
+				game.ratedString = [[rowData lastObject] stringValue];
+			} else if (i == 11) {
+				game.weekendClockString = [[rowData lastObject] stringValue];
+			} else if (i == 12) {
+				game.comment = [[rowData lastObject] stringValue];
+			} else if (i == 16) {
+				game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+			}  
+		}
+	}
+	return game;
+}
+
 // Parses details from a waiting room game into a game object. 
 // This will probably have issues with running in other languages that
 // I'll have to figure out, and it's also kinda fragile, but I'm not
 // sure I have any other options.
-- (NewGame *)gamesFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game {
+- (NewGame *)gameFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game {
 	NSError *error;
 	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
 
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameInfos']/tr" error:&error];
-	
     if ([tableRows count] > 0) {
 		
 		// There are different row counts depending on if it's an even game or a
@@ -574,7 +675,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 					game.comment = [[rowData lastObject] stringValue];
 				} 
 			}			
-		} else if ([tableRows count] == 17) { // Handicap game
+		} else if ([tableRows count] == 17 || [tableRows count] == 13) { // Handicap game
 			for(int i = 0; i < [tableRows count]; i++) {
 				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
 				
@@ -596,6 +697,11 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request);
 					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
 				}  
 			}
+		}
+	} else {
+		tableRows = [doc nodesForXPath:@"//table[@id='gameTableInfos']/tr" error:&error];
+		if ([tableRows count] > 0) {
+			game = [self gameFromNewWaitingRoomDetailTable:tableRows game:game];
 		}
 	}
 	[doc release];

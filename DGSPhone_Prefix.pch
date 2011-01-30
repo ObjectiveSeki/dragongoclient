@@ -10,6 +10,7 @@
 #ifdef CONFIGURATION_Debug
 #define DEBUG
 #define LOGGING
+#define DEVELOPMENT_DGS
 
 // set to '1' to see SGFs that test various aspects of 
 // the board view.
@@ -21,6 +22,12 @@
 #endif
 
 #define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
+
+#ifdef DEVELOPMENT_DGS
+#	define DGS_SITE @"http://localhost.local/~jweiss/DragonGoServer"
+#else
+#	define DGS_SITE @"http://www.dragongoserver.net"
+#endif
 
 #ifdef LOGGING
 #	define JWLog(fmt, ...) { \

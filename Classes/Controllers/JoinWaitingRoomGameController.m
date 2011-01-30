@@ -1,6 +1,6 @@
 
 #import "JoinWaitingRoomGameController.h"
-
+#import "TextCell.h"
 
 @implementation JoinWaitingRoomGameController
 
@@ -89,6 +89,24 @@
 	}
 	[sections addObject:[self opponentSection]];
 	[sections addObject:[self gameSection]];
+	
+	TableSection *replySection = [[TableSection alloc] init];
+	TableRow *replyRow = [[TableRow alloc] init];
+	replyRow.cellClass = [TextCell class];
+	replyRow.cellInit = ^() {
+		return (UITableViewCell *)[[[replyRow.cellClass alloc] init] autorelease];
+	};
+	replyRow.cellSetup = ^(UITableViewCell *tableCell) {
+		TextCell *cell = (TextCell *)tableCell;
+		cell.label.text = @"Message";
+		cell.textField.placeholder = @"Leave a short message";
+	};
+	
+	[replySection addRow:replyRow];
+	[replyRow release];
+	[sections addObject:replySection];
+	[replySection release];
+	
 	self.tableSections = sections;
 }
 

@@ -12,10 +12,17 @@
 @interface TextCell : UITableViewCell <UITextFieldDelegate> {
 	IBOutlet UILabel *label;
 	IBOutlet UITextField *textField;
+	IBOutlet UIView *content;
 	SEL textEditedSelector;
+	void (^onChanged)();
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *label;
 @property(nonatomic, retain) IBOutlet UITextField *textField;
 @property(nonatomic) SEL textEditedSelector;
+@property(nonatomic, retain) IBOutlet UIView *content;
+@property(nonatomic, copy) void (^onChanged)();
+
+- (id)init;
+
 @end

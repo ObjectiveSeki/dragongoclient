@@ -127,12 +127,12 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// [theTableView deselectRowAtIndexPath:indexPath animated:NO];
 	UITableViewCell *selectedCell = [theTableView cellForRowAtIndexPath:indexPath];
 	TableRow *rowData = [self rowDataForIndexPath:indexPath];
 	if (rowData.cellTouched) {
 		rowData.cellTouched(selectedCell);
 	}
-	[theTableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

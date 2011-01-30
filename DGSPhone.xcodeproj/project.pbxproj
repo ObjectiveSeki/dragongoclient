@@ -72,6 +72,7 @@
 		DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2A2AC212D010A600774A54 /* waiting-detail.html */; };
 		DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */; };
 		DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE1212F14EC8003FEE23 /* Board@2x.png */; };
+		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D90C11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
@@ -426,6 +427,7 @@
 		DA2A2AC212D010A600774A54 /* waiting-detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail.html"; sourceTree = "<group>"; };
 		DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail-cn.html"; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
+		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		DA37D9C111BF6E5100BC1445 /* Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Board.png; sourceTree = "<group>"; };
@@ -1608,6 +1610,7 @@
 				DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */,
 				DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */,
 				DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */,
+				DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -1902,6 +1905,7 @@
 				DA5218EB12CFA42A00000147 /* WaitingRoomGamesView.xib in Resources */,
 				DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */,
 				DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */,
+				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,7 +47,7 @@
 	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/waiting-detail.html" encoding:NSISOLatin1StringEncoding error:nil];
 	
 	DGS *dgs = [[DGS alloc] init];
-	NewGame *game = [dgs gamesFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
+	NewGame *game = [dgs gameFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
 	[dgs release];
 	STAssertEqualObjects(game.opponent, @"lesenv (lesenv)", nil);
 	STAssertEquals(game.boardSize, 13, nil);
@@ -61,7 +61,7 @@
 	testData = [NSString stringWithContentsOfFile:@"TestData/waiting-detail-cn.html" encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_CN) error:nil];
 	
 	dgs = [[DGS alloc] init];
-	game = [dgs gamesFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
+	game = [dgs gameFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
 	[dgs release];
 	STAssertEqualObjects(game.opponent, @"Loaden (Loaden)", nil);
 	STAssertEquals(game.boardSize, 19, nil);
