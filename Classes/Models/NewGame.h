@@ -72,6 +72,7 @@ typedef enum _ByoYomiType {
 	NSString *stdHandicapString;
 	NSString *weekendClockString;
 	NSString *komiTypeName;
+	BOOL myGame;
 }
 
 @property(nonatomic, assign) int numberOfGames;
@@ -106,6 +107,7 @@ typedef enum _ByoYomiType {
 @property(nonatomic, copy) NSString *stdHandicapString;
 @property(nonatomic, copy) NSString *weekendClockString;
 @property(nonatomic, copy) NSString *komiTypeName;
+@property(nonatomic, assign) BOOL myGame;
 
 - (NSString *)ruleSetValue;
 

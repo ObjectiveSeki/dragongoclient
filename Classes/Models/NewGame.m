@@ -43,6 +43,7 @@
 @synthesize stdHandicapString;
 @synthesize weekendClockString;
 @synthesize komiTypeName;
+@synthesize myGame;
 
 - (id)init {
 	if ([super init]) {
@@ -64,6 +65,7 @@
 		rated = YES;
 		minimumRating = @"30 kyu";
 		maximumRating = @"9 dan";
+		myGame = true;
 	}
 	return self;
 }

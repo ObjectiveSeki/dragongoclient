@@ -8,21 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "DGS.h"
-#import "SpinnerView.h"
+#import "JWTableViewController.h"
 
-@interface LoginViewController : UITableViewController <LoginProtocol> {
+@interface LoginViewController : JWTableViewController <LoginProtocol> {
 	NSString *username;
 	NSString *password;
-	DGS *dgs;
 	id delegate;
-	SpinnerView *spinnerView;
 }
-
-@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, copy) NSString *username;
 @property(nonatomic, copy) NSString *password;
-@property(nonatomic, retain) DGS *dgs;
 @property(nonatomic, assign) id delegate;
 
 - (void)login;

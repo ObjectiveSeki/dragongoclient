@@ -53,9 +53,21 @@
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	};
 	joinGameRow.cellTouched = ^(UITableViewCell *cell) {
+		[self deselectSelectedCell];
 		WaitingRoomGamesController *waitingRoomGamesController = [[WaitingRoomGamesController alloc] initWithNibName:@"WaitingRoomGamesView" bundle:nil];
-		[[self.tabViewController navigationController] pushViewController:waitingRoomGamesController animated:YES];
-		[waitingRoomGamesController release];
+		
+		UIActivityIndicatorView *activityView = 
+		[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		[activityView startAnimating];
+		[cell setAccessoryView:activityView];
+		[activityView release];
+		
+		[self.gs getWaitingRoomGames:^(NSArray *games) {
+			[waitingRoomGamesController setGames:games];
+			[[self.tabViewController navigationController] pushViewController:waitingRoomGamesController animated:YES];
+			[waitingRoomGamesController release];
+			[cell setAccessoryView:nil];
+		}];
 	};
 	[newGameSection addRow:joinGameRow];
 	[joinGameRow release];

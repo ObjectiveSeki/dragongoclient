@@ -5,6 +5,7 @@
 @implementation JWTableViewController
 @synthesize tableSections;
 @synthesize tableView;
+@synthesize selectedIndexPath;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -47,6 +48,18 @@
     return self.tableSections.count;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	if (self.selectedIndexPath) {
+		[self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:NO];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+	[self.tableView flashScrollIndicators];
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	return [[self.tableSections objectAtIndex:section] headerString];
 }
@@ -64,7 +77,7 @@
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	TableRow *rowData = [self rowDataForIndexPath:indexPath];
-    NSString *cellIdentifier = NSStringFromClass(rowData.cellClass);
+    NSString *cellIdentifier = rowData.identifier;
     
     UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
@@ -82,6 +95,9 @@
     return cell;
 }
 
+- (void)deselectSelectedCell {
+	[self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:NO];
+}
 
 /*
  // Override to support conditional editing of the table view.
@@ -127,7 +143,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// [theTableView deselectRowAtIndexPath:indexPath animated:NO];
+	self.selectedIndexPath = indexPath;
 	UITableViewCell *selectedCell = [theTableView cellForRowAtIndexPath:indexPath];
 	TableRow *rowData = [self rowDataForIndexPath:indexPath];
 	if (rowData.cellTouched) {
@@ -148,6 +164,7 @@
     // e.g. self.myOutlet = nil;
 	self.tableSections = nil;
 	self.tableView = nil;
+	self.selectedIndexPath = nil;
 }
 
 

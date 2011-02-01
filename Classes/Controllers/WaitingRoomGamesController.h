@@ -7,9 +7,8 @@
 #import "DGS.h"
 
 @interface WaitingRoomGamesController : JWTableViewController {
-	DGS *dgs;
 }
 
-@property(nonatomic, retain) DGS *dgs;
+- (void)setGames:(NSArray *)games;
 
 @end

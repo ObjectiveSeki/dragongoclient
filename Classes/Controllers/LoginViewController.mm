@@ -11,7 +11,6 @@
 #import "DGSPhoneAppDelegate.h"
 #import "DGS.h"
 #import "TableCellFactory.h"
-#import "SpinnerView.h"
 
 typedef enum _LoginSection {
 	kLoginFieldSection,
@@ -21,12 +20,9 @@ typedef enum _LoginSection {
 
 @implementation LoginViewController
 
-@synthesize spinnerView;
-
 @synthesize username;
 @synthesize password;
 @synthesize delegate;
-@synthesize dgs;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -42,8 +38,7 @@ typedef enum _LoginSection {
 	// force a refresh
 	[DGSAppDelegate invalidateThrottle];
 	[[self delegate] loggedIn];
-	[self.spinnerView dismiss:YES];
-	self.spinnerView = nil;
+	[self hideSpinner:NO];
 }
 
 - (void)notLoggedIn {
@@ -53,21 +48,17 @@ typedef enum _LoginSection {
 - (void)login
 {
 	[self.view resignFirstResponder];
-	self.spinnerView = [SpinnerView showInView:self.view];
-	self.spinnerView.label.text = @"Logging in...";
-	[self.dgs loginWithUsername:self.username password:self.password];
+	[self showSpinner:@"Logging in..."];
+	[self.gs loginWithUsername:self.username password:self.password];
 }
 
 - (void)requestCancelled {
-	[self.spinnerView dismiss:NO];
-	self.spinnerView = nil;
+	[self hideSpinner:NO];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.dgs = [[[DGS alloc] init] autorelease];
-	self.dgs.delegate = self;
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
@@ -92,20 +83,20 @@ typedef enum _LoginSection {
     return 1;
 }
 
-- (UITableViewCell *)defaultCell:(UITableView *)tableView {
+- (UITableViewCell *)defaultCell:(UITableView *)theTableView {
 	static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }	
 	return cell;
 }
 
-- (TextCell *)textCell:(UITableView *)tableView {
+- (TextCell *)textCell:(UITableView *)theTableView {
 	static NSString *CellIdentifier = @"TextCell";
     
-    TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TextCell *cell = (TextCell *)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [TableCellFactory textCell];
     }
@@ -122,25 +113,27 @@ typedef enum _LoginSection {
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	UITableViewCell *cell = [self defaultCell:tableView];
+	UITableViewCell *cell = [self defaultCell:theTableView];
 	
 	if ([indexPath section] == kLoginFieldSection) {
 		if ([indexPath row] == 0) {
-			TextCell *cell = [self textCell:tableView];
+			TextCell *cell = [self textCell:theTableView];
 			cell.label.text = @"Username";
 			cell.textField.text = self.username;
 			cell.textField.keyboardType = UIKeyboardTypeDefault;
 			cell.textEditedSelector = @selector(setUsernameFromCell:);
+			cell.textField.textAlignment = UITextAlignmentLeft;
 			return cell;
 		} else {
-			TextCell *cell = [self textCell:tableView];
+			TextCell *cell = [self textCell:theTableView];
 			cell.label.text = @"Password";
 			cell.textField.text = self.password;
 			cell.textField.keyboardType = UIKeyboardTypeDefault;
 			cell.textField.secureTextEntry = YES;
 			cell.textEditedSelector = @selector(setPasswordFromCell:);
+			cell.textField.textAlignment = UITextAlignmentLeft;
 			return cell;
 		}
 	} else if ([indexPath section] == kLoginButtonSection) {
@@ -156,7 +149,7 @@ typedef enum _LoginSection {
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)theTableView titleForHeaderInSection:(NSInteger)section {
 	if (section == kLoginFieldSection) {
 		return @"Please login to continue:";
 	} else {
@@ -208,12 +201,12 @@ typedef enum _LoginSection {
 #pragma mark -
 #pragma mark Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([indexPath section] == kLoginButtonSection) {	
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		[theTableView deselectRowAtIndexPath:indexPath animated:YES];
 		[self login];
 	} else if ([indexPath section] == kSignupButtonSection) {	
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		[theTableView deselectRowAtIndexPath:indexPath animated:YES];
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]];
 	}
 }
@@ -237,14 +230,12 @@ typedef enum _LoginSection {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-	self.spinnerView = nil;
 }
 
 
 - (void)dealloc {
 	self.username = nil;
 	self.password = nil;
-	self.dgs = nil;
     [super dealloc];
 }
 

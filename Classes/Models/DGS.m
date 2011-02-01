@@ -251,6 +251,20 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 	}];
 }
 
+- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
+	
+	NSURL *url = [self URLWithPath:@"/join_waitingroom_game.php"];
+	
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"id"];
+	[request setPostValue:@"t" forKey:@"delete"];
+	[request setPostValue:@"Delete" forKey:@"deletebut"];
+	
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+		onSuccess();
+	}];
+}
+
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
@@ -564,6 +578,14 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 					CXMLElement *link = [[td nodesForXPath:@"a" error:&error] lastObject];
 					NSString *href = [[link attributeForName:@"href"] stringValue];
 					game.detailUrl = [self URLWithPath:[NSString stringWithFormat:@"/%@", href]];
+					NSArray *keyValues = [[[href componentsSeparatedByString:@"?"] lastObject] componentsSeparatedByString:@"&"];
+					NSLog(@"%@", keyValues);
+					for (NSString *keyValue in keyValues) {
+						NSArray *keyValuePair = [keyValue componentsSeparatedByString:@"="];
+						if ([[keyValuePair objectAtIndex:0] isEqualToString:@"info"]) {
+							game.gameId = [[keyValuePair lastObject] intValue];
+						}
+					}
 				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col1"]) {
 					NSString *data = [[[td nodesForXPath:@"a" error:&error] lastObject] stringValue];
                     game.opponent = data;
@@ -675,6 +697,28 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 					game.comment = [[rowData lastObject] stringValue];
 				} 
 			}			
+		} if ([tableRows count] == 15) { // Double game
+			for(int i = 0; i < [tableRows count]; i++) {
+				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
+				
+				if (i == 2) {
+					game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if (i == 3) {
+					game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+				} else if (i == 4) {
+					game.boardSize = [[[rowData lastObject] stringValue] intValue];
+				} else if (i == 5) {
+					game.komiTypeName = [[rowData lastObject] stringValue];
+				} else if (i == 7) {				
+					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+				} else if (i == 12) {
+					game.ratedString = [[rowData lastObject] stringValue];
+				} else if (i == 13) {
+					game.weekendClockString = [[rowData lastObject] stringValue];
+				} else if (i == 14) {
+					game.comment = [[rowData lastObject] stringValue];
+				} 
+			}			
 		} else if ([tableRows count] == 17 || [tableRows count] == 13) { // Handicap game
 			for(int i = 0; i < [tableRows count]; i++) {
 				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
@@ -703,6 +747,11 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 		if ([tableRows count] > 0) {
 			game = [self gameFromNewWaitingRoomDetailTable:tableRows game:game];
 		}
+	}
+	
+	NSArray *joinButton = [doc nodesForXPath:@"//td/input[@name='join']" error:&error];
+	if ([joinButton count] > 0) {
+		game.myGame = false;
 	}
 	[doc release];
 	return game;

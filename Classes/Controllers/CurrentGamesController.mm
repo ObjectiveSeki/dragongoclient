@@ -7,7 +7,6 @@
 // 
 
 #import "CurrentGamesController.h"
-#import "DGS.h"
 #import "Game.h"
 #import "GameViewController.h"
 #import "LoginViewController.h"
@@ -19,13 +18,10 @@
 
 @implementation CurrentGamesController
 
-@synthesize spinnerView;
-
 @synthesize games;
 @synthesize refreshButton;
 @synthesize gameTableView;
 @synthesize logoutButton;
-@synthesize dgs;
 @synthesize selectedCell;
 @synthesize logoutConfirmation;
 @synthesize bottomToolbar;
@@ -38,8 +34,6 @@
 	self.title = @"Your Move";
 	self.navigationItem.leftBarButtonItem = self.logoutButton;
 	self.navigationItem.rightBarButtonItem = self.refreshButton;
-	self.dgs = [[[DGS alloc] init] autorelease];
-	self.dgs.delegate = self;
 	[super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -141,7 +135,7 @@
 			if (game.sgfString) {
 				[self gotSgfForGame:game];
 			} else {
-				[dgs getSgfForGame:game onSuccess:^(Game *game) {
+				[self.gs getSgfForGame:game onSuccess:^(Game *game) {
 					[self gotSgfForGame:game];
 				}];
 			}
@@ -170,11 +164,8 @@
 	[DGSAppDelegate resetThrottle];
 	[self setEnabled:NO];	
 	
-	[self.spinnerView dismiss:NO];
-	self.spinnerView = nil;
-	self.spinnerView = [SpinnerView showInView:self.view];
-	self.spinnerView.label.text = @"Reloading...";
-	[self.dgs getCurrentGames:^(NSArray *currentGames) {
+	[self showSpinner:@"Reloading..."];
+	[self.gs getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
 		
 #if TEST_GAMES
@@ -194,8 +185,7 @@
 		[mutableCurrentGames release];
 #endif
 		
-		[self.spinnerView dismiss:YES];
-		self.spinnerView = nil;
+		[self hideSpinner:YES];
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 		
 		[self buildTableCells];
@@ -218,8 +208,7 @@
 }
 
 - (void)requestCancelled {
-	[self.spinnerView dismiss:NO];
-	self.spinnerView = nil;
+	[self hideSpinner:NO];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
@@ -230,9 +219,8 @@
 	if (alertView == self.logoutConfirmation) {
 		if (buttonIndex != alertView.cancelButtonIndex) {
 			[self setEnabled:NO];
-			self.spinnerView = [SpinnerView showInView:self.view];
-			self.spinnerView.label.text = @"Logging out...";
-			[dgs logout];
+			[self showSpinner:@"Logging out..."];
+			[self.gs logout];
 		}
 		self.logoutConfirmation = nil;
 	}
@@ -249,8 +237,6 @@
 
 
 - (void)gotSgfForGame:(Game *)game {
-	[self.selectedCell setAccessoryView:nil];
-	self.selectedCell = nil;
 	// Navigation logic may go here. Create and push another view controller.
 	GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:nil];
 	// ...
@@ -258,6 +244,8 @@
 	[gameViewController setGame:game];
 	[self.tabViewController.navigationController pushViewController:gameViewController animated:YES];
 	[gameViewController release];
+	[self.selectedCell setAccessoryView:nil];
+	self.selectedCell = nil;
 	[self setEnabled:YES];
 }
 
@@ -283,7 +271,6 @@
 	self.gameTableView = nil;
 	self.logoutButton = nil;
 	self.selectedCell = nil;
-	self.spinnerView = nil;
 	self.logoutConfirmation = nil;
 	self.bottomToolbar = nil;
 }
@@ -291,7 +278,6 @@
 
 - (void)dealloc {
 	self.games = nil;
-	self.dgs = nil;
 	self.tabViewController = nil;
     [super dealloc];
 }

@@ -11,20 +11,15 @@
 #import "NewGame.h"
 #import "LoginProtocol.h"
 #import "DGS.h"
-#import "SpinnerView.h"
+#import "JWTableViewController.h"
 
-@interface AddGameViewController : UITableViewController <LoginProtocol> {
+@interface AddGameViewController : JWTableViewController <LoginProtocol> {
 	TextCell *descriptionCell;
 	NewGame *newGame;
-	DGS *dgs;
-	SpinnerView *spinnerView;
 }
-
-@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) TextCell *descriptionCell;
 @property(nonatomic, retain) NewGame *newGame;
-@property(nonatomic, retain) DGS *dgs;
 
 - (void)notLoggedIn;
 - (void)loggedIn;

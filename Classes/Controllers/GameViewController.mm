@@ -1,4 +1,4 @@
-    //
+//
 //  GameViewController.mm
 //  DGSPhone
 //
@@ -13,8 +13,6 @@
 
 @implementation GameViewController
 
-@synthesize spinnerView;
-
 @synthesize game;
 @synthesize board;
 @synthesize boardView;
@@ -27,7 +25,6 @@
 @synthesize resignButton;
 @synthesize messageButton;
 @synthesize messageView;
-@synthesize	dgs;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -60,9 +57,7 @@
 	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	currentZoomScale = 1.0;
-	self.dgs = [[[DGS alloc] init] autorelease];
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [game opponent]];
-	dgs.delegate = self;
 }
 
 - (void)updateBoard {
@@ -147,15 +142,13 @@
 }
 
 - (void)playedMove {
-	[self.spinnerView dismiss:YES];
-	self.spinnerView = nil;
+	[self hideSpinner:YES];
 	[DGSAppDelegate invalidateThrottle];
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (IBAction)confirmMove {
-	self.spinnerView = [SpinnerView showInView:self.view];
-	self.spinnerView.label.text = @"Submitting...";
+	[self showSpinner:@"Submitting..."];
 	self.confirmButton.enabled = NO;
 	
 	NSString *reply = self.messageView.reply;
@@ -165,11 +158,11 @@
 	};
 	
 	if ([self.board beginningOfHandicapGame]) {
-		[self.dgs playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
+		[self.gs playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	} else if ([self.board gameEnded]) {
-		[self.dgs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
+		[self.gs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	} else {
-		[self.dgs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
+		[self.gs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	}
 }
 
@@ -204,8 +197,7 @@
 }
 
 - (void)requestCancelled {
-	[self.spinnerView dismiss:NO];
-	self.spinnerView = nil;
+	[self hideSpinner:NO];
 	self.confirmButton.enabled = YES;
 }
 
@@ -285,14 +277,12 @@
 	self.resignButton = nil;
 	self.messageButton = nil;
 	self.messageView = nil;
-	self.spinnerView = nil;
     [super viewDidUnload];
 }
 
 
 - (void)dealloc {
 	self.game = nil;
-	self.dgs = nil;
     [super dealloc];
 }
 

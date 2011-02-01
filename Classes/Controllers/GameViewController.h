@@ -9,19 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Game.h"
 #import "GoBoardView.h"
-#import "DGS.h"
-#import "SpinnerView.h"
 #import "MessageView.h"
+#import "RootViewController.h"
 
 enum BoardState {
 	kBoardStateZoomedOut,
 	kBoardStateZoomedIn,
 };
 
-@interface GameViewController : UIViewController <LoginProtocol> {
+@interface GameViewController : RootViewController <LoginProtocol> {
 	Game *game;
 	FuegoBoard *board;
-	DGS *dgs;
 	IBOutlet GoBoardView *boardView;
 	IBOutlet UIScrollView *scrollView;
 	IBOutlet UIBarButtonItem *undoButton;
@@ -35,10 +33,7 @@ enum BoardState {
 	float maximumZoomScale;
 	float minimumZoomScale;
 	float currentZoomScale;
-	SpinnerView *spinnerView;
 }
-
-@property (nonatomic, retain) SpinnerView *spinnerView;
 
 @property(nonatomic, retain) Game *game;
 @property(nonatomic, retain) FuegoBoard *board;
@@ -52,7 +47,6 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *messageButton;
 @property(nonatomic, retain) IBOutlet MessageView *messageView;
-@property(nonatomic, retain) DGS *dgs;
 
 - (IBAction)undoMove;
 - (IBAction)zoomOut;

@@ -10,7 +10,6 @@
 #ifdef CONFIGURATION_Debug
 #define DEBUG
 #define LOGGING
-#define DEVELOPMENT_DGS
 
 // set to '1' to see SGFs that test various aspects of 
 // the board view.

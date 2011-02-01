@@ -9,13 +9,12 @@
 #import "AddGameViewController.h"
 #import "TableCellFactory.h"
 #import "LoginViewController.h"
+#import "BooleanCell.h"
 
 
 @implementation AddGameViewController
 
-@synthesize spinnerView;
-
-@synthesize descriptionCell, newGame, dgs;
+@synthesize descriptionCell, newGame;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -31,8 +30,6 @@ typedef enum _AddGameSection {
     [super viewDidLoad];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	self.dgs = [[[DGS alloc] init] autorelease];
-	self.dgs.delegate = self;
 	
 	self.newGame = [[[NewGame alloc] init] autorelease];
     self.navigationItem.title = @"Create a Game";
@@ -80,16 +77,13 @@ typedef enum _AddGameSection {
 }
 
 - (void)requestCancelled {
-	[self.spinnerView dismiss:NO];
-	self.spinnerView = nil;
+	[self hideSpinner:NO];
 }
 
 - (IBAction)addGame {
-	self.spinnerView = [SpinnerView showInView:self.view];
-	self.spinnerView.label.text = @"Posting...";
-	[self.dgs addGame:self.newGame onSuccess:^() {
-		[self.spinnerView dismiss:YES];
-		self.spinnerView = nil;
+	[self showSpinner:@"Posting..."];
+	[self.gs addGame:self.newGame onSuccess:^() {
+		[self hideSpinner:YES];
 		[[self navigationController] popViewControllerAnimated:YES];
 	}];
 }
@@ -119,33 +113,42 @@ typedef enum _AddGameSection {
 	return 0;
 }
 
-- (UITableViewCell *)defaultCell:(UITableView *)tableView {
+- (UITableViewCell *)defaultCell:(UITableView *)theTableView {
 	static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }	
 	return cell;
 }
 
-- (TextCell *)textCell:(UITableView *)tableView {
+- (TextCell *)textCell:(UITableView *)theTableView {
 	static NSString *CellIdentifier = @"TextCell";
     
-    TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TextCell *cell = (TextCell *)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		cell = [TableCellFactory textCell];
+		cell = [[[TextCell alloc] init] autorelease];
     }
 	
 	return cell;
 }
 
-- (SelectCell *)selectCell:(UITableView *)tableView {
+- (SelectCell *)selectCell:(UITableView *)theTableView {
 	static NSString *CellIdentifier = @"SelectCell";
     
-    SelectCell *cell = (SelectCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SelectCell *cell = (SelectCell *)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [TableCellFactory selectCell];
+    }
+	
+	return cell;
+}
+
+- (BooleanCell *)booleanCell:(UITableView *)theTableView {
+    BooleanCell *cell = (BooleanCell *)[theTableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
+    if (cell == nil) {
+		cell = [[[BooleanCell alloc] init] autorelease];
     }
 	
 	return cell;
@@ -180,8 +183,8 @@ typedef enum _AddGameSection {
 	
 	// We want to update the table cells without deselecting 
 	// the current cell, so no #reloadData for you.
-	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:2]];
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:2];
+	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:kTimeSection]];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:kTimeSection];
 	if (oldByoYomiType == kByoYomiTypeFischer && byoYomiType != kByoYomiTypeFischer) {
 		[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
 		[indexPaths addObject:indexPath];
@@ -245,8 +248,8 @@ typedef enum _AddGameSection {
 	[self.newGame setCanadianTimePeriods:[[[timePeriodCell textField] text] intValue]];
 }
 
-- (SelectCell *)timeCell:(UITableView *)tableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit selector:(SEL)setSelector label:(NSString *)label {
-	SelectCell *cell = [self selectCell:tableView];
+- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit selector:(SEL)setSelector label:(NSString *)label {
+	SelectCell *cell = [self selectCell:theTableView];
 	NSString *timeString = [NSString stringWithFormat:@"%d %@", timeValue, [self.newGame timePeriodValue:timeUnit]];
 	NSArray *zeroToNine = [NSArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
 	NSArray *timePeriods = [NSArray arrayWithObjects:[self.newGame timePeriodValue:kTimePeriodHours], [self.newGame timePeriodValue:kTimePeriodDays], [self.newGame timePeriodValue:kTimePeriodMonths], nil];
@@ -263,13 +266,13 @@ typedef enum _AddGameSection {
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [self textCell:tableView];
+- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell *cell = [self textCell:theTableView];
 	if ([indexPath section] == kDescriptionSection) {
 
 		if ([indexPath row] == 0) {
-			TextCell *cell = [self textCell:tableView];
-			cell.label.text = @"Comment";
+			TextCell *cell = [self textCell:theTableView];
+			cell.textLabel.text = @"Comment";
 			cell.textField.text = self.newGame.comment;
 			cell.textField.keyboardType = UIKeyboardTypeDefault;
 			cell.textEditedSelector = @selector(setComment:);
@@ -279,7 +282,7 @@ typedef enum _AddGameSection {
 	if ([indexPath section] == kBoardSection) {
 		
 		if ([indexPath row] == 0) {
-			SelectCell *cell = [self selectCell:tableView];
+			SelectCell *cell = [self selectCell:theTableView];
 			NSString *boardSize = [NSString stringWithFormat:@"%d", self.newGame.boardSize];
 			NSArray *options = [NSArray arrayWithObjects:@"9", @"13", @"19", nil];
 			cell.label.text = @"Board Size";
@@ -290,7 +293,7 @@ typedef enum _AddGameSection {
 			cell.selectedOptions = [NSArray arrayWithObject:boardSize];
 			return cell;
 		} else if ([indexPath row] == 1) {
-			SelectCell *cell = [self selectCell:tableView];
+			SelectCell *cell = [self selectCell:theTableView];
 			NSString *komiType = [self.newGame komiTypeString];
 			NSArray *options = [NSArray arrayWithObjects:[self.newGame komiTypeString:kKomiTypeConventional], [self.newGame komiTypeString:kKomiTypeProper], nil];
 			cell.label.text = @"Komi Type";
@@ -303,9 +306,9 @@ typedef enum _AddGameSection {
 		}
 	} else if ([indexPath section] == kTimeSection) {
 		if ([indexPath row] == 0) {
-			return [self timeCell:tableView timeValue:self.newGame.timeValue timeUnit:self.newGame.timeUnit selector:@selector(setMainTime:) label:@"Main Time"];
+			return [self timeCell:theTableView timeValue:self.newGame.timeValue timeUnit:self.newGame.timeUnit selector:@selector(setMainTime:) label:@"Main Time"];
 		} else if ([indexPath row] == 1) {
-			SelectCell *cell = [self selectCell:tableView];
+			SelectCell *cell = [self selectCell:theTableView];
 			NSString *byoYomiType = [self.newGame byoYomiTypeString];
 			NSArray *options = [NSArray arrayWithObjects:[self.newGame byoYomiTypeString:kByoYomiTypeJapanese], [self.newGame byoYomiTypeString:kByoYomiTypeCanadian], [self.newGame byoYomiTypeString:kByoYomiTypeFischer], nil];
 			cell.label.text = @"Byo-Yomi";
@@ -317,23 +320,23 @@ typedef enum _AddGameSection {
 			return cell;
 		} else if ([indexPath row] == 2) {
 			if (self.newGame.byoYomiType == kByoYomiTypeJapanese) {
-				return [self timeCell:tableView timeValue:self.newGame.japaneseTimeValue timeUnit:self.newGame.japaneseTimeUnit selector:@selector(setExtraTimeJapanese:) label:@"Extra Time"];
+				return [self timeCell:theTableView timeValue:self.newGame.japaneseTimeValue timeUnit:self.newGame.japaneseTimeUnit selector:@selector(setExtraTimeJapanese:) label:@"Extra Time"];
 			} else if (self.newGame.byoYomiType == kByoYomiTypeCanadian) {
-				return [self timeCell:tableView timeValue:self.newGame.canadianTimeValue timeUnit:self.newGame.canadianTimeUnit selector:@selector(setExtraTimeCanadian:) label:@"Extra Time"];
+				return [self timeCell:theTableView timeValue:self.newGame.canadianTimeValue timeUnit:self.newGame.canadianTimeUnit selector:@selector(setExtraTimeCanadian:) label:@"Extra Time"];
 			} else if (self.newGame.byoYomiType == kByoYomiTypeFischer) {
-				return [self timeCell:tableView timeValue:self.newGame.fischerTimeValue timeUnit:self.newGame.fischerTimeUnit selector:@selector(setExtraTimeFischer:) label:@"Extra Per Move"];
+				return [self timeCell:theTableView timeValue:self.newGame.fischerTimeValue timeUnit:self.newGame.fischerTimeUnit selector:@selector(setExtraTimeFischer:) label:@"Extra Per Move"];
 			}
 		} else if ([indexPath row] == 3) {
 			if (self.newGame.byoYomiType == kByoYomiTypeJapanese) {
-				TextCell *cell = [self textCell:tableView];
-				cell.label.text = @"Extra Periods";
+				TextCell *cell = [self textCell:theTableView];
+				cell.textLabel.text = @"Extra Periods";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.newGame.japaneseTimePeriods];
 				cell.textEditedSelector = @selector(setJapaneseTimePeriods:);
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 				return cell;
 			} else if (self.newGame.byoYomiType == kByoYomiTypeCanadian) {
-				TextCell *cell = [self textCell:tableView];
-				cell.label.text = @"Extra Stones";
+				TextCell *cell = [self textCell:theTableView];
+				cell.textLabel.text = @"Extra Stones";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.newGame.canadianTimePeriods];
 				cell.textEditedSelector = @selector(setCanadianTimePeriods:);
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
@@ -415,13 +418,11 @@ typedef enum _AddGameSection {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.descriptionCell = nil;
-	self.spinnerView = nil;
 }
 
 
 - (void)dealloc {
 	self.newGame = nil;
-	self.dgs = nil;
     [super dealloc];
 }
 

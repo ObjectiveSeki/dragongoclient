@@ -41,6 +41,7 @@
 	STAssertEquals([[games objectAtIndex:0] boardSize], 19, nil);
 	STAssertEqualObjects([[games objectAtIndex:0] opponentRating], @"1 dan (0%)", nil);
 	STAssertNil([[games objectAtIndex:17] opponentRating], nil);
+	STAssertEquals([[games objectAtIndex:0] gameId], 124895, nil);
 }
 
 - (void)testParseWaitingRoomDetail {
@@ -57,6 +58,7 @@
 	STAssertEqualObjects(game.weekendClockString, @"Yes", nil);
 	STAssertEqualObjects(game.komiTypeName, @"Proper handicap", nil);
 	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.0, (CGFloat)0.25, nil);
+	STAssertFalse(game.myGame, nil);
 	
 	testData = [NSString stringWithContentsOfFile:@"TestData/waiting-detail-cn.html" encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_CN) error:nil];
 	
@@ -71,7 +73,22 @@
 	STAssertEqualObjects(game.weekendClockString, @"是", nil);
 	STAssertEqualObjects(game.komiTypeName, @"猜子分先", nil);
 	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.5, (CGFloat)0.25, nil);
+	STAssertFalse(game.myGame, nil);
 	
+	testData = [NSString stringWithContentsOfFile:@"TestData/owned_game.html" encoding:NSUTF8StringEncoding error:nil];
+	
+	dgs = [[DGS alloc] init];
+	game = [dgs gameFromWaitingRoomDetailTable:testData game:[[[NewGame alloc] init] autorelease]];
+	[dgs release];
+	STAssertEqualObjects(game.opponent, @"test (test1)", nil);
+	STAssertEquals(game.boardSize, 19, nil);
+	STAssertEqualObjects(game.opponentRating, @"18 kyu (0%)", nil);
+	STAssertEqualObjects(game.comment, @"This is my comment", nil);
+	STAssertEqualObjects(game.ratedString, @"No", nil);
+	STAssertEqualObjects(game.weekendClockString, @"Yes", nil);
+	STAssertEqualObjects(game.komiTypeName, @"Even game with nigiri (Manual setting)", nil);
+	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.5, (CGFloat)0.25, nil);
+	STAssertTrue(game.myGame, nil);
 }
 
 @end

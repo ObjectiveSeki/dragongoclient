@@ -1,22 +1,16 @@
 //
-//  DGS.h
-//  DGSPhone
-//
-//  Created by Justin Weiss on 6/3/10.
-//  Copyright 2010 Justin Weiss. All rights reserved.
+//  GameServer.h
+//  Protocol representing a game server.
 //
 
 #import <Foundation/Foundation.h>
-#import "LoginProtocol.h"
-#import "Game.h"
 #import "NewGame.h"
+#import "Game.h"
+#import "LoginProtocol.h"
 
-@interface DGS : NSObject {
-	id <LoginProtocol> delegate;
-}
+@protocol GameServerProtocol
 
 @property(nonatomic, assign) id <LoginProtocol> delegate;
-
 
 // Logic tests can't test anything that uses the native iPhone functionality.
 // Therefore, we don't want to compile anything that hits the network
@@ -41,11 +35,4 @@
 
 #endif
 
-- (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
-
-// Internal, but these have to be exposed so the logic tests can hit them
-- (NSArray *)gamesFromCSV:(NSString *)csvData;
-- (NSArray *)gamesFromTable:(NSString *)htmlString;
-- (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString;
-- (NewGame *)gameFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game;
 @end

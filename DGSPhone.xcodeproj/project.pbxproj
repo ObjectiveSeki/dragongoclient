@@ -73,6 +73,7 @@
 		DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */; };
 		DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE1212F14EC8003FEE23 /* Board@2x.png */; };
 		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
+		DA2EE1BB12F6790B003FEE23 /* owned_game.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2EE1BA12F6790B003FEE23 /* owned_game.html */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D90C11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
@@ -203,6 +204,7 @@
 		DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C42F12CEA8510059DAF0 /* TableSection.m */; };
 		DA82C4AB12CECC570059DAF0 /* JWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
+		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
 		DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
 		DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
 		DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
@@ -428,6 +430,8 @@
 		DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail-cn.html"; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
 		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
+		DA2EE1BA12F6790B003FEE23 /* owned_game.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = owned_game.html; sourceTree = "<group>"; };
+		DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServerProtocol.h; sourceTree = "<group>"; };
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		DA37D9C111BF6E5100BC1445 /* Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Board.png; sourceTree = "<group>"; };
@@ -680,6 +684,8 @@
 		DA82C4AA12CECC570059DAF0 /* JWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWTableViewController.m; sourceTree = "<group>"; };
 		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
+		DA84D67812F7A0160038D775 /* BooleanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanCell.h; sourceTree = "<group>"; };
+		DA84D67912F7A0160038D775 /* BooleanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanCell.m; sourceTree = "<group>"; };
 		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DA94CB7512469D230060FD44 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = /Developer/Library/Frameworks/SenTestingKit.framework; sourceTree = "<absolute>"; };
@@ -1002,6 +1008,8 @@
 				DA02D15911D99E4500A9D887 /* TextCell.m */,
 				DA8366CD11DC3606001A68F9 /* SelectCell.h */,
 				DA8366CE11DC3606001A68F9 /* SelectCell.m */,
+				DA84D67812F7A0160038D775 /* BooleanCell.h */,
+				DA84D67912F7A0160038D775 /* BooleanCell.m */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -1154,6 +1162,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4026C811D06C5A005017C4 /* LoginProtocol.h */,
+				DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1619,6 +1628,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */,
+				DA2EE1BA12F6790B003FEE23 /* owned_game.html */,
 				DA2A2AC212D010A600774A54 /* waiting-detail.html */,
 				DAFADA4E12CF0EF100985126 /* waiting.html */,
 				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
@@ -1935,6 +1945,7 @@
 				DAFADA4F12CF0EF100985126 /* waiting.html in Resources */,
 				DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */,
 				DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */,
+				DA2EE1BB12F6790B003FEE23 /* owned_game.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1987,6 +1998,7 @@
 				DA82C4AB12CECC570059DAF0 /* JWTableViewController.m in Sources */,
 				DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */,
 				DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */,
+				DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

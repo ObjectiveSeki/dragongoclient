@@ -8,20 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class TextCell;
 
 @interface TextCell : UITableViewCell <UITextFieldDelegate> {
 	IBOutlet UILabel *label;
 	IBOutlet UITextField *textField;
 	IBOutlet UIView *content;
 	SEL textEditedSelector;
-	void (^onChanged)();
+	void (^onChanged)(TextCell *textCell);
 }
 
 @property(nonatomic, retain) IBOutlet UILabel *label;
 @property(nonatomic, retain) IBOutlet UITextField *textField;
 @property(nonatomic) SEL textEditedSelector;
 @property(nonatomic, retain) IBOutlet UIView *content;
-@property(nonatomic, copy) void (^onChanged)();
+@property(nonatomic, copy) void (^onChanged)(TextCell *textCell);
 
 - (id)init;
 
