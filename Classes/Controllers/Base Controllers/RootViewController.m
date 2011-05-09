@@ -1,7 +1,5 @@
 
 #import "RootViewController.h"
-#import "DGS.h"
-
 
 @implementation RootViewController
 @synthesize tabViewController;
@@ -9,7 +7,7 @@
 @synthesize gs;
 
 - (void)viewDidLoad {
-	self.gs = [[[DGS alloc] init] autorelease];
+	self.gs = [[[NSClassFromString(SERVER_CLASS) alloc] init] autorelease];
 	self.gs.delegate = self;
 }
 
@@ -20,7 +18,7 @@
 
 - (void)showSpinner:(NSString *)message {
 	[self hideSpinner:NO];
-	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView = [SpinnerView showInView:self.navigationController.view];
 	self.spinnerView.label.text = message;
 }
 

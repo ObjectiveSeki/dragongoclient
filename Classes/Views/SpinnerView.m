@@ -56,7 +56,7 @@
 	[view addSubview:spinnerView];
 	[view bringSubviewToFront:spinnerView];
 	
-	[UIView animateWithDuration:0.2 delay:0.0 options:0 animations:^(void) {
+	[UIView animateWithDuration:0.3 delay:0.0 options:0 animations:^(void) {
 		spinnerView.transform = CGAffineTransformMakeScale(1, 1);
 		spinnerView.alpha = 1.0;
 	} completion:nil];
@@ -66,7 +66,7 @@
 
 - (void)dismiss:(BOOL)animate {
 	if (animate) {
-		[UIView animateWithDuration:0.2 delay:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^(void) {
+		[UIView animateWithDuration:0.3 delay:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^(void) {
 			self.transform = CGAffineTransformMakeScale(2, 2);
 			self.alpha = 0.0;
 		} completion:^(BOOL completion) {

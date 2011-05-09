@@ -12,11 +12,9 @@
 #import "NewGame.h"
 
 #ifndef LOGIC_TEST_MODE
-#import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 #import "DGSPhoneAppDelegate.h"
 
-typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseString);
 #endif
 
 @implementation DGS
@@ -32,8 +30,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
-	NSString *baseString = DGS_SITE;
-	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseString, path]];
+	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://www.dragongoserver.net", path]];
 }
 
 #ifndef LOGIC_TEST_MODE

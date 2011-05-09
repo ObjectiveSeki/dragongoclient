@@ -11,6 +11,12 @@
 #import "Game.h"
 #import "NewGame.h"
 
+#ifndef LOGIC_TEST_MODE
+#import "ASIHTTPRequest.h"
+
+typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseString);
+#endif
+
 @interface DGS : NSObject {
 	id <LoginProtocol> delegate;
 }
@@ -38,6 +44,9 @@
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
 - (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
+
+// Starts an asynchronous request, calling onSuccess when the request finishes.
+- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess;
 
 #endif
 

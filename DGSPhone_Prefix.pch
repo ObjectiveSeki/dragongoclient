@@ -24,9 +24,9 @@
 #define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
 
 #ifdef DEVELOPMENT_DGS
-#	define DGS_SITE @"http://localhost.local/~jweiss/DragonGoServer"
+#	define SERVER_CLASS @"DGSDev"
 #else
-#	define DGS_SITE @"http://www.dragongoserver.net"
+#	define SERVER_CLASS @"DGS"
 #endif
 
 #ifdef LOGGING

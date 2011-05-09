@@ -5,8 +5,8 @@
 @implementation JoinWaitingRoomGameController
 
 @synthesize game;
-@synthesize dgs;
 @synthesize message;
+@synthesize deleteConfirmation;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -85,7 +85,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.dgs = [[[DGS alloc] init] autorelease];
 	
 	NSMutableArray *sections = [NSMutableArray array];
 	if (self.game.comment) {
@@ -135,11 +134,13 @@
 	
 	buttonRow.cellTouched = ^(UITableViewCell *cell) {
 		if (game.myGame) {
-			[self.dgs deleteWaitingRoomGame:game.gameId onSuccess:^() {
-				[self.navigationController popToRootViewControllerAnimated:YES];
-			}];
+            [cell setSelected:NO];
+			self.deleteConfirmation = [[UIAlertView alloc] initWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" delegate:self cancelButtonTitle:@"Don't delete" otherButtonTitles:@"Delete", nil];
+            [self.deleteConfirmation show];
 		} else {
-			[self.dgs joinWaitingRoomGame:game.gameId comment:self.message onSuccess:^() {
+            [self showSpinner:@"Joining..."];
+			[self.gs joinWaitingRoomGame:game.gameId comment:self.message onSuccess:^() {
+                [self hideSpinner:YES];
 				[self.navigationController popToRootViewControllerAnimated:YES];
 			}];
 		}
@@ -153,6 +154,19 @@
 	self.tableSections = sections;
 }
 
+// Handles dismissing the logout confirmation.
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (alertView == self.deleteConfirmation) {
+		if (buttonIndex != alertView.cancelButtonIndex) {
+            [self showSpinner:@"Deleting..."];
+			[self.gs deleteWaitingRoomGame:game.gameId onSuccess:^() {
+                [self hideSpinner:YES];
+				[self.navigationController popToRootViewControllerAnimated:YES];
+			}];
+		}
+		self.deleteConfirmation = nil;
+	}
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -178,8 +192,8 @@
 
 - (void)dealloc {
 	self.game = nil;
-	self.dgs = nil;
 	self.message = nil;
+    self.deleteConfirmation = nil;
     [super dealloc];
 }
 

@@ -231,9 +231,9 @@
 
 - (IBAction)refreshGames {
 	[DGSAppDelegate resetThrottle];
-	[self setEnabled:NO];	
 	
 	[self showSpinner:@"Reloading..."];
+	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
 		

@@ -16,6 +16,8 @@
 		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
+		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
+		DA0762B81377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
 		DA08A5751294CD930098A0C6 /* BWGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5551294CD930098A0C6 /* BWGlobal.h */; };
 		DA08A5761294CD930098A0C6 /* BWHockeyController.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5561294CD930098A0C6 /* BWHockeyController.h */; };
 		DA08A5771294CD930098A0C6 /* BWHockeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5571294CD930098A0C6 /* BWHockeyController.m */; };
@@ -491,6 +493,8 @@
 		DA02D14C11D99D7600A9D887 /* TableCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellFactory.m; sourceTree = "<group>"; };
 		DA02D15811D99E4500A9D887 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
+		DA0762B51377B678003E0390 /* DGSDev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSDev.h; sourceTree = "<group>"; };
+		DA0762B61377B678003E0390 /* DGSDev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSDev.m; sourceTree = "<group>"; };
 		DA08A5551294CD930098A0C6 /* BWGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWGlobal.h; path = vendor/Hockey/client/BWGlobal.h; sourceTree = "<group>"; };
 		DA08A5561294CD930098A0C6 /* BWHockeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyController.h; path = vendor/Hockey/client/BWHockeyController.h; sourceTree = "<group>"; };
 		DA08A5571294CD930098A0C6 /* BWHockeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyController.m; path = vendor/Hockey/client/BWHockeyController.m; sourceTree = "<group>"; };
@@ -1492,6 +1496,8 @@
 				DA82C3FE12CEA1300059DAF0 /* TableRow.m */,
 				DA82C42E12CEA8510059DAF0 /* TableSection.h */,
 				DA82C42F12CEA8510059DAF0 /* TableSection.m */,
+				DA0762B51377B678003E0390 /* DGSDev.h */,
+				DA0762B61377B678003E0390 /* DGSDev.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2250,6 +2256,7 @@
 				DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */,
 				DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */,
 				DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */,
+				DA0762B71377B678003E0390 /* DGSDev.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2380,6 +2387,7 @@
 				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
 				DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */,
 				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */,
+				DA0762B81377B678003E0390 /* DGSDev.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
