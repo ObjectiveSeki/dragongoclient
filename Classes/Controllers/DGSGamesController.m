@@ -40,7 +40,7 @@
 	};
 	firstRow.cellTouched = ^(UITableViewCell *cell) {
 		AddGameViewController *addGameController = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
-		[[self.tabViewController navigationController] pushViewController:addGameController animated:YES];
+		[[self navigationController] pushViewController:addGameController animated:YES];
 		[addGameController release];
 	};
 	[newGameSection addRow:firstRow];
@@ -64,7 +64,7 @@
 		
 		[self.gs getWaitingRoomGames:^(NSArray *games) {
 			[waitingRoomGamesController setGames:games];
-			[[self.tabViewController navigationController] pushViewController:waitingRoomGamesController animated:YES];
+			[[self navigationController] pushViewController:waitingRoomGamesController animated:YES];
 			[waitingRoomGamesController release];
 			[cell setAccessoryView:nil];
 		}];

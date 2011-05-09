@@ -12,6 +12,9 @@
 #import "LoginViewController.h"
 #import "DGSPhoneAppDelegate.h"
 
+#import "AddGameViewController.h"
+#import "WaitingRoomGamesController.h"
+
 #if defined (CONFIGURATION_Adhoc)
 #import "BWHockeyController.h"
 #endif
@@ -112,7 +115,7 @@
 	for (Game *game in self.games) {
 		TableRow *row = [[TableRow alloc] init];
 		row.cellClass = [UITableViewCell class];
-		row.cellInit = ^() {
+		row.cellInit = ^UITableViewCell*() {
 			return [[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
 		};
 		row.cellSetup = ^(UITableViewCell *cell) {
@@ -143,12 +146,78 @@
 		[firstSection addRow:row];
 		[row release];		
 	}
-	
+    
 	[sections addObject:firstSection];
+	[firstSection release];	
+    
+    TableSection *serverGamesSection = [[TableSection alloc] init];
+    serverGamesSection.headerString = @"Start a Game";
+    
+    TableRow *row;
+    
+    row = [[TableRow alloc] init];
+    row.cellClass = [UITableViewCell class];
+    row.cellInit = ^UITableViewCell*() {
+        return [[[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+    };
+    row.cellSetup = ^(UITableViewCell *cell) {
+        [[cell textLabel] setText:@"Join a game"];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    };
+    row.cellTouched = ^(UITableViewCell *cell) {
+        self.selectedCell = cell;
+        UIActivityIndicatorView *activityView = 
+        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [activityView startAnimating];
+        [cell setAccessoryView:activityView];
+        [activityView release];
+        
+        WaitingRoomGamesController *controller = [[WaitingRoomGamesController alloc] initWithNibName:@"WaitingRoomGamesView" bundle:nil];
+        
+		[self.gs getWaitingRoomGames:^(NSArray *postedGames) {
+			[controller setGames:postedGames];
+			[self.navigationController pushViewController:controller animated:YES];
+			[controller release];
+            [self.selectedCell setAccessoryView:nil];
+            self.selectedCell = nil;
+            [self setEnabled:YES];
+		}];
+        
+    };
+    [serverGamesSection addRow:row];
+    [row release];
+    
+    row = [[TableRow alloc] init];
+    row.cellClass = [UITableViewCell class];
+    row.cellInit = ^UITableViewCell*() {
+        return [[[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+    };
+    row.cellSetup = ^(UITableViewCell *cell) {
+        [[cell textLabel] setText:@"Create a new game"];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    };
+    row.cellTouched = ^(UITableViewCell *cell) {
+        self.selectedCell = cell;
+        UIActivityIndicatorView *activityView = 
+        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [activityView startAnimating];
+        [cell setAccessoryView:activityView];
+        [activityView release];
+        
+        AddGameViewController *controller = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
+        [self.navigationController pushViewController:controller animated:YES];
+		[controller release];
+        [self.selectedCell setAccessoryView:nil];
+        self.selectedCell = nil;
+        [self setEnabled:YES];
+    };
+    [serverGamesSection addRow:row];
+    [row release];
+    
+    [sections addObject:serverGamesSection];
 	
 	self.tableSections = sections;
 	
-	[firstSection release];	
 }
 
 - (IBAction)refreshGamesWithThrottling {
@@ -198,13 +267,13 @@
 - (void)notLoggedIn {
 	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
 	loginViewController.delegate = self;
-	[self.tabViewController presentModalViewController:loginViewController animated:YES];
+	[self presentModalViewController:loginViewController animated:YES];
 	[loginViewController notLoggedIn];
 	[loginViewController release];
 }
 
 - (void)loggedIn {
-	[self.tabViewController dismissModalViewControllerAnimated:YES];
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)requestCancelled {
@@ -242,7 +311,7 @@
 	// ...
 	// Pass the selected object to the new view controller.
 	[gameViewController setGame:game];
-	[self.tabViewController.navigationController pushViewController:gameViewController animated:YES];
+	[self.navigationController pushViewController:gameViewController animated:YES];
 	[gameViewController release];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
@@ -278,7 +347,6 @@
 
 - (void)dealloc {
 	self.games = nil;
-	self.tabViewController = nil;
     [super dealloc];
 }
 

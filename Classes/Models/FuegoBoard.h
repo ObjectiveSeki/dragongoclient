@@ -14,9 +14,8 @@
 #import "Move.h"
 
 @interface FuegoBoard : NSObject {
-	GoGameRecord *goGame;
-	GoBoard *goBoard;
-	SgNode *startNode;
+	GoGame *goGame;
+	const SgNode *startNode;
 	Move *resignMove;
 	NSArray *markedGroups;
 	NSArray *changedGroups;

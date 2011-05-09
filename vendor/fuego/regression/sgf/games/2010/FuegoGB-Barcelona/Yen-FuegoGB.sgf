@@ -1,0 +1,1275 @@
+(;GM[1]FF[4]SZ[13]
+PB[Fuego-GB Prototype]
+PW[Shi-Jim Yen]WR[6 Dan]
+RE[W+R]
+DT[2010-07-20]
+AB[dj][jd]KM[0.500000]BL[2700.000000]WL[2700.000000]TM[2700.0]OM[0]OP[0.0]HA[2]
+;W[jj]WL[2700.000000];B[dd]BL[2687.228864]
+C[GoUctPlayer: Forced opening move
+];W[kf]WL[2682.949185];B[dg]BL[2639.817130]
+C[SgDefaultTimeControl: timeLeft=2698 remaining=31.5 timeMove=85.6508
+GoUctPlayer: Reusing 1419001 nodes (62%)
+ 0:05 | 0.611 | 870778.000 | 0 | G10 C6 D6 C5 D5 D7 E7 C4 C7 D8 C8 D9 C9 D3 E3 D2 E9 E4 F4 E6 F6 F7
+ 0:10 | 0.610 | 1629072.000 | 0 | G10 C6 D6 D7 E6 C5 C4 C9 G3 C10 D11 C11 C12 J3 E7 B12 D8 C7 D9 D12 E12 C13 E13 E8 E9 F9 F8 G9 H9
+ 0:15 | 0.609 | 2355118.000 | 0 | D7 G11 H10 E11 H11 D11 C11 C10 C9 B10 B9 B11 C12 D9 E10 C8 E9 D8 E8 B8 H3 B12 B13 A12 C13 D12 D13 E13 F13
+ 0:20 | 0.610 | 3035376.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 K8 L9 H11 K9 E10 F10 F8 H12 J12 H9 G8 J11 J10 K11 G12 L10 H13 L11 K12 L12 L13 M13
+ 0:25 | 0.609 | 3653072.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 K8 G8 H9 K7 F8 E9 J7 K9 K6 L7 J9 J8 H8 E8 F7 E7 E6 F6 G7 D6 E5 C7 *
+ 0:30 | 0.609 | 4269386.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 K8 G8 H9 K7 F8 E9 J7 K9 K6 L7 J9 J8 H8 E8 F7 E7 E6 F6 G7 D6 E5 C7 *
+ 0:35 | 0.610 | 4869150.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 K8 G8 H9 K7 F8 E9 J7 K9 K6 L7 J9 J8 H8 E8 F7 E7 E6 F6 G7 D6 E5 C7 *
+ 0:40 | 0.610 | 5476070.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 G8 F8 F7 H11 G7 J10 J9 H9 J8 K11 L10 D8 C8 E7 E6 E8 C7 L11 H4 J3 H3 H2 *
+ 0:45 | 0.610 | 6067224.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 G8 F8 F7 H11 G7 J10 J9 H9 J8 K11 L10 D8 C8 E7 E6 E8 C7 L11 H4 J3 H3 H2 *
+ 0:50 | 0.610 | 6893870.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 G8 F8 F7 H11 G7 J10 J9 H9 J8 K11 L10 D8 C8 E7 E6 E8 C7 L11 H4 J3 H3 H2 *
+ 0:55 | 0.610 | 7601876.000 | 0 | D7 G11 H10 E11 D11 G10 G9 F9 G8 F8 F7 H11 G7 J10 J9 H9 J8 K11 L10 D8 C8 E7 E6 E8 C7 L11 H4 J3 H3 H2 *
+[109\] SgUctSearch: move cannot change anymore
+Count          7.9425e+06
+Nodes          619877260
+Proven         0
+Time           58
+GameLen        202.6 dev=6.4 min=121.0 max=292.0
+InTree         19.0 dev=7.3 min=2.0 max=45.0
+Aborted        0%
+Games/s        136714.8
+RawGames/s     145355.0
+Value          0.61
+Sequence       D7 G11 H10 E11 D11 G10 G9 F9 G8 E10 H11 F8 F7 G7 H7 G6 H6 G5 
+H5 G4 K8 E7 L7 D8 C8 C7 D6 C9 B8 D9 B9 B10 B7 H9 H8 H4 J9 J5 
+J6 K6 K7 L6 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[hc]WL[2645.349787];B[jf]BL[2598.562390]
+C[SgDefaultTimeControl: timeLeft=2639 remaining=31.5 timeMove=83.7778
+GoUctPlayer: Reusing 13806062 nodes (2%)
+ 0:05 | 0.616 | 1019380.000 | 0 | K8 K7 J8 L9 L10 E11 L7 K6 E10 D11 C11 F10 F9 F11 C12 G9 F8 G8 G7 H7 G6 H6 H5 G5 G4 H4 J4 J5
+ 0:10 | 0.618 | 1689542.000 | 0 | K8 K7 J8 L9 L10 E11 L7 K6 E10 D11 C11 C12 M7 C10 C9 B11 G4 B9 K9 C8 J3 K3 K2 L2 J2 J4 H4 F3 H3 H5 *
+ 0:15 | 0.620 | 2378498.000 | 0 | K8 K7 J8 L9 L10 E11 L7 K6 E10 D11 C11 C12 M7 C10 C9 B11 G4 B9 L5 K5 M9 L4 C8 F10 M5 E9 D9 F9 E8 F8 *
+ 0:20 | 0.619 | 3063292.000 | 0 | K8 K7 J8 L9 L10 E11 L7 K6 E10 D11 C11 C12 M7 C10 C9 B11 G4 B9 L5 K5 M9 L4 C8 F10 M5 E9 D9 F9 E8 F8 *
+ 0:25 | 0.617 | 3718838.000 | 0 | K8 K7 J8 L9 L10 D3 C3 F11 K9 E4 E3 D2 L7 L6 M7 F3 E5 F4 D5 F5 K6 K5 J7 C2 L5 L4 M6 M5 L6 M4 *
+ 0:30 | 0.618 | 4347636.000 | 0 | K8 K7 J8 L9 L10 D3 C3 F11 K9 E4 E3 D2 L7 F3 L6 K6 E5 F4 L5 L4 K5 J5 J4 C4 D5 J3 H5 H4 J6 G5 *
+ 0:35 | 0.619 | 5001812.000 | 0 | K8 K7 J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 E9 J7 D8 C8 C7 C9 D6 E7 F7 E6 F6 E5 F5 *
+ 0:40 | 0.620 | 5648050.000 | 0 | K8 K7 J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 H7 E9 F9 J7 J6 H6 D8 C8 E7 E6 C7 D6 C6 *
+[73\] SgUctSearch: move cannot change anymore
+Count          5.65726e+06
+Nodes          427378580
+Proven         0
+Time           40
+GameLen        200.1 dev=nan min=123.0 max=288.0
+InTree         19.8 dev=4.9 min=2.0 max=41.0
+Aborted        0%
+Games/s        133852.0
+RawGames/s     142932.8
+Value          0.62
+Sequence       K8 K7 J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 H7 E9 
+F9 J7 J6 H6 D8 C8 E7 E6 C7 D6 C6 B7 B6 B8 
+TimeInitTree   0.12
+TimeRootFilter 0.00
+];W[jg]WL[2637.977268];B[if]BL[2578.254575]
+C[SgDefaultTimeControl: timeLeft=2598 remaining=31.5 timeMove=82.4762
+GoUctPlayer: Reusing 273244095 nodes (91%)
+ 0:05 | 0.619 | 6959595.000 | 0 | J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 J7 E9 F9 H7 F8 H6 H8 H9 G8 M10 D8 C8 C7 B7 B8 *
+ 0:10 | 0.620 | 7657753.000 | 0 | J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 J7 E9 F9 H7 F8 H6 H8 H9 G8 M10 D8 C8 C7 B7 B8 *
+ 0:15 | 0.621 | 8327803.000 | 0 | J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 J7 E9 F9 H7 F8 H6 H8 H9 G8 M10 D8 C8 C7 B7 B8 *
+[64\] SgUctSearch: move cannot change anymore
+Count          8.61452e+06
+Nodes          454169856
+Proven         0
+Time           17
+GameLen        197.6 dev=11.3 min=127.0 max=278.0
+InTree         18.9 dev=4.7 min=2.0 max=42.0
+Aborted        0%
+Games/s        138096.5
+RawGames/s     147532.5
+Value          0.62
+Sequence       J8 L9 L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 J7 E9 F9 H7 
+F8 H6 H8 H9 G8 M10 D8 C8 C7 B7 B8 C9 B9 
+TimeInitTree   2.33
+TimeRootFilter 0.00
+];W[ke]WL[2624.631546];B[kd]BL[2567.338578]
+C[SgDefaultTimeControl: timeLeft=2578 remaining=31.5 timeMove=81.8413
+GoUctPlayer: Reusing 414671600 nodes (88%)
+ 0:05 | 0.622 | 10332255.000 | 0 | L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 J7 E9 F9 H7 F8 H6 H8 H9 G8 M10 D8 C8 C7 B7 B8 C9 B9
+[57\] SgUctSearch: move cannot change anymore
+Count          1.06093e+07
+Nodes          492188223
+Proven         0
+Time           6.9
+GameLen        196.0 dev=14.3 min=125.0 max=281.0
+InTree         16.9 dev=5.8 min=3.0 max=39.0
+Aborted        0%
+Games/s        148742.2
+RawGames/s     157833.3
+Value          0.62
+Sequence       L10 D3 C3 F11 K9 C4 E3 L7 D2 E10 D11 E8 D9 J7 E9 F9 H7 F8 H6 
+H8 H9 G8 M10 D8 C8 C7 B7 B8 C9 B9 
+TimeInitTree   3.53
+TimeRootFilter 0.00
+];W[dc]WL[2566.614271];B[cc]BL[2551.438277]
+C[SgDefaultTimeControl: timeLeft=2567 remaining=31.5 timeMove=81.4921
+GoUctPlayer: Reusing 208901840 nodes (24%)
+ 0:05 | 0.614 | 5842175.000 | 0 | C11 E10 E11 D12 F10 E9 F11 C10 D9 D8 C9 C8 B9 E8 G8 B11 B8 C7 C12 B12 B7 C6 C13 D13 B10 B13 C10 B6 B4 E4 *
+ 0:10 | 0.613 | 6335791.000 | 0 | C11 E10 E11 D12 F10 E9 F11 C10 D9 D8 C9 C8 B9 E8 G8 B11 B8 C7 C12 B12 B7 C6 C13 D13 B10 B13 C10 B6 B4 E4 *
+[37\] SgUctSearch: move cannot change anymore
+Count          6.66084e+06
+Nodes          293685942
+Proven         0
+Time           13
+GameLen        197.8 dev=14.3 min=127.0 max=278.0
+InTree         38.9 dev=8.1 min=2.0 max=60.0
+Aborted        0%
+Games/s        99774.8
+RawGames/s     105894.4
+Value          0.61
+Sequence       C11 E10 E11 D12 F10 E9 F11 C10 D9 D8 C9 C8 B9 E8 G8 B11 B8 C7 
+C12 B12 B7 C6 C13 D13 B10 B13 C10 B6 B4 E4 E3 F4 D5 M10 M11 K9 
+J10 J9 M9 N10 N9 
+TimeInitTree   2.07
+TimeRootFilter 0.00
+];W[ec]WL[2554.000904];B[kg]BL[2511.024550]
+C[SgDefaultTimeControl: timeLeft=2551 remaining=31.5 timeMove=80.9841
+GoUctPlayer: Reusing 1780595 nodes (78%)
+ 0:05 | 0.625 | 843961.000 | 0 | L7 L6 M7 M6 H6 K6 E10 C12 F11 C10 C9 B11 H3 F10 G10 F9 G9 F8 G8 G7 F7 F6 G6 H7
+ 0:10 | 0.620 | 1553527.000 | 0 | L7 L6 M7 M6 H6 K6 H4 C12 C10 E10 B12 H7 J7 J6 G6 E9 G7 H8 H9 G8 F8 G9 G10 F9 D12 D13 E12 F7 E8
+ 0:15 | 0.620 | 2214799.000 | 0 | L7 L6 M7 M6 H6 K6 H4 C12 C10 E10 B12 H7 J7 J6 G6 G8 D12 E12 F9 G9 H10 G10 J11 H12 J12 K9 J9 M9 M10 N7 *
+ 0:20 | 0.617 | 2909687.000 | 0 | L7 L6 M7 M6 H6 K6 H4 C12 C10 C3 C4 E10 B12 H7 G7 B4 H8 D3 B5 E9 B3 B2 A4 E4 E3 F3 C2 E2 D2 E3
+ 0:25 | 0.617 | 3593043.000 | 0 | L7 L6 M7 M6 H6 K6 H4 C12 C10 C3 C4 D3 E3 E2 B12 F3 E4 F4 F2 G2 D2 F1 K9 B4 B3 C2 D1 B2 A2 A3 *
+ 0:30 | 0.617 | 4234651.000 | 0 | L7 L6 M7 M6 H6 K6 H4 C12 C10 C3 C4 D3 E3 E2 B12 F3 E4 F4 F2 G2 D2 F1 K9 B4 B3 C2 D1 B2 A2 A3 *
+ 0:35 | 0.617 | 4857957.000 | 0 | L7 L6 M7 M6 H6 K6 H4 C12 C10 C3 C4 D3 E3 E2 B12 F3 E4 F4 F2 G2 D2 F1 K9 B4 B3 C2 D1 B2 A2 A3 *
+[5\] SgUctSearch: move cannot change anymore
+Count          5.44965e+06
+Nodes          397686099
+Proven         0
+Time           40
+GameLen        191.7 dev=nan min=119.0 max=280.0
+InTree         19.8 dev=5.3 min=2.0 max=41.0
+Aborted        0%
+Games/s        136475.1
+RawGames/s     146541.7
+Value          0.62
+Sequence       L7 L6 M7 M6 H6 K6 J3 C12 K3 E10 D9 H5 M8 G3 M9 G5 L3 G6 B11 H2 
+B12 D6 E6 E5 C6 D5 C5 E7 E4 F5 E8 F7 F8 G8 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[kh]WL[2533.366702];B[lg]BL[2500.315114]
+C[SgDefaultTimeControl: timeLeft=2510 remaining=31.5 timeMove=79.6825
+GoUctPlayer: Reusing 301932344 nodes (79%)
+ 0:05 | 0.616 | 8105701.000 | 0 | M7 M6 H6 K6 J3 C12 K3 E10 D9 H5 M8 G3 M9 G5 L3 G6 B11 H2 B12 K12 L12 D2 C3 D12 H7 J5 G7 F7 F8 E9 *
+[17\] SgUctSearch: move cannot change anymore
+Count          8.25038e+06
+Nodes          351899133
+Proven         0
+Time           6.2
+GameLen        185.4 dev=14.3 min=129.0 max=276.0
+InTree         27.6 dev=3.8 min=2.0 max=42.0
+Aborted        0%
+Games/s        117497.3
+RawGames/s     126770.4
+Value          0.62
+Sequence       M7 M6 H6 K6 J3 C12 K3 E10 D9 H5 M8 G3 M9 G5 L3 G6 B11 H2 B12 
+K12 L12 D2 C3 D12 H7 J5 G7 F7 F8 E9 E7 F6 E8 F9 G9 G10 H9 H10 
+K9 D8 
+TimeInitTree   3.16
+TimeRootFilter 0.00
+];W[lh]WL[2526.506519];B[hh]BL[2489.605755]
+C[SgDefaultTimeControl: timeLeft=2500 remaining=31.5 timeMove=79.3651
+GoUctPlayer: Reusing 343406039 nodes (96%)
+ 0:05 | 0.617 | 9313329.000 | 0 | H6 K6 J3 C12 K3 E10 D9 H5 M8 G3 M9 G5 L3 G6 B11 H2 B12 K12 L12 D2 C3 D12 H7 J5 G7 F7 F8 E9 E7 F6 *
+[82\] SgUctSearch: move cannot change anymore
+Count          9.51222e+06
+Nodes          403522484
+Proven         0
+Time           6.6
+GameLen        183.7 dev=14.0 min=127.0 max=273.0
+InTree         22.8 dev=3.8 min=3.0 max=42.0
+Aborted        0%
+Games/s        129220.8
+RawGames/s     140371.1
+Value          0.62
+Sequence       H6 K6 J3 C12 K3 E10 D9 H5 M8 G3 M9 G5 L3 G6 B11 H2 B12 K12 L12 
+D2 C3 D12 H7 J5 G7 F7 F8 E9 E7 F6 E8 F9 G9 G10 H9 H10 K9 D8 
+TimeInitTree   3.49
+TimeRootFilter 0.00
+];W[ih]WL[2468.677171];B[ig]BL[2449.761891]
+C[SgDefaultTimeControl: timeLeft=2489 remaining=31.5 timeMove=79.0159
+GoUctPlayer: Reusing 634948 nodes (59%)
+ 0:05 | 0.623 | 877073.000 | 0 | J7 K6 C10 E10 E9 F9 F8 G9 K9 C12 B12 E8 D9 H5 G5 H7 H8 G6 G4 H4
+ 0:10 | 0.625 | 1615219.000 | 0 | J7 K6 E10 C12 B12 C10 B11 C9 F10 D12 C8 F11 D9 G4 F3 G10 H4 H5 G5 J5 H3 N7 M9 M10 M11 N10 N9
+ 0:15 | 0.624 | 2345899.000 | 0 | J7 K6 E10 F10 F9 C12 F11 F12 G10 C3 E12 D12 G12 E13 G11 D3 E3 E4 F4 E5 F3 F5 G5 D5 C4 C5 B4 B5 B3 B2 *
+ 0:20 | 0.624 | 3045887.000 | 0 | J7 K6 E10 F10 F9 C12 F11 F12 E12 D12 H4 C3 D3 G10 C2 J3 K9 G9 G8 F8 E9 C10 C9 B10 B9 E8 D9 B11
+ 0:25 | 0.626 | 3745971.000 | 0 | J7 K6 E10 F10 F9 C12 F11 F12 G10 C3 B12 D12 D3 C10 B11 C9 B10 B9 C2 G11 H10 J11 J10 K11 G12 H12 G13 F13 E12
+ 0:30 | 0.628 | 4445489.000 | 0 | J7 K6 E10 F10 F9 C12 F11 F12 G10 C3 B12 D12 D3 C10 B11 G11 C9 C4 D2 C6 D5 C5 H5 D6 E6 E7 F6 F7 G7
+ 0:35 | 0.628 | 5172607.000 | 0 | J7 K6 E10 F10 F9 C12 F11 F12 G10 C3 B12 D12 D3 C10 B11 G11 C9 C4 D2 C6 D5 C5 H5 D6 E6 E7 F6 F7 G7
+[98\] SgUctSearch: move cannot change anymore
+Count          5.70726e+06
+Nodes          407342539
+Proven         0
+Time           39
+GameLen        185.5 dev=nan min=113.0 max=279.0
+InTree         17.8 dev=4.5 min=2.0 max=38.0
+Aborted        0%
+Games/s        146166.2
+RawGames/s     157528.0
+Value          0.63
+Sequence       J7 K6 E10 F10 F9 C12 F11 F12 G10 C3 B12 D12 D3 C10 B11 G11 C9 
+C4 D2 C6 D5 C5 H5 D6 E6 E7 F6 F7 G7 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[jh]WL[2463.648196];B[ed]BL[2429.116921]
+C[SgDefaultTimeControl: timeLeft=2450 remaining=31.5 timeMove=77.7778
+GoUctPlayer: Reusing 250875700 nodes (97%)
+ 0:05 | 0.628 | 6837189.000 | 0 | E10 F10 F9 G10 C12 G8 K9 M8 G9 H9 E9 H8 H7 K12 H3 C3 C4 H5 G5 H4 G4 C10 C9 B4 B5 B3 A4 A3 A5 C5 *
+ 0:10 | 0.628 | 7540619.000 | 0 | E10 F10 F9 G10 C12 G8 K9 M8 G9 H9 E9 H8 H7 K12 G3 C3 C4 D3 E3 E2 F3 B4 B3 B2 D2 C2 D1 C1 A2 A3 *
+ 0:15 | 0.628 | 8234019.000 | 0 | E10 F10 F9 G10 C12 G8 K9 M8 G9 H9 E9 H8 H7 K12 G3 C3 C4 D3 E3 E2 F3 B4 B3 B2 D2 C2 D1 C1 A2 A3 *
+[11\] SgUctSearch: move cannot change anymore
+Count          8.67829e+06
+Nodes          425649100
+Proven         0
+Time           18
+GameLen        183.8 dev=7.5 min=112.0 max=268.0
+InTree         20.6 dev=4.1 min=2.0 max=38.0
+Aborted        0%
+Games/s        136986.4
+RawGames/s     148476.6
+Value          0.63
+Sequence       E10 F10 F9 G10 C12 G8 K9 M8 G9 H9 E9 H8 H7 K12 G3 C3 C4 D3 E3 
+E2 F3 B4 B3 B2 D2 C2 D1 C1 A2 A3 B1 
+TimeInitTree   2.21
+TimeRootFilter 0.00
+];W[cb]WL[2403.326223];B[bb]BL[2392.434856]
+C[SgDefaultTimeControl: timeLeft=2429 remaining=31.5 timeMove=77.1111
+GoUctPlayer: Reusing 23507620 nodes (3%)
+ 0:05 | 0.634 | 1360495.000 | 0 | B12 C10 B11 C9 F10 D12 C8 F11 D9 H5 F3 G6 H7 C3 G5 G10 G9 G4 F5 C4 D3 C5 D5 C6 D6 D2 C2 B2 C1 B1
+ 0:10 | 0.631 | 2175925.000 | 0 | B12 C10 B11 C9 F10 D12 C8 F11 D9 H5 F3 G6 H7 C3 G5 G10 G9 G4 F5 C4 D3 C5 D5 C6 D6 D2 C2 B2 C1 B1
+ 0:15 | 0.631 | 2966897.000 | 0 | B12 F10 C10 H5 G10 F11 G6 G5 F9 C3 D3 D2 E2 C4 C5 D5 E5 D6 C6 E6 E7 F6
+ 0:20 | 0.630 | 3671957.000 | 0 | B12 F10 C10 H5 G10 F11 G6 F9 G5 G4 F4 G3 D12 K12 L12 H10 F3 F2 H4 H3 J5 J3 G2 G1 H1 H2 J1
+ 0:25 | 0.631 | 4433979.000 | 0 | B12 F10 C10 H5 G10 F11 G6 F9 G5 G4 F4 G3 D12 K12 L12 H10 F3 F2 H4 H3 J5 J3 G2 G1 H1 H2 J1
+ 0:30 | 0.630 | 5162341.000 | 0 | B12 F10 C10 H5 G10 F11 G6 F9 G5 G4 F4 G3 D12 K12 L12 H10 F3 F2 H4 H3 J5 J3 G2 G1 H1 H2 J1
+ 0:35 | 0.632 | 5906525.000 | 0 | B12 F10 C10 H5 G10 F11 G6 F9 G5 G4 F4 G3 D12 K12 L12 H10 F3 F2 H4 H3 J5 J3 G2 G1 H1 H2 J1
+[0\] SgUctSearch: move cannot change anymore
+Count          6.08982e+06
+Nodes          409060494
+Proven         0
+Time           36
+GameLen        181.9 dev=nan min=113.0 max=269.0
+InTree         16.7 dev=4.1 min=2.0 max=34.0
+Aborted        0%
+Games/s        152637.9
+RawGames/s     164906.9
+Value          0.63
+Sequence       B12 F10 C10 H5 G10 F11 G6 F9 G5 G4 F4 G3 D12 K12 L12 H10 F3 F2 
+H4 H3 J5 J3 G2 G1 H1 H2 J1 
+TimeInitTree   0.23
+TimeRootFilter 0.00
+];W[db]WL[2364.915447];B[cd]BL[2354.576396]
+C[SgDefaultTimeControl: timeLeft=2392 remaining=31.5 timeMove=75.9365
+GoUctPlayer: Reusing 69160 nodes (89%)
+ 0:05 | 0.653 | 895405.000 | 0 | C10 F10 J11 B11 F9 C3 G10 F11 G11 G12 H10 H12 C4 D3 E3 E4 F4 E5 F5 F3 E2 D2 F2
+ 0:10 | 0.657 | 1723159.000 | 0 | C10 F10 J11 B11 F9 C3 G10 F11 D3 C4 C5 B5 G11 C6 D5 D6 E6 G12 F12 F13 H12 G13 E13 E12 H10
+ 0:15 | 0.659 | 2546051.000 | 0 | C10 F10 J11 B11 B10 B13 F9 G10 G3 C3 C4 B4 B5 D3 B3 E4 A12 E5 E3 E2 F3 F2 G2 G1
+ 0:20 | 0.659 | 3302347.000 | 0 | C10 F10 J11 B11 B10 B13 F9 C3 D3 C4 C5 B5 G10 F11 C6 D2 E2 C2 G11 H10 H12 G9 G12 F12 G8 F8 E9 E8
+ 0:25 | 0.660 | 4035325.000 | 0 | C10 F10 J11 B11 B10 B13 G10 F11 G11 H10 G12 G9 H12 A12 F9 H5 G6 E9 F8 G5 F5 F4 F6 J12 K12 J10 H9 K11 L11
+ 0:30 | 0.661 | 4776359.000 | 0 | C10 F10 J11 B11 B10 B13 G10 F11 G11 H10 G12 G9 H12 A12 F9 G4 H4 H3 G5 E9 F8 J12 K12 J13 K13 M10 M11 M9 N10
+ 0:35 | 0.661 | 5505471.000 | 0 | C10 F10 J11 B11 B10 B13 G10 F11 G11 H10 G12 A12 F9 G9 H12 H5 G6 G5 F5 F4 E3 E5 F6 E4 F3 F8 E9 E8 D8 E7 *
+[40\] SgUctSearch: move cannot change anymore
+Count          5.84282e+06
+Nodes          402166577
+Proven         0
+Time           37
+GameLen        178.7 dev=nan min=107.0 max=258.0
+InTree         16.3 dev=4.8 min=2.0 max=38.0
+Aborted        0%
+Games/s        156975.0
+RawGames/s     169130.0
+Value          0.66
+Sequence       C10 F10 J11 B11 B10 B13 G10 F11 G11 H10 G12 A12 F9 G9 H12 H5 
+G6 G5 F5 F4 E3 E5 F6 E4 F3 F8 E9 E8 D8 E7 G8 G7 H8 
+TimeInitTree   0.00
+TimeRootFilter 0.00
+];W[ck]WL[2307.406957];B[cj]BL[2321.362697]
+C[SgDefaultTimeControl: timeLeft=2354 remaining=31.5 timeMove=74.7302
+GoUctPlayer: Reusing 59982849 nodes (8%)
+ 0:05 | 0.664 | 2376219.000 | 0 | C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 G6 H7 G4 F5 G9 G8 E9 F8 D9 E8 C9 B10 B9 A10 A9
+ 0:10 | 0.665 | 3167773.000 | 0 | C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 G6 H7 G4 F5 G9 G8 E9 F8 D9 E8 C9 B10 B9 A10 A9
+ 0:15 | 0.667 | 3990367.000 | 0 | C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 G4 H4 J5 G3 F4 F3 H3 F5 G6 F6 H7 H8 G9 F8 E9 E8
+ 0:20 | 0.667 | 4808175.000 | 0 | C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 G4 H4 J5 G3 F4 F3 H3 F5 G6 F6 H7 H8 G9 F8 E9 E8
+ 0:25 | 0.668 | 5575963.000 | 0 | C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 G6 H7 G4 F5 G9 G7 F6 F7 E6 E5 F8 E9 E7 E8
+ 0:30 | 0.667 | 6398013.000 | 0 | C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 G6 H7 G4 F5 G9 G7 F6 F7 E6 E5 F8 E9 E7 E8
+[14\] SgUctSearch: move cannot change anymore
+Count          6.67995e+06
+Nodes          411630201
+Proven         0
+Time           32
+GameLen        177.1 dev=nan min=109.0 max=266.0
+InTree         15.4 dev=4.4 min=2.0 max=36.0
+Aborted        0%
+Games/s        160898.6
+RawGames/s     174066.0
+Value          0.67
+Sequence       C4 F10 F9 G10 D3 H5 M8 M9 M10 N8 K9 N7 G5 F3 G4 H7 G6 G9 H8 G8 
+G7 F8 E9 E8 F7 E7 D8 D6 C6 
+TimeInitTree   0.56
+TimeRootFilter 0.00
+];W[dk]WL[2299.059404];B[ek]BL[2290.056361]
+C[SgDefaultTimeControl: timeLeft=2321 remaining=31.5 timeMove=73.6825
+GoUctPlayer: Reusing 60882961 nodes (18%)
+ 0:05 | 0.669 | 2360977.000 | 0 | E3 E4 F3 B4 B5 B3 C5 F10 F9 G10 D2 C2 E2 H5 F4 M10 M11 M8 G9 H9 G6 K9 J9 H8 J10 H10 J11 J12 H12 G12 *
+ 0:10 | 0.670 | 3064101.000 | 0 | E3 E4 F3 B4 B5 B3 C5 F10 F9 G10 D2 C2 E2 H5 F4 M10 M11 M8 G9 H9 G6 K9 J9 H8 J10 H10 J11 J12 H12 G12 *
+ 0:15 | 0.670 | 3751177.000 | 0 | E3 E4 F3 B4 B5 B3 C5 F10 G10 F11 F9 F4 G3 G4 H3 H5 D2 C2 E2 D6 C6 G9 H10 F8 E9 C7 E7 A5 B7 C8 *
+ 0:20 | 0.671 | 4536177.000 | 0 | E3 E4 F3 B4 B5 B3 C5 F10 G10 F11 F9 F4 G3 G4 H3 H5 D2 C2 E2 D6 C6 G9 H10 F8 E9 C7 E7 A5 B7 C8 *
+ 0:25 | 0.672 | 5260255.000 | 0 | E3 E4 F3 B4 B5 B3 C5 F10 G10 F11 F9 F4 G3 G4 H3 H5 D2 C2 E2 D6 C6 G9 H10 F8 E9 C7 E7 A5 B7 C8 *
+ 0:30 | 0.671 | 5948935.000 | 0 | E3 E4 F3 B4 B5 B3 C5 F10 G10 F11 F9 F4 G3 G4 H3 H5 D2 C2 E2 D6 C6 G9 H10 F8 E9 C7 E7 A5 B7 C8 *
+[8\] SgUctSearch: move cannot change anymore
+[22\] SgUctSearch: move cannot change anymore
+Count          5.97055e+06
+Nodes          343959875
+Proven         0
+Time           30
+GameLen        174.3 dev=nan min=111.0 max=258.0
+InTree         20.1 dev=5.1 min=2.0 max=43.0
+Aborted        0%
+Games/s        143520.6
+RawGames/s     156122.7
+Value          0.67
+Sequence       E3 E4 F3 B4 B5 B3 C5 F10 G10 F11 F9 F4 G3 G4 H3 H5 D2 C2 E2 D6 
+C6 G9 H10 F8 E9 C7 E7 A5 B7 C8 G8 D5 B6 E5 F7 G6 H7 G7 E8 
+TimeInitTree   0.56
+TimeRootFilter 0.00
+];W[el]WL[2293.861406];B[fk]BL[2255.241499]
+C[SgDefaultTimeControl: timeLeft=2289 remaining=31.5 timeMove=72.6667
+GoUctPlayer: Reusing 30157499 nodes (12%)
+ 0:05 | 0.675 | 1665369.000 | 0 | F3 F10 F9 E4 G10 F11 F2 F4 B3 B2 B4 H5 D2 C2 E1 M8 G6 G9 G8 F8 E9 E8 F7
+ 0:10 | 0.675 | 2496067.000 | 0 | F3 F2 G11 G12 F12 F11 G10 F13 H12 E12 J12 F10 G3 F9 G2 H10 G9 G8 H9 J9 J10 K9 M9 M10 N10 M11 L11 M12
+ 0:15 | 0.675 | 3261511.000 | 0 | F3 F2 G3 B4 B5 F10 G10 F11 F9 B3 G2 C5 B6 H10 K9 M8 G9 D5 E4 C7 C6 H5 G5 G6 H7 F5 G4
+ 0:20 | 0.672 | 4024605.000 | 0 | F3 F2 G3 B4 B5 F10 G10 F11 F9 B3 G2 C5 B6 H5 G5 C6 C7 G6 H7 G9 H10 D5 E4 F8 E9 F5 G4 E5 F6 G7 *
+ 0:25 | 0.673 | 4747979.000 | 0 | F3 F2 G3 B4 B5 F10 G10 F11 J11 H10 K9 M8 G9 F9 H12 G11 G8 H5 G5 B3 H4 J5 N6 N5 M5 N7
+ 0:30 | 0.674 | 5442801.000 | 0 | F3 F2 G3 B4 B5 F10 G10 F11 J11 H10 K9 H5 G9 F9 H12 G12 F8 E9 J12 E8 B3 B2 C2 D2 B1 A2 C1 D1 A4
+[97\] SgUctSearch: move cannot change anymore
+Count          5.88556e+06
+Nodes          362752434
+Proven         0
+Time           33
+GameLen        171.5 dev=nan min=107.0 max=266.0
+InTree         17.9 dev=4.6 min=2.0 max=34.0
+Aborted        0%
+Games/s        152817.0
+RawGames/s     166467.1
+Value          0.68
+Sequence       F3 F2 G3 B4 B5 F10 G10 F11 J11 H10 K9 H5 G9 F9 H12 G12 F8 E9 
+J12 B3 G2 G5 M8 M9 N9 G8 F7 H7 G6 F5 E4 
+TimeInitTree   0.29
+TimeRootFilter 0.00
+];W[bj]WL[2255.320098];B[bi]BL[2221.090645]
+C[SgDefaultTimeControl: timeLeft=2255 remaining=31.5 timeMove=71.5873
+GoUctPlayer: Reusing 13559436 nodes (2%)
+ 0:05 | 0.676 | 1169185.000 | 0 | B5 F10 G10 F11 G11 G12 F12 E12 H12 F13 F2 B3 D2 C5 B6 C6 C7 D5 E4 J12 H10 J11 J10 M8 N7
+ 0:10 | 0.675 | 1851825.000 | 0 | B5 F10 G10 F11 G11 G12 F12 E12 H12 F13 F2 B3 D2 C2 E1 H10 G9 F9 M8 C5 B6 M9 K9 D5 E4 C6 E5 H5 M10 H9 *
+ 0:15 | 0.676 | 2462683.000 | 0 | B5 F10 G10 F11 G11 G12 F12 E12 H12 F13 F2 B3 D2 C2 E1 H10 G9 F9 M8 C5 B6 C7 C6 M9 J12 D8 C8 G8 H9 J9 *
+ 0:20 | 0.673 | 3168429.000 | 0 | B5 F10 G10 F11 G11 G12 F12 E12 H12 F13 F2 B3 D2 C2 E1 H10 G9 F9 M8 C5 B6 C7 C6 M9 J12 D8 C8 G8 H9 J9 *
+ 0:25 | 0.672 | 3869637.000 | 0 | B5 F10 G10 F11 G11 G12 F12 E12 H12 F13 F2 B3 D2 C2 E1 H10 G9 F9 M8 C5 B6 C7 C6 M9 J12 D8 C8 G8 H9 J9 *
+ 0:30 | 0.670 | 4542089.000 | 0 | B5 F10 G10 F11 G11 G12 F12 J12 H10 F13 F2 F9 J11 H12 F7 E8 C8 B3 D2 C2 E1 C5 B6 H5 M8 M9 M10 N7 K9 N8 *
+[33\] SgUctSearch: move cannot change anymore
+Count          5.00577e+06
+Nodes          303090226
+Proven         0
+Time           34
+GameLen        167.8 dev=nan min=105.0 max=268.0
+InTree         22.8 dev=6.4 min=2.0 max=47.0
+Aborted        0%
+Games/s        138358.6
+RawGames/s     151830.5
+Value          0.67
+Sequence       B5 F10 G10 F11 G11 G12 F12 J12 H10 F13 F2 F9 J11 H12 F7 E8 K12 
+E7 D8 B3 D2 C2 E1 C5 D5 C6 B6 M10 M11 H5 D6 C7 C8 E6 F6 F5 E5 
+F4 E4 
+TimeInitTree   0.14
+TimeRootFilter 0.00
+];W[bk]WL[2251.732590];B[gc]BL[2182.312166]
+C[SgDefaultTimeControl: timeLeft=2221 remaining=31.5 timeMove=70.5079
+GoUctPlayer: Reusing 1612170 nodes (81%)
+ 0:05 | 0.670 | 978715.000 | 0 | G11 G12 F12 F11 G10 F13 H12 E12 F2 C5 B6 C6 D5 C7 B7 C8 B8 D6 E6 E7 D8 C9 B9 B10
+ 0:10 | 0.671 | 1764943.000 | 0 | G11 G12 F12 F11 G10 F13 H12 E12 F2 C5 B6 F10 D2 C2 E1 F9 J12 H10 G9 D5 E4 C6 E5 C7 C8 B7 B8 A7 A8 A6 *
+ 0:15 | 0.675 | 2492211.000 | 0 | G11 G12 F12 F11 G10 F13 H12 E12 F2 C5 B6 F10 D2 C2 E1 F9 J12 H10 G9 D5 E4 C6 C7 H5 G6 H7 H8 G7 F7 F6 *
+ 0:20 | 0.679 | 3218919.000 | 0 | G11 G12 F12 F11 G10 E12 H12 F13 F2 J11 D2 C2 E1 C5 B6 F10 F9 G9 H10 J10 H9 K9 J9 H7 G8 G6 H5 G5 D5 C6 *
+ 0:25 | 0.678 | 3887657.000 | 0 | G11 G12 F12 F11 G10 E12 H12 F13 F2 J11 D2 C2 E1 H5 G5 C5 B6 F10 K9 D5 E4 C6 C7 M8 F9 G9 H10 H7 G6 F8 *
+ 0:30 | 0.679 | 4545447.000 | 0 | G11 G12 F12 F11 G10 E12 H12 F13 F2 J11 D2 C2 E1 H5 G6 G5 K9 F5 C5 M8 K12 K11 L11 J12 A2 F7 F6 E6 H7 E7 *
+ 0:35 | 0.680 | 5184721.000 | 0 | G11 G12 F12 F11 G10 E12 H12 F13 F2 J11 D2 C2 E1 H5 G6 G5 K9 C5 D5 C6 B6 M8 C7 F10 F9 G9 H10 F8 J12 K11 *
+[78\] SgUctSearch: move cannot change anymore
+Count          5.61824e+06
+Nodes          347059364
+Proven         0
+Time           38
+GameLen        166.8 dev=nan min=101.0 max=244.0
+InTree         21.3 dev=6.9 min=2.0 max=49.0
+Aborted        0%
+Games/s        145292.5
+RawGames/s     158602.8
+Value          0.68
+Sequence       G11 G12 F12 F11 G10 E12 H12 F13 F2 J11 D2 C2 E1 H5 G6 G5 K9 C5 
+D5 C6 B6 M8 C7 F10 F9 G9 H10 F8 J12 K11 L11 K12 E9 F6 L12 J13 
+J10 H13 F5 H7 G7 F4 E5 E6 D6 F7 H8 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[gb]WL[2194.455365];B[fb]BL[2176.617131]
+C[SgDefaultTimeControl: timeLeft=2182 remaining=31.5 timeMove=69.2698
+GoUctPlayer: Reusing 410638277 nodes (67%)
+[92\] SgUctSearch: move cannot change anymore
+[40\] SgUctSearch: move cannot change anymore
+Count          1.27276e+07
+Nodes          417120532
+Proven         0
+Time           1
+GameLen        155.9 dev=12.8 min=117.0 max=245.0
+InTree         34.6 dev=4.7 min=3.0 max=48.0
+Aborted        0%
+Games/s        119586.5
+RawGames/s     130586.5
+Value          0.68
+Sequence       F12 F11 G10 E12 H12 F13 F2 J11 D2 C2 E1 H5 G6 G5 K9 C5 D5 C6 
+B6 M8 C7 F10 F9 G9 H10 F8 J12 K11 L11 K12 E9 F6 L12 J13 J10 H13 
+F5 H7 G7 F4 E5 E6 D6 F7 H8 
+TimeInitTree   4.13
+TimeRootFilter 0.00
+];W[fc]WL[2151.077196];B[gd]BL[2169.197521]
+C[SgDefaultTimeControl: timeLeft=2176 remaining=31.5 timeMove=69.0794
+GoUctPlayer: Reusing 565347538 nodes (82%)
+[19\] SgUctSearch: move cannot change anymore
+[101\] SgUctSearch: move cannot change anymore
+Count          1.80415e+07
+Nodes          572603573
+Proven         0
+Time           1
+GameLen        159.9 dev=12.4 min=109.0 max=230.0
+InTree         28.2 dev=3.6 min=4.0 max=46.0
+Aborted        0%
+Games/s        127318.0
+RawGames/s     140226.2
+Value          0.69
+Sequence       G10 E12 H12 F13 F2 F10 J12 C5 B6 J11 D2 C2 E1 K11 L11 K12 F9 
+G9 G8 H5 M9 M8 K9 N7 H9 C6 C7 A2 J3 K3 B1 A5 B7 E4 D5 C1 A4 H3 
+G5 G6 F6 G7 F7 F5 
+TimeInitTree   5.57
+TimeRootFilter 0.00
+];W[ib]WL[1950.703411];B[ga]BL[2135.249327]
+C[SgDefaultTimeControl: timeLeft=2169 remaining=31.5 timeMove=68.8571
+GoUctPlayer: Reusing 765089 nodes (64%)
+ 0:05 | 0.666 | 930645.000 | 0 | G13 H12 K12 C5 D5 C6 H10 E12 F13 B11 C13 A12 B13 B10 D6 E13 B9 C9 C8 B8 A9 A8 D9
+ 0:10 | 0.665 | 1766843.000 | 0 | G13 H12 K12 C5 D5 C6 H10 E12 F13 B11 A11 B13 B10 H5 C13 D6 E6 E5 E4 F5 B6 C7 C8 D8 E7 F6
+ 0:15 | 0.667 | 2534547.000 | 0 | G13 H12 K12 C5 H10 E12 F13 K11 L11 J11 L12 D5 E4 B13 C13 B11 A13 H5 G5 G6 F6 G7 H7 F5 G4 H4 H3
+ 0:20 | 0.668 | 3283295.000 | 0 | G13 H12 K12 C5 H10 E12 F13 K11 L11 J11 L12 D5 E4 B11 C13 B13 A13 E5 F5 F6 G5 F10 F9 E9 D9 E8 D8
+ 0:25 | 0.670 | 4030913.000 | 0 | G13 H12 K12 C5 H10 D5 E4 E12 F13 K11 B6 C6 C7 L11 F2 D2 M8 H5 G6 E13 C13 H13 B13 F10 F9
+ 0:30 | 0.667 | 4804003.000 | 0 | G13 H12 K12 C5 H10 E12 F13 K11 L11 J11 L12 D5 E4 B11 C13 E5 B6 B13 A13 H5 B10 F10 F9 E9 E8 F8
+[15\] SgUctSearch: move cannot change anymore
+Count          5.32557e+06
+Nodes          322245569
+Proven         0
+Time           33
+GameLen        163.8 dev=5.0 min=93.0 max=257.0
+InTree         17.5 dev=3.7 min=2.0 max=34.0
+Aborted        0%
+Games/s        158112.1
+RawGames/s     173453.1
+Value          0.66
+Sequence       G13 H12 K12 C5 H10 E12 F13 B11 A11 D5 E4 B13 A12 K11 L12 E5 B6 
+G5 H5 H4 C13 G6 G7 F7 F8 M10 M11 M9 N10 N9 L11 J11 J10 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[hb]WL[1930.814064];B[jb]BL[2128.589273]
+C[SgDefaultTimeControl: timeLeft=2135 remaining=31.5 timeMove=67.7778
+GoUctPlayer: Reusing 279823652 nodes (81%)
+[101\] SgUctSearch: move cannot change anymore
+Count          8.8462e+06
+Nodes          304200600
+Proven         0
+Time           3.1
+GameLen        157.4 dev=13.7 min=107.0 max=235.0
+InTree         23.8 dev=3.6 min=2.0 max=38.0
+Aborted        0%
+Games/s        139876.4
+RawGames/s     154586.5
+Value          0.66
+Sequence       K12 C5 H10 E12 F13 B11 A11 D5 E4 B13 A12 K11 L12 E5 B6 G5 H5 
+H4 C13 G6 G7 F7 F8 M10 M11 M9 N10 N9 L11 J11 J10 
+TimeInitTree   3.10
+TimeRootFilter 0.00
+];W[fd]WL[1872.848675];B[hd]BL[2093.539875]
+C[SgDefaultTimeControl: timeLeft=2128 remaining=31.5 timeMove=67.5556
+GoUctPlayer: Reusing 212017 nodes (57%)
+ 0:05 | 0.682 | 908635.000 | 0 | H10 E12 F13 F9 J11 B13 B11 C6 E6 E5 F5 C5 H13 F6 F7 G6 G5 H5 H7 J5 H4 G4 F4
+ 0:10 | 0.681 | 1724069.000 | 0 | H10 E12 F13 F9 J11 B13 B11 F7 H13 F5 E4 C6 D6 C5 G4 D8 C7 C8 E8 E9 B8 E7 B6 A5 A6 A4 D5 E6
+ 0:15 | 0.681 | 2473323.000 | 0 | H10 E12 F13 F9 J11 B13 B11 F7 H13 F5 E4 E13 J13 C6 D6 C5 E8 F8 G4 E9 D9 G5 H5 H4 H3 J4 H7 D5 E5 B6 *
+ 0:20 | 0.685 | 3227499.000 | 0 | H10 E12 F13 F9 J11 B13 B11 F7 H13 F5 E4 C6 D6 C5 G4 H7 G5 G6 H5 C8 C7 E13 J13 D8 E8 E9 D9 B8 B7 B6 *
+ 0:25 | 0.686 | 3991547.000 | 0 | H10 E12 F13 F9 J11 B13 B11 F7 H13 F5 E4 C6 D6 C5 G4 H7 G5 G6 H5 C8 C7 E13 J13 D8 B8 B9 B7 B6 D5 A5 *
+ 0:30 | 0.687 | 4756565.000 | 0 | H10 E12 F13 F9 J11 B13 B11 F7 H13 F5 E4 C6 D6 C5 G4 H7 G5 G6 H5 C8 C7 E13 J13 D8 B8 B9 B7 B6 D5 A5 *
+[91\] SgUctSearch: move cannot change anymore
+Count          5.43546e+06
+Nodes          316531407
+Proven         0
+Time           34
+GameLen        160.9 dev=nan min=89.0 max=253.0
+InTree         18.6 dev=5.1 min=2.0 max=39.0
+Aborted        0%
+Games/s        158664.5
+RawGames/s     173658.2
+Value          0.68
+Sequence       H10 E12 F13 F9 J11 B13 B11 F7 H13 F5 E4 C6 D6 C5 G4 H7 G5 G6 
+H5 C8 C7 E13 J13 D8 B8 B9 B7 B6 D5 A5 D2 C2 D1 E1 
+TimeInitTree   0.00
+TimeRootFilter 0.00
+];W[ea]WL[1260.744285];B[fl]BL[2059.784355]
+C[SgDefaultTimeControl: timeLeft=2093 remaining=31.5 timeMove=66.4444
+GoUctPlayer: Reusing 342338 nodes (60%)
+ 0:05 | 0.719 | 932987.000 | 0 | F2 C5 B6 F9 D2 C2 E1 F13 D5 M8 H5 H4 M10 K11 L11 J11 J10 L12 M12 K13 M13 L13 C6 E12 D13
+ 0:10 | 0.720 | 1760101.000 | 0 | F2 C5 B6 F9 D2 C2 E1 F7 G8 F8 J11 F13 D5 D8 C8 M10 M11 C7 C6 C9 B8 B9 D9 E8 B7 A8 A7 A9
+ 0:15 | 0.714 | 2596739.000 | 0 | F2 C5 B6 F9 D2 C2 E1 F7 G8 F8 J11 F13 D5 D8 C8 M10 M11 C7 C6 C9 B8 B9 D9 E8 B7 A8 A7 A9
+ 0:20 | 0.712 | 3410165.000 | 0 | F2 C5 B6 F9 D2 C2 E1 F7 G8 F8 J11 F13 D5 D8 C8 M10 M11 C7 C6 C9 B8 B9 D9 E8 B7 A8 A7 A9
+ 0:25 | 0.712 | 4153031.000 | 0 | F2 C5 B6 F9 J11 D5 E4 F13 D2 C2 E1 K13 L12 A2 H2 H5 K2 G6 M9 M8 K9 N7 C6 M11 M10 L11 K11 M12 L13 M13 *
+ 0:30 | 0.712 | 4881581.000 | 0 | F2 C5 B6 F9 J11 D5 E4 F13 D2 C2 E1 A2 J3 K3 K2 L2 H2 H5 K9 M8 M9 N7 L3 H7 G7 H8 G8 G6 F6 F5 *
+[85\] SgUctSearch: move cannot change anymore
+Count          5.29799e+06
+Nodes          303387183
+Proven         0
+Time           33
+GameLen        152.3 dev=nan min=91.0 max=241.0
+InTree         18.9 dev=5.2 min=2.0 max=37.0
+Aborted        0%
+Games/s        160344.0
+RawGames/s     177913.6
+Value          0.71
+Sequence       F2 C5 B6 F9 J11 D5 E4 F13 D2 C2 E1 A2 J3 K3 K2 K13 F8 L2 K9 M8 
+N7 N6 A4 G9 G8 J2 K1 H3 J4 J5 H4 H5 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[dl]WL[1231.463223];B[fe]BL[2001.549904]
+C[SgDefaultTimeControl: timeLeft=2060 remaining=31.5 timeMove=65.3968
+GoUctPlayer: Reusing 341361 nodes (62%)
+ 0:05 | 0.733 | 975223.000 | 0 | J3 C5 B6 F9 K3 H5 G5 L3 H4 H7 G6 F13 G8 H8 H9 G9 J9 J5 G7 F8 E9 E8
+ 0:10 | 0.730 | 1854015.000 | 0 | J3 C5 B6 F9 K3 H5 M9 D5 E4 M8 K9 N7 E5 J10 G6 G5 M10 L3 L2 H3 H2 J2 J4 L4
+ 0:15 | 0.729 | 2690093.000 | 0 | J3 C5 B6 F9 K3 H5 M9 M8 K9 N7 G6 G5 F5 F13 L3 C6 C7 D5 E4 L4 M4 M3 M2 N4 M5 N5 N3
+ 0:20 | 0.726 | 3585277.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:25 | 0.723 | 4505569.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:30 | 0.722 | 5402851.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:35 | 0.723 | 6207659.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:40 | 0.723 | 6974253.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:45 | 0.725 | 7714445.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:50 | 0.727 | 8507359.000 | 0 | J3 C5 B6 F9 K3 H5 M9 G6 H7 M8 K9 N7 G5 G4 F5 E4 F4 K11 L11 J11 L12 C6 J5 M10 F13 H13 H4 G3 G2 F1 *
+ 0:55 | 0.727 | 9304831.000 | 0 | F9 C5 D5 C6 B6 L12 C7 K13 J3 K3 B2 A2 J2 B11 B10 K2 K1 B13 H5 L1 J1 L2 A12 J4 H4 H3 H2 G2 G3 E4 *
+[36\] SgUctSearch: move cannot change anymore
+[85\] SgUctSearch: move cannot change anymore
+Count          9.78153e+06
+Nodes          554795346
+Proven         0
+Time           58
+GameLen        149.9 dev=nan min=89.0 max=240.0
+InTree         17.3 dev=5.0 min=2.0 max=39.0
+Aborted        0%
+Games/s        167896.8
+RawGames/s     185268.6
+Value          0.73
+Sequence       F9 C5 D5 C6 B6 L12 C7 K13 J3 K3 B2 A2 J2 B11 B10 K2 K1 B13 H5 
+L1 J1 L2 A12 J4 H4 H3 H2 G2 G3 E4 E5 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[bh]WL[1202.025764];B[ci]BL[1967.991720]
+C[SgDefaultTimeControl: timeLeft=2001 remaining=31.5 timeMove=63.5238
+GoUctPlayer: Reusing 789309 nodes (60%)
+ 0:05 | 0.753 | 1021833.000 | 0 | C5 A5 A4 A6 J3 K11 L11 J11 L3 H5 G5 G6 H7 L12 K13 L13 K3 L4 M4 H4 G4 F5 F6 F7 G7
+ 0:10 | 0.754 | 1861447.000 | 0 | C5 A5 A4 A6 J3 L12 K3 L3 L2 C6 M3 E4 E5 D5 M8 M9 M10 N9 K11 K13 F5 H5 J4 L4 M4 A3 D4
+ 0:15 | 0.754 | 2591409.000 | 0 | C5 A5 A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 F4 M8 M9 M10 K5 K11 K13 K9 H7 H5 G6 *
+ 0:20 | 0.755 | 3284645.000 | 0 | C5 A5 A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 K9 M8 M9 N7 M10 K11 F4 E6 F5 H5 *
+ 0:25 | 0.753 | 3991131.000 | 0 | C5 A5 A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 M9 K11 L11 K13 M8 F4 G4 F5 M1 H5 *
+ 0:30 | 0.750 | 4809291.000 | 0 | C5 A5 A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 M9 K11 L11 K13 M8 F4 G4 F5 M1 H5 *
+[48\] SgUctSearch: move cannot change anymore
+Count          5.27507e+06
+Nodes          285290580
+Proven         0
+Time           33
+GameLen        147.9 dev=13.8 min=91.0 max=237.0
+InTree         20.8 dev=7.6 min=2.0 max=45.0
+Aborted        0%
+Games/s        160626.1
+RawGames/s     176031.1
+Value          0.75
+Sequence       C5 A5 A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 
+M9 K11 L11 K13 M8 F4 G4 F5 M1 H5 G5 G6 F6 H7 G7 H6 H8 F7 D4 C4 
+E4 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[ai]WL[1196.280536];B[aj]BL[1950.783005]
+C[SgDefaultTimeControl: timeLeft=1967 remaining=31.5 timeMove=62.4444
+GoUctPlayer: Reusing 169776234 nodes (92%)
+ 0:05 | 0.751 | 6435973.000 | 0 | A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 M9 K11 L11 K13 M8 F4 G4 F5 M1 H5 G5 G6 *
+ 0:10 | 0.752 | 7157081.000 | 0 | A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 M9 K11 L11 K13 M8 F4 G4 F5 M1 H5 G5 G6 *
+[11\] SgUctSearch: move cannot change anymore
+[58\] SgUctSearch: move cannot change anymore
+Count          7.7219e+06
+Nodes          275113497
+Proven         0
+Time           14
+GameLen        145.6 dev=15.2 min=95.0 max=227.0
+InTree         24.7 dev=4.0 min=2.0 max=41.0
+Aborted        0%
+Games/s        144281.5
+RawGames/s     160854.1
+Value          0.75
+Sequence       A4 A6 J3 L12 K3 L3 L2 C6 L4 M3 M4 E4 E5 M2 K2 D5 J4 K5 M9 K11 
+L11 K13 M8 F4 G4 F5 M1 H5 G5 G6 F6 H7 G7 H6 H8 F7 D4 C4 E4 
+TimeInitTree   1.88
+TimeRootFilter 0.00
+];W[ak]WL[1151.454613];B[ik]BL[1910.928480]
+C[SgDefaultTimeControl: timeLeft=1951 remaining=31.5 timeMove=61.9365
+GoUctPlayer: Reusing 479976 nodes (57%)
+ 0:05 | 0.748 | 1111107.000 | 0 | J3 C6 L3 E4 D5 D6 E5 E6 F5 K3 K2 F13 K9 M8 M9 N7 M10 L4 L2 M3 M2 M4 N3 N4 N2 J2 H2 H3
+ 0:10 | 0.741 | 2131053.000 | 0 | J3 C6 D6 E4 D5 H5 G5 G6 H7 G4 F5 K3 K2 F13 L2 F4 H4 H3 J4 J5 J2 G2 E5 G3 F1 G1 E1
+ 0:15 | 0.742 | 3029519.000 | 0 | J3 C6 D6 E4 D5 H5 K3 G6 H7 F13 J4 J5 F5 L4 K9 M8 G5 C8 B9 E9 E8 G9 F8 G8 G7
+ 0:20 | 0.741 | 3887247.000 | 0 | J3 C6 D6 E4 D5 H5 K3 G6 H7 F13 J4 J5 F5 L4 G5 L3 L2 M2 K9 M8 M9 N7 H4 M10 M11 N9 N11 N10 K5
+ 0:25 | 0.739 | 4802761.000 | 0 | J3 C6 D6 E4 D5 K3 C7 K13 L12 H4 F4 F13 B7 J2 H3 H2 G3 M8 N7 N6 A6 A4 E5
+ 0:30 | 0.737 | 5752039.000 | 0 | J3 C6 D6 E4 D5 K3 C7 K13 L12 H4 F4 F13 B7 J2 H3 H2 G3 M8 N7 N6 A6 A4 E5
+ 0:35 | 0.737 | 6603011.000 | 0 | J3 C6 D6 E4 D5 K3 C7 K13 L12 H4 F4 F13 B7 J2 H3 H2 G3 M8 N7 N6 A6 A4 E5
+[10\] SgUctSearch: move cannot change anymore
+Count          7.34385e+06
+Nodes          397783330
+Proven         0
+Time           40
+GameLen        143.8 dev=1.7 min=81.0 max=240.0
+InTree         15.6 dev=5.2 min=2.0 max=39.0
+Aborted        0%
+Games/s        184176.7
+RawGames/s     201738.7
+Value          0.74
+Sequence       J3 C6 D6 E4 D5 K3 C7 K13 L12 H4 F4 F13 B7 J2 H3 H2 G3 M8 N7 N6 
+A6 A4 E5 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[jk]WL[1133.247906];B[jl]BL[1861.620757]
+C[SgDefaultTimeControl: timeLeft=1910 remaining=31.5 timeMove=60.6349
+GoUctPlayer: Reusing 696492 nodes (61%)
+ 0:05 | 0.769 | 1047333.000 | 0 | C6 F13 H4 B7 B8 C8 B9 K11 K9 C7 D8 M8 L11 J11 K2 L2 J2 L12 K13 L13 M9 M10 N9 N10 N8 M11
+ 0:10 | 0.762 | 2026847.000 | 0 | C6 H5 F13 C13 G5 H3 H2 K11 L11 J11 K2 L12 M12 K13 B7 J4 J2 J10 K9 H7 G6 H8 G9 E9 E8 D9 C9 C8
+ 0:15 | 0.760 | 3026265.000 | 0 | C6 H5 G5 L12 H4 B7 K11 K13 B8 M10 M11 G6 H7 J2 H2 K2 J1 K1 H1 H3
+ 0:20 | 0.759 | 4011687.000 | 0 | C6 H5 G5 L12 H4 B7 K11 K13 B8 M10 M11 G6 H7 J2 H2 K2 J1 K1 H1 H3
+ 0:25 | 0.757 | 4973641.000 | 0 | C6 H5 F13 C13 G5 H3 H2 K11 L11 J11 H4 L12 M12 K13 B7 H7 G6 K9 J9 M8 J10 G4 G3 F4 F5 E5 G7 H8 G8
+ 0:30 | 0.756 | 5871901.000 | 0 | C6 H5 F13 C13 G5 H3 H2 K11 L11 J11 H4 L12 M12 K13 B7 H7 G6 K9 J9 M8 J10 G4 G3 F4 F5 E5 G7 H8 G8
+ 0:35 | 0.756 | 6696969.000 | 0 | K2 C6 L3 D6 H4 F13 M8 L4 M3 J2 L2 M9 M10 N8 K9 N7 E4 C8 E6 K11 M4 J4 H3 L11 M11 H5 G5 J5 G6 H7 *
+ 0:40 | 0.756 | 7500061.000 | 0 | K2 C6 L3 D6 H4 F13 M8 L4 M3 J2 L2 M9 M10 N8 K9 N7 E4 C8 C7 H2 D8 M4 E6 H3 J4 G4 H5 G6 G5 F6 *
+ 0:45 | 0.755 | 8329131.000 | 0 | K2 C6 L3 D6 H4 F13 M8 L4 M3 J2 L2 M9 M10 N8 K9 N7 E4 E7 C8 B8 B9 C7 D8 H5 G5 J5 H2 G6 H7 F5 *
+[42\] SgUctSearch: move cannot change anymore
+Count          8.88538e+06
+Nodes          470669821
+Proven         0
+Time           48
+GameLen        141.9 dev=nan min=86.0 max=225.0
+InTree         16.2 dev=6.0 min=2.0 max=42.0
+Aborted        0%
+Games/s        184339.5
+RawGames/s     202131.0
+Value          0.75
+Sequence       K2 C6 L3 D6 H4 F13 M8 L4 M3 J2 L2 M9 M10 N8 K9 N7 E4 E7 C8 B8 
+B9 C7 D8 H5 G5 J5 H2 G6 H7 F5 G4 K11 L12 G7 G8 F7 E6 E5 D5 A6 
+F4 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[kl]WL[1118.466968];B[hl]BL[1821.134377]
+C[SgDefaultTimeControl: timeLeft=1861 remaining=31.5 timeMove=59.0794
+GoUctPlayer: Reusing 15398222 nodes (6%)
+ 0:05 | 0.742 | 1574011.000 | 0 | C6 F13 B7 H5 G5 G6 H7 G4 F5 B11 J2 K11 L11 J11 L12 J10 K9 A12 B13 C13 B10
+ 0:10 | 0.737 | 2557405.000 | 0 | H2 C6 D6 E4 D5 F13 L1 M1 K1 H5 L3 G6 H7 M2 M3 M10 M11 J2 J1 F1 M9 M8 F4 E5 F5 E6 F6 E7
+ 0:15 | 0.734 | 3510931.000 | 0 | H2 C6 D6 E4 D5 F13 L1 M1 K1 H5 L3 G6 H7 M2 M3 M10 M9 M8 G5 G4 F5 H4 J5 J4 F4 G3 G2 F1 G1
+ 0:20 | 0.730 | 4541669.000 | 0 | H2 C6 D6 E4 D5 F13 L1 M1 K1 H5 L3 G6 H7 M2 M3 M10 M9 M8 G5 G4 F5 H4 J5 J4 F4 G3 G2 F1 G1
+ 0:25 | 0.727 | 5500343.000 | 0 | H2 C6 D6 K1 J2 E4 D5 H5 L3 M2 G5 B8 A6 F13 M9 M8 K9 N7 H4 A7 C7 G6 H7 G7 G8 F6 F5 F7
+ 0:30 | 0.727 | 6351655.000 | 0 | H2 C6 D6 K1 J2 E4 D5 H5 L3 M2 J4 G6 H7 J5 L4 K5 M3 N2 J1 M10 G5 G4 F5 H13 J11 F13 M11 L11 L12 K13 *
+ 0:35 | 0.728 | 7177057.000 | 0 | H2 C6 D6 K1 J2 E4 D5 H5 L3 M2 J4 G6 H7 J5 L4 K5 M3 F4 J1 G3 G2 F13 G5 F5 F6 G7 G8 F7 F8 E7 *
+[70\] SgUctSearch: move cannot change anymore
+[21\] SgUctSearch: move cannot change anymore
+Count          7.88658e+06
+Nodes          399273596
+Proven         0
+Time           39
+GameLen        138.4 dev=7.5 min=87.0 max=230.0
+InTree         15.7 dev=5.2 min=2.0 max=39.0
+Aborted        0%
+Games/s        187618.5
+RawGames/s     206060.4
+Value          0.73
+Sequence       H2 C6 D6 K1 J2 E4 D5 H5 L3 M2 J4 G6 H7 J5 L4 K5 M3 F4 J1 G3 G2 
+F13 G5 F5 F6 G7 G8 F7 F8 E7 E8 E6 D8 C7 
+TimeInitTree   0.18
+TimeRootFilter 0.00
+];W[ch]WL[1082.146594];B[dh]BL[1816.200675]
+C[SgDefaultTimeControl: timeLeft=1821 remaining=31.5 timeMove=57.8095
+GoUctPlayer: Reusing 293898823 nodes (72%)
+[93\] SgUctSearch: move cannot change anymore
+[98\] SgUctSearch: move cannot change anymore
+Count          1.11508e+07
+Nodes          300890760
+Proven         0
+Time           1
+GameLen        136.5 dev=13.0 min=103.0 max=198.0
+InTree         25.5 dev=3.3 min=3.0 max=40.0
+Aborted        0%
+Games/s        149909.9
+RawGames/s     167806.0
+Value          0.73
+Sequence       D6 K1 J2 E4 D5 B8 L3 M2 M3 L4 C7 F13 J4 B10 B7 A7 B11 C8 M8 M9 
+M10 N9 K9 H5 J5 D8 E8 E7 E5 F4 F5 G4 G6 N3 N4 M4 N5 N6 
+TimeInitTree   3.57
+TimeRootFilter 0.00
+];W[cf]WL[1029.305129];B[cg]BL[1773.361941]
+C[SgDefaultTimeControl: timeLeft=1816 remaining=31.5 timeMove=57.6508
+GoUctPlayer: Reusing 74181 nodes (62%)
+ 0:05 | 0.761 | 1031165.000 | 0 | C7 E4 D5 B7 A6 B9 L3 H5 G5 E9 D8 J10 G9 G6 H7 G4 F5 J5 F4 F1 G1 E1 A4 H1
+ 0:10 | 0.757 | 2001287.000 | 0 | C7 E4 D5 B7 A6 B9 L3 M2 B8 A7 C9 D8 E8 A8 B10 F13 J5 J4 H4 H5 G5 F4 E5 F5 F6 E7 E6
+ 0:15 | 0.754 | 2926095.000 | 0 | C7 E4 D5 B7 A6 B9 L3 M2 B8 A7 C9 D8 E8 A8 B10 F13 J5 J4 H4 H5 G5 F4 E5 F5 F6 E7 E6
+ 0:20 | 0.752 | 3871945.000 | 0 | C7 E4 D5 B7 A6 B9 L3 K1 J2 M2 B8 A8 D8 B10 B11 F13 M8 H5 G5 M9 M10 H4 J5 G6 H7 G7 F6 F7
+ 0:25 | 0.749 | 4778403.000 | 0 | C7 E4 D5 B7 A6 B9 L3 K1 J2 M2 B8 A8 D8 B10 B11 F13 M8 H5 G5 M9 M10 H4 J5 G6 H7 G7 F6 F7
+ 0:30 | 0.746 | 5691909.000 | 0 | C7 E4 D5 B7 A6 B9 L3 K1 J2 M3 F13 B13 B10 E9 D9 D8 E8 A7 F4 E5 E6 F5 F6 G5
+ 0:35 | 0.748 | 6507657.000 | 0 | C7 E4 D5 B7 A6 B9 B8 A7 C9 D8 E8 B10 D9 A8 B11 K1 C8 F13 J2 A6 J4 J5 H5 A9 M8 M9 M10 F1 G1 E1 *
+ 0:40 | 0.749 | 7242677.000 | 0 | C7 E4 D5 B7 A6 B9 B8 A7 C9 D8 E8 B10 D9 B11 A8 K1 J2 L12 L3 M2 K13 H5 H13 A12 B13 A9 C8 F5 G5 G4 *
+[24\] SgUctSearch: move cannot change anymore
+Count          7.5876e+06
+Nodes          375283501
+Proven         0
+Time           42
+GameLen        136.1 dev=9.9 min=81.0 max=218.0
+InTree         17.9 dev=6.1 min=2.0 max=44.0
+Aborted        0%
+Games/s        178821.5
+RawGames/s     197769.0
+Value          0.75
+Sequence       C7 E4 D5 B7 A6 B9 B8 A7 C9 D8 E8 B10 D9 B11 A8 K1 J2 L12 L3 M2 
+K13 F13 J4 M10 L4 K5 M3 N2 J1 N3 N4 M4 M9 M8 M11 N9 L11 L1 N6 
+M5 N7 N5 
+TimeInitTree   0.00
+TimeRootFilter 0.00
+];W[bg]WL[1024.054796];B[ah]BL[1727.443086]
+C[SgDefaultTimeControl: timeLeft=1773 remaining=31.5 timeMove=56.2857
+GoUctPlayer: Reusing 1055021 nodes (0%)
+ 0:05 | 0.769 | 1119403.000 | 0 | A6 E4 D5 B9 L3 M3 L4 J10 J9 E9 M2 L1 K1 J1 J2 M4
+ 0:10 | 0.766 | 2116159.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 B11 A8 L3 M2 F13 C13 A10 H13 J11 E12 J4 L4 M3 M4 N3 N2 L1 N4 M1
+ 0:15 | 0.761 | 3150845.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 B11 A8 F13 H5 L3 H13 C13 B13 A13 E7 F7 E6 F6
+ 0:20 | 0.758 | 4144977.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 B11 A8 F13 C13 L3 H13 A10 M2 M3 L4 M4 N3 M5 N5 N2
+ 0:25 | 0.756 | 5117287.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 L3 B11 D9 A8 M3 M2 M8 M9 M10 H5 N2 G5 J4 J5 F4 H7 G6
+ 0:30 | 0.754 | 6082339.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 L3 B11 D9 A8 M3 M2 M8 M9 M10 H5 N2 G5 J4 J5 F4 H7 G6
+ 0:35 | 0.753 | 6979375.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 L3 B11 D9 A8 M3 M2 M8 M9 M10 H5 N2 G5 J4 J5 F4 H7 G6
+ 0:40 | 0.755 | 7751733.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 D9 A8 B11 K1 C8 A6 J2 L12 L3 M2 M3 H5 N2 G6 H7 K11 M9 M8 K9 N7 *
+ 0:45 | 0.756 | 8506979.000 | 0 | A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 D9 A8 B11 K1 C8 A6 J2 L12 L3 M2 M3 H5 N2 G6 H7 K11 M9 M8 K9 N7 *
+[24\] SgUctSearch: move cannot change anymore
+Count          8.55398e+06
+Nodes          420249540
+Proven         0
+Time           45
+GameLen        134.7 dev=nan min=75.0 max=218.0
+InTree         16.3 dev=6.1 min=2.0 max=44.0
+Aborted        0%
+Games/s        187953.5
+RawGames/s     207391.4
+Value          0.76
+Sequence       A6 B9 B8 A7 C9 E4 D5 D8 E8 B10 D9 A8 B11 K1 C8 A6 J2 L12 L3 M2 
+M3 H5 N2 G6 H7 K11 M9 M8 K9 N7 J5 H4 J4 K5 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[ag]WL[998.715333];B[be]BL[1698.917948]
+C[SgDefaultTimeControl: timeLeft=1727 remaining=31.5 timeMove=54.8254
+GoUctPlayer: Reusing 1173653 nodes (69%)
+ 0:05 | 0.771 | 1094789.000 | 0 | B9 E4 D5 F13 J4 K1 J2 B11 B8 A6 A11 B13 L3 L4 M3 M2 M4 N3 M5 N5 K5 L5
+ 0:10 | 0.778 | 1976823.000 | 0 | B9 E4 D5 F13 L3 K1 J2 L4 M3 H5 G5 G6 H7 M2 B8 G4 F5 H4 F4 A6 K9 M8 M9 N7 M10 B11 A11 B13 A12 J10 *
+ 0:15 | 0.779 | 2887057.000 | 0 | B9 E4 D5 F13 L3 K1 J2 L4 M3 H5 G5 G6 H7 M2 B8 G4 F5 H4 F4 A6 M10 K11 L11 J11 M8 B11 L12 M9 N9 N7 *
+ 0:20 | 0.773 | 3838303.000 | 0 | B9 E4 D5 F13 L3 K1 J2 L4 M3 H5 G5 G6 H7 M2 B8 G4 F5 H4 F4 A6 M10 K11 L11 J11 M8 B11 L12 M9 N9 N7 *
+ 0:25 | 0.771 | 4721291.000 | 0 | B9 E4 D5 K1 J2 H5 F5 G6 L3 M2 H7 K11 L11 J11 M8 G5 L12 F4 G4 M9 M10 N10 N11 N9 K9
+[75\] SgUctSearch: move cannot change anymore
+Count          5.18155e+06
+Nodes          250657864
+Proven         0
+Time           28
+GameLen        132.0 dev=nan min=75.0 max=224.0
+InTree         16.2 dev=4.2 min=2.0 max=38.0
+Aborted        0%
+Games/s        185280.0
+RawGames/s     207447.7
+Value          0.77
+Sequence       B9 E4 D5 K1 J2 H5 G5 G6 H7 J11 K9 K11 M8 B11 J5 F5 G4 D8 B8 L11 
+A8 M10 M11 M12 N10 N11 N9 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[bf]WL[990.103982];B[kk]BL[1654.544242]
+C[SgDefaultTimeControl: timeLeft=1698 remaining=31.5 timeMove=53.9048
+GoUctPlayer: Reusing 630774 nodes (57%)
+ 0:05 | 0.824 | 1115341.000 | 0 | L3 E4 D5 K1 J2 M2 M3 F13 D8 H5 N2 G6 H7 G5 F4 M10 M11 M9 N10 N9 N11 N7 E5 N6
+ 0:10 | 0.813 | 2126723.000 | 0 | L3 E4 D5 K1 J2 M2 M3 H5 G5 F13 H4 M10 M11 D8 E8 E7 E6 F7 F6 A6 N2 J10 J9 J11 K9 H7 G6 G7
+ 0:15 | 0.808 | 3141189.000 | 0 | D8 C9 B10 E4 D5 E9 D9 G9 M9 F8 L3 J10 M8 M3 H9 A6 L1 F6 F5 M2 M1 K11 L11 J11 L12 K13 L13 J13
+ 0:20 | 0.806 | 4132745.000 | 0 | D8 C9 B10 E4 D5 E9 D9 G9 M9 F8 L3 J10 M8 M3 H9 A6 L1 F6 F5 M2 M1 K11 L11 J11 L12 K13 L13 J13
+ 0:25 | 0.806 | 5145745.000 | 0 | D8 C9 B10 E4 D5 E9 D9 G9 M9 F8 L3 J10 M8 M3 H9 A6 L1 F6 F5 M2 M1 K11 L11 J11 L12 K13 L13 J13
+ 0:30 | 0.805 | 6037073.000 | 0 | L3 E4 D5 K1 J2 M2 D8 H5 G5 A6 M9 M8 K9 N7 H4 M10 M11 K11 L12 G6 J5 N9 L11 F13 J11 G9 G8 F8 F7 E9 *
+ 0:35 | 0.805 | 6890729.000 | 0 | L3 E4 D5 K1 J2 M2 D8 H5 G5 A6 M3 G6 H7 G4 F5 E9 M8 H4 F4 M9 N2 J10 J9 J11 K9 G9 H9 F8 G7 F13 *
+ 0:40 | 0.805 | 7749469.000 | 0 | L3 E4 D5 K1 J2 M2 D8 H5 G5 A6 M3 G6 H7 G4 F5 E9 M8 G9 F8 J10 H9 M9 M10 K11 L11 L12 J11 K13 K11 F13 *
+[58\] SgUctSearch: move cannot change anymore
+Count          8.27269e+06
+Nodes          387252462
+Proven         0
+Time           43
+GameLen        131.9 dev=4.4 min=77.0 max=218.0
+InTree         16.6 dev=5.6 min=2.0 max=41.0
+Aborted        0%
+Games/s        191206.7
+RawGames/s     210916.2
+Value          0.80
+Sequence       L3 E4 D5 K1 J2 M2 D8 H5 G5 A6 M9 M8 K9 N7 J13 F13 J11 E12 J5 
+E9 D9 G9 F8 J10 J9 H7 G6 J4 H4 M10 M11 N9 N11 N10 G7 H8 H9 M9 
+G8 H13 K13 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[jm]WL[941.723076];B[il]BL[1628.400364]
+C[SgDefaultTimeControl: timeLeft=1654 remaining=31.5 timeMove=52.5079
+GoUctPlayer: Reusing 380166 nodes (56%)
+ 0:05 | 0.805 | 1000101.000 | 0 | J2 E4 D5 L4 M3 M2 D8 F13 H4 M10 M11 C9 B10 A6 M9 M8 N9 K11 L12 D9 E9 J10 H9 E8 E7 F8 F7 G8 G7 K9
+ 0:10 | 0.799 | 1917267.000 | 0 | J2 E4 D5 L4 M3 M2 D8 F13 J5 J4 M4 E9 N2 C9 D9 B10 B11 A9 M1 J10 K9 M8 M9 N7 M10 G9 H9 F8 G8 F9 *
+ 0:15 | 0.797 | 2819539.000 | 0 | J2 E4 D5 L4 M3 M2 D8 F13 J5 J4 M4 E9 N2 C9 D9 B10 B11 A9 M1 J10 K9 M8 M9 N7 M10 G9 H9 F8 G8 F9 *
+ 0:20 | 0.797 | 3704011.000 | 0 | J2 E4 D5 L4 M3 M2 D8 F13 J5 J4 M4 E9 N2 C9 D9 B10 B11 A9 M1 J10 K9 M8 M9 N7 M10 G9 H9 F8 G8 F9 *
+ 0:25 | 0.795 | 4570549.000 | 0 | J2 E4 D5 L4 M3 M2 D8 F13 M9 H5 M8 G6 F5 G4 F4 A6 H7 G5 J4 J5 F6 G7 N2 M4 N3 N4 J1 N1 L1
+[96\] SgUctSearch: move cannot change anymore
+Count          4.62654e+06
+Nodes          210818819
+Proven         0
+Time           25
+GameLen        126.7 dev=18.5 min=78.0 max=209.0
+InTree         18.0 dev=4.1 min=2.0 max=36.0
+Aborted        0%
+Games/s        182141.7
+RawGames/s     205466.1
+Value          0.79
+Sequence       J2 E4 D5 L4 M3 M2 D8 F13 M9 H5 M8 G6 F5 G4 F4 A6 H7 G5 J4 J5 
+F6 G7 N2 M4 N3 N4 J1 N1 L1 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[kj]WL[843.551212];B[lk]BL[1602.264834]
+C[SgDefaultTimeControl: timeLeft=1628 remaining=31.5 timeMove=51.6825
+GoUctPlayer: Reusing 643851 nodes (57%)
+ 0:05 | 0.800 | 1062115.000 | 0 | M3 E4 D5 M2 D8 F13 J4 E9 D9 G9 F8 J10 H9 J9 H8 H5 J5 G5 G6 F6
+ 0:10 | 0.800 | 2002415.000 | 0 | M3 E4 D5 M2 M9 M8 K9 N7 F13 B11 A11 B13 B10 K11 L11 J11 L12 D8 E8 H5 G5 H4 G4 H7 G6 G7 F7
+ 0:15 | 0.798 | 2959337.000 | 0 | M3 E4 D5 M2 M9 M8 K9 N7 D8 F13 J4 M10 M11 C9 B10 N9 N2 M4 J5 D9 E9 A6 J1 F1 G1 E1 F4
+ 0:20 | 0.796 | 3894021.000 | 0 | M3 E4 D5 M2 D8 F13 E1 H5 G5 C9 B10 G6 H7 G4 F5 H4 F4 D1 M8 M9 M10 E9 D9 A6 N9 E8 F8 E7
+ 0:25 | 0.794 | 4820221.000 | 0 | M3 E4 D5 M2 D8 F13 E1 H5 G5 C9 B10 G6 H7 G4 F5 H4 F4 D1 M8 M9 M10 E9 D9 A6 N9 E8 F8 E7
+[14\] SgUctSearch: move cannot change anymore
+Count          4.89433e+06
+Nodes          220741001
+Proven         0
+Time           25
+GameLen        126.8 dev=16.9 min=77.0 max=218.0
+InTree         16.5 dev=3.9 min=2.0 max=36.0
+Aborted        0%
+Games/s        191619.0
+RawGames/s     214246.2
+Value          0.79
+Sequence       M3 E4 D5 M2 D8 F13 E1 H5 G5 C9 B10 G6 H7 G4 F5 H4 F4 D1 M8 M9 
+M10 E9 D9 A6 N9 E8 F8 E7 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[ll]WL[837.651096];B[bm]BL[1552.680324]
+C[SgDefaultTimeControl: timeLeft=1602 remaining=31.5 timeMove=50.8571
+GoUctPlayer: Reusing 496774 nodes (59%)
+ 0:05 | 0.801 | 1114969.000 | 0 | D8 F13 M9 E4 D5 H5 M8 C9 G5 B10 B11 G6 H7 G4 F5 H4 F4 A9 D9 J10 J9 J11 J13 H13 K13 E12 E5
+ 0:10 | 0.801 | 2212697.000 | 0 | D8 F13 M9 E4 D5 H5 M8 C9 G5 B10 B11 G6 H7 G4 F5 H4 F4 A9 J11 D9 E9 A8 F6 G7 G8 F1 G1 E1 E5 F7 *
+ 0:15 | 0.801 | 3257605.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+ 0:20 | 0.797 | 4337885.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+ 0:25 | 0.796 | 5370365.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+ 0:30 | 0.794 | 6442835.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+ 0:35 | 0.793 | 7463583.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+ 0:40 | 0.793 | 8460603.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+ 0:45 | 0.793 | 9416619.000 | 0 | D8 F13 J4 E9 M9 M8 K9 N7 D9 M10 M11 N9 N2 M4 J5 E4 D5 A6 C13 G9 E8 H9 J10 H13
+[109\] SgUctSearch: move cannot change anymore
+Count          1.01949e+07
+Nodes          455504110
+Proven         0
+Time           49
+GameLen        124.5 dev=10.7 min=77.0 max=205.0
+InTree         14.3 dev=4.0 min=2.0 max=38.0
+Aborted        0%
+Games/s        207539.0
+RawGames/s     230217.0
+Value          0.79
+Sequence       B1 C1 E1 F13 B2 E4 D5 C9 B10 F4 D8 H4 G3 G4 J4 D9 E9 E8 E7 F8 
+F7 G8 G7 H8 H7 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[cm]WL[787.120662];B[em]BL[1530.637724]
+C[SgDefaultTimeControl: timeLeft=1553 remaining=31.5 timeMove=49.3016
+GoUctPlayer: Reusing 310000675 nodes (63%)
+ 0:05 | 0.788 | 14235953.000 | 0 | E1 B2 D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 H4 C9 B10 D9 E9 E8 E5 G4 K9 F5 F4 A6 G3 N7 J5 M10 N10 M11 *
+ 0:10 | 0.787 | 15193955.000 | 0 | E1 B2 D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K11 M11 M4 N2 M10 K13 M12 N12 M13 L13 N11 N13 *
+ 0:15 | 0.787 | 16150059.000 | 0 | E1 B2 D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 D9 E9 F5 G4 E8 E5 F4 F6 A6 K11 M10 *
+[84\] SgUctSearch: move cannot change anymore
+[38\] SgUctSearch: move cannot change anymore
+Count          1.66321e+07
+Nodes          443354001
+Proven         0
+Time           18
+GameLen        114.5 dev=10.7 min=80.0 max=201.0
+InTree         21.4 dev=7.3 min=3.0 max=42.0
+Aborted        0%
+Games/s        181431.9
+RawGames/s     205713.2
+Value          0.79
+Sequence       E1 B2 D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 
+D9 E9 E8 E5 G4 F5 J4 H4 A6 K11 M10 M11 N9 N11 N10 F4 G3 G2 J1 
+H1 
+TimeInitTree   4.09
+TimeRootFilter 0.00
+];W[bl]WL[773.933363];B[df]BL[1485.246993]
+C[SgDefaultTimeControl: timeLeft=1530 remaining=31.5 timeMove=48.5714
+GoUctPlayer: Reusing 210595486 nodes (83%)
+ 0:05 | 0.787 | 10896519.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:10 | 0.784 | 11822719.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:15 | 0.784 | 12750285.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:20 | 0.785 | 13666751.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:25 | 0.786 | 14580659.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:30 | 0.785 | 15462649.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:35 | 0.785 | 16348875.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+ 0:40 | 0.783 | 17240181.000 | 0 | D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 *
+[73\] SgUctSearch: move cannot change anymore
+Count          1.75537e+07
+Nodes          515592801
+Proven         0
+Time           42
+GameLen        112.6 dev=nan min=75.0 max=192.0
+InTree         21.5 dev=5.1 min=2.0 max=46.0
+Aborted        0%
+Games/s        182167.5
+RawGames/s     208513.3
+Value          0.78
+Sequence       D8 F13 M9 H5 G5 E4 D5 G6 H7 M8 J5 C9 K9 N7 B10 L12 K13 F5 G4 
+H4 N2 G3 F4 M4 J11 E5 G2 M10 M11 D9 E9 N9 L1 M1 J4 M12 J13 E12 
+H13 F12 C13 E8 E7 F8 F7 G8 
+TimeInitTree   2.84
+TimeRootFilter 0.00
+];W[hi]WL[750.374237];B[ii]BL[1439.926791]
+C[SgDefaultTimeControl: timeLeft=1485 remaining=31.5 timeMove=47.1429
+GoUctPlayer: Reusing 678982 nodes (60%)
+ 0:05 | 0.788 | 1160371.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 N2 M4 N3 N4 F13 H13 C13 G4 F4 K9 J9 M8 M9 N8 N9 N7 M10 A1
+ 0:10 | 0.782 | 2201277.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 K9 N7 M1 N3 N2 N1 N4 M4 J11 A6 J13 E12 C13 G9 H9 G8 *
+ 0:15 | 0.775 | 3268235.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 K9 N7 J11 C9 J13 E12 B10 A6 C13 H3 G3 D9 E9 E8 E7 F8 *
+ 0:20 | 0.774 | 4241827.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 N3 M4 K9 N7 J11 H3 J13 E12 G2 C9 B10 A6 J1 N10 N11 N9 *
+ 0:25 | 0.773 | 5162619.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 N3 M4 K9 N7 J11 H3 J13 E12 G2 C9 B10 A6 J1 N10 N11 N9 *
+ 0:30 | 0.771 | 6193663.000 | 0 | G5 E4 D5 G6 H7 G4 F5 L12 K13 K11 L11 J11 M12 H4 F13 F4 C13 E5 M9 M8 K9 N7 F6 E6 F7 M10 N9 N10 N2 M4 *
+ 0:35 | 0.769 | 7207721.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 N3 M4 K9 N7 J11 H3 J13 E12 G2 C9 B10 A6 J1 N10 N11 N9 *
+ 0:40 | 0.767 | 8180795.000 | 0 | J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 N3 M4 K9 N7 J11 H3 J13 E12 G2 C9 B10 A6 J1 N10 N11 N9 *
+[60\] SgUctSearch: move cannot change anymore
+[96\] SgUctSearch: move cannot change anymore
+Count          9.1145e+06
+Nodes          362022187
+Proven         0
+Time           45
+GameLen        114.9 dev=nan min=73.0 max=190.0
+InTree         17.9 dev=6.1 min=2.0 max=44.0
+Aborted        0%
+Games/s        203063.7
+RawGames/s     226889.8
+Value          0.77
+Sequence       J5 E4 D5 G6 H7 J4 G5 H4 G4 F13 M8 M9 M10 N8 K9 N7 J11 C9 B10 
+H3 N2 M4 L1 M1 J13 E12 C13 A6 G2 J1 H1 N10 N11 N9 M11 N3 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[ij]WL[736.809073];B[gi]BL[1415.210075]
+C[SgDefaultTimeControl: timeLeft=1439 remaining=31.5 timeMove=45.6825
+GoUctPlayer: Reusing 633706 nodes (58%)
+ 0:05 | 0.798 | 1097487.000 | 0 | G5 F13 M9 E4 D5 H4 M8 G6 H7 F5 G4 G3 F4 G2 E5 H1 J11 B13 J13 E12 B11 D1 F1 G1 F6 A9 C9 J10 K11 G9 *
+ 0:10 | 0.795 | 2027855.000 | 0 | G5 F13 M9 E4 D5 H4 M8 G6 H7 F5 G4 G3 F4 G2 E5 H1 J11 B13 J13 E12 B11 D1 F1 G1 F6 H13 K13 N7 N8 C9 *
+ 0:15 | 0.794 | 2909293.000 | 0 | G5 F13 M9 E4 D5 H4 M8 G6 H7 F5 G4 G3 F4 G2 E5 H1 J11 B13 J13 E12 B11 D1 F1 G1 F6 H13 K13 J10 J9 N7 *
+ 0:20 | 0.795 | 3720995.000 | 0 | G5 F13 M9 E4 D5 H4 M8 G6 H7 F5 G4 G3 F4 G2 E5 H1 J11 B13 J13 E12 B11 D1 F1 G1 F6 H13 K13 J10 J9 N7 *
+[26\] SgUctSearch: move cannot change anymore
+[3\] SgUctSearch: move cannot change anymore
+Count          4.28063e+06
+Nodes          147786008
+Proven         0
+Time           23
+GameLen        105.6 dev=nan min=75.0 max=177.0
+InTree         26.8 dev=10.5 min=2.0 max=50.0
+Aborted        0%
+Games/s        181234.5
+RawGames/s     206073.2
+Value          0.80
+Sequence       G5 F13 M9 E4 D5 H4 M8 G6 H7 F5 G4 G3 F4 G2 E5 H1 J11 B13 J13 
+E12 B11 D1 F1 G1 F6 H13 K13 J10 J9 N7 C9 N8 N9 N6 A13 A12 A11 
+M10 K9 M11 L11 M12 N10 N11 G7 N3 M4 M5 A13 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[hj]WL[731.873105];B[fa]BL[1386.980836]
+C[SgDefaultTimeControl: timeLeft=1415 remaining=31.5 timeMove=44.9206
+GoUctPlayer: Reusing 547278 nodes (61%)
+ 0:05 | 0.805 | 1180173.000 | 0 | N2 M4 F13 J11 K11 E4 D5 G6 H7 H13 C13 F5 G4 F4 G3 F6 G7 F7 F8 G9 J10 E12 H9
+ 0:10 | 0.809 | 2136735.000 | 0 | F13 E4 D5 G6 C13 L12 K13 F4 G4 F5 G3 K11 L11 J10 J9 J11 H7 L13 M12 J13 K9 G9 H9 M8 F6 G7 G8 F7 E6 A1 *
+ 0:15 | 0.813 | 3088225.000 | 0 | F13 E4 D5 G6 C13 L12 K13 F4 G4 F5 G3 K11 L11 J11 M12 J10 K9 H9 G9 F6 H7 M8 N7 M11 M10 N11 N10
+ 0:20 | 0.808 | 4070897.000 | 0 | F13 E4 D5 G6 C13 L12 K13 F4 G4 F5 G3 K11 L11 J11 M12 J10 K9 H9 G9 F6 H7 M8 N7 M11 M10 N11 N10
+ 0:25 | 0.803 | 5058439.000 | 0 | F13 E4 D5 K13 L12 B13 B11 C13 M1 J10 J9 N2 M9 H13 J11 E12 M8 G6 F4 H7 J1 A6 L13 F6 E5 J13 N6 N5 N7 L1 *
+[94\] SgUctSearch: move cannot change anymore
+Count          5.63692e+06
+Nodes          218897815
+Proven         0
+Time           28
+GameLen        115.0 dev=8.0 min=72.0 max=189.0
+InTree         16.3 dev=4.2 min=2.0 max=39.0
+Aborted        0%
+Games/s        202454.0
+RawGames/s     229714.9
+Value          0.80
+Sequence       F13 E4 D5 K13 L12 B13 B11 C13 M1 J10 J9 N2 M9 H13 J11 E12 M8 
+G6 F4 H7 J1 A6 L13 F6 E5 J13 N6 N5 N7 L1 N3 M4 N1 N4 K9 K5 F13 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[ca]WL[697.001869];B[lf]BL[1358.825441]
+C[SgDefaultTimeControl: timeLeft=1386 remaining=31.5 timeMove=44
+GoUctPlayer: Reusing 883713 nodes (73%)
+ 0:05 | 0.770 | 1212159.000 | 0 | M8 E4 D5 H13 G4 M9 M10 N9 J11 E12 K9 N8 N10 N7 M1 N2 J1 K13 L13 L12 J13 G6 H7 A6 F6 G7 G8 F7 E7
+ 0:10 | 0.762 | 2289145.000 | 0 | M8 E4 D5 H13 G4 M9 M10 N9 J11 E12 K9 N8 N10 N7 N3 N2 J1 A6 M1 N4 K13 G6 H7 H3 G2 C9 B10 D9 E9 E8 *
+ 0:15 | 0.763 | 3264275.000 | 0 | M8 E4 D5 H13 J11 E12 M9 G6 G4 K13 H7 L12 M11 K11 M1 N3 J1 C9 B10 D9 E9 M12 J10 A6 B13 E8 E7 F8 F7 G8 *
+ 0:20 | 0.768 | 4155059.000 | 0 | M8 E4 D5 H13 J11 E12 M9 G6 G4 K13 H7 L12 M11 K11 M1 N3 J1 C9 B10 J10 L1 N2 M12 H9 G9 A6 D9 N7 N8 N6 *
+ 0:25 | 0.767 | 5010335.000 | 0 | M8 E4 D5 H13 J11 E12 M9 G6 G4 K13 H7 L12 M11 K11 M1 M4 J1 J10 L1 N3 H9 M12 N12 C9 B10 D9 E9 B13 A12 A6 *
+[92\] SgUctSearch: move cannot change anymore
+Count          5.32925e+06
+Nodes          198352916
+Proven         0
+Time           27
+GameLen        102.9 dev=nan min=72.0 max=172.0
+InTree         20.5 dev=7.8 min=2.0 max=52.0
+Aborted        0%
+Games/s        196843.3
+RawGames/s     228116.1
+Value          0.77
+Sequence       M8 E4 D5 H13 J11 E12 M9 G6 G4 K13 H7 L12 M11 K11 M1 M4 J1 J10 
+L1 N3 H9 M12 N12 C9 B10 D9 E9 B13 A12 A6 N6 N5 N7 H3 G3 D1 F1 
+J9 A13 E8 F8 E6 E7 F6 G7 F5 K9 J11 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[le]WL[690.436684];B[me]BL[1325.844885]
+C[SgDefaultTimeControl: timeLeft=1359 remaining=31.5 timeMove=43.1429
+GoUctPlayer: Reusing 1068932 nodes (58%)
+ 0:05 | 0.747 | 1266269.000 | 0 | M10 G6 K9 E4 D5 K13 N2 M4 L1 M1 H7 L12 G4 A6 M12 N7 N9 N6 D1
+ 0:10 | 0.736 | 2390743.000 | 0 | M10 G6 G4 L12 J11 K13 K11 J13 M12 A6 H7 E4 D5 N8 M13 B11 L13 C2 F6 F5 F7
+ 0:15 | 0.729 | 3495047.000 | 0 | M10 G6 G4 L12 J11 K13 K11 J13 M12 A6 H7 E4 D5 N8 M13 B11 L13 C2 F6 F5 F7
+ 0:20 | 0.728 | 4420461.000 | 0 | N9 G4 N2 E4 D5 G6 M1 M10 M11 N10 H7 K13 F5 L12 K11 M4 L1 E9 N11 G9 F8 N8 K9 N7 C9 A6 L11 B11 A11 F4 *
+ 0:25 | 0.729 | 5363921.000 | 0 | N9 G4 N2 E4 D5 G6 M1 M10 M11 N10 H7 K13 F5 L12 K11 M4 L1 E9 N11 G9 F8 N8 K9 N7 C9 A6 L11 F4 E5 B13 *
+ 0:30 | 0.727 | 6292879.000 | 0 | N9 G4 N2 E4 D5 G6 M1 M10 M11 N10 H7 K13 K9 N8 F5 L12 K11 M4 L1 A6 L11 F4 N11 N7 E5 G9 M13 E9 F8 J10 *
+[5\] SgUctSearch: move cannot change anymore
+[12\] SgUctSearch: move cannot change anymore
+[42\] SgUctSearch: move cannot change anymore
+Count          6.87109e+06
+Nodes          245876090
+Proven         0
+Time           33
+GameLen        103.7 dev=nan min=66.0 max=183.0
+InTree         19.0 dev=8.0 min=2.0 max=48.0
+Aborted        0%
+Games/s        208278.7
+RawGames/s     236999.5
+Value          0.73
+Sequence       N9 G4 N2 E4 D5 G6 M1 M10 M11 N10 H7 K13 K9 N8 F5 L12 K11 M4 L1 
+A6 L11 F4 N11 N7 E5 G9 M13 E9 F8 J10 H9 H13 J11 E12 G8 F7 J9 
+K5 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[ld]WL[659.714997];B[lc]BL[1294.632493]
+C[SgDefaultTimeControl: timeLeft=1325 remaining=31.5 timeMove=42.0635
+GoUctPlayer: Reusing 359311 nodes (57%)
+ 0:05 | 0.734 | 1174801.000 | 0 | M1 E4 D5 L11 K11 G6 N2 M4 M11 N3 F4 H13 N10 H7 H8 A6 G8 N7 K9 L12 L13 M12 N12 E12
+ 0:10 | 0.705 | 2272181.000 | 0 | M1 E4 D5 L11 K11 M11 N2 A6 G4 H13 J11 E12 M4 K9 J9 L12 K13 E9 D9 G9 F8 H7 G6 H9 J10 H8 G7 K5 G8
+ 0:15 | 0.690 | 3326921.000 | 0 | M11 E4 D5 N10 N11 N8 M4 G6 N2 H13 J11 E12 H7 F5 M1 G4 K9 N7 F7 A6 E5 F4 K13 G7 G8 L11 M12 N9 G3 C2 *
+ 0:20 | 0.687 | 4336527.000 | 0 | M11 E4 D5 N10 N11 N8 M4 G6 N2 H13 J11 E12 H7 F5 G7 G4 F6 A6 F4 E5 K9 N7 G5 N3 N4 B11 A11 A10 B10 G6 *
+ 0:25 | 0.686 | 5268425.000 | 0 | M11 E4 D5 N10 N11 N8 M4 G6 N2 H13 J11 E12 H7 F5 G7 G4 F6 A6 F4 G5 K9 N7 E5 M1 J1 L12 L11 K13 K11 C9 *
+ 0:30 | 0.683 | 6297719.000 | 0 | M11 E4 D5 N10 N11 N8 M4 G6 N2 H13 J11 E12 H7 F5 G7 G4 F6 A6 F4 G5 K9 N7 E5 M1 J1 L12 L11 K13 K11 C9 *
+[41\] SgUctSearch: move cannot change anymore
+Count          6.31242e+06
+Nodes          228028300
+Proven         0
+Time           30
+GameLen        100.2 dev=nan min=62.0 max=180.0
+InTree         18.5 dev=6.3 min=2.0 max=46.0
+Aborted        0%
+Games/s        209248.8
+RawGames/s     241691.8
+Value          0.68
+Sequence       M11 E4 D5 N10 N11 N8 M4 G6 N2 H13 J11 E12 H7 F5 G7 G4 F6 A6 F4 
+G5 K9 N7 E5 M1 J1 L12 L11 K13 K11 C9 B10 D9 E9 G3 G2 B13 A12 
+F7 E6 E8 F8 G9 H9 A1 G8 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[mg]WL[602.245094];B[je]BL[1273.353108]
+C[SgDefaultTimeControl: timeLeft=1295 remaining=31.5 timeMove=41.1111
+GoUctPlayer: Reusing 533208 nodes (57%)
+ 0:05 | 0.718 | 1116751.000 | 0 | K9 N8 N3 H13 J11 E12 N2 E4 D5 G4 F5 E9 D9 G9 F8 L11 M12 J10 J9 H7 G6 H9 J10 M4 M1 N4 L1 C2 E8 A1 *
+ 0:10 | 0.691 | 2206835.000 | 0 | K9 N8 N3 H13 J11 E12 N2 E4 D5 G4 F5 E9 D9 G9 F8 L11 M12 J10 J9 H7 G6 H9 J10 M4 M1 N4 L1 C2 E8 A1 *
+ 0:15 | 0.683 | 3202023.000 | 0 | K9 N8 N3 H13 J11 E12 N2 E4 D5 G4 F5 E9 B11 F4 E5 H7 G6 J10 G9 K11 L11 L12 K13 L13 J11 A6 M12 K11 M13 J11 *
+ 0:20 | 0.684 | 4144325.000 | 0 | K9 N8 N3 H13 J11 E12 N2 E4 D5 G4 F5 E9 B11 F4 E5 H7 G6 J10 G9 K11 L11 L12 K13 L13 J11 A6 M12 K11 M13 J11 *
+[108\] SgUctSearch: move cannot change anymore
+Count          4.38958e+06
+Nodes          159532083
+Proven         0
+Time           21
+GameLen        95.0 dev=nan min=56.0 max=170.0
+InTree         19.3 dev=5.6 min=2.0 max=41.0
+Aborted        0%
+Games/s        204572.2
+RawGames/s     240505.0
+Value          0.68
+Sequence       K9 N8 N3 H13 J11 E12 N2 E4 D5 G4 F5 E9 C9 F4 H7 E5 E6 J10 J9 
+A6 B11 G6 F6 G9 F8 M4 M1 H9 J10 G7 G8 L11 L12 M12 K11 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[mf]WL[578.766121];B[mk]BL[1268.314588]
+C[SgDefaultTimeControl: timeLeft=1272 remaining=31.5 timeMove=40.381
+GoUctPlayer: Reusing 156891147 nodes (71%)
+[3\] SgUctSearch: move cannot change anymore
+Count          9.17982e+06
+Nodes          161329573
+Proven         0
+Time           1
+GameLen        83.8 dev=6.4 min=65.0 max=146.0
+InTree         38.3 dev=9.3 min=2.0 max=56.0
+Aborted        0%
+Games/s        181357.6
+RawGames/s     209033.3
+Value          0.70
+Sequence       N3 H13 N2 E4 D5 G6 J11 E12 H7 C9 G4 B10 B11 A9 M12 K13 L12 D1 
+F1 F5 G3 M4 M1 N4 L1 D9 E9 L13 M13 B13 N11 E8 E5 E7 F4 G9 F8 
+F7 G8 H9 J10 A11 N10 A12 J13 E6 E4 A6 F6 A1 G7 K5 J1 K13 
+TimeInitTree   2.43
+TimeRootFilter 0.00
+];W[lj]WL[542.350599];B[ml]BL[1247.372527]
+C[SgDefaultTimeControl: timeLeft=1268 remaining=31.5 timeMove=40.254
+GoUctPlayer: Reusing 557646 nodes (57%)
+ 0:05 | 0.591 | 1168355.000 | 0 | N2 G6 M1 H7 F6 A6 G7 L12 K13 L11 K11 H13 M12 N4 L1 G4 H6 E4 D5 G6 F5 H8 J11 E12 G8 H9 G9 H6 F4 N11 *
+ 0:10 | 0.560 | 2304247.000 | 0 | N2 G6 M1 H7 F6 A6 G7 M12 L11 N11 N12 N10 L12 E12 B13 H13 H6 N4 L1 G6 G4 B11 H8 H6 A11 N13 A12 A10 B10 E9 *
+ 0:15 | 0.545 | 3419041.000 | 0 | N2 G6 M1 H7 F6 A6 G7 M12 L11 N11 N12 N10 L12 E12 B13 H13 H6 C9 B10 G6 G4 N4 L1 H6 J11 H8 G8 H9 G9 N13 *
+ 0:20 | 0.544 | 4417037.000 | 0 | N2 G6 M1 H7 H8 A6 G7 K11 L11 J11 K13 L12 M12 G4 F5 E4 D5 H13 J10 E12 F6 N4 L1 H6 F4 C9 B10 F7 G8 B13 *
+[55\] SgUctSearch: move cannot change anymore
+Count          4.47962e+06
+Nodes          155777248
+Proven         0
+Time           20
+GameLen        88.7 dev=nan min=62.0 max=161.0
+InTree         18.8 dev=6.9 min=2.0 max=48.0
+Aborted        0%
+Games/s        219207.8
+RawGames/s     257018.5
+Value          0.54
+Sequence       N2 G6 M1 H7 H8 A6 G7 K11 L11 J11 K13 L12 M12 G4 F5 E4 D5 H13 
+J10 E12 F6 N4 L1 H6 F4 C9 B10 F7 G8 B13 A12 G3 G2 D1 F1 N11 N12 
+N10 D9 A1 L13 J13 J1 K5 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+];W[mj]WL[532.865891];B[im]BL[1210.278470]
+C[SgDefaultTimeControl: timeLeft=1247 remaining=31.5 timeMove=39.5873
+GoUctPlayer: Reusing 1058029 nodes (55%)
+ 0:05 | 0.296 | 1309783.000 | 0 | L1 M1 B13 H13 J11 E12 G4 A6 J1 H7 G6 K13 L12 L13 M13 J13 H8 G7 F7 G8 F8 E9 D9 E4 D5
+ 0:10 | 0.263 | 2534197.000 | 0 | J1 A6 L1 N1 G4 H13 J11 E12 N11 G6 H7 K13 L13 J13 L12 N10 N3 K5 A1
+ 0:15 | 0.247 | 3741161.000 | 0 | J1 A6 L1 N1 G4 H13 J11 E12 N11 H7 G6 B13 A12 C9 N10 E4 D5 B10 A9 A10 B11 A8 A11 A1
+ 0:20 | 0.236 | 4937065.000 | 0 | J1 A6 L1 N1 G4 H13 J11 E12 F1 H7 G6 K13 L12 B13 A12 B11 D1 A1 L13 J13 H8 G7 G8 F7 F6 E7
+ 0:25 | 0.226 | 6142945.000 | 0 | J1 A6 L1 N1 G4 H13 J11 E12 F1 H7 G6 K13 L12 B13 A12 B11 D1 A1 L13 J13 H8 G7 G8 F7 F6 E7
+ 0:30 | 0.218 | 7338867.000 | 0 | J1 A6 L1 N1 G4 H13 J11 E12 F1 H7 G6 K13 L12 B13 D1 A1 L13 J13 A12 B11 A11 A13 A10 N10 N11 K5 G7
+ 0:35 | 0.213 | 8531081.000 | 0 | J1 A6 L1 N1 G4 H13 J11 E12 F1 H7 G6 K13 L12 B13 D1 A1 L13 J13 A12 B11 A11 A13 A10 N10 N11 K5 G7 H8 G8
+[105\] SgUctSearch: move cannot change anymore
+Count          8.84307e+06
+Nodes          340776226
+Proven         0
+Time           36
+GameLen        89.5 dev=nan min=60.0 max=159.0
+InTree         12.7 dev=3.3 min=2.0 max=32.0
+Aborted        0%
+Games/s        242170.4
+RawGames/s     287963.5
+Value          0.21
+Sequence       J1 A6 L1 N1 G4 H13 J11 E12 F1 H7 G6 K13 L12 B13 D1 A1 L13 J13 
+A12 B11 A11 A13 A10 N10 N11 K5 G7 H8 G8 
+TimeInitTree   0.02
+TimeRootFilter 0.00
+];W[ej]WL[515.698068];B[di]BL[1189.789000]
+C[SgDefaultTimeControl: timeLeft=1210 remaining=31.5 timeMove=38.4127
+GoUctPlayer: Reusing 75480 nodes (58%)
+ 0:05 | 0.233 | 1260501.000 | 0 | D5 A6 L1 N1 G4 H13 J11 E12 B13 G6 H7 K13 L12 C9 L13 J13 F6 G7 F7 G8 F8 G9
+ 0:10 | 0.205 | 2471675.000 | 0 | D5 A6 L1 N1 G4 K11 L11 J11 L12 H13 J10 E12 B13 C9 B10 H7 G6 G7 F7 G8 F8 G9 H9 N10 N11
+ 0:15 | 0.192 | 3657561.000 | 0 | D5 A6 L1 N1 G4 K11 L11 J11 L12 H13 J10 E12 B13 C9 B10 D9 E9 E8 E7 F8 G8 F7 F6 G7 H7 N10 N11
+[1\] SgUctSearch: move cannot change anymore
+Count          4.82404e+06
+Nodes          179413030
+Proven         0
+Time           20
+GameLen        89.0 dev=nan min=54.0 max=158.0
+InTree         13.6 dev=3.7 min=2.0 max=31.0
+Aborted        0%
+Games/s        241256.6
+RawGames/s     284979.6
+Value          0.18
+Sequence       D5 A6 L1 N1 G4 K11 K13 E12 B13 H13 L11 J11 C9 G6 H7 J10 J9 G9 
+H9 N11 F6 F8 E9 G7 F7 G8 G13 
+TimeInitTree   0.00
+TimeRootFilter 0.00
+];W[gj]WL[491.424232];B[km]BL[1158.420442]
+C[SgDefaultTimeControl: timeLeft=1190 remaining=31.5 timeMove=37.7778
+GoUctPlayer: Reusing 107244 nodes (59%)
+ 0:05 | 0.207 | 1322065.000 | 0 | L1 N1 J11 F4 N11 C9 G3 B10 B11 E12 B13 H13 N10 H7 G6 G7 F6
+ 0:10 | 0.175 | 2600255.000 | 0 | L1 N1 J11 F4 J13 A6 F5 E5 E6 G6 H7 F6 F7 G7 G8 A1 H13 N10 N11 K5 M1
+ 0:15 | 0.167 | 3855405.000 | 0 | L1 N1 J11 F4 J13 A6 F5 E5 E6 G6 F6 H7 G7 H6 H8 G8 F7 F8 E9 G9 H13
+ 0:20 | 0.157 | 5102523.000 | 0 | L1 N1 J11 F4 J13 A6 F5 E5 E6 G6 F6 H7 G7 H6 H8 G9 F8 E9 H9 N10 N11 A1 G8 K5
+ 0:25 | 0.149 | 6339233.000 | 0 | L1 N1 J11 F4 J13 A6 G6 C9 A9 D9 E9 A4 G3 G1 F1 A1 D1 K5 E5 H3 G2 M1
+ 0:30 | 0.144 | 7566459.000 | 0 | L1 N1 J11 F4 J13 A6 G6 C9 A9 D9 E9 A4 G3 G1 F1 A1 D1 K5 E5 H3 G2 M1
+[31\] SgUctSearch: move cannot change anymore
+Count          7.88212e+06
+Nodes          282782245
+Proven         0
+Time           31
+GameLen        92.8 dev=10.7 min=48.0 max=159.0
+InTree         12.6 dev=3.2 min=2.0 max=31.0
+Aborted        0%
+Games/s        251303.6
+RawGames/s     289008.5
+Value          0.14
+Sequence       L1 N1 J11 F4 J13 A6 G6 C9 A9 D9 E9 A4 G3 G1 F1 A1 D1 K5 E5 H3 
+G2 M1 
+TimeInitTree   0.00
+TimeRootFilter 0.00
+];W[mm]WL[485.182319];B[ic]BL[1127.177087]
+C[SgDefaultTimeControl: timeLeft=1158 remaining=31.5 timeMove=36.7619
+GoUctPlayer: Reusing 72143809 nodes (79%)
+ 0:05 | 0.128 | 5263753.000 | 0 | J11 F4 B13 A6 D1 F1 G6 C9 G3 G1 B10 A9 D9 A10 A11 A1 A8 A9
+ 0:10 | 0.122 | 6495765.000 | 0 | J11 F4 B13 A6 D1 F1 G6 C9 G3 G1 B10 N11 N12 N10 M12 L11 L12 K13 L13 A1 J13 K5 N5 M5 K11 N6
+ 0:15 | 0.117 | 7729641.000 | 0 | J11 F4 B13 A6 D1 F1 G6 C9 G3 G1 B10 N11 N12 N10 M12 L11 L12 K13 L13 A1 J13 K5 N5 M5 K11 N6
+ 0:20 | 0.113 | 8950419.000 | 0 | J11 F4 B13 A6 G6 C9 A9 N11 N12 N10 G3 G1 F1 A1 D9 K5 N2 N3 M1
+ 0:25 | 0.110 | 10173851.000 | 0 | J11 F4 B13 A6 G6 C9 A9 N11 N12 N10 G3 G1 M12 L11 D9 E5 E6 A1 M1
+[6\] SgUctSearch: move cannot change anymore
+[90\] SgUctSearch: move cannot change anymore
+Count          1.12708e+07
+Nodes          322180532
+Proven         0
+Time           30
+GameLen        94.8 dev=20.8 min=46.0 max=163.0
+InTree         13.5 dev=3.5 min=3.0 max=37.0
+Aborted        0%
+Games/s        244211.9
+RawGames/s     280051.5
+Value          0.11
+Sequence       J11 F4 B13 A6 G6 C9 A9 N11 N12 N10 D9 M12 N13 M13 L11 N12 L5 
+K5 L7 
+TimeInitTree   1.06
+TimeRootFilter 0.00
+];W[eb]WL[473.707397];
+C[Black resigned
+
+SgDefaultTimeControl: timeLeft=1126 remaining=31.5 timeMove=35.746
+GoUctPlayer: Reusing 358107 nodes (59%)
+ 0:05 | 0.064 | 1262517.000 | 0 | F4 A6 B13 H13 F5 K13 L13 L12 J13 M13 L11 K13 K11 N10 N11 H7 G6 G7 F7 G8 G9 F8 E8 A1 H8 K5 E5
+ 0:10 | 0.056 | 2487697.000 | 0 | F4 A6 B13 H13 H7 K13 L13 L12 J13 M13 L11 K13 K11 L13 E5 A1 E4 K5 N6 N5 M7 M8 N10 N11
+ 0:15 | 0.052 | 3702997.000 | 0 | F4 A6 B13 H13 F5 K13 L12 C9 M1 K1 L13 J13 D9 B10 A9 A10 B11 A8 A11 A1 L1 M1 K1
+ 0:20 | 0.049 | 4906663.000 | 0 | F4 A6 B13 H13 H7 K13 L13 L12 J13 M13 L11 K13 K11 L13 E5 A1 E4 K5 N10 N11 N12 N10 M12 G6 F5 F6 G7 F7 A9
+ 0:25 | 0.047 | 6098669.000 | 0 | F4 A6 B13 H13 F5 K13 L12 C9 G3 L13 M13 J13 F12 F13 B10 A9 A10 A8 D9 A4 E5 A1 L5 K5 M1
+ 0:30 | 0.046 | 7290623.000 | 0 | F4 A6 B13 H13 H7 K13 L12 C9 L13 B10 A9 A10 B11 A8 D9 A1 G6 F5 F6 N10 N11 K5 E5 F1
+[72\] SgUctSearch: move cannot change anymore
+Count          7.63178e+06
+Nodes          277488126
+Proven         0
+Time           31
+GameLen        86.3 dev=nan min=42.0 max=146.0
+InTree         12.7 dev=3.4 min=2.0 max=33.0
+Aborted        0%
+Games/s        242488.7
+RawGames/s     291830.6
+Value          0.05
+Sequence       F4 A6 B13 H13 H7 K13 L12 C9 L13 B10 A9 A10 B11 A8 D9 A1 E5 G6 
+F5 F6 G7 F7 J13 F12 
+TimeInitTree   0.01
+TimeRootFilter 0.00
+])

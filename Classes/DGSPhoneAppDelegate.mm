@@ -7,7 +7,7 @@
 //
 
 #import "DGSPhoneAppDelegate.h"
-#import "MainTabViewController.h"
+#import "CurrentGamesController.h"
 #import "FuegoBoard.h"
 
 #if defined (CONFIGURATION_Adhoc)
@@ -76,8 +76,8 @@
 	JWLog("Loaded Images...");
 	
 	
-	MainTabViewController *tabViewController = [[MainTabViewController alloc] initWithNibName:nil bundle:nil];
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tabViewController];
+	CurrentGamesController *controller = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 	
 	if ([window respondsToSelector:@selector(setRootViewController:)]) {
 		[window setRootViewController:navigationController];
@@ -85,7 +85,7 @@
 	JWLog("Initialized controllers...");
 	
 	[navigationController release];
-	[tabViewController release];
+	[controller release];
 
 	[window makeKeyAndVisible];
 	JWLog("Showing main window...");

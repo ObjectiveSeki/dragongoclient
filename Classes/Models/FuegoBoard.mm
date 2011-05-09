@@ -61,13 +61,13 @@ static bool fuegoInitialized = NO;
 		std::istringstream input(sgfStr);
 		SgGameReader gameReader(input, 19);
 		SgNode *rootNode = gameReader.ReadGame();
-		int handicap = rootNode->GetIntProp(SG_PROP_HANDICAP);
+        int handicap = rootNode->GetIntProp(SG_PROP_HANDICAP);
 		double komi = rootNode->GetRealProp(SG_PROP_KOMI);
 		int size = rootNode->GetIntProp(SG_PROP_SIZE);
-		
-		goBoard = new GoBoard(size, GoSetup(), GoRules(handicap, GoKomi(komi)));
-		goGame = new GoGameRecord(*goBoard);
-		goGame->InitFromRoot(rootNode, true);
+        
+		goGame = new GoGame(size);
+        goGame->Init(size, GoRules(handicap, GoKomi(komi)));
+		goGame->Init(rootNode);
 		
 		// Marked is an array of arrays, so we can undo marks correctly
 		NSMutableArray *marked = [[NSMutableArray alloc] init];
@@ -213,11 +213,10 @@ static bool fuegoInitialized = NO;
 		self.changedGroups = [self.changedGroups subarrayWithRange:NSMakeRange(0, [self.changedGroups count] - 1)];
 	} else {
 		goGame->GoInDirection(SgNode::PREVIOUS);
-		goGame->CurrentNode()->DeleteSubtree();
 	}
 }
 
-- (Move *)moveFromNode:(SgNode *)node {
+- (Move *)moveFromNode:(const SgNode *)node {
 	
 	if (!node->HasNodeMove()) {
 		return nil;
@@ -249,7 +248,7 @@ static bool fuegoInitialized = NO;
 		return nil;
 	}
 	
-	SgNode *currentNode = goGame->CurrentNode();
+	const SgNode *currentNode = goGame->CurrentNode();
 	
 	// If we have a resign move, pretend that the last move is actually the 'current move', from the perspective of the sgf file
 	if (!self.resignMove) {
@@ -310,7 +309,6 @@ static bool fuegoInitialized = NO;
 	SgPoint p = SgPointUtil::Pt(col, row);
 	if (goGame->Board().IsLegal(p)) {
 		goGame->AddMove(p, goGame->Board().ToPlay());
-		goGame->GoInDirection(SgNode::NEXT);
 		return YES;
 	} else {
 		return NO;
@@ -370,7 +368,6 @@ static bool fuegoInitialized = NO;
 
 - (void)pass {
 	goGame->AddMove(SG_PASS, goGame->Board().ToPlay());
-	goGame->GoInDirection(SgNode::NEXT);
 }
 
 - (void)resign {
@@ -502,7 +499,6 @@ static bool fuegoInitialized = NO;
 }
 
 - (void)dealloc {
-	delete goBoard;
 	delete goGame;
 	self.resignMove = nil;
 	self.markedGroups = nil;
