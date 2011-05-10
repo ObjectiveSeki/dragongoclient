@@ -320,7 +320,6 @@
 		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
-		DA82C3F512CE7FF80059DAF0 /* DGSGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */; };
 		DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */; };
 		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
 		DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C41A12CEA5310059DAF0 /* RootViewController.m */; };
@@ -802,8 +801,6 @@
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
-		DA82C3F312CE7FF80059DAF0 /* DGSGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSGamesController.h; sourceTree = "<group>"; };
-		DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSGamesController.m; sourceTree = "<group>"; };
 		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
 		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
 		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
@@ -1514,8 +1511,6 @@
 				DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */,
 				DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */,
 				DAF9105D11BB5BBD00FE7B96 /* GameViewController.mm */,
-				DA82C3F312CE7FF80059DAF0 /* DGSGamesController.h */,
-				DA82C3F412CE7FF80059DAF0 /* DGSGamesController.m */,
 				DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */,
 				DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */,
 				DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */,
@@ -2248,7 +2243,6 @@
 				DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */,
 				DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */,
 				DA1341AB1292323300D2A4BF /* MessageView.m in Sources */,
-				DA82C3F512CE7FF80059DAF0 /* DGSGamesController.m in Sources */,
 				DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */,
 				DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */,
 				DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */,

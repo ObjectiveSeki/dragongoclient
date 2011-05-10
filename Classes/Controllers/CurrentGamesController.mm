@@ -221,7 +221,7 @@
 }
 
 - (IBAction)refreshGamesWithThrottling {
-	if ([DGSAppDelegate refreshThrottled]) {
+	if ([DGSAppDelegate refreshThrottled] && [self.games count] != 0) {
 		// skip automatic refreshing so we don't hurt DGS
 	} else {
 		[self refreshGames];

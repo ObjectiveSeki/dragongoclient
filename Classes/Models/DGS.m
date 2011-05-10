@@ -460,7 +460,7 @@
 	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:htmlString options:CXMLDocumentTidyHTML error:&error];
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameTable']/tr" error:&error];
 
-    if ([tableRows count] >= 0) {
+    if ([tableRows count] > 0) {
 	
         // First row is the header
         CXMLNode *headerRow = [tableRows objectAtIndex:0];
@@ -576,8 +576,7 @@
 					NSString *href = [[link attributeForName:@"href"] stringValue];
 					game.detailUrl = [self URLWithPath:[NSString stringWithFormat:@"/%@", href]];
 					NSArray *keyValues = [[[href componentsSeparatedByString:@"?"] lastObject] componentsSeparatedByString:@"&"];
-					NSLog(@"%@", keyValues);
-					for (NSString *keyValue in keyValues) {
+ 					for (NSString *keyValue in keyValues) {
 						NSArray *keyValuePair = [keyValue componentsSeparatedByString:@"="];
 						if ([[keyValuePair objectAtIndex:0] isEqualToString:@"info"]) {
 							game.gameId = [[keyValuePair lastObject] intValue];
@@ -622,7 +621,9 @@
 				game.boardSize = [[[rowData lastObject] stringValue] intValue];
 			} else if (i == 6) {
 				game.komiTypeName = [[rowData lastObject] stringValue];
-			} else if (i == 9) {				
+			} else if (i == 8) {
+				game.adjustedHandicap = [[[rowData lastObject] stringValue] intValue];
+			} else if (i == 9) {
 				game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
 			} else if (i == 13) {
 				game.ratedString = [[rowData lastObject] stringValue];
@@ -706,7 +707,9 @@
 					game.boardSize = [[[rowData lastObject] stringValue] intValue];
 				} else if (i == 5) {
 					game.komiTypeName = [[rowData lastObject] stringValue];
-				} else if (i == 7) {				
+				} else if (i == 6) {
+                    game.adjustedHandicap = [[[rowData lastObject] stringValue] intValue];
+                } else if (i == 7) {				
 					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
 				} else if (i == 12) {
 					game.ratedString = [[rowData lastObject] stringValue];
