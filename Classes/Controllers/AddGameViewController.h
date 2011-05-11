@@ -21,10 +21,6 @@
 @property(nonatomic, retain) TextCell *descriptionCell;
 @property(nonatomic, retain) NewGame *newGame;
 
-- (void)notLoggedIn;
-- (void)loggedIn;
-- (void)requestCancelled;
-
 - (IBAction)addGame;
 
 @end

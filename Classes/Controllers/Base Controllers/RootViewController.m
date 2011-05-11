@@ -1,5 +1,6 @@
 
 #import "RootViewController.h"
+#import "LoginViewController.h"
 
 @implementation RootViewController
 @synthesize tabViewController;
@@ -25,6 +26,22 @@
 - (void)viewDidUnload {
 	self.gs = nil;
 	self.spinnerView = nil;
+}
+
+- (void)notLoggedIn {
+	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
+	loginViewController.delegate = self;
+	[self presentModalViewController:loginViewController animated:YES];
+	[loginViewController notLoggedIn];
+	[loginViewController release];
+}
+
+- (void)loggedIn {
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)requestCancelled {
+	[self hideSpinner:NO];
 }
 
 - (void)dealloc {

@@ -214,7 +214,8 @@
 }
 
 - (void)getWaitingRoomGames:(void (^)(NSArray *gameList))onSuccess {
-	NSURL *url = [self URLWithPath:@"/waiting_room.php"];
+    // add=9 to force the time limit to show up
+	NSURL *url = [self URLWithPath:@"/waiting_room.php?add=9"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	

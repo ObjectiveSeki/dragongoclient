@@ -264,18 +264,6 @@
 	}];
 }
 
-- (void)notLoggedIn {
-	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	loginViewController.delegate = self;
-	[self presentModalViewController:loginViewController animated:YES];
-	[loginViewController notLoggedIn];
-	[loginViewController release];
-}
-
-- (void)loggedIn {
-	[self dismissModalViewControllerAnimated:YES];
-}
-
 - (void)requestCancelled {
 	[self hideSpinner:NO];
 	[self.selectedCell setAccessoryView:nil];

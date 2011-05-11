@@ -38,9 +38,6 @@
 - (IBAction)refreshGames;
 - (IBAction)logout;
 
-- (void)notLoggedIn;
-- (void)requestCancelled;
-
 - (void)gotSgfForGame:(Game *)game;
 
 @end

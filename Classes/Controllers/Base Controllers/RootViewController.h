@@ -6,8 +6,9 @@
 #import <UIKit/UIKit.h>
 #import "SpinnerView.h"
 #import "GameServerProtocol.h"
+#import "LoginProtocol.h"
 
-@interface RootViewController : UIViewController {
+@interface RootViewController : UIViewController <LoginProtocol> {
 	UIViewController *tabViewController;
 	SpinnerView *spinnerView;
 	id<GameServerProtocol> gs;
@@ -19,5 +20,9 @@
 
 - (void)showSpinner:(NSString *)message;
 - (void)hideSpinner:(BOOL)animated;
+
+- (void)notLoggedIn;
+- (void)loggedIn;
+- (void)requestCancelled;
 
 @end
