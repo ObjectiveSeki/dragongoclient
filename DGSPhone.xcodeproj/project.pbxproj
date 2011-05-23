@@ -2530,7 +2530,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
@@ -2560,7 +2560,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
@@ -2717,9 +2717,9 @@
 				);
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libHockey.a",
+					"$(BUILT_PRODUCTS_DIR)/libHockey.a",
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
@@ -2753,7 +2753,7 @@
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 					"-framework",
 					Foundation,
@@ -2847,7 +2847,7 @@
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 					"-framework",
 					Foundation,
@@ -2887,7 +2887,7 @@
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-force_load",
-					"build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libTouchXML.a",
+					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 					"-framework",
 					Foundation,
