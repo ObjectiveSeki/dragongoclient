@@ -25,9 +25,8 @@
 
 - (NSUInteger) hash {
 	int prime = 31;
-	int result = 1;
 	
-	result = prime * result + self.row;
+	int result = prime + self.row;
 	result = prime * result + self.col;
 	result = prime * result + self.player;
 	result = prime * result + self.moveType;

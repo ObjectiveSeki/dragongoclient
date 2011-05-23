@@ -19,6 +19,9 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 
 @interface DGS : NSObject {
 	id <LoginProtocol> delegate;
+#ifndef LOGIC_TEST_MODE
+    UIAlertView *errorView;
+#endif
 }
 
 @property(nonatomic, assign) id <LoginProtocol> delegate;
@@ -28,6 +31,8 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 // Therefore, we don't want to compile anything that hits the network
 // if we're building the logic tests bundle. It should define LOGIC_TEST_MODE.
 #ifndef LOGIC_TEST_MODE
+
+@property(nonatomic, retain) UIAlertView *errorView;
 
 - (void)logout;
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password;

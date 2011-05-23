@@ -21,6 +21,10 @@
 
 @synthesize delegate;
 
+#ifndef LOGIC_TEST_MODE
+@synthesize errorView;
+#endif
+
 
 // This returns the base path onto which all of the urls used 
 // in this class refer. This is so that you can run your own
@@ -86,7 +90,7 @@
 
 // Called when the AlertView containing an error message is dismissed.
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-	[alertView release];
+    self.errorView = nil;
 	[[self delegate] requestCancelled];
 }
 
@@ -100,6 +104,7 @@
 		NSString *str = [[NSString alloc] initWithData:possibleChar encoding:encoding];
 		if (str) {
 			[output appendString:str];
+            [str release];
 			pos += lookahead;
 			lookahead = 1;
 		} else {
@@ -135,7 +140,8 @@
 	if (errorString) {
 		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
 		
-		[[[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+		self.errorView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [self.errorView show];
 	} else if (NO == [self loggedIn:request responseString:responseString]) {
 		JWLog(@"Not logged in during request: %@", [request url]);
 		[[self delegate] notLoggedIn];
@@ -152,7 +158,8 @@
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
 	JWLog(@"Request failed: %@", [request url]);
-	[[[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+	self.errorView = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [self.errorView show];
 }
 
 // Starts an asynchronous request, calling onSuccess when the request finishes.
@@ -769,6 +776,9 @@
 }
 
 - (void)dealloc {
+#ifndef LOGIC_TEST_MODE
+    self.errorView = nil;
+#endif
     [super dealloc];
 }
 
