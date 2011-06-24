@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -320,6 +320,9 @@
 		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
+		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
+		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
+		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */; };
 		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
 		DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C41A12CEA5310059DAF0 /* RootViewController.m */; };
@@ -344,13 +347,14 @@
 		DA9BAD1D126B6FB5008ED2B4 /* Pass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */; };
 		DAA7B8D7125C20440002754F /* Message off.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D5125C20440002754F /* Message off.png */; };
 		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
+		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
+		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
 		DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
 		DAAC543F124CFC490099F9CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
 		DAAC5440124CFC490099F9CB /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
-		DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */; };
 		DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
@@ -405,10 +409,8 @@
 		DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
 		DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
-		DAEA520711B890B800F4CCB3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */; };
 		DAEA525811B895A100F4CCB3 /* status.html in Resources */ = {isa = PBXBuildFile; fileRef = DAEA525711B895A100F4CCB3 /* status.html */; };
 		DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
-		DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */; };
 		DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526A11B8977B00F4CCB3 /* Foundation.framework */; };
 		DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
 		DAEB649D125E1C3D00A915EB /* Resign.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB649C125E1C3D00A915EB /* Resign.png */; };
@@ -439,13 +441,6 @@
 			remoteGlobalIDString = DAE9313D1245440500335F0F;
 			remoteInfo = TouchXML;
 		};
-		DA2ED7F112EC18BF00E0D8BA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
-			remoteInfo = LogicTests;
-		};
 		DA58E7E6124538C200387BB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -460,19 +455,26 @@
 			remoteGlobalIDString = DA58E8031245398B00387BB5;
 			remoteInfo = fuego;
 		};
+		DA77A95813B2FB8300803136 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
+			remoteInfo = LogicTests;
+		};
+		DA77A95A13B2FB8700803136 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAE9313D1245440500335F0F;
+			remoteInfo = TouchXML;
+		};
 		DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DACD432A125B6771001F1F01;
 			remoteInfo = Hockey;
-		};
-		DAE931E4124545C200335F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DAE9313D1245440500335F0F;
-			remoteInfo = TouchXML;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -801,6 +803,8 @@
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
+		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
 		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
 		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
@@ -829,10 +833,11 @@
 		DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pass@2x.png"; sourceTree = "<group>"; };
 		DAA7B8D5125C20440002754F /* Message off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off.png"; sourceTree = "<group>"; };
 		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
+		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
+		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DACD432B125B6771001F1F01 /* libHockey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHockey.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -932,18 +937,15 @@
 		DAEA518011B88A1100F4CCB3 /* DGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGS.m; sourceTree = "<group>"; };
 		DAEA519911B88D8300F4CCB3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		DAEA519A11B88D8300F4CCB3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		DAEA525711B895A100F4CCB3 /* status.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = status.html; sourceTree = "<group>"; };
 		DAEA525911B895ED00F4CCB3 /* DGSTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSTests.h; sourceTree = "<group>"; };
 		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
-		DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		DAEA526A11B8977B00F4CCB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
 		DAEB649C125E1C3D00A915EB /* Resign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resign.png; sourceTree = "<group>"; };
 		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
@@ -963,14 +965,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */,
+				DA77A95013B2F47200803136 /* libz.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */,
 				DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */,
 				DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */,
-				DAC868B411B747B800A4DA7A /* libz.1.2.3.dylib in Frameworks */,
-				DAEA520711B890B800F4CCB3 /* libxml2.2.dylib in Frameworks */,
 				DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */,
 				DA58E7D11245381600387BB5 /* libAsiHTTPRequest.a in Frameworks */,
 				DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */,
@@ -999,7 +1001,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEA526511B8976100F4CCB3 /* libxml2.2.dylib in Frameworks */,
+				DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */,
 				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
 				DAE932D21245501100335F0F /* libfuego.a in Frameworks */,
 				DA94CB7612469D230060FD44 /* SenTestingKit.framework in Frameworks */,
@@ -1069,16 +1071,14 @@
 				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
 				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
 				DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */,
-				DAC868B311B747B800A4DA7A /* libz.1.2.3.dylib */,
-				DAEA520611B890B800F4CCB3 /* libxml2.2.dylib */,
-				DAEA526411B8976100F4CCB3 /* libxml2.2.dylib */,
+				DA77A95313B2F67B00803136 /* libxml2.dylib */,
+				DA77A94F13B2F47200803136 /* libz.dylib */,
 				DAEA526A11B8977B00F4CCB3 /* Foundation.framework */,
 				DAEA52A611B8989F00F4CCB3 /* UIKit.framework */,
 				DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */,
 				DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */,
 				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
 				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
-				DAEA52CE11B8992D00F4CCB3 /* libz.1.2.3.dylib */,
 				DADD18D111BC72730038F8BC /* libboost_filesystem.a */,
 				DADD18D211BC72730038F8BC /* libboost_system.a */,
 				DADD18D311BC72730038F8BC /* libboost_thread.a */,
@@ -1467,6 +1467,8 @@
 				DA37D9C111BF6E5100BC1445 /* Board.png */,
 				DA2EDE1212F14EC8003FEE23 /* Board@2x.png */,
 				DA37D90611BF56DA00BC1445 /* Black.png */,
+				DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */,
+				DAA80F9013B42C3700E5E2B5 /* White@2x.png */,
 				DA37D90711BF56DA00BC1445 /* White.png */,
 				DA5D350C12B20A8F001271D3 /* Moves@2x.png */,
 				DA5D351212B20A9A001271D3 /* Moves.png */,
@@ -1995,10 +1997,10 @@
 			);
 			dependencies = (
 				DA58E7E7124538C200387BB5 /* PBXTargetDependency */,
-				DAE931E5124545C200335F0F /* PBXTargetDependency */,
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
 				DACD4365125B67DD001F1F01 /* PBXTargetDependency */,
-				DA2ED7F212EC18BF00E0D8BA /* PBXTargetDependency */,
+				DA77A95B13B2FB8700803136 /* PBXTargetDependency */,
+				DA77A95913B2FB8300803136 /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
@@ -2098,8 +2100,11 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -2169,6 +2174,8 @@
 				DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */,
 				DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */,
 				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
+				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
+				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2459,11 +2466,6 @@
 			target = DAE9313D1245440500335F0F /* TouchXML */;
 			targetProxy = DA214FBE12458E9100448955 /* PBXContainerItemProxy */;
 		};
-		DA2ED7F212EC18BF00E0D8BA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA71CA8311B5E97F008696AC /* LogicTests */;
-			targetProxy = DA2ED7F112EC18BF00E0D8BA /* PBXContainerItemProxy */;
-		};
 		DA58E7E7124538C200387BB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA58E77A124536DC00387BB5 /* AsiHTTPRequest */;
@@ -2474,15 +2476,20 @@
 			target = DA58E8031245398B00387BB5 /* fuego */;
 			targetProxy = DA58E80B12453A3400387BB5 /* PBXContainerItemProxy */;
 		};
+		DA77A95913B2FB8300803136 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA71CA8311B5E97F008696AC /* LogicTests */;
+			targetProxy = DA77A95813B2FB8300803136 /* PBXContainerItemProxy */;
+		};
+		DA77A95B13B2FB8700803136 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAE9313D1245440500335F0F /* TouchXML */;
+			targetProxy = DA77A95A13B2FB8700803136 /* PBXContainerItemProxy */;
+		};
 		DACD4365125B67DD001F1F01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DACD432A125B6771001F1F01 /* Hockey */;
 			targetProxy = DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */;
-		};
-		DAE931E5124545C200335F0F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DAE9313D1245440500335F0F /* TouchXML */;
-			targetProxy = DAE931E4124545C200335F0F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2576,11 +2583,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PREBINDING = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
@@ -2593,12 +2600,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
 				PROVISIONING_PROFILE = "FEC08AF3-3A44-4C72-9D60-439CC8D620F0";
 				SDKROOT = iphoneos;
 			};
@@ -2614,7 +2621,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
 				PRODUCT_NAME = AsiHTTPRequest;
 			};
 			name = Debug;
@@ -2625,11 +2631,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
 				PRODUCT_NAME = AsiHTTPRequest;
 				ZERO_LINK = NO;
 			};
@@ -2650,7 +2654,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = fuego;
 			};
 			name = Debug;
@@ -2661,7 +2664,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2670,7 +2672,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = fuego;
 				ZERO_LINK = NO;
 			};
@@ -2683,12 +2684,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
 				PROVISIONING_PROFILE = "86D71C5F-3A32-4517-8E61-FB091B19665C";
 				SDKROOT = iphoneos;
 			};
@@ -2740,7 +2741,6 @@
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2762,7 +2762,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
@@ -2775,11 +2774,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
 				PRODUCT_NAME = AsiHTTPRequest;
 				ZERO_LINK = NO;
 			};
@@ -2791,7 +2788,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2800,7 +2796,6 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = fuego;
 				ZERO_LINK = NO;
 			};
@@ -2812,10 +2807,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
-				PREBINDING = NO;
 				PRODUCT_NAME = TouchXML;
 				ZERO_LINK = NO;
 			};
@@ -2833,7 +2826,6 @@
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2856,7 +2848,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
 				WRAPPER_EXTENSION = octest;
 			};
@@ -2874,7 +2865,6 @@
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2896,7 +2886,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
@@ -2910,7 +2899,6 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				PREBINDING = NO;
 				PRODUCT_NAME = Hockey;
 			};
 			name = Debug;
@@ -2919,7 +2907,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				PREBINDING = NO;
 				PRODUCT_NAME = Hockey;
 			};
 			name = Adhoc;
@@ -2930,8 +2917,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PREBINDING = NO;
 				PRODUCT_NAME = Hockey;
 				ZERO_LINK = NO;
 			};
@@ -2946,7 +2931,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
-				PREBINDING = NO;
 				PRODUCT_NAME = TouchXML;
 			};
 			name = Debug;
@@ -2957,10 +2941,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
-				PREBINDING = NO;
 				PRODUCT_NAME = TouchXML;
 				ZERO_LINK = NO;
 			};
