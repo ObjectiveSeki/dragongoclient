@@ -38,7 +38,6 @@
 			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 		};
 		row.cellTouched = ^(UITableViewCell *cell) {
-			[self deselectSelectedCell];
 			UIActivityIndicatorView *activityView = 
 			[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 			[activityView startAnimating];
@@ -50,6 +49,7 @@
 				[self.navigationController pushViewController:controller animated:YES];
 				[controller release];
 				[cell setAccessoryView:nil];
+                [self deselectSelectedCell];
 			}];
 		};
 		[mainSection addRow:row];
