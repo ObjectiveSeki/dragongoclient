@@ -40,7 +40,7 @@
 #ifndef LOGIC_TEST_MODE
 
 - (id)init {
-	if ([super init]) {
+	if (self = [super init]) {
 		 [ASIHTTPRequest setDefaultTimeOutSeconds:15];
 	}
 	return self;
@@ -139,8 +139,9 @@
 	
 	if (errorString) {
 		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
-		
-		self.errorView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		self.errorView = alertView;
+        [alertView release];
         [self.errorView show];
 	} else if (NO == [self loggedIn:request responseString:responseString]) {
 		JWLog(@"Not logged in during request: %@", [request url]);
@@ -158,7 +159,9 @@
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
 	JWLog(@"Request failed: %@", [request url]);
-	self.errorView = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	self.errorView = alertView;
+    [alertView release];
     [self.errorView show];
 }
 

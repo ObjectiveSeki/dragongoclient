@@ -126,7 +126,7 @@
 		return (UITableViewCell *)[[[buttonRow.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:buttonRow.identifier] autorelease];
 	};
 	buttonRow.cellSetup = ^(UITableViewCell *cell) {
-		if (game.myGame) {
+		if (self.game.myGame) {
 			cell.textLabel.text = @"Delete this game";
 		} else {
 			cell.textLabel.text = @"Join this game";
@@ -136,9 +136,11 @@
 	};
 	
 	buttonRow.cellTouched = ^(UITableViewCell *cell) {
-		if (game.myGame) {
+		if (self.game.myGame) {
             [cell setSelected:NO];
-			self.deleteConfirmation = [[UIAlertView alloc] initWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" delegate:self cancelButtonTitle:@"Don't delete" otherButtonTitles:@"Delete", nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" delegate:self cancelButtonTitle:@"Don't delete" otherButtonTitles:@"Delete", nil];
+			self.deleteConfirmation = alertView;
+            [alertView release];
             [self.deleteConfirmation show];
 		} else {
             [self showSpinner:@"Joining..."];

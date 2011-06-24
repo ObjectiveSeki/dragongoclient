@@ -8,10 +8,12 @@
 @synthesize onChanged;
 
 - (id)init {
-    if ((self = [super initWithStyle:UITableViewStylePlain reuseIdentifier:NSStringFromClass([self class])])) {
-		self.toggleSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-		self.accessoryView = self.toggleSwitch;
+    if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([self class])])) {
+        UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+		self.toggleSwitch = theSwitch;
+		self.accessoryView = theSwitch;
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
+        [theSwitch release];
     }
     return self;
 }

@@ -15,11 +15,11 @@
 
 @interface AddGameViewController : JWTableViewController <LoginProtocol> {
 	TextCell *descriptionCell;
-	NewGame *newGame;
+	NewGame *game;
 }
 
 @property(nonatomic, retain) TextCell *descriptionCell;
-@property(nonatomic, retain) NewGame *newGame;
+@property(nonatomic, retain) NewGame *game;
 
 - (IBAction)addGame;
 

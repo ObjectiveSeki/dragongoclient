@@ -12,7 +12,7 @@
 @synthesize selectable;
 
 - (id)init {
-	if ([super init]) {
+	if (self = [super init]) {
 		self.identifier = NSStringFromClass([self class]);
 		self.selectable = YES;
 	}

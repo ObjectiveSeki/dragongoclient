@@ -14,7 +14,7 @@
 
 @implementation AddGameViewController
 
-@synthesize descriptionCell, newGame;
+@synthesize descriptionCell, game;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -31,7 +31,7 @@ typedef enum _AddGameSection {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-	self.newGame = [[[NewGame alloc] init] autorelease];
+	self.game = [[[NewGame alloc] init] autorelease];
     self.navigationItem.title = @"Create a Game";
 }
 
@@ -66,7 +66,7 @@ typedef enum _AddGameSection {
 
 - (IBAction)addGame {
 	[self showSpinner:@"Posting..."];
-	[self.gs addGame:self.newGame onSuccess:^() {
+	[self.gs addGame:self.game onSuccess:^() {
 		[self hideSpinner:YES];
 		[[self navigationController] popViewControllerAnimated:YES];
 	}];
@@ -88,7 +88,7 @@ typedef enum _AddGameSection {
 	} else if (section == kBoardSection) {
 		return 2;
 	} else if (section == kTimeSection) {
-		if (self.newGame.byoYomiType == kByoYomiTypeFischer) {
+		if (self.game.byoYomiType == kByoYomiTypeFischer) {
 			return 3;
 		} else {
 			return 4;
@@ -139,29 +139,29 @@ typedef enum _AddGameSection {
 }
 
 - (void)setComment:(TextCell *)commentCell {
-	[self.newGame setComment:[[commentCell textField] text]];
+	[self.game setComment:[[commentCell textField] text]];
 }
 
 - (void)setBoardSize:(SelectCell *)cell {
 	NSString *boardSize = [[cell.options objectAtIndex:0] objectAtIndex:[cell.picker selectedRowInComponent:0]];
-	[self.newGame setBoardSize:[boardSize intValue]];
+	[self.game setBoardSize:[boardSize intValue]];
 	cell.value.text = boardSize;
 	cell.selectedOptions = [NSArray arrayWithObject:boardSize];
 }
 
 - (void)setKomiType:(SelectCell *)cell {
 	KomiType komiType = [cell.picker selectedRowInComponent:0];
-	NSString *komiTypeString = [self.newGame komiTypeString:komiType];
-	self.newGame.komiType = komiType;
+	NSString *komiTypeString = [self.game komiTypeString:komiType];
+	self.game.komiType = komiType;
 	cell.value.text = komiTypeString;
 	cell.selectedOptions = [NSArray arrayWithObject:komiTypeString];
 }
 
 - (void)setByoYomiType:(SelectCell *)cell {
-	ByoYomiType oldByoYomiType = self.newGame.byoYomiType;
+	ByoYomiType oldByoYomiType = self.game.byoYomiType;
 	ByoYomiType byoYomiType = [cell.picker selectedRowInComponent:0];
-	NSString *byoYomiTypeString = [self.newGame byoYomiTypeString:byoYomiType];
-	self.newGame.byoYomiType = byoYomiType;
+	NSString *byoYomiTypeString = [self.game byoYomiTypeString:byoYomiType];
+	self.game.byoYomiType = byoYomiType;
 	cell.value.text = byoYomiTypeString;
 	cell.selectedOptions = [NSArray arrayWithObject:byoYomiTypeString];
 	
@@ -184,59 +184,59 @@ typedef enum _AddGameSection {
 	int tens = [[cell selectedValueInComponent:0] intValue];
 	int ones = [[cell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
-	self.newGame.timeValue = timeValue;
-	self.newGame.timeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.timeValue = timeValue;
+	self.game.timeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.newGame.timeValue, [self.newGame timePeriodValue:self.newGame.timeUnit]];
-	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:self.newGame.timeUnit], nil];
+	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.timeValue, [self.game timePeriodValue:self.game.timeUnit]];
+	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.timeUnit], nil];
 }
 
 - (void)setExtraTimeJapanese:(SelectCell *)cell {
 	int tens = [[cell selectedValueInComponent:0] intValue];
 	int ones = [[cell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
-	self.newGame.japaneseTimeValue = timeValue;
-	self.newGame.japaneseTimeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.japaneseTimeValue = timeValue;
+	self.game.japaneseTimeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.newGame.japaneseTimeValue, [self.newGame timePeriodValue:self.newGame.japaneseTimeUnit]];
-	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:self.newGame.japaneseTimeUnit], nil];
+	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.japaneseTimeValue, [self.game timePeriodValue:self.game.japaneseTimeUnit]];
+	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.japaneseTimeUnit], nil];
 }
 
 - (void)setExtraTimeCanadian:(SelectCell *)cell {
 	int tens = [[cell selectedValueInComponent:0] intValue];
 	int ones = [[cell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
-	self.newGame.canadianTimeValue = timeValue;
-	self.newGame.canadianTimeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.canadianTimeValue = timeValue;
+	self.game.canadianTimeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.newGame.canadianTimeValue, [self.newGame timePeriodValue:self.newGame.canadianTimeUnit]];
-	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:self.newGame.canadianTimeUnit], nil];
+	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.canadianTimeValue, [self.game timePeriodValue:self.game.canadianTimeUnit]];
+	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.canadianTimeUnit], nil];
 }
 
 - (void)setExtraTimeFischer:(SelectCell *)cell {
 	int tens = [[cell selectedValueInComponent:0] intValue];
 	int ones = [[cell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
-	self.newGame.fischerTimeValue = timeValue;
-	self.newGame.fischerTimeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.fischerTimeValue = timeValue;
+	self.game.fischerTimeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.newGame.fischerTimeValue, [self.newGame timePeriodValue:self.newGame.fischerTimeUnit]];
-	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:self.newGame.fischerTimeUnit], nil];
+	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.fischerTimeValue, [self.game timePeriodValue:self.game.fischerTimeUnit]];
+	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.fischerTimeUnit], nil];
 }
 
 - (void)setJapaneseTimePeriods:(TextCell *)timePeriodCell {
-	[self.newGame setJapaneseTimePeriods:[[[timePeriodCell textField] text] intValue]];
+	[self.game setJapaneseTimePeriods:[[[timePeriodCell textField] text] intValue]];
 }
 
 - (void)setCanadianTimePeriods:(TextCell *)timePeriodCell {
-	[self.newGame setCanadianTimePeriods:[[[timePeriodCell textField] text] intValue]];
+	[self.game setCanadianTimePeriods:[[[timePeriodCell textField] text] intValue]];
 }
 
 - (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit selector:(SEL)setSelector label:(NSString *)label {
 	SelectCell *cell = [self selectCell:theTableView];
-	NSString *timeString = [NSString stringWithFormat:@"%d %@", timeValue, [self.newGame timePeriodValue:timeUnit]];
+	NSString *timeString = [NSString stringWithFormat:@"%d %@", timeValue, [self.game timePeriodValue:timeUnit]];
 	NSArray *zeroToNine = [NSArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
-	NSArray *timePeriods = [NSArray arrayWithObjects:[self.newGame timePeriodValue:kTimePeriodHours], [self.newGame timePeriodValue:kTimePeriodDays], [self.newGame timePeriodValue:kTimePeriodMonths], nil];
+	NSArray *timePeriods = [NSArray arrayWithObjects:[self.game timePeriodValue:kTimePeriodHours], [self.game timePeriodValue:kTimePeriodDays], [self.game timePeriodValue:kTimePeriodMonths], nil];
 	NSArray *sizes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:80.0],[NSNumber numberWithFloat:80.0], [NSNumber numberWithFloat:140.0], nil];
 	cell.label.text = label;
 	cell.value.text = timeString;
@@ -245,7 +245,7 @@ typedef enum _AddGameSection {
 	cell.options = [NSArray arrayWithObjects:zeroToNine, zeroToNine, timePeriods, nil];
 	int tens = timeValue / 10;
 	int ones = timeValue - (tens * 10);
-	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.newGame timePeriodValue:timeUnit], nil];
+	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:timeUnit], nil];
 	return cell;
 }
 
@@ -257,7 +257,7 @@ typedef enum _AddGameSection {
 		if ([indexPath row] == 0) {
 			TextCell *cell = [self textCell:theTableView];
 			cell.textLabel.text = @"Comment";
-			cell.textField.text = self.newGame.comment;
+			cell.textField.text = self.game.comment;
 			cell.textField.keyboardType = UIKeyboardTypeDefault;
 			cell.textEditedSelector = @selector(setComment:);
 			return cell;
@@ -267,7 +267,7 @@ typedef enum _AddGameSection {
 		
 		if ([indexPath row] == 0) {
 			SelectCell *cell = [self selectCell:theTableView];
-			NSString *boardSize = [NSString stringWithFormat:@"%d", self.newGame.boardSize];
+			NSString *boardSize = [NSString stringWithFormat:@"%d", self.game.boardSize];
 			NSArray *options = [NSArray arrayWithObjects:@"9", @"13", @"19", nil];
 			cell.label.text = @"Board Size";
 			cell.value.text = boardSize;
@@ -278,8 +278,8 @@ typedef enum _AddGameSection {
 			return cell;
 		} else if ([indexPath row] == 1) {
 			SelectCell *cell = [self selectCell:theTableView];
-			NSString *komiType = [self.newGame komiTypeString];
-			NSArray *options = [NSArray arrayWithObjects:[self.newGame komiTypeString:kKomiTypeConventional], [self.newGame komiTypeString:kKomiTypeProper], nil];
+			NSString *komiType = [self.game komiTypeString];
+			NSArray *options = [NSArray arrayWithObjects:[self.game komiTypeString:kKomiTypeConventional], [self.game komiTypeString:kKomiTypeProper], nil];
 			cell.label.text = @"Komi Type";
 			cell.value.text = komiType;
 			cell.changedSelector = @selector(setKomiType:);
@@ -290,11 +290,11 @@ typedef enum _AddGameSection {
 		}
 	} else if ([indexPath section] == kTimeSection) {
 		if ([indexPath row] == 0) {
-			return [self timeCell:theTableView timeValue:self.newGame.timeValue timeUnit:self.newGame.timeUnit selector:@selector(setMainTime:) label:@"Main Time"];
+			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit selector:@selector(setMainTime:) label:@"Main Time"];
 		} else if ([indexPath row] == 1) {
 			SelectCell *cell = [self selectCell:theTableView];
-			NSString *byoYomiType = [self.newGame byoYomiTypeString];
-			NSArray *options = [NSArray arrayWithObjects:[self.newGame byoYomiTypeString:kByoYomiTypeJapanese], [self.newGame byoYomiTypeString:kByoYomiTypeCanadian], [self.newGame byoYomiTypeString:kByoYomiTypeFischer], nil];
+			NSString *byoYomiType = [self.game byoYomiTypeString];
+			NSArray *options = [NSArray arrayWithObjects:[self.game byoYomiTypeString:kByoYomiTypeJapanese], [self.game byoYomiTypeString:kByoYomiTypeCanadian], [self.game byoYomiTypeString:kByoYomiTypeFischer], nil];
 			cell.label.text = @"Byo-Yomi";
 			cell.value.text = byoYomiType;
 			cell.changedSelector = @selector(setByoYomiType:);
@@ -303,25 +303,25 @@ typedef enum _AddGameSection {
 			cell.sizes = nil;
 			return cell;
 		} else if ([indexPath row] == 2) {
-			if (self.newGame.byoYomiType == kByoYomiTypeJapanese) {
-				return [self timeCell:theTableView timeValue:self.newGame.japaneseTimeValue timeUnit:self.newGame.japaneseTimeUnit selector:@selector(setExtraTimeJapanese:) label:@"Extra Time"];
-			} else if (self.newGame.byoYomiType == kByoYomiTypeCanadian) {
-				return [self timeCell:theTableView timeValue:self.newGame.canadianTimeValue timeUnit:self.newGame.canadianTimeUnit selector:@selector(setExtraTimeCanadian:) label:@"Extra Time"];
-			} else if (self.newGame.byoYomiType == kByoYomiTypeFischer) {
-				return [self timeCell:theTableView timeValue:self.newGame.fischerTimeValue timeUnit:self.newGame.fischerTimeUnit selector:@selector(setExtraTimeFischer:) label:@"Extra Per Move"];
+			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
+				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit selector:@selector(setExtraTimeJapanese:) label:@"Extra Time"];
+			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
+				return [self timeCell:theTableView timeValue:self.game.canadianTimeValue timeUnit:self.game.canadianTimeUnit selector:@selector(setExtraTimeCanadian:) label:@"Extra Time"];
+			} else if (self.game.byoYomiType == kByoYomiTypeFischer) {
+				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit selector:@selector(setExtraTimeFischer:) label:@"Extra Per Move"];
 			}
 		} else if ([indexPath row] == 3) {
-			if (self.newGame.byoYomiType == kByoYomiTypeJapanese) {
+			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				TextCell *cell = [self textCell:theTableView];
 				cell.textLabel.text = @"Extra Periods";
-				cell.textField.text = [NSString stringWithFormat:@"%d", self.newGame.japaneseTimePeriods];
+				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.japaneseTimePeriods];
 				cell.textEditedSelector = @selector(setJapaneseTimePeriods:);
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 				return cell;
-			} else if (self.newGame.byoYomiType == kByoYomiTypeCanadian) {
+			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
 				TextCell *cell = [self textCell:theTableView];
 				cell.textLabel.text = @"Extra Stones";
-				cell.textField.text = [NSString stringWithFormat:@"%d", self.newGame.canadianTimePeriods];
+				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.canadianTimePeriods];
 				cell.textEditedSelector = @selector(setCanadianTimePeriods:);
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 				return cell;
@@ -406,7 +406,7 @@ typedef enum _AddGameSection {
 
 
 - (void)dealloc {
-	self.newGame = nil;
+	self.game = nil;
     [super dealloc];
 }
 

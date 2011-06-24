@@ -18,18 +18,23 @@
         // Initialization code
 		[self setBackgroundColor:[UIColor clearColor]];
 		[self setOpaque:NO];
-		self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
+		self.spinner = activityIndicator;
+        [activityIndicator release];
 		self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[self.spinner startAnimating];
 		
-		self.label = [[UILabel alloc] initWithFrame:CGRectZero];
-		
+		UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.label = textLabel;
+        [textLabel release];
+        
 		self.label.text = @"Loading...";
 		self.label.textAlignment = UITextAlignmentCenter;
 		self.label.textColor = [UIColor lightTextColor];
 		self.label.font = [UIFont boldSystemFontOfSize:14.0];
 		self.label.backgroundColor = [UIColor clearColor];
 		self.label.opaque = NO;
+
 		
 		[self addSubview:self.spinner];
 		[self addSubview:self.label];

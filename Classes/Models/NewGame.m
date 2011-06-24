@@ -46,7 +46,7 @@
 @synthesize myGame;
 
 - (id)init {
-	if ([super init]) {
+	if (self = [super init]) {
 		numberOfGames = 1;
 		boardSize = 19;
 		maxHandicap = 21;
