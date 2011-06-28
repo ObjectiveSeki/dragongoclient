@@ -22,6 +22,8 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         // Initialization code
+        pickerViewHeight = 0;
+        tableViewHeight = 0;
     }
     return self;
 }
@@ -29,12 +31,11 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 	UITableView *tableView = (UITableView *)self.superview;
 	
-	int pickerViewHeight = 215;
-	int tableViewHeight = 416;
-	
 	if (selected && !self.picker) {
-		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, tableViewHeight, 320.0, pickerViewHeight)] autorelease];
+        tableViewHeight = tableView.frame.size.height;
+		self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, tableViewHeight, 320.0, 0)] autorelease];
 		[tableView.superview addSubview:self.picker];
+        pickerViewHeight = self.picker.frame.size.height;
 
 		[UIView animateWithDuration:0.5 animations:^(void) {
 			tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight)));

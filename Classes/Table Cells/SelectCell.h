@@ -17,6 +17,8 @@
 	NSArray *selectedOptions;
 	NSArray *sizes;
 	SEL changedSelector;
+    int pickerViewHeight;
+    int tableViewHeight;
 }
 @property(nonatomic, retain) IBOutlet UILabel *label;
 @property(nonatomic, retain) IBOutlet UILabel *value;
