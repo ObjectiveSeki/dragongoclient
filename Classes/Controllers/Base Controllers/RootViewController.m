@@ -19,7 +19,7 @@
 
 - (void)showSpinner:(NSString *)message {
 	[self hideSpinner:NO];
-	self.spinnerView = [SpinnerView showInView:self.navigationController.view];
+	self.spinnerView = [SpinnerView showInView:self.view];
 	self.spinnerView.label.text = message;
 }
 
