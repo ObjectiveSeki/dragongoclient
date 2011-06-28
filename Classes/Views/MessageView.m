@@ -67,7 +67,7 @@
 - (void)removeKeyboardNotifications
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self
-													name:UIKeyboardDidShowNotification object:nil];
+													name:UIKeyboardWillShowNotification object:nil];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self
 													name:UIKeyboardWillHideNotification object:nil];
@@ -120,8 +120,7 @@
 */
 
 - (void)dealloc {
-	
-	[self removeKeyboardNotifications];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	self.messageTextView = nil;
 	self.messageField = nil;
 	self.messageDisplayView = nil;
