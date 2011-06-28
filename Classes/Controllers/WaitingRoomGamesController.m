@@ -1,8 +1,11 @@
 
 #import "WaitingRoomGamesController.h"
 #import "JoinWaitingRoomGameController.h"
+#import "AddGameViewController.h"
 
 @implementation WaitingRoomGamesController
+
+@synthesize noGamesView;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -22,59 +25,65 @@
 */
 
 - (void)setGames:(NSArray *)games {
-	NSMutableArray *sections = [NSMutableArray array];
-	TableSection *mainSection = [[TableSection alloc] init];
-	
-	for (NewGame *game in games) {
-		TableRow *row = [[TableRow alloc] init];
-		row.cellClass = [UITableViewCell class];
-		row.cellInit = ^() {
-			return (UITableViewCell *)[[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
-		};
-		row.cellSetup = ^(UITableViewCell *cell) {
-			NSString *ratingString = game.opponentRating ? game.opponentRating : @"Not Ranked";
-			[[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@", game.opponent, ratingString]];
-			[[cell detailTextLabel] setText:[NSString stringWithFormat:@"%dx%d | %@", game.boardSize, game.boardSize, game.time]];
-			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-		};
-		row.cellTouched = ^(UITableViewCell *cell) {
-			UIActivityIndicatorView *activityView = 
-			[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-			[activityView startAnimating];
-			[cell setAccessoryView:activityView];
-			[activityView release];
-			[self.gs getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
-				JoinWaitingRoomGameController *controller = [[JoinWaitingRoomGameController alloc] initWithNibName:@"JoinWaitingRoomGameView" bundle:nil];
-				controller.game = gameDetails;
-				[self.navigationController pushViewController:controller animated:YES];
-				[controller release];
-				[cell setAccessoryView:nil];
-                [self deselectSelectedCell];
-			}];
-		};
-		[mainSection addRow:row];
-		[row release];
-	}
-	
-	[sections addObject:mainSection];
-	[mainSection release];
-	self.tableSections = sections;
-	[self.tableView reloadData];
+    if ([games count] > 0) {
+        NSMutableArray *sections = [NSMutableArray array];
+        TableSection *mainSection = [[TableSection alloc] init];
+        
+        for (NewGame *game in games) {
+            TableRow *row = [[TableRow alloc] init];
+            row.cellClass = [UITableViewCell class];
+            row.cellInit = ^() {
+                return (UITableViewCell *)[[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+            };
+            row.cellSetup = ^(UITableViewCell *cell) {
+                NSString *ratingString = game.opponentRating ? game.opponentRating : @"Not Ranked";
+                [[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@", game.opponent, ratingString]];
+                [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%dx%d | %@", game.boardSize, game.boardSize, game.time]];
+                [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            };
+            row.cellTouched = ^(UITableViewCell *cell) {
+                UIActivityIndicatorView *activityView = 
+                [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+                [activityView startAnimating];
+                [cell setAccessoryView:activityView];
+                [activityView release];
+                [self.gs getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
+                    JoinWaitingRoomGameController *controller = [[JoinWaitingRoomGameController alloc] initWithNibName:@"JoinWaitingRoomGameView" bundle:nil];
+                    controller.game = gameDetails;
+                    [self.navigationController pushViewController:controller animated:YES];
+                    [controller release];
+                    [cell setAccessoryView:nil];
+                    [self deselectSelectedCell];
+                }];
+            };
+            [mainSection addRow:row];
+            [row release];
+        }
+        
+        [sections addObject:mainSection];
+        [mainSection release];
+        self.tableSections = sections;
+        [self.tableView reloadData];
+    }
 }
 
-- (void)refreshGames {
-	
-	[self.gs getWaitingRoomGames:^(NSArray *games) {
-		[self setGames:games];
-	}];
-
+- (IBAction)addGame:(id)sender {
+    AddGameViewController *controller = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.navigationItem.title = @"Join a Game";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!self.tableSections) {
+        self.view = self.noGamesView;
+    }
 }
 
 
@@ -101,6 +110,7 @@
 
 
 - (void)dealloc {
+    self.noGamesView = nil;
     [super dealloc];
 }
 

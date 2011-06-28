@@ -68,7 +68,7 @@ typedef enum _AddGameSection {
 	[self showSpinner:@"Posting..."];
 	[self.gs addGame:self.game onSuccess:^() {
 		[self hideSpinner:YES];
-		[[self navigationController] popViewControllerAnimated:YES];
+		[[self navigationController] popToRootViewControllerAnimated:YES];
 	}];
 }
 
