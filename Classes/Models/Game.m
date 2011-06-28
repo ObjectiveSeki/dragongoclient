@@ -21,6 +21,8 @@
 @synthesize time;
 @synthesize color;
 @synthesize opponentRating;
+@synthesize handicap;
+@synthesize komi;
 
 - (void)dealloc {
 	self.detailUrl = nil;

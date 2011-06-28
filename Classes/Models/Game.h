@@ -20,6 +20,8 @@
 	NSString * time;
 	NSString * opponentRating;
 	MovePlayer color;
+    int handicap;
+    float komi;
 }
 
 @property(nonatomic, retain) NSURL * sgfUrl;
@@ -30,5 +32,7 @@
 @property(nonatomic, copy) NSString * opponentRating;
 @property(nonatomic) int gameId;
 @property(nonatomic) MovePlayer color;
+@property(nonatomic, assign) int handicap;
+@property(nonatomic, assign) float komi;
 
 @end

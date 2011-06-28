@@ -76,11 +76,11 @@
 	[rows addObject:[NSArray arrayWithObjects:@"Rated", self.game.ratedString, nil]];
 	[rows addObject:[NSArray arrayWithObjects:@"Time", self.game.time, nil]];
 	[rows addObject:[NSArray arrayWithObjects:@"Weekend Clock", self.game.weekendClockString, nil]];
-    if (self.game.adjustedHandicap != 0) {
-        [rows addObject:[NSArray arrayWithObjects:@"Handicap", [NSString stringWithFormat:@"%d", self.game.adjustedHandicap], nil]];
+    if (self.game.handicap != 0) {
+        [rows addObject:[NSArray arrayWithObjects:@"Handicap", [NSString stringWithFormat:@"%d", self.game.handicap], nil]];
     }
     [rows addObject:[NSArray arrayWithObjects:@"Type", self.game.komiTypeName, nil]];
-	[rows addObject:[NSArray arrayWithObjects:@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.adjustedKomi], nil]];
+	[rows addObject:[NSArray arrayWithObjects:@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.komi], nil]];
 	
 	return [self basicSectionWithTitle:@"Game Information" rows:rows];
 }

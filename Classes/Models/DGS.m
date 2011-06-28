@@ -633,9 +633,9 @@
 			} else if (i == 6) {
 				game.komiTypeName = [[rowData lastObject] stringValue];
 			} else if (i == 8) {
-				game.adjustedHandicap = [[[rowData lastObject] stringValue] intValue];
+				game.handicap = [[[rowData lastObject] stringValue] intValue];
 			} else if (i == 9) {
-				game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+				game.komi = [[[rowData lastObject] stringValue] floatValue];
 			} else if (i == 13) {
 				game.ratedString = [[rowData lastObject] stringValue];
 			} else if (i == 14) {
@@ -663,7 +663,7 @@
 			} else if (i == 12) {
 				game.comment = [[rowData lastObject] stringValue];
 			} else if (i == 16) {
-				game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+				game.komi = [[[rowData lastObject] stringValue] floatValue];
 			}  
 		}
 	}
@@ -697,7 +697,7 @@
 				} else if (i == 5) {
 					game.komiTypeName = [[rowData lastObject] stringValue];
 				} else if (i == 6) {				
-					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+					game.komi = [[[rowData lastObject] stringValue] floatValue];
 				} else if (i == 11) {
 					game.ratedString = [[rowData lastObject] stringValue];
 				} else if (i == 12) {
@@ -719,9 +719,9 @@
 				} else if (i == 5) {
 					game.komiTypeName = [[rowData lastObject] stringValue];
 				} else if (i == 6) {
-                    game.adjustedHandicap = [[[rowData lastObject] stringValue] intValue];
+                    game.handicap = [[[rowData lastObject] stringValue] intValue];
                 } else if (i == 7) {				
-					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+					game.komi = [[[rowData lastObject] stringValue] floatValue];
 				} else if (i == 12) {
 					game.ratedString = [[rowData lastObject] stringValue];
 				} else if (i == 13) {
@@ -749,7 +749,7 @@
 				} else if (i == 12) {
 					game.comment = [[rowData lastObject] stringValue];
 				} else if (i == 16) {
-					game.adjustedKomi = [[[rowData lastObject] stringValue] floatValue];
+					game.komi = [[[rowData lastObject] stringValue] floatValue];
 				}  
 			}
 		}
