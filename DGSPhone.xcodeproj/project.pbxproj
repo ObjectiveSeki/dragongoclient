@@ -365,6 +365,8 @@
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CDD11FD3C0B005922A3 /* Readme.md */; };
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
+		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
+		DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */; };
 		DAE9315D1245443100335F0F /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */; };
 		DAE9315F1245443100335F0F /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931471245443100335F0F /* CXMLNode_CreationExtensions.m */; };
 		DAE931611245443100335F0F /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931491245443100335F0F /* CXMLDocument_PrivateExtensions.m */; };
@@ -852,6 +854,9 @@
 		DADD19C711BCA6170038F8BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DADD1CDD11FD3C0B005922A3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		DADD1CE111FD3C43005922A3 /* FAQ.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ.md; sourceTree = "<group>"; };
+		DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
+		DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameViewController.m; sourceTree = "<group>"; };
+		DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = ../Classes/Controllers/NewGameViewController.xib; sourceTree = "<group>"; };
 		DAE9313E1245440500335F0F /* libTouchXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTouchXML.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE931441245443100335F0F /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
@@ -1517,6 +1522,8 @@
 				DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */,
 				DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */,
 				DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */,
+				DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */,
+				DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1747,6 +1754,7 @@
 			isa = PBXGroup;
 			children = (
 				DA94CBDC124839740060FD44 /* AddGameView.xib */,
+				DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */,
 				DA94CBDD124839740060FD44 /* CurrentGamesView.xib */,
 				DA94CBDE124839740060FD44 /* GameView.xib */,
 				DA94CBDF124839740060FD44 /* LoginView.xib */,
@@ -2176,6 +2184,7 @@
 				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
 				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
+				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2258,6 +2267,7 @@
 				DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */,
 				DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */,
 				DA0762B71377B678003E0390 /* DGSDev.m in Sources */,
+				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

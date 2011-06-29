@@ -37,6 +37,7 @@
 // Refresh games list unconditionally
 - (IBAction)refreshGames;
 - (IBAction)logout;
+- (IBAction)startNewGame;
 
 - (void)gotSgfForGame:(Game *)game;
 
