@@ -123,6 +123,7 @@ typedef enum _ByoYomiType {
 - (NSString *)byoYomiTypeString;
 - (NSString *)byoYomiTypeString:(ByoYomiType)byoYomiType;
 - (NSString *)boolValue:(BOOL)value;
+- (NSString *)timePeriodString:(int)count withTimeUnit:(TimePeriod)unit;
 - (NSString *)timePeriodValue:(TimePeriod)value;
 
 @end

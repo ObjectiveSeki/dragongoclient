@@ -179,23 +179,37 @@
 	return @"N";
 }
 
-- (NSString *)timePeriodValue:(TimePeriod)value {
+- (NSString *)singularTimePeriodValue:(TimePeriod)value {
 	NSString *timePeriodString = @"";
 	
 	switch(value) {
 		case kTimePeriodHours:
-			timePeriodString = @"hours";
+			timePeriodString = @"hour";
 			break;
 		case kTimePeriodDays:
-			timePeriodString = @"days";
+			timePeriodString = @"day";
 			break;
 		case kTimePeriodMonths:
-			timePeriodString = @"months";
+			timePeriodString = @"month";
 			break;			
 	}
 	return timePeriodString;
 }
 
+
+- (NSString *)timePeriodValue:(TimePeriod)unit {
+	return [[self singularTimePeriodValue:unit] stringByAppendingString:@"s"];
+}
+
+
+- (NSString *)timePeriodString:(int)count withTimeUnit:(TimePeriod)unit {
+    if (count == 1) {
+        return [NSString stringWithFormat:@"%d %@", count, [self singularTimePeriodValue:unit]];
+    } else {
+        return [NSString stringWithFormat:@"%d %@", count, [self timePeriodValue:unit]];
+    }
+
+}
 
 - (void)dealloc {
     self.comment = nil;

@@ -187,7 +187,7 @@ typedef enum _AddGameSection {
 	self.game.timeValue = timeValue;
 	self.game.timeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.timeValue, [self.game timePeriodValue:self.game.timeUnit]];
+    cell.value.text = [self.game timePeriodString:self.game.timeValue withTimeUnit:self.game.timeUnit];
 	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.timeUnit], nil];
 }
 
@@ -197,9 +197,9 @@ typedef enum _AddGameSection {
 	int timeValue = tens * 10 + ones;
 	self.game.japaneseTimeValue = timeValue;
 	self.game.japaneseTimeUnit = [cell.picker selectedRowInComponent:2];
-	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.japaneseTimeValue, [self.game timePeriodValue:self.game.japaneseTimeUnit]];
-	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.japaneseTimeUnit], nil];
+    
+	cell.value.text = [self.game timePeriodString:self.game.japaneseTimeValue withTimeUnit:self.game.japaneseTimeUnit];
+    cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.japaneseTimeUnit], nil];
 }
 
 - (void)setExtraTimeCanadian:(SelectCell *)cell {
@@ -209,7 +209,7 @@ typedef enum _AddGameSection {
 	self.game.canadianTimeValue = timeValue;
 	self.game.canadianTimeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.canadianTimeValue, [self.game timePeriodValue:self.game.canadianTimeUnit]];
+    cell.value.text = [self.game timePeriodString:self.game.canadianTimeValue withTimeUnit:self.game.canadianTimeUnit];
 	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.canadianTimeUnit], nil];
 }
 
@@ -220,7 +220,7 @@ typedef enum _AddGameSection {
 	self.game.fischerTimeValue = timeValue;
 	self.game.fischerTimeUnit = [cell.picker selectedRowInComponent:2];
 	
-	cell.value.text = [NSString stringWithFormat:@"%d %@", self.game.fischerTimeValue, [self.game timePeriodValue:self.game.fischerTimeUnit]];
+	cell.value.text = [self.game timePeriodString:self.game.fischerTimeValue withTimeUnit:self.game.fischerTimeUnit];
 	cell.selectedOptions = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.fischerTimeUnit], nil];
 }
 
@@ -234,7 +234,7 @@ typedef enum _AddGameSection {
 
 - (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit selector:(SEL)setSelector label:(NSString *)label {
 	SelectCell *cell = [self selectCell:theTableView];
-	NSString *timeString = [NSString stringWithFormat:@"%d %@", timeValue, [self.game timePeriodValue:timeUnit]];
+	NSString *timeString = [self.game timePeriodString:timeValue withTimeUnit:timeUnit];
 	NSArray *zeroToNine = [NSArray arrayWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
 	NSArray *timePeriods = [NSArray arrayWithObjects:[self.game timePeriodValue:kTimePeriodHours], [self.game timePeriodValue:kTimePeriodDays], [self.game timePeriodValue:kTimePeriodMonths], nil];
 	NSArray *sizes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:80.0],[NSNumber numberWithFloat:80.0], [NSNumber numberWithFloat:140.0], nil];
