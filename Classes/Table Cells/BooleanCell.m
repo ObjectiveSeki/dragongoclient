@@ -12,10 +12,17 @@
         UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
 		self.toggleSwitch = theSwitch;
 		self.accessoryView = theSwitch;
+        [theSwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
         [theSwitch release];
     }
     return self;
+}
+
+- (IBAction)switchToggled:(id)sender {
+    if (self.onChanged) {
+        self.onChanged(self);
+    }
 }
 
 - (void)dealloc {

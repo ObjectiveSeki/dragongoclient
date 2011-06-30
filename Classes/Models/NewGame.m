@@ -33,6 +33,7 @@
 @synthesize fischerTimeUnit;
 @synthesize weekendClock;
 @synthesize	rated;
+@synthesize requireRatedOpponent;
 @synthesize	minimumRating;
 @synthesize maximumRating;
 @synthesize minRatedGames;
@@ -62,7 +63,8 @@
 		fischerTimeValue = 1;
 		fischerTimeUnit = kTimePeriodDays;
 		weekendClock = YES;
-		rated = YES;
+		rated = NO;
+        requireRatedOpponent = NO;
 		minimumRating = @"30 kyu";
 		maximumRating = @"9 dan";
 		myGame = true;

@@ -412,6 +412,7 @@
 	
 	[request setPostValue:[game boolValue:[game weekendClock]] forKey:@"weekendclock"];
 	[request setPostValue:[game boolValue:[game rated]] forKey:@"rated"];
+    [request setPostValue:[game boolValue:[game requireRatedOpponent]] forKey:@"must_be_rated"];
 	[request setPostValue:[game minimumRating] forKey:@"rating1"];
 	[request setPostValue:[game maximumRating] forKey:@"rating2"];
 	[request setPostValue:[game comment] forKey:@"comment"];

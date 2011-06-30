@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class SelectCell;
 
 @interface SelectCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource> {
 	IBOutlet UILabel *label;
@@ -19,7 +20,9 @@
 	SEL changedSelector;
     int pickerViewHeight;
     int tableViewHeight;
+    void (^onChanged)(SelectCell *selectCell);
 }
+
 @property(nonatomic, retain) IBOutlet UILabel *label;
 @property(nonatomic, retain) IBOutlet UILabel *value;
 @property(nonatomic, retain) UIPickerView *picker;
@@ -27,6 +30,7 @@
 @property(nonatomic, retain) NSArray *selectedOptions;
 @property(nonatomic, retain) NSArray *sizes;
 @property(nonatomic) SEL changedSelector;
+@property(nonatomic, copy) void (^onChanged)(SelectCell *selectCell);
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component;

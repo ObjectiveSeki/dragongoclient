@@ -22,7 +22,8 @@
 typedef enum _AddGameSection {
 	kDescriptionSection,
 	kBoardSection,
-	kTimeSection
+	kTimeSection,
+    kRatingSection
 } AddGameSection;
 
 
@@ -33,6 +34,15 @@ typedef enum _AddGameSection {
 	
 	self.game = [[[NewGame alloc] init] autorelease];
     self.navigationItem.title = @"Create a Game";
+    NSMutableArray *ratingStrings = [[NSMutableArray alloc] initWithCapacity:40];
+    for (int i = 30; i > 0; i--) {
+        [ratingStrings addObject:[NSString stringWithFormat:@"%d kyu", i]];
+    }
+    for (int i = 1; i < 10; i++) {
+        [ratingStrings addObject:[NSString stringWithFormat:@"%d dan", i]];
+    }
+    _ratingStrings = ratingStrings;
+    
 }
 
 
@@ -77,7 +87,7 @@ typedef enum _AddGameSection {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return kTimeSection + 1;
+    return kRatingSection + 1;
 }
 
 
@@ -93,7 +103,9 @@ typedef enum _AddGameSection {
 		} else {
 			return 4;
 		}
-	}
+	} else if (section == kRatingSection) {
+        return 4;
+    }
 	return 0;
 }
 
@@ -327,7 +339,47 @@ typedef enum _AddGameSection {
 				return cell;
 			}
 		}
-	}
+	} if ([indexPath section] == kRatingSection) {
+		if ([indexPath row] == 0) {
+			BooleanCell *cell = [self booleanCell:theTableView];
+            cell.textLabel.text = @"Ranked game";
+            cell.toggleSwitch.on = self.game.rated;
+            cell.onChanged = ^(BooleanCell *cell) {
+                self.game.rated = cell.toggleSwitch.on;
+            };
+			return cell;
+		} else if ([indexPath row] == 1) {
+			BooleanCell *cell = [self booleanCell:theTableView];
+            cell.textLabel.text = @"Rated opponent";
+            cell.toggleSwitch.on = self.game.requireRatedOpponent;
+            cell.onChanged = ^(BooleanCell *cell) {
+                self.game.requireRatedOpponent = cell.toggleSwitch.on;
+            };
+			return cell;
+		} else if ([indexPath row] == 2) {
+            SelectCell *cell = [self selectCell:theTableView];
+			cell.label.text = @"Min rating";
+			cell.value.text = self.game.minimumRating;
+			cell.onChanged = ^(SelectCell *cell) {
+                self.game.minimumRating = [cell selectedValueInComponent:0];
+            };
+			cell.options = [NSArray arrayWithObject:_ratingStrings];
+			cell.selectedOptions = [NSArray arrayWithObject:self.game.minimumRating];
+			cell.sizes = nil;
+			return cell;
+        } else if ([indexPath row] == 3) {
+            SelectCell *cell = [self selectCell:theTableView];
+			cell.label.text = @"Max rating";
+			cell.value.text = self.game.maximumRating;
+            cell.onChanged = ^(SelectCell *cell) {
+                self.game.maximumRating = [cell selectedValueInComponent:0];
+            };
+			cell.options = [NSArray arrayWithObject:_ratingStrings];
+			cell.selectedOptions = [NSArray arrayWithObject:self.game.maximumRating];
+			cell.sizes = nil;
+			return cell;
+        }
+    }
     return cell;
 }
 
@@ -402,6 +454,7 @@ typedef enum _AddGameSection {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.descriptionCell = nil;
+    [_ratingStrings release]; _ratingStrings = nil;
 }
 
 

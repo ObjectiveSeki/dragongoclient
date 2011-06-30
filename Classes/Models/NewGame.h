@@ -61,6 +61,7 @@ typedef enum _ByoYomiType {
 	TimePeriod fischerTimeUnit;
 	BOOL weekendClock;
 	BOOL rated;
+    BOOL requireRatedOpponent;
 	NSString *minimumRating;
 	NSString *maximumRating;
 	int minRatedGames;
@@ -98,6 +99,7 @@ typedef enum _ByoYomiType {
 @property(nonatomic, assign) TimePeriod fischerTimeUnit;
 @property(nonatomic, assign) BOOL weekendClock;
 @property(nonatomic, assign) BOOL rated;
+@property(nonatomic, assign) BOOL requireRatedOpponent;
 @property(nonatomic, copy) NSString *minimumRating;
 @property(nonatomic, copy) NSString *maximumRating;
 @property(nonatomic, assign) int minRatedGames;

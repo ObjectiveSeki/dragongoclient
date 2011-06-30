@@ -18,6 +18,7 @@
 @synthesize selectedOptions;
 @synthesize changedSelector;
 @synthesize sizes;
+@synthesize onChanged;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
@@ -90,7 +91,9 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	if (self.changedSelector) {
+    if (self.onChanged) {
+        self.onChanged(self);
+    } else if (self.changedSelector) {
 		[[UIApplication sharedApplication] sendAction:self.changedSelector to:nil from:self forEvent:nil];
 	}
 }
@@ -133,6 +136,7 @@
 	self.picker = nil;
 	self.sizes = nil;
 	self.selectedOptions = nil;
+    self.onChanged = nil;
     [super dealloc];
 }
 
