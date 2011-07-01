@@ -41,7 +41,6 @@
 }
 
 - (void)showPickerInTableView:(UITableView *)tableView {
-    NSLog(@"Show %@", self.label.text);
     tableViewHeight = tableView.superview.frame.size.height;
     self.picker = [[[UIPickerView alloc] initWithFrame:[tableView convertRect:CGRectMake(0, tableViewHeight, 0, 0) fromView:nil]] autorelease];
     pickerViewHeight = self.picker.frame.size.height;
@@ -71,7 +70,6 @@
 }
 
 - (void)hidePickerInTableView:(UITableView *)tableView {
-    NSLog(@"Hide %@", self.label.text);
     CGRect tableViewFrame = tableView.frame;
     tableViewFrame.size.height = tableViewHeight;
     tableView.frame = tableViewFrame;
@@ -101,7 +99,6 @@
 - (void)togglePicker:(NSNotification *)notification {
     UITableView *tableView = (UITableView *)self.superview;
     if (!self.picker && [tableView indexPathForSelectedRow] && ([[tableView indexPathForSelectedRow] compare:[tableView indexPathForCell:self]] == NSOrderedSame)) {
-        NSLog(@"indexPath: %@", [tableView indexPathForSelectedRow]);
         
         [self showPickerInTableView:tableView];
     } else if (self.picker && [tableView indexPathForSelectedRow]) {
