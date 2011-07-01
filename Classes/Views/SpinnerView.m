@@ -54,9 +54,9 @@
 }
 
 + (SpinnerView *)showInView:(UIView *)view {
-	CGRect rect = CGRectMake(view.center.x - 60, view.center.y - 60, 120, 120);
+    CGRect rect = [view convertRect:CGRectMake(view.window.center.x - 60, view.window.center.y - 60, 120, 120) fromView:nil];
 	SpinnerView *spinnerView = [[[SpinnerView alloc] initWithFrame:rect] autorelease];
-	spinnerView.alpha = 0.0;
+    spinnerView.alpha = 0.0;
 	spinnerView.transform = CGAffineTransformMakeScale(2,2);
 	[view addSubview:spinnerView];
 	[view bringSubviewToFront:spinnerView];
@@ -71,7 +71,7 @@
 
 - (void)dismiss:(BOOL)animate {
 	if (animate) {
-		[UIView animateWithDuration:0.3 delay:0.5 options:UIViewAnimationOptionLayoutSubviews animations:^(void) {
+		[UIView animateWithDuration:0.3 delay:0.5 options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionBeginFromCurrentState animations:^(void) {
 			self.transform = CGAffineTransformMakeScale(2, 2);
 			self.alpha = 0.0;
 		} completion:^(BOOL completion) {

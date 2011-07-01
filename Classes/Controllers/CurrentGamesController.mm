@@ -64,13 +64,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	JWLog("Showing current games view and refreshing games...");
-	[self refreshGamesWithThrottling];
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    JWLog("Showing current games view and refreshing games...");
+	[self refreshGamesWithThrottling];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGamesWithThrottling) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
