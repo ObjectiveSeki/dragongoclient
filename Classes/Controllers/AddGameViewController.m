@@ -104,7 +104,11 @@ typedef enum _AddGameSection {
 			return 4;
 		}
 	} else if (section == kRatingSection) {
-        return 4;
+        if (self.game.requireRatedOpponent) {
+            return 4;
+        } else {
+            return 2;
+        }
     }
 	return 0;
 }
@@ -354,6 +358,15 @@ typedef enum _AddGameSection {
             cell.toggleSwitch.on = self.game.requireRatedOpponent;
             cell.onChanged = ^(BooleanCell *cell) {
                 self.game.requireRatedOpponent = cell.toggleSwitch.on;
+                // We want to update the table cells without deselecting 
+                // the current cell, so no #reloadData for you.
+                NSArray *indexPaths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:kRatingSection], [NSIndexPath indexPathForRow:3 inSection:kRatingSection], nil];
+                
+                if (self.game.requireRatedOpponent) {
+                    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];                    
+                } else {
+                    [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                }
             };
 			return cell;
 		} else if ([indexPath row] == 2) {
@@ -361,7 +374,9 @@ typedef enum _AddGameSection {
 			cell.label.text = @"Min rating";
 			cell.value.text = self.game.minimumRating;
 			cell.onChanged = ^(SelectCell *cell) {
-                self.game.minimumRating = [cell selectedValueInComponent:0];
+                NSString *value = [cell selectedValueInComponent:0];
+                self.game.minimumRating = value;
+                cell.value.text = value;
             };
 			cell.options = [NSArray arrayWithObject:_ratingStrings];
 			cell.selectedOptions = [NSArray arrayWithObject:self.game.minimumRating];
@@ -372,7 +387,9 @@ typedef enum _AddGameSection {
 			cell.label.text = @"Max rating";
 			cell.value.text = self.game.maximumRating;
             cell.onChanged = ^(SelectCell *cell) {
-                self.game.maximumRating = [cell selectedValueInComponent:0];
+                NSString *value = [cell selectedValueInComponent:0];
+                self.game.maximumRating = value;
+                cell.value.text = value;
             };
 			cell.options = [NSArray arrayWithObject:_ratingStrings];
 			cell.selectedOptions = [NSArray arrayWithObject:self.game.maximumRating];
