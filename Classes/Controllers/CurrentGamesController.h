@@ -21,6 +21,8 @@
 	UITableViewCell *selectedCell;
 	UIAlertView *logoutConfirmation;
 	NSDate *nextRefreshTime;
+    IBOutlet UIView *noGamesView;
+    IBOutlet UIView *gameListView;
 }
 
 @property(nonatomic, retain) NSArray *games;
@@ -30,6 +32,8 @@
 @property(nonatomic, retain) IBOutlet UITableView *gameTableView;
 @property(nonatomic, retain) UITableViewCell *selectedCell;
 @property(nonatomic, retain) UIAlertView *logoutConfirmation;
+@property(nonatomic, retain) UIView *noGamesView;
+@property(nonatomic, retain) UIView *gameListView;
 
 // Refresh games list only after a certain amount of time has passed
 - (IBAction)refreshGamesWithThrottling;

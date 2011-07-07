@@ -27,6 +27,8 @@
 @synthesize selectedCell;
 @synthesize logoutConfirmation;
 @synthesize bottomToolbar;
+@synthesize noGamesView;
+@synthesize gameListView;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -170,7 +172,7 @@
 - (IBAction)refreshGames {
 	[DGSAppDelegate resetThrottle];
 	
-	[self showSpinner:@"Reloading..."];
+	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
 	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
@@ -191,13 +193,18 @@
 		self.games = mutableCurrentGames;
 		[mutableCurrentGames release];
 #endif
-		
+
 		[self hideSpinner:YES];
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 		
-		[self buildTableCells];
-		
-		[[self gameTableView] reloadData];
+        if ([self.games count] == 0) {
+            self.view = self.noGamesView;
+        } else {
+            self.view = self.gameListView;
+            [self buildTableCells];
+            [[self gameTableView] reloadData];
+        }
+
 		[self setEnabled:YES];
 	}];
 }
@@ -268,6 +275,8 @@
 	self.selectedCell = nil;
 	self.logoutConfirmation = nil;
 	self.bottomToolbar = nil;
+    self.noGamesView = nil;
+    self.gameListView = nil;
 }
 
 

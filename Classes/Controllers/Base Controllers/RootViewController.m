@@ -18,8 +18,12 @@
 }
 
 - (void)showSpinner:(NSString *)message {
+	[self showSpinnerInView:self.view message:message];
+}
+
+- (void)showSpinnerInView:(UIView *)view message:(NSString *)message {
 	[self hideSpinner:NO];
-	self.spinnerView = [SpinnerView showInView:self.view];
+	self.spinnerView = [SpinnerView showInView:view];
 	self.spinnerView.label.text = message;
 }
 

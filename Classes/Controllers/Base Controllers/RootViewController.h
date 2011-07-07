@@ -18,6 +18,7 @@
 @property(nonatomic, retain) SpinnerView *spinnerView;
 @property(nonatomic, retain) id<GameServerProtocol> gs;
 
+- (void)showSpinnerInView:(UIView *)view message:(NSString *)message;
 - (void)showSpinner:(NSString *)message;
 - (void)hideSpinner:(BOOL)animated;
 
