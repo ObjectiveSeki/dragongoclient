@@ -25,7 +25,6 @@
 @synthesize errorView;
 #endif
 
-
 // This returns the base path onto which all of the urls used 
 // in this class refer. This is so that you can run your own
 // DGS instance and play with it without ruining your own games.
@@ -223,16 +222,25 @@
 	}];
 }
 
-- (void)getWaitingRoomGames:(void (^)(NSArray *gameList))onSuccess {
+- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess {
+    GameList *gameList = [[[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)()) {
+        NSURL *url = [self URLWithPath:pagePath];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+        [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
+        
+        [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+            [gameList appendGames:[self gamesFromWaitingRoomTable:responseString]];
+            gameList.nextPagePath = [self nextPagePath:responseString];
+            onSuccess();
+        }];
+    }] autorelease];
+    
     // add=9 to force the time limit to show up
-	NSURL *url = [self URLWithPath:@"/waiting_room.php?add=9"];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
-	
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-		NSArray *gameList = [self gamesFromWaitingRoomTable:responseString];
-		onSuccess(gameList);
-	}];
+    gameList.nextPagePath = @"/waiting_room.php?add=9";
+    
+    [gameList loadNextPage:^(GameList *gameList) {
+        onSuccess(gameList);
+    }];
 }
 
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess {
@@ -535,8 +543,8 @@
 	}
 	[doc release];
 	return games;
-}
-
+}                           
+                           
 // Parses a list of games from the waiting room. This uses the 
 // markings on the 'th' row to guess which columns hold the data we're
 // looking for. This may or may not be consistent, which is kinda rough,
@@ -614,7 +622,19 @@
 	[doc release];
 	return games;
 }
-
+                           
+// Tells us whether there are more pages in the table we're looking at
+- (NSString *)nextPagePath:(NSString *)htmlString {
+    NSString *nextPagePath = nil;
+    NSError *error;
+    CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
+    NSArray *nextPageIndicator = [doc nodesForXPath:@"//td[@class='PagingL']//a[img[@src='images/next.gif']]/@href" error:&error];
+    if ([nextPageIndicator count] != 0) {
+        nextPagePath = [NSString stringWithFormat:@"/%@", [[nextPageIndicator lastObject] stringValue]];
+    }
+    return nextPagePath;
+}
+                           
 // The newer versions of DGS have these items in a different order.
 - (NewGame *)gameFromNewWaitingRoomDetailTable:(NSArray *)tableRows game:(NewGame *)game {
 	NSError *error;

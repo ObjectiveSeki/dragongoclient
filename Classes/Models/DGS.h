@@ -10,6 +10,7 @@
 #import "LoginProtocol.h"
 #import "Game.h"
 #import "NewGame.h"
+#import "GameList.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIHTTPRequest.h"
@@ -40,7 +41,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess;
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
-- (void)getWaitingRoomGames:(void (^)(NSArray *gameList))onSuccess;
+- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess;
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess;
 - (void)joinWaitingRoomGame:(int)gameId comment:(NSString *)comment onSuccess:(void (^)())onSuccess;
 - (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess;
@@ -61,5 +62,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
 - (NSArray *)gamesFromTable:(NSString *)htmlString;
 - (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString;
+- (NSString *)nextPagePath:(NSString *)htmlString;
 - (NewGame *)gameFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game;
 @end

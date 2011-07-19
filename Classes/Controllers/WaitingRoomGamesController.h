@@ -5,6 +5,7 @@
 #import <UIKit/UIKit.h>
 #import "JWTableViewController.h"
 #import "DGS.h"
+#import "GameList.h"
 
 @interface WaitingRoomGamesController : JWTableViewController {
     UIView *noGamesView;
@@ -12,7 +13,7 @@
 
 @property (nonatomic, retain) IBOutlet UIView *noGamesView;
 
-- (void)setGames:(NSArray *)games;
+- (void)setGames:(GameList *)gameList;
 - (IBAction)addGame:(id)sender;
 
 @end

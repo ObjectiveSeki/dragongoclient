@@ -10,6 +10,7 @@
 
 #import "AddGameViewController.h"
 #import "WaitingRoomGamesController.h"
+#import "GameList.h"
 
 @implementation NewGameViewController
 
@@ -61,7 +62,7 @@
         
         WaitingRoomGamesController *controller = [[WaitingRoomGamesController alloc] initWithNibName:@"WaitingRoomGamesView" bundle:nil];
         
-		[self.gs getWaitingRoomGames:^(NSArray *postedGames) {
+		[self.gs getWaitingRoomGames:^(GameList *postedGames) {
 			[controller setGames:postedGames];
 			[self.navigationController pushViewController:controller animated:YES];
 			[controller release];
