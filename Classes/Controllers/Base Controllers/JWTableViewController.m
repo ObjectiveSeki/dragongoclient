@@ -5,7 +5,6 @@
 @implementation JWTableViewController
 @synthesize tableSections;
 @synthesize tableView;
-@synthesize selectedIndexPath;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -50,9 +49,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	if (self.selectedIndexPath) {
-		[self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:NO];
-	}
+    [self deselectSelectedCell];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -96,7 +93,8 @@
 }
 
 - (void)deselectSelectedCell {
-	[self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:NO];
+	[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UITableViewSelectionDidChangeNotification object:self.tableView];
 }
 
 /*
@@ -143,7 +141,6 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	self.selectedIndexPath = indexPath;
 	UITableViewCell *selectedCell = [theTableView cellForRowAtIndexPath:indexPath];
 	TableRow *rowData = [self rowDataForIndexPath:indexPath];
 	if (rowData.cellTouched) {
@@ -164,7 +161,6 @@
     // e.g. self.myOutlet = nil;
 	self.tableSections = nil;
 	self.tableView = nil;
-	self.selectedIndexPath = nil;
 }
 
 

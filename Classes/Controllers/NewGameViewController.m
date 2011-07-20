@@ -66,8 +66,8 @@
 			[controller setGames:postedGames];
 			[self.navigationController pushViewController:controller animated:YES];
 			[controller release];
-            [self deselectSelectedCell];
             [self.selectedCell setAccessoryView:nil];
+            [self deselectSelectedCell];
             [self.tableView setUserInteractionEnabled:YES];
 		}];
         
@@ -94,8 +94,9 @@
         AddGameViewController *controller = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
         [self.navigationController pushViewController:controller animated:YES];
 		[controller release];
-        [self deselectSelectedCell];
+        
         [self.selectedCell setAccessoryView:nil];
+        [self deselectSelectedCell];
     };
     [serverGamesSection addRow:row];
     [row release];
@@ -106,7 +107,7 @@
 }
 
 - (UITableViewCell *)selectedCell {
-    return [[self tableView] cellForRowAtIndexPath:[self selectedIndexPath]];
+    return [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
 }
 
 - (void)viewDidUnload

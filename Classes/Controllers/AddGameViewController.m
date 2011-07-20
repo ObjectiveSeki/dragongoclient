@@ -366,6 +366,7 @@ typedef enum _AddGameSection {
                     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];                    
                 } else {
                     [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                    [self deselectSelectedCell];
                 }
             };
 			return cell;

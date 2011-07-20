@@ -25,6 +25,8 @@
         // Initialization code
         pickerViewHeight = 0;
         tableViewHeight = 0;
+        movementOffset = 0;
+        picker = nil;
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(togglePicker:)
                                                      name:UITableViewSelectionDidChangeNotification object:nil];
@@ -35,6 +37,7 @@
 - (void)awakeFromNib {
     pickerViewHeight = 0;
     tableViewHeight = 0;
+    self.picker = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(togglePicker:)
                                                  name:UITableViewSelectionDidChangeNotification object:nil];
@@ -45,10 +48,8 @@
     self.picker = [[[UIPickerView alloc] initWithFrame:[tableView convertRect:CGRectMake(0, tableViewHeight, 0, 0) fromView:nil]] autorelease];
     pickerViewHeight = self.picker.frame.size.height;
     [tableView.superview addSubview:self.picker];
-    
-    [UIView animateWithDuration:0.3 animations:^(void) {
-        tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight)));
-    }];
+    CGFloat newOffset = MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight));
+    movementOffset = newOffset - tableView.contentOffset.y;
     
     self.picker.showsSelectionIndicator = YES;
     self.picker.dataSource = self;
@@ -58,7 +59,8 @@
         [self.picker selectRow:row inComponent:i animated:NO];
     }
     
-    [UIView animateWithDuration:0.3 animations:^(void) {
+    [UIView animateWithDuration:0.5 animations:^(void) {
+        tableView.contentOffset = CGPointMake(0, newOffset);
         CGRect pickerViewFrame = self.picker.frame;
         pickerViewFrame.origin.y = tableViewHeight - pickerViewHeight;
         self.picker.frame = pickerViewFrame;
@@ -71,22 +73,19 @@
 
 - (void)hidePickerInTableView:(UITableView *)tableView {
     CGRect tableViewFrame = tableView.frame;
+    CGPoint contentOffset = tableView.contentOffset;
     tableViewFrame.size.height = tableViewHeight;
     tableView.frame = tableViewFrame;
     // Apparently resetting the frame here also resets the 
     // content offset. Manually setting it again here seems 
     // to work though.
-    tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight)));
-    
-    [UIView animateWithDuration:0.5 animations:^(void) {
-        
-        tableView.contentOffset = CGPointMake(0, MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight)));
-    }];
+    tableView.contentOffset = contentOffset;
     
     [UIView animateWithDuration:0.5 animations:^(void) {
         CGRect pickerViewFrame = self.picker.frame;
         pickerViewFrame.origin.y = tableViewHeight;
         self.picker.frame = pickerViewFrame;
+        tableView.contentOffset = CGPointMake(0, MAX(0, tableView.contentOffset.y - movementOffset));
     } completion:^(BOOL finished) {
         if (finished) {
             [self.picker removeFromSuperview];
@@ -98,10 +97,18 @@
 
 - (void)togglePicker:(NSNotification *)notification {
     UITableView *tableView = (UITableView *)self.superview;
-    if (!self.picker && [tableView indexPathForSelectedRow] && ([[tableView indexPathForSelectedRow] compare:[tableView indexPathForCell:self]] == NSOrderedSame)) {
+    if (tableView) {
+        parentTableView = tableView;
+    } else {
+        // When the table cell scrolls off the edge of the screen, 
+        // self.superview could be nil. 
+        tableView = parentTableView;
+    }
         
+    if (!self.picker && [tableView indexPathForSelectedRow] && ([[tableView indexPathForSelectedRow] compare:[tableView indexPathForCell:self]] == NSOrderedSame)) {
+        parentTableView = tableView;
         [self showPickerInTableView:tableView];
-    } else if (self.picker && [tableView indexPathForSelectedRow]) {
+    } else if (self.picker) {
         [self hidePickerInTableView:tableView];
     }
 

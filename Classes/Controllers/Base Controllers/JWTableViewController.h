@@ -10,12 +10,10 @@
 @interface JWTableViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
 	NSArray *tableSections;
 	IBOutlet UITableView *tableView;
-	NSIndexPath *selectedIndexPath;
 }
 
 @property (nonatomic, retain) NSArray *tableSections;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
-@property (nonatomic, copy) NSIndexPath *selectedIndexPath;
 
 - (TableRow *)rowDataForIndexPath:(NSIndexPath *)indexPath;
 - (void)deselectSelectedCell;

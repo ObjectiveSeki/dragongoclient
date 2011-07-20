@@ -17,9 +17,11 @@
 	NSArray *options;
 	NSArray *selectedOptions;
 	NSArray *sizes;
+    UITableView *parentTableView; // weak, temporary reference
 	SEL changedSelector;
     int pickerViewHeight;
     int tableViewHeight;
+    CGFloat movementOffset;
     void (^onChanged)(SelectCell *selectCell);
 }
 
