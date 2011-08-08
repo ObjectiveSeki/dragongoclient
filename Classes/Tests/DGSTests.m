@@ -57,7 +57,7 @@
 	STAssertEqualObjects(game.ratedString, @"Yes", nil);
 	STAssertEqualObjects(game.weekendClockString, @"Yes", nil);
 	STAssertEqualObjects(game.komiTypeName, @"Proper handicap", nil);
-	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.0, (CGFloat)0.25, nil);
+	STAssertEqualsWithAccuracy(game.komi, (CGFloat)6.0, (CGFloat)0.25, nil);
 	STAssertFalse(game.myGame, nil);
 	
 	testData = [NSString stringWithContentsOfFile:@"TestData/waiting-detail-cn.html" encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingEUC_CN) error:nil];
@@ -72,7 +72,7 @@
 	STAssertEqualObjects(game.ratedString, @"是", nil);
 	STAssertEqualObjects(game.weekendClockString, @"是", nil);
 	STAssertEqualObjects(game.komiTypeName, @"猜子分先", nil);
-	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.5, (CGFloat)0.25, nil);
+	STAssertEqualsWithAccuracy(game.komi, (CGFloat)6.5, (CGFloat)0.25, nil);
 	STAssertFalse(game.myGame, nil);
 	
 	testData = [NSString stringWithContentsOfFile:@"TestData/owned_game.html" encoding:NSUTF8StringEncoding error:nil];
@@ -87,7 +87,7 @@
 	STAssertEqualObjects(game.ratedString, @"No", nil);
 	STAssertEqualObjects(game.weekendClockString, @"Yes", nil);
 	STAssertEqualObjects(game.komiTypeName, @"Even game with nigiri (Manual setting)", nil);
-	STAssertEqualsWithAccuracy(game.adjustedKomi, (CGFloat)6.5, (CGFloat)0.25, nil);
+	STAssertEqualsWithAccuracy(game.komi, (CGFloat)6.5, (CGFloat)0.25, nil);
 	STAssertTrue(game.myGame, nil);
 }
 
