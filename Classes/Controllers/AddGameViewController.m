@@ -141,6 +141,10 @@ typedef enum _AddGameSection {
     if (cell == nil) {
 		cell = [TableCellFactory selectCell];
     }
+    
+    // only one of these should ever be set.
+    cell.changedSelector = nil;
+    cell.onChanged = nil;
 	
 	return cell;
 }
