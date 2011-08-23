@@ -632,6 +632,7 @@
     if ([nextPageIndicator count] != 0) {
         nextPagePath = [NSString stringWithFormat:@"/%@", [[nextPageIndicator lastObject] stringValue]];
     }
+    [doc release];
     return nextPagePath;
 }
                            

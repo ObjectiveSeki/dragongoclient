@@ -102,6 +102,7 @@
     [row release];
     
     [sections addObject:serverGamesSection];
+    [serverGamesSection release];
     self.tableSections = sections;
     [sections release];
 }

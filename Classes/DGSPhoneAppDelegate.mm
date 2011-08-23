@@ -11,7 +11,7 @@
 #import "FuegoBoard.h"
 
 #if defined (CONFIGURATION_Adhoc)
-#import "BWHockeyController.h"
+#import "BWHockeyManager.h"
 #endif
 
 #define THROTTLE_RATE 5*60 // 5 minutes
@@ -65,7 +65,7 @@
 
 	JWLog("Starting Application...");
 #if defined (CONFIGURATION_Adhoc)
-    [[BWHockeyController sharedHockeyController] setBetaURL:@"http://dgs.uberweiss.net/beta/index.php"];
+    [BWHockeyManager sharedHockeyManager].updateURL = @"http://dgs.uberweiss.net/beta/index.php";
 #endif
 	
 	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];

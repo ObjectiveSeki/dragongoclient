@@ -15,7 +15,7 @@
 
 
 #if defined (CONFIGURATION_Adhoc)
-#import "BWHockeyController.h"
+#import "BWHockeyManager.h"
 #endif
 
 @implementation CurrentGamesController
@@ -45,7 +45,7 @@
 	
 #if defined(CONFIGURATION_Adhoc)
 	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
-	
+
 	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
 	[toolbarItems insertObject:updateButton atIndex:0];
 	[updateButton release];
@@ -58,9 +58,9 @@
 
 #if defined (CONFIGURATION_Adhoc)
 - (void)openUpdateController {
-	BWHockeyViewController *controller = [[BWHockeyViewController alloc] init:[BWHockeyController sharedHockeyController] modal:NO];
-	[self.navigationController pushViewController:controller animated:YES];
-	[controller release];
+    BWHockeyViewController *hockeyViewController = [[BWHockeyManager sharedHockeyManager] hockeyViewController:NO];
+    [self.navigationController pushViewController:hockeyViewController animated:YES];
+    [hockeyViewController release];
 }
 #endif
 
