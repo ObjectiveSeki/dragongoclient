@@ -44,6 +44,7 @@
 		DA08A6241294DAD10098A0C6 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A60E1294DAD10098A0C6 /* ASIWebPageRequest.m */; };
 		DA08A62A1294DB340098A0C6 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6281294DB340098A0C6 /* Reachability.h */; };
 		DA08A62B1294DB340098A0C6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6291294DB340098A0C6 /* Reachability.m */; };
+		DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DA7C7B0D13EFA600000432D1 /* Hockey.bundle */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
@@ -296,6 +297,7 @@
 		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
+		DA75BD44140DF86400C0E72D /* Adhoc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */; };
 		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
@@ -368,6 +370,8 @@
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
 		DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */; };
+		DAE2EB3C140DF94E00CDA926 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */; };
+		DAE2EB3F140DFB0700CDA926 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */; };
 		DAE9315D1245443100335F0F /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */; };
 		DAE9315F1245443100335F0F /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931471245443100335F0F /* CXMLNode_CreationExtensions.m */; };
 		DAE931611245443100335F0F /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931491245443100335F0F /* CXMLDocument_PrivateExtensions.m */; };
@@ -498,7 +502,7 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DGSPhoneAppDelegate.mm; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* DGS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* DGSBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -753,7 +757,6 @@
 		DA20DC4113456BFA00829D9D /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
 		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
 		DA214FB512458E3000448955 /* TouchXML_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML_Prefix.pch; sourceTree = "<group>"; };
-		DA22A9CD11FD413200C88B31 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		DA2A2AC212D010A600774A54 /* waiting-detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail.html"; sourceTree = "<group>"; };
 		DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail-cn.html"; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
@@ -794,6 +797,7 @@
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
+		DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Adhoc.xcconfig; sourceTree = "<group>"; };
 		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		DA7C7AF813EFA600000432D1 /* BWApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWApp.h; path = vendor/Hockey/client/iOS/BWApp.h; sourceTree = "<group>"; };
@@ -873,6 +877,8 @@
 		DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
 		DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameViewController.m; sourceTree = "<group>"; };
 		DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = ../Classes/Controllers/NewGameViewController.xib; sourceTree = "<group>"; };
+		DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DAE9313E1245440500335F0F /* libTouchXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTouchXML.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE931441245443100335F0F /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
@@ -1064,7 +1070,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* DGS.app */,
+				1D6058910D05DD3D006BFB54 /* DGSBeta.app */,
 				DA71CA8411B5E97F008696AC /* LogicTests.octest */,
 				DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */,
 				DA58E8041245398B00387BB5 /* libfuego.a */,
@@ -1077,6 +1083,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */,
+				DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */,
+				DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */,
 				DADD1CE111FD3C43005922A3 /* FAQ.md */,
 				DADD1CDD11FD3C0B005922A3 /* Readme.md */,
 				DAE932B512454B4200335F0F /* Developer.md */,
@@ -1087,7 +1096,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				DA22A9CD11FD413200C88B31 /* Entitlements.plist */,
 				DA71CAA311B5EA50008696AC /* Foundation.framework */,
 				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
 				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
@@ -1990,6 +1998,7 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				DA0E103D140F240D0067BE35 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2002,7 +2011,7 @@
 			);
 			name = DGS;
 			productName = DGSPhone;
-			productReference = 1D6058910D05DD3D006BFB54 /* DGS.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* DGSBeta.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DA58E77A124536DC00387BB5 /* AsiHTTPRequest */ = {
@@ -2174,6 +2183,10 @@
 				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
+				DA75BD44140DF86400C0E72D /* Adhoc.xcconfig in Resources */,
+				DAE2EB3C140DF94E00CDA926 /* Release.xcconfig in Resources */,
+				DAE2EB3F140DFB0700CDA926 /* Debug.xcconfig in Resources */,
+				DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2210,6 +2223,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		DA0E103D140F240D0067BE35 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" DGSPhone-Info.plist)\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" DGSPhone-Info.plist";
+		};
 		DA71CA8211B5E97F008696AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2500,7 +2526,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -2523,7 +2548,7 @@
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 				);
-				PRODUCT_NAME = DGS;
+				PRODUCT_NAME = DGSBeta;
 			};
 			name = Debug;
 		};
@@ -2531,8 +2556,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Justin Weiss";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2554,13 +2577,13 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = DGS;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FEC08AF3-3A44-4C72-9D60-439CC8D620F0";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2578,9 +2601,10 @@
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2589,7 +2613,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "FEC08AF3-3A44-4C72-9D60-439CC8D620F0";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2605,6 +2629,7 @@
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsiHTTPRequest;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -2618,6 +2643,7 @@
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsiHTTPRequest;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2638,6 +2664,7 @@
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				PRODUCT_NAME = fuego;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -2656,15 +2683,17 @@
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				PRODUCT_NAME = fuego;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
 		DA667DC0125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2673,7 +2702,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "86D71C5F-3A32-4517-8E61-FB091B19665C";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Adhoc;
@@ -2682,8 +2711,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Justin Weiss";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2706,8 +2733,7 @@
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 				);
-				PRODUCT_NAME = DGS;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FB9A7B67-5533-4A97-BC68-EAB36C2C41E5";
+				PRODUCT_NAME = DGSBeta;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Adhoc;
@@ -2716,8 +2742,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Source/DGSPhone/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2738,12 +2762,6 @@
 					"-force_load",
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					UIKit,
 				);
 				PRODUCT_NAME = LogicTests;
 				TEST_AFTER_BUILD = YES;
@@ -2762,6 +2780,7 @@
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsiHTTPRequest;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Adhoc;
@@ -2781,6 +2800,7 @@
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				PRODUCT_NAME = fuego;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Adhoc;
@@ -2794,6 +2814,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
 				PRODUCT_NAME = TouchXML;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Adhoc;
@@ -2802,8 +2823,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Source/DGSPhone/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2825,12 +2844,6 @@
 					"-force_load",
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					UIKit,
 				);
 				PRODUCT_NAME = LogicTests;
 				TEST_AFTER_BUILD = YES;
@@ -2842,8 +2855,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Source/DGSPhone/Entitlements.plist";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2864,12 +2875,6 @@
 					"-force_load",
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					SenTestingKit,
-					"-framework",
-					UIKit,
 				);
 				PRODUCT_NAME = LogicTests;
 				TEST_AFTER_BUILD = YES;
@@ -2886,6 +2891,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				PRODUCT_NAME = Hockey;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -2894,6 +2900,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				PRODUCT_NAME = Hockey;
+				SKIP_INSTALL = YES;
 			};
 			name = Adhoc;
 		};
@@ -2904,6 +2911,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				PRODUCT_NAME = Hockey;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -2918,6 +2926,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
 				PRODUCT_NAME = TouchXML;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -2930,6 +2939,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
 				PRODUCT_NAME = TouchXML;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;

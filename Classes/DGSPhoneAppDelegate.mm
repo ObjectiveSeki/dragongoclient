@@ -65,7 +65,7 @@
 
 	JWLog("Starting Application...");
 #if defined (CONFIGURATION_Adhoc)
-    [BWHockeyManager sharedHockeyManager].updateURL = @"http://dgs.uberweiss.net/beta/index.php";
+    [BWHockeyManager sharedHockeyManager].updateURL = @"http://dgs.uberweiss.net/beta/";
 #endif
 	
 	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];

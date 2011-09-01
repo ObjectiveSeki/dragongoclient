@@ -1,0 +1,6 @@
+DEBUG = 1
+LOGGING = 1
+
+// set to '1' to see SGFs that test various aspects of 
+// the board view.
+TEST_GAMES = 0

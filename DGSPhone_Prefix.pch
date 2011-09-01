@@ -7,19 +7,6 @@
     #import <UIKit/UIKit.h>
 #endif
 
-#ifdef CONFIGURATION_Debug
-#define DEBUG
-#define LOGGING
-
-// set to '1' to see SGFs that test various aspects of 
-// the board view.
-#define TEST_GAMES 0
-
-#endif
-
-#ifdef CONFIGURATION_Adhoc
-#endif
-
 #define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
 
 #ifdef DEVELOPMENT_DGS
