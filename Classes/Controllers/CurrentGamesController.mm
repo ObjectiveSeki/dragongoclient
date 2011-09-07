@@ -14,7 +14,7 @@
 #import "NewGameViewController.h"
 
 
-#if defined (CONFIGURATION_Adhoc)
+#ifdef HOCKEY
 #import "BWHockeyManager.h"
 #endif
 
@@ -43,7 +43,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-#if defined(CONFIGURATION_Adhoc)
+#ifdef HOCKEY
 	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
 
 	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
@@ -56,11 +56,10 @@
 }
 
 
-#if defined (CONFIGURATION_Adhoc)
+#ifdef HOCKEY
 - (void)openUpdateController {
     BWHockeyViewController *hockeyViewController = [[BWHockeyManager sharedHockeyManager] hockeyViewController:NO];
     [self.navigationController pushViewController:hockeyViewController animated:YES];
-    [hockeyViewController release];
 }
 #endif
 

@@ -9,6 +9,23 @@
 
 #define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
 
+#if defined (CONFIGURATION_Debug)
+#define DEBUG 1
+#define LOGGING 1
+//#define HOCKEY 1
+
+// set to '1' to see SGFs that test various aspects of 
+// the board view.
+//#define TEST_GAMES 1
+#endif
+
+#if defined (CONFIGURATION_Adhoc)
+//#define LOGGING
+#define HOCKEY
+
+//#define LOG_URL @"http://dgs.uberweiss.net/log"
+#endif
+
 #ifdef DEVELOPMENT_DGS
 #	define SERVER_CLASS @"DGSDev"
 #else
@@ -16,6 +33,7 @@
 #endif
 
 #ifdef LOGGING
+#import "DGSPhoneAppDelegate.h"
 #	define JWLog(fmt, ...) { \
   NSLog((@"[%@] [%s:%d] " fmt), [NSDate date], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); \
   NSString *logData = [NSString stringWithFormat:(@"%@ %s:%d: " fmt "\n"), [NSDate date], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]; \

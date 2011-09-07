@@ -10,8 +10,12 @@
 #import "CurrentGamesController.h"
 #import "FuegoBoard.h"
 
-#if defined (CONFIGURATION_Adhoc)
+#ifdef HOCKEY
 #import "BWHockeyManager.h"
+#endif
+
+#ifdef LOG_URL
+#import "ASIFormDataRequest.h"
 #endif
 
 #define THROTTLE_RATE 5*60 // 5 minutes
@@ -27,6 +31,38 @@
 @synthesize messageOn;
 @synthesize logFile;
 @synthesize nextRefreshTime;
+
+#ifdef LOG_URL
+- (void)uploadLogFile
+{
+    NSURL *url = [NSURL URLWithString:LOG_URL];
+    __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+
+    NSString *logFilePath = [self logFilePath];
+    
+	if ([[NSFileManager defaultManager] fileExistsAtPath:logFilePath]) {
+
+        NSFileHandle *myHandle = [NSFileHandle fileHandleForUpdatingAtPath:[self logFilePath]];
+        NSData *data = [myHandle readDataToEndOfFile];
+        NSString *body = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        [request setPostValue:body forKey:@"body"];
+        [request setPostValue:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"udid"];
+        [body release];
+        
+        [request setCompletionBlock:^{
+            NSFileHandle *myHandle = [NSFileHandle fileHandleForUpdatingAtPath:[self logFilePath]];
+            [myHandle truncateFileAtOffset:0];
+            if (self.logFile) {
+                [self.logFile seekToFileOffset:0];
+            }
+        }];
+        [request setFailedBlock:^{
+        }];
+        [request startAsynchronous];
+    }
+}
+#endif
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -64,7 +100,7 @@
 #endif
 
 	JWLog("Starting Application...");
-#if defined (CONFIGURATION_Adhoc)
+#ifdef HOCKEY
     [BWHockeyManager sharedHockeyManager].updateURL = @"http://dgs.uberweiss.net/beta/";
 #endif
 	
@@ -136,6 +172,9 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 	JWLog("Went active...");
+#ifdef LOG_URL
+    [self uploadLogFile];
+#endif
 }
 
 

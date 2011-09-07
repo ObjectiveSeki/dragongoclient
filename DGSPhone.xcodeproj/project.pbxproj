@@ -2545,6 +2545,8 @@
 				);
 				OTHER_LDFLAGS = (
 					"-force_load",
+					"$(BUILT_PRODUCTS_DIR)/libHockey.a",
+					"-force_load",
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
 				);
@@ -2572,6 +2574,8 @@
 					"\"$(SRCROOT)/vendor/boost/lib\"",
 				);
 				OTHER_LDFLAGS = (
+					"-force_load",
+					"$(BUILT_PRODUCTS_DIR)/libHockey.a",
 					"-force_load",
 					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
 					"-ObjC",
