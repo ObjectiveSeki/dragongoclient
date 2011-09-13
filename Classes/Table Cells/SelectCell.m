@@ -37,17 +37,23 @@
 - (void)awakeFromNib {
     pickerViewHeight = 0;
     tableViewHeight = 0;
+    movementOffset = 0;
     self.picker = nil;
+    
+    // In general, we'd only listen to notifications meant for us. 
+    // Unfortunately, we don't have a reference to the tableView here, so we'll
+    // just have to monitor and reject notifications later.
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(togglePicker:)
                                                  name:UITableViewSelectionDidChangeNotification object:nil];
 }
 
 - (void)showPickerInTableView:(UITableView *)tableView {
+    CGFloat windowHeight = tableView.window.frame.size.height;
     tableViewHeight = tableView.superview.frame.size.height;
-    self.picker = [[[UIPickerView alloc] initWithFrame:[tableView convertRect:CGRectMake(0, tableViewHeight, 0, 0) fromView:nil]] autorelease];
+    self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, windowHeight, 0, 0)] autorelease];
     pickerViewHeight = self.picker.frame.size.height;
-    [tableView.superview addSubview:self.picker];
+    [tableView.window addSubview:self.picker];
     CGFloat newOffset = MAX(0, (self.frame.origin.y + self.frame.size.height) - (tableViewHeight - pickerViewHeight));
     movementOffset = newOffset - tableView.contentOffset.y;
     
@@ -62,7 +68,7 @@
     [UIView animateWithDuration:0.5 animations:^(void) {
         tableView.contentOffset = CGPointMake(0, newOffset);
         CGRect pickerViewFrame = self.picker.frame;
-        pickerViewFrame.origin.y = tableViewHeight - pickerViewHeight;
+        pickerViewFrame.origin.y = windowHeight - pickerViewHeight;
         self.picker.frame = pickerViewFrame;
     } completion:^(BOOL completed) {
         CGRect tableViewFrame = tableView.frame;
@@ -72,6 +78,7 @@
 }
 
 - (void)hidePickerInTableView:(UITableView *)tableView {
+    CGFloat windowHeight = tableView.window.frame.size.height;
     CGRect tableViewFrame = tableView.frame;
     CGPoint contentOffset = tableView.contentOffset;
     tableViewFrame.size.height = tableViewHeight;
@@ -83,7 +90,7 @@
     
     [UIView animateWithDuration:0.5 animations:^(void) {
         CGRect pickerViewFrame = self.picker.frame;
-        pickerViewFrame.origin.y = tableViewHeight;
+        pickerViewFrame.origin.y = windowHeight;
         self.picker.frame = pickerViewFrame;
         tableView.contentOffset = CGPointMake(0, MAX(0, tableView.contentOffset.y - movementOffset));
     } completion:^(BOOL finished) {
@@ -97,6 +104,7 @@
 
 - (void)togglePicker:(NSNotification *)notification {
     UITableView *tableView = (UITableView *)self.superview;
+
     if (tableView) {
         parentTableView = tableView;
     } else {
@@ -104,7 +112,12 @@
         // self.superview could be nil. 
         tableView = parentTableView;
     }
-        
+    
+    if ([notification object] != tableView) {
+        // This notification doesn't apply to us, so skip it
+        return;
+    }
+
     if (!self.picker && [tableView indexPathForSelectedRow] && ([[tableView indexPathForSelectedRow] compare:[tableView indexPathForCell:self]] == NSOrderedSame)) {
         parentTableView = tableView;
         [self showPickerInTableView:tableView];
