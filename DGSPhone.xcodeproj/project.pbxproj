@@ -2234,7 +2234,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" DGSPhone-Info.plist)\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" DGSPhone-Info.plist";
+			shellScript = "#!/bin/bash\nif [ -z $CONFIGURATION_Debug ]; then\n  buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" DGSPhone-Info.plist)\n  buildNumber=$(($buildNumber + 1))\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" DGSPhone-Info.plist\nfi";
 		};
 		DA71CA8211B5E97F008696AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

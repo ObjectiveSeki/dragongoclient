@@ -80,7 +80,10 @@
         [rows addObject:[NSArray arrayWithObjects:@"Handicap", [NSString stringWithFormat:@"%d", self.game.handicap], nil]];
     }
     [rows addObject:[NSArray arrayWithObjects:@"Type", self.game.komiTypeName, nil]];
-	[rows addObject:[NSArray arrayWithObjects:@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.komi], nil]];
+    
+    if (self.game.komi != 0.0) {
+        [rows addObject:[NSArray arrayWithObjects:@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.komi], nil]];
+    }
 	
 	return [self basicSectionWithTitle:@"Game Information" rows:rows];
 }
