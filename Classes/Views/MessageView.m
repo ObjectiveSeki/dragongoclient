@@ -26,28 +26,32 @@
     return self;
 }
 
-
-- (void)keyboardWillBeShown:(NSNotification *)notification {
+- (void)keyboardWillBeShown:(NSNotification *)aNotification {
 	float totalHeight = self.frame.size.height;
 	CGRect frame = self.messageInputView.frame;
 	frame.origin.y = totalHeight - frame.size.height;
 	self.messageInputView.frame = frame;
-	CGSize kbSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-	[UIView animateWithDuration:0.3 animations:^(void) {
+	CGSize kbSize = [[[aNotification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    NSTimeInterval duration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationCurve curve = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+
+	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
 		CGRect newFrame = self.messageInputView.frame;
 		newFrame.origin.y = totalHeight - kbSize.height - frame.size.height;
 		self.messageInputView.frame = newFrame;
-	}];
+	} completion:nil];
 }
 
-- (void)keyboardWillBeHidden:(NSNotification *)notification {
+- (void)keyboardWillBeHidden:(NSNotification *)aNotification {
 	float totalHeight = self.frame.size.height;
-	
-	[UIView animateWithDuration:0.3 animations:^(void) {
+    NSTimeInterval duration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationCurve curve = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+
+	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
 		CGRect frame = self.messageInputView.frame;
 		frame.origin.y = totalHeight - frame.size.height;
 		self.messageInputView.frame = frame;
-	}];
+	} completion:nil];
 }
 
 // Call this method somewhere in your view controller setup code.

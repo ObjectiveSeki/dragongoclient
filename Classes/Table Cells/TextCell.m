@@ -32,62 +32,12 @@
     [super setSelected:selected animated:animated];
 
 	if (selected) {
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(keyboardWasShown:)
-													 name:UIKeyboardWillShowNotification object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self
-												 selector:@selector(keyboardWillBeHidden:)
-													 name:UIKeyboardWillHideNotification object:nil];
-		
-		self.textField.userInteractionEnabled = YES;
+        self.textField.userInteractionEnabled = YES;
 		[self.textField becomeFirstResponder];
 	} else {
-		[[NSNotificationCenter defaultCenter] removeObserver:self 
-														name:UIKeyboardWillShowNotification
-													  object:nil];
-											
-		
-		[[NSNotificationCenter defaultCenter] removeObserver:self
-														name:UIKeyboardWillHideNotification
-													  object:nil];
-		self.textField.userInteractionEnabled = NO;
+        self.textField.userInteractionEnabled = NO;
 		[self.textField resignFirstResponder];
 	}
-}
-
-- (void)keyboardWasShown:(NSNotification*)aNotification
-{
-    NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-	UITableView *tableView = (UITableView *)self.superview;
-	
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    tableView.contentInset = contentInsets;
-    tableView.scrollIndicatorInsets = contentInsets;
-	
-    // If this text field is hidden by keyboard, scroll it so it's visible
-    CGRect aRect = tableView.frame;
-    aRect.size.height -= kbSize.height;
-	
-	CGPoint offsetOrigin = self.frame.origin;
-	offsetOrigin.y -= tableView.contentOffset.y;
-	
-    if (!CGRectContainsPoint(aRect, offsetOrigin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, (self.frame.origin.y + self.frame.size.height) - aRect.size.height);
-        [tableView setContentOffset:scrollPoint animated:YES];
-    }
-}
-
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-	[UIView animateWithDuration:0.3 animations:^(void) {
-		UITableView *tableView = (UITableView *)self.superview;
-		tableView.contentInset = contentInsets;
-		tableView.scrollIndicatorInsets = contentInsets;
-	}];
-
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -116,7 +66,6 @@
 	self.textField = nil;
 	self.content = nil;
 	self.onChanged = nil;
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 

@@ -49,12 +49,58 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+    										 selector:@selector(keyboardWasShown:)
+    											 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+    										 selector:@selector(keyboardWillBeHidden:)
+    											 name:UIKeyboardWillHideNotification object:nil];
     [self deselectSelectedCell];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 	[self.tableView flashScrollIndicators];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWasShown:(NSNotification*)aNotification
+{
+    NSDictionary* info = [aNotification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
+	
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+    self.tableView.contentInset = contentInsets;
+    self.tableView.scrollIndicatorInsets = contentInsets;
+	
+    // If this text field is hidden by keyboard, scroll it so it's visible
+    CGRect aRect = self.tableView.frame;
+    aRect.size.height -= kbSize.height;
+	
+	CGPoint offsetOrigin = selectedCell.frame.origin;
+	offsetOrigin.y += selectedCell.frame.size.height - self.tableView.contentOffset.y;
+	
+    if (!CGRectContainsPoint(aRect, offsetOrigin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, (selectedCell.frame.origin.y + selectedCell.frame.size.height) - aRect.size.height);
+        [self.tableView setContentOffset:scrollPoint animated:YES];
+    }
+}
+
+- (void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    NSTimeInterval duration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationCurve curve = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
+		tableView.contentInset = contentInsets;
+		tableView.scrollIndicatorInsets = contentInsets;
+	} completion:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
