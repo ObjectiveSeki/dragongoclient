@@ -69,7 +69,8 @@
 	[[self confirmButton] setEnabled:[self.board canSubmit]];
 	[[self passButton] setEnabled:[self.board canPassOrResign]];
 	[[self resignButton] setEnabled:[self.board canPassOrResign]];
-	[[self boardView] setNeedsDisplay]; // show just placed move
+    JWLog(@"boardView:%@ setNeedsDisplay", self.boardView);
+	[self.boardView setNeedsDisplay]; // show just placed move
 }
 
 // Sets the 'message waiting' toolbar indicator based on the value of hasMessage.
@@ -123,7 +124,6 @@
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
 	[self unlockZoom];
 	currentZoomScale = scale;
-	//NSLog(@"%f", scale);
 	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
 	[[self scrollView] zoomToRect:zoomRect animated:animated];
 	[self lockZoom];

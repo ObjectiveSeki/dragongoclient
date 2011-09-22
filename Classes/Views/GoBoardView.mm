@@ -47,18 +47,6 @@
 	return _margin;
 }
 
-// Initialize the layer by setting
-// the levelsOfDetailBias of bias and levelsOfDetail
-// of the tiled layer
--(id)initWithFrame:(CGRect)r
-{
-    self = [super initWithFrame:r];
-    if(self) {
-
-    }
-    return self;
-}
-
 - (CGPoint)pointForBoardRow:(int)row column:(int)col {
 	
 	float pointDelta = [self pointDistance];
@@ -296,7 +284,7 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-	
+	JWLog(@"rect: %.1f %.1f %.1f %.1f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 	// in order to get a nice square board with good margins, 
 	// we need to make a guess first, then calculate the actual margins based on the
 	// point distance we calculate. The reason these are different are due to rounding 
