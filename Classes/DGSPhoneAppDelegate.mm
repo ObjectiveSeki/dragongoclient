@@ -96,7 +96,7 @@
 	// Check if the SQL database has already been saved to the users phone, if not then copy it over
 	BOOL success;
     
-	NSString *databaseName = @"dgs.sqlite.db";
+	NSString *databaseName = @"dgs.sqlite";
     
 	// Get the path to the documents directory and append the databaseName
 	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -125,13 +125,6 @@
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
         //Database opened successfully
         JWLog("Opened sqlite db...");
-        const char *sql_stmt = "CREATE TABLE IF NOT EXISTS CONTACTS (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, ADDRESS TEXT, PHONE TEXT)";
-        
-        //        NSString errMsg;
-        if (sqlite3_exec(database, sql_stmt, NULL, NULL, NULL) == SQLITE_OK)
-        {
-            // SQL statement execution succeeded
-        }
     } else {
         //Failed to open database
         JWLog("Failed to open sqlite db");

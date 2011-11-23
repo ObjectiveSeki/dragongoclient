@@ -458,6 +458,8 @@
 			
 			NSString *timeRemainingString = [cols objectAtIndex:5];
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
+            
+            
 			
 			[games addObject:game];
 			[game release];
