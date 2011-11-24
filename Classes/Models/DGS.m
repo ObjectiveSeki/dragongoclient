@@ -487,7 +487,7 @@
                         JWLog("error create insert games statement '%s'", sqlite3_errmsg(database));
                     }
                 }
-                sqlite3_bind_text(updateGameStmt, 1, [opponentString UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(updateGameStmt, 1, [game getOpponent], -1, SQLITE_TRANSIENT);
                 sqlite3_bind_int(updateGameStmt, 2, [game color]);
                 sqlite3_bind_text(updateGameStmt, 3, [[game time] UTF8String], -1, SQLITE_TRANSIENT);
                 sqlite3_bind_int(updateGameStmt, 4, [game gameId]);
