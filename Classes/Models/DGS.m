@@ -6,6 +6,8 @@
 //  Copyright 2010 Justin Weiss. All rights reserved.
 //
 
+#import "/usr/include/sqlite3.h"
+
 #import "DGS.h"
 #import "CXMLDocument.h"
 #import "CXMLElement.h"
@@ -14,8 +16,8 @@
 #ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
 #import "DGSPhoneAppDelegate.h"
-
 #endif
+
 
 @implementation DGS
 
@@ -459,7 +461,44 @@
 			NSString *timeRemainingString = [cols objectAtIndex:5];
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
             
-            
+#ifndef LOGIC_TEST_MODE
+            sqlite3 *database = [DGSAppDelegate database];
+            {
+                static sqlite3_stmt *insertGameStmt = nil;
+                if (insertGameStmt == nil) {
+                    if (sqlite3_prepare_v2(database, "INSERT INTO games (id, finished, ourturn, opponent, sgf, ourcolor, timeleft) VALUES (?, 0, 0, '', '', '', '')", -1, &insertGameStmt, NULL) != SQLITE_OK) {
+                        JWLog("error create insert games statement '%s'", sqlite3_errmsg(database));
+                    }
+                }
+                // try inserting assuming it's a new game
+                sqlite3_bind_int(insertGameStmt, 1, [game gameId]);
+                if (sqlite3_step(insertGameStmt) == SQLITE_DONE) {
+                    JWLog("inserted new game %d", [game gameId]);
+                } else {
+                    // this isn't normally a problem. just means that this game already exists in the db.
+                    JWLog("failed to insert game %d '%s'", [game gameId], sqlite3_errmsg(database));
+                }
+                sqlite3_reset(insertGameStmt);
+
+                // update the game information
+                static sqlite3_stmt *updateGameStmt = nil;
+                if (updateGameStmt == nil) {
+                    if (sqlite3_prepare_v2(database, "UPDATE games SET ourturn = 1, opponent = ?, ourcolor = ?, timeleft = ? WHERE id = ?", -1, &updateGameStmt, NULL) != SQLITE_OK) {
+                        JWLog("error create insert games statement '%s'", sqlite3_errmsg(database));
+                    }
+                }
+                sqlite3_bind_text(updateGameStmt, 1, [opponentString UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_int(updateGameStmt, 2, [game color]);
+                sqlite3_bind_text(updateGameStmt, 3, [[game time] UTF8String], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_int(updateGameStmt, 4, [game gameId]);
+                if (sqlite3_step(updateGameStmt) == SQLITE_DONE) {
+                    JWLog("updated game %d", [game gameId]);
+                } else {
+                    JWLog("failed to update game %d '%s'", [game gameId], sqlite3_errmsg(database));
+                }
+                sqlite3_reset(updateGameStmt);
+            }
+#endif
 			
 			[games addObject:game];
 			[game release];
