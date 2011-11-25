@@ -12,6 +12,7 @@
 #import "CXMLDocument.h"
 #import "CXMLElement.h"
 #import "NewGame.h"
+#import "DbHelper.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
@@ -284,6 +285,10 @@
 }
 
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
+    if (game.sgfUrl == nil) {
+        [game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1", [game gameId]]]];
+    }
+
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		[game setSgfString:responseString];
@@ -443,7 +448,11 @@
 - (NSArray *)gamesFromCSV:(NSString *)csvData {
 	NSMutableArray *games = [NSMutableArray array];
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
-	for(NSString *line in lines) {
+#ifndef LOGIC_TEST_MODE
+    // start by clearing all games where it's our turn, since the data we just got will set that properly
+    [DbHelper setAllTheirTurn];
+#endif
+        for(NSString *line in lines) {
 		NSArray *cols = [line componentsSeparatedByString:@", "];
 		if([[cols objectAtIndex:0] isEqual:@"'G'"]) {
 			Game *game = [[Game alloc] init];
@@ -462,8 +471,8 @@
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
             
 #ifndef LOGIC_TEST_MODE
-            sqlite3 *database = [DGSAppDelegate database];
             {
+                sqlite3 *database = [DGSAppDelegate database];
                 static sqlite3_stmt *insertGameStmt = nil;
                 if (insertGameStmt == nil) {
                     if (sqlite3_prepare_v2(database, "INSERT INTO games (id, finished, ourturn, opponent, sgf, ourcolor, timeleft) VALUES (?, 0, 0, '', '', '', '')", -1, &insertGameStmt, NULL) != SQLITE_OK) {
@@ -476,7 +485,7 @@
                     JWLog("inserted new game %d", [game gameId]);
                 } else {
                     // this isn't normally a problem. just means that this game already exists in the db.
-                    JWLog("failed to insert game %d '%s'", [game gameId], sqlite3_errmsg(database));
+//                    JWLog("failed to insert game %d '%s'", [game gameId], sqlite3_errmsg(database));
                 }
                 sqlite3_reset(insertGameStmt);
 
@@ -484,15 +493,15 @@
                 static sqlite3_stmt *updateGameStmt = nil;
                 if (updateGameStmt == nil) {
                     if (sqlite3_prepare_v2(database, "UPDATE games SET ourturn = 1, opponent = ?, ourcolor = ?, timeleft = ? WHERE id = ?", -1, &updateGameStmt, NULL) != SQLITE_OK) {
-                        JWLog("error create insert games statement '%s'", sqlite3_errmsg(database));
+                        JWLog("error create update games statement '%s'", sqlite3_errmsg(database));
                     }
                 }
-                sqlite3_bind_text(updateGameStmt, 1, [game getOpponent], -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(updateGameStmt, 1, [[game opponent] UTF8String], -1, SQLITE_TRANSIENT);
                 sqlite3_bind_int(updateGameStmt, 2, [game color]);
                 sqlite3_bind_text(updateGameStmt, 3, [[game time] UTF8String], -1, SQLITE_TRANSIENT);
                 sqlite3_bind_int(updateGameStmt, 4, [game gameId]);
                 if (sqlite3_step(updateGameStmt) == SQLITE_DONE) {
-                    JWLog("updated game %d", [game gameId]);
+//                    JWLog("updated game %d", [game gameId]);
                 } else {
                     JWLog("failed to update game %d '%s'", [game gameId], sqlite3_errmsg(database));
                 }

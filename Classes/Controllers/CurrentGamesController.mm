@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "DGSPhoneAppDelegate.h"
 #import "NewGameViewController.h"
+#import "DbHelper.h"
 
 #ifdef HOCKEY
 #import "BWHockeyManager.h"
@@ -33,28 +34,6 @@
 #pragma mark View lifecycle
 
 
-- (void)viewDidLoad {
-	self.title = @"Your Move";
-	self.navigationItem.leftBarButtonItem = self.logoutButton;
-	self.navigationItem.rightBarButtonItem = self.refreshButton;
-	[super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
-#ifdef HOCKEY
-	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
-
-	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
-	[toolbarItems insertObject:updateButton atIndex:0];
-	[updateButton release];
-	
-	[self.bottomToolbar setItems:toolbarItems];
-	[toolbarItems release];	
-#endif
-}
-
-
 #ifdef HOCKEY
 - (void)openUpdateController {
     BWHockeyViewController *hockeyViewController = [[BWHockeyManager sharedHockeyManager] hockeyViewController:NO];
@@ -64,14 +43,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    JWLog("Showing current games view and refreshing games...");
-	[self refreshGamesWithThrottling];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGamesWithThrottling) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 /*
@@ -92,8 +63,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
-
 
 - (void)setEnabled:(BOOL)enabled {
 	if (enabled) {
@@ -154,7 +123,7 @@
 }
 
 - (IBAction)refreshGamesWithThrottling {
-	if ([DGSAppDelegate refreshThrottled] && [self.games count] != 0) {
+	if ([DGSAppDelegate refreshThrottled] /*&& [self.games count] != 0*/) {
 		// skip automatic refreshing so we don't hurt DGS
 	} else {
 		[self refreshGames];
@@ -191,8 +160,10 @@
         [game setOpponent:opponent];
         [game setColor:(MovePlayer)ourColor];
         [game setTime:timeLeft];
-        [game setSgfString:sgf];
-
+        if (sgf && [sgf length] > 0) {
+            [game setSgfString:sgf];
+        }
+        
         [db_games addObject:game];
         [game release];
 
@@ -201,15 +172,30 @@
     sqlite3_reset(fetchGamesStmt);
 
     self.games = db_games;
+    
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+    
+    if ([self.games count] == 0) {
+        self.view = self.noGamesView;
+    } else {
+        self.view = self.gameListView;
+        [self buildTableCells];
+        [[self gameTableView] reloadData];
+    }
+
+    // load SGF for unknown games
+    [DbHelper loadUnknownSGF:self.gs];
 }
 
 - (IBAction)refreshGames {
 	[DGSAppDelegate resetThrottle];
 	
 	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
-	[self setEnabled:NO];
+//	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
 //		self.games = currentGames;
+		[self hideSpinner:YES];
         [self loadGamesFromDB];
 		
 #if TEST_GAMES
@@ -229,18 +215,7 @@
 		[mutableCurrentGames release];
 #endif
 
-		[self hideSpinner:YES];
-		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-		
-        if ([self.games count] == 0) {
-            self.view = self.noGamesView;
-        } else {
-            self.view = self.gameListView;
-            [self buildTableCells];
-            [[self gameTableView] reloadData];
-        }
-
-		[self setEnabled:YES];
+//		[self setEnabled:YES];
 	}];
 }
 
@@ -267,6 +242,33 @@
 	self.logoutConfirmation = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil];
 	[self.logoutConfirmation show];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    JWLog("Showing current games view and refreshing games...");
+    [self loadGamesFromDB];
+	[self refreshGamesWithThrottling];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGamesWithThrottling) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)viewDidLoad {
+	self.title = @"Your Move";
+	self.navigationItem.leftBarButtonItem = self.logoutButton;
+	self.navigationItem.rightBarButtonItem = self.refreshButton;
+	[super viewDidLoad];
+    	
+#ifdef HOCKEY
+	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
+    
+	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
+	[toolbarItems insertObject:updateButton atIndex:0];
+	[updateButton release];
+	
+	[self.bottomToolbar setItems:toolbarItems];
+	[toolbarItems release];	
+#endif
+}
+
 
 #pragma mark -
 #pragma mark Table view delegate

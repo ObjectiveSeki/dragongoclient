@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "FuegoBoard.h"
 #import "DGSPhoneAppDelegate.h"
+#import "DbHelper.h"
 
 @implementation GameViewController
 
@@ -162,6 +163,7 @@
 	} else if ([self.board gameEnded]) {
 		[self.gs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	} else {
+        [DbHelper setGameTheirTurn:self.game.gameId];
 		[self.gs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	}
 }
