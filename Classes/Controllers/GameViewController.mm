@@ -144,7 +144,7 @@
 
 - (void)playedMove {
 	[self hideSpinner:YES];
-	[DGSAppDelegate invalidateThrottle];
+//	[DGSAppDelegate invalidateThrottle];
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 

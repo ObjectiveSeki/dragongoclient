@@ -64,7 +64,7 @@
     sqlite3 *database = [DGSAppDelegate database];
     static sqlite3_stmt *updateGameStmt = nil;
     if (updateGameStmt == nil) {
-        if (sqlite3_prepare_v2(database, "UPDATE games SET ourturn = 0 WHERE id = ?", -1, &updateGameStmt, NULL) != SQLITE_OK) {
+        if (sqlite3_prepare_v2(database, "UPDATE games SET ourturn = 0, sgf = '' WHERE id = ?", -1, &updateGameStmt, NULL) != SQLITE_OK) {
             JWLog("error create update games statement '%s'", sqlite3_errmsg(database));
         }
     }

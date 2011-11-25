@@ -375,9 +375,9 @@
 		}
 		
 		[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-			onSuccess();
+			// onSuccess();
 		}];
-		
+        onSuccess(); // cheat and call it right away for speed
 	} else {
 		// can't respond using quick_play.php
 		int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
