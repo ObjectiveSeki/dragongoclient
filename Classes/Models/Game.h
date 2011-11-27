@@ -18,6 +18,7 @@
 	NSString * sgfString;
 	NSString * opponent;
 	NSString * time;
+	NSString * lastMove;
 	NSString * opponentRating;
 	MovePlayer color;
     int handicap;
@@ -29,6 +30,7 @@
 @property(nonatomic, copy) NSString * sgfString;
 @property(nonatomic, copy) NSString * opponent;
 @property(nonatomic, copy) NSString * time;
+@property(nonatomic, copy) NSString * lastMove;
 @property(nonatomic, copy) NSString * opponentRating;
 @property(nonatomic) int gameId;
 @property(nonatomic) MovePlayer color;

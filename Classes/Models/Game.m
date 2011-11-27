@@ -19,6 +19,7 @@
 @synthesize gameId;
 @synthesize detailUrl;
 @synthesize time;
+@synthesize lastMove;
 @synthesize color;
 @synthesize opponentRating;
 @synthesize handicap;
@@ -30,6 +31,7 @@
 	[sgfUrl release];
 	[opponent release];
 	[time release];
+	[lastMove release];
 	self.opponentRating = nil;
 	[super dealloc];
 }

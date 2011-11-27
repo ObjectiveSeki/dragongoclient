@@ -5,6 +5,8 @@
 //  Created by adam miller on 11/24/11.
 //
 
+#import "/usr/include/sqlite3.h"
+
 #import "DbHelper.h"
 
 @implementation DbHelper
@@ -15,7 +17,7 @@
     sqlite3 *database = [DGSAppDelegate database];
     static sqlite3_stmt *unknownSgfStmt = nil;
     if (unknownSgfStmt == nil) {
-        if (sqlite3_prepare_v2(database, "SELECT id FROM games WHERE ourturn = 1 AND finished = 0 AND sgf = '' LIMIT 1", -1, &unknownSgfStmt, NULL) != SQLITE_OK) {
+        if (sqlite3_prepare_v2(database, "SELECT id FROM games WHERE ourturn = 1 AND finished = 0 AND sgf = '' ORDER BY playorder ASC LIMIT 1", -1, &unknownSgfStmt, NULL) != SQLITE_OK) {
             JWLog("error create fetch games statement '%s'", sqlite3_errmsg(database));
         }
     }
@@ -90,6 +92,51 @@
         JWLog("failed to update games '%s'", sqlite3_errmsg(database));
     }
     sqlite3_reset(updateGameStmt);
+}
+
++ (Game *)gameFromResults:(sqlite3_stmt *)stmt {
+    // Read the data from the result row
+    int gameId = sqlite3_column_int(stmt, 0);
+    NSString *opponent = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 3)];
+    NSString *sgf = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 4)];
+    int ourColor = sqlite3_column_int(stmt, 5);
+    NSString *timeLeft = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 7)];
+    
+    Game *game = [[Game alloc] init];
+    [game setGameId:gameId];
+    [game setOpponent:opponent];
+    [game setColor:(MovePlayer)ourColor];
+    const unsigned char *lastMoveString = sqlite3_column_text(stmt, 6);
+    if (lastMoveString) {
+        NSString *lastMove = [NSString stringWithUTF8String:(char *)lastMoveString];
+        [game setLastMove:lastMove];
+    }
+    [game setTime:timeLeft];
+    if (sgf && [sgf length] > 0) {
+        [game setSgfString:sgf];
+    }
+    
+    return game;
+}
+
++ (Game *)gameFromId:(int)gameId {
+    Game *game = nil;
+    sqlite3 *database = [DGSAppDelegate database];
+    static sqlite3_stmt *fetchGamesStmt = nil;
+    if (fetchGamesStmt == nil) {
+        if (sqlite3_prepare_v2(database, "SELECT * FROM games WHERE id = ?", -1, &fetchGamesStmt, NULL) != SQLITE_OK) {
+            JWLog("error create fetch games statement '%s'", sqlite3_errmsg(database));
+        }
+    }
+    sqlite3_bind_int(fetchGamesStmt, 1, gameId);
+        
+    if (sqlite3_step(fetchGamesStmt) == SQLITE_ROW) {
+        game = [DbHelper gameFromResults:fetchGamesStmt];
+    }
+    
+    sqlite3_reset(fetchGamesStmt);
+    
+    return game;
 }
 
 @end

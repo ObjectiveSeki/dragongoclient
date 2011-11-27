@@ -14,5 +14,7 @@
 + (void)loadUnknownSGF:(id<GameServerProtocol>)gs;
 + (void)setGameTheirTurn:(int)gameId;
 + (void)setAllTheirTurn;
++ (Game *)gameFromResults:(sqlite3_stmt *)stmt;
++ (Game *)gameFromId:(int)gameId;
 
 @end

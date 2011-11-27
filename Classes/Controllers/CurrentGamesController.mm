@@ -140,7 +140,7 @@
     sqlite3 *database = [DGSAppDelegate database];
     static sqlite3_stmt *fetchGamesStmt = nil;
     if (fetchGamesStmt == nil) {
-        if (sqlite3_prepare_v2(database, "SELECT id, opponent, sgf, ourcolor, timeleft FROM games WHERE ourturn = 1 AND finished = 0", -1, &fetchGamesStmt, NULL) != SQLITE_OK) {
+        if (sqlite3_prepare_v2(database, "SELECT * FROM games WHERE ourturn = 1 AND finished = 0 ORDER BY playorder ASC", -1, &fetchGamesStmt, NULL) != SQLITE_OK) {
             JWLog("error create fetch games statement '%s'", sqlite3_errmsg(database));
         }
     }
@@ -148,25 +148,9 @@
 	NSMutableArray *db_games = [NSMutableArray array];
 
     while (sqlite3_step(fetchGamesStmt) == SQLITE_ROW) {
-        // Read the data from the result row
-        int gameId = sqlite3_column_int(fetchGamesStmt, 0);
-        NSString *opponent = [NSString stringWithUTF8String:(char *)sqlite3_column_text(fetchGamesStmt, 1)];
-        NSString *sgf = [NSString stringWithUTF8String:(char *)sqlite3_column_text(fetchGamesStmt, 2)];
-        int ourColor = sqlite3_column_int(fetchGamesStmt, 3);
-        NSString *timeLeft = [NSString stringWithUTF8String:(char *)sqlite3_column_text(fetchGamesStmt, 4)];
-        
-        Game *game = [[Game alloc] init];
-        [game setGameId:gameId];
-        [game setOpponent:opponent];
-        [game setColor:(MovePlayer)ourColor];
-        [game setTime:timeLeft];
-        if (sgf && [sgf length] > 0) {
-            [game setSgfString:sgf];
-        }
-        
+        Game *game = [DbHelper gameFromResults:fetchGamesStmt];
         [db_games addObject:game];
         [game release];
-
     }
     
     sqlite3_reset(fetchGamesStmt);

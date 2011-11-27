@@ -233,6 +233,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self setBoardState:kBoardStateZoomedOut];
+    JWLog("creating board...");
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
