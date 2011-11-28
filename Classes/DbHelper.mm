@@ -58,7 +58,6 @@
     } else {
         sqlite3_reset(unknownSgfStmt);
     }
-
 }
 
 + (void)setGameTheirTurn:(int)gameId {
