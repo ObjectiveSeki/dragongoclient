@@ -103,8 +103,11 @@
 			[activityView startAnimating];
 			[cell setAccessoryView:activityView];
 			[activityView release];
-			if (game.sgfString) {
-				[self gotSgfForGame:game];
+            
+            // load game from DB to get freshest copy
+            Game *dbGame = [DbHelper gameFromId:[game gameId]];
+			if (dbGame.sgfString) {
+				[self gotSgfForGame:dbGame];
 			} else {
 				[self.gs getSgfForGame:game onSuccess:^(Game *game) {
 					[self gotSgfForGame:game];
