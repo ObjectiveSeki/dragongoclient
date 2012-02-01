@@ -297,7 +297,6 @@
 		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
-		DA75BD44140DF86400C0E72D /* Adhoc.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */; };
 		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
@@ -370,8 +369,6 @@
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
 		DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */; };
-		DAE2EB3C140DF94E00CDA926 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */; };
-		DAE2EB3F140DFB0700CDA926 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */; };
 		DAE9315D1245443100335F0F /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */; };
 		DAE9315F1245443100335F0F /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931471245443100335F0F /* CXMLNode_CreationExtensions.m */; };
 		DAE931611245443100335F0F /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931491245443100335F0F /* CXMLDocument_PrivateExtensions.m */; };
@@ -2109,7 +2106,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2183,9 +2180,6 @@
 				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
-				DA75BD44140DF86400C0E72D /* Adhoc.xcconfig in Resources */,
-				DAE2EB3C140DF94E00CDA926 /* Release.xcconfig in Resources */,
-				DAE2EB3F140DFB0700CDA926 /* Debug.xcconfig in Resources */,
 				DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2534,6 +2528,7 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
 					vendor/boost/include,
@@ -2564,6 +2559,7 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
 					vendor/boost/include,
@@ -2592,6 +2588,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2610,6 +2607,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2631,6 +2629,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsiHTTPRequest;
 				SKIP_INSTALL = YES;
@@ -2645,6 +2644,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsiHTTPRequest;
 				SKIP_INSTALL = YES;
@@ -2659,6 +2659,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2678,6 +2679,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2699,6 +2701,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2721,6 +2724,7 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					/usr/include/libxml2,
 					vendor/boost/include,
@@ -2757,6 +2761,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2782,6 +2787,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AsiHTTPRequest;
 				SKIP_INSTALL = YES;
@@ -2795,6 +2801,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2817,6 +2824,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = TouchXML;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
@@ -2839,6 +2847,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2870,6 +2879,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
 					/usr/include/libxml2,
@@ -2894,6 +2904,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = Hockey;
 				SKIP_INSTALL = YES;
 			};
@@ -2903,6 +2914,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = Hockey;
 				SKIP_INSTALL = YES;
 			};
@@ -2914,6 +2926,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = Hockey;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
@@ -2929,6 +2942,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = TouchXML;
 				SKIP_INSTALL = YES;
 			};
@@ -2942,6 +2956,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
+				GCC_THUMB_SUPPORT = NO;
 				PRODUCT_NAME = TouchXML;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
