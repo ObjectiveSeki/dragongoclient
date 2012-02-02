@@ -271,7 +271,7 @@ std::ostream& operator<<(std::ostream& out, const SgHash<N>& hash)
 }
 
 template<int N>
-std::ostream& operator>>(std::istream& in, const SgHash<N>& hash)
+std::istream& operator>>(std::istream& in, const SgHash<N>& hash)
 {
     std::string str;
     in >> str;

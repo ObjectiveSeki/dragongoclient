@@ -64,7 +64,7 @@ public:
     std::istream& Read(std::istream& in) const;
 
 private:
-    mutable SgPointSet& m_pointSet; // allow temp objects to modify
+    SgPointSet& m_pointSet; // allow temp objects to modify
 };
 
 /** @relatesalso SgReadPointSet */
