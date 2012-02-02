@@ -73,20 +73,27 @@ static bool fuegoInitialized = NO;
 		NSMutableArray *marked = [[NSMutableArray alloc] init];
 		
 		// Fast-forward to the end of the game
-		while (goGame->CanGoInDirection(SgNode::NEXT)) {
-			goGame->GoInDirection(SgNode::NEXT);
-			
-			// We have to add extra move counts for scoring steps
-			if (goGame->CurrentNode()->HasProp(SG_PROP_NAME) && !goGame->CurrentNode()->HasProp(SG_PROP_MOVE)) {
-				std::string propName;
-				goGame->CurrentNode()->GetStringProp(SG_PROP_NAME, &propName);
-				
-				if (propName == "B SCORE" || propName == "W SCORE") {
-					scoringMoves++;
-				}
-			}
-		}
-		
+        const SgNode* n = goGame->CurrentNode();
+        while (true) {
+            SgNode* node = n->NodeInDirection(SgNode::NEXT);
+            if (node) {
+                n = node;
+            } else {
+                break;
+            }
+        }
+        goGame->GoToNode(n);
+
+        // We have to add extra move counts for scoring steps
+        if (goGame->CurrentNode()->HasProp(SG_PROP_NAME) && !goGame->CurrentNode()->HasProp(SG_PROP_MOVE)) {
+            std::string propName;
+            goGame->CurrentNode()->GetStringProp(SG_PROP_NAME, &propName);
+            
+            if (propName == "B SCORE" || propName == "W SCORE") {
+                scoringMoves++;
+            }
+        }
+        
 		// used to track changes for undo
 		startNode = goGame->CurrentNode();
 		

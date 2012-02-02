@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "FuegoBoard.h"
 #import "DGSPhoneAppDelegate.h"
+#import "DbHelper.h"
 
 @implementation GameViewController
 
@@ -143,7 +144,7 @@
 
 - (void)playedMove {
 	[self hideSpinner:YES];
-	[DGSAppDelegate invalidateThrottle];
+//	[DGSAppDelegate invalidateThrottle];
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -157,6 +158,8 @@
 		[self playedMove];
 	};
 	
+    [DbHelper setGameTheirTurn:self.game.gameId]; // not our turn any more
+
 	if ([self.board beginningOfHandicapGame]) {
 		[self.gs playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
 	} else if ([self.board gameEnded]) {
@@ -231,6 +234,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self setBoardState:kBoardStateZoomedOut];
+    JWLog("creating board...");
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
