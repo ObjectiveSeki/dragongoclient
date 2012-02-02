@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "/usr/include/sqlite3.h"
 
 @interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
@@ -19,7 +18,6 @@
 	UIImage *messageOn;
 	NSFileHandle *logFile;
 	NSDate *nextRefreshTime;
-    sqlite3 *database;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -31,7 +29,6 @@
 @property (nonatomic, retain) UIImage *messageOn;
 @property (nonatomic, retain) NSFileHandle *logFile;
 @property (nonatomic, retain) NSDate *nextRefreshTime;
-@property (nonatomic) sqlite3 *database;
 
 - (NSString *)logFilePath;
 

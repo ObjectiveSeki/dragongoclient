@@ -35,10 +35,9 @@
 @property(nonatomic, retain) UIView *noGamesView;
 @property(nonatomic, retain) UIView *gameListView;
 
-// Refresh games list only after a certain amount of time has passed
-- (IBAction)refreshGamesWithThrottling;
-
 // Refresh games list unconditionally
+- (IBAction)forceRefreshGames;
+
 - (IBAction)refreshGames;
 - (IBAction)logout;
 - (IBAction)startNewGame;

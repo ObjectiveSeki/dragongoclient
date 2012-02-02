@@ -2,6 +2,10 @@
 #import "RootViewController.h"
 #import "LoginViewController.h"
 
+#ifdef CACHING
+#import "CachingGameServer.h"
+#endif
+
 @implementation RootViewController
 @synthesize tabViewController;
 @synthesize spinnerView;
@@ -9,6 +13,11 @@
 
 - (void)viewDidLoad {
 	self.gs = [[[NSClassFromString(SERVER_CLASS) alloc] init] autorelease];
+    
+#ifdef CACHING
+    self.gs = [[CachingGameServer alloc] initWithGameServer:self.gs];
+#endif
+    
 	self.gs.delegate = self;
 }
 

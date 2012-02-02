@@ -12,7 +12,6 @@
 #import "LoginViewController.h"
 #import "DGSPhoneAppDelegate.h"
 #import "NewGameViewController.h"
-#import "DbHelper.h"
 
 #ifdef HOCKEY
 #import "BWHockeyManager.h"
@@ -104,15 +103,9 @@
 			[cell setAccessoryView:activityView];
 			[activityView release];
             
-            // load game from DB to get freshest copy
-            Game *dbGame = [DbHelper gameFromId:[game gameId]];
-			if (dbGame.sgfString) {
-				[self gotSgfForGame:dbGame];
-			} else {
-				[self.gs getSgfForGame:game onSuccess:^(Game *game) {
-					[self gotSgfForGame:game];
-				}];
-			}
+			[self.gs getSgfForGame:game onSuccess:^(Game *game) {
+				[self gotSgfForGame:game];
+			}];
 		};
 		[firstSection addRow:row];
 		[row release];		
@@ -125,65 +118,23 @@
 	
 }
 
-- (IBAction)refreshGamesWithThrottling {
-	if ([DGSAppDelegate refreshThrottled] /*&& [self.games count] != 0*/) {
-		// skip automatic refreshing so we don't hurt DGS
-	} else {
-		[self refreshGames];
-	}
-}
-
 - (IBAction)startNewGame {
     NewGameViewController *newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil];
     [self.navigationController pushViewController:newGameViewController animated:YES];
     [newGameViewController release];
 }
 
-- (void)loadGamesFromDB {
-    sqlite3 *database = [DGSAppDelegate database];
-    static sqlite3_stmt *fetchGamesStmt = nil;
-    if (fetchGamesStmt == nil) {
-        if (sqlite3_prepare_v2(database, "SELECT * FROM games WHERE ourturn = 1 AND finished = 0 ORDER BY playorder ASC", -1, &fetchGamesStmt, NULL) != SQLITE_OK) {
-            JWLog("error create fetch games statement '%s'", sqlite3_errmsg(database));
-        }
-    }
-
-	NSMutableArray *db_games = [NSMutableArray array];
-
-    while (sqlite3_step(fetchGamesStmt) == SQLITE_ROW) {
-        Game *game = [DbHelper gameFromResults:fetchGamesStmt];
-        [db_games addObject:game];
-        [game release];
-    }
-    
-    sqlite3_reset(fetchGamesStmt);
-
-    self.games = db_games;
-    
-    
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-    
-    if ([self.games count] == 0) {
-        self.view = self.noGamesView;
-    } else {
-        self.view = self.gameListView;
-        [self buildTableCells];
-        [[self gameTableView] reloadData];
-    }
-
-    // load SGF for unknown games
-    [DbHelper loadUnknownSGF:self.gs];
+- (IBAction)forceRefreshGames {
+    [DGSAppDelegate invalidateThrottle];
+    [self refreshGames];
 }
 
 - (IBAction)refreshGames {
-	[DGSAppDelegate resetThrottle];
-	
 	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
 //	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
-//		self.games = currentGames;
+		self.games = currentGames;
 		[self hideSpinner:YES];
-        [self loadGamesFromDB];
 		
 #if TEST_GAMES
 		
@@ -202,6 +153,15 @@
 		[mutableCurrentGames release];
 #endif
 
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+        
+        if ([self.games count] == 0) {
+            self.view = self.noGamesView;
+        } else {
+            self.view = self.gameListView;
+            [self buildTableCells];
+            [[self gameTableView] reloadData];
+        }
 //		[self setEnabled:YES];
 	}];
 }
@@ -233,9 +193,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     JWLog("Showing current games view and refreshing games...");
-    [self loadGamesFromDB];
-	[self refreshGamesWithThrottling];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGamesWithThrottling) name:UIApplicationDidBecomeActiveNotification object:nil];
+	[self refreshGames];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)viewDidLoad {

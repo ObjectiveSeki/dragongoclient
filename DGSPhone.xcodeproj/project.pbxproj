@@ -14,7 +14,6 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		6645B190147B8BED00170504 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6645B18F147B8BED00170504 /* libsqlite3.dylib */; };
 		6645B192147CCE2400170504 /* dgs.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6645B191147CCE2400170504 /* dgs.sqlite */; };
-		66822D29147F4CAC00BFE470 /* DbHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66822D28147F4CAC00BFE470 /* DbHelper.mm */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
@@ -294,6 +293,7 @@
 		DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */; };
 		DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
 		DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
+		DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA68408514DB04E9006EF22C /* CachingGameServer.m */; };
 		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
 		DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
@@ -509,8 +509,6 @@
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6645B191147CCE2400170504 /* dgs.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dgs.sqlite; sourceTree = "<group>"; };
-		66822D24147F4C6D00BFE470 /* DbHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DbHelper.h; sourceTree = "<group>"; };
-		66822D28147F4CAC00BFE470 /* DbHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DbHelper.mm; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
 		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
@@ -794,6 +792,8 @@
 		DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoardTests.h; sourceTree = "<group>"; };
 		DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoardTests.mm; sourceTree = "<group>"; };
 		DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Scoring Should Be Move 202.sgf"; sourceTree = "<group>"; };
+		DA68408414DB04E9006EF22C /* CachingGameServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CachingGameServer.h; sourceTree = "<group>"; };
+		DA68408514DB04E9006EF22C /* CachingGameServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachingGameServer.m; sourceTree = "<group>"; };
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
@@ -1068,8 +1068,6 @@
 				DA38B20211B59FAB00112AA4 /* Models */,
 				1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */,
-				66822D24147F4C6D00BFE470 /* DbHelper.h */,
-				66822D28147F4CAC00BFE470 /* DbHelper.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1091,7 +1089,6 @@
 			isa = PBXGroup;
 			children = (
 				6645B191147CCE2400170504 /* dgs.sqlite */,
-				6645B18F147B8BED00170504 /* libsqlite3.dylib */,
 				DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */,
 				DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */,
 				DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */,
@@ -1105,24 +1102,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				DA71CAA311B5EA50008696AC /* Foundation.framework */,
-				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
-				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
-				DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */,
-				DA77A95313B2F67B00803136 /* libxml2.dylib */,
-				DA77A94F13B2F47200803136 /* libz.dylib */,
-				DAEA526A11B8977B00F4CCB3 /* Foundation.framework */,
-				DAEA52A611B8989F00F4CCB3 /* UIKit.framework */,
-				DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */,
-				DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */,
-				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
-				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
-				DADD18D111BC72730038F8BC /* libboost_filesystem.a */,
-				DADD18D211BC72730038F8BC /* libboost_system.a */,
-				DADD18D311BC72730038F8BC /* libboost_thread.a */,
-				DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */,
-				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
-				DAE932E21245510C00335F0F /* QuartzCore.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1158,6 +1137,25 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6645B18F147B8BED00170504 /* libsqlite3.dylib */,
+				DA71CAA311B5EA50008696AC /* Foundation.framework */,
+				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
+				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
+				DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */,
+				DA77A95313B2F67B00803136 /* libxml2.dylib */,
+				DA77A94F13B2F47200803136 /* libz.dylib */,
+				DAEA526A11B8977B00F4CCB3 /* Foundation.framework */,
+				DAEA52A611B8989F00F4CCB3 /* UIKit.framework */,
+				DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */,
+				DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */,
+				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
+				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
+				DADD18D111BC72730038F8BC /* libboost_filesystem.a */,
+				DADD18D211BC72730038F8BC /* libboost_system.a */,
+				DADD18D311BC72730038F8BC /* libboost_thread.a */,
+				DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */,
+				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
+				DAE932E21245510C00335F0F /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -1477,6 +1475,8 @@
 				DA0762B61377B678003E0390 /* DGSDev.m */,
 				DA8E707A13D5337E007E569B /* GameList.h */,
 				DA8E707B13D5337E007E569B /* GameList.m */,
+				DA68408414DB04E9006EF22C /* CachingGameServer.h */,
+				DA68408514DB04E9006EF22C /* CachingGameServer.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2291,7 +2291,7 @@
 				DA0762B71377B678003E0390 /* DGSDev.m in Sources */,
 				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
-				66822D29147F4CAC00BFE470 /* DbHelper.mm in Sources */,
+				DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

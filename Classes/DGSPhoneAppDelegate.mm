@@ -10,6 +10,10 @@
 #import "CurrentGamesController.h"
 #import "FuegoBoard.h"
 
+#ifdef CACHING
+#import "CachingGameServer.h"
+#endif
+
 #ifdef HOCKEY
 #import "BWHockeyManager.h"
 #endif
@@ -31,7 +35,6 @@
 @synthesize messageOn;
 @synthesize logFile;
 @synthesize nextRefreshTime;
-@synthesize database;
 
 #ifdef LOG_URL
 - (void)uploadLogFile
@@ -92,45 +95,6 @@
 }
 #endif
 
--(void) checkAndCreateDatabase {
-	// Check if the SQL database has already been saved to the users phone, if not then copy it over
-	BOOL success;
-    
-	NSString *databaseName = @"dgs.sqlite";
-    
-	// Get the path to the documents directory and append the databaseName
-	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDir = [documentPaths objectAtIndex:0];
-	NSString *databasePath = [documentsDir stringByAppendingPathComponent:databaseName];
-
-	// Create a FileManager object, we will use this to check the status
-	// of the database and to copy it over if required
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-	// Check if the database has already been created in the users filesystem
-	success = [fileManager fileExistsAtPath:databasePath];
-    
-	if (!success) {    
-        // If not then proceed to copy the database from the application to the users filesystem
-        
-        // Get the path to the database in the application package
-        NSString *databasePathFromApp = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:databaseName];
-        
-        // Copy the database from the package to the users filesystem
-        /*BOOL copy_success =*/ [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];	
-        
-        [fileManager release];
-    }
-
-    if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
-        //Database opened successfully
-        JWLog("Opened sqlite db...");
-    } else {
-        //Failed to open database
-        JWLog("Failed to open sqlite db");
-    }
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
     // Override point for customization after application launch.
@@ -151,7 +115,9 @@
 	[self setMessageOn:[UIImage imageNamed:@"Message on.png"]];
 	JWLog("Loaded Images...");
 	
-    [self checkAndCreateDatabase];
+#ifdef CACHING
+    [CachingGameServer checkAndCreateDatabase];
+#endif
 	
 	CurrentGamesController *controller = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -225,7 +191,11 @@
      See also applicationDidEnterBackground:.
      */
 	[FuegoBoard finishFuego];
-    sqlite3_close(database);
+    
+#ifdef CACHING
+    [CachingGameServer closeDatabase];
+#endif
+    
 	JWLog("Terminating...");
 #ifdef LOGGING
 	[self.logFile closeFile];
