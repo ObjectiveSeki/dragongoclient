@@ -169,6 +169,13 @@
 }
 
 - (IBAction)refreshGames {
+    
+    if ([DGSAppDelegate refreshShortThrottled]) {
+        // We won't get anything new from the server in this 
+        // short amount of time, so skip the refresh
+        return;
+    }
+    
 	[DGSAppDelegate resetThrottle];
 	
 	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
@@ -192,20 +199,22 @@
 		self.games = mutableCurrentGames;
 		[mutableCurrentGames release];
 #endif
-
 		[self hideSpinner:YES];
-		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-		
-        if ([self.games count] == 0) {
-            self.view = self.noGamesView;
-        } else {
-            self.view = self.gameListView;
-            [self buildTableCells];
-            [[self gameTableView] reloadData];
-        }
-
+        [self gameListChanged];
 		[self setEnabled:YES];
 	}];
+}
+
+- (void)gameListChanged {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+    
+    if ([self.games count] == 0) {
+        self.view = self.noGamesView;
+    } else {
+        self.view = self.gameListView;
+        [self buildTableCells];
+        [[self gameTableView] reloadData];
+    }
 }
 
 - (void)requestCancelled {
@@ -235,19 +244,26 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-
-
 - (void)gotSgfForGame:(Game *)game {
 	// Navigation logic may go here. Create and push another view controller.
 	GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:nil];
 	// ...
 	// Pass the selected object to the new view controller.
 	[gameViewController setGame:game];
+    [gameViewController setDelegate:self];
 	[self.navigationController pushViewController:gameViewController animated:YES];
 	[gameViewController release];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
+}
+
+- (void)playedMoveInGame:(Game *)game {
+    NSMutableArray *gameList = [self.games mutableCopy];
+    [gameList removeObjectIdenticalTo:game];
+    self.games = gameList;
+    [gameList release];
+    [self gameListChanged];
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -838,6 +838,7 @@
 		DA84D67912F7A0160038D775 /* BooleanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanCell.m; sourceTree = "<group>"; };
 		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DA8C8C301587082B00120B2D /* GameStatusProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameStatusProtocol.h; sourceTree = "<group>"; };
 		DA8E707A13D5337E007E569B /* GameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameList.h; sourceTree = "<group>"; };
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
 		DA94CBDC124839740060FD44 /* AddGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGameView.xib; sourceTree = "<group>"; };
@@ -1496,6 +1497,7 @@
 			children = (
 				DA4026C811D06C5A005017C4 /* LoginProtocol.h */,
 				DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */,
+				DA8C8C301587082B00120B2D /* GameStatusProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

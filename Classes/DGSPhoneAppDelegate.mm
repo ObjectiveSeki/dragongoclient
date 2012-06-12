@@ -18,7 +18,8 @@
 #import "ASIFormDataRequest.h"
 #endif
 
-#define THROTTLE_RATE 5*60 // 5 minutes
+const NSTimeInterval kShortThrottleRate = 65; // 1:05
+const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 
 @implementation DGSPhoneAppDelegate
 
@@ -30,7 +31,7 @@
 @synthesize messageOff;
 @synthesize messageOn;
 @synthesize logFile;
-@synthesize nextRefreshTime;
+@synthesize lastRefreshTime;
 
 #ifdef LOG_URL
 - (void)uploadLogFile
@@ -130,15 +131,19 @@
 }
 
 - (void)invalidateThrottle {
-	self.nextRefreshTime = [NSDate date];
+	self.lastRefreshTime = nil;
 }
 
 - (void)resetThrottle {
-	self.nextRefreshTime = [NSDate dateWithTimeIntervalSinceNow:THROTTLE_RATE];
+	self.lastRefreshTime = [[NSDate alloc] init];
 }
 
 - (BOOL)refreshThrottled {
-	return [[NSDate date] timeIntervalSinceDate:self.nextRefreshTime] < 0;
+	return (self.lastRefreshTime && [[NSDate date] timeIntervalSinceDate:self.lastRefreshTime] < kThrottleRate);
+}
+
+- (BOOL)refreshShortThrottled {
+    return (self.lastRefreshTime && [[NSDate date] timeIntervalSinceDate:self.lastRefreshTime] < kShortThrottleRate);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -204,7 +209,7 @@
 
 
 - (void)dealloc {
-	self.nextRefreshTime = nil;
+	self.lastRefreshTime = nil;
 	[blackStone release];
 	[whiteStone release];
 	[boardImage release];

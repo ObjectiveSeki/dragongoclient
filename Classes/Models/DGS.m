@@ -61,8 +61,9 @@
 	// If we're using the DGS api, it will return the string 'Error: no_uid' or 'Error: not_logged_in' if we aren't logged in.
 	BOOL noUID = (NSNotFound != [responseString rangeOfString:@"#Error: no_uid"].location);
 	BOOL notLoggedIn = (NSNotFound != [responseString rangeOfString:@"#Error: not_logged_in"].location);
+    BOOL invalidUser = (NSNotFound != [responseString rangeOfString:@"#Error: invalid_user"].location);
 	
-	if (onErrorPageOrIndex || noUID || notLoggedIn ) {
+	if (onErrorPageOrIndex || noUID || notLoggedIn || invalidUser) {
 		return NO;
 	}
 	return YES;
@@ -212,7 +213,7 @@
 }
 
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
-	NSURL *url = [self URLWithPath:@"/quick_status.php"];
+	NSURL *url = [self URLWithPath:@"/quick_status.php?no_cache=1&version=2"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 	
@@ -442,15 +443,15 @@
 	NSMutableArray *games = [NSMutableArray array];
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
 	for(NSString *line in lines) {
-		NSArray *cols = [line componentsSeparatedByString:@", "];
-		if([[cols objectAtIndex:0] isEqual:@"'G'"]) {
+		NSArray *cols = [line componentsSeparatedByString:@","];
+		if([[cols objectAtIndex:0] isEqual:@"G"]) {
 			Game *game = [[Game alloc] init];
 			[game setGameId:[[cols objectAtIndex:1] intValue]];
 			NSString *opponentString = [cols objectAtIndex:2];
 			[game setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
 			
-			[game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1", [game gameId]]]];
-			if ([[cols objectAtIndex:3] isEqual:@"'W'"]) {
+			[game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", [game gameId]]]];
+			if ([[cols objectAtIndex:3] isEqual:@"W"]) {
 				[game setColor:kMovePlayerWhite];
 			} else {
 				[game setColor:kMovePlayerBlack];

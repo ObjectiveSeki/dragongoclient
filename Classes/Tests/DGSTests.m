@@ -21,6 +21,18 @@
 	STAssertEquals([[games objectAtIndex:0] gameId], 571269, nil);
 }
 
+- (void)testParseQuickStatusGames {
+	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/status.csv" encoding:NSUTF8StringEncoding error:NULL];
+	DGS *dgs = [[DGS alloc] init];
+	NSArray *games = [dgs gamesFromCSV:testData];
+	[dgs release];
+	NSUInteger expectedCount = 2;
+	STAssertEquals([games count], expectedCount, nil);
+	STAssertEqualObjects([[games objectAtIndex:0] opponent], @"pledan", nil);
+	STAssertEquals([[games objectAtIndex:0] gameId], 729940, nil);
+    STAssertEqualObjects([[games objectAtIndex:0] time], @"F: 5d 13h (+ 1d)", nil);
+}
+
 - (void)testBoardCoords {
 	DGS *dgs = [[[DGS alloc] init] autorelease];
 	STAssertEqualObjects(@"ss", [dgs sgfCoordsWithRow:1 column:19 boardSize:19], nil, nil );

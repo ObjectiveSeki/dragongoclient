@@ -11,6 +11,7 @@
 #import "GoBoardView.h"
 #import "MessageView.h"
 #import "RootViewController.h"
+#import "GameStatusProtocol.h"
 
 enum BoardState {
 	kBoardStateZoomedOut,
@@ -47,6 +48,7 @@ enum BoardState {
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *messageButton;
 @property(nonatomic, retain) IBOutlet MessageView *messageView;
+@property(nonatomic, assign) id <GameStatusProtocol> delegate;
 
 - (IBAction)undoMove;
 - (IBAction)zoomOut;

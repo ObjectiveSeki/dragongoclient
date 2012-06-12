@@ -25,6 +25,7 @@
 @synthesize resignButton;
 @synthesize messageButton;
 @synthesize messageView;
+@synthesize delegate = _delegate;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -143,7 +144,9 @@
 
 - (void)playedMove {
 	[self hideSpinner:YES];
-	[DGSAppDelegate invalidateThrottle];
+    if (self.delegate) {
+        [self.delegate playedMoveInGame:self.game];
+    }
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 

@@ -10,9 +10,10 @@
 #import "LoginProtocol.h"
 #import "DGS.h"
 #import "JWTableViewController.h"
+#import "GameStatusProtocol.h"
 
 
-@interface CurrentGamesController : JWTableViewController <LoginProtocol> {
+@interface CurrentGamesController : JWTableViewController <LoginProtocol, GameStatusProtocol> {
 	NSArray *games;
 	IBOutlet UIToolbar *bottomToolbar;
 	IBOutlet UIBarButtonItem *refreshButton;
@@ -44,6 +45,8 @@
 - (IBAction)startNewGame;
 
 - (void)gotSgfForGame:(Game *)game;
+
+- (void)playedMoveInGame:(Game *)game;
 
 @end
 
