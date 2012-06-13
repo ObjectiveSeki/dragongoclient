@@ -144,7 +144,9 @@ static bool fuegoInitialized = NO;
 		std::string commentString;
 		goGame->CurrentNode()->GetStringProp(SG_PROP_COMMENT, &commentString);
 		NSString *comment = [NSString stringWithUTF8String:commentString.c_str()];
-		return comment;
+        if ([comment length] > 0) {
+            return comment;            
+        }
 	}
 	return nil;
 }

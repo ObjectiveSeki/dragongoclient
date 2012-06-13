@@ -1,3 +1,20 @@
-'G', 570161, 'niceone', 'B', '2010-06-03 15:11', 'J: 72d 11h'
-'G', 569659, 'wirtzpd', 'W', '2010-06-03 13:55', 'F: 6d 9h'
-'G', 571269, 'tryphon', 'W', '2010-06-03 13:55', 'F: 6d 9h'
+## B,bulletin_id,target_type,category,'publish_time','expire_time','subject'
+B,1,ALL,ADM_MSG,'2012-06-10 11:55:00','2013-01-01 11:00:00','Server upgrade finished (DGS 1.0.15)'
+## M,message_id,folder_id,type,'sender','subject','date'
+M,2296609,3,INVITATION,'sefk','Game invitation','2012-05-30 22:02:41'
+M,2275337,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2012-04-26 09:02:20'
+M,2274240,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2012-04-24 21:21:53'
+M,2226971,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2012-02-14 09:55:20'
+M,2215597,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2012-01-29 20:19:52'
+M,2126878,2,RESULT,'[Server message]','Game deleted','2011-09-20 20:07:12'
+M,2123005,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-09-14 10:38:11'
+M,2122083,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-09-13 01:23:02'
+M,2109413,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-08-23 04:10:41'
+M,2083456,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-07-07 00:52:24'
+M,2017356,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-03-25 12:29:15'
+M,1994357,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-02-19 09:24:41'
+M,1979631,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2011-01-31 00:54:47'
+M,1908511,2,NORMAL,'[Server message]','Your waiting room game has been joined.','2010-10-11 21:43:15'
+## G,game_id,'opponent_handle',player_color,'lastmove_date','time_remaining',game_action,game_status,move_id,tournament_id,shape_id,game_type,game_prio,'opponent_lastaccess_date',handicap
+G,729940,'pledan',W,'2012-06-11 07:47:34','F: 5d 13h (+ 1d)',2,PLAY,72,0,0,'GO',0,'2012-06-11 13:36:06',2
+G,729567,'kang-Jay',B,'2012-06-11 12:15:37','F: 6d 14h (+ 1d)',2,PLAY,68,0,0,'GO',0,'2012-06-11 12:16:50',0

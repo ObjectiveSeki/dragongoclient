@@ -25,6 +25,7 @@
 @synthesize resignButton;
 @synthesize messageButton;
 @synthesize messageView;
+@synthesize delegate = _delegate;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -88,9 +89,9 @@
 }
 
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
-	
+
     CGRect zoomRect;
-	
+
     // The zoom rect is in the content view's coordinates.
     // At a zoom scale of 1.0, it would be the size of the
     // imageScrollView's bounds.
@@ -98,11 +99,11 @@
     // the size of the rect grows.
     zoomRect.size.height = theScrollView.frame.size.height / scale;
     zoomRect.size.width  = theScrollView.frame.size.width  / scale;
-	
+
     // choose an origin so as to get the right center.
     zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
     zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
-	
+
     return zoomRect;
 }
 
@@ -110,7 +111,7 @@
 {
     maximumZoomScale = self.scrollView.maximumZoomScale;
     minimumZoomScale = self.scrollView.minimumZoomScale;
-	
+
     self.scrollView.maximumZoomScale = currentZoomScale;
     self.scrollView.minimumZoomScale = currentZoomScale;
 }
@@ -143,15 +144,18 @@
 
 - (void)playedMove {
 	[self hideSpinner:YES];
+    if (self.delegate) {
+        [self.delegate playedMoveInGame:self.game];
+    }
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (IBAction)confirmMove {
 	[self showSpinner:@"Submitting..."];
 	self.confirmButton.enabled = NO;
-	
+
 	NSString *reply = self.messageView.reply;
-	
+
 	void (^onSuccess)() = ^() {
 		[self playedMove];
 	};
@@ -188,9 +192,9 @@
 }
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
-	
+
 	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded];
-	
+
 	if (![self smallBoard] && [self boardState] == kBoardStateZoomedOut && canZoomIn) {
 		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
@@ -199,7 +203,7 @@
 		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
 	} else if ([self smallBoard] || [self boardState] == kBoardStateZoomedIn) {
 		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
-		
+
 		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
 		if (markedDeadStones || playedStone) {
 			[self zoomOut:[touch locationInView:view]];
@@ -223,7 +227,7 @@
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -234,7 +238,7 @@
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
-	
+
 	if ([theBoard comment]) {
 		[self setMessageIconState:YES];
 		self.messageView.message = [theBoard comment];
@@ -275,4 +279,3 @@
 
 
 @end
-

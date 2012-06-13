@@ -1,10 +1,10 @@
-// 
+//
 // CurrentGamesController
-// 
+//
 // Controller driving the list of games which are ready for moves.
 // If TEST_GAMES is set, the game list will also contain a bunch
 // of SGFs at various points in the game, for testing the game views.
-// 
+//
 
 #import "CurrentGamesController.h"
 #import "Game.h"
@@ -78,7 +78,7 @@
 - (void)buildTableCells {
 	NSMutableArray *sections = [NSMutableArray array];
 	TableSection *firstSection = [[TableSection alloc] init];
-	
+
 	for (Game *game in self.games) {
 		TableRow *row = [[TableRow alloc] init];
 		row.cellClass = [UITableViewCell class];
@@ -97,25 +97,25 @@
 		};
 		row.cellTouched = ^(UITableViewCell *cell) {
 			self.selectedCell = cell;
-			UIActivityIndicatorView *activityView = 
+			UIActivityIndicatorView *activityView =
 			[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 			[activityView startAnimating];
 			[cell setAccessoryView:activityView];
 			[activityView release];
-            
+
 			[self.gs getSgfForGame:game onSuccess:^(Game *game) {
 				[self gotSgfForGame:game];
 			}];
 		};
 		[firstSection addRow:row];
-		[row release];		
+		[row release];
 	}
-    
+
 	[sections addObject:firstSection];
 	[firstSection release];
-	
+
 	self.tableSections = sections;
-	
+
 }
 
 - (IBAction)startNewGame {
@@ -130,14 +130,22 @@
 }
 
 - (IBAction)refreshGames {
+    if ([DGSAppDelegate refreshShortThrottled]) {
+        // We won't get anything new from the server in this
+        // short amount of time, so skip the refresh
+        return;
+    }
+
+	[DGSAppDelegate resetThrottle];
+
 	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
 //	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
 		[self hideSpinner:YES];
-		
+
 #if TEST_GAMES
-		
+
 		NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", nil];
 		NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
 		for (NSString *name in testGames) {
@@ -152,18 +160,22 @@
 		self.games = mutableCurrentGames;
 		[mutableCurrentGames release];
 #endif
-
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-        
-        if ([self.games count] == 0) {
-            self.view = self.noGamesView;
-        } else {
-            self.view = self.gameListView;
-            [self buildTableCells];
-            [[self gameTableView] reloadData];
-        }
+		[self hideSpinner:YES];
+        [self gameListChanged];
 //		[self setEnabled:YES];
 	}];
+}
+
+- (void)gameListChanged {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+
+    if ([self.games count] == 0) {
+        self.view = self.noGamesView;
+    } else {
+        self.view = self.gameListView;
+        [self buildTableCells];
+        [[self gameTableView] reloadData];
+    }
 }
 
 - (void)requestCancelled {
@@ -202,16 +214,16 @@
 	self.navigationItem.leftBarButtonItem = self.logoutButton;
 	self.navigationItem.rightBarButtonItem = self.refreshButton;
 	[super viewDidLoad];
-    	
+
 #ifdef HOCKEY
 	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
-    
+
 	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
 	[toolbarItems insertObject:updateButton atIndex:0];
 	[updateButton release];
-	
+
 	[self.bottomToolbar setItems:toolbarItems];
-	[toolbarItems release];	
+	[toolbarItems release];
 #endif
 }
 
@@ -219,19 +231,26 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-
-
 - (void)gotSgfForGame:(Game *)game {
 	// Navigation logic may go here. Create and push another view controller.
 	GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:nil];
 	// ...
 	// Pass the selected object to the new view controller.
 	[gameViewController setGame:game];
+    [gameViewController setDelegate:self];
 	[self.navigationController pushViewController:gameViewController animated:YES];
 	[gameViewController release];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
+}
+
+- (void)playedMoveInGame:(Game *)game {
+    NSMutableArray *gameList = [self.games mutableCopy];
+    [gameList removeObjectIdenticalTo:game];
+    self.games = gameList;
+    [gameList release];
+    [self gameListChanged];
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -245,7 +264,7 @@
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 

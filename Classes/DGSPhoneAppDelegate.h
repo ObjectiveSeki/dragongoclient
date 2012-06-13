@@ -17,7 +17,7 @@
 	UIImage *messageOff;
 	UIImage *messageOn;
 	NSFileHandle *logFile;
-	NSDate *nextRefreshTime;
+	NSDate *lastRefreshTime;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -35,6 +35,6 @@
 - (void)invalidateThrottle;
 - (void)resetThrottle;
 - (BOOL)refreshThrottled;
+- (BOOL)refreshShortThrottled;
 
 @end
-
