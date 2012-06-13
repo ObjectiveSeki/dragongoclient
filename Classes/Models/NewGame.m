@@ -8,7 +8,6 @@
 
 #import "NewGame.h"
 
-
 @implementation NewGame
 @synthesize numberOfGames;
 @synthesize ruleSet;

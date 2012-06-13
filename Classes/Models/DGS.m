@@ -7,9 +7,7 @@
 //
 
 #import "DGS.h"
-#import "CXMLDocument.h"
-#import "CXMLElement.h"
-#import "NewGame.h"
+#import "GDataXMLNode.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
@@ -77,7 +75,7 @@
 
 	if (NSNotFound != [urlString rangeOfString:@"error.php"].location) {
 		NSError *error;
-		CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:responseString options:CXMLDocumentTidyHTML error:&error];
+		GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLString:responseString options:0 error:&error];
 		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&error];
 		if ([bodyElements count] > 0) {
 			errorString = [[bodyElements objectAtIndex:0] stringValue];
@@ -230,8 +228,8 @@
         [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
         [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-            [gameList appendGames:[self gamesFromWaitingRoomTable:responseString]];
-            gameList.nextPagePath = [self nextPagePath:responseString];
+            [gameList appendGames:[self gamesFromWaitingRoomTable:[request responseData]]];
+            gameList.nextPagePath = [self nextPagePath:[request responseData]];
             onSuccess();
         }];
     }] autorelease];
@@ -249,7 +247,7 @@
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-		NewGame *gameDetails = [self gameFromWaitingRoomDetailTable:responseString game:game];
+		NewGame *gameDetails = [self gameFromWaitingRoomDetailTable:[request responseData] game:game];
 		onSuccess(gameDetails);
 	}];
 }
@@ -487,20 +485,20 @@
 // or the titles of the first row of table cells (which the user can change
 // by changing their language). I haven't been able to figure out a way
 // around this, so this code sits here, unused -- for now.
-- (NSArray *)gamesFromTable:(NSString *)htmlString {
+- (NSArray *)gamesFromTable:(NSData *)htmlData {
 	NSMutableArray *games = [NSMutableArray array];
 	NSError *error;
-	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:htmlString options:CXMLDocumentTidyHTML error:&error];
+	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameTable']/tr" error:&error];
 
     if ([tableRows count] > 0) {
 
         // First row is the header
-        CXMLNode *headerRow = [tableRows objectAtIndex:0];
+        GDataXMLNode *headerRow = [tableRows objectAtIndex:0];
         NSArray *columns = [headerRow nodesForXPath:@".//span[@class='Header']" error:&error];
 
         NSMutableArray *tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
-        for (CXMLNode *column in columns) {
+        for (GDataXMLNode *column in columns) {
             [tableHeaders addObject:[column stringValue]];
         }
 
@@ -509,7 +507,7 @@
         range.location = 1;
         range.length = [tableRows count] - 1;
 
-        for (CXMLNode *row in [tableRows subarrayWithRange:range]) {
+        for (GDataXMLNode *row in [tableRows subarrayWithRange:range]) {
 
             NSArray *columns = [row nodesForXPath:@"td" error:&error];
 
@@ -523,23 +521,23 @@
             for(int i = 0; i < [tableHeaders count]; i++) {
                 NSString *headerName = [tableHeaders objectAtIndex:i];
                 if ([headerName isEqual:@"ID"]) {
-                    CXMLNode *td = [columns objectAtIndex:i];
+                    GDataXMLNode *td = [columns objectAtIndex:i];
                     NSString *data = [[[td nodesForXPath:@"a" error:&error] objectAtIndex:0] stringValue];
                     game.gameId = [data integerValue];
                 } else if ([headerName isEqual:@"Opponent"]) {
-                    CXMLNode *td = [columns objectAtIndex:i];
+                    GDataXMLNode *td = [columns objectAtIndex:i];
                     NSString *data = [[[td nodesForXPath:@"a/font" error:&error] objectAtIndex:0] stringValue];
                     game.opponent = [data stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
                 } else if ([headerName isEqual:@"sgf"]) {
-                    CXMLNode *td = [columns objectAtIndex:i];
+                    GDataXMLNode *td = [columns objectAtIndex:i];
                     NSString *data = [[[td nodesForXPath:@"a/@href" error:&error] objectAtIndex:0] stringValue];
                     game.sgfUrl = [self URLWithPath:data];
                 } else if ([headerName isEqual:@"Time remaining"]) {
-                    CXMLNode *td = [columns objectAtIndex:i];
+                    GDataXMLNode *td = [columns objectAtIndex:i];
                     NSString *data = [td stringValue];
                     game.time = data;
                 }  else if ([headerName isEqual:@"Col"]) {
-                    CXMLNode *td = [columns objectAtIndex:i];
+                    GDataXMLNode *td = [columns objectAtIndex:i];
                     NSString *data = [[[td nodesForXPath:@"img/@alt" error:&error] objectAtIndex:0] stringValue];
                     if ([data isEqual:@"b"]) {
                         game.color = kMovePlayerBlack;
@@ -562,24 +560,24 @@
 // markings on the 'th' row to guess which columns hold the data we're
 // looking for. This may or may not be consistent, which is kinda rough,
 // but we'll figure those problems out as we reach them.
-- (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString {
+- (NSArray *)gamesFromWaitingRoomTable:(NSData *)htmlData {
 	NSMutableArray *games = [NSMutableArray array];
 	NSError *error;
-	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
+	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
 
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='waitingroomTable']/tr" error:&error];
     if ([tableRows count] > 0) {
 
         NSMutableArray *tableHeaders = nil;
 
-        for (CXMLElement *row in tableRows) {
+        for (GDataXMLElement *row in tableRows) {
 
 			// headers come first
 			if (!tableHeaders) {
 				NSArray *columns = [row nodesForXPath:@".//th" error:&error];
 				if ([columns count] > 0) {
 					tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
-					for (CXMLElement *column in columns) {
+					for (GDataXMLElement *column in columns) {
 						[tableHeaders addObject:column];
 					}
 				} else {
@@ -601,11 +599,11 @@
             NewGame *game = [[NewGame alloc] init];
 
             for(int i = 0; i < [tableHeaders count]; i++) {
-                CXMLElement *header = [tableHeaders objectAtIndex:i];
-				CXMLNode *td = [columns objectAtIndex:i];
+                GDataXMLElement *header = [tableHeaders objectAtIndex:i];
+				GDataXMLNode *td = [columns objectAtIndex:i];
 				if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col0"] ||
 					[[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col17"]) {
-					CXMLElement *link = [[td nodesForXPath:@"a" error:&error] lastObject];
+					GDataXMLElement *link = [[td nodesForXPath:@"a" error:&error] lastObject];
 					NSString *href = [[link attributeForName:@"href"] stringValue];
 					game.detailUrl = [self URLWithPath:[NSString stringWithFormat:@"/%@", href]];
 					NSArray *keyValues = [[[href componentsSeparatedByString:@"?"] lastObject] componentsSeparatedByString:@"&"];
@@ -637,10 +635,10 @@
 }
 
 // Tells us whether there are more pages in the table we're looking at
-- (NSString *)nextPagePath:(NSString *)htmlString {
+- (NSString *)nextPagePath:(NSData *)htmlData {
     NSString *nextPagePath = nil;
     NSError *error;
-    CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
+    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
     NSArray *nextPageIndicator = [doc nodesForXPath:@"//td[@class='PagingL']//a[img[@src='images/next.gif']]/@href" error:&error];
     if ([nextPageIndicator count] != 0) {
         nextPagePath = [NSString stringWithFormat:@"/%@", [[nextPageIndicator lastObject] stringValue]];
@@ -709,9 +707,9 @@
 // This will probably have issues with running in other languages that
 // I'll have to figure out, and it's also kinda fragile, but I'm not
 // sure I have any other options.
-- (NewGame *)gameFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game {
+- (NewGame *)gameFromWaitingRoomDetailTable:(NSData *)htmlData game:(NewGame *)game {
 	NSError *error;
-	CXMLDocument *doc = [[CXMLDocument alloc] initWithXMLString:[htmlString stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "] options:CXMLDocumentTidyHTML error:&error];
+	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
 
 	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameInfos']/tr" error:&error];
     if ([tableRows count] > 0) {

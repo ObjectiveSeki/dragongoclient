@@ -1,6 +1,0 @@
-[submodule "vendor/Hockey"]
-	path = vendor/Hockey
-	url = https://github.com/TheRealKerni/HockeyKit.git
-[submodule "vendor/AsiHttpRequest"]
-	path = vendor/AsiHttpRequest
-	url = https://github.com/pokeb/asi-http-request.git

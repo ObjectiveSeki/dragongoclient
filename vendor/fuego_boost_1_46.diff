@@ -1,0 +1,13 @@
+diff --git a/vendor/fuego/go/GoGtpEngine.cpp b/vendor/fuego/go/GoGtpEngine.cpp
+index 9523282..292cbbc 100644
+--- a/vendor/fuego/go/GoGtpEngine.cpp
++++ b/vendor/fuego/go/GoGtpEngine.cpp
+@@ -378,7 +378,7 @@ void GoGtpEngine::CmdClearBoard(GtpCommand& cmd)
+     CheckMaxClearBoard();
+     if (! m_sentinelFile.empty() && exists(m_sentinelFile))
+         throw GtpFailure() << "Detected sentinel file '"
+-                           << m_sentinelFile.native_file_string() << "'";
++                           << m_sentinelFile.string() << "'";
+     if (Board().MoveNumber() > 0)
+         GameFinished();
+     Init(Board().Size());

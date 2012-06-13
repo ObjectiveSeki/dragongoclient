@@ -9,29 +9,29 @@
 #import <Foundation/Foundation.h>
 #import "Game.h"
 
-typedef enum _KomiType {
+typedef enum {
 	kKomiTypeConventional,
 	kKomiTypeProper
 } KomiType;
 
-typedef enum _RuleSet {
+typedef enum {
 	kRuleSetJapanese,
 	kRuleSetChinese
 } RuleSet;
 
-typedef enum _JigoMode {
+typedef enum {
 	kJigoModeUnchanged,
 	kJigoModeYes,
 	kJigoModeNo
 } JigoMode;
 
-typedef enum _TimePeriod {
+typedef enum {
 	kTimePeriodHours,
 	kTimePeriodDays,
 	kTimePeriodMonths
 } TimePeriod;
 
-typedef enum _ByoYomiType {
+typedef enum {
 	kByoYomiTypeJapanese,
 	kByoYomiTypeCanadian,
 	kByoYomiTypeFischer

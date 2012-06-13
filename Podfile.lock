@@ -1,0 +1,12 @@
+PODS:
+  - ASIHTTPRequest (1.8.1):
+    - Reachability
+  - GDataXML-HTML (1.0.0)
+  - HockeyKit (2.0.4)
+  - Reachability (3.0.0)
+
+DEPENDENCIES:
+  - ASIHTTPRequest
+  - GDataXML-HTML
+  - GDataXML-HTML
+  - HockeyKit

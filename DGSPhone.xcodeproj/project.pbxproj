@@ -20,33 +20,6 @@
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
 		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
 		DA0762B81377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
-		DA08A5D11294D82F0098A0C6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		DA08A5DB1294D9120098A0C6 /* AsiHttpRequest_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5DA1294D9120098A0C6 /* AsiHttpRequest_Prefix.pch */; };
-		DA08A60F1294DAD10098A0C6 /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5F91294DAD10098A0C6 /* ASIAuthenticationDialog.h */; };
-		DA08A6101294DAD10098A0C6 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5FA1294DAD10098A0C6 /* ASIAuthenticationDialog.m */; };
-		DA08A6111294DAD10098A0C6 /* ASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5FB1294DAD10098A0C6 /* ASICacheDelegate.h */; };
-		DA08A6121294DAD10098A0C6 /* ASIDataCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5FC1294DAD10098A0C6 /* ASIDataCompressor.h */; };
-		DA08A6131294DAD10098A0C6 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5FD1294DAD10098A0C6 /* ASIDataCompressor.m */; };
-		DA08A6141294DAD10098A0C6 /* ASIDataDecompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A5FE1294DAD10098A0C6 /* ASIDataDecompressor.h */; };
-		DA08A6151294DAD10098A0C6 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A5FF1294DAD10098A0C6 /* ASIDataDecompressor.m */; };
-		DA08A6161294DAD10098A0C6 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6001294DAD10098A0C6 /* ASIDownloadCache.h */; };
-		DA08A6171294DAD10098A0C6 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6011294DAD10098A0C6 /* ASIDownloadCache.m */; };
-		DA08A6181294DAD10098A0C6 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6021294DAD10098A0C6 /* ASIFormDataRequest.h */; };
-		DA08A6191294DAD10098A0C6 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6031294DAD10098A0C6 /* ASIFormDataRequest.m */; };
-		DA08A61A1294DAD10098A0C6 /* ASIHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6041294DAD10098A0C6 /* ASIHTTPRequest.h */; };
-		DA08A61B1294DAD10098A0C6 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6051294DAD10098A0C6 /* ASIHTTPRequest.m */; };
-		DA08A61C1294DAD10098A0C6 /* ASIHTTPRequestConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6061294DAD10098A0C6 /* ASIHTTPRequestConfig.h */; };
-		DA08A61D1294DAD10098A0C6 /* ASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6071294DAD10098A0C6 /* ASIHTTPRequestDelegate.h */; };
-		DA08A61E1294DAD10098A0C6 /* ASIInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6081294DAD10098A0C6 /* ASIInputStream.h */; };
-		DA08A61F1294DAD10098A0C6 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6091294DAD10098A0C6 /* ASIInputStream.m */; };
-		DA08A6201294DAD10098A0C6 /* ASINetworkQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A60A1294DAD10098A0C6 /* ASINetworkQueue.h */; };
-		DA08A6211294DAD10098A0C6 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A60B1294DAD10098A0C6 /* ASINetworkQueue.m */; };
-		DA08A6221294DAD10098A0C6 /* ASIProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A60C1294DAD10098A0C6 /* ASIProgressDelegate.h */; };
-		DA08A6231294DAD10098A0C6 /* ASIWebPageRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A60D1294DAD10098A0C6 /* ASIWebPageRequest.h */; };
-		DA08A6241294DAD10098A0C6 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A60E1294DAD10098A0C6 /* ASIWebPageRequest.m */; };
-		DA08A62A1294DB340098A0C6 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6281294DB340098A0C6 /* Reachability.h */; };
-		DA08A62B1294DB340098A0C6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6291294DB340098A0C6 /* Reachability.m */; };
-		DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DA7C7B0D13EFA600000432D1 /* Hockey.bundle */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
@@ -285,7 +258,6 @@
 		DA5218EB12CFA42A00000147 /* WaitingRoomGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */; };
 		DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */; };
 		DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */; };
-		DA58E7D11245381600387BB5 /* libAsiHTTPRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */; };
 		DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D350C12B20A8F001271D3 /* Moves@2x.png */; };
 		DA5D351312B20A9D001271D3 /* Moves.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D351212B20A9A001271D3 /* Moves.png */; };
@@ -304,29 +276,6 @@
 		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
-		DA7C7B1313EFA600000432D1 /* BWApp.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7AF813EFA600000432D1 /* BWApp.h */; };
-		DA7C7B1413EFA600000432D1 /* BWApp.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7AF913EFA600000432D1 /* BWApp.m */; };
-		DA7C7B1513EFA600000432D1 /* BWGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7AFA13EFA600000432D1 /* BWGlobal.h */; };
-		DA7C7B1613EFA600000432D1 /* BWGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7AFB13EFA600000432D1 /* BWGlobal.m */; };
-		DA7C7B1713EFA600000432D1 /* BWHockeyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7AFC13EFA600000432D1 /* BWHockeyManager.h */; };
-		DA7C7B1813EFA600000432D1 /* BWHockeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7AFD13EFA600000432D1 /* BWHockeyManager.m */; };
-		DA7C7B1913EFA600000432D1 /* BWHockeySettingsViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7AFE13EFA600000432D1 /* BWHockeySettingsViewController.h */; };
-		DA7C7B1A13EFA600000432D1 /* BWHockeySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7AFF13EFA600000432D1 /* BWHockeySettingsViewController.m */; };
-		DA7C7B1B13EFA600000432D1 /* BWHockeyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0013EFA600000432D1 /* BWHockeyViewController.h */; };
-		DA7C7B1C13EFA600000432D1 /* BWHockeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0113EFA600000432D1 /* BWHockeyViewController.m */; };
-		DA7C7B1D13EFA600000432D1 /* NSString+HockeyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0313EFA600000432D1 /* NSString+HockeyAdditions.h */; };
-		DA7C7B1E13EFA600000432D1 /* NSString+HockeyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0413EFA600000432D1 /* NSString+HockeyAdditions.m */; };
-		DA7C7B1F13EFA600000432D1 /* PSAppStoreHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0513EFA600000432D1 /* PSAppStoreHeader.h */; };
-		DA7C7B2013EFA600000432D1 /* PSAppStoreHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0613EFA600000432D1 /* PSAppStoreHeader.m */; };
-		DA7C7B2113EFA600000432D1 /* PSStoreButton.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0713EFA600000432D1 /* PSStoreButton.h */; };
-		DA7C7B2213EFA600000432D1 /* PSStoreButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0813EFA600000432D1 /* PSStoreButton.m */; };
-		DA7C7B2313EFA600000432D1 /* PSWebTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0913EFA600000432D1 /* PSWebTableViewCell.h */; };
-		DA7C7B2413EFA600000432D1 /* PSWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0A13EFA600000432D1 /* PSWebTableViewCell.m */; };
-		DA7C7B2513EFA600000432D1 /* UIImage+HockeyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0B13EFA600000432D1 /* UIImage+HockeyAdditions.h */; };
-		DA7C7B2613EFA600000432D1 /* UIImage+HockeyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0C13EFA600000432D1 /* UIImage+HockeyAdditions.m */; };
-		DA7C7B2713EFA600000432D1 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0F13EFA600000432D1 /* JSONKit.h */; };
-		DA7C7B2813EFA600000432D1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B1013EFA600000432D1 /* JSONKit.m */; };
-		DA7C7B2D13EFAE5D000432D1 /* Hockey.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA7C7B0D13EFA600000432D1 /* Hockey.bundle */; };
 		DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */; };
 		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
 		DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C41A12CEA5310059DAF0 /* RootViewController.m */; };
@@ -354,9 +303,10 @@
 		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
 		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
 		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
-		DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D111BC72730038F8BC /* libboost_filesystem.a */; };
-		DAAC543F124CFC490099F9CB /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D211BC72730038F8BC /* libboost_system.a */; };
-		DAAC5440124CFC490099F9CB /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD18D311BC72730038F8BC /* libboost_thread.a */; };
+		DAC33E9815885EC600CDD7A1 /* libPods-logic_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */; };
+		DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
+		DAC33EE01589AD2100CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
+		DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
@@ -372,43 +322,6 @@
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
 		DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */; };
-		DAE9315D1245443100335F0F /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */; };
-		DAE9315F1245443100335F0F /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931471245443100335F0F /* CXMLNode_CreationExtensions.m */; };
-		DAE931611245443100335F0F /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931491245443100335F0F /* CXMLDocument_PrivateExtensions.m */; };
-		DAE931631245443100335F0F /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE9314B1245443100335F0F /* CXMLDocument.m */; };
-		DAE931651245443100335F0F /* CXMLElement_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE9314D1245443100335F0F /* CXMLElement_CreationExtensions.m */; };
-		DAE931671245443100335F0F /* CXMLElement_ElementTreeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE9314F1245443100335F0F /* CXMLElement_ElementTreeExtensions.m */; };
-		DAE931691245443100335F0F /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931511245443100335F0F /* CXMLElement.m */; };
-		DAE9316B1245443100335F0F /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931531245443100335F0F /* CXMLNode_PrivateExtensions.m */; };
-		DAE9316D1245443100335F0F /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931551245443100335F0F /* CXMLNode_XPathExtensions.m */; };
-		DAE9316F1245443100335F0F /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE931571245443100335F0F /* CXMLNode.m */; };
-		DAE931711245443100335F0F /* CTidy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE9315A1245443100335F0F /* CTidy.m */; };
-		DAE931AF1245446900335F0F /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9317B1245446900335F0F /* access.c */; };
-		DAE931B11245446900335F0F /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9317D1245446900335F0F /* alloc.c */; };
-		DAE931B21245446900335F0F /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9317E1245446900335F0F /* attrask.c */; };
-		DAE931B31245446900335F0F /* attrdict.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9317F1245446900335F0F /* attrdict.c */; };
-		DAE931B51245446900335F0F /* attrget.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931811245446900335F0F /* attrget.c */; };
-		DAE931B61245446900335F0F /* attrs.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931821245446900335F0F /* attrs.c */; };
-		DAE931B81245446900335F0F /* buffio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931841245446900335F0F /* buffio.c */; };
-		DAE931B91245446900335F0F /* charsets.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931851245446900335F0F /* charsets.c */; };
-		DAE931BB1245446900335F0F /* clean.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931871245446900335F0F /* clean.c */; };
-		DAE931BD1245446900335F0F /* config.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931891245446900335F0F /* config.c */; };
-		DAE931BF1245446900335F0F /* entities.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9318B1245446900335F0F /* entities.c */; };
-		DAE931C11245446900335F0F /* fileio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9318D1245446900335F0F /* fileio.c */; };
-		DAE931C41245446900335F0F /* iconvtc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931901245446900335F0F /* iconvtc.c */; };
-		DAE931C61245446900335F0F /* istack.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931921245446900335F0F /* istack.c */; };
-		DAE931C71245446900335F0F /* lexer.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931931245446900335F0F /* lexer.c */; };
-		DAE931C91245446900335F0F /* localize.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931951245446900335F0F /* localize.c */; };
-		DAE931CA1245446900335F0F /* mappedio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931961245446900335F0F /* mappedio.c */; };
-		DAE931CD1245446900335F0F /* parser.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931991245446900335F0F /* parser.c */; };
-		DAE931CF1245446900335F0F /* pprint.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9319B1245446900335F0F /* pprint.c */; };
-		DAE931D11245446900335F0F /* streamio.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9319D1245446900335F0F /* streamio.c */; };
-		DAE931D31245446900335F0F /* tagask.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE9319F1245446900335F0F /* tagask.c */; };
-		DAE931D41245446900335F0F /* tags.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A01245446900335F0F /* tags.c */; };
-		DAE931D71245446900335F0F /* tidylib.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A31245446900335F0F /* tidylib.c */; };
-		DAE931D81245446900335F0F /* tmbstr.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A41245446900335F0F /* tmbstr.c */; };
-		DAE931DA1245446900335F0F /* utf8.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A61245446900335F0F /* utf8.c */; };
-		DAE931DD1245446900335F0F /* win32tc.c in Sources */ = {isa = PBXBuildFile; fileRef = DAE931A91245446900335F0F /* win32tc.c */; };
 		DAE932AA12454A2900335F0F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DAE932A912454A2900335F0F /* LICENSE */; };
 		DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE932C112454E4800335F0F /* AddGameViewController.m */; };
 		DAE932D21245501100335F0F /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
@@ -441,20 +354,6 @@
 			remoteGlobalIDString = DA58E8031245398B00387BB5;
 			remoteInfo = fuego;
 		};
-		DA214FBE12458E9100448955 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DAE9313D1245440500335F0F;
-			remoteInfo = TouchXML;
-		};
-		DA58E7E6124538C200387BB5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA58E77A124536DC00387BB5;
-			remoteInfo = AsiHTTPRequest;
-		};
 		DA58E80B12453A3400387BB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -469,34 +368,7 @@
 			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
 			remoteInfo = LogicTests;
 		};
-		DA77A95A13B2FB8700803136 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DAE9313D1245440500335F0F;
-			remoteInfo = TouchXML;
-		};
-		DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DACD432A125B6771001F1F01;
-			remoteInfo = Hockey;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		DA7C7B2C13EFAE5B000432D1 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-				DA7C7B2D13EFAE5D000432D1 /* Hockey.bundle in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -509,7 +381,9 @@
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6645B191147CCE2400170504 /* dgs.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dgs.sqlite; sourceTree = "<group>"; };
+		6B8F54A1C01D4825B100B557 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		CE40383ED0524204AD9559A1 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
 		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
 		DA02D14B11D99D7600A9D887 /* TableCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellFactory.h; sourceTree = "<group>"; };
@@ -518,31 +392,6 @@
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		DA0762B51377B678003E0390 /* DGSDev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSDev.h; sourceTree = "<group>"; };
 		DA0762B61377B678003E0390 /* DGSDev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSDev.m; sourceTree = "<group>"; };
-		DA08A5DA1294D9120098A0C6 /* AsiHttpRequest_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsiHttpRequest_Prefix.pch; sourceTree = "<group>"; };
-		DA08A5F91294DAD10098A0C6 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIAuthenticationDialog.h; path = vendor/AsiHttpRequest/Classes/ASIAuthenticationDialog.h; sourceTree = "<group>"; };
-		DA08A5FA1294DAD10098A0C6 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIAuthenticationDialog.m; path = vendor/AsiHttpRequest/Classes/ASIAuthenticationDialog.m; sourceTree = "<group>"; };
-		DA08A5FB1294DAD10098A0C6 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASICacheDelegate.h; path = vendor/AsiHttpRequest/Classes/ASICacheDelegate.h; sourceTree = "<group>"; };
-		DA08A5FC1294DAD10098A0C6 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataCompressor.h; path = vendor/AsiHttpRequest/Classes/ASIDataCompressor.h; sourceTree = "<group>"; };
-		DA08A5FD1294DAD10098A0C6 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataCompressor.m; path = vendor/AsiHttpRequest/Classes/ASIDataCompressor.m; sourceTree = "<group>"; };
-		DA08A5FE1294DAD10098A0C6 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDataDecompressor.h; path = vendor/AsiHttpRequest/Classes/ASIDataDecompressor.h; sourceTree = "<group>"; };
-		DA08A5FF1294DAD10098A0C6 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDataDecompressor.m; path = vendor/AsiHttpRequest/Classes/ASIDataDecompressor.m; sourceTree = "<group>"; };
-		DA08A6001294DAD10098A0C6 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIDownloadCache.h; path = vendor/AsiHttpRequest/Classes/ASIDownloadCache.h; sourceTree = "<group>"; };
-		DA08A6011294DAD10098A0C6 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIDownloadCache.m; path = vendor/AsiHttpRequest/Classes/ASIDownloadCache.m; sourceTree = "<group>"; };
-		DA08A6021294DAD10098A0C6 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIFormDataRequest.h; path = vendor/AsiHttpRequest/Classes/ASIFormDataRequest.h; sourceTree = "<group>"; };
-		DA08A6031294DAD10098A0C6 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIFormDataRequest.m; path = vendor/AsiHttpRequest/Classes/ASIFormDataRequest.m; sourceTree = "<group>"; };
-		DA08A6041294DAD10098A0C6 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequest.h; path = vendor/AsiHttpRequest/Classes/ASIHTTPRequest.h; sourceTree = "<group>"; };
-		DA08A6051294DAD10098A0C6 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIHTTPRequest.m; path = vendor/AsiHttpRequest/Classes/ASIHTTPRequest.m; sourceTree = "<group>"; };
-		DA08A6061294DAD10098A0C6 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestConfig.h; path = vendor/AsiHttpRequest/Classes/ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
-		DA08A6071294DAD10098A0C6 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIHTTPRequestDelegate.h; path = vendor/AsiHttpRequest/Classes/ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
-		DA08A6081294DAD10098A0C6 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIInputStream.h; path = vendor/AsiHttpRequest/Classes/ASIInputStream.h; sourceTree = "<group>"; };
-		DA08A6091294DAD10098A0C6 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIInputStream.m; path = vendor/AsiHttpRequest/Classes/ASIInputStream.m; sourceTree = "<group>"; };
-		DA08A60A1294DAD10098A0C6 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASINetworkQueue.h; path = vendor/AsiHttpRequest/Classes/ASINetworkQueue.h; sourceTree = "<group>"; };
-		DA08A60B1294DAD10098A0C6 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASINetworkQueue.m; path = vendor/AsiHttpRequest/Classes/ASINetworkQueue.m; sourceTree = "<group>"; };
-		DA08A60C1294DAD10098A0C6 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIProgressDelegate.h; path = vendor/AsiHttpRequest/Classes/ASIProgressDelegate.h; sourceTree = "<group>"; };
-		DA08A60D1294DAD10098A0C6 /* ASIWebPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIWebPageRequest.h; path = vendor/AsiHttpRequest/Classes/ASIWebPageRequest.h; sourceTree = "<group>"; };
-		DA08A60E1294DAD10098A0C6 /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIWebPageRequest.m; path = vendor/AsiHttpRequest/Classes/ASIWebPageRequest.m; sourceTree = "<group>"; };
-		DA08A6281294DB340098A0C6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		DA08A6291294DB340098A0C6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
@@ -758,7 +607,6 @@
 		DA20DC4013456BFA00829D9D /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA20DC4113456BFA00829D9D /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
 		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
-		DA214FB512458E3000448955 /* TouchXML_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML_Prefix.pch; sourceTree = "<group>"; };
 		DA2A2AC212D010A600774A54 /* waiting-detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail.html"; sourceTree = "<group>"; };
 		DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail-cn.html"; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
@@ -778,13 +626,13 @@
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
 		DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CurrentGamesController.mm; sourceTree = "<group>"; };
 		DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		DA4E835315885608000C12A2 /* Pods-adhoc.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-adhoc.xcconfig"; path = "Pods/Pods-adhoc.xcconfig"; sourceTree = "<group>"; };
 		DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingRoomGamesController.h; sourceTree = "<group>"; };
 		DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingRoomGamesController.m; sourceTree = "<group>"; };
 		DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitingRoomGamesView.xib; sourceTree = "<group>"; };
 		DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinWaitingRoomGameController.h; sourceTree = "<group>"; };
 		DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinWaitingRoomGameController.m; sourceTree = "<group>"; };
 		DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinWaitingRoomGameView.xib; sourceTree = "<group>"; };
-		DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAsiHTTPRequest.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58E8041245398B00387BB5 /* libfuego.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfuego.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
 		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
@@ -805,31 +653,6 @@
 		DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Adhoc.xcconfig; sourceTree = "<group>"; };
 		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		DA7C7AF813EFA600000432D1 /* BWApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWApp.h; path = vendor/Hockey/client/iOS/BWApp.h; sourceTree = "<group>"; };
-		DA7C7AF913EFA600000432D1 /* BWApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWApp.m; path = vendor/Hockey/client/iOS/BWApp.m; sourceTree = "<group>"; };
-		DA7C7AFA13EFA600000432D1 /* BWGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWGlobal.h; path = vendor/Hockey/client/iOS/BWGlobal.h; sourceTree = "<group>"; };
-		DA7C7AFB13EFA600000432D1 /* BWGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWGlobal.m; path = vendor/Hockey/client/iOS/BWGlobal.m; sourceTree = "<group>"; };
-		DA7C7AFC13EFA600000432D1 /* BWHockeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyManager.h; path = vendor/Hockey/client/iOS/BWHockeyManager.h; sourceTree = "<group>"; };
-		DA7C7AFD13EFA600000432D1 /* BWHockeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyManager.m; path = vendor/Hockey/client/iOS/BWHockeyManager.m; sourceTree = "<group>"; };
-		DA7C7AFE13EFA600000432D1 /* BWHockeySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeySettingsViewController.h; path = vendor/Hockey/client/iOS/BWHockeySettingsViewController.h; sourceTree = "<group>"; };
-		DA7C7AFF13EFA600000432D1 /* BWHockeySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeySettingsViewController.m; path = vendor/Hockey/client/iOS/BWHockeySettingsViewController.m; sourceTree = "<group>"; };
-		DA7C7B0013EFA600000432D1 /* BWHockeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BWHockeyViewController.h; path = vendor/Hockey/client/iOS/BWHockeyViewController.h; sourceTree = "<group>"; };
-		DA7C7B0113EFA600000432D1 /* BWHockeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BWHockeyViewController.m; path = vendor/Hockey/client/iOS/BWHockeyViewController.m; sourceTree = "<group>"; };
-		DA7C7B0313EFA600000432D1 /* NSString+HockeyAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HockeyAdditions.h"; sourceTree = "<group>"; };
-		DA7C7B0413EFA600000432D1 /* NSString+HockeyAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HockeyAdditions.m"; sourceTree = "<group>"; };
-		DA7C7B0513EFA600000432D1 /* PSAppStoreHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSAppStoreHeader.h; sourceTree = "<group>"; };
-		DA7C7B0613EFA600000432D1 /* PSAppStoreHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSAppStoreHeader.m; sourceTree = "<group>"; };
-		DA7C7B0713EFA600000432D1 /* PSStoreButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSStoreButton.h; sourceTree = "<group>"; };
-		DA7C7B0813EFA600000432D1 /* PSStoreButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSStoreButton.m; sourceTree = "<group>"; };
-		DA7C7B0913EFA600000432D1 /* PSWebTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWebTableViewCell.h; sourceTree = "<group>"; };
-		DA7C7B0A13EFA600000432D1 /* PSWebTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWebTableViewCell.m; sourceTree = "<group>"; };
-		DA7C7B0B13EFA600000432D1 /* UIImage+HockeyAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HockeyAdditions.h"; sourceTree = "<group>"; };
-		DA7C7B0C13EFA600000432D1 /* UIImage+HockeyAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HockeyAdditions.m"; sourceTree = "<group>"; };
-		DA7C7B0D13EFA600000432D1 /* Hockey.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Hockey.bundle; path = vendor/Hockey/client/iOS/Hockey.bundle; sourceTree = "<group>"; };
-		DA7C7B0F13EFA600000432D1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		DA7C7B1013EFA600000432D1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		DA7C7B1113EFA600000432D1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		DA7C7B1213EFA600000432D1 /* README.mkdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.mkdown; path = vendor/Hockey/client/iOS/README.mkdown; sourceTree = "<group>"; };
 		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
 		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
 		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
@@ -862,20 +685,19 @@
 		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
 		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
 		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
+		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
+		DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-logic_tests.xcconfig"; path = "Pods/Pods-logic_tests.xcconfig"; sourceTree = "<group>"; };
+		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
-		DACD432B125B6771001F1F01 /* libHockey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHockey.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
 		DAD36349126D4A9C00589A32 /* Message background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background.png"; sourceTree = "<group>"; };
 		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
 		DAD36367126D586600589A32 /* Message input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input.png"; sourceTree = "<group>"; };
 		DAD36368126D586600589A32 /* Message input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input@2x.png"; sourceTree = "<group>"; };
-		DADD18D111BC72730038F8BC /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = vendor/boost/lib/libboost_filesystem.a; sourceTree = "<group>"; };
-		DADD18D211BC72730038F8BC /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = vendor/boost/lib/libboost_system.a; sourceTree = "<group>"; };
-		DADD18D311BC72730038F8BC /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = vendor/boost/lib/libboost_thread.a; sourceTree = "<group>"; };
 		DADD19C711BCA6170038F8BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DADD1CDD11FD3C0B005922A3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		DADD1CE111FD3C43005922A3 /* FAQ.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ.md; sourceTree = "<group>"; };
@@ -884,82 +706,6 @@
 		DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = ../Classes/Controllers/NewGameViewController.xib; sourceTree = "<group>"; };
 		DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		DAE9313E1245440500335F0F /* libTouchXML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTouchXML.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAE931441245443100335F0F /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
-		DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
-		DAE931461245443100335F0F /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
-		DAE931471245443100335F0F /* CXMLNode_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_CreationExtensions.m; sourceTree = "<group>"; };
-		DAE931481245443100335F0F /* CXMLDocument_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLDocument_PrivateExtensions.h; path = vendor/TouchXML/Common/Source/CXMLDocument_PrivateExtensions.h; sourceTree = "<group>"; };
-		DAE931491245443100335F0F /* CXMLDocument_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLDocument_PrivateExtensions.m; path = vendor/TouchXML/Common/Source/CXMLDocument_PrivateExtensions.m; sourceTree = "<group>"; };
-		DAE9314A1245443100335F0F /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLDocument.h; path = vendor/TouchXML/Common/Source/CXMLDocument.h; sourceTree = "<group>"; };
-		DAE9314B1245443100335F0F /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLDocument.m; path = vendor/TouchXML/Common/Source/CXMLDocument.m; sourceTree = "<group>"; };
-		DAE9314C1245443100335F0F /* CXMLElement_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLElement_CreationExtensions.h; path = vendor/TouchXML/Common/Source/CXMLElement_CreationExtensions.h; sourceTree = "<group>"; };
-		DAE9314D1245443100335F0F /* CXMLElement_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLElement_CreationExtensions.m; path = vendor/TouchXML/Common/Source/CXMLElement_CreationExtensions.m; sourceTree = "<group>"; };
-		DAE9314E1245443100335F0F /* CXMLElement_ElementTreeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLElement_ElementTreeExtensions.h; path = vendor/TouchXML/Common/Source/CXMLElement_ElementTreeExtensions.h; sourceTree = "<group>"; };
-		DAE9314F1245443100335F0F /* CXMLElement_ElementTreeExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLElement_ElementTreeExtensions.m; path = vendor/TouchXML/Common/Source/CXMLElement_ElementTreeExtensions.m; sourceTree = "<group>"; };
-		DAE931501245443100335F0F /* CXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLElement.h; path = vendor/TouchXML/Common/Source/CXMLElement.h; sourceTree = "<group>"; };
-		DAE931511245443100335F0F /* CXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLElement.m; path = vendor/TouchXML/Common/Source/CXMLElement.m; sourceTree = "<group>"; };
-		DAE931521245443100335F0F /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNode_PrivateExtensions.h; path = vendor/TouchXML/Common/Source/CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
-		DAE931531245443100335F0F /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNode_PrivateExtensions.m; path = vendor/TouchXML/Common/Source/CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
-		DAE931541245443100335F0F /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNode_XPathExtensions.h; path = vendor/TouchXML/Common/Source/CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
-		DAE931551245443100335F0F /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNode_XPathExtensions.m; path = vendor/TouchXML/Common/Source/CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };
-		DAE931561245443100335F0F /* CXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CXMLNode.h; path = vendor/TouchXML/Common/Source/CXMLNode.h; sourceTree = "<group>"; };
-		DAE931571245443100335F0F /* CXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CXMLNode.m; path = vendor/TouchXML/Common/Source/CXMLNode.m; sourceTree = "<group>"; };
-		DAE931591245443100335F0F /* CTidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTidy.h; sourceTree = "<group>"; };
-		DAE9315A1245443100335F0F /* CTidy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTidy.m; sourceTree = "<group>"; };
-		DAE9315B1245443100335F0F /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchXML.h; path = vendor/TouchXML/Common/Source/TouchXML.h; sourceTree = "<group>"; };
-		DAE931761245446900335F0F /* buffio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffio.h; sourceTree = "<group>"; };
-		DAE931771245446900335F0F /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
-		DAE931781245446900335F0F /* tidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidy.h; sourceTree = "<group>"; };
-		DAE931791245446900335F0F /* tidyenum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidyenum.h; sourceTree = "<group>"; };
-		DAE9317B1245446900335F0F /* access.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = access.c; sourceTree = "<group>"; };
-		DAE9317C1245446900335F0F /* access.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = access.h; sourceTree = "<group>"; };
-		DAE9317D1245446900335F0F /* alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alloc.c; sourceTree = "<group>"; };
-		DAE9317E1245446900335F0F /* attrask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrask.c; sourceTree = "<group>"; };
-		DAE9317F1245446900335F0F /* attrdict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrdict.c; sourceTree = "<group>"; };
-		DAE931801245446900335F0F /* attrdict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attrdict.h; sourceTree = "<group>"; };
-		DAE931811245446900335F0F /* attrget.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrget.c; sourceTree = "<group>"; };
-		DAE931821245446900335F0F /* attrs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = attrs.c; sourceTree = "<group>"; };
-		DAE931831245446900335F0F /* attrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attrs.h; sourceTree = "<group>"; };
-		DAE931841245446900335F0F /* buffio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buffio.c; sourceTree = "<group>"; };
-		DAE931851245446900335F0F /* charsets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = charsets.c; sourceTree = "<group>"; };
-		DAE931861245446900335F0F /* charsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charsets.h; sourceTree = "<group>"; };
-		DAE931871245446900335F0F /* clean.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = clean.c; sourceTree = "<group>"; };
-		DAE931881245446900335F0F /* clean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clean.h; sourceTree = "<group>"; };
-		DAE931891245446900335F0F /* config.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = config.c; sourceTree = "<group>"; };
-		DAE9318A1245446900335F0F /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		DAE9318B1245446900335F0F /* entities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = entities.c; sourceTree = "<group>"; };
-		DAE9318C1245446900335F0F /* entities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entities.h; sourceTree = "<group>"; };
-		DAE9318D1245446900335F0F /* fileio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileio.c; sourceTree = "<group>"; };
-		DAE9318E1245446900335F0F /* fileio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileio.h; sourceTree = "<group>"; };
-		DAE9318F1245446900335F0F /* forward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forward.h; sourceTree = "<group>"; };
-		DAE931901245446900335F0F /* iconvtc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = iconvtc.c; sourceTree = "<group>"; };
-		DAE931911245446900335F0F /* iconvtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iconvtc.h; sourceTree = "<group>"; };
-		DAE931921245446900335F0F /* istack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = istack.c; sourceTree = "<group>"; };
-		DAE931931245446900335F0F /* lexer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lexer.c; sourceTree = "<group>"; };
-		DAE931941245446900335F0F /* lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexer.h; sourceTree = "<group>"; };
-		DAE931951245446900335F0F /* localize.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = localize.c; sourceTree = "<group>"; };
-		DAE931961245446900335F0F /* mappedio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mappedio.c; sourceTree = "<group>"; };
-		DAE931971245446900335F0F /* mappedio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mappedio.h; sourceTree = "<group>"; };
-		DAE931981245446900335F0F /* message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = message.h; sourceTree = "<group>"; };
-		DAE931991245446900335F0F /* parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parser.c; sourceTree = "<group>"; };
-		DAE9319A1245446900335F0F /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
-		DAE9319B1245446900335F0F /* pprint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pprint.c; sourceTree = "<group>"; };
-		DAE9319C1245446900335F0F /* pprint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pprint.h; sourceTree = "<group>"; };
-		DAE9319D1245446900335F0F /* streamio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = streamio.c; sourceTree = "<group>"; };
-		DAE9319E1245446900335F0F /* streamio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = streamio.h; sourceTree = "<group>"; };
-		DAE9319F1245446900335F0F /* tagask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tagask.c; sourceTree = "<group>"; };
-		DAE931A01245446900335F0F /* tags.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tags.c; sourceTree = "<group>"; };
-		DAE931A11245446900335F0F /* tags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tags.h; sourceTree = "<group>"; };
-		DAE931A21245446900335F0F /* tidy-int.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "tidy-int.h"; sourceTree = "<group>"; };
-		DAE931A31245446900335F0F /* tidylib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tidylib.c; sourceTree = "<group>"; };
-		DAE931A41245446900335F0F /* tmbstr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tmbstr.c; sourceTree = "<group>"; };
-		DAE931A51245446900335F0F /* tmbstr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tmbstr.h; sourceTree = "<group>"; };
-		DAE931A61245446900335F0F /* utf8.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utf8.c; sourceTree = "<group>"; };
-		DAE931A71245446900335F0F /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utf8.h; sourceTree = "<group>"; };
-		DAE931A81245446900335F0F /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		DAE931A91245446900335F0F /* win32tc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = win32tc.c; sourceTree = "<group>"; };
-		DAE931AA1245446900335F0F /* win32tc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = win32tc.h; sourceTree = "<group>"; };
 		DAE932A912454A2900335F0F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DAE932B512454B4200335F0F /* Developer.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Developer.md; sourceTree = "<group>"; };
 		DAE932C012454E4800335F0F /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
@@ -983,6 +729,7 @@
 		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
 		DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock.png"; sourceTree = "<group>"; };
 		DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock@2x.png"; sourceTree = "<group>"; };
+		DAEE341C15884ECA00300B29 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; };
 		DAF9102611BB48A800FE7B96 /* GoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardView.h; sourceTree = "<group>"; };
 		DAF9102711BB48A800FE7B96 /* GoBoardView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoBoardView.mm; sourceTree = "<group>"; };
 		DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -1007,16 +754,8 @@
 				DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */,
 				DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */,
 				DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */,
-				DA58E7D11245381600387BB5 /* libAsiHTTPRequest.a in Frameworks */,
 				DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA58E779124536DC00387BB5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA08A5D11294D82F0098A0C6 /* Foundation.framework in Frameworks */,
+				DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,9 +763,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAAC543E124CFC490099F9CB /* libboost_filesystem.a in Frameworks */,
-				DAAC543F124CFC490099F9CB /* libboost_system.a in Frameworks */,
-				DAAC5440124CFC490099F9CB /* libboost_thread.a in Frameworks */,
+				DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1038,20 +775,8 @@
 				DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */,
 				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
 				DAE932D21245501100335F0F /* libfuego.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DACD4329125B6771001F1F01 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DAE9313C1245440500335F0F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DAC33E9815885EC600CDD7A1 /* libPods-logic_tests.a in Frameworks */,
+				DAC33EE01589AD2100CDD7A1 /* boost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,10 +803,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* DGSBeta.app */,
 				DA71CA8411B5E97F008696AC /* LogicTests.octest */,
-				DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */,
 				DA58E8041245398B00387BB5 /* libfuego.a */,
-				DAE9313E1245440500335F0F /* libTouchXML.a */,
-				DACD432B125B6771001F1F01 /* libHockey.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1090,6 +812,7 @@
 			isa = PBXGroup;
 			children = (
 				6645B191147CCE2400170504 /* dgs.sqlite */,
+				DAEE341C15884ECA00300B29 /* Podfile */,
 				DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */,
 				DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */,
 				DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */,
@@ -1103,6 +826,9 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				CE40383ED0524204AD9559A1 /* Pods.xcconfig */,
+				DA4E835315885608000C12A2 /* Pods-adhoc.xcconfig */,
+				DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1111,9 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				DA214FB412458E3000448955 /* LogicTests_Prefix.pch */,
-				DA214FB512458E3000448955 /* TouchXML_Prefix.pch */,
 				32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */,
-				DA08A5DA1294D9120098A0C6 /* AsiHttpRequest_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -1139,6 +863,7 @@
 			isa = PBXGroup;
 			children = (
 				6645B18F147B8BED00170504 /* libsqlite3.dylib */,
+				DAC33ED81589A74700CDD7A1 /* boost.framework */,
 				DA71CAA311B5EA50008696AC /* Foundation.framework */,
 				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
 				DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */,
@@ -1151,15 +876,14 @@
 				DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */,
 				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
 				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
-				DADD18D111BC72730038F8BC /* libboost_filesystem.a */,
-				DADD18D211BC72730038F8BC /* libboost_system.a */,
-				DADD18D311BC72730038F8BC /* libboost_thread.a */,
 				DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */,
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
 				DAE932E21245510C00335F0F /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				6B8F54A1C01D4825B100B557 /* libPods.a */,
+				DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1177,16 +901,6 @@
 				DA84D67912F7A0160038D775 /* BooleanCell.m */,
 			);
 			path = "Table Cells";
-			sourceTree = "<group>";
-		};
-		DA08A6271294DB340098A0C6 /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				DA08A6281294DB340098A0C6 /* Reachability.h */,
-				DA08A6291294DB340098A0C6 /* Reachability.m */,
-			);
-			name = Reachability;
-			path = vendor/AsiHttpRequest/External/Reachability;
 			sourceTree = "<group>";
 		};
 		DA20DB5213456BF900829D9D /* go */ = {
@@ -1517,42 +1231,9 @@
 		DA58E7841245371700387BB5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				DA7C7AF713EFA578000432D1 /* Hockey */,
-				DAE93138124543E400335F0F /* TouchXML */,
 				DA58E80F12453A8400387BB5 /* Fuego */,
-				DA58E7851245371E00387BB5 /* ASIHttpRequest */,
 			);
 			name = Vendor;
-			sourceTree = "<group>";
-		};
-		DA58E7851245371E00387BB5 /* ASIHttpRequest */ = {
-			isa = PBXGroup;
-			children = (
-				DA08A6271294DB340098A0C6 /* Reachability */,
-				DA08A5F91294DAD10098A0C6 /* ASIAuthenticationDialog.h */,
-				DA08A5FA1294DAD10098A0C6 /* ASIAuthenticationDialog.m */,
-				DA08A5FB1294DAD10098A0C6 /* ASICacheDelegate.h */,
-				DA08A5FC1294DAD10098A0C6 /* ASIDataCompressor.h */,
-				DA08A5FD1294DAD10098A0C6 /* ASIDataCompressor.m */,
-				DA08A5FE1294DAD10098A0C6 /* ASIDataDecompressor.h */,
-				DA08A5FF1294DAD10098A0C6 /* ASIDataDecompressor.m */,
-				DA08A6001294DAD10098A0C6 /* ASIDownloadCache.h */,
-				DA08A6011294DAD10098A0C6 /* ASIDownloadCache.m */,
-				DA08A6021294DAD10098A0C6 /* ASIFormDataRequest.h */,
-				DA08A6031294DAD10098A0C6 /* ASIFormDataRequest.m */,
-				DA08A6041294DAD10098A0C6 /* ASIHTTPRequest.h */,
-				DA08A6051294DAD10098A0C6 /* ASIHTTPRequest.m */,
-				DA08A6061294DAD10098A0C6 /* ASIHTTPRequestConfig.h */,
-				DA08A6071294DAD10098A0C6 /* ASIHTTPRequestDelegate.h */,
-				DA08A6081294DAD10098A0C6 /* ASIInputStream.h */,
-				DA08A6091294DAD10098A0C6 /* ASIInputStream.m */,
-				DA08A60A1294DAD10098A0C6 /* ASINetworkQueue.h */,
-				DA08A60B1294DAD10098A0C6 /* ASINetworkQueue.m */,
-				DA08A60C1294DAD10098A0C6 /* ASIProgressDelegate.h */,
-				DA08A60D1294DAD10098A0C6 /* ASIWebPageRequest.h */,
-				DA08A60E1294DAD10098A0C6 /* ASIWebPageRequest.m */,
-			);
-			name = ASIHttpRequest;
 			sourceTree = "<group>";
 		};
 		DA58E80F12453A8400387BB5 /* Fuego */ = {
@@ -1582,182 +1263,6 @@
 				DA667C1A125A266C00CA9A13 /* FuegoBoardTests.mm */,
 			);
 			name = Logic;
-			sourceTree = "<group>";
-		};
-		DA7C7AF713EFA578000432D1 /* Hockey */ = {
-			isa = PBXGroup;
-			children = (
-				DA7C7AF813EFA600000432D1 /* BWApp.h */,
-				DA7C7AF913EFA600000432D1 /* BWApp.m */,
-				DA7C7AFA13EFA600000432D1 /* BWGlobal.h */,
-				DA7C7AFB13EFA600000432D1 /* BWGlobal.m */,
-				DA7C7AFC13EFA600000432D1 /* BWHockeyManager.h */,
-				DA7C7AFD13EFA600000432D1 /* BWHockeyManager.m */,
-				DA7C7AFE13EFA600000432D1 /* BWHockeySettingsViewController.h */,
-				DA7C7AFF13EFA600000432D1 /* BWHockeySettingsViewController.m */,
-				DA7C7B0013EFA600000432D1 /* BWHockeyViewController.h */,
-				DA7C7B0113EFA600000432D1 /* BWHockeyViewController.m */,
-				DA7C7B0213EFA600000432D1 /* Helper */,
-				DA7C7B0D13EFA600000432D1 /* Hockey.bundle */,
-				DA7C7B0E13EFA600000432D1 /* JSON */,
-				DA7C7B1213EFA600000432D1 /* README.mkdown */,
-			);
-			name = Hockey;
-			sourceTree = "<group>";
-		};
-		DA7C7B0213EFA600000432D1 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				DA7C7B0313EFA600000432D1 /* NSString+HockeyAdditions.h */,
-				DA7C7B0413EFA600000432D1 /* NSString+HockeyAdditions.m */,
-				DA7C7B0513EFA600000432D1 /* PSAppStoreHeader.h */,
-				DA7C7B0613EFA600000432D1 /* PSAppStoreHeader.m */,
-				DA7C7B0713EFA600000432D1 /* PSStoreButton.h */,
-				DA7C7B0813EFA600000432D1 /* PSStoreButton.m */,
-				DA7C7B0913EFA600000432D1 /* PSWebTableViewCell.h */,
-				DA7C7B0A13EFA600000432D1 /* PSWebTableViewCell.m */,
-				DA7C7B0B13EFA600000432D1 /* UIImage+HockeyAdditions.h */,
-				DA7C7B0C13EFA600000432D1 /* UIImage+HockeyAdditions.m */,
-			);
-			name = Helper;
-			path = vendor/Hockey/client/iOS/Helper;
-			sourceTree = "<group>";
-		};
-		DA7C7B0E13EFA600000432D1 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				DA7C7B0F13EFA600000432D1 /* JSONKit.h */,
-				DA7C7B1013EFA600000432D1 /* JSONKit.m */,
-				DA7C7B1113EFA600000432D1 /* README.md */,
-			);
-			name = JSON;
-			path = vendor/Hockey/client/iOS/JSON;
-			sourceTree = "<group>";
-		};
-		DAE93138124543E400335F0F /* TouchXML */ = {
-			isa = PBXGroup;
-			children = (
-				DAE931731245445200335F0F /* libtidy */,
-				DAE931431245443100335F0F /* Creation */,
-				DAE931481245443100335F0F /* CXMLDocument_PrivateExtensions.h */,
-				DAE931491245443100335F0F /* CXMLDocument_PrivateExtensions.m */,
-				DAE9314A1245443100335F0F /* CXMLDocument.h */,
-				DAE9314B1245443100335F0F /* CXMLDocument.m */,
-				DAE9314C1245443100335F0F /* CXMLElement_CreationExtensions.h */,
-				DAE9314D1245443100335F0F /* CXMLElement_CreationExtensions.m */,
-				DAE9314E1245443100335F0F /* CXMLElement_ElementTreeExtensions.h */,
-				DAE9314F1245443100335F0F /* CXMLElement_ElementTreeExtensions.m */,
-				DAE931501245443100335F0F /* CXMLElement.h */,
-				DAE931511245443100335F0F /* CXMLElement.m */,
-				DAE931521245443100335F0F /* CXMLNode_PrivateExtensions.h */,
-				DAE931531245443100335F0F /* CXMLNode_PrivateExtensions.m */,
-				DAE931541245443100335F0F /* CXMLNode_XPathExtensions.h */,
-				DAE931551245443100335F0F /* CXMLNode_XPathExtensions.m */,
-				DAE931561245443100335F0F /* CXMLNode.h */,
-				DAE931571245443100335F0F /* CXMLNode.m */,
-				DAE931581245443100335F0F /* Tidy */,
-				DAE9315B1245443100335F0F /* TouchXML.h */,
-			);
-			name = TouchXML;
-			sourceTree = "<group>";
-		};
-		DAE931431245443100335F0F /* Creation */ = {
-			isa = PBXGroup;
-			children = (
-				DAE931441245443100335F0F /* CXMLDocument_CreationExtensions.h */,
-				DAE931451245443100335F0F /* CXMLDocument_CreationExtensions.m */,
-				DAE931461245443100335F0F /* CXMLNode_CreationExtensions.h */,
-				DAE931471245443100335F0F /* CXMLNode_CreationExtensions.m */,
-			);
-			name = Creation;
-			path = vendor/TouchXML/Common/Source/Creation;
-			sourceTree = "<group>";
-		};
-		DAE931581245443100335F0F /* Tidy */ = {
-			isa = PBXGroup;
-			children = (
-				DAE931591245443100335F0F /* CTidy.h */,
-				DAE9315A1245443100335F0F /* CTidy.m */,
-			);
-			name = Tidy;
-			path = vendor/TouchXML/Common/Source/Tidy;
-			sourceTree = "<group>";
-		};
-		DAE931731245445200335F0F /* libtidy */ = {
-			isa = PBXGroup;
-			children = (
-				DAE931751245446900335F0F /* include */,
-				DAE9317A1245446900335F0F /* src */,
-			);
-			name = libtidy;
-			sourceTree = "<group>";
-		};
-		DAE931751245446900335F0F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				DAE931761245446900335F0F /* buffio.h */,
-				DAE931771245446900335F0F /* platform.h */,
-				DAE931781245446900335F0F /* tidy.h */,
-				DAE931791245446900335F0F /* tidyenum.h */,
-			);
-			name = include;
-			path = vendor/TouchXML/Externals/tidy/include;
-			sourceTree = "<group>";
-		};
-		DAE9317A1245446900335F0F /* src */ = {
-			isa = PBXGroup;
-			children = (
-				DAE9317B1245446900335F0F /* access.c */,
-				DAE9317C1245446900335F0F /* access.h */,
-				DAE9317D1245446900335F0F /* alloc.c */,
-				DAE9317E1245446900335F0F /* attrask.c */,
-				DAE9317F1245446900335F0F /* attrdict.c */,
-				DAE931801245446900335F0F /* attrdict.h */,
-				DAE931811245446900335F0F /* attrget.c */,
-				DAE931821245446900335F0F /* attrs.c */,
-				DAE931831245446900335F0F /* attrs.h */,
-				DAE931841245446900335F0F /* buffio.c */,
-				DAE931851245446900335F0F /* charsets.c */,
-				DAE931861245446900335F0F /* charsets.h */,
-				DAE931871245446900335F0F /* clean.c */,
-				DAE931881245446900335F0F /* clean.h */,
-				DAE931891245446900335F0F /* config.c */,
-				DAE9318A1245446900335F0F /* config.h */,
-				DAE9318B1245446900335F0F /* entities.c */,
-				DAE9318C1245446900335F0F /* entities.h */,
-				DAE9318D1245446900335F0F /* fileio.c */,
-				DAE9318E1245446900335F0F /* fileio.h */,
-				DAE9318F1245446900335F0F /* forward.h */,
-				DAE931901245446900335F0F /* iconvtc.c */,
-				DAE931911245446900335F0F /* iconvtc.h */,
-				DAE931921245446900335F0F /* istack.c */,
-				DAE931931245446900335F0F /* lexer.c */,
-				DAE931941245446900335F0F /* lexer.h */,
-				DAE931951245446900335F0F /* localize.c */,
-				DAE931961245446900335F0F /* mappedio.c */,
-				DAE931971245446900335F0F /* mappedio.h */,
-				DAE931981245446900335F0F /* message.h */,
-				DAE931991245446900335F0F /* parser.c */,
-				DAE9319A1245446900335F0F /* parser.h */,
-				DAE9319B1245446900335F0F /* pprint.c */,
-				DAE9319C1245446900335F0F /* pprint.h */,
-				DAE9319D1245446900335F0F /* streamio.c */,
-				DAE9319E1245446900335F0F /* streamio.h */,
-				DAE9319F1245446900335F0F /* tagask.c */,
-				DAE931A01245446900335F0F /* tags.c */,
-				DAE931A11245446900335F0F /* tags.h */,
-				DAE931A21245446900335F0F /* tidy-int.h */,
-				DAE931A31245446900335F0F /* tidylib.c */,
-				DAE931A41245446900335F0F /* tmbstr.c */,
-				DAE931A51245446900335F0F /* tmbstr.h */,
-				DAE931A61245446900335F0F /* utf8.c */,
-				DAE931A71245446900335F0F /* utf8.h */,
-				DAE931A81245446900335F0F /* version.h */,
-				DAE931A91245446900335F0F /* win32tc.c */,
-				DAE931AA1245446900335F0F /* win32tc.h */,
-			);
-			name = src;
-			path = vendor/TouchXML/Externals/tidy/src;
 			sourceTree = "<group>";
 		};
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
@@ -1825,28 +1330,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		DA58E777124536DC00387BB5 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA08A5DB1294D9120098A0C6 /* AsiHttpRequest_Prefix.pch in Headers */,
-				DA08A60F1294DAD10098A0C6 /* ASIAuthenticationDialog.h in Headers */,
-				DA08A6111294DAD10098A0C6 /* ASICacheDelegate.h in Headers */,
-				DA08A6121294DAD10098A0C6 /* ASIDataCompressor.h in Headers */,
-				DA08A6141294DAD10098A0C6 /* ASIDataDecompressor.h in Headers */,
-				DA08A6161294DAD10098A0C6 /* ASIDownloadCache.h in Headers */,
-				DA08A6181294DAD10098A0C6 /* ASIFormDataRequest.h in Headers */,
-				DA08A61A1294DAD10098A0C6 /* ASIHTTPRequest.h in Headers */,
-				DA08A61C1294DAD10098A0C6 /* ASIHTTPRequestConfig.h in Headers */,
-				DA08A61D1294DAD10098A0C6 /* ASIHTTPRequestDelegate.h in Headers */,
-				DA08A61E1294DAD10098A0C6 /* ASIInputStream.h in Headers */,
-				DA08A6201294DAD10098A0C6 /* ASINetworkQueue.h in Headers */,
-				DA08A6221294DAD10098A0C6 /* ASIProgressDelegate.h in Headers */,
-				DA08A6231294DAD10098A0C6 /* ASIWebPageRequest.h in Headers */,
-				DA08A62A1294DB340098A0C6 /* Reachability.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		DA58E8001245398B00387BB5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1974,31 +1457,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DACD4327125B6771001F1F01 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA7C7B1313EFA600000432D1 /* BWApp.h in Headers */,
-				DA7C7B1513EFA600000432D1 /* BWGlobal.h in Headers */,
-				DA7C7B1713EFA600000432D1 /* BWHockeyManager.h in Headers */,
-				DA7C7B1913EFA600000432D1 /* BWHockeySettingsViewController.h in Headers */,
-				DA7C7B1B13EFA600000432D1 /* BWHockeyViewController.h in Headers */,
-				DA7C7B1D13EFA600000432D1 /* NSString+HockeyAdditions.h in Headers */,
-				DA7C7B1F13EFA600000432D1 /* PSAppStoreHeader.h in Headers */,
-				DA7C7B2113EFA600000432D1 /* PSStoreButton.h in Headers */,
-				DA7C7B2313EFA600000432D1 /* PSWebTableViewCell.h in Headers */,
-				DA7C7B2513EFA600000432D1 /* UIImage+HockeyAdditions.h in Headers */,
-				DA7C7B2713EFA600000432D1 /* JSONKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DAE9313A1245440500335F0F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -2010,37 +1468,18 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				DA0E103D140F240D0067BE35 /* ShellScript */,
+				60F25901805E46D3A53A6D99 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DA58E7E7124538C200387BB5 /* PBXTargetDependency */,
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
-				DACD4365125B67DD001F1F01 /* PBXTargetDependency */,
-				DA77A95B13B2FB8700803136 /* PBXTargetDependency */,
 				DA77A95913B2FB8300803136 /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
 			productReference = 1D6058910D05DD3D006BFB54 /* DGSBeta.app */;
 			productType = "com.apple.product-type.application";
-		};
-		DA58E77A124536DC00387BB5 /* AsiHTTPRequest */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA58E782124536E200387BB5 /* Build configuration list for PBXNativeTarget "AsiHTTPRequest" */;
-			buildPhases = (
-				DA58E777124536DC00387BB5 /* Headers */,
-				DA58E778124536DC00387BB5 /* Sources */,
-				DA58E779124536DC00387BB5 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AsiHTTPRequest;
-			productName = AsiHTTPRequest;
-			productReference = DA58E77B124536DC00387BB5 /* libAsiHTTPRequest.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 		DA58E8031245398B00387BB5 /* fuego */ = {
 			isa = PBXNativeTarget;
@@ -2067,52 +1506,17 @@
 				DA71CA8011B5E97F008696AC /* Sources */,
 				DA71CA8111B5E97F008696AC /* Frameworks */,
 				DA71CA8211B5E97F008696AC /* ShellScript */,
+				60F25901805E46D3A53A6D99 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DA214FBD12458E8F00448955 /* PBXTargetDependency */,
-				DA214FBF12458E9100448955 /* PBXTargetDependency */,
 			);
 			name = LogicTests;
 			productName = LogicTests;
 			productReference = DA71CA8411B5E97F008696AC /* LogicTests.octest */;
 			productType = "com.apple.product-type.bundle";
-		};
-		DACD432A125B6771001F1F01 /* Hockey */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DACD4330125B6783001F1F01 /* Build configuration list for PBXNativeTarget "Hockey" */;
-			buildPhases = (
-				DA7C7B2C13EFAE5B000432D1 /* CopyFiles */,
-				DACD4327125B6771001F1F01 /* Headers */,
-				DACD4328125B6771001F1F01 /* Sources */,
-				DACD4329125B6771001F1F01 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Hockey;
-			productName = Hockey;
-			productReference = DACD432B125B6771001F1F01 /* libHockey.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		DAE9313D1245440500335F0F /* TouchXML */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DAE931421245442200335F0F /* Build configuration list for PBXNativeTarget "TouchXML" */;
-			buildPhases = (
-				DAE9313A1245440500335F0F /* Headers */,
-				DAE9313B1245440500335F0F /* Sources */,
-				DAE9313C1245440500335F0F /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = TouchXML;
-			productName = TouchXML;
-			productReference = DAE9313E1245440500335F0F /* libTouchXML.a */;
-			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -2137,10 +1541,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* DGS */,
 				DA71CA8311B5E97F008696AC /* LogicTests */,
-				DA58E77A124536DC00387BB5 /* AsiHTTPRequest */,
 				DA58E8031245398B00387BB5 /* fuego */,
-				DAE9313D1245440500335F0F /* TouchXML */,
-				DACD432A125B6771001F1F01 /* Hockey */,
 			);
 		};
 /* End PBXProject section */
@@ -2194,7 +1595,6 @@
 				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
-				DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */,
 				6645B192147CCE2400170504 /* dgs.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2232,6 +1632,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		60F25901805E46D3A53A6D99 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-logic_tests-resources.sh\"\n";
+		};
 		DA0E103D140F240D0067BE35 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2294,23 +1708,6 @@
 				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
 				DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA58E778124536DC00387BB5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA08A6101294DAD10098A0C6 /* ASIAuthenticationDialog.m in Sources */,
-				DA08A6131294DAD10098A0C6 /* ASIDataCompressor.m in Sources */,
-				DA08A6151294DAD10098A0C6 /* ASIDataDecompressor.m in Sources */,
-				DA08A6171294DAD10098A0C6 /* ASIDownloadCache.m in Sources */,
-				DA08A6191294DAD10098A0C6 /* ASIFormDataRequest.m in Sources */,
-				DA08A61B1294DAD10098A0C6 /* ASIHTTPRequest.m in Sources */,
-				DA08A61F1294DAD10098A0C6 /* ASIInputStream.m in Sources */,
-				DA08A6211294DAD10098A0C6 /* ASINetworkQueue.m in Sources */,
-				DA08A6241294DAD10098A0C6 /* ASIWebPageRequest.m in Sources */,
-				DA08A62B1294DB340098A0C6 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2429,68 +1826,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DACD4328125B6771001F1F01 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA7C7B1413EFA600000432D1 /* BWApp.m in Sources */,
-				DA7C7B1613EFA600000432D1 /* BWGlobal.m in Sources */,
-				DA7C7B1813EFA600000432D1 /* BWHockeyManager.m in Sources */,
-				DA7C7B1A13EFA600000432D1 /* BWHockeySettingsViewController.m in Sources */,
-				DA7C7B1C13EFA600000432D1 /* BWHockeyViewController.m in Sources */,
-				DA7C7B1E13EFA600000432D1 /* NSString+HockeyAdditions.m in Sources */,
-				DA7C7B2013EFA600000432D1 /* PSAppStoreHeader.m in Sources */,
-				DA7C7B2213EFA600000432D1 /* PSStoreButton.m in Sources */,
-				DA7C7B2413EFA600000432D1 /* PSWebTableViewCell.m in Sources */,
-				DA7C7B2613EFA600000432D1 /* UIImage+HockeyAdditions.m in Sources */,
-				DA7C7B2813EFA600000432D1 /* JSONKit.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DAE9313B1245440500335F0F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DAE9315D1245443100335F0F /* CXMLDocument_CreationExtensions.m in Sources */,
-				DAE9315F1245443100335F0F /* CXMLNode_CreationExtensions.m in Sources */,
-				DAE931611245443100335F0F /* CXMLDocument_PrivateExtensions.m in Sources */,
-				DAE931631245443100335F0F /* CXMLDocument.m in Sources */,
-				DAE931651245443100335F0F /* CXMLElement_CreationExtensions.m in Sources */,
-				DAE931671245443100335F0F /* CXMLElement_ElementTreeExtensions.m in Sources */,
-				DAE931691245443100335F0F /* CXMLElement.m in Sources */,
-				DAE9316B1245443100335F0F /* CXMLNode_PrivateExtensions.m in Sources */,
-				DAE9316D1245443100335F0F /* CXMLNode_XPathExtensions.m in Sources */,
-				DAE9316F1245443100335F0F /* CXMLNode.m in Sources */,
-				DAE931711245443100335F0F /* CTidy.m in Sources */,
-				DAE931AF1245446900335F0F /* access.c in Sources */,
-				DAE931B11245446900335F0F /* alloc.c in Sources */,
-				DAE931B21245446900335F0F /* attrask.c in Sources */,
-				DAE931B31245446900335F0F /* attrdict.c in Sources */,
-				DAE931B51245446900335F0F /* attrget.c in Sources */,
-				DAE931B61245446900335F0F /* attrs.c in Sources */,
-				DAE931B81245446900335F0F /* buffio.c in Sources */,
-				DAE931B91245446900335F0F /* charsets.c in Sources */,
-				DAE931BB1245446900335F0F /* clean.c in Sources */,
-				DAE931BD1245446900335F0F /* config.c in Sources */,
-				DAE931BF1245446900335F0F /* entities.c in Sources */,
-				DAE931C11245446900335F0F /* fileio.c in Sources */,
-				DAE931C41245446900335F0F /* iconvtc.c in Sources */,
-				DAE931C61245446900335F0F /* istack.c in Sources */,
-				DAE931C71245446900335F0F /* lexer.c in Sources */,
-				DAE931C91245446900335F0F /* localize.c in Sources */,
-				DAE931CA1245446900335F0F /* mappedio.c in Sources */,
-				DAE931CD1245446900335F0F /* parser.c in Sources */,
-				DAE931CF1245446900335F0F /* pprint.c in Sources */,
-				DAE931D11245446900335F0F /* streamio.c in Sources */,
-				DAE931D31245446900335F0F /* tagask.c in Sources */,
-				DAE931D41245446900335F0F /* tags.c in Sources */,
-				DAE931D71245446900335F0F /* tidylib.c in Sources */,
-				DAE931D81245446900335F0F /* tmbstr.c in Sources */,
-				DAE931DA1245446900335F0F /* utf8.c in Sources */,
-				DAE931DD1245446900335F0F /* win32tc.c in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2498,16 +1833,6 @@
 			isa = PBXTargetDependency;
 			target = DA58E8031245398B00387BB5 /* fuego */;
 			targetProxy = DA214FBC12458E8F00448955 /* PBXContainerItemProxy */;
-		};
-		DA214FBF12458E9100448955 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DAE9313D1245440500335F0F /* TouchXML */;
-			targetProxy = DA214FBE12458E9100448955 /* PBXContainerItemProxy */;
-		};
-		DA58E7E7124538C200387BB5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA58E77A124536DC00387BB5 /* AsiHTTPRequest */;
-			targetProxy = DA58E7E6124538C200387BB5 /* PBXContainerItemProxy */;
 		};
 		DA58E80C12453A3400387BB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2519,87 +1844,70 @@
 			target = DA71CA8311B5E97F008696AC /* LogicTests */;
 			targetProxy = DA77A95813B2FB8300803136 /* PBXContainerItemProxy */;
 		};
-		DA77A95B13B2FB8700803136 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DAE9313D1245440500335F0F /* TouchXML */;
-			targetProxy = DA77A95A13B2FB8700803136 /* PBXContainerItemProxy */;
-		};
-		DACD4365125B67DD001F1F01 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DACD432A125B6771001F1F01 /* Hockey */;
-			targetProxy = DACD4364125B67DD001F1F01 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
-				HEADER_SEARCH_PATHS = (
-					/usr/include/libxml2,
-					vendor/boost/include,
-				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
-				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libHockey.a",
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
-					"-ObjC",
+					"$(inherited)",
+					"-lPods",
 				);
 				PRODUCT_NAME = DGSBeta;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor\"",
+				);
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
-				HEADER_SEARCH_PATHS = (
-					/usr/include/libxml2,
-					vendor/boost/include,
-				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
-				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libHockey.a",
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
-					"-ObjC",
+					"$(inherited)",
+					"-lPods",
 				);
 				PRODUCT_NAME = DGS;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					"$(ARCHS_STANDARD_32_BIT)",
@@ -2612,7 +1920,6 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -2621,7 +1928,6 @@
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					"$(ARCHS_STANDARD_32_BIT)",
@@ -2634,43 +1940,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-			};
-			name = Release;
-		};
-		DA58E77C124536DE00387BB5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AsiHTTPRequest;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		DA58E77D124536DE00387BB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AsiHTTPRequest;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -2679,17 +1952,18 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_THUMB_SUPPORT = NO;
-				HEADER_SEARCH_PATHS = (
-					vendor/boost/include,
-					/usr/include/libxml2,
-				);
-				LIBRARY_SEARCH_PATHS = (
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
+					"\"$(SRCROOT)/vendor\"",
 				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = fuego;
 				SKIP_INSTALL = YES;
 			};
@@ -2701,15 +1975,16 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_THUMB_SUPPORT = NO;
-				HEADER_SEARCH_PATHS = (
-					vendor/boost/include,
-					/usr/include/libxml2,
-				);
-				LIBRARY_SEARCH_PATHS = (
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
+					"\"$(SRCROOT)/vendor\"",
 				);
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = fuego;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
@@ -2718,7 +1993,6 @@
 		};
 		DA667DC0125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */;
 			buildSettings = {
 				ARCHS = (
 					"$(ARCHS_STANDARD_32_BIT)",
@@ -2731,7 +2005,6 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
@@ -2741,82 +2014,64 @@
 		};
 		DA667DC1125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/vendor\"",
+				);
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
-				HEADER_SEARCH_PATHS = (
-					/usr/include/libxml2,
-					vendor/boost/include,
-				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
-				);
 				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libHockey.a",
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
-					"-ObjC",
+					"$(inherited)",
+					"-lPods-adhoc",
 				);
 				PRODUCT_NAME = DGSBeta;
+				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Adhoc;
 		};
 		DA667DC2125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/vendor\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					vendor/boost/include,
-					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "LogicTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
-					"-ObjC",
-				);
 				PRODUCT_NAME = LogicTests;
+				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
-			};
-			name = Adhoc;
-		};
-		DA667DC3125AE40300CA9A13 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AsiHttpRequest_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = AsiHTTPRequest;
-				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Adhoc;
@@ -2827,31 +2082,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_THUMB_SUPPORT = NO;
-				HEADER_SEARCH_PATHS = (
-					vendor/boost/include,
-					/usr/include/libxml2,
-				);
-				LIBRARY_SEARCH_PATHS = (
+				DSTROOT = /tmp/xcodeproj.dst;
+				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/vendor/boost/lib\"",
+					"\"$(SRCROOT)/vendor\"",
 				);
-				PRODUCT_NAME = fuego;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
-			};
-			name = Adhoc;
-		};
-		DA667DC5125AE40300CA9A13 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
-				PRODUCT_NAME = TouchXML;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				PRODUCT_NAME = fuego;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
@@ -2859,33 +2100,34 @@
 		};
 		DA71CA8511B5E97F008696AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/vendor\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					vendor/boost/include,
-					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "LogicTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
-					"-ObjC",
-				);
 				PRODUCT_NAME = LogicTests;
+				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
 			};
@@ -2893,100 +2135,35 @@
 		};
 		DA71CA8611B5E97F008696AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/vendor\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
 					vendor/boost/include,
-					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = "LogicTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-force_load",
-					"$(BUILT_PRODUCTS_DIR)/libTouchXML.a",
-					"-ObjC",
-				);
 				PRODUCT_NAME = LogicTests;
+				SKIP_INSTALL = YES;
 				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		DACD432C125B6772001F1F01 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_THUMB_SUPPORT = NO;
-				PRODUCT_NAME = Hockey;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		DACD432D125B6772001F1F01 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				GCC_THUMB_SUPPORT = NO;
-				PRODUCT_NAME = Hockey;
-				SKIP_INSTALL = YES;
-			};
-			name = Adhoc;
-		};
-		DACD432E125B6772001F1F01 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_THUMB_SUPPORT = NO;
-				PRODUCT_NAME = Hockey;
-				SKIP_INSTALL = YES;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		DAE9313F1245440600335F0F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
-				PRODUCT_NAME = TouchXML;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		DAE931401245440600335F0F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = TouchXML_Prefix.pch;
-				GCC_THUMB_SUPPORT = NO;
-				PRODUCT_NAME = TouchXML;
-				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -3014,16 +2191,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA58E782124536E200387BB5 /* Build configuration list for PBXNativeTarget "AsiHTTPRequest" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA58E77C124536DE00387BB5 /* Debug */,
-				DA667DC3125AE40300CA9A13 /* Adhoc */,
-				DA58E77D124536DE00387BB5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		DA58E807124539AB00387BB5 /* Build configuration list for PBXNativeTarget "fuego" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3040,26 +2207,6 @@
 				DA71CA8511B5E97F008696AC /* Debug */,
 				DA667DC2125AE40300CA9A13 /* Adhoc */,
 				DA71CA8611B5E97F008696AC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DACD4330125B6783001F1F01 /* Build configuration list for PBXNativeTarget "Hockey" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DACD432C125B6772001F1F01 /* Debug */,
-				DACD432D125B6772001F1F01 /* Adhoc */,
-				DACD432E125B6772001F1F01 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DAE931421245442200335F0F /* Build configuration list for PBXNativeTarget "TouchXML" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DAE9313F1245440600335F0F /* Debug */,
-				DA667DC5125AE40300CA9A13 /* Adhoc */,
-				DAE931401245440600335F0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

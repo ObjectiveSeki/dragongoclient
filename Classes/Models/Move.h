@@ -11,13 +11,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum _MovePlayer {
+typedef enum {
 	kMovePlayerNone,
 	kMovePlayerBlack,
 	kMovePlayerWhite
 } MovePlayer;
 
-typedef enum _MoveType {
+typedef enum {
 	kMoveTypeMove,
 	kMoveTypePass,
 	kMoveTypeResign

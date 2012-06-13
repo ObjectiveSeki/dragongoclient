@@ -4,3 +4,4 @@ build/
 *.pbxuser
 xcuserdata/
 .DS_Store
+Pods/

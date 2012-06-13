@@ -60,8 +60,8 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 
 // Internal, but these have to be exposed so the logic tests can hit them
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
-- (NSArray *)gamesFromTable:(NSString *)htmlString;
-- (NSArray *)gamesFromWaitingRoomTable:(NSString *)htmlString;
-- (NSString *)nextPagePath:(NSString *)htmlString;
-- (NewGame *)gameFromWaitingRoomDetailTable:(NSString *)htmlString game:(NewGame *)game;
+- (NSArray *)gamesFromTable:(NSData *)htmlData;
+- (NSArray *)gamesFromWaitingRoomTable:(NSData *)htmlData;
+- (NSString *)nextPagePath:(NSData *)htmlData;
+- (NewGame *)gameFromWaitingRoomDetailTable:(NSData *)htmlData game:(NewGame *)game;
 @end

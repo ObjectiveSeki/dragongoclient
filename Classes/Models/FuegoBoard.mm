@@ -11,7 +11,6 @@
 #import "SgInit.h"
 #import "GoInit.h"
 #import "SgGameReader.h"
-#import "SgNode.h"
 #import "GoModBoard.h"
 #import "GoRegionBoard.h"
 #import "GoBlock.h"

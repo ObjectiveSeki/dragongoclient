@@ -28,7 +28,7 @@
 @property (nonatomic, retain) UIImage *messageOff;
 @property (nonatomic, retain) UIImage *messageOn;
 @property (nonatomic, retain) NSFileHandle *logFile;
-@property (nonatomic, retain) NSDate *nextRefreshTime;
+@property (nonatomic, retain) NSDate *lastRefreshTime;
 
 - (NSString *)logFilePath;
 
