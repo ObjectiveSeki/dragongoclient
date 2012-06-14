@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ "$1" == "--sudo" ]]; then
     echo "All commands (brew, gem, pod) will be run with sudo. You may be prompted by sudo for your password."
