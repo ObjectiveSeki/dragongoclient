@@ -51,9 +51,12 @@
 		numberOfGames = 1;
 		boardSize = 19;
 		maxHandicap = 21;
-		stdHandicap = NO;
-		timeValue = 3;
-		timeUnit = kTimePeriodMonths;
+		stdHandicap = YES;
+        komi = 6.5;
+        handicap = 0;
+		timeValue = 30;
+		timeUnit = kTimePeriodDays;
+        byoYomiType = kByoYomiTypeFischer;
 		japaneseTimeValue = 1;
 		japaneseTimeUnit = kTimePeriodDays;
 		japaneseTimePeriods = 10;
@@ -210,7 +213,31 @@
     } else {
         return [NSString stringWithFormat:@"%d %@", count, [self timePeriodValue:unit]];
     }
+}
 
+- (NSString *)komiTypeNameFromValue:(NSString *)komiTypeValue {
+    if ([komiTypeValue isEqualToString:@"conv"]) {
+        return @"Conventional";
+    } else if ([komiTypeValue isEqualToString:@"proper"]) {
+        return @"Proper";
+    } else if ([komiTypeValue isEqualToString:@"nigiri"]) {
+        return @"Nigiri";
+    } else if ([komiTypeValue isEqualToString:@"double"]) {
+        return @"Double Game";
+    } else if ([komiTypeValue isEqualToString:@"black"]) {
+        return @"Take White";
+    } else if ([komiTypeValue isEqualToString:@"white"]) {
+        return @"Take Black";
+    } 
+    
+    return komiTypeValue;
+}
+
+- (NSString *)boolNameFromValue:(BOOL)value {
+    if (value) {
+        return @"Yes";
+    }
+    return @"No";
 }
 
 - (void)dealloc {

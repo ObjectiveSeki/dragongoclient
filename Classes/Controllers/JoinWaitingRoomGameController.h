@@ -8,12 +8,10 @@
 
 @interface JoinWaitingRoomGameController : JWTableViewController {
 	NewGame *game;
-	NSString *message;
     UIAlertView *deleteConfirmation;
 }
 
 @property (nonatomic, retain) NewGame *game;
-@property (nonatomic, retain) NSString *message;
 @property (nonatomic, retain) UIAlertView *deleteConfirmation;
 
 @end

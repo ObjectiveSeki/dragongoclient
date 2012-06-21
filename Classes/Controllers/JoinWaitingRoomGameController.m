@@ -5,7 +5,6 @@
 @implementation JoinWaitingRoomGameController
 
 @synthesize game;
-@synthesize message;
 @synthesize deleteConfirmation;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -99,28 +98,6 @@
 	[sections addObject:[self opponentSection]];
 	[sections addObject:[self gameSection]];
 	
-	if (!self.game.myGame) {
-		TableSection *replySection = [[TableSection alloc] init];
-		TableRow *replyRow = [[TableRow alloc] init];
-		replyRow.cellClass = [TextCell class];
-		replyRow.cellInit = ^() {
-			return (UITableViewCell *)[[[replyRow.cellClass alloc] init] autorelease];
-		};
-		replyRow.cellSetup = ^(UITableViewCell *tableCell) {
-			TextCell *cell = (TextCell *)tableCell;
-			cell.textLabel.text = @"Message";
-			cell.textField.placeholder = @"Leave a message";
-			cell.onChanged = ^(TextCell *textCell) {
-				self.message = textCell.textField.text;
-			};
-		};
-		
-		[replySection addRow:replyRow];
-		[replyRow release];
-		[sections addObject:replySection];
-		[replySection release];	
-	}
-	
 	TableSection *buttonSection = [[TableSection alloc] init];
 	TableRow *buttonRow = [[TableRow alloc] init];
 	buttonRow.cellClass = [UITableViewCell class];
@@ -147,7 +124,7 @@
             [self.deleteConfirmation show];
 		} else {
             [self showSpinner:@"Joining..."];
-			[self.gs joinWaitingRoomGame:game.gameId comment:self.message onSuccess:^() {
+			[self.gs joinWaitingRoomGame:game.gameId onSuccess:^() {
                 [self hideSpinner:YES];
 				[self.navigationController popToRootViewControllerAnimated:YES];
 			}];
@@ -200,7 +177,6 @@
 
 - (void)dealloc {
 	self.game = nil;
-	self.message = nil;
     self.deleteConfirmation = nil;
     [super dealloc];
 }

@@ -128,4 +128,8 @@ typedef enum _ByoYomiType {
 - (NSString *)timePeriodString:(int)count withTimeUnit:(TimePeriod)unit;
 - (NSString *)timePeriodValue:(TimePeriod)value;
 
+// Parsing functions from the JSON data
+- (NSString *)komiTypeNameFromValue:(NSString *)komiTypeValue;
+- (NSString *)boolNameFromValue:(BOOL)value;
+
 @end

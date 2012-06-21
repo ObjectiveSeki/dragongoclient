@@ -45,6 +45,8 @@
 		DA08A62A1294DB340098A0C6 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = DA08A6281294DB340098A0C6 /* Reachability.h */; };
 		DA08A62B1294DB340098A0C6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08A6291294DB340098A0C6 /* Reachability.m */; };
 		DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DA7C7B0D13EFA600000432D1 /* Hockey.bundle */; };
+		DA0F2E9B159197F90048E9B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0F2E9A159197F90048E9B4 /* JSONKit.m */; };
+		DA0F2E9C159197F90048E9B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0F2E9A159197F90048E9B4 /* JSONKit.m */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
@@ -273,6 +275,8 @@
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38AB9911EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */; };
+		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
+		DA391DDF1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
 		DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
@@ -321,8 +325,6 @@
 		DA7C7B2413EFA600000432D1 /* PSWebTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0A13EFA600000432D1 /* PSWebTableViewCell.m */; };
 		DA7C7B2513EFA600000432D1 /* UIImage+HockeyAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0B13EFA600000432D1 /* UIImage+HockeyAdditions.h */; };
 		DA7C7B2613EFA600000432D1 /* UIImage+HockeyAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B0C13EFA600000432D1 /* UIImage+HockeyAdditions.m */; };
-		DA7C7B2713EFA600000432D1 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DA7C7B0F13EFA600000432D1 /* JSONKit.h */; };
-		DA7C7B2813EFA600000432D1 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C7B1013EFA600000432D1 /* JSONKit.m */; };
 		DA7C7B2D13EFAE5D000432D1 /* Hockey.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = DA7C7B0D13EFA600000432D1 /* Hockey.bundle */; };
 		DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */; };
 		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
@@ -538,6 +540,8 @@
 		DA08A60E1294DAD10098A0C6 /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASIWebPageRequest.m; path = vendor/AsiHttpRequest/Classes/ASIWebPageRequest.m; sourceTree = "<group>"; };
 		DA08A6281294DB340098A0C6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		DA08A6291294DB340098A0C6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		DA0F2E99159197F90048E9B4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		DA0F2E9A159197F90048E9B4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
@@ -766,6 +770,8 @@
 		DA38AB9711EC028B005E1AB7 /* First Score.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "First Score.sgf"; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginViewController.mm; sourceTree = "<group>"; };
+		DA391DDC1592CB2900F9E36F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		DA391DDD1592CB2900F9E36F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		DA4026C811D06C5A005017C4 /* LoginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProtocol.h; sourceTree = "<group>"; };
 		DA402AC611D30931005017C4 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
@@ -819,9 +825,6 @@
 		DA7C7B0B13EFA600000432D1 /* UIImage+HockeyAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+HockeyAdditions.h"; sourceTree = "<group>"; };
 		DA7C7B0C13EFA600000432D1 /* UIImage+HockeyAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+HockeyAdditions.m"; sourceTree = "<group>"; };
 		DA7C7B0D13EFA600000432D1 /* Hockey.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Hockey.bundle; path = vendor/Hockey/client/iOS/Hockey.bundle; sourceTree = "<group>"; };
-		DA7C7B0F13EFA600000432D1 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		DA7C7B1013EFA600000432D1 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		DA7C7B1113EFA600000432D1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		DA7C7B1213EFA600000432D1 /* README.mkdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.mkdown; path = vendor/Hockey/client/iOS/README.mkdown; sourceTree = "<group>"; };
 		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
 		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
@@ -1466,6 +1469,8 @@
 				DA0762B61377B678003E0390 /* DGSDev.m */,
 				DA8E707A13D5337E007E569B /* GameList.h */,
 				DA8E707B13D5337E007E569B /* GameList.m */,
+				DA391DDC1592CB2900F9E36F /* Player.h */,
+				DA391DDD1592CB2900F9E36F /* Player.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1505,6 +1510,8 @@
 		DA58E7841245371700387BB5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				DA0F2E99159197F90048E9B4 /* JSONKit.h */,
+				DA0F2E9A159197F90048E9B4 /* JSONKit.m */,
 				DA7C7AF713EFA578000432D1 /* Hockey */,
 				DAE93138124543E400335F0F /* TouchXML */,
 				DA58E80F12453A8400387BB5 /* Fuego */,
@@ -1587,7 +1594,6 @@
 				DA7C7B0113EFA600000432D1 /* BWHockeyViewController.m */,
 				DA7C7B0213EFA600000432D1 /* Helper */,
 				DA7C7B0D13EFA600000432D1 /* Hockey.bundle */,
-				DA7C7B0E13EFA600000432D1 /* JSON */,
 				DA7C7B1213EFA600000432D1 /* README.mkdown */,
 			);
 			name = Hockey;
@@ -1609,17 +1615,6 @@
 			);
 			name = Helper;
 			path = vendor/Hockey/client/iOS/Helper;
-			sourceTree = "<group>";
-		};
-		DA7C7B0E13EFA600000432D1 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				DA7C7B0F13EFA600000432D1 /* JSONKit.h */,
-				DA7C7B1013EFA600000432D1 /* JSONKit.m */,
-				DA7C7B1113EFA600000432D1 /* README.md */,
-			);
-			name = JSON;
-			path = vendor/Hockey/client/iOS/JSON;
 			sourceTree = "<group>";
 		};
 		DAE93138124543E400335F0F /* TouchXML */ = {
@@ -1976,7 +1971,6 @@
 				DA7C7B2113EFA600000432D1 /* PSStoreButton.h in Headers */,
 				DA7C7B2313EFA600000432D1 /* PSWebTableViewCell.h in Headers */,
 				DA7C7B2513EFA600000432D1 /* UIImage+HockeyAdditions.h in Headers */,
-				DA7C7B2713EFA600000432D1 /* JSONKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2280,6 +2274,8 @@
 				DA0762B71377B678003E0390 /* DGSDev.m in Sources */,
 				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
+				DA0F2E9B159197F90048E9B4 /* JSONKit.m in Sources */,
+				DA391DDE1592CB2900F9E36F /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2412,6 +2408,8 @@
 				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */,
 				DA0762B81377B678003E0390 /* DGSDev.m in Sources */,
 				DA8E707D13D5337E007E569B /* GameList.m in Sources */,
+				DA0F2E9C159197F90048E9B4 /* JSONKit.m in Sources */,
+				DA391DDF1592CB2900F9E36F /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2429,7 +2427,6 @@
 				DA7C7B2213EFA600000432D1 /* PSStoreButton.m in Sources */,
 				DA7C7B2413EFA600000432D1 /* PSWebTableViewCell.m in Sources */,
 				DA7C7B2613EFA600000432D1 /* UIImage+HockeyAdditions.m in Sources */,
-				DA7C7B2813EFA600000432D1 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
