@@ -135,7 +135,7 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 }
 
 - (void)resetThrottle {
-	self.lastRefreshTime = [[NSDate alloc] init];
+	self.lastRefreshTime = [NSDate date];
 }
 
 - (BOOL)refreshThrottled {

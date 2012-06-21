@@ -11,10 +11,10 @@
 #import "LoginViewController.h"
 #import "BooleanCell.h"
 
-
 @implementation AddGameViewController
 
 @synthesize descriptionCell, game;
+@synthesize player = _player;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -46,11 +46,15 @@ typedef enum _AddGameSection {
 }
 
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.player = [Player currentPlayer];
+    if (!self.player.rated) {
+        self.game.komiType = kKomiTypeManual;
+    }
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -97,7 +101,11 @@ typedef enum _AddGameSection {
     if (section == kDescriptionSection) {
 		return 1;
 	} else if (section == kBoardSection) {
-		return 2;
+        if (self.game.komiType != kKomiTypeManual) {
+			return 3;
+		} else {
+			return 6;
+		}
 	} else if (section == kTimeSection) {
 		if (self.game.byoYomiType == kByoYomiTypeFischer) {
 			return 3;
@@ -171,11 +179,23 @@ typedef enum _AddGameSection {
 }
 
 - (void)setKomiType:(SelectCell *)cell {
+    KomiType oldKomiType = self.game.komiType;
 	KomiType komiType = [cell.picker selectedRowInComponent:0];
+
 	NSString *komiTypeString = [self.game komiTypeString:komiType];
 	self.game.komiType = komiType;
 	cell.value.text = komiTypeString;
 	cell.selectedOptions = [NSArray arrayWithObject:komiTypeString];
+    
+    // We want to update the table cells without deselecting 
+    // the current cell, so no #reloadData for you.
+    NSArray *indexPaths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:3 inSection:kBoardSection], [NSIndexPath indexPathForRow:4 inSection:kBoardSection], [NSIndexPath indexPathForRow:5 inSection:kBoardSection], nil];
+    
+    if (oldKomiType != kKomiTypeManual && komiType == kKomiTypeManual) {
+        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];                    
+    } else if (oldKomiType == kKomiTypeManual && komiType != kKomiTypeManual) {
+        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    }
 }
 
 - (void)setByoYomiType:(SelectCell *)cell {
@@ -298,17 +318,81 @@ typedef enum _AddGameSection {
 			cell.selectedOptions = [NSArray arrayWithObject:boardSize];
 			return cell;
 		} else if ([indexPath row] == 1) {
+            BooleanCell *cell = [self booleanCell:theTableView];
+            cell.textLabel.text = @"Standard Placement";
+            cell.toggleSwitch.on = self.game.stdHandicap;
+            cell.onChanged = ^(BooleanCell *cell) {
+                self.game.stdHandicap = cell.toggleSwitch.on;
+            };
+			return cell;
+		} else if ([indexPath row] == 2) {
 			SelectCell *cell = [self selectCell:theTableView];
 			NSString *komiType = [self.game komiTypeString];
-			NSArray *options = [NSArray arrayWithObjects:[self.game komiTypeString:kKomiTypeConventional], [self.game komiTypeString:kKomiTypeProper], nil];
-			cell.label.text = @"Komi Type";
+			NSMutableArray *options = [NSMutableArray array];
+            if (self.player.rated) {
+                [options addObjectsFromArray:[NSArray arrayWithObjects:[self.game komiTypeString:kKomiTypeConventional], [self.game komiTypeString:kKomiTypeProper], nil]];
+            } else {
+                cell.userInteractionEnabled = NO;
+            }
+            [options addObject:[self.game komiTypeString:kKomiTypeManual]];
+            cell.label.text = @"Komi Type";
 			cell.value.text = komiType;
 			cell.changedSelector = @selector(setKomiType:);
 			cell.options = [NSArray arrayWithObject:options];
 			cell.selectedOptions = [NSArray arrayWithObject:komiType];
 			cell.sizes = nil;
 			return cell;
-		}
+		} else if ([indexPath row] == 3) {
+            SelectCell *cell = [self selectCell:theTableView];
+			NSString *manualKomiType = [self.game manualKomiTypeString];
+            NSMutableArray *options = [NSMutableArray array];
+            [options addObject:[self.game manualKomiTypeString:kManualKomiTypeNigiri]];
+            [options addObject:[self.game manualKomiTypeString:kManualKomiTypeDouble]];
+            [options addObject:[self.game manualKomiTypeString:kManualKomiTypeBlack]];
+            [options addObject:[self.game manualKomiTypeString:kManualKomiTypeWhite]];
+                        
+			cell.label.text = @"Game Style";
+			cell.value.text = manualKomiType;
+            cell.onChanged = ^(SelectCell *cell) {
+                ManualKomiType manualKomiType = [cell.picker selectedRowInComponent:0];
+                NSString *manualKomiTypeString = [self.game manualKomiTypeString:manualKomiType];
+                self.game.manualKomiType = manualKomiType;
+                cell.value.text = manualKomiTypeString;
+                cell.selectedOptions = [NSArray arrayWithObject:manualKomiTypeString];
+            };
+			cell.options = [NSArray arrayWithObject:options];
+			cell.selectedOptions = [NSArray arrayWithObject:manualKomiType];
+			cell.sizes = nil;
+			return cell;
+        } else if ([indexPath row] == 4) {
+            SelectCell *cell = [self selectCell:theTableView];
+            NSMutableArray *handicaps = [[NSMutableArray alloc] initWithObjects:@"0", nil];
+            for (int i = 2; i < 22; i++) {
+                [handicaps addObject:[NSString stringWithFormat:@"%d", i]];
+            }
+            
+			cell.label.text = @"Handicap";
+			cell.value.text = [NSString stringWithFormat:@"%d", self.game.handicap];
+            cell.onChanged = ^(SelectCell *cell) {
+                NSString *handicapString = [cell selectedValueInComponent:0];
+                self.game.handicap = [handicapString intValue];
+                cell.value.text = handicapString;
+            };
+			cell.options = [NSArray arrayWithObject:handicaps];
+			cell.selectedOptions = [NSArray arrayWithObject:[NSString stringWithFormat:@"%d", self.game.handicap]];
+			cell.sizes = nil;
+			return cell;
+        } else if ([indexPath row] == 5) {
+            TextCell *cell = [self textCell:theTableView];
+            cell.textLabel.text = @"Komi";
+            cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
+            cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+            cell.onChanged = ^(TextCell *cell) {
+                self.game.komi = [cell.textField.text floatValue];
+                cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
+            };
+            return cell;
+        }
 	} else if ([indexPath section] == kTimeSection) {
 		if ([indexPath row] == 0) {
 			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit selector:@selector(setMainTime:) label:@"Main Time"];

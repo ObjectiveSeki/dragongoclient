@@ -431,8 +431,9 @@
     [request setPostValue:[game ruleSetValue] forKey:@"ruleset"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game boardSize]] forKey:@"size"];
     [request setPostValue:[game komiTypeValue] forKey:@"cat_htype"];
+    [request setPostValue:[game manualKomiTypeValue] forKey:@"color_m"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game handicap]] forKey:@"handicap_m"];
-    [request setPostValue:[NSString stringWithFormat:@"%f", [game komi]] forKey:@"komi_m"];
+    [request setPostValue:[NSString stringWithFormat:@"%0.1f", [game komi]] forKey:@"komi_m"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game adjustedHandicap]] forKey:@"adj_handicap"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game minHandicap]] forKey:@"min_handicap"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game maxHandicap]] forKey:@"max_handicap"];

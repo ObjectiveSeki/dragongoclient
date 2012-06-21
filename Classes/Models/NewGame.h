@@ -11,8 +11,16 @@
 
 typedef enum _KomiType {
 	kKomiTypeConventional,
-	kKomiTypeProper
+	kKomiTypeProper,
+    kKomiTypeManual
 } KomiType;
+
+typedef enum {
+    kManualKomiTypeNigiri,
+    kManualKomiTypeDouble,
+    kManualKomiTypeBlack,
+    kManualKomiTypeWhite
+} ManualKomiType;
 
 typedef enum _RuleSet {
 	kRuleSetJapanese,
@@ -42,6 +50,7 @@ typedef enum _ByoYomiType {
 	RuleSet ruleSet;
 	int boardSize;
 	KomiType komiType;
+    ManualKomiType manualKomiType;
 	int adjustedHandicap;
 	int minHandicap;
 	int maxHandicap;
@@ -80,6 +89,7 @@ typedef enum _ByoYomiType {
 @property(nonatomic, assign) RuleSet ruleSet;
 @property(nonatomic, assign) int boardSize;
 @property(nonatomic, assign) KomiType komiType;
+@property(nonatomic, assign) ManualKomiType manualKomiType;
 @property(nonatomic, assign) int adjustedHandicap;
 @property(nonatomic, assign) int minHandicap;
 @property(nonatomic, assign) int maxHandicap;
@@ -119,6 +129,13 @@ typedef enum _ByoYomiType {
 // The komi type, in human-readable form
 - (NSString *)komiTypeString:(KomiType)komiType;
 - (NSString *)komiTypeString;
+
+// The manual komi type, in a form value that DGS understands
+- (NSString *)manualKomiTypeValue;
+
+// The manual komi type, in human-readable form
+- (NSString *)manualKomiTypeString:(ManualKomiType)manualKomiType;
+- (NSString *)manualKomiTypeString;
 
 - (NSString *)jigoModeValue;
 - (NSString *)byoYomiTypeValue;

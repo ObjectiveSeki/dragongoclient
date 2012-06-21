@@ -14,6 +14,7 @@
 @synthesize ruleSet;
 @synthesize boardSize;
 @synthesize komiType;
+@synthesize manualKomiType;
 @synthesize adjustedHandicap;
 @synthesize minHandicap;
 @synthesize maxHandicap;
@@ -99,7 +100,10 @@
 		case kKomiTypeProper:
 			komiTypeString = @"proper";
 			break;
-	}
+        case kKomiTypeManual:
+			komiTypeString = @"manual";
+			break;
+    }
 	return komiTypeString;
 }
 
@@ -113,12 +117,59 @@
 		case kKomiTypeProper:
 			komiTypeString = @"Proper";
 			break;
+		case kKomiTypeManual:
+			komiTypeString = @"Manual Handicap";
+            break;
 	}
 	return komiTypeString;
 }
 
 - (NSString *)komiTypeString {
 	return [self komiTypeString:self.komiType];
+}
+
+- (NSString *)manualKomiTypeValue {
+	NSString *string = @"";
+	
+	switch(self.manualKomiType) {
+		case kManualKomiTypeNigiri:
+			string = @"nigiri";
+			break;
+		case kManualKomiTypeDouble:
+			string = @"double";
+			break;
+   		case kManualKomiTypeBlack:
+			string = @"black";
+			break;
+   		case kManualKomiTypeWhite:
+			string = @"white";
+            break;
+	}
+	return string;
+}
+
+- (NSString *)manualKomiTypeString:(ManualKomiType)aManualKomiType {
+	NSString *string = @"";
+	
+	switch(aManualKomiType) {
+		case kManualKomiTypeNigiri:
+			string = @"Nigiri";
+			break;
+		case kManualKomiTypeDouble:
+			string = @"Double";
+			break;
+   		case kManualKomiTypeBlack:
+			string = @"Take Black";
+			break;
+   		case kManualKomiTypeWhite:
+			string = @"Take White";
+            break;
+	}
+	return string;
+}
+
+- (NSString *)manualKomiTypeString {
+	return [self manualKomiTypeString:self.manualKomiType];
 }
 
 - (NSString *)jigoModeValue {

@@ -12,6 +12,7 @@
 #import "LoginProtocol.h"
 #import "DGS.h"
 #import "JWTableViewController.h"
+#import "Player.h"
 
 @interface AddGameViewController : JWTableViewController <LoginProtocol> {
 	TextCell *descriptionCell;
@@ -21,6 +22,7 @@
 
 @property(nonatomic, retain) TextCell *descriptionCell;
 @property(nonatomic, retain) NewGame *game;
+@property(nonatomic, retain) Player *player;
 
 - (IBAction)addGame;
 

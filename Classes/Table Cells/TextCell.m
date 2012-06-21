@@ -16,7 +16,7 @@
 - (id)init {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([self class])])) {
         [[NSBundle mainBundle] loadNibNamed:@"TextCell" owner:self options:nil];
-		[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+		[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingDidEnd];
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -24,7 +24,7 @@
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
-	[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+	[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingDidEnd];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
