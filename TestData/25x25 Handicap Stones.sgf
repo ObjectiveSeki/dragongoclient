@@ -1,0 +1,28 @@
+(
+;FF[4]GM[1]
+AP[DGS:1.0.15]
+PC[Dragon Go Server: http://www.dragongoserver.net/]
+DT[2012-06-22,2012-06-22]
+GN[justinweiss_tes2-justinweiss_test-741722-20120622]
+SO[http://www.dragongoserver.net/game.php?gid=741722]
+PB[justinweiss test (justinweiss_test)]
+PW[justinweiss test2 (justinweiss_tes2)]
+BR[20k]
+WR[?]
+XM[15]
+GC[Game ID: 741722
+Game Type: GO (1:1)
+Rated: N
+
+White Start Rating: ?
+Black Start Rating: 20k (0%) - ELO 100]
+OT[30 days with 1 day extra per move]
+RU[Japanese]
+SZ[25]
+KM[6.5]
+HA[14]
+AB[dd][cf][gd][pd][vd][sd][do][vp][dv][tw][vv][ds][vs][fw]
+C[justinweiss test (justinweiss_test): Message!]PL[W]
+;MN[1]W[mv]
+C[]
+)

@@ -389,7 +389,6 @@ typedef enum _AddGameSection {
             cell.textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
             cell.onChanged = ^(TextCell *cell) {
                 self.game.komi = [cell.textField.text floatValue];
-                cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
             };
             return cell;
         }

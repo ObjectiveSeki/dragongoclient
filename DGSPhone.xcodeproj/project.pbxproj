@@ -430,6 +430,8 @@
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAF911F611BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAFADA4F12CF0EF100985126 /* waiting.html in Resources */ = {isa = PBXBuildFile; fileRef = DAFADA4E12CF0EF100985126 /* waiting.html */; };
+		DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
+		DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -986,6 +988,7 @@
 		DAF911F211BB796900FE7B96 /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
 		DAF911F311BB796900FE7B96 /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
 		DAFADA4E12CF0EF100985126 /* waiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = waiting.html; sourceTree = "<group>"; };
+		DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "25x25 Handicap Stones.sgf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1777,6 +1780,7 @@
 				DA38AB9711EC028B005E1AB7 /* First Score.sgf */,
 				DAEA525711B895A100F4CCB3 /* status.html */,
 				DAEA534711B8A4C000F4CCB3 /* status.csv */,
+				DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -2178,6 +2182,7 @@
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
 				DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */,
+				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2208,6 +2213,7 @@
 				DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */,
 				DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */,
 				DA2EE1BB12F6790B003FEE23 /* owned_game.html in Resources */,
+				DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2526,7 +2532,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CONFIGURATION_$(CONFIGURATION)",
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
@@ -2557,7 +2566,10 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CONFIGURATION_$(CONFIGURATION)",
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
@@ -2591,6 +2603,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2613,6 +2626,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2621,7 +2635,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "EFB72351-E7F8-41D5-899C-8FA267934A25";
+				PROVISIONING_PROFILE = "12DF06E1-379D-499C-BBF6-44F6132EACBB";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2710,6 +2724,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -2731,7 +2746,10 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CONFIGURATION_$(CONFIGURATION)",
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
@@ -2770,7 +2788,10 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					LOGIC_TEST_MODE,
+					"$(inherited)",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
@@ -2857,7 +2878,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					LOGIC_TEST_MODE,
+					"$(inherited)",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
@@ -2890,7 +2914,10 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					LOGIC_TEST_MODE,
+					"$(inherited)",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				HEADER_SEARCH_PATHS = (
 					vendor/boost/include,
