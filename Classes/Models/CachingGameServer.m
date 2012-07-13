@@ -338,8 +338,8 @@ static sqlite3 *database;
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess {
     [self.gameServer getWaitingRoomGameDetailsForGame:game onSuccess:onSuccess];
 }
-- (void)joinWaitingRoomGame:(int)gameId comment:(NSString *)comment onSuccess:(void (^)())onSuccess {
-    [self.gameServer joinWaitingRoomGame:gameId comment:comment onSuccess:onSuccess];
+- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
+    [self.gameServer joinWaitingRoomGame:gameId onSuccess:onSuccess];
 }
 
 - (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {

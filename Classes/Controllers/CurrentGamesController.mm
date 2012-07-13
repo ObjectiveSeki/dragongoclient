@@ -136,17 +136,13 @@
         return;
     }
 
-	[DGSAppDelegate resetThrottle];
-
 	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
-//	[self setEnabled:NO];
+	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
 		[self hideSpinner:YES];
 
 #if TEST_GAMES
-
-		NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", nil];
 
 		NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones", nil];
 		NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
@@ -164,7 +160,7 @@
 #endif
 		[self hideSpinner:YES];
         [self gameListChanged];
-//		[self setEnabled:YES];
+		[self setEnabled:YES];
 	}];
 }
 
