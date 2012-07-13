@@ -11,9 +11,10 @@ if [[ -x `which brew` && ! -d ~/Library/Application\ Support/appledoc ]]; then
 fi
 
 if [ ! -d DGSPhone.xcworkspace ]; then
-    ${CMD_PREFIX} gem install cocoapods
-    ${CMD_PREFIX} pod setup
-    ${CMD_PREFIX} pod install DGSPhone.xcodeproj
+    ${CMD_PREFIX} gem install bundler
+    bundle install --path=~/.bundle
+    bundle exec pod setup
+    bundle exec pod install
 else
-    ${CMD_PREFIX} pod install
+    bundle exec pod install
 fi

@@ -1,12 +1,12 @@
 platform :ios, :deployment_target => "4.0"
+xcodeproj 'DGSPhone.xcodeproj'
 
-dependency 'ASIHTTPRequest'
-dependency 'GDataXML-HTML'
-
-target :adhoc do
-    dependency 'HockeyKit'
-end
+pod 'ASIHTTPRequest'
+pod 'GDataXML-HTML'
+pod 'JSONKit'
+pod 'HockeyKit'
 
 target :logic_tests, :exclusive => true do
-    dependency 'GDataXML-HTML'
+  link_with 'LogicTests'
+  pod 'GDataXML-HTML'
 end

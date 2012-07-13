@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		6645B190147B8BED00170504 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6645B18F147B8BED00170504 /* libsqlite3.dylib */; };
 		6645B192147CCE2400170504 /* dgs.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6645B191147CCE2400170504 /* dgs.sqlite */; };
+		CE7771B66F8849888D9FC85E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF2422AA37640AC84A2C071 /* libPods.a */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
@@ -324,6 +322,9 @@
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
 		DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */; };
+		DAE5F4C915AFEDBA0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
+		DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
+		DAE5F4CC15AFEE130062B5F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA52A611B8989F00F4CCB3 /* UIKit.framework */; };
 		DAE932AA12454A2900335F0F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DAE932A912454A2900335F0F /* LICENSE */; };
 		DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE932C112454E4800335F0F /* AddGameViewController.m */; };
 		DAE932D21245501100335F0F /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
@@ -333,7 +334,6 @@
 		DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
 		DAEA525811B895A100F4CCB3 /* status.html in Resources */ = {isa = PBXBuildFile; fileRef = DAEA525711B895A100F4CCB3 /* status.html */; };
 		DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
-		DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA526A11B8977B00F4CCB3 /* Foundation.framework */; };
 		DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
 		DAEB649D125E1C3D00A915EB /* Resign.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB649C125E1C3D00A915EB /* Resign.png */; };
 		DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB64A9125E202800A915EB /* Resign@2x.png */; };
@@ -375,17 +375,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DGSPhoneAppDelegate.mm; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* DGSBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
-		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6645B191147CCE2400170504 /* dgs.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dgs.sqlite; sourceTree = "<group>"; };
-		6B8F54A1C01D4825B100B557 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BF2422AA37640AC84A2C071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CE40383ED0524204AD9559A1 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
@@ -632,7 +629,6 @@
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
 		DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CurrentGamesController.mm; sourceTree = "<group>"; };
 		DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		DA4E835315885608000C12A2 /* Pods-adhoc.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-adhoc.xcconfig"; path = "Pods/Pods-adhoc.xcconfig"; sourceTree = "<group>"; };
 		DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingRoomGamesController.h; sourceTree = "<group>"; };
 		DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingRoomGamesController.m; sourceTree = "<group>"; };
 		DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitingRoomGamesView.xib; sourceTree = "<group>"; };
@@ -657,8 +653,8 @@
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
 		DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Adhoc.xcconfig; sourceTree = "<group>"; };
-		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
 		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
 		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
@@ -691,12 +687,12 @@
 		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
 		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
 		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
-		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
+		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
 		DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-logic_tests.xcconfig"; path = "Pods/Pods-logic_tests.xcconfig"; sourceTree = "<group>"; };
-		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
-		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
+		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
 		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
@@ -704,7 +700,7 @@
 		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
 		DAD36367126D586600589A32 /* Message input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input.png"; sourceTree = "<group>"; };
 		DAD36368126D586600589A32 /* Message input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input@2x.png"; sourceTree = "<group>"; };
-		DADD19C711BCA6170038F8BC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DADD19C711BCA6170038F8BC /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DADD1CDD11FD3C0B005922A3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		DADD1CE111FD3C43005922A3 /* FAQ.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ.md; sourceTree = "<group>"; };
 		DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
@@ -716,7 +712,6 @@
 		DAE932B512454B4200335F0F /* Developer.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Developer.md; sourceTree = "<group>"; };
 		DAE932C012454E4800335F0F /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
 		DAE932C112454E4800335F0F /* AddGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGameViewController.m; sourceTree = "<group>"; };
-		DAE932E21245510C00335F0F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAEA517F11B88A1100F4CCB3 /* DGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGS.h; sourceTree = "<group>"; };
 		DAEA518011B88A1100F4CCB3 /* DGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGS.m; sourceTree = "<group>"; };
 		DAEA519911B88D8300F4CCB3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -724,12 +719,7 @@
 		DAEA525711B895A100F4CCB3 /* status.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = status.html; sourceTree = "<group>"; };
 		DAEA525911B895ED00F4CCB3 /* DGSTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSTests.h; sourceTree = "<group>"; };
 		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
-		DAEA526A11B8977B00F4CCB3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
 		DAEB649C125E1C3D00A915EB /* Resign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resign.png; sourceTree = "<group>"; };
 		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
@@ -754,15 +744,15 @@
 				6645B190147B8BED00170504 /* libsqlite3.dylib in Frameworks */,
 				DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */,
 				DA77A95013B2F47200803136 /* libz.dylib in Frameworks */,
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */,
 				DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */,
 				DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */,
 				DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */,
 				DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */,
 				DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */,
+				CE7771B66F8849888D9FC85E /* libPods.a in Frameworks */,
+				DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */,
+				DAE5F4CC15AFEE130062B5F4 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,10 +770,10 @@
 			files = (
 				DA476A5314DA109F00AAF7E0 /* SenTestingKit.framework in Frameworks */,
 				DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */,
-				DAEA526B11B8977B00F4CCB3 /* Foundation.framework in Frameworks */,
 				DAE932D21245501100335F0F /* libfuego.a in Frameworks */,
 				DAC33E9815885EC600CDD7A1 /* libPods-logic_tests.a in Frameworks */,
 				DAC33EE01589AD2100CDD7A1 /* boost.framework in Frameworks */,
+				DAE5F4C915AFEDBA0062B5F4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,7 +824,6 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				CE40383ED0524204AD9559A1 /* Pods.xcconfig */,
-				DA4E835315885608000C12A2 /* Pods-adhoc.xcconfig */,
 				DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */,
 			);
 			name = CustomTemplate;
@@ -877,20 +866,11 @@
 				DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */,
 				DA77A95313B2F67B00803136 /* libxml2.dylib */,
 				DA77A94F13B2F47200803136 /* libz.dylib */,
-				DAEA526A11B8977B00F4CCB3 /* Foundation.framework */,
 				DAEA52A611B8989F00F4CCB3 /* UIKit.framework */,
-				DAEA52A811B898AA00F4CCB3 /* CFNetwork.framework */,
-				DAEA52C811B8991600F4CCB3 /* CoreGraphics.framework */,
-				DAEA52CA11B8991B00F4CCB3 /* SystemConfiguration.framework */,
-				DAEA52CC11B8992200F4CCB3 /* MobileCoreServices.framework */,
 				DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */,
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
-				DAE932E21245510C00335F0F /* QuartzCore.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-				6B8F54A1C01D4825B100B557 /* libPods.a */,
 				DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */,
+				8BF2422AA37640AC84A2C071 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1478,7 +1458,7 @@
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				DA0E103D140F240D0067BE35 /* ShellScript */,
-				60F25901805E46D3A53A6D99 /* Copy Pods Resources */,
+				5D26EC3E623C439DB6718EC6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1645,6 +1625,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5D26EC3E623C439DB6718EC6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		60F25901805E46D3A53A6D99 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1837,7 +1831,6 @@
 				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */,
 				DA0762B81377B678003E0390 /* DGSDev.m in Sources */,
 				DA8E707D13D5337E007E569B /* GameList.m in Sources */,
-				DA0F2E9C159197F90048E9B4 /* JSONKit.m in Sources */,
 				DA391DDF1592CB2900F9E36F /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1884,10 +1877,6 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lPods",
-				);
 				PRODUCT_NAME = DGSBeta;
 				SKIP_INSTALL = YES;
 			};
@@ -1912,10 +1901,6 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lPods",
-				);
 				PRODUCT_NAME = DGS;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
@@ -2050,10 +2035,6 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lPods-adhoc",
-				);
 				PRODUCT_NAME = DGSBeta;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;

@@ -1,12 +1,22 @@
 PODS:
   - ASIHTTPRequest (1.8.1):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
+    - ASIHTTPRequest/CloudFiles (= 1.8.1)
+    - ASIHTTPRequest/S3 (= 1.8.1)
+    - Reachability
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/CloudFiles (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.1):
     - Reachability
   - GDataXML-HTML (1.0.0)
-  - HockeyKit (2.0.4)
+  - HockeyKit (2.0.7)
+  - JSONKit (1.5pre)
   - Reachability (3.0.0)
 
 DEPENDENCIES:
   - ASIHTTPRequest
   - GDataXML-HTML
-  - GDataXML-HTML
   - HockeyKit
+  - JSONKit
