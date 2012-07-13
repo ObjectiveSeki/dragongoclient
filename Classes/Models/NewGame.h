@@ -11,8 +11,16 @@
 
 typedef enum {
 	kKomiTypeConventional,
-	kKomiTypeProper
+	kKomiTypeProper,
+    kKomiTypeManual
 } KomiType;
+
+typedef enum {
+    kManualKomiTypeNigiri,
+    kManualKomiTypeDouble,
+    kManualKomiTypeBlack,
+    kManualKomiTypeWhite
+} ManualKomiType;
 
 typedef enum {
 	kRuleSetJapanese,
@@ -42,6 +50,7 @@ typedef enum {
 	RuleSet ruleSet;
 	int boardSize;
 	KomiType komiType;
+    ManualKomiType manualKomiType;
 	int adjustedHandicap;
 	int minHandicap;
 	int maxHandicap;
@@ -67,7 +76,7 @@ typedef enum {
 	int minRatedGames;
 	int sameOpponent;
 	NSString *comment;
-	
+
 	// String values, for things we can't parse
 	NSString *ratedString;
 	NSString *stdHandicapString;
@@ -80,6 +89,7 @@ typedef enum {
 @property(nonatomic, assign) RuleSet ruleSet;
 @property(nonatomic, assign) int boardSize;
 @property(nonatomic, assign) KomiType komiType;
+@property(nonatomic, assign) ManualKomiType manualKomiType;
 @property(nonatomic, assign) int adjustedHandicap;
 @property(nonatomic, assign) int minHandicap;
 @property(nonatomic, assign) int maxHandicap;
@@ -120,6 +130,13 @@ typedef enum {
 - (NSString *)komiTypeString:(KomiType)komiType;
 - (NSString *)komiTypeString;
 
+// The manual komi type, in a form value that DGS understands
+- (NSString *)manualKomiTypeValue;
+
+// The manual komi type, in human-readable form
+- (NSString *)manualKomiTypeString:(ManualKomiType)manualKomiType;
+- (NSString *)manualKomiTypeString;
+
 - (NSString *)jigoModeValue;
 - (NSString *)byoYomiTypeValue;
 - (NSString *)byoYomiTypeString;
@@ -127,5 +144,9 @@ typedef enum {
 - (NSString *)boolValue:(BOOL)value;
 - (NSString *)timePeriodString:(int)count withTimeUnit:(TimePeriod)unit;
 - (NSString *)timePeriodValue:(TimePeriod)value;
+
+// Parsing functions from the JSON data
+- (NSString *)komiTypeNameFromValue:(NSString *)komiTypeValue;
+- (NSString *)boolNameFromValue:(BOOL)value;
 
 @end

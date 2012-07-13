@@ -39,8 +39,8 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    
     [super setSelected:selected animated:animated];
+
     UITableView *tableView = (UITableView *)self.superview;
     
     if (tableView) {
@@ -49,9 +49,11 @@
     
 	if (selected && ![self isFirstResponder]) {
 		[self becomeFirstResponder];
-	} else {
-		[self resignFirstResponder];
-	}
+	} else if (selected) {
+        [self resignFirstResponder];
+        [parentTableView deselectRowAtIndexPath:[parentTableView indexPathForCell:self] animated:NO];
+    }
+
 }
 
 - (BOOL)canBecomeFirstResponder {

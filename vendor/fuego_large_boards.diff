@@ -1,0 +1,13 @@
+diff --git a/vendor/fuego/smartgame/SgHash.h b/vendor/fuego/smartgame/SgHash.h
+index 06b925d..e23b25e 100644
+--- a/vendor/fuego/smartgame/SgHash.h
++++ b/vendor/fuego/smartgame/SgHash.h
+@@ -292,7 +292,7 @@ public:
+         the number of points on the board. It's up to the client to map points
+         to this range.
+         2 * SG_MAXPOINT, plus capture hash */
+-    static const int MAX_HASH_INDEX = 1500;
++    static const int MAX_HASH_INDEX = 2200;
+ 
+     SgHashZobrist();
+ 

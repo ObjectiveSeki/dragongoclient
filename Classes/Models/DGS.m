@@ -8,6 +8,9 @@
 
 #import "DGS.h"
 #import "GDataXMLNode.h"
+#import "NewGame.h"
+#import "JSONKit.h"
+#import "Player.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
@@ -60,8 +63,9 @@
 	BOOL noUID = (NSNotFound != [responseString rangeOfString:@"#Error: no_uid"].location);
 	BOOL notLoggedIn = (NSNotFound != [responseString rangeOfString:@"#Error: not_logged_in"].location);
     BOOL invalidUser = (NSNotFound != [responseString rangeOfString:@"#Error: invalid_user"].location);
+    BOOL noUserData = (nil == [Player currentPlayer] && (NSNotFound == [urlString rangeOfString:@"obj=user&cmd=info"].location) && (NSNotFound == [[[request originalURL] absoluteString] rangeOfString:@"login.php"].location));
 
-	if (onErrorPageOrIndex || noUID || notLoggedIn || invalidUser) {
+	if (onErrorPageOrIndex || noUID || notLoggedIn || invalidUser || noUserData) {
 		return NO;
 	}
 	return YES;
@@ -143,6 +147,7 @@
         [self.errorView show];
 	} else if (NO == [self loggedIn:request responseString:responseString]) {
 		JWLog(@"Not logged in during request: %@", [request url]);
+        [self resetUserData];
 		[[self delegate] notLoggedIn];
 	} else {
 		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
@@ -197,17 +202,27 @@
 	[self performRequest:request onSuccess:nil];
 }
 
+- (void)getCurrentPlayer {
+    NSURL *url = [self URLWithPath:@"/quick_do.php?obj=user&cmd=info"];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
+    [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
+        [self setCurrentPlayerFromDictionary:[decoder objectWithData:[request responseData]]];
+        [self.delegate loggedIn];
+    }];
+}
+
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password
 {
-
 	NSURL *url = [self URLWithPath:@"/login.php"];
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:username forKey:@"userid"];
 	[request setPostValue:password forKey:@"passwd"];
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-		[self.delegate loggedIn];
-	}];
+        [self getCurrentPlayer];
+    }];
 }
 
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
@@ -235,7 +250,7 @@
     }] autorelease];
 
     // add=9 to force the time limit to show up
-    gameList.nextPagePath = @"/waiting_room.php?add=9";
+    gameList.nextPagePath = @"/waiting_room.php?add=9&sf20=1&good=1";
 
     [gameList loadNextPage:^(GameList *gameList) {
         onSuccess(gameList);
@@ -243,22 +258,31 @@
 }
 
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess {
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.detailUrl];
+    NSString *gameId;
+    NSScanner *scanner = [[NSScanner alloc] initWithString:game.detailUrl.query];
+    [scanner scanUpToString:@"info=" intoString:NULL];
+    [scanner scanString:@"info=" intoString:NULL];
+    [scanner scanCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&gameId];
+    [scanner release];
+
+	NSURL *url = [self URLWithPath:[NSString stringWithFormat:@"/quick_do.php?obj=wroom&cmd=info&wrid=%@&with=user_id", gameId]];
+
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-		NewGame *gameDetails = [self gameFromWaitingRoomDetailTable:[request responseData] game:game];
-		onSuccess(gameDetails);
+        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
+        NewGame *gameDetails = [self gameFromWaitingRoomDetailDictionary:[decoder objectWithData:[request responseData]] game:game];
+        onSuccess(gameDetails);
 	}];
 }
 
-- (void)joinWaitingRoomGame:(int)gameId comment:(NSString *)comment onSuccess:(void (^)())onSuccess {
+- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
 
 	NSURL *url = [self URLWithPath:@"/join_waitingroom_game.php"];
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"id"];
-	[request setPostValue:comment forKey:@"reply"];
 	[request setPostValue:@"Join" forKey:@"join"];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
@@ -408,31 +432,42 @@
 }
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
-	NSURL *url = [self URLWithPath:@"/add_to_waitingroom.php"];
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game boardSize]] forKey:@"size"];
-	[request setPostValue:[game komiTypeValue] forKey:@"handicap_type"];
-	[request setPostValue:[game boolValue:[game stdHandicap]] forKey:@"stdhandicap"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
-	[request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
-	[request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimeValue]] forKey:@"byotimevalue_jap"];
-	[request setPostValue:[game timePeriodValue:[game japaneseTimeUnit]] forKey:@"timeunit_jap"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimePeriods]] forKey:@"byoperiods_jap"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimeValue]] forKey:@"byotimevalue_can"];
-	[request setPostValue:[game timePeriodValue:[game canadianTimeUnit]] forKey:@"timeunit_can"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimePeriods]] forKey:@"byoperiods_can"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", [game fischerTimeValue]] forKey:@"byotimevalue_fis"];
-	[request setPostValue:[game timePeriodValue:[game fischerTimeUnit]] forKey:@"timeunit_fis"];
+    NSURL *url = [self URLWithPath:@"/new_game.php"];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 
-	[request setPostValue:[game boolValue:[game weekendClock]] forKey:@"weekendclock"];
-	[request setPostValue:[game boolValue:[game rated]] forKey:@"rated"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
+    [request setPostValue:[game ruleSetValue] forKey:@"ruleset"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game boardSize]] forKey:@"size"];
+    [request setPostValue:[game komiTypeValue] forKey:@"cat_htype"];
+    [request setPostValue:[game manualKomiTypeValue] forKey:@"color_m"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game handicap]] forKey:@"handicap_m"];
+    [request setPostValue:[NSString stringWithFormat:@"%0.1f", [game komi]] forKey:@"komi_m"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game adjustedHandicap]] forKey:@"adj_handicap"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game minHandicap]] forKey:@"min_handicap"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game maxHandicap]] forKey:@"max_handicap"];
+    [request setPostValue:[game boolValue:[game stdHandicap]] forKey:@"stdhandicap"];
+    [request setPostValue:[NSString stringWithFormat:@"%f", [game adjustedKomi]] forKey:@"adj_komi"];
+    [request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
+    [request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
+    [request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimeValue]] forKey:@"byotimevalue_jap"];
+    [request setPostValue:[game timePeriodValue:[game japaneseTimeUnit]] forKey:@"timeunit_jap"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimePeriods]] forKey:@"byoperiods_jap"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimeValue]] forKey:@"byotimevalue_can"];
+    [request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game canadianTimePeriods]] forKey:@"byoperiods_can"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game fischerTimeValue]] forKey:@"byotimevalue_fis"];
+    [request setPostValue:[game timePeriodValue:[game fischerTimeUnit]] forKey:@"timeunit_fis"];
+
+    [request setPostValue:[game boolValue:[game weekendClock]] forKey:@"weekendclock"];
+    [request setPostValue:[game boolValue:[game rated]] forKey:@"rated"];
     [request setPostValue:[game boolValue:[game requireRatedOpponent]] forKey:@"must_be_rated"];
-	[request setPostValue:[game minimumRating] forKey:@"rating1"];
-	[request setPostValue:[game maximumRating] forKey:@"rating2"];
-	[request setPostValue:[game comment] forKey:@"comment"];
-	[request setPostValue:@"Add Game" forKey:@"add_game"];
+    [request setPostValue:[game minimumRating] forKey:@"rating1"];
+    [request setPostValue:[game maximumRating] forKey:@"rating2"];
+    [request setPostValue:[NSString stringWithFormat:@"%d", [game sameOpponent]] forKey:@"same_opp"];
+    [request setPostValue:[game comment] forKey:@"comment"];
+    [request setPostValue:@"Add Game" forKey:@"add_game"];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
@@ -647,6 +682,34 @@
     return nextPagePath;
 }
 
+- (void)setCurrentPlayerFromDictionary:(NSDictionary *)userDataDictionary {
+    Player *player = [[Player alloc] init];
+    player.userId = [userDataDictionary objectForKey:@"id"];
+    player.ratingStatus = [userDataDictionary objectForKey:@"rating_status"];
+    [Player setCurrentPlayer:player];
+    [player release];
+}
+
+- (void)resetUserData {
+    [Player setCurrentPlayer:nil];
+}
+
+- (NewGame *)gameFromWaitingRoomDetailDictionary:(NSDictionary *)gameDetailDictionary game:(NewGame *)game {
+
+    game.opponent = [[gameDetailDictionary objectForKey:@"user"] objectForKey:@"name"];
+    game.opponentRating = [[gameDetailDictionary objectForKey:@"user"] objectForKey:@"rating"];
+    game.boardSize = [[gameDetailDictionary objectForKey:@"size"] intValue];
+    game.komiTypeName = [game komiTypeNameFromValue:[gameDetailDictionary objectForKey:@"handicap_type"]];
+    game.handicap = [[gameDetailDictionary objectForKey:@"handicap"] intValue];
+    game.komi = [[gameDetailDictionary objectForKey:@"komi"] floatValue];
+    game.ratedString = [game boolNameFromValue:[[gameDetailDictionary objectForKey:@"rated"] boolValue]];
+    game.weekendClockString = [game boolNameFromValue:[[gameDetailDictionary objectForKey:@"time_weekend_clock"] boolValue]];
+    game.comment = [gameDetailDictionary objectForKey:@"comment"];
+    game.myGame = ([[Player currentPlayer].userId isEqual:[[gameDetailDictionary objectForKey:@"user"] objectForKey:@"id"]]);
+
+    return game;
+}
+
 // The newer versions of DGS have these items in a different order.
 - (NewGame *)gameFromNewWaitingRoomDetailTable:(NSArray *)tableRows game:(NewGame *)game {
 	NSError *error;
@@ -677,7 +740,7 @@
 				game.comment = [[rowData lastObject] stringValue];
 			}
 		}
-	} else if ([tableRows count] == 17 || [tableRows count] == 13) { // Handicap game
+	} else if ([tableRows count] == 20) { // rated handicap game
 		for(int i = 0; i < [tableRows count]; i++) {
 			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
 
@@ -685,21 +748,23 @@
 				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
 			} else if (i == 3) {
 				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 5) {
-				game.boardSize = [[[rowData lastObject] stringValue] intValue];
 			} else if (i == 6) {
+				game.boardSize = [[[rowData lastObject] stringValue] intValue];
+			} else if (i == 7) {
 				game.komiTypeName = [[rowData lastObject] stringValue];
-			} else if (i == 10) {
-				game.ratedString = [[rowData lastObject] stringValue];
-			} else if (i == 11) {
-				game.weekendClockString = [[rowData lastObject] stringValue];
 			} else if (i == 12) {
-				game.comment = [[rowData lastObject] stringValue];
+				game.ratedString = [[rowData lastObject] stringValue];
+			} else if (i == 13) {
+				game.weekendClockString = [[rowData lastObject] stringValue];
 			} else if (i == 16) {
+				game.comment = [[rowData lastObject] stringValue];
+			} else if (i == 19) {
 				game.komi = [[[rowData lastObject] stringValue] floatValue];
 			}
 		}
-	}
+	} else if ([tableRows count] == 19) { // unrated handicap game
+
+    }
 	return game;
 }
 

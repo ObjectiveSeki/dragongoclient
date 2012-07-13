@@ -248,6 +248,8 @@
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38AB9911EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */; };
+		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
+		DA391DDF1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
 		DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
@@ -344,6 +346,8 @@
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAF911F611BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAFADA4F12CF0EF100985126 /* waiting.html in Resources */ = {isa = PBXBuildFile; fileRef = DAFADA4E12CF0EF100985126 /* waiting.html */; };
+		DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
+		DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -619,6 +623,8 @@
 		DA38AB9711EC028B005E1AB7 /* First Score.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "First Score.sgf"; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginViewController.mm; sourceTree = "<group>"; };
+		DA391DDC1592CB2900F9E36F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		DA391DDD1592CB2900F9E36F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		DA4026C811D06C5A005017C4 /* LoginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProtocol.h; sourceTree = "<group>"; };
 		DA402AC611D30931005017C4 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
@@ -737,6 +743,7 @@
 		DAF911F211BB796900FE7B96 /* Move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
 		DAF911F311BB796900FE7B96 /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
 		DAFADA4E12CF0EF100985126 /* waiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = waiting.html; sourceTree = "<group>"; };
+		DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "25x25 Handicap Stones.sgf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1192,6 +1199,8 @@
 				DA8E707B13D5337E007E569B /* GameList.m */,
 				DA68408414DB04E9006EF22C /* CachingGameServer.h */,
 				DA68408514DB04E9006EF22C /* CachingGameServer.m */,
+				DA391DDC1592CB2900F9E36F /* Player.h */,
+				DA391DDD1592CB2900F9E36F /* Player.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1299,6 +1308,7 @@
 				DA38AB9711EC028B005E1AB7 /* First Score.sgf */,
 				DAEA525711B895A100F4CCB3 /* status.html */,
 				DAEA534711B8A4C000F4CCB3 /* status.csv */,
+				DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -1525,6 +1535,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Justin Weiss";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1596,6 +1607,7 @@
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
 				6645B192147CCE2400170504 /* dgs.sqlite in Resources */,
+				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1626,6 +1638,7 @@
 				DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */,
 				DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */,
 				DA2EE1BB12F6790B003FEE23 /* owned_game.html in Resources */,
+				DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1708,6 +1721,7 @@
 				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
 				DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */,
+				DA391DDE1592CB2900F9E36F /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1823,6 +1837,8 @@
 				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.mm in Sources */,
 				DA0762B81377B678003E0390 /* DGSDev.m in Sources */,
 				DA8E707D13D5337E007E569B /* GameList.m in Sources */,
+				DA0F2E9C159197F90048E9B4 /* JSONKit.m in Sources */,
+				DA391DDF1592CB2900F9E36F /* Player.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1915,6 +1931,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -1935,6 +1952,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -1942,7 +1960,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "12DF06E1-379D-499C-BBF6-44F6132EACBB";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2000,6 +2018,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;

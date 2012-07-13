@@ -30,7 +30,7 @@
 // The DGS development server has tons of new options for creating a game, 
 // and renames some of the others.
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
-    NSURL *url = [self URLWithPath:@"/add_to_waitingroom.php"];
+    NSURL *url = [self URLWithPath:@"/new_game.php"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     
     [request setPostValue:[NSString stringWithFormat:@"%d", [game numberOfGames]] forKey:@"nrGames"];
@@ -45,7 +45,7 @@
     [request setPostValue:[game jigoModeValue] forKey:@"jigo_mode"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game timeValue]] forKey:@"timevalue"];
     [request setPostValue:[game timePeriodValue:[game timeUnit]] forKey:@"timeunit"];
-    [request setPostValue:[game byoYomiTypeValue] forKey:@"timeunit"];
+    [request setPostValue:[game byoYomiTypeValue] forKey:@"byoyomitype"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimeValue]] forKey:@"byotimevalue_jap"];
     [request setPostValue:[game timePeriodValue:[game japaneseTimeUnit]] forKey:@"timeunit_jap"];
     [request setPostValue:[NSString stringWithFormat:@"%d", [game japaneseTimePeriods]] forKey:@"byoperiods_jap"];
