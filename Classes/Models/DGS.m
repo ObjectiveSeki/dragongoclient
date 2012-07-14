@@ -86,7 +86,16 @@
 			errorString = [[bodyElements objectAtIndex:0] stringValue];
 		}
 		[doc release];
-	}
+	} else if (NSNotFound != [responseString rangeOfString:@"#Error:"].location) {
+        NSString *errorKey;
+        NSScanner *scanner = [[NSScanner alloc] initWithString:responseString];
+        [scanner scanUpToString:@"[#Error:" intoString:NULL];
+        [scanner scanString:@"[#Error: " intoString:NULL];
+        [scanner scanUpToString:@";" intoString:&errorKey];
+        [scanner release];
+        
+        errorString = NSLocalizedStringFromTable(errorKey, @"DGSErrors", nil);
+    }
 
 	return errorString;
 }
@@ -140,16 +149,17 @@
 	JWLog(@"%@: %@", [request url], responseString);
 	NSString *errorString = [self error:request responseString:responseString];
 
-	if (errorString) {
+	if (NO == [self loggedIn:request responseString:responseString]) {
+        // Login errors don't count as real errors
+		JWLog(@"Not logged in during request: %@", [request url]);
+        [self resetUserData];
+		[[self delegate] notLoggedIn];
+	} else if (errorString) {
 		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		self.errorView = alertView;
         [alertView release];
         [self.errorView show];
-	} else if (NO == [self loggedIn:request responseString:responseString]) {
-		JWLog(@"Not logged in during request: %@", [request url]);
-        [self resetUserData];
-		[[self delegate] notLoggedIn];
 	} else {
 		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
 

@@ -1,0 +1,105 @@
+/* 
+  DGSErrors.strings
+  DGSPhone
+
+  Created by Justin Weiss on 7/14/12.
+  Copyright (c) 2012 Justin Weiss. All rights reserved.
+*/
+
+/* Login errors */
+"not_logged_in" = "You are not logged in.";
+"wrong_userid" = "The username you entered is incorrect.";
+"wrong_password" = "The password you entered is incorrect.";
+"cookies_disabled" = "You must enable cookies to login.";
+"fever_vault" = "You have exceeded your login quota.";
+"login_denied" = "Your user has been blocked by a DGS admin.";
+"ip_blocked_guest_login" = "You cannot log in as a guest from this device.";
+
+/* General errors */
+"server_down" = "DGS is undergoing maintenance.";
+"invalid_command" = "This command is invalid.";
+"invalid_args" = "The arguments for this command are invalid.";
+"unknown_entry" = "This item could not be found.";
+"mysql_query_failed" = "There was an error querying the database.";
+"mail_failure" = "There was an error sending the notification mail.";
+
+/* Game creation errors */
+"unknown_ruleset" = "The ruleset is invalid.";
+"handicap_range" = "The handicap is invalid.";
+"komi_range" = "The komi specified is invalid.";
+"invalid_snapshot" = "The shape-game snapshot is invalid.";
+"invalid_snapshot_char" = "The character representing the snapshot is invalid.";
+"mismatch_snapshot" = "The snapshot was inconsistent.";
+"no_initial_rating" = "You need a rating for this game type";
+"time_limit_too_small" = "The time limit is too short.";
+
+"illegal_position" = "You can't make this move.";
+"unknown_game" = "The game data could not be found.";
+"invited_to_unknown_game" = "You have been invited to an unknown game";
+"game_already_accepted" = "This invitation has already been accepted.";
+"wrong_dispute_game" = "The players do not match the game request.";
+"wrong_players" = "The players do not match the game request.";
+"mysql_start_game" = "There was a database error starting the game.";
+"mysql_data_corruption" = "Data corruption detected - Please notify a DGS admin.";
+"feature_disabled" = "This feature is currently disabled.";
+"internal_error" = "Data inconsistency detected - Please notify a DGS admin.";
+
+/* Game errors */
+"game_not_started" = "This invitation has not been accepted yet.";
+"game_finished" = "This game has already finished.";
+"invalid_game_status" = "The game's status is incorrect.";
+"database_corruption" = "Player detection failed - Please notify a DGS admin.";
+"already_played" = "This turn has already been played.";
+"not_game_player" = "You are not a player in this game.";
+
+/* Game move errors */
+"invalid_coord" = "The move's coordinates are invalid.";
+"move_problem" = "Passing is broken - Please contact the developer.";
+"not_your_turn" = "It's not your turn.";
+"invalid_action" = "The action you took is invalid.";
+"mysql_update_game" = "The database failed trying to update the game.";
+"mysql_insert_move" = "The database failed trying to insert the move.";
+"opponent_not_found" = "Opponent database corruption - Please notify a DGS admin.";
+"receiver_not_found" = "Notification failed - Please notify a DGS admin.";
+"mysql_insert_message" = "Error occurred creating the notification message.";
+"early_pass" = "You can't pass yet.";
+"suicide" = "This move would be a suicide.";
+"ko" = "This move would violate ko.";
+"move_problem" = "Prisoner calculation is wrong - Please notify a DGS admin.";
+
+/* Message errors */
+"unknown_message" = "Couldn't find this message.";
+"receiver_not_found" = "The message's recipient couldn't be found.";
+"folder_not_found" = "This folder couldn't be found.";
+"bulkmessage_self" = "You can't send a bulk message to yourself";
+
+/* Message send errors */
+"invalid_action" = "There was an error sending the message.";
+"reply_invalid" = "There was an error replying to the message.";
+"folder_forbidden" = "There was an error moving the message to the folder.";
+"game_delete_invitation" = "There was an error deleting the invitation.";
+
+/* Join game errors */
+"not_allowed_for_guest" = "Guests aren't allowed to join this game.";
+"waitingroom_game_not_found" = "This game is no longer available.";
+"max_games" = "You have already joined too many games.";
+"max_games_opp" = "The opponent has joined too many games.";
+"waitingroom_own_game" = "You can't join your own game.";
+"waitingroom_not_in_rating_range" = "Your rating is restricted for this game.";
+"waitingroom_not_enough_rated_fin_games" = "You haven't finished enough rated games.";
+"waitingroom_not_same_opponent" = "You can't join any more games with this person.";
+
+/* Delete game errors */
+"waitingroom_delete_not_own" = "You can only delete your own games";
+
+/* Set handicap errors */
+"wrong_number_of_handicap_stone" = "The number of handicap stones is incorrect.";
+
+/* Scoring errors */
+"invalid_switch" = "The status of this stone can't be switched.";
+
+/* User info errors */
+"unknown_user" = "The current user can't be found.";
+
+/* Quick status errors */
+"no_uid" = "The current user can't be determined.";

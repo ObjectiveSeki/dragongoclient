@@ -232,6 +232,7 @@
 		DA20DD5013456BFB00829D9D /* SgVectorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DA20DC3F13456BFA00829D9D /* SgVectorUtil.h */; };
 		DA20DD5113456BFB00829D9D /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA20DC4013456BFA00829D9D /* SgWrite.cpp */; };
 		DA20DD5213456BFB00829D9D /* SgWrite.h in Headers */ = {isa = PBXBuildFile; fileRef = DA20DC4113456BFA00829D9D /* SgWrite.h */; };
+		DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA238C2515B22AE800D4050C /* DGSErrors.strings */; };
 		DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE1212F14EC8003FEE23 /* Board@2x.png */; };
 		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
@@ -605,6 +606,7 @@
 		DA20DC4013456BFA00829D9D /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA20DC4113456BFA00829D9D /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
 		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
+		DA238C2515B22AE800D4050C /* DGSErrors.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = DGSErrors.strings; path = Resources/DGSErrors.strings; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
 		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServerProtocol.h; sourceTree = "<group>"; };
@@ -843,6 +845,7 @@
 				DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */,
 				DA8A962711FBB3D100B2E2C7 /* Default.png */,
 				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
+				DA238C2515B22AE800D4050C /* DGSErrors.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1576,6 +1579,7 @@
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
 				6645B192147CCE2400170504 /* dgs.sqlite in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
+				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
