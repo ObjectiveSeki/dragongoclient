@@ -9,4 +9,5 @@ pod 'HockeyKit'
 target :logic_tests, :exclusive => true do
   link_with 'LogicTests'
   pod 'GDataXML-HTML'
+  pod 'JSONKit'
 end

@@ -11,6 +11,7 @@
 #import "Game.h"
 #import "NewGame.h"
 #import "GameList.h"
+#import "GameServerProtocol.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIHTTPRequest.h"
@@ -18,7 +19,7 @@
 typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseString);
 #endif
 
-@interface DGS : NSObject {
+@interface DGS : NSObject <GameServerProtocol> {
 	id <LoginProtocol> delegate;
 #ifndef LOGIC_TEST_MODE
     UIAlertView *errorView;
@@ -35,22 +36,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 
 @property(nonatomic, retain) UIAlertView *errorView;
 
-- (void)logout;
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
-
-- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess;
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
-- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess;
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess;
-- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess;
-
-
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-
 // Starts an asynchronous request, calling onSuccess when the request finishes.
 - (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess;
 
@@ -60,8 +45,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 
 // Internal, but these have to be exposed so the logic tests can hit them
 - (NSArray *)gamesFromCSV:(NSString *)csvData;
-- (NSArray *)gamesFromTable:(NSData *)htmlData;
 - (NSArray *)gamesFromWaitingRoomTable:(NSData *)htmlData;
 - (NSString *)nextPagePath:(NSData *)htmlData;
-- (NewGame *)gameFromWaitingRoomDetailTable:(NSData *)htmlData game:(NewGame *)game;
 @end

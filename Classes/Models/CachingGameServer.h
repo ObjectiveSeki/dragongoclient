@@ -24,19 +24,4 @@
 // Closes the database connection. This should be called before the app closes.
 + (void)closeDatabase;
 
-- (void)logout;
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
-
-- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess;
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
-- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess;
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess;
-- (void)joinWaitingRoomGame:(int)gameId comment:(NSString *)comment onSuccess:(void (^)())onSuccess;
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess;
-
-
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
 @end

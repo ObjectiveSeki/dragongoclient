@@ -3,7 +3,7 @@ dependencies. This makes the dependencies much easier than the git
 submodule method I was previously using. On a recent Mac OS, you
 should be able to run `bootstrap.sh` to get all the dependencies
 installed. If you're running into permissions issues, you can pass
-bootstrap.sh the `--sudo` parameter to run certain commands as sudo.
+bootstrap.sh the `--sudo` parameter to run certain commands with sudo.
 
 You should just be able to open the generated `DGSPhone.xcworkspace`,
 build the main DGSPhone target, and everything else should just

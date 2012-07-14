@@ -232,11 +232,8 @@
 		DA20DD5013456BFB00829D9D /* SgVectorUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = DA20DC3F13456BFA00829D9D /* SgVectorUtil.h */; };
 		DA20DD5113456BFB00829D9D /* SgWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA20DC4013456BFA00829D9D /* SgWrite.cpp */; };
 		DA20DD5213456BFB00829D9D /* SgWrite.h in Headers */ = {isa = PBXBuildFile; fileRef = DA20DC4113456BFA00829D9D /* SgWrite.h */; };
-		DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2A2AC212D010A600774A54 /* waiting-detail.html */; };
-		DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */; };
 		DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE1212F14EC8003FEE23 /* Board@2x.png */; };
 		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
-		DA2EE1BB12F6790B003FEE23 /* owned_game.html in Resources */ = {isa = PBXBuildFile; fileRef = DA2EE1BA12F6790B003FEE23 /* owned_game.html */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D90C11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
@@ -332,7 +329,6 @@
 		DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
 		DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
-		DAEA525811B895A100F4CCB3 /* status.html in Resources */ = {isa = PBXBuildFile; fileRef = DAEA525711B895A100F4CCB3 /* status.html */; };
 		DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
 		DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
 		DAEB649D125E1C3D00A915EB /* Resign.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB649C125E1C3D00A915EB /* Resign.png */; };
@@ -396,6 +392,7 @@
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-logic_tests.xcconfig"; path = "Pods/Pods-logic_tests.xcconfig"; sourceTree = "<group>"; };
 		DA20DB5313456BF900829D9D /* GoAssertBoardRestored.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoAssertBoardRestored.h; sourceTree = "<group>"; };
 		DA20DB5413456BF900829D9D /* GoAutoBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoAutoBook.cpp; sourceTree = "<group>"; };
 		DA20DB5513456BF900829D9D /* GoAutoBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoAutoBook.h; sourceTree = "<group>"; };
@@ -608,11 +605,8 @@
 		DA20DC4013456BFA00829D9D /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA20DC4113456BFA00829D9D /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
 		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
-		DA2A2AC212D010A600774A54 /* waiting-detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail.html"; sourceTree = "<group>"; };
-		DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "waiting-detail-cn.html"; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
 		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
-		DA2EE1BA12F6790B003FEE23 /* owned_game.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = owned_game.html; sourceTree = "<group>"; };
 		DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServerProtocol.h; sourceTree = "<group>"; };
 		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
@@ -688,7 +682,6 @@
 		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
 		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
 		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
-		DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-logic_tests.xcconfig"; path = "Pods/Pods-logic_tests.xcconfig"; sourceTree = "<group>"; };
 		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -716,7 +709,6 @@
 		DAEA518011B88A1100F4CCB3 /* DGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGS.m; sourceTree = "<group>"; };
 		DAEA519911B88D8300F4CCB3 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		DAEA519A11B88D8300F4CCB3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		DAEA525711B895A100F4CCB3 /* status.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = status.html; sourceTree = "<group>"; };
 		DAEA525911B895ED00F4CCB3 /* DGSTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSTests.h; sourceTree = "<group>"; };
 		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
 		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -824,7 +816,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				CE40383ED0524204AD9559A1 /* Pods.xcconfig */,
-				DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */,
+				DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1275,9 +1267,6 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
-				DA2ED7F512EC1B1200E0D8BA /* waiting-detail-cn.html */,
-				DA2EE1BA12F6790B003FEE23 /* owned_game.html */,
-				DA2A2AC212D010A600774A54 /* waiting-detail.html */,
 				DAFADA4E12CF0EF100985126 /* waiting.html */,
 				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
 				DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */,
@@ -1286,7 +1275,6 @@
 				DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */,
 				DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */,
 				DA38AB9711EC028B005E1AB7 /* First Score.sgf */,
-				DAEA525711B895A100F4CCB3 /* status.html */,
 				DAEA534711B8A4C000F4CCB3 /* status.csv */,
 				DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */,
 			);
@@ -1595,7 +1583,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEA525811B895A100F4CCB3 /* status.html in Resources */,
 				DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */,
 				DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */,
 				DA37D90C11BF56DA00BC1445 /* Black.png in Resources */,
@@ -1615,9 +1602,6 @@
 				DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */,
 				DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 				DAFADA4F12CF0EF100985126 /* waiting.html in Resources */,
-				DA2A2AC312D010A600774A54 /* waiting-detail.html in Resources */,
-				DA2ED7F612EC1B1200E0D8BA /* waiting-detail-cn.html in Resources */,
-				DA2EE1BB12F6790B003FEE23 /* owned_game.html in Resources */,
 				DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2043,7 +2027,7 @@
 		};
 		DA667DC2125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */;
+			baseConfigurationReference = DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
@@ -2100,7 +2084,7 @@
 		};
 		DA71CA8511B5E97F008696AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */;
+			baseConfigurationReference = DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -2135,7 +2119,7 @@
 		};
 		DA71CA8611B5E97F008696AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAC33E9915885EEE00CDD7A1 /* Pods-logic_tests.xcconfig */;
+			baseConfigurationReference = DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;

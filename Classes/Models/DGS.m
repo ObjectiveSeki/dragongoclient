@@ -63,9 +63,10 @@
 	BOOL noUID = (NSNotFound != [responseString rangeOfString:@"#Error: no_uid"].location);
 	BOOL notLoggedIn = (NSNotFound != [responseString rangeOfString:@"#Error: not_logged_in"].location);
     BOOL invalidUser = (NSNotFound != [responseString rangeOfString:@"#Error: invalid_user"].location);
+    BOOL unknownUser = (NSNotFound != [responseString rangeOfString:@"#Error: unknown_user"].location);
     BOOL noUserData = (nil == [Player currentPlayer] && (NSNotFound == [urlString rangeOfString:@"obj=user&cmd=info"].location) && (NSNotFound == [[[request originalURL] absoluteString] rangeOfString:@"login.php"].location));
 
-	if (onErrorPageOrIndex || noUID || notLoggedIn || invalidUser || noUserData) {
+	if (onErrorPageOrIndex || noUID || notLoggedIn || invalidUser || unknownUser || noUserData) {
 		return NO;
 	}
 	return YES;
@@ -194,12 +195,13 @@
 
 
 - (void)logout {
-	NSURL *url = [self URLWithPath:@"/index.php?logout=t"];
+	NSURL *url = [self URLWithPath:@"/login.php?quick_mode=1&logout=1"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
-	// Success is meaningless here, since we have special handling for being
-	// logged out during a request
-	[self performRequest:request onSuccess:nil];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        [self resetUserData];
+		[[self delegate] notLoggedIn];
+    }];
 }
 
 - (void)getCurrentPlayer {
@@ -215,7 +217,7 @@
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password
 {
-	NSURL *url = [self URLWithPath:@"/login.php"];
+	NSURL *url = [self URLWithPath:@"/login.php?quick_mode=1"];
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:username forKey:@"userid"];
@@ -278,12 +280,10 @@
 }
 
 - (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
+    static NSString *joinGameUrlFormat = @"/quick_do.php?obj=wroom&cmd=join&wrid=%d";
+	NSURL *url = [self URLWithPath:[NSString stringWithFormat:joinGameUrlFormat, gameId]];
 
-	NSURL *url = [self URLWithPath:@"/join_waitingroom_game.php"];
-
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"id"];
-	[request setPostValue:@"Join" forKey:@"join"];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
@@ -291,13 +291,10 @@
 }
 
 - (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
-
-	NSURL *url = [self URLWithPath:@"/join_waitingroom_game.php"];
-
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"id"];
-	[request setPostValue:@"t" forKey:@"delete"];
-	[request setPostValue:@"Delete" forKey:@"deletebut"];
+    static NSString *deleteGameUrlFormat = @"/quick_do.php?obj=wroom&cmd=delete&wrid=%d";
+	NSURL *url = [self URLWithPath:[NSString stringWithFormat:deleteGameUrlFormat, gameId]];
+    
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
@@ -311,7 +308,7 @@
         onSuccess(game);
     } else {
         if (game.sgfUrl == nil) {
-            [game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1", [game gameId]]]];
+            [game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", [game gameId]]]];
         }
 
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
@@ -323,27 +320,26 @@
 }
 
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
+    static NSString *playHandicapStonesFormat = @"quick_do.php?obj=game&cmd=set_handicap&gid=%d&move_id=%d&move=%@";
 	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
-	NSURL *url = [self URLWithPath:@"/game.php"];
-
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
-	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
-	if ([comment length] > 0) {
-		[request setPostValue:comment forKey:@"message"];
-	}
-	[request setPostValue:@"handicap" forKey:@"action"];
-
-	NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
-
+    NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
+    
 	for (Move *move in moves) {
 		[moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
 	}
+        
+    NSMutableString *urlString = [NSMutableString stringWithFormat:playHandicapStonesFormat, gameId, lastMoveNumber, moveString];
+    
+    [moveString release];
 
-	[request setPostValue:moveString forKey:@"stonestring"];
-	[moveString release];
-
+	if ([comment length] > 0) {
+		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+	}
+	
+    NSURL *url = [self URLWithPath:urlString];
+    
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
 	}];
@@ -353,82 +349,58 @@
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber;
-	NSURL *url = [self URLWithPath:@"/game.php"];
+    static NSString *scoreUrlFormat = @"/quick_do.php?obj=game&cmd=score&gid=%d&move_id=%d&move=%@";
+    NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([changedStones count] * 2)];
+    NSMutableString *urlString;
+    
+    for (Move *move in changedStones) {
+        [moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
+    }
+    
+    urlString = [NSMutableString stringWithFormat:scoreUrlFormat, gameId, lastMoveNumber, moveString];
 
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
-	[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
-	[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
-	if ([comment length] > 0) {
-		[request setPostValue:comment forKey:@"message"];
-	}
-	[request setPostValue:@"done" forKey:@"action"];
-
-	if ([changedStones count] > 0) {
-		NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([changedStones count] * 2)];
-
-		for (Move *move in changedStones) {
-			[moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
-		}
-
-		[request setPostValue:moveString forKey:@"stonestring"];
-		[moveString release];
-	}
-
+    [moveString release];
+        
+    if ([comment length] > 0) {
+        [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    }
+    
+    if ([changedStones count] > 0) {
+        [urlString appendString:@"&agree=1"];
+    }
+        
+    NSURL *url = [self URLWithPath:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
 	}];
 }
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
-
-	if (lastMove && [lastMove moveType] == kMoveTypeMove && [move moveType] == kMoveTypeMove) {
-		NSURL *url = [self URLWithPath:@"/quick_play.php"];
-		ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
-
-		if ([move player] == kMovePlayerBlack) {
-			[request setPostValue:@"B" forKey:@"color"];
-		} else {
-			[request setPostValue:@"W" forKey:@"color"];
-		}
-
-		[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"sgf_move"];
-
-		[request setPostValue:[self sgfCoordsWithRow:[lastMove row] column:[lastMove col] boardSize:[lastMove boardSize]] forKey:@"sgf_prev"];
-		if ([comment length] > 0) {
-			[request setPostValue:comment forKey:@"message"];
-		}
-
-		[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-			onSuccess();
-		}];
-	} else {
-		// can't respond using quick_play.php
-		int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
-		NSURL *url = [self URLWithPath:@"/game.php"];
-
-	    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-		[request setPostValue:[NSString stringWithFormat:@"%d", gameId] forKey:@"gid"];
-		[request setPostValue:[NSString stringWithFormat:@"%d", lastMoveNumber] forKey:@"move"];
-		[request setPostValue:@"Submit and go to status" forKey:@"nextstatus"];
-
-		if ([comment length] > 0) {
-			[request setPostValue:comment forKey:@"message"];
-		}
-		if ([move moveType] == kMoveTypePass) {
-			[request setPostValue:@"pass" forKey:@"action"];
-		} else if ([move moveType] == kMoveTypeResign) {
-			[request setPostValue:@"resign" forKey:@"action"];
-		} else if ([move moveType] == kMoveTypeMove) {
-			[request setPostValue:@"domove" forKey:@"action"];
-			[request setPostValue:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]] forKey:@"coord"];
-		}
-
-		[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-			onSuccess();
-		}];
+    int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
+    static NSString *moveUrlFormat = @"/quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
+    static NSString *resignUrlFormat = @"/quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
+    NSMutableString *urlString;
+    
+    if ([move moveType] == kMoveTypePass) {
+        urlString = [NSMutableString stringWithFormat:moveUrlFormat, gameId, lastMoveNumber, @"pass"];
+    } else if ([move moveType] == kMoveTypeResign) {
+        urlString = [NSMutableString stringWithFormat:resignUrlFormat, gameId, lastMoveNumber];
+    } else if ([move moveType] == kMoveTypeMove) {
+        urlString = [NSMutableString stringWithFormat:moveUrlFormat, gameId, lastMoveNumber, [self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
+    } 
+    
+    if ([comment length] > 0) {
+		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 	}
+    
+    NSURL *url = [self URLWithPath:urlString];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        onSuccess();
+    }];
 }
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
@@ -509,85 +481,6 @@
 			[game release];
 		}
 	}
-	return games;
-}
-
-// Parses a list of games from the table on the 'status' page of
-// Dragon Go Server. This works, and provides a lot more information
-// than quick_status's comma separated data. Unfortunately, the table
-// columns aren't marked in any consistent way I can find, so I either
-// have to use the ordering of the table cells (which the user can change)
-// or the titles of the first row of table cells (which the user can change
-// by changing their language). I haven't been able to figure out a way
-// around this, so this code sits here, unused -- for now.
-- (NSArray *)gamesFromTable:(NSData *)htmlData {
-	NSMutableArray *games = [NSMutableArray array];
-	NSError *error;
-	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
-	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameTable']/tr" error:&error];
-
-    if ([tableRows count] > 0) {
-
-        // First row is the header
-        GDataXMLNode *headerRow = [tableRows objectAtIndex:0];
-        NSArray *columns = [headerRow nodesForXPath:@".//span[@class='Header']" error:&error];
-
-        NSMutableArray *tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
-        for (GDataXMLNode *column in columns) {
-            [tableHeaders addObject:[column stringValue]];
-        }
-
-        // trim the header row
-        NSRange range;
-        range.location = 1;
-        range.length = [tableRows count] - 1;
-
-        for (GDataXMLNode *row in [tableRows subarrayWithRange:range]) {
-
-            NSArray *columns = [row nodesForXPath:@"td" error:&error];
-
-            // bad things happen if these counts aren't equal
-            if ([columns count] != [tableHeaders count]) {
-                continue;
-            }
-
-            Game *game = [[Game alloc] init];
-
-            for(int i = 0; i < [tableHeaders count]; i++) {
-                NSString *headerName = [tableHeaders objectAtIndex:i];
-                if ([headerName isEqual:@"ID"]) {
-                    GDataXMLNode *td = [columns objectAtIndex:i];
-                    NSString *data = [[[td nodesForXPath:@"a" error:&error] objectAtIndex:0] stringValue];
-                    game.gameId = [data integerValue];
-                } else if ([headerName isEqual:@"Opponent"]) {
-                    GDataXMLNode *td = [columns objectAtIndex:i];
-                    NSString *data = [[[td nodesForXPath:@"a/font" error:&error] objectAtIndex:0] stringValue];
-                    game.opponent = [data stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-                } else if ([headerName isEqual:@"sgf"]) {
-                    GDataXMLNode *td = [columns objectAtIndex:i];
-                    NSString *data = [[[td nodesForXPath:@"a/@href" error:&error] objectAtIndex:0] stringValue];
-                    game.sgfUrl = [self URLWithPath:data];
-                } else if ([headerName isEqual:@"Time remaining"]) {
-                    GDataXMLNode *td = [columns objectAtIndex:i];
-                    NSString *data = [td stringValue];
-                    game.time = data;
-                }  else if ([headerName isEqual:@"Col"]) {
-                    GDataXMLNode *td = [columns objectAtIndex:i];
-                    NSString *data = [[[td nodesForXPath:@"img/@alt" error:&error] objectAtIndex:0] stringValue];
-                    if ([data isEqual:@"b"]) {
-                        game.color = kMovePlayerBlack;
-                    } else {
-                        game.color = kMovePlayerWhite;
-                    }
-                }
-            }
-
-            [games addObject:game];
-            [game release];
-
-        }
-	}
-	[doc release];
 	return games;
 }
 
@@ -708,162 +601,6 @@
     game.myGame = ([[Player currentPlayer].userId isEqual:[[gameDetailDictionary objectForKey:@"user"] objectForKey:@"id"]]);
 
     return game;
-}
-
-// The newer versions of DGS have these items in a different order.
-- (NewGame *)gameFromNewWaitingRoomDetailTable:(NSArray *)tableRows game:(NewGame *)game {
-	NSError *error;
-	// There are different row counts depending on if it's an even game or a
-	// conventional/proper handicap game. We have to parse the rows differently
-	// depending on what type of game it is.
-	if ([tableRows count] == 16) { // Even game
-		for(int i = 0; i < [tableRows count]; i++) {
-			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
-
-			if (i == 2) {
-				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 3) {
-				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 5) {
-				game.boardSize = [[[rowData lastObject] stringValue] intValue];
-			} else if (i == 6) {
-				game.komiTypeName = [[rowData lastObject] stringValue];
-			} else if (i == 8) {
-				game.handicap = [[[rowData lastObject] stringValue] intValue];
-			} else if (i == 9) {
-				game.komi = [[[rowData lastObject] stringValue] floatValue];
-			} else if (i == 13) {
-				game.ratedString = [[rowData lastObject] stringValue];
-			} else if (i == 14) {
-				game.weekendClockString = [[rowData lastObject] stringValue];
-			} else if (i == 15) {
-				game.comment = [[rowData lastObject] stringValue];
-			}
-		}
-	} else if ([tableRows count] == 20) { // rated handicap game
-		for(int i = 0; i < [tableRows count]; i++) {
-			NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
-
-			if (i == 2) {
-				game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 3) {
-				game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-			} else if (i == 6) {
-				game.boardSize = [[[rowData lastObject] stringValue] intValue];
-			} else if (i == 7) {
-				game.komiTypeName = [[rowData lastObject] stringValue];
-			} else if (i == 12) {
-				game.ratedString = [[rowData lastObject] stringValue];
-			} else if (i == 13) {
-				game.weekendClockString = [[rowData lastObject] stringValue];
-			} else if (i == 16) {
-				game.comment = [[rowData lastObject] stringValue];
-			} else if (i == 19) {
-				game.komi = [[[rowData lastObject] stringValue] floatValue];
-			}
-		}
-	} else if ([tableRows count] == 19) { // unrated handicap game
-
-    }
-	return game;
-}
-
-// Parses details from a waiting room game into a game object.
-// This will probably have issues with running in other languages that
-// I'll have to figure out, and it's also kinda fragile, but I'm not
-// sure I have any other options.
-- (NewGame *)gameFromWaitingRoomDetailTable:(NSData *)htmlData game:(NewGame *)game {
-	NSError *error;
-	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
-
-	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='gameInfos']/tr" error:&error];
-    if ([tableRows count] > 0) {
-
-		// There are different row counts depending on if it's an even game or a
-		// conventional/proper handicap game. We have to parse the rows differently
-		// depending on what type of game it is.
-		if ([tableRows count] == 14) { // Even game
-			for(int i = 0; i < [tableRows count]; i++) {
-				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
-
-				if (i == 2) {
-					game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if (i == 3) {
-					game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if (i == 4) {
-					game.boardSize = [[[rowData lastObject] stringValue] intValue];
-				} else if (i == 5) {
-					game.komiTypeName = [[rowData lastObject] stringValue];
-				} else if (i == 6) {
-					game.komi = [[[rowData lastObject] stringValue] floatValue];
-				} else if (i == 11) {
-					game.ratedString = [[rowData lastObject] stringValue];
-				} else if (i == 12) {
-					game.weekendClockString = [[rowData lastObject] stringValue];
-				} else if (i == 13) {
-					game.comment = [[rowData lastObject] stringValue];
-				}
-			}
-		} if ([tableRows count] == 15) { // Double game
-			for(int i = 0; i < [tableRows count]; i++) {
-				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
-
-				if (i == 2) {
-					game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if (i == 3) {
-					game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if (i == 4) {
-					game.boardSize = [[[rowData lastObject] stringValue] intValue];
-				} else if (i == 5) {
-					game.komiTypeName = [[rowData lastObject] stringValue];
-				} else if (i == 6) {
-                    game.handicap = [[[rowData lastObject] stringValue] intValue];
-                } else if (i == 7) {
-					game.komi = [[[rowData lastObject] stringValue] floatValue];
-				} else if (i == 12) {
-					game.ratedString = [[rowData lastObject] stringValue];
-				} else if (i == 13) {
-					game.weekendClockString = [[rowData lastObject] stringValue];
-				} else if (i == 14) {
-					game.comment = [[rowData lastObject] stringValue];
-				}
-			}
-		} else if ([tableRows count] == 17 || [tableRows count] == 13) { // Handicap game
-			for(int i = 0; i < [tableRows count]; i++) {
-				NSArray *rowData = [[tableRows objectAtIndex:i] nodesForXPath:@"td" error:&error];
-
-				if (i == 2) {
-					game.opponent = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if (i == 3) {
-					game.opponentRating = [[[[[rowData lastObject] nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if (i == 4) {
-					game.boardSize = [[[rowData lastObject] stringValue] intValue];
-				} else if (i == 5) {
-					game.komiTypeName = [[rowData lastObject] stringValue];
-				} else if (i == 10) {
-					game.ratedString = [[rowData lastObject] stringValue];
-				} else if (i == 11) {
-					game.weekendClockString = [[rowData lastObject] stringValue];
-				} else if (i == 12) {
-					game.comment = [[rowData lastObject] stringValue];
-				} else if (i == 16) {
-					game.komi = [[[rowData lastObject] stringValue] floatValue];
-				}
-			}
-		}
-	} else {
-		tableRows = [doc nodesForXPath:@"//table[@id='gameTableInfos']/tr" error:&error];
-		if ([tableRows count] > 0) {
-			game = [self gameFromNewWaitingRoomDetailTable:tableRows game:game];
-		}
-	}
-
-	NSArray *joinButton = [doc nodesForXPath:@"//td/input[@name='join']" error:&error];
-	if ([joinButton count] > 0) {
-		game.myGame = false;
-	}
-	[doc release];
-	return game;
 }
 
 // This converts an integer row and column representing a board position and

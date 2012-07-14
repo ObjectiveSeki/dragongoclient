@@ -8,7 +8,7 @@
 
 }
 
-- (void)testParseGames;
+- (void)testParseQuickStatusGames;
 - (void)testBoardCoords;
 - (void)testParseWaitingRoom;
 
