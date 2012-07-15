@@ -125,6 +125,7 @@ typedef enum _LoginSection {
 			cell.textField.keyboardType = UIKeyboardTypeDefault;
 			cell.textEditedSelector = @selector(setUsernameFromCell:);
 			cell.textField.textAlignment = UITextAlignmentLeft;
+            cell.maxTextLength = 16;
 			return cell;
 		} else {
 			TextCell *cell = [self textCell:theTableView];
@@ -134,6 +135,7 @@ typedef enum _LoginSection {
 			cell.textField.secureTextEntry = YES;
 			cell.textEditedSelector = @selector(setPasswordFromCell:);
 			cell.textField.textAlignment = UITextAlignmentLeft;
+            cell.maxTextLength = -1;
 			return cell;
 		}
 	} else if ([indexPath section] == kLoginButtonSection) {
