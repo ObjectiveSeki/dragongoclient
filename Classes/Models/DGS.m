@@ -677,6 +677,7 @@
     player.ratingStatus = [userDataDictionary objectForKey:@"rating_status"];
     [Player setCurrentPlayer:player];
     [player release];
+    JWLog(@"11 player:%@", [player name]);
 }
 
 - (void)resetUserData {

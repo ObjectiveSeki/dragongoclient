@@ -11,6 +11,7 @@
 #import "GoBoardView.h"
 #import "MessageView.h"
 #import "RootViewController.h"
+#import "PastMovesViewController.h"
 #import "GameStatusProtocol.h"
 
 enum BoardState {
@@ -25,6 +26,7 @@ enum BoardState {
 	IBOutlet UIScrollView *scrollView;
 	IBOutlet UIBarButtonItem *undoButton;
 	IBOutlet UIBarButtonItem *zoomOutButton;
+    IBOutlet UIBarButtonItem *historyButton;
 	IBOutlet UIBarButtonItem *confirmButton;
 	IBOutlet UIBarButtonItem *passButton;
 	IBOutlet UIBarButtonItem *resignButton;
@@ -43,6 +45,7 @@ enum BoardState {
 @property(nonatomic) BoardState boardState;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *undoButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *zoomOutButton;
+@property(nonatomic, retain) IBOutlet UIBarButtonItem *historyButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *confirmButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *passButton;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
@@ -52,6 +55,7 @@ enum BoardState {
 
 - (IBAction)undoMove;
 - (IBAction)zoomOut;
+- (IBAction)showHistory;
 - (IBAction)confirmMove;
 - (IBAction)pass;
 - (IBAction)resign;

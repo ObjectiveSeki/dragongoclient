@@ -273,20 +273,24 @@ static bool fuegoInitialized = NO;
 
 - (NSArray *)moves {
 	NSMutableArray *moves = [NSMutableArray array];
-	
-	for (GoBoard::Iterator it(goGame->Board()); it; ++it) {
-		Move *move = [[Move alloc] init];
-		move.col = SgPointUtil::Col(*it);
-		move.row = SgPointUtil::Row(*it);
-		move.boardSize = [self size];
-		if (goGame->Board().Occupied(*it)) {
-			move.player = [self playerForSgPlayer:goGame->Board().GetStone(*it)];
-			[moves addObject:move];
-		}
-		[move release];
+    int numberOfMoves = self.moveNumber;
+    
+    if (numberOfMoves <= [self handicap] + 1) {
+		return nil;
 	}
 	
-	return moves;
+	const SgNode *currentNode = goGame->CurrentNode();
+
+    for (int i = numberOfMoves; i > 1; i -= 1) {
+        goGame->GoInDirection(SgNode::PREVIOUS);
+        Move *move = [self moveFromNode:goGame->CurrentNode()];
+        [moves addObject:move];
+    }
+    
+    
+    goGame->GoToNode(currentNode);
+    
+    return moves;
 }
 
 - (int)moveNumber {

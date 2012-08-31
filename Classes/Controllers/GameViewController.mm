@@ -20,6 +20,7 @@
 @synthesize boardState;
 @synthesize undoButton;
 @synthesize zoomOutButton;
+@synthesize historyButton;
 @synthesize confirmButton;
 @synthesize passButton;
 @synthesize resignButton;
@@ -65,7 +66,7 @@
 	if ([self.board canUndo]) {
 		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
 	} else {
-		[self.navigationItem setRightBarButtonItem:nil animated:YES];
+        [self.navigationItem setRightBarButtonItem:self.historyButton animated:YES];
 	}
 	[[self confirmButton] setEnabled:[self.board canSubmit]];
 	[[self passButton] setEnabled:[self.board canPassOrResign]];
@@ -140,6 +141,12 @@
 
 - (IBAction)zoomOut {
 	[self zoomOut:[self.boardView center]];
+}
+
+- (IBAction)showHistory {
+    PastMovesViewController *pastMovesViewController = [[PastMovesViewController alloc] initWithNibName:@"PastMovesView" bundle:nil];
+    [pastMovesViewController setGame:self.game];
+    [self.navigationController pushViewController:pastMovesViewController animated:YES];
 }
 
 - (void)playedMove {
