@@ -271,7 +271,41 @@ static bool fuegoInitialized = NO;
 	}
 }
 
+- (void)goToMove:(int)moveNumber {
+    int numberOfMoves = [self moveNumber];
+    
+    while (numberOfMoves > moveNumber) {
+        numberOfMoves -= 1;
+        
+        if (goGame->CanGoInDirection(SgNode::PREVIOUS)) {
+            goGame->GoInDirection(SgNode::PREVIOUS);
+        }
+    }
+}
+
 - (NSArray *)moves {
+    NSMutableArray *moves = [NSMutableArray array];
+
+    if (self.moveNumber <= [self handicap] + 1) {
+		return nil;
+	}
+
+    for (GoBoard::Iterator it(goGame->Board()); it; ++it) {
+        Move *move = [[Move alloc] init];
+        move.col = SgPointUtil::Col(*it);
+        move.row = SgPointUtil::Row(*it);
+        move.boardSize = [self size];
+        if (goGame->Board().Occupied(*it)) {
+            move.player = [self playerForSgPlayer:goGame->Board().GetStone(*it)];
+            [moves addObject:move];
+        }
+        [move release];
+    }
+
+    return moves;
+}
+
+- (NSArray *)orderedMoves {
 	NSMutableArray *moves = [NSMutableArray array];
     int numberOfMoves = self.moveNumber;
     
@@ -282,11 +316,13 @@ static bool fuegoInitialized = NO;
 	const SgNode *currentNode = goGame->CurrentNode();
 
     for (int i = numberOfMoves; i > 1; i -= 1) {
-        goGame->GoInDirection(SgNode::PREVIOUS);
         Move *move = [self moveFromNode:goGame->CurrentNode()];
-        [moves addObject:move];
+
+        if(move) {
+            [moves addObject:move];
+            goGame->GoInDirection(SgNode::PREVIOUS);
+        }
     }
-    
     
     goGame->GoToNode(currentNode);
     

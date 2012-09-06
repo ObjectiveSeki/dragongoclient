@@ -11,6 +11,7 @@
 #import "Game.h"
 #import "FuegoBoard.h"
 #import "Player.h"
+#import "PastMoveViewController.h"
 
 @interface PastMovesViewController : JWTableViewController {
     Game *game;

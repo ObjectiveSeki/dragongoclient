@@ -39,7 +39,9 @@
 - (NSString *)comment;
 - (bool)gameEnded;
 - (int)size;
+- (void)goToMove:(int)moveNumber;
 - (NSArray *)moves;
+- (NSArray *)orderedMoves;
 - (int)moveNumber;
 
 // The most recently played move
