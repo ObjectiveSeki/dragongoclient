@@ -375,7 +375,7 @@
         [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
     
-    if ([changedStones count] > 0) {
+    if ([changedStones count] == 0) {
         [urlString appendString:@"&agree=1"];
     }
         
