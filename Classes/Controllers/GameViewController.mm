@@ -58,6 +58,7 @@
     [super viewDidLoad];
 	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
     tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+    JWLog(@"%f %f", self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [game opponent]];
 }
@@ -100,7 +101,8 @@
     // the size of the rect grows.
     zoomRect.size.height = theScrollView.frame.size.height / scale;
     zoomRect.size.width  = theScrollView.frame.size.width  / scale;
-	
+    JWLog(@"%f %f %f %f", theScrollView.frame.size.height, theScrollView.frame.size.width, zoomRect.size.height, zoomRect.size.width);
+
     // choose an origin so as to get the right center.
     zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
     zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
@@ -112,7 +114,7 @@
 {
     maximumZoomScale = self.scrollView.maximumZoomScale;
     minimumZoomScale = self.scrollView.minimumZoomScale;
-	
+	JWLog(@"currentZoomScale: %f", currentZoomScale);
     self.scrollView.maximumZoomScale = currentZoomScale;
     self.scrollView.minimumZoomScale = currentZoomScale;
 }

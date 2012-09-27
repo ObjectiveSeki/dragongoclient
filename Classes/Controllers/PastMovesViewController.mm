@@ -62,7 +62,7 @@
 			[cell setAccessoryView:activityView];
 			[activityView release];
 
-            PastMoveViewController *pastMoveViewController = [[PastMoveViewController alloc] initWithNibName:@"GameView" bundle:nil];
+            PastMoveViewController *pastMoveViewController = [[PastMoveViewController alloc] initWithNibName:@"PastMoveView" bundle:nil];
             [pastMoveViewController setMoveNumber:numberOfMoves];
             [pastMoveViewController setGame:game];
             [self.navigationController pushViewController:pastMoveViewController animated:YES];

@@ -15,103 +15,54 @@
 @synthesize board;
 @synthesize boardView;
 @synthesize scrollView;
-@synthesize undoButton;
-@synthesize zoomOutButton;
-@synthesize historyButton;
-@synthesize confirmButton;
-@synthesize passButton;
-@synthesize resignButton;
-@synthesize messageButton;
-@synthesize messageView;
+@synthesize previousButton;
+@synthesize nextButton;
 @synthesize delegate = _delegate;
 
 
-- (float)zoomInScale {
-	return (float)[self.board size] / 19.0;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
-    tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+	UIScrollView *tempScrollView = (UIScrollView *)self.scrollView;
+    JWLog(@"%f %f", self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+    tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height,
+                                            self.boardView.bounds.size.width);
 	self.navigationItem.title = [NSString stringWithFormat:@"Move %d", [self moveNumber]];
 }
 
 - (void)updateBoard {
     [self.navigationItem setRightBarButtonItem:nil animated:YES];
-	[[self confirmButton] setEnabled:false];
-	[[self passButton] setEnabled:false];
-	[[self resignButton] setEnabled:false];
-    [[self messageButton] setEnabled:false];
+    [self.previousButton setEnabled:false];
+    [self.nextButton setEnabled:false];
+    JWLog(@"boardView:%@ setNeedsDisplay", self.boardView);
 	[self.boardView setNeedsDisplay];
 }
-
-- (void)setMessageIconState:(BOOL)hasMessage {
-	if (hasMessage) {
-		self.messageButton.image = [UIImage imageNamed:@"Message on.png"];
-	} else {
-		self.messageButton.image = [UIImage imageNamed:@"Message off.png"];
-	}
-}
-
-- (IBAction)undoMove {}
 
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
 	
     CGRect zoomRect;
 	
-    zoomRect.size.height = theScrollView.frame.size.height / scale;
-    zoomRect.size.width  = theScrollView.frame.size.width  / scale;
-	
-    zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
-    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
+    zoomRect.size.height = 640; //theScrollView.frame.size.height / scale;
+    zoomRect.size.width  = 640; //theScrollView.frame.size.width  / scale;
+
+    zoomRect.origin.x = 210; //center.x - (zoomRect.size.width  / 2.0);
+    zoomRect.origin.y = 210; //center.y - (zoomRect.size.height / 2.0);
 	
     return zoomRect;
 }
 
--(void)lockZoom
-{
-    maximumZoomScale = self.scrollView.maximumZoomScale;
-    minimumZoomScale = self.scrollView.minimumZoomScale;
-	
-    self.scrollView.maximumZoomScale = currentZoomScale;
-    self.scrollView.minimumZoomScale = currentZoomScale;
-}
-
--(void)unlockZoom
-{
-    self.scrollView.maximumZoomScale = maximumZoomScale;
-    self.scrollView.minimumZoomScale = minimumZoomScale;
-}
-
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
-	[self unlockZoom];
-	currentZoomScale = scale;
+    self.scrollView.maximumZoomScale = 1.0;
+    self.scrollView.minimumZoomScale = 1.0;
 	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
-	[[self scrollView] zoomToRect:zoomRect animated:animated];
-	[self lockZoom];
+	[self.scrollView zoomToRect:zoomRect animated:animated];
+    self.scrollView.maximumZoomScale = scale;
+    self.scrollView.minimumZoomScale = scale;
 }
 
-- (IBAction)zoomOut {}
-- (IBAction)showHistory {}
-- (void)playedMove {}
-- (IBAction)confirmMove {}
-- (IBAction)pass {}
-- (IBAction)resign {}
+- (IBAction)previousMove {}
+- (IBAction)nextMove {}
 
-- (IBAction)showMessageWindow {
-	[self.navigationController.view addSubview:self.messageView];
-	[self.messageView show:^(BOOL hasMessage) {
-		[self setMessageIconState:hasMessage];
-	}];
-}
-
-- (void)requestCancelled {}
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {}
-
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
-    return self.boardView;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -119,21 +70,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
     [theBoard goToMove: [self moveNumber]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
-	
-	if ([theBoard comment]) {
-		[self setMessageIconState:YES];
-		self.messageView.message = [theBoard comment];
-	}
-    
 	[theBoard release];
-	currentZoomScale = [self zoomInScale];
-	[self lockZoom];
-	[self zoomToScale:0.5 center:[[self boardView] center] animated:NO];
-	[self updateBoard];
+    
+    if([self.board size] > 13) {
+        [self zoomToScale:0.5 center:[[self boardView] center] animated:NO];        
+    }
+	
+    [self updateBoard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -144,13 +92,8 @@
 
 - (void)viewDidUnload {
 	self.boardView = nil;
-	self.undoButton = nil;
-	self.zoomOutButton = nil;
-	self.confirmButton = nil;
-	self.passButton = nil;
-	self.resignButton = nil;
-	self.messageButton = nil;
-	self.messageView = nil;
+	self.previousButton = nil;
+	self.nextButton = nil;
     [super viewDidUnload];
 }
 

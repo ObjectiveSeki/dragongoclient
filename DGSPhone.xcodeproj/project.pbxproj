@@ -15,6 +15,7 @@
 		BF574A4815EC9F030082D2CC /* PastMovesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF574A4715EC9F030082D2CC /* PastMovesViewController.mm */; };
 		BF574A4B15ECA0380082D2CC /* PastMovesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF574A4A15ECA0380082D2CC /* PastMovesView.xib */; };
 		BF64C95415F5DD3C007C6238 /* PastMoveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF64C95315F5DD3C007C6238 /* PastMoveViewController.mm */; };
+		BFEE4E0416143526000BBB19 /* PastMoveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEE4E0316143526000BBB19 /* PastMoveView.xib */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
@@ -517,6 +518,7 @@
 		BF574A4A15ECA0380082D2CC /* PastMovesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastMovesView.xib; sourceTree = "<group>"; };
 		BF64C95215F5DD3C007C6238 /* PastMoveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastMoveViewController.h; sourceTree = "<group>"; };
 		BF64C95315F5DD3C007C6238 /* PastMoveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PastMoveViewController.mm; sourceTree = "<group>"; };
+		BFEE4E0316143526000BBB19 /* PastMoveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastMoveView.xib; sourceTree = "<group>"; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
 		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
 		DA02D14B11D99D7600A9D887 /* TableCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellFactory.h; sourceTree = "<group>"; };
@@ -1773,6 +1775,7 @@
 				DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */,
 				DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */,
 				BF574A4A15ECA0380082D2CC /* PastMovesView.xib */,
+				BFEE4E0316143526000BBB19 /* PastMoveView.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -2197,6 +2200,7 @@
 				DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				BF574A4B15ECA0380082D2CC /* PastMovesView.xib in Resources */,
+				BFEE4E0416143526000BBB19 /* PastMoveView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
