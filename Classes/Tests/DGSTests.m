@@ -16,9 +16,9 @@
 	NSArray *games = [dgs gamesFromCSV:testData];
 	NSUInteger expectedCount = 2;
 	STAssertEquals([games count], expectedCount, nil);
-	STAssertEqualObjects([[games objectAtIndex:0] opponent], @"pledan", nil);
-	STAssertEquals([[games objectAtIndex:0] gameId], 729940, nil);
-    STAssertEqualObjects([[games objectAtIndex:0] time], @"F: 5d 13h (+ 1d)", nil);
+	STAssertEqualObjects([games[0] opponent], @"pledan", nil);
+	STAssertEquals([games[0] gameId], 729940, nil);
+    STAssertEqualObjects([games[0] time], @"F: 5d 13h (+ 1d)", nil);
 }
 
 - (void)testBoardCoords {
@@ -35,12 +35,12 @@
 	NSArray *games = [dgs gamesFromWaitingRoomTable:testData];
 	NSUInteger expectedCount = 18;
 	STAssertEquals([games count], expectedCount, nil);
-	STAssertNotNil([[games objectAtIndex:0] detailUrl], nil);
-	STAssertEqualObjects([[games objectAtIndex:0] opponent], @"gowc2011", nil);
-	STAssertEquals([[games objectAtIndex:0] boardSize], 19, nil);
-	STAssertEqualObjects([[games objectAtIndex:0] opponentRating], @"1 dan (0%)", nil);
-	STAssertNil([[games objectAtIndex:17] opponentRating], nil);
-	STAssertEquals([[games objectAtIndex:0] gameId], 124895, nil);
+	STAssertNotNil([games[0] detailUrl], nil);
+	STAssertEqualObjects([games[0] opponent], @"gowc2011", nil);
+	STAssertEquals([games[0] boardSize], 19, nil);
+	STAssertEqualObjects([games[0] opponentRating], @"1 dan (0%)", nil);
+	STAssertNil([games[17] opponentRating], nil);
+	STAssertEquals([games[0] gameId], 124895, nil);
 }
 
 

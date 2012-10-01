@@ -37,7 +37,7 @@
 			return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NSStringFromClass(row.cellClass)];
 		};
 		row.cellSetup = ^(UITableViewCell *cell) {
-			cell.textLabel.text = [rowInfo objectAtIndex:0];
+			cell.textLabel.text = rowInfo[0];
 			if ([rowInfo count] > 1) {
 				cell.detailTextLabel.text = [rowInfo lastObject];				
 			}
@@ -51,7 +51,7 @@
 - (TableSection *)commentSection {
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
 	
-	[rows addObject:[NSArray arrayWithObjects:@"Comment", self.game.comment, nil]];
+	[rows addObject:@[@"Comment", self.game.comment]];
 	
 	return [self basicSectionWithTitle:nil rows:rows];
 }
@@ -60,8 +60,8 @@
 	
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:2];
 	
-	[rows addObject:[NSArray arrayWithObjects:@"Name", self.game.opponent, nil]];
-	[rows addObject:[NSArray arrayWithObjects:@"Rating", self.game.opponentRating ? self.game.opponentRating : @"Not Ranked", nil]];
+	[rows addObject:@[@"Name", self.game.opponent]];
+	[rows addObject:@[@"Rating", self.game.opponentRating ? self.game.opponentRating : @"Not Ranked"]];
 	
 	return [self basicSectionWithTitle:@"Opponent" rows:rows];
 }
@@ -70,17 +70,17 @@
 	
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:6];
 	
-	[rows addObject:[NSArray arrayWithObjects:@"Board Size", [NSString stringWithFormat:@"%dx%d", self.game.boardSize, self.game.boardSize], nil]];
-	[rows addObject:[NSArray arrayWithObjects:@"Rated", self.game.ratedString, nil]];
-	[rows addObject:[NSArray arrayWithObjects:@"Time", self.game.time, nil]];
-	[rows addObject:[NSArray arrayWithObjects:@"Weekend Clock", self.game.weekendClockString, nil]];
+	[rows addObject:@[@"Board Size", [NSString stringWithFormat:@"%dx%d", self.game.boardSize, self.game.boardSize]]];
+	[rows addObject:@[@"Rated", self.game.ratedString]];
+	[rows addObject:@[@"Time", self.game.time]];
+	[rows addObject:@[@"Weekend Clock", self.game.weekendClockString]];
     if (self.game.handicap != 0) {
-        [rows addObject:[NSArray arrayWithObjects:@"Handicap", [NSString stringWithFormat:@"%d", self.game.handicap], nil]];
+        [rows addObject:@[@"Handicap", [NSString stringWithFormat:@"%d", self.game.handicap]]];
     }
-    [rows addObject:[NSArray arrayWithObjects:@"Type", self.game.komiTypeName, nil]];
+    [rows addObject:@[@"Type", self.game.komiTypeName]];
     
     if (self.game.komi != 0.0) {
-        [rows addObject:[NSArray arrayWithObjects:@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.komi], nil]];
+        [rows addObject:@[@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.komi]]];
     }
 	
 	return [self basicSectionWithTitle:@"Game Information" rows:rows];

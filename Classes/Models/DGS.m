@@ -457,23 +457,23 @@
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
 	for(NSString *line in lines) {
 		NSArray *cols = [line componentsSeparatedByString:@","];
-		if([[cols objectAtIndex:0] isEqual:@"G"]) {
+		if([cols[0] isEqual:@"G"]) {
 			Game *game = [[Game alloc] init];
-			[game setGameId:[[cols objectAtIndex:1] intValue]];
-			NSString *opponentString = [cols objectAtIndex:2];
+			[game setGameId:[cols[1] intValue]];
+			NSString *opponentString = cols[2];
 			[game setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
 
 			[game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", [game gameId]]]];
-			if ([[cols objectAtIndex:3] isEqual:@"W"]) {
+			if ([cols[3] isEqual:@"W"]) {
 				[game setColor:kMovePlayerWhite];
 			} else {
 				[game setColor:kMovePlayerBlack];
 			}
 
-			NSString *lastMoveString = [cols objectAtIndex:4];
+			NSString *lastMoveString = cols[4];
 			[game setLastMove:[lastMoveString substringWithRange:NSMakeRange(1, [lastMoveString length] - 2)]];
 
-			NSString *timeRemainingString = [cols objectAtIndex:5];
+			NSString *timeRemainingString = cols[5];
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
 
 			[games addObject:game];
@@ -525,8 +525,8 @@
             NewGame *game = [[NewGame alloc] init];
 
             for(int i = 0; i < [tableHeaders count]; i++) {
-                GDataXMLElement *header = [tableHeaders objectAtIndex:i];
-				GDataXMLNode *td = [columns objectAtIndex:i];
+                GDataXMLElement *header = tableHeaders[i];
+				GDataXMLNode *td = columns[i];
 				if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col0"] ||
 					[[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col17"]) {
 					GDataXMLElement *link = [[td nodesForXPath:@"a" error:&error] lastObject];
@@ -535,7 +535,7 @@
 					NSArray *keyValues = [[[href componentsSeparatedByString:@"?"] lastObject] componentsSeparatedByString:@"&"];
  					for (NSString *keyValue in keyValues) {
 						NSArray *keyValuePair = [keyValue componentsSeparatedByString:@"="];
-						if ([[keyValuePair objectAtIndex:0] isEqualToString:@"info"]) {
+						if ([keyValuePair[0] isEqualToString:@"info"]) {
 							game.gameId = [[keyValuePair lastObject] intValue];
 						}
 					}
@@ -572,8 +572,8 @@
 
 - (void)setCurrentPlayerFromDictionary:(NSDictionary *)userDataDictionary {
     Player *player = [[Player alloc] init];
-    player.userId = [userDataDictionary objectForKey:@"id"];
-    player.ratingStatus = [userDataDictionary objectForKey:@"rating_status"];
+    player.userId = userDataDictionary[@"id"];
+    player.ratingStatus = userDataDictionary[@"rating_status"];
     [Player setCurrentPlayer:player];
 }
 
@@ -583,16 +583,16 @@
 
 - (NewGame *)gameFromWaitingRoomDetailDictionary:(NSDictionary *)gameDetailDictionary game:(NewGame *)game {
 
-    game.opponent = [[gameDetailDictionary objectForKey:@"user"] objectForKey:@"name"];
-    game.opponentRating = [[gameDetailDictionary objectForKey:@"user"] objectForKey:@"rating"];
-    game.boardSize = [[gameDetailDictionary objectForKey:@"size"] intValue];
-    game.komiTypeName = [game komiTypeNameFromValue:[gameDetailDictionary objectForKey:@"handicap_type"]];
-    game.handicap = [[gameDetailDictionary objectForKey:@"handicap"] intValue];
-    game.komi = [[gameDetailDictionary objectForKey:@"komi"] floatValue];
-    game.ratedString = [game boolNameFromValue:[[gameDetailDictionary objectForKey:@"rated"] boolValue]];
-    game.weekendClockString = [game boolNameFromValue:[[gameDetailDictionary objectForKey:@"time_weekend_clock"] boolValue]];
-    game.comment = [gameDetailDictionary objectForKey:@"comment"];
-    game.myGame = ([[Player currentPlayer].userId isEqual:[[gameDetailDictionary objectForKey:@"user"] objectForKey:@"id"]]);
+    game.opponent = gameDetailDictionary[@"user"][@"name"];
+    game.opponentRating = gameDetailDictionary[@"user"][@"rating"];
+    game.boardSize = [gameDetailDictionary[@"size"] intValue];
+    game.komiTypeName = [game komiTypeNameFromValue:gameDetailDictionary[@"handicap_type"]];
+    game.handicap = [gameDetailDictionary[@"handicap"] intValue];
+    game.komi = [gameDetailDictionary[@"komi"] floatValue];
+    game.ratedString = [game boolNameFromValue:[gameDetailDictionary[@"rated"] boolValue]];
+    game.weekendClockString = [game boolNameFromValue:[gameDetailDictionary[@"time_weekend_clock"] boolValue]];
+    game.comment = gameDetailDictionary[@"comment"];
+    game.myGame = ([[Player currentPlayer].userId isEqual:gameDetailDictionary[@"user"][@"id"]]);
 
     return game;
 }

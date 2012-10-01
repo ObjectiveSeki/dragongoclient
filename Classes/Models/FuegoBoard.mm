@@ -116,7 +116,7 @@ static bool fuegoInitialized = NO;
 		
 		self.markedGroups = marked;
 		
-		self.changedGroups = [NSArray array];
+		self.changedGroups = @[];
 		
 		// We have to set game ended here. We have special logic
 		// that goes around this state that we only want to execute
@@ -139,7 +139,7 @@ static bool fuegoInitialized = NO;
 	if (goGame->CurrentNode()->HasProp(SG_PROP_COMMENT)) {
 		std::string commentString;
 		goGame->CurrentNode()->GetStringProp(SG_PROP_COMMENT, &commentString);
-		NSString *comment = [NSString stringWithUTF8String:commentString.c_str()];
+		NSString *comment = @(commentString.c_str());
         if ([comment length] > 0) {
             return comment;            
         }
@@ -472,7 +472,7 @@ static bool fuegoInitialized = NO;
 	} else {
 		player = SG_WHITE;
 	}
-	return [NSString stringWithCString:(goGame->GetPlayerName(player).c_str()) encoding:NSUTF8StringEncoding];
+	return @(goGame->GetPlayerName(player).c_str());
 }
 - (int)captures:(MovePlayer)movePlayer {
 	SgBlackWhite player;

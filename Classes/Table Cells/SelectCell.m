@@ -69,7 +69,7 @@
         self.picker.delegate = self;
         
         for(int i = 0; i < [self.selectedOptions count]; i++) {
-            int row = [[self.options objectAtIndex:i] indexOfObject:[self.selectedOptions objectAtIndex:i]];
+            int row = [(self.options)[i] indexOfObject:(self.selectedOptions)[i]];
             [self.picker selectRow:row inComponent:i animated:NO];
         }
     }
@@ -85,13 +85,13 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	return [[self.options objectAtIndex:component] objectAtIndex:row];
+	return (self.options)[component][row];
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
 	CGFloat size;
 	if (self.sizes) {
-		size = [[self.sizes objectAtIndex:component] floatValue];
+		size = [(self.sizes)[component] floatValue];
 	} else {
 		size = self.picker.frame.size.width / [self.options count];
 	}
@@ -107,11 +107,11 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-	return [[self.options objectAtIndex:component] count];
+	return [(self.options)[component] count];
 }
 
 - (NSString *)selectedValueInComponent:(NSInteger)component {
-	return [[self.options objectAtIndex:component] objectAtIndex:[self.picker selectedRowInComponent:component]];
+	return (self.options)[component][[self.picker selectedRowInComponent:component]];
 }
 
 

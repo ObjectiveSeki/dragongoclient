@@ -76,7 +76,7 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	if ([paths count] > 0) {
-		return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"dgs-debug.log"];
+		return [paths[0] stringByAppendingPathComponent:@"dgs-debug.log"];
 	}
 	return nil;
 }

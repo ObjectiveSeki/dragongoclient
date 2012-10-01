@@ -72,7 +72,7 @@
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
     NSDictionary* info = [aNotification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGSize kbSize = [info[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
 	
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
@@ -94,8 +94,8 @@
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
-    NSTimeInterval duration = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-    UIViewAnimationCurve curve = [[[aNotification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
 	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
 		tableView.contentInset = contentInsets;
@@ -104,16 +104,16 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [[self.tableSections objectAtIndex:section] headerString];
+	return [(self.tableSections)[section] headerString];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	return [[[self.tableSections objectAtIndex:section] tableRows] count];
+	return [[(self.tableSections)[section] tableRows] count];
 }
 
 - (TableRow *)rowDataForIndexPath:(NSIndexPath *)indexPath {
-	return [[(TableSection *)[self.tableSections objectAtIndex:indexPath.section] tableRows] objectAtIndex:indexPath.row];
+	return [(TableSection *)(self.tableSections)[indexPath.section] tableRows][indexPath.row];
 }
 
 // Customize the appearance of table view cells.

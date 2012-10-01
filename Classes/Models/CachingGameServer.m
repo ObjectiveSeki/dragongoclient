@@ -32,7 +32,7 @@ static sqlite3 *database;
     
 	// Get the path to the documents directory and append the databaseName
 	NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDir = [documentPaths objectAtIndex:0];
+	NSString *documentsDir = documentPaths[0];
 	NSString *databasePath = [documentsDir stringByAppendingPathComponent:databaseName];
     
 	// Create a FileManager object, we will use this to check the status
@@ -154,10 +154,10 @@ static sqlite3 *database;
 - (Game *)gameFromResults:(sqlite3_stmt *)stmt {
     // Read the data from the result row
     int gameId = sqlite3_column_int(stmt, 0);
-    NSString *opponent = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 3)];
-    NSString *sgf = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 4)];
+    NSString *opponent = @((char *)sqlite3_column_text(stmt, 3));
+    NSString *sgf = @((char *)sqlite3_column_text(stmt, 4));
     int ourColor = sqlite3_column_int(stmt, 5);
-    NSString *timeLeft = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 7)];
+    NSString *timeLeft = @((char *)sqlite3_column_text(stmt, 7));
     
     Game *game = [[Game alloc] init];
     [game setGameId:gameId];
@@ -165,7 +165,7 @@ static sqlite3 *database;
     [game setColor:(MovePlayer)ourColor];
     const unsigned char *lastMoveString = sqlite3_column_text(stmt, 6);
     if (lastMoveString) {
-        NSString *lastMove = [NSString stringWithUTF8String:(char *)lastMoveString];
+        NSString *lastMove = @((char *)lastMoveString);
         [game setLastMove:lastMove];
     }
     [game setTime:timeLeft];
@@ -226,7 +226,7 @@ static sqlite3 *database;
     }
 
     for (int playOrder = 0; playOrder < [games count]; playOrder++) {
-        Game *game = [games objectAtIndex:playOrder];
+        Game *game = games[playOrder];
         
         // try inserting assuming it's a new game
         sqlite3_bind_int(insertGameStmt, 1, [game gameId]);
