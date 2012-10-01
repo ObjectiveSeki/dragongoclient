@@ -1,4 +1,4 @@
-platform :ios, :deployment_target => "4.0"
+platform :ios, :deployment_target => "5.0"
 xcodeproj 'DGSPhone.xcodeproj'
 
 pod 'ASIHTTPRequest'
