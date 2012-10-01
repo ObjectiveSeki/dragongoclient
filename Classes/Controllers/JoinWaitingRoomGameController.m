@@ -28,13 +28,13 @@
 // element arrays, where the first element is a key and the second a value. All rows
 // use the TableViewCellStyleValue1 style.
 - (TableSection *)basicSectionWithTitle:(NSString *)sectionTitle rows:(NSArray *)rows {
-	TableSection *section = [[[TableSection alloc] init] autorelease];
+	TableSection *section = [[TableSection alloc] init];
 	section.headerString = sectionTitle;
 	for (NSArray *rowInfo in rows) {
 		TableRow *row = [[TableRow alloc] init];
 		row.cellClass = [UITableViewCell class];
 		row.cellInit = ^() {
-			return (UITableViewCell *)[[[row.cellClass alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+			return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NSStringFromClass(row.cellClass)];
 		};
 		row.cellSetup = ^(UITableViewCell *cell) {
 			cell.textLabel.text = [rowInfo objectAtIndex:0];
@@ -44,7 +44,6 @@
 			cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		};
 		[section addRow:row];
-		[row release];
 	}
 	return section;
 }
@@ -103,7 +102,7 @@
 	buttonRow.cellClass = [UITableViewCell class];
 	buttonRow.identifier = @"DefaultCell";
 	buttonRow.cellInit = ^() {
-		return (UITableViewCell *)[[[buttonRow.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:buttonRow.identifier] autorelease];
+		return (UITableViewCell *)[[buttonRow.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:buttonRow.identifier];
 	};
 	buttonRow.cellSetup = ^(UITableViewCell *cell) {
 		if (self.game.myGame) {
@@ -120,7 +119,6 @@
             [cell setSelected:NO];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" delegate:self cancelButtonTitle:@"Don't delete" otherButtonTitles:@"Delete", nil];
 			self.deleteConfirmation = alertView;
-            [alertView release];
             [self.deleteConfirmation show];
 		} else {
             [self showSpinner:@"Joining..."];
@@ -132,9 +130,7 @@
 	};
 	
 	[buttonSection addRow:buttonRow];
-	[buttonRow release];
 	[sections addObject:buttonSection];
-	[buttonSection release];
 	
 	self.tableSections = sections;
 }
@@ -175,11 +171,6 @@
 }
 
 
-- (void)dealloc {
-	self.game = nil;
-    self.deleteConfirmation = nil;
-    [super dealloc];
-}
 
 
 @end

@@ -19,12 +19,5 @@
 	return self;
 }
 
-- (void)dealloc {
-	self.cellInit = nil;
-	self.cellSetup = nil;
-	self.cellTouched = nil;
-	self.identifier = nil;
-	[super dealloc];
-}
 
 @end

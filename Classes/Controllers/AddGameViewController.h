@@ -20,9 +20,9 @@
     NSArray *_ratingStrings;
 }
 
-@property(nonatomic, retain) TextCell *descriptionCell;
-@property(nonatomic, retain) NewGame *game;
-@property(nonatomic, retain) Player *player;
+@property(nonatomic, strong) TextCell *descriptionCell;
+@property(nonatomic, strong) NewGame *game;
+@property(nonatomic, strong) Player *player;
 
 - (IBAction)addGame;
 

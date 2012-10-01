@@ -17,10 +17,7 @@
 }
 
 - (void)dealloc {
-    [pageLoader release]; pageLoader = nil;
-    self.nextPagePath = nil;
-    self.games = nil;
-    [super dealloc];
+     pageLoader = nil;
 }
 
 - (void)loadNextPage:(void(^)(GameList *gameList))onSuccess {
@@ -39,7 +36,6 @@
     NSMutableArray *mutableGames = [self.games mutableCopy];
     [mutableGames addObjectsFromArray:moreGames];
     self.games = mutableGames;
-    [mutableGames release];
 }
 
 @end

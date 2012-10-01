@@ -83,7 +83,7 @@
 		TableRow *row = [[TableRow alloc] init];
 		row.cellClass = [UITableViewCell class];
 		row.cellInit = ^UITableViewCell*() {
-			return [[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+			return [[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)];
 		};
 		row.cellSetup = ^(UITableViewCell *cell) {
 			if ([game color] == kMovePlayerBlack) {
@@ -101,18 +101,15 @@
 			[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 			[activityView startAnimating];
 			[cell setAccessoryView:activityView];
-			[activityView release];
 
 			[self.gs getSgfForGame:game onSuccess:^(Game *game) {
 				[self gotSgfForGame:game];
 			}];
 		};
 		[firstSection addRow:row];
-		[row release];
 	}
 
 	[sections addObject:firstSection];
-	[firstSection release];
 
 	self.tableSections = sections;
 
@@ -121,7 +118,6 @@
 - (IBAction)startNewGame {
     NewGameViewController *newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil];
     [self.navigationController pushViewController:newGameViewController animated:YES];
-    [newGameViewController release];
 }
 
 - (IBAction)forceRefreshGames {
@@ -196,7 +192,7 @@
 }
 
 - (IBAction)logout {
-	self.logoutConfirmation = [[[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil] autorelease];
+	self.logoutConfirmation = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil];
 	[self.logoutConfirmation show];
 }
 
@@ -237,7 +233,6 @@
 	[gameViewController setGame:game];
     [gameViewController setDelegate:self];
 	[self.navigationController pushViewController:gameViewController animated:YES];
-	[gameViewController release];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
@@ -247,7 +242,6 @@
     NSMutableArray *gameList = [self.games mutableCopy];
     [gameList removeObjectIdenticalTo:game];
     self.games = gameList;
-    [gameList release];
     [self gameListChanged];
 }
 
@@ -280,10 +274,6 @@
 }
 
 
-- (void)dealloc {
-	self.games = nil;
-    [super dealloc];
-}
 
 
 @end

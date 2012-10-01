@@ -14,7 +14,6 @@
 	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/status.csv" encoding:NSUTF8StringEncoding error:NULL];
 	DGS *dgs = [[DGS alloc] init];
 	NSArray *games = [dgs gamesFromCSV:testData];
-	[dgs release];
 	NSUInteger expectedCount = 2;
 	STAssertEquals([games count], expectedCount, nil);
 	STAssertEqualObjects([[games objectAtIndex:0] opponent], @"pledan", nil);
@@ -23,7 +22,7 @@
 }
 
 - (void)testBoardCoords {
-	DGS *dgs = [[[DGS alloc] init] autorelease];
+	DGS *dgs = [[DGS alloc] init];
 	STAssertEqualObjects(@"ss", [dgs sgfCoordsWithRow:1 column:19 boardSize:19], nil, nil );
 	STAssertEqualObjects(@"aa", [dgs sgfCoordsWithRow:19 column:1 boardSize:19], nil, nil );
 	STAssertEqualObjects(@"ab", [dgs sgfCoordsWithRow:18 column:1 boardSize:19], nil, nil );
@@ -34,7 +33,6 @@
 
 	DGS *dgs = [[DGS alloc] init];
 	NSArray *games = [dgs gamesFromWaitingRoomTable:testData];
-	[dgs release];
 	NSUInteger expectedCount = 18;
 	STAssertEquals([games count], expectedCount, nil);
 	STAssertNotNil([[games objectAtIndex:0] detailUrl], nil);

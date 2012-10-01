@@ -9,14 +9,14 @@
 #import "LoginProtocol.h"
 
 @interface RootViewController : UIViewController <LoginProtocol> {
-	UIViewController *tabViewController;
+	UIViewController *__weak tabViewController;
 	SpinnerView *spinnerView;
 	id<GameServerProtocol> gs;
 }
 
-@property(nonatomic, assign) UIViewController *tabViewController;
-@property(nonatomic, retain) SpinnerView *spinnerView;
-@property(nonatomic, retain) id<GameServerProtocol> gs;
+@property(nonatomic, weak) UIViewController *tabViewController;
+@property(nonatomic, strong) SpinnerView *spinnerView;
+@property(nonatomic, strong) id<GameServerProtocol> gs;
 
 - (void)showSpinnerInView:(UIView *)view message:(NSString *)message;
 - (void)showSpinner:(NSString *)message;

@@ -290,16 +290,5 @@
     return @"No";
 }
 
-- (void)dealloc {
-    self.comment = nil;
-	self.minimumRating = nil;
-	self.maximumRating = nil;
-	
-	self.ratedString = nil;
-	self.stdHandicapString = nil;
-	self.weekendClockString = nil;
-	self.komiTypeName = nil;
-    [super dealloc];
-}
 
 @end

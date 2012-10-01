@@ -125,15 +125,7 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	self.messageTextView = nil;
-	self.messageField = nil;
-	self.messageDisplayView = nil;
-	self.messageInputView = nil;
-	self.onHide = nil;
 	
-	self.message = nil;
-	self.reply = nil;
-    [super dealloc];
 }
 
 

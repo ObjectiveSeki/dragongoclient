@@ -127,7 +127,7 @@
 		if (rowData.cellInit) {
 			cell = rowData.cellInit();
 		} else {
-			cell = [[[rowData.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+			cell = [[rowData.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
 		}
 	}
     
@@ -210,9 +210,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

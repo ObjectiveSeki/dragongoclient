@@ -23,10 +23,6 @@ static sqlite3 *database;
     return self;
 }
 
-- (void)dealloc {
-    self.gameServer = nil;
-    [super dealloc];
-}
 
 + (void)checkAndCreateDatabase {
 	// Check if the SQL database has already been saved to the users phone, if not then copy it over
@@ -55,7 +51,6 @@ static sqlite3 *database;
         // Copy the database from the package to the users filesystem
         /*BOOL copy_success =*/ [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];	
         
-        [fileManager release];
     }
     
     if (sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
@@ -115,7 +110,6 @@ static sqlite3 *database;
             }
             sqlite3_reset(updateGameStmt);
             
-            [game release];
             
             // keep trying
             [self loadUnknownSGF];
@@ -214,7 +208,6 @@ static sqlite3 *database;
     while (sqlite3_step(fetchGamesStmt) == SQLITE_ROW) {
         Game *game = [self gameFromResults:fetchGamesStmt];
         [dbGames addObject:game];
-        [game release];
     }
     
     sqlite3_reset(fetchGamesStmt);

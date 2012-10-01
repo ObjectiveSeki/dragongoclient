@@ -12,7 +12,7 @@
 }
 
 @property (nonatomic, copy) NSString *headerString;
-@property (nonatomic, retain) NSArray *tableRows;
+@property (nonatomic, strong) NSArray *tableRows;
 
 - (void)addRow:(TableRow *)row;
 

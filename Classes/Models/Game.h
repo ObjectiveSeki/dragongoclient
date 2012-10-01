@@ -25,8 +25,8 @@
     float komi;
 }
 
-@property(nonatomic, retain) NSURL * sgfUrl;
-@property(nonatomic, retain) NSURL * detailUrl;
+@property(nonatomic, strong) NSURL * sgfUrl;
+@property(nonatomic, strong) NSURL * detailUrl;
 @property(nonatomic, copy) NSString * sgfString;
 @property(nonatomic, copy) NSString * opponent;
 @property(nonatomic, copy) NSString * time;

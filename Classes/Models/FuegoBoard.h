@@ -23,9 +23,9 @@
 	int scoringMoves;
 }
 
-@property(nonatomic, retain) Move *resignMove;
-@property(nonatomic, retain) NSArray *markedGroups;
-@property(nonatomic, retain) NSArray *changedGroups;
+@property(nonatomic, strong) Move *resignMove;
+@property(nonatomic, strong) NSArray *markedGroups;
+@property(nonatomic, strong) NSArray *changedGroups;
 
 // Must be called after loading but before using this class
 + (void)initFuego;

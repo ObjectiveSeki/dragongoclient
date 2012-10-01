@@ -323,16 +323,6 @@
 	[delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
 }
 
-- (void)dealloc {
-	self.blackName = nil;
-	self.whiteName = nil;
-	self.status = nil;
-	self.statusView = nil;
-	self.blackCaptures = nil;
-	self.whiteCaptures = nil;
-	self.board = nil;
-    [super dealloc];
-}
 
 
 @end

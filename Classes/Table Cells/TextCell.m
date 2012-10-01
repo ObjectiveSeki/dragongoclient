@@ -69,13 +69,6 @@
 	}
 }
 
-- (void)dealloc {
-	self.label = nil;
-	self.textField = nil;
-	self.content = nil;
-	self.onChanged = nil;
-    [super dealloc];
-}
 
 
 @end

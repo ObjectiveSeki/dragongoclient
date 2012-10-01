@@ -25,12 +25,12 @@
     void (^onChanged)(SelectCell *selectCell);
 }
 
-@property(nonatomic, retain) IBOutlet UILabel *label;
-@property(nonatomic, retain) IBOutlet UILabel *value;
-@property(nonatomic, retain) UIPickerView *picker;
-@property(nonatomic, retain) NSArray *options;
-@property(nonatomic, retain) NSArray *selectedOptions;
-@property(nonatomic, retain) NSArray *sizes;
+@property(nonatomic, strong) IBOutlet UILabel *label;
+@property(nonatomic, strong) IBOutlet UILabel *value;
+@property(nonatomic, strong) UIPickerView *picker;
+@property(nonatomic, strong) NSArray *options;
+@property(nonatomic, strong) NSArray *selectedOptions;
+@property(nonatomic, strong) NSArray *sizes;
 @property(nonatomic) SEL changedSelector;
 @property(nonatomic, copy) void (^onChanged)(SelectCell *selectCell);
 

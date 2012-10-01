@@ -32,7 +32,7 @@ typedef enum _AddGameSection {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-	self.game = [[[NewGame alloc] init] autorelease];
+	self.game = [[NewGame alloc] init];
     self.navigationItem.title = @"Create a Game";
     NSMutableArray *ratingStrings = [[NSMutableArray alloc] initWithCapacity:40];
     for (int i = 30; i > 0; i--) {
@@ -127,7 +127,7 @@ typedef enum _AddGameSection {
     
     UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }	
 	return cell;
 }
@@ -137,7 +137,7 @@ typedef enum _AddGameSection {
     
     TextCell *cell = (TextCell *)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		cell = [[[TextCell alloc] init] autorelease];
+		cell = [[TextCell alloc] init];
     }
 	
 	return cell;
@@ -161,7 +161,7 @@ typedef enum _AddGameSection {
 - (BooleanCell *)booleanCell:(UITableView *)theTableView {
     BooleanCell *cell = (BooleanCell *)[theTableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
     if (cell == nil) {
-		cell = [[[BooleanCell alloc] init] autorelease];
+		cell = [[BooleanCell alloc] init];
     }
 	
 	return cell;
@@ -560,14 +560,10 @@ typedef enum _AddGameSection {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.descriptionCell = nil;
-    [_ratingStrings release]; _ratingStrings = nil;
+     _ratingStrings = nil;
 }
 
 
-- (void)dealloc {
-	self.game = nil;
-    [super dealloc];
-}
 
 @end
 

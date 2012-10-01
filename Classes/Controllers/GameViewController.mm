@@ -244,7 +244,6 @@
 		self.messageView.message = [theBoard comment];
 	}
 
-	[theBoard release];
 	currentZoomScale = [self zoomInScale];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:[[self boardView] center] animated:NO];
@@ -272,10 +271,6 @@
 }
 
 
-- (void)dealloc {
-	self.game = nil;
-    [super dealloc];
-}
 
 
 @end

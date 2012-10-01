@@ -20,15 +20,15 @@
 	NSDate *lastRefreshTime;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UIViewController *viewController;
-@property (nonatomic, retain) UIImage *blackStone;
-@property (nonatomic, retain) UIImage *whiteStone;
-@property (nonatomic, retain) UIImage *boardImage;
-@property (nonatomic, retain) UIImage *messageOff;
-@property (nonatomic, retain) UIImage *messageOn;
-@property (nonatomic, retain) NSFileHandle *logFile;
-@property (nonatomic, retain) NSDate *lastRefreshTime;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UIViewController *viewController;
+@property (nonatomic, strong) UIImage *blackStone;
+@property (nonatomic, strong) UIImage *whiteStone;
+@property (nonatomic, strong) UIImage *boardImage;
+@property (nonatomic, strong) UIImage *messageOff;
+@property (nonatomic, strong) UIImage *messageOn;
+@property (nonatomic, strong) NSFileHandle *logFile;
+@property (nonatomic, strong) NSDate *lastRefreshTime;
 
 - (NSString *)logFilePath;
 

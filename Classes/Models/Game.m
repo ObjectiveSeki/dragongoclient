@@ -25,15 +25,5 @@
 @synthesize handicap;
 @synthesize komi;
 
-- (void)dealloc {
-	self.detailUrl = nil;
-	[sgfString release];
-	[sgfUrl release];
-	[opponent release];
-	[time release];
-	[lastMove release];
-	self.opponentRating = nil;
-	[super dealloc];
-}
 
 @end

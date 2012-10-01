@@ -11,7 +11,7 @@
     UIView *noGamesView;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *noGamesView;
+@property (nonatomic, strong) IBOutlet UIView *noGamesView;
 
 - (void)setGames:(GameList *)gameList;
 - (IBAction)addGame:(id)sender;

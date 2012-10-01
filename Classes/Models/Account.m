@@ -17,12 +17,5 @@
 @synthesize name;
 @synthesize acceptTerms;
 
-- (void)dealloc {
-	self.username = nil;
-	self.password = nil;
-	self.passwordConfirm = nil;
-	self.name = nil;
-	[super dealloc];
-}
 
 @end

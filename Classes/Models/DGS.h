@@ -20,13 +20,13 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 #endif
 
 @interface DGS : NSObject <GameServerProtocol> {
-	id <LoginProtocol> delegate;
+	id <LoginProtocol> __weak delegate;
 #ifndef LOGIC_TEST_MODE
     UIAlertView *errorView;
 #endif
 }
 
-@property(nonatomic, assign) id <LoginProtocol> delegate;
+@property(nonatomic, weak) id <LoginProtocol> delegate;
 
 
 // Logic tests can't test anything that uses the native iPhone functionality.

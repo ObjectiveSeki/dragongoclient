@@ -20,13 +20,11 @@
 		[self setOpaque:NO];
         UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
 		self.spinner = activityIndicator;
-        [activityIndicator release];
 		self.spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[self.spinner startAnimating];
 		
 		UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.label = textLabel;
-        [textLabel release];
         
 		self.label.text = @"Loading...";
 		self.label.textAlignment = UITextAlignmentCenter;
@@ -55,7 +53,7 @@
 
 + (SpinnerView *)showInView:(UIView *)view {
     CGRect rect = [view convertRect:CGRectMake(view.window.center.x - 60, view.window.center.y - 60, 120, 120) fromView:nil];
-	SpinnerView *spinnerView = [[[SpinnerView alloc] initWithFrame:rect] autorelease];
+	SpinnerView *spinnerView = [[SpinnerView alloc] initWithFrame:rect];
     spinnerView.alpha = 0.0;
 	spinnerView.transform = CGAffineTransformMakeScale(2,2);
 	[view addSubview:spinnerView];
@@ -104,10 +102,9 @@
 }
 
 - (void)dealloc {
-	[spinner release], spinner = nil;
-	[label release], label = nil;
+	spinner = nil;
+	label = nil;
 
-    [super dealloc];
 }
 
 

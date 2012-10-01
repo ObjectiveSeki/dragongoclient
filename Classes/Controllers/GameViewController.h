@@ -36,19 +36,19 @@ enum BoardState {
 	float currentZoomScale;
 }
 
-@property(nonatomic, retain) Game *game;
-@property(nonatomic, retain) FuegoBoard *board;
-@property(nonatomic, retain) IBOutlet GoBoardView *boardView;
-@property(nonatomic, retain) IBOutlet UIScrollView *scrollView;
+@property(nonatomic, strong) Game *game;
+@property(nonatomic, strong) FuegoBoard *board;
+@property(nonatomic, strong) IBOutlet GoBoardView *boardView;
+@property(nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property(nonatomic) BoardState boardState;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *undoButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *zoomOutButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *confirmButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *passButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *resignButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *messageButton;
-@property(nonatomic, retain) IBOutlet MessageView *messageView;
-@property(nonatomic, assign) id <GameStatusProtocol> delegate;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *undoButton;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *zoomOutButton;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *confirmButton;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *passButton;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *resignButton;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *messageButton;
+@property(nonatomic, strong) IBOutlet MessageView *messageView;
+@property(nonatomic, weak) id <GameStatusProtocol> delegate;
 
 - (IBAction)undoMove;
 - (IBAction)zoomOut;

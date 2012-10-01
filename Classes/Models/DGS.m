@@ -85,14 +85,12 @@
 		if ([bodyElements count] > 0) {
 			errorString = [[bodyElements objectAtIndex:0] stringValue];
 		}
-		[doc release];
 	} else if (NSNotFound != [responseString rangeOfString:@"#Error:"].location) {
         NSString *errorKey;
         NSScanner *scanner = [[NSScanner alloc] initWithString:responseString];
         [scanner scanUpToString:@"[#Error:" intoString:NULL];
         [scanner scanString:@"[#Error: " intoString:NULL];
         [scanner scanUpToString:@";" intoString:&errorKey];
-        [scanner release];
         
         errorString = NSLocalizedStringFromTable(errorKey, @"DGSErrors", nil);
     }
@@ -116,7 +114,6 @@
 		NSString *str = [[NSString alloc] initWithData:possibleChar encoding:encoding];
 		if (str) {
 			[output appendString:str];
-            [str release];
 			pos += lookahead;
 			lookahead = 1;
 		} else {
@@ -158,7 +155,6 @@
 		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		self.errorView = alertView;
-        [alertView release];
         [self.errorView show];
 	} else {
 		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
@@ -175,7 +171,6 @@
 	JWLog(@"Request failed: %@", [request url]);
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	self.errorView = alertView;
-    [alertView release];
     [self.errorView show];
 }
 
@@ -190,11 +185,10 @@
 	}
 
 	if (onSuccess) {
-		[userInfo setObject:[[onSuccess copy] autorelease] forKey:@"onSuccess"];
+		[userInfo setObject:[onSuccess copy] forKey:@"onSuccess"];
 	}
 
 	request.userInfo = userInfo;
-	[userInfo release];
 
 	request.delegate = self;
 	[request startAsynchronous];
@@ -249,17 +243,17 @@
 }
 
 - (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess {
-    GameList *gameList = [[[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)()) {
+    GameList *gameList = [[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)()) {
         NSURL *url = [self URLWithPath:pagePath];
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
-
+        
         [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
             [gameList appendGames:[self gamesFromWaitingRoomTable:[request responseData]]];
             gameList.nextPagePath = [self nextPagePath:[request responseData]];
             onSuccess();
         }];
-    }] autorelease];
+    }];
 
     // add=9 to force the time limit to show up
     gameList.nextPagePath = @"/waiting_room.php?add=9&sf20=1&good=1";
@@ -275,7 +269,6 @@
     [scanner scanUpToString:@"info=" intoString:NULL];
     [scanner scanString:@"info=" intoString:NULL];
     [scanner scanCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&gameId];
-    [scanner release];
 
 	NSURL *url = [self URLWithPath:[NSString stringWithFormat:@"/quick_do.php?obj=wroom&cmd=info&wrid=%@&with=user_id", gameId]];
 
@@ -339,8 +332,6 @@
 	}
         
     NSMutableString *urlString = [NSMutableString stringWithFormat:playHandicapStonesFormat, gameId, lastMoveNumber, moveString];
-    
-    [moveString release];
 
 	if ([comment length] > 0) {
 		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
@@ -368,8 +359,6 @@
     }
     
     urlString = [NSMutableString stringWithFormat:scoreUrlFormat, gameId, lastMoveNumber, moveString];
-
-    [moveString release];
         
     if ([comment length] > 0) {
         [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
@@ -488,7 +477,6 @@
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
 
 			[games addObject:game];
-			[game release];
 		}
 	}
 	return games;
@@ -565,10 +553,8 @@
             if ([game.opponent length] > 0) {
 				[games addObject:game];
 			}
-            [game release];
         }
 	}
-	[doc release];
 	return games;
 }
 
@@ -581,7 +567,6 @@
     if ([nextPageIndicator count] != 0) {
         nextPagePath = [NSString stringWithFormat:@"/%@", [[nextPageIndicator lastObject] stringValue]];
     }
-    [doc release];
     return nextPagePath;
 }
 
@@ -590,7 +575,6 @@
     player.userId = [userDataDictionary objectForKey:@"id"];
     player.ratingStatus = [userDataDictionary objectForKey:@"rating_status"];
     [Player setCurrentPlayer:player];
-    [player release];
 }
 
 - (void)resetUserData {
@@ -623,11 +607,5 @@
 	return [NSString stringWithFormat:@"%c%c", colChar, rowChar];
 }
 
-- (void)dealloc {
-#ifndef LOGIC_TEST_MODE
-    self.errorView = nil;
-#endif
-    [super dealloc];
-}
 
 @end

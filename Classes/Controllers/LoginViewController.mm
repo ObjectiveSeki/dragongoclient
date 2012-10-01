@@ -88,7 +88,7 @@ typedef enum _LoginSection {
     
     UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }	
 	return cell;
 }
@@ -235,11 +235,6 @@ typedef enum _LoginSection {
 }
 
 
-- (void)dealloc {
-	self.username = nil;
-	self.password = nil;
-    [super dealloc];
-}
 
 
 @end

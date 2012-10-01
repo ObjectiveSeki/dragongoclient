@@ -16,13 +16,7 @@
 	}
 	[rows addObject:row];
 	self.tableRows = rows;
-	[rows release];
 }
 
-- (void)dealloc {
-	self.tableRows = nil;
-	self.headerString = nil;
-	[super dealloc];
-}
 
 @end

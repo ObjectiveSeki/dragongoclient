@@ -14,8 +14,8 @@
 	UILabel *label;
 }
 
-@property (nonatomic, retain) UIActivityIndicatorView *spinner;
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, strong) UILabel *label;
 
 + (SpinnerView *)showInView:(UIView *)view;
 - (void)dismiss:(BOOL)animate;

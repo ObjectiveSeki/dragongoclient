@@ -28,7 +28,7 @@
     TableRow *row = [[TableRow alloc] init];
     row.cellClass = [UITableViewCell class];
     row.cellInit = ^() {
-        return (UITableViewCell *)[[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)] autorelease];
+        return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)];
     };
     row.cellSetup = ^(UITableViewCell *cell) {
         NSString *ratingString = game.opponentRating ? game.opponentRating : @"Not Ranked";
@@ -41,18 +41,15 @@
         [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [activityView startAnimating];
         [cell setAccessoryView:activityView];
-        [activityView release];
         [self.gs getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
             JoinWaitingRoomGameController *controller = [[JoinWaitingRoomGameController alloc] initWithNibName:@"JoinWaitingRoomGameView" bundle:nil];
             controller.game = gameDetails;
             [self.navigationController pushViewController:controller animated:YES];
-            [controller release];
             [cell setAccessoryView:nil];
             [self deselectSelectedCell];
         }];
     };
     [section addRow:row];
-    [row release];
 }
 
 - (void)addNextPageRowForGameList:(GameList *)gameList toSection:(TableSection *)section {
@@ -60,7 +57,7 @@
     TableRow *row = [[TableRow alloc] init];
     row.cellClass = [UITableViewCell class];
     row.cellInit = ^() {
-        return (UITableViewCell *)[[[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NextPageCell"] autorelease];
+        return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NextPageCell"];
     };
     row.cellSetup = ^(UITableViewCell *cell) {
         [[cell textLabel] setText:@"More Games..."];
@@ -70,7 +67,6 @@
         [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [activityView startAnimating];
         [cell setAccessoryView:activityView];
-        [activityView release];
         [gameList loadNextPage:^(GameList *gameList) {
             [self setGames:gameList];
             [cell setAccessoryView:nil];
@@ -79,7 +75,6 @@
         }];
     };
     [section addRow:row];
-    [row release];
 }
 
 - (void)setGames:(GameList *)gameList {
@@ -97,7 +92,6 @@
         }
         
         [sections addObject:mainSection];
-        [mainSection release];
         self.tableSections = sections;
         [self.tableView reloadData];
     }
@@ -106,7 +100,6 @@
 - (IBAction)addGame:(id)sender {
     AddGameViewController *controller = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
-    [controller release];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -145,10 +138,6 @@
 }
 
 
-- (void)dealloc {
-    self.noGamesView = nil;
-    [super dealloc];
-}
 
 
 @end

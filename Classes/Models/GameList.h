@@ -13,7 +13,7 @@ typedef void (^PageLoaderBlock)(GameList *gameList, NSString *nextPagePath, void
     PageLoaderBlock pageLoader;
 }
 
-@property(nonatomic, retain) NSArray *games;
+@property(nonatomic, strong) NSArray *games;
 @property(nonatomic, copy) NSString *nextPagePath;
 
 - (id)initWithPageLoader:(PageLoaderBlock)aPageLoader;

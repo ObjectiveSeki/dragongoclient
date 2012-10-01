@@ -12,8 +12,8 @@
 	IBOutlet UITableView *tableView;
 }
 
-@property (nonatomic, retain) NSArray *tableSections;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *tableSections;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 - (TableRow *)rowDataForIndexPath:(NSIndexPath *)indexPath;
 - (void)deselectSelectedCell;

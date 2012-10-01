@@ -13,12 +13,12 @@
 @interface LoginViewController : JWTableViewController <LoginProtocol> {
 	NSString *username;
 	NSString *password;
-	id delegate;
+	id __weak delegate;
 }
 
 @property(nonatomic, copy) NSString *username;
 @property(nonatomic, copy) NSString *password;
-@property(nonatomic, assign) id delegate;
+@property(nonatomic, weak) id delegate;
 
 - (void)login;
 - (void)notLoggedIn;

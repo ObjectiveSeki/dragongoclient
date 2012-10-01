@@ -14,7 +14,6 @@
 		self.accessoryView = theSwitch;
         [theSwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
-        [theSwitch release];
     }
     return self;
 }
@@ -25,10 +24,5 @@
     }
 }
 
-- (void)dealloc {
-	self.toggleSwitch = nil;
-	self.onChanged = nil;
-    [super dealloc];
-}
 
 @end

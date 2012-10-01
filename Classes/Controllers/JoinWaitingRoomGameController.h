@@ -11,7 +11,7 @@
     UIAlertView *deleteConfirmation;
 }
 
-@property (nonatomic, retain) NewGame *game;
-@property (nonatomic, retain) UIAlertView *deleteConfirmation;
+@property (nonatomic, strong) NewGame *game;
+@property (nonatomic, strong) UIAlertView *deleteConfirmation;
 
 @end

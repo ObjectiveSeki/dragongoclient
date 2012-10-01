@@ -11,6 +11,6 @@
 }
 
 @property(nonatomic, copy) void (^onChanged)(BooleanCell *booleanCell);
-@property(nonatomic, retain) UISwitch *toggleSwitch;
+@property(nonatomic, strong) UISwitch *toggleSwitch;
 
 @end

@@ -13,10 +13,10 @@
 + (Player *)currentPlayer;
 + (void)setCurrentPlayer:(Player *)player;
 
-@property (nonatomic, retain) NSNumber *userId;
-@property (nonatomic, retain) NSString *ratingStatus;
-@property (nonatomic, retain) NSString *handle;
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, strong) NSNumber *userId;
+@property (nonatomic, strong) NSString *ratingStatus;
+@property (nonatomic, strong) NSString *handle;
+@property (nonatomic, strong) NSString *name;
 
 
 @property (nonatomic, readonly) BOOL rated;

@@ -12,7 +12,7 @@
 
 @interface CachingGameServer : NSObject<GameServerProtocol>
 
-@property(nonatomic, retain) id<GameServerProtocol> gameServer;
+@property(nonatomic, strong) id<GameServerProtocol> gameServer;
 
 - (id)initWithGameServer:(id<GameServerProtocol>)aGameServer;
 

@@ -63,7 +63,7 @@
 - (UIView *)inputView {
     if (!self.picker) {
         CGFloat windowHeight = parentTableView.window.frame.size.height;
-        self.picker = [[[UIPickerView alloc] initWithFrame:CGRectMake(0, windowHeight, 0, 0)] autorelease];
+        self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, windowHeight, 0, 0)];
         self.picker.showsSelectionIndicator = YES;
         self.picker.dataSource = self;
         self.picker.delegate = self;
@@ -116,14 +116,7 @@
 
 
 - (void)dealloc {
-	self.label = nil;
-	self.value = nil;
 	[self.picker removeFromSuperview];
-	self.picker = nil;
-	self.sizes = nil;
-	self.selectedOptions = nil;
-    self.onChanged = nil;
-    [super dealloc];
 }
 
 

@@ -110,14 +110,11 @@ static bool fuegoInitialized = NO;
 				move.player = [self playerForSgPlayer:goGame->Board().GetStone(point)];
 				
 				[markedByDGS addObject:move];
-				[move release];
 			}
 			[marked addObject:markedByDGS];
-			[markedByDGS release];
 		}
 		
 		self.markedGroups = marked;
-		[marked release];
 		
 		self.changedGroups = [NSArray array];
 		
@@ -199,7 +196,7 @@ static bool fuegoInitialized = NO;
 		}
 	}
 
-	return [deadStones autorelease];
+	return deadStones;
 }
 
 - (NSArray *)changedStones {
@@ -230,7 +227,7 @@ static bool fuegoInitialized = NO;
 		return nil;
 	}
 	
-	Move *currentMove = [[[Move alloc] init] autorelease];
+	Move *currentMove = [[Move alloc] init];
 	
 	SgPoint move = node->NodeMove();
 
@@ -289,7 +286,6 @@ static bool fuegoInitialized = NO;
 			move.player = [self playerForSgPlayer:goGame->Board().GetStone(*it)];
 			[moves addObject:move];
 		}
-		[move release];
 	}
 	
 	return moves;
@@ -363,12 +359,9 @@ static bool fuegoInitialized = NO;
 			move.player = [self playerForSgPlayer:goGame->Board().GetStone(*it)];
 			
 			[markedGroup addObject:move];
-			[move release];
 		}
 		[mutableChangedGroups addObject:markedGroup];
 		self.changedGroups = mutableChangedGroups;
-		[markedGroup release];
-		[mutableChangedGroups release];
 		return YES;
 	} 
 	return NO;
@@ -391,11 +384,10 @@ static bool fuegoInitialized = NO;
 	currentMove.boardSize = [self size];
 	
 	self.resignMove = currentMove;
-	[currentMove release];
 }
 
 - (NSArray *)territory {
-	NSMutableArray *points = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *points = [[NSMutableArray alloc] init];
 	GoSetup tempSetup;
 	NSArray *stones = [self deadStones];
 	
@@ -423,7 +415,6 @@ static bool fuegoInitialized = NO;
 		move.player = [self playerForSgPlayer:scoreBoard[*it]];
 		
 		[points addObject:move];
-		[move release];
 	}
 	return points;
 }
@@ -508,10 +499,6 @@ static bool fuegoInitialized = NO;
 
 - (void)dealloc {
 	delete goGame;
-	self.resignMove = nil;
-	self.markedGroups = nil;
-	self.changedGroups = nil;
-	[super dealloc];
 }
 
 @end

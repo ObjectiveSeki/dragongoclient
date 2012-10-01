@@ -22,15 +22,15 @@
 	int _margin;
 }
 
-@property(nonatomic, retain) FuegoBoard *board;
-@property(nonatomic, retain) IBOutlet id delegate;
+@property(nonatomic, strong) FuegoBoard *board;
+@property(nonatomic, strong) IBOutlet id delegate;
 
-@property(nonatomic, retain) IBOutlet UILabel *blackName;
-@property(nonatomic, retain) IBOutlet UILabel *whiteName;
-@property(nonatomic, retain) IBOutlet UILabel *status;
-@property(nonatomic, retain) IBOutlet UIView *statusView;
-@property(nonatomic, retain) IBOutlet UILabel *blackCaptures;
-@property(nonatomic, retain) IBOutlet UILabel *whiteCaptures;
+@property(nonatomic, strong) IBOutlet UILabel *blackName;
+@property(nonatomic, strong) IBOutlet UILabel *whiteName;
+@property(nonatomic, strong) IBOutlet UILabel *status;
+@property(nonatomic, strong) IBOutlet UIView *statusView;
+@property(nonatomic, strong) IBOutlet UILabel *blackCaptures;
+@property(nonatomic, strong) IBOutlet UILabel *whiteCaptures;
 @property(nonatomic, readonly) int pointDistance;
 
 - (bool)playStoneAtPoint:(CGPoint)point;

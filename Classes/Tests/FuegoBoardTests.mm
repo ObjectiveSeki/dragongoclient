@@ -38,7 +38,6 @@
 	STAssertEquals([board moveNumber], 201, nil);
 	STAssertFalse([board gameEnded], nil);
 	
-	[board release];
 }
 
 - (void)testMoveNumberFixForScores {
@@ -48,14 +47,12 @@
 	STAssertEquals([board moveNumber], 202, nil);
 	STAssertTrue([board gameEnded], nil);
 	
-	[board release];
 	
 	NSString *otherSgfString = [self stringForSgfFile:@"Multiple Scoring Passes"];
 	FuegoBoard *otherBoard = [[FuegoBoard alloc] initWithSGFString:otherSgfString];
 	
 	STAssertEquals([otherBoard moveNumber], 15, nil);
 	
-	[otherBoard release];
 }
 
 - (void)testPlayMoveAfterScoring {
@@ -72,7 +69,6 @@
 	[board undoLastMove];
 	STAssertTrue([board gameEnded], nil);
 	
-	[board release];
 }
 
 @end

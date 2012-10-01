@@ -19,7 +19,6 @@
 {
     TableCellFactory *tcf = [[TableCellFactory alloc] init];
     TextCell *textCell = [tcf textCell];
-    [tcf release];
     return textCell;
 }
 
@@ -32,16 +31,10 @@
 {
     TableCellFactory *tcf = [[TableCellFactory alloc] init];
     SelectCell *selectCell = [tcf selectCell];
-    [tcf release];
     return selectCell;
 }
 
 
-- (void)dealloc {
-    [textCell release];
-	[selectCell release];
-    [super dealloc];
-}
 
 
 @end

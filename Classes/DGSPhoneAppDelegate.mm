@@ -128,8 +128,6 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 	}
 	JWLog("Initialized controllers...");
 	
-	[navigationController release];
-	[controller release];
 
 	[window makeKeyAndVisible];
 	JWLog("Showing main window...");
@@ -220,16 +218,6 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 }
 
 
-- (void)dealloc {
-	self.lastRefreshTime = nil;
-	[blackStone release];
-	[whiteStone release];
-	[boardImage release];
-	[messageOn release];
-	[messageOff	release];
-    [window release];
-    [super dealloc];
-}
 
 
 @end

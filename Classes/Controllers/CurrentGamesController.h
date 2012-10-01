@@ -26,15 +26,15 @@
     IBOutlet UIView *gameListView;
 }
 
-@property(nonatomic, retain) NSArray *games;
-@property(nonatomic, retain) IBOutlet UIToolbar *bottomToolbar;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *refreshButton;
-@property(nonatomic, retain) IBOutlet UIBarButtonItem *logoutButton;
-@property(nonatomic, retain) IBOutlet UITableView *gameTableView;
-@property(nonatomic, retain) UITableViewCell *selectedCell;
-@property(nonatomic, retain) UIAlertView *logoutConfirmation;
-@property(nonatomic, retain) UIView *noGamesView;
-@property(nonatomic, retain) UIView *gameListView;
+@property(nonatomic, strong) NSArray *games;
+@property(nonatomic, strong) IBOutlet UIToolbar *bottomToolbar;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *refreshButton;
+@property(nonatomic, strong) IBOutlet UIBarButtonItem *logoutButton;
+@property(nonatomic, strong) IBOutlet UITableView *gameTableView;
+@property(nonatomic, strong) UITableViewCell *selectedCell;
+@property(nonatomic, strong) UIAlertView *logoutConfirmation;
+@property(nonatomic, strong) UIView *noGamesView;
+@property(nonatomic, strong) UIView *gameListView;
 
 // Refresh games list unconditionally
 - (IBAction)forceRefreshGames;

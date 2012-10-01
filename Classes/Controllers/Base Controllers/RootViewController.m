@@ -12,7 +12,7 @@
 @synthesize gs;
 
 - (void)viewDidLoad {
-	self.gs = [[[NSClassFromString(SERVER_CLASS) alloc] init] autorelease];
+	self.gs = [[NSClassFromString(SERVER_CLASS) alloc] init];
     
 #ifdef CACHING
     self.gs = [[CachingGameServer alloc] initWithGameServer:self.gs];
@@ -46,7 +46,6 @@
 	loginViewController.delegate = self;
 	[self presentModalViewController:loginViewController animated:YES];
 	[loginViewController notLoggedIn];
-	[loginViewController release];
 }
 
 - (void)loggedIn {
@@ -57,9 +56,6 @@
 	[self hideSpinner:NO];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end
