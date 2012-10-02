@@ -11,18 +11,6 @@
 @class SelectCell;
 
 @interface SelectCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource> {
-	IBOutlet UILabel *label;
-	IBOutlet UILabel *value;
-	UIPickerView *picker;
-	NSArray *options;
-	NSArray *selectedOptions;
-	NSArray *sizes;
-    UITableView *parentTableView; // weak, temporary reference
-	SEL changedSelector;
-    int pickerViewHeight;
-    int tableViewHeight;
-    CGFloat movementOffset;
-    void (^onChanged)(SelectCell *selectCell);
 }
 
 @property(nonatomic, strong) IBOutlet UILabel *label;

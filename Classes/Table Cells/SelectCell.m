@@ -8,33 +8,23 @@
 
 #import "SelectCell.h"
 
+@interface SelectCell ()
+
+@property (nonatomic, weak) UITableView *parentTableView;
+
+@end
 
 @implementation SelectCell
-
-@synthesize label;
-@synthesize value;
-@synthesize picker;
-@synthesize options;
-@synthesize selectedOptions;
-@synthesize changedSelector;
-@synthesize sizes;
-@synthesize onChanged;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         // Initialization code
-        pickerViewHeight = 0;
-        tableViewHeight = 0;
-        movementOffset = 0;
-        picker = nil;
+        _picker = nil;
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    pickerViewHeight = 0;
-    tableViewHeight = 0;
-    movementOffset = 0;
     self.picker = nil;
 }
 
@@ -44,16 +34,22 @@
     UITableView *tableView = (UITableView *)self.superview;
     
     if (tableView) {
-        parentTableView = tableView;
+        self.parentTableView = tableView;
     }
     
 	if (selected && ![self isFirstResponder]) {
 		[self becomeFirstResponder];
 	} else if (selected) {
         [self resignFirstResponder];
-        [parentTableView deselectRowAtIndexPath:[parentTableView indexPathForCell:self] animated:NO];
+        [self.parentTableView deselectRowAtIndexPath:[self.parentTableView indexPathForCell:self] animated:NO];
     }
+}
 
+- (void)setOptions:(NSArray *)options {
+    if (_options != options) {
+        _options = options;
+        [self.picker reloadAllComponents];
+    }
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -62,7 +58,7 @@
 
 - (UIView *)inputView {
     if (!self.picker) {
-        CGFloat windowHeight = parentTableView.window.frame.size.height;
+        CGFloat windowHeight = self.parentTableView.window.frame.size.height;
         self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, windowHeight, 0, 0)];
         self.picker.showsSelectionIndicator = YES;
         self.picker.dataSource = self;
@@ -113,7 +109,6 @@
 - (NSString *)selectedValueInComponent:(NSInteger)component {
 	return (self.options)[component][[self.picker selectedRowInComponent:component]];
 }
-
 
 - (void)dealloc {
 	[self.picker removeFromSuperview];

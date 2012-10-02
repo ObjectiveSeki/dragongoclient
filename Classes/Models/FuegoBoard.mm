@@ -53,7 +53,7 @@ static bool fuegoInitialized = NO;
 }
 
 - (id)initWithSGFString:(NSString *)sgfString {
-	if ([super init]) {
+	if (self = [super init]) {
 		_gameEnded = NO;
 		scoringMoves = 0;
 		std::string sgfStr([sgfString UTF8String]);
