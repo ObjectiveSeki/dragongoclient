@@ -31,20 +31,20 @@
 
 
 - (int)maxX {
-	return self.bounds.size.width - _margin;
+	return self.bounds.size.width - _marginX;
 }
 
 
 - (int)maxY {
-	return self.bounds.size.height - _margin;
+	return self.bounds.size.height - _marginY;
 }
 
 - (int)minX {
-	return _margin;
+	return _marginX;
 }
 
 - (int)minY {
-	return _margin;
+	return _marginY;
 }
 
 - (CGPoint)pointForBoardRow:(int)row column:(int)col {
@@ -289,9 +289,11 @@
 	// we need to make a guess first, then calculate the actual margins based on the
 	// point distance we calculate. The reason these are different are due to rounding 
 	// errors when we snap the board distance to device pixels.
-	_margin = 50;
+	_marginX = 50;
 	pointDistance = 2 * round((float)([self maxX] - [self minX]) / (self.board.size - 1) / 2.0);
-	_margin = (self.bounds.size.width - (pointDistance * (self.board.size - 1))) / 2.0;
+	_marginX = (self.bounds.size.width - (pointDistance * (self.board.size - 1))) / 2.0;
+	_marginY = (self.bounds.size.height - (pointDistance * (self.board.size - 1))) / 2.0;
+    
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	// Drawing code

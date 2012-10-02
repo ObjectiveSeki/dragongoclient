@@ -14,4 +14,13 @@ If you'd like to know more about CocoaPods, the
 [wiki](https://github.com/CocoaPods/CocoaPods/wiki) is the best place to look.
 
 To build boost, I just followed this tutorial:
-http://www.danielsefton.com/2012/03/building-boost-1-49-with-clang-ios-5-1-and-xcode-4-3/
+http://www.danielsefton.com/2012/03/building-boost-1-49-with-clang-ios-5-1-and-xcode-4-3/ using this fork: https://git.gitorious.org/~huuskpe/boostoniphone/huuskpes-boostoniphone.git.
+
+I included these libs:
+
+    thread program_options filesystem system date_time
+
+technically, fuego also requires `test`, but I couldn't get it to
+build and my shell scripting is weak. (it happens because the boost
+lib is called 'test', but the built lib is named
+libboost_unit_test_framework). Seems to work without it, though.

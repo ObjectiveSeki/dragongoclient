@@ -1608,7 +1608,7 @@ void GoGtpEngine::Ponder()
     // Call GoPlayer::Ponder() after 0.2 seconds delay to avoid calls in very
     // short intervals between received commands
     boost::xtime time;
-    boost::xtime_get(&time, boost::TIME_UTC);
+    boost::xtime_get(&time, boost::TIME_UTC_);
     bool aborted = false;
     for (int i = 0; i < 200; ++i)
     {

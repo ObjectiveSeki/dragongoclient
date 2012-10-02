@@ -80,10 +80,12 @@ typedef enum _AddGameSection {
 */
 
 - (IBAction)addGame {
+    // break the retain cycle in the block below
+    __weak AddGameViewController* blockSelf = self;
 	[self showSpinner:@"Posting..."];
 	[self.gs addGame:self.game onSuccess:^() {
-		[self hideSpinner:YES];
-		[[self navigationController] popToRootViewControllerAnimated:YES];
+		[blockSelf hideSpinner:YES];
+		[[blockSelf navigationController] popToRootViewControllerAnimated:YES];
 	}];
 }
 

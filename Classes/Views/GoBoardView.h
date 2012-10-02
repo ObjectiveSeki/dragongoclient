@@ -19,7 +19,8 @@
 	IBOutlet UILabel *blackCaptures;
 	IBOutlet UILabel *whiteCaptures;
 	int pointDistance;
-	int _margin;
+	int _marginX;
+    int _marginY;
 }
 
 @property(nonatomic, strong) FuegoBoard *board;
