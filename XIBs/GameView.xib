@@ -51,7 +51,6 @@
 						<string key="NSFrame">{{0, 372}, {320, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -115,7 +114,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIView" id="941288829">
 								<reference key="NSNextResponder" ref="617603125"/>
-								<int key="NSvFlags">319</int>
+								<int key="NSvFlags">292</int>
 								<string key="NSFrameSize">{640, 640}</string>
 								<reference key="NSSuperview" ref="617603125"/>
 								<reference key="NSWindow"/>

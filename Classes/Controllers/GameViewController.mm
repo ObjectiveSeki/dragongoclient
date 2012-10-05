@@ -55,8 +55,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	UIScrollView *tempScrollView=(UIScrollView *)self.scrollView;
-    tempScrollView.contentSize=CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+	UIScrollView *tempScrollView = (UIScrollView *)self.scrollView;
+    tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [game opponent]];
 }
@@ -125,8 +125,19 @@
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
 	[self unlockZoom];
 	currentZoomScale = scale;
-	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
-	[[self scrollView] zoomToRect:zoomRect animated:animated];
+	CGRect zoomRect = [self zoomRectForScrollView:self.scrollView withScale:scale withCenter:center];
+	[self.scrollView zoomToRect:zoomRect animated:animated];
+    
+    // Center the board view in the scroll view if it's smaller than the scroll view
+    CGPoint contentOffset = self.scrollView.contentOffset;
+    if (self.scrollView.contentSize.width < self.scrollView.bounds.size.width) {
+        contentOffset.x = -(self.scrollView.bounds.size.width - self.scrollView.contentSize.width) / 2;
+    }
+    if (self.scrollView.contentSize.height < self.scrollView.bounds.size.height) {
+        contentOffset.y = -(self.scrollView.bounds.size.height - self.scrollView.contentSize.height) / 2;
+    }
+    [self.scrollView setContentOffset:contentOffset animated:YES];
+    
 	[self lockZoom];
 }
 
@@ -139,7 +150,7 @@
 }
 
 - (IBAction)zoomOut {
-	[self zoomOut:[self.boardView center]];
+	[self zoomOut:self.boardView.center];
 }
 
 - (void)playedMove {
@@ -246,7 +257,7 @@
 
 	currentZoomScale = [self zoomInScale];
 	[self lockZoom];
-	[self zoomToScale:0.5 center:[[self boardView] center] animated:NO];
+	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
 	[self updateBoard];
 }
 
