@@ -149,10 +149,8 @@
 			game.color = kMovePlayerBlack;
 			game.time = @"Test";
 			[mutableCurrentGames addObject:game];
-			[game release];
 		}
 		self.games = mutableCurrentGames;
-		[mutableCurrentGames release];
 #endif
 		[self hideSpinner:YES];
         [self gameListChanged];
