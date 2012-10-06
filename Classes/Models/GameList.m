@@ -2,27 +2,21 @@
 
 @implementation GameList
 
-@synthesize nextPagePath, games;
-
 - (id)initWithPageLoader:(PageLoaderBlock)aPageLoader;
 {
     self = [super init];
     if (self) {
-        nextPagePath = nil;
-        pageLoader = [aPageLoader copy];
-        games = [[NSArray alloc] init];
+        _nextPagePath = nil;
+        _pageLoader = [aPageLoader copy];
+        _games = [[NSArray alloc] init];
     }
     
     return self;
 }
 
-- (void)dealloc {
-     pageLoader = nil;
-}
-
 - (void)loadNextPage:(void(^)(GameList *gameList))onSuccess {
-    if ([self hasMorePages] && pageLoader) {
-        pageLoader(self, self.nextPagePath, ^() {
+    if ([self hasMorePages] && self.pageLoader) {
+        self.pageLoader(self, self.nextPagePath, ^() {
             onSuccess(self);
         });
     }

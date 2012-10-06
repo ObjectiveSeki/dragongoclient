@@ -18,6 +18,8 @@ typedef id (^CacheFetchBlock)(JWCache *cache, CacheCallbackBlock gotObject);
 
 - (id)objectForKey:(NSString *)key;
 - (void)setObject:(id)object forKey:(NSString *)key ttl:(NSTimeInterval)ttl;
+- (void)removeObjectForKey:(NSString *)key;
+- (void)removeAllObjects;
 - (id)fetchObjectForKey:(NSString *)key
                     ttl:(NSTimeInterval)ttl
              fetchBlock:(CacheFetchBlock)fetchBlock

@@ -12,18 +12,4 @@
 #import "DGS.h"
 
 @implementation Game
-
-@synthesize sgfUrl;
-@synthesize sgfString;
-@synthesize opponent;
-@synthesize gameId;
-@synthesize detailUrl;
-@synthesize time;
-@synthesize lastMove;
-@synthesize color;
-@synthesize opponentRating;
-@synthesize handicap;
-@synthesize komi;
-
-
 @end

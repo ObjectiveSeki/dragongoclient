@@ -11,21 +11,15 @@
 #import "FuegoBoard.h"
 #import "DGSPhoneAppDelegate.h"
 
-@implementation GameViewController
+@interface GameViewController ()
 
-@synthesize game;
-@synthesize board;
-@synthesize boardView;
-@synthesize scrollView;
-@synthesize boardState;
-@synthesize undoButton;
-@synthesize zoomOutButton;
-@synthesize confirmButton;
-@synthesize passButton;
-@synthesize resignButton;
-@synthesize messageButton;
-@synthesize messageView;
-@synthesize delegate = _delegate;
+@property (nonatomic, assign) CGFloat currentZoomScale;
+@property (nonatomic, assign) CGFloat maximumZoomScale;
+@property (nonatomic, assign) CGFloat minimumZoomScale;
+
+@end
+
+@implementation GameViewController
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -57,8 +51,8 @@
     [super viewDidLoad];
 	UIScrollView *tempScrollView = (UIScrollView *)self.scrollView;
     tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
-	currentZoomScale = 1.0;
-	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [game opponent]];
+	self.currentZoomScale = 1.0;
+	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
 }
 
 - (void)updateBoard {
@@ -109,22 +103,22 @@
 
 -(void)lockZoom
 {
-    maximumZoomScale = self.scrollView.maximumZoomScale;
-    minimumZoomScale = self.scrollView.minimumZoomScale;
+    self.maximumZoomScale = self.scrollView.maximumZoomScale;
+    self.minimumZoomScale = self.scrollView.minimumZoomScale;
 
-    self.scrollView.maximumZoomScale = currentZoomScale;
-    self.scrollView.minimumZoomScale = currentZoomScale;
+    self.scrollView.maximumZoomScale = self.currentZoomScale;
+    self.scrollView.minimumZoomScale = self.currentZoomScale;
 }
 
 -(void)unlockZoom
 {
-    self.scrollView.maximumZoomScale = maximumZoomScale;
-    self.scrollView.minimumZoomScale = minimumZoomScale;
+    self.scrollView.maximumZoomScale = self.maximumZoomScale;
+    self.scrollView.minimumZoomScale = self.minimumZoomScale;
 }
 
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
 	[self unlockZoom];
-	currentZoomScale = scale;
+	self.currentZoomScale = scale;
 	CGRect zoomRect = [self zoomRectForScrollView:self.scrollView withScale:scale withCenter:center];
 	[self.scrollView zoomToRect:zoomRect animated:animated];
     
@@ -143,7 +137,7 @@
 
 - (void)zoomOut:(CGPoint)center {
 	self.boardState = kBoardStateZoomedOut;
-	if (currentZoomScale != 0.5) {
+	if (self.currentZoomScale != 0.5) {
 		[self zoomToScale:0.5 center:center animated:YES];
 	}
 	[self updateBoard];
@@ -155,9 +149,6 @@
 
 - (void)playedMove {
 	[self hideSpinner:YES];
-    if (self.delegate) {
-        [self.delegate playedMoveInGame:self.game];
-    }
 	[[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -246,7 +237,7 @@
 	[super viewWillAppear:animated];
 	[self setBoardState:kBoardStateZoomedOut];
     JWLog("creating board...");
-	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
+	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 
@@ -255,7 +246,7 @@
 		self.messageView.message = [theBoard comment];
 	}
 
-	currentZoomScale = [self zoomInScale];
+	self.currentZoomScale = [self zoomInScale];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
 	[self updateBoard];

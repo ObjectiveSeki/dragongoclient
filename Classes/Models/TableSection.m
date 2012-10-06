@@ -4,9 +4,6 @@
 
 @implementation TableSection
 
-@synthesize tableRows;
-@synthesize headerString;
-
 - (void)addRow:(TableRow *)row {
 	NSMutableArray *rows;
 	if (self.tableRows) {

@@ -6,12 +6,6 @@
 
 
 @interface TableRow : NSObject {
-	Class cellClass;
-	UITableViewCell *(^cellInit)();
-	void (^cellSetup)(UITableViewCell *cell);
-	void (^cellTouched)(UITableViewCell *cell);
-	NSString *identifier;
-	BOOL selectable;
 }
 
 @property (nonatomic, assign) Class cellClass;

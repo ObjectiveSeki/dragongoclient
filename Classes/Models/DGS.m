@@ -20,12 +20,6 @@
 
 @implementation DGS
 
-@synthesize delegate;
-
-#ifndef LOGIC_TEST_MODE
-@synthesize errorView;
-#endif
-
 // This returns the base path onto which all of the urls used
 // in this class refer. This is so that you can run your own
 // DGS instance and play with it without ruining your own games.

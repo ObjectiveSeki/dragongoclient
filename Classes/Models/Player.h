@@ -17,8 +17,6 @@
 @property (nonatomic, strong) NSString *ratingStatus;
 @property (nonatomic, strong) NSString *handle;
 @property (nonatomic, strong) NSString *name;
-
-
 @property (nonatomic, readonly) BOOL rated;
 
 @end

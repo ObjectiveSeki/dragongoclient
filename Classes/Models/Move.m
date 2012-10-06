@@ -14,15 +14,6 @@
 
 @implementation Move
 
-@synthesize row;
-@synthesize col;
-@synthesize player;
-@synthesize moveType;
-@synthesize boardSize;
-
-
-
-
 - (NSUInteger) hash {
 	int prime = 31;
 	

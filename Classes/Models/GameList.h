@@ -8,13 +8,11 @@
 typedef void (^PageLoaderBlock)(GameList *gameList, NSString *nextPagePath, void (^onSuccess)());
 
 @interface GameList : NSObject {
-    NSArray *games;
-    NSString *nextPagePath;
-    PageLoaderBlock pageLoader;
 }
 
 @property(nonatomic, strong) NSArray *games;
 @property(nonatomic, copy) NSString *nextPagePath;
+@property(nonatomic, readonly) PageLoaderBlock pageLoader;
 
 - (id)initWithPageLoader:(PageLoaderBlock)aPageLoader;
 

@@ -8,14 +8,6 @@
 
 #import "Account.h"
 
-
 @implementation Account
-
-@synthesize username;
-@synthesize password;
-@synthesize passwordConfirm;
-@synthesize name;
-@synthesize acceptTerms;
-
 
 @end

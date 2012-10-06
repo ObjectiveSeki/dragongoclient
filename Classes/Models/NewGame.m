@@ -9,68 +9,30 @@
 #import "NewGame.h"
 
 @implementation NewGame
-@synthesize numberOfGames;
-@synthesize ruleSet;
-@synthesize boardSize;
-@synthesize komiType;
-@synthesize manualKomiType;
-@synthesize adjustedHandicap;
-@synthesize minHandicap;
-@synthesize maxHandicap;
-@synthesize stdHandicap;
-@synthesize adjustedKomi;
-@synthesize jigoMode;
-@synthesize timeValue;
-@synthesize timeUnit;
-@synthesize byoYomiType;
-@synthesize japaneseTimeValue;
-@synthesize japaneseTimeUnit;
-@synthesize japaneseTimePeriods;
-@synthesize canadianTimeValue;
-@synthesize canadianTimeUnit;
-@synthesize canadianTimePeriods;
-@synthesize fischerTimeValue;
-@synthesize fischerTimeUnit;
-@synthesize weekendClock;
-@synthesize	rated;
-@synthesize requireRatedOpponent;
-@synthesize	minimumRating;
-@synthesize maximumRating;
-@synthesize minRatedGames;
-@synthesize sameOpponent;
-@synthesize comment;
-
-@synthesize ratedString;
-@synthesize stdHandicapString;
-@synthesize weekendClockString;
-@synthesize komiTypeName;
-@synthesize myGame;
 
 - (id)init {
 	if (self = [super init]) {
-		numberOfGames = 1;
-		boardSize = 19;
-		maxHandicap = 21;
-		stdHandicap = YES;
-        komi = 6.5;
-        handicap = 0;
-		timeValue = 30;
-		timeUnit = kTimePeriodDays;
-        byoYomiType = kByoYomiTypeFischer;
-		japaneseTimeValue = 1;
-		japaneseTimeUnit = kTimePeriodDays;
-		japaneseTimePeriods = 10;
-		canadianTimeValue = 15;
-		canadianTimeUnit = kTimePeriodDays;
-		canadianTimePeriods = 15;
-		fischerTimeValue = 1;
-		fischerTimeUnit = kTimePeriodDays;
-		weekendClock = YES;
-		rated = NO;
-        requireRatedOpponent = NO;
-		minimumRating = @"30 kyu";
-		maximumRating = @"9 dan";
-		myGame = true;
+		_numberOfGames = 1;
+		_boardSize = 19;
+		_maxHandicap = 21;
+		_stdHandicap = YES;
+		_timeValue = 30;
+		_timeUnit = kTimePeriodDays;
+        _byoYomiType = kByoYomiTypeFischer;
+		_japaneseTimeValue = 1;
+		_japaneseTimeUnit = kTimePeriodDays;
+		_japaneseTimePeriods = 10;
+		_canadianTimeValue = 15;
+		_canadianTimeUnit = kTimePeriodDays;
+		_canadianTimePeriods = 15;
+		_fischerTimeValue = 1;
+		_fischerTimeUnit = kTimePeriodDays;
+		_weekendClock = YES;
+		_rated = NO;
+        _requireRatedOpponent = NO;
+		_minimumRating = @"30 kyu";
+		_maximumRating = @"9 dan";
+		_myGame = true;
 	}
 	return self;
 }

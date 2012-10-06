@@ -20,11 +20,16 @@
 
 static bool fuegoInitialized = NO;
 
-@implementation FuegoBoard
+@interface FuegoBoard () {
+    GoGame *goGame;
+    const SgNode *startNode;
+    BOOL _gameEnded;
+    NSUInteger _scoringMoves;
+}
 
-@synthesize resignMove;
-@synthesize markedGroups;
-@synthesize changedGroups;
+@end
+
+@implementation FuegoBoard
 
 + (void)initFuego {
 	if (!fuegoInitialized) {
@@ -55,7 +60,7 @@ static bool fuegoInitialized = NO;
 - (id)initWithSGFString:(NSString *)sgfString {
 	if (self = [super init]) {
 		_gameEnded = NO;
-		scoringMoves = 0;
+		_scoringMoves = 0;
 		std::string sgfStr([sgfString UTF8String]);
 		std::istringstream input(sgfStr);
 		SgGameReader gameReader(input, 19);
@@ -89,7 +94,7 @@ static bool fuegoInitialized = NO;
             goGame->CurrentNode()->GetStringProp(SG_PROP_NAME, &propName);
             
             if (propName == "B SCORE" || propName == "W SCORE") {
-                scoringMoves++;
+                _scoringMoves++;
             }
         }
         
@@ -297,7 +302,7 @@ static bool fuegoInitialized = NO;
 	if (self.resignMove) {
 		++moveNumber;
 	}
-	moveNumber += scoringMoves;
+	moveNumber += _scoringMoves;
 	return moveNumber;
 }
 

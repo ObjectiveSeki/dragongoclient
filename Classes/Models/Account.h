@@ -4,11 +4,7 @@
 
 
 @interface Account : NSObject {
-	NSString *username;
-	NSString *name;
-	NSString *password;
-	NSString *passwordConfirm;
-	BOOL *acceptTerms;
+
 }
 
 @property(nonatomic, copy) NSString *username;

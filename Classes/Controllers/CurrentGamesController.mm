@@ -19,16 +19,6 @@
 
 @implementation CurrentGamesController
 
-@synthesize games;
-@synthesize refreshButton;
-@synthesize gameTableView;
-@synthesize logoutButton;
-@synthesize selectedCell;
-@synthesize logoutConfirmation;
-@synthesize bottomToolbar;
-@synthesize noGamesView;
-@synthesize gameListView;
-
 #pragma mark -
 #pragma mark View lifecycle
 
@@ -121,17 +111,10 @@
 }
 
 - (IBAction)forceRefreshGames {
-    [DGSAppDelegate invalidateThrottle];
     [self refreshGames];
 }
 
 - (IBAction)refreshGames {
-    if ([DGSAppDelegate refreshShortThrottled]) {
-        // We won't get anything new from the server in this
-        // short amount of time, so skip the refresh
-        return;
-    }
-
 	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
 	[self setEnabled:NO];
 	[self.gs getCurrentGames:^(NSArray *currentGames) {
@@ -229,18 +212,10 @@
 	// ...
 	// Pass the selected object to the new view controller.
 	[gameViewController setGame:game];
-    [gameViewController setDelegate:self];
 	[self.navigationController pushViewController:gameViewController animated:YES];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
-}
-
-- (void)playedMoveInGame:(Game *)game {
-    NSMutableArray *gameList = [self.games mutableCopy];
-    [gameList removeObjectIdenticalTo:game];
-    self.games = gameList;
-    [self gameListChanged];
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

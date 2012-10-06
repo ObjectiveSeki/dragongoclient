@@ -14,13 +14,6 @@
 #import "Move.h"
 
 @interface FuegoBoard : NSObject {
-	GoGame *goGame;
-	const SgNode *startNode;
-	Move *resignMove;
-	NSArray *markedGroups;
-	NSArray *changedGroups;
-	bool _gameEnded;
-	int scoringMoves;
 }
 
 @property(nonatomic, strong) Move *resignMove;

@@ -10,9 +10,6 @@
 
 @implementation Player
 
-@synthesize userId = _userId, ratingStatus = _ratingStatus, handle = _handle, name = _name;
-@dynamic rated;
-
 + (Player *)currentPlayer {
     return [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"currentPlayer"]];
 }

@@ -11,10 +11,13 @@
 #import "LoginViewController.h"
 #import "BooleanCell.h"
 
-@implementation AddGameViewController
+@interface AddGameViewController ()
 
-@synthesize descriptionCell, game;
-@synthesize player = _player;
+@property (nonatomic, strong) NSArray *ratingStrings;
+
+@end
+
+@implementation AddGameViewController
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -41,7 +44,7 @@ typedef enum _AddGameSection {
     for (int i = 1; i < 10; i++) {
         [ratingStrings addObject:[NSString stringWithFormat:@"%d dan", i]];
     }
-    _ratingStrings = ratingStrings;
+    self.ratingStrings = ratingStrings;
     
 }
 

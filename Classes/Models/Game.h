@@ -12,17 +12,6 @@
 #import	"Move.h"
 
 @interface Game : NSObject {
-	int gameId;
-	NSURL * sgfUrl;
-	NSURL * detailUrl;
-	NSString * sgfString;
-	NSString * opponent;
-	NSString * time;
-	NSString * lastMove;
-	NSString * opponentRating;
-	MovePlayer color;
-    int handicap;
-    float komi;
 }
 
 @property(nonatomic, strong) NSURL * sgfUrl;

@@ -22,9 +22,6 @@
 #import "ASIFormDataRequest.h"
 #endif
 
-const NSTimeInterval kShortThrottleRate = 65; // 1:05
-const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
-
 @implementation DGSPhoneAppDelegate
 
 @synthesize window;
@@ -35,7 +32,6 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 @synthesize messageOff;
 @synthesize messageOn;
 @synthesize logFile;
-@synthesize lastRefreshTime;
 
 #ifdef LOG_URL
 - (void)uploadLogFile
@@ -129,22 +125,6 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 	JWLog("Showing main window...");
 	
 	return YES;
-}
-
-- (void)invalidateThrottle {
-	self.lastRefreshTime = nil;
-}
-
-- (void)resetThrottle {
-	self.lastRefreshTime = [NSDate date];
-}
-
-- (BOOL)refreshThrottled {
-	return (self.lastRefreshTime && [[NSDate date] timeIntervalSinceDate:self.lastRefreshTime] < kThrottleRate);
-}
-
-- (BOOL)refreshShortThrottled {
-    return (self.lastRefreshTime && [[NSDate date] timeIntervalSinceDate:self.lastRefreshTime] < kShortThrottleRate);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

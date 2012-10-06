@@ -15,9 +15,6 @@
 #import "Player.h"
 
 @interface AddGameViewController : JWTableViewController <LoginProtocol> {
-	TextCell *descriptionCell;
-	NewGame *game;
-    NSArray *_ratingStrings;
 }
 
 @property(nonatomic, strong) TextCell *descriptionCell;

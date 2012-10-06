@@ -7,8 +7,6 @@
 
 
 @interface TableSection : NSObject {
-	NSString *headerString;
-	NSArray *tableRows;
 }
 
 @property (nonatomic, copy) NSString *headerString;

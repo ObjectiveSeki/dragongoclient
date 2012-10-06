@@ -53,6 +53,10 @@
     [self.cache removeObjectForKey:key];
 }
 
+- (void)removeAllObjects {
+    [self.cache removeAllObjects];
+}
+
 // Try to retrieve the object with a key from the cache. If the object hasn't
 // been cached, fetch the new data using fetchBlock. fetchBlock is responsible
 // for returning the value that should be returned from this method.

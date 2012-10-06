@@ -20,10 +20,6 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 #endif
 
 @interface DGS : NSObject <GameServerProtocol> {
-	id <LoginProtocol> __weak delegate;
-#ifndef LOGIC_TEST_MODE
-    UIAlertView *errorView;
-#endif
 }
 
 @property(nonatomic, weak) id <LoginProtocol> delegate;

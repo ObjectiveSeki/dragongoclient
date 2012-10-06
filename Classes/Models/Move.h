@@ -24,11 +24,6 @@ typedef enum {
 } MoveType;
 
 @interface Move : NSObject {
-	int row;
-	int col;
-	MovePlayer player;
-	MoveType moveType;
-	int boardSize;
 };
 
 @property(nonatomic) int row;

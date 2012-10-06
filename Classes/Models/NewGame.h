@@ -46,43 +46,7 @@ typedef enum {
 } ByoYomiType;
 
 @interface NewGame : Game {
-	int numberOfGames;
-	RuleSet ruleSet;
-	int boardSize;
-	KomiType komiType;
-    ManualKomiType manualKomiType;
-	int adjustedHandicap;
-	int minHandicap;
-	int maxHandicap;
-	BOOL stdHandicap;
-	float adjustedKomi;
-	JigoMode jigoMode;
-	int timeValue;
-	TimePeriod timeUnit;
-	ByoYomiType byoYomiType;
-	int japaneseTimeValue;
-	TimePeriod japaneseTimeUnit;
-	int japaneseTimePeriods;
-	int canadianTimeValue;
-	TimePeriod canadianTimeUnit;
-	int canadianTimePeriods;
-	int fischerTimeValue;
-	TimePeriod fischerTimeUnit;
-	BOOL weekendClock;
-	BOOL rated;
-    BOOL requireRatedOpponent;
-	NSString *minimumRating;
-	NSString *maximumRating;
-	int minRatedGames;
-	int sameOpponent;
-	NSString *comment;
 
-	// String values, for things we can't parse
-	NSString *ratedString;
-	NSString *stdHandicapString;
-	NSString *weekendClockString;
-	NSString *komiTypeName;
-	BOOL myGame;
 }
 
 @property(nonatomic, assign) int numberOfGames;
@@ -115,6 +79,8 @@ typedef enum {
 @property(nonatomic, assign) int minRatedGames;
 @property(nonatomic, assign) int sameOpponent;
 @property(nonatomic, copy) NSString *comment;
+
+// String values, for things we can't parse
 @property(nonatomic, copy) NSString *ratedString;
 @property(nonatomic, copy) NSString *stdHandicapString;
 @property(nonatomic, copy) NSString *weekendClockString;
