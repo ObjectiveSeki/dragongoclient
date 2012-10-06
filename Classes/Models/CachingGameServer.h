@@ -16,12 +16,4 @@
 
 - (id)initWithGameServer:(id<GameServerProtocol>)aGameServer;
 
-// Creates the database (if necessary) representing the cache store, 
-// and opens the connection. This must be called before calling any other
-// methods on this class.
-+ (void)checkAndCreateDatabase;
-
-// Closes the database connection. This should be called before the app closes.
-+ (void)closeDatabase;
-
 @end

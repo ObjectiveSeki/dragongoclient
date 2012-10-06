@@ -116,10 +116,6 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
 	[self setMessageOn:[UIImage imageNamed:@"Message on.png"]];
 	JWLog("Loaded Images...");
 	
-#ifdef CACHING
-    [CachingGameServer checkAndCreateDatabase];
-#endif
-	
 	CurrentGamesController *controller = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
 	
@@ -194,10 +190,6 @@ const NSTimeInterval kThrottleRate = 5*60; // 5 minutes
      See also applicationDidEnterBackground:.
      */
 	[FuegoBoard finishFuego];
-    
-#ifdef CACHING
-    [CachingGameServer closeDatabase];
-#endif
     
 	JWLog("Terminating...");
 #ifdef LOGGING

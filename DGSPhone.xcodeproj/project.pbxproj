@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		6645B190147B8BED00170504 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6645B18F147B8BED00170504 /* libsqlite3.dylib */; };
 		6645B192147CCE2400170504 /* dgs.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6645B191147CCE2400170504 /* dgs.sqlite */; };
 		CE7771B66F8849888D9FC85E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF2422AA37640AC84A2C071 /* libPods.a */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
@@ -19,6 +18,8 @@
 		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
 		DA0762B81377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
 		DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0824E6161A618F00802B9A /* Default-568h@2x.png */; };
+		DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C1161FF67400AEAEF6 /* JWCache.m */; };
+		DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
@@ -392,6 +393,10 @@
 		DA0762B51377B678003E0390 /* DGSDev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSDev.h; sourceTree = "<group>"; };
 		DA0762B61377B678003E0390 /* DGSDev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSDev.m; sourceTree = "<group>"; };
 		DA0824E6161A618F00802B9A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DA0FE7C0161FF67400AEAEF6 /* JWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCache.h; sourceTree = "<group>"; };
+		DA0FE7C1161FF67400AEAEF6 /* JWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCache.m; sourceTree = "<group>"; };
+		DA0FE7C3161FFA1000AEAEF6 /* JWCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCacheEntry.h; sourceTree = "<group>"; };
+		DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCacheEntry.m; sourceTree = "<group>"; };
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
@@ -737,7 +742,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6645B190147B8BED00170504 /* libsqlite3.dylib in Frameworks */,
 				DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */,
 				DA77A95013B2F47200803136 /* libz.dylib in Frameworks */,
 				DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */,
@@ -779,6 +783,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DA0FE7BE161FF64200AEAEF6 /* Libraries */,
 				DA02D14A11D99D3900A9D887 /* Table Cells */,
 				DA4026C611D06C38005017C4 /* Protocols */,
 				DAF9102311BB487500FE7B96 /* Views */,
@@ -886,6 +891,17 @@
 				DA84D67912F7A0160038D775 /* BooleanCell.m */,
 			);
 			path = "Table Cells";
+			sourceTree = "<group>";
+		};
+		DA0FE7BE161FF64200AEAEF6 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				DA0FE7C0161FF67400AEAEF6 /* JWCache.h */,
+				DA0FE7C1161FF67400AEAEF6 /* JWCache.m */,
+				DA0FE7C3161FFA1000AEAEF6 /* JWCacheEntry.h */,
+				DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */,
+			);
+			path = Libraries;
 			sourceTree = "<group>";
 		};
 		DA20DB5213456BF900829D9D /* go */ = {
@@ -1708,6 +1724,8 @@
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
 				DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */,
 				DA391DDE1592CB2900F9E36F /* Player.m in Sources */,
+				DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */,
+				DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
