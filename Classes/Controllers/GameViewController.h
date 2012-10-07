@@ -39,6 +39,7 @@ enum BoardState {
 - (IBAction)pass;
 - (IBAction)resign;
 - (IBAction)showMessageWindow;
+- (IBAction)share:(id)sender;
 
 @end
 

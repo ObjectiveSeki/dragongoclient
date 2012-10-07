@@ -16,35 +16,13 @@
 @property (nonatomic, assign) CGFloat currentZoomScale;
 @property (nonatomic, assign) CGFloat maximumZoomScale;
 @property (nonatomic, assign) CGFloat minimumZoomScale;
+@property (nonatomic, strong) UIDocumentInteractionController *shareController;
+@property (nonatomic, strong) NSOperationQueue *sgfShareQueue;
+@property (nonatomic, strong) NSOperation *sgfShareOperation;
 
 @end
 
 @implementation GameViewController
-
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-// Is this board too small to justify zooming?
-- (BOOL)smallBoard {
-	return [self.board size] < 13;
-}
-
-- (float)zoomInScale {
-	return (float)[self.board size] / 19.0;
-}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -53,6 +31,7 @@
     tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
+    self.sgfShareQueue = [[NSOperationQueue alloc] init];
 }
 
 - (void)updateBoard {
@@ -80,6 +59,15 @@
 - (IBAction)undoMove {
 	[self.board undoLastMove];
 	[self updateBoard];
+}
+
+// Is this board too small to justify zooming?
+- (BOOL)smallBoard {
+	return [self.board size] < 13;
+}
+
+- (float)zoomInScale {
+	return (float)[self.board size] / 19.0;
 }
 
 - (CGRect)zoomRectForScrollView:(UIScrollView *)theScrollView withScale:(float)scale withCenter:(CGPoint)center {
@@ -186,6 +174,28 @@
 	[self.messageView show:^(BOOL hasMessage) {
 		[self setMessageIconState:hasMessage];
 	}];
+}
+
+- (IBAction)share:(id)sender {
+    if (!self.shareController && !self.sgfShareOperation) {
+        self.sgfShareOperation = [NSBlockOperation blockOperationWithBlock:^{
+            NSError *writeError;
+            NSString *tmpFilename = [NSString stringWithFormat:@"dgs-game-%d-%d.sgf", self.game.gameId, self.board.moveNumber];
+            NSString *tmpFileFullPath = [NSTemporaryDirectory() stringByAppendingPathComponent:tmpFilename];
+            
+            if (![self.game.sgfString writeToFile:tmpFileFullPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError]) {
+                JWLog(@"Error writing sgf file: %@", writeError.localizedDescription);
+            }
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                self.shareController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:tmpFileFullPath]];
+                self.sgfShareOperation = nil;
+                [self share:sender];
+            }];
+        }];
+        [self.sgfShareQueue addOperation:self.sgfShareOperation];
+    }
+    [self.shareController presentOptionsMenuFromBarButtonItem:sender animated:YES];
 }
 
 - (void)requestCancelled {
