@@ -51,6 +51,11 @@ static NSString * const kGameListKey = @"GameList";
     }
 }
 
+- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess {
+    [self.cache removeObjectForKey:kGameListKey];
+    [self getCurrentGames:onSuccess];
+}
+
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
     [self.cache fetchObjectForKey:kGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
         [self.gameServer getCurrentGames:^(NSArray *games) {
@@ -91,14 +96,16 @@ static NSString * const kGameListKey = @"GameList";
     [self.gameServer getSgfForGame:game onSuccess:onSuccess];
 }
 
-// These are all proxied directly to the game server without changes
-#pragma mark - Game Server proxied methods
-- (void)logout {
-    [self.gameServer logout];
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password {
+    [self.cache removeAllObjects];
+    [self.gameServer loginWithUsername:username password:password];
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password {
-    [self.gameServer loginWithUsername:username password:password];
+// These are all proxied directly to the game server without changes
+#pragma mark - Game Server proxied methods
+
+- (void)logout {
+    [self.gameServer logout];
 }
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {

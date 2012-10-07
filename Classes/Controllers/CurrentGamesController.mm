@@ -12,16 +12,20 @@
 #import "LoginViewController.h"
 #import "DGSPhoneAppDelegate.h"
 #import "NewGameViewController.h"
+#import "ODRefreshControl.h"
 
 #ifdef HOCKEY
 #import "BWHockeyManager.h"
 #endif
 
+@interface CurrentGamesController ()
+@property (nonatomic, strong) id refreshControl; // Can be either a OD or UIRefreshControl
+@end
+
 @implementation CurrentGamesController
 
 #pragma mark -
 #pragma mark View lifecycle
-
 
 #ifdef HOCKEY
 - (void)openUpdateController {
@@ -30,8 +34,44 @@
 }
 #endif
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	self.title = @"Your Move";
+	self.navigationItem.leftBarButtonItem = self.logoutButton;
+    self.navigationItem.rightBarButtonItem = self.addGameButton;
+	if ([UIRefreshControl class]) {
+        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+        [self.gameTableView addSubview:refreshControl];
+        self.refreshControl = refreshControl;
+    } else {
+        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.gameTableView];
+        self.refreshControl = refreshControl;
+    }
+    
+    [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
+    
+#ifdef HOCKEY
+	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
+    
+	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
+	[toolbarItems insertObject:updateButton atIndex:0];
+	[updateButton release];
+    
+	[self.bottomToolbar setItems:toolbarItems];
+	[toolbarItems release];
+#endif
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self hideSpinner:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    JWLog("Showing current games view and refreshing games...");
+	[self refreshGames];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 /*
@@ -55,13 +95,67 @@
 
 - (void)setEnabled:(BOOL)enabled {
 	if (enabled) {
-		[[self refreshButton] setEnabled:YES];
 		[[self logoutButton] setEnabled:YES];
 		[[self gameTableView] setUserInteractionEnabled:YES];
 	} else {
-		[[self refreshButton] setEnabled:NO];
 		[[self logoutButton] setEnabled:NO];
 		[[self gameTableView] setUserInteractionEnabled:NO];
+	}
+}
+
+#pragma mark - Actions
+
+- (IBAction)startNewGame {
+    NewGameViewController *newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil];
+    [self.navigationController pushViewController:newGameViewController animated:YES];
+}
+
+- (IBAction)forceRefreshGames {
+    [self.refreshControl beginRefreshing];
+    [self setEnabled:NO];
+    [self.gs refreshCurrentGames:^(NSArray *currentGames) {
+        self.games = currentGames;
+#if TEST_GAMES
+        [self addTestGames];
+#endif
+        [self.refreshControl endRefreshing];
+        [self gameListChanged];
+        [self setEnabled:YES];
+    }];
+}
+
+- (IBAction)refreshGames {
+    [self.refreshControl beginRefreshing];
+	[self setEnabled:NO];
+	[self.gs getCurrentGames:^(NSArray *currentGames) {
+		self.games = currentGames;
+#if TEST_GAMES
+        [self addTestGames];
+#endif
+        [self.refreshControl endRefreshing];
+        [self gameListChanged];
+		[self setEnabled:YES];
+	}];
+}
+
+
+
+- (IBAction)logout {
+	self.logoutConfirmation = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil];
+	[self.logoutConfirmation show];
+}
+
+#pragma mark - Helper Actions
+
+// Handles dismissing the logout confirmation.
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (alertView == self.logoutConfirmation) {
+		if (buttonIndex != alertView.cancelButtonIndex) {
+			[self setEnabled:NO];
+			[self showSpinner:@"Logging out..."];
+			[self.gs logout];
+		}
+		self.logoutConfirmation = nil;
 	}
 }
 
@@ -105,40 +199,18 @@
 
 }
 
-- (IBAction)startNewGame {
-    NewGameViewController *newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil];
-    [self.navigationController pushViewController:newGameViewController animated:YES];
-}
-
-- (IBAction)forceRefreshGames {
-    [self refreshGames];
-}
-
-- (IBAction)refreshGames {
-	[self showSpinnerInView:self.navigationController.view message:@"Reloading..."];
-	[self setEnabled:NO];
-	[self.gs getCurrentGames:^(NSArray *currentGames) {
-		self.games = currentGames;
-		[self hideSpinner:YES];
-
-#if TEST_GAMES
-
-		NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones", nil];
-		NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
-		for (NSString *name in testGames) {
-			Game *game = [[Game alloc] init];
-			game.opponent = name;
-			game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
-			game.color = kMovePlayerBlack;
-			game.time = @"Test";
-			[mutableCurrentGames addObject:game];
-		}
-		self.games = mutableCurrentGames;
-#endif
-		[self hideSpinner:YES];
-        [self gameListChanged];
-		[self setEnabled:YES];
-	}];
+- (void)addTestGames {
+    NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones", nil];
+    NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
+    for (NSString *name in testGames) {
+        Game *game = [[Game alloc] init];
+        game.opponent = name;
+        game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
+        game.color = kMovePlayerBlack;
+        game.time = @"Test";
+        [mutableCurrentGames addObject:game];
+    }
+    self.games = mutableCurrentGames;
 }
 
 - (void)gameListChanged {
@@ -149,7 +221,7 @@
     } else {
         self.view = self.gameListView;
         [self buildTableCells];
-        [[self gameTableView] reloadData];
+        [self.gameTableView reloadData];
     }
 }
 
@@ -159,52 +231,6 @@
 	self.selectedCell = nil;
 	[self setEnabled:YES];
 }
-
-// Handles dismissing the logout confirmation.
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (alertView == self.logoutConfirmation) {
-		if (buttonIndex != alertView.cancelButtonIndex) {
-			[self setEnabled:NO];
-			[self showSpinner:@"Logging out..."];
-			[self.gs logout];
-		}
-		self.logoutConfirmation = nil;
-	}
-}
-
-- (IBAction)logout {
-	self.logoutConfirmation = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil];
-	[self.logoutConfirmation show];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    JWLog("Showing current games view and refreshing games...");
-	[self refreshGames];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
-}
-
-- (void)viewDidLoad {
-	self.title = @"Your Move";
-	self.navigationItem.leftBarButtonItem = self.logoutButton;
-	self.navigationItem.rightBarButtonItem = self.refreshButton;
-	[super viewDidLoad];
-
-#ifdef HOCKEY
-	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
-
-	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
-	[toolbarItems insertObject:updateButton atIndex:0];
-	[updateButton release];
-
-	[self.bottomToolbar setItems:toolbarItems];
-	[toolbarItems release];
-#endif
-}
-
-
-#pragma mark -
-#pragma mark Table view delegate
 
 - (void)gotSgfForGame:(Game *)game {
 	// Navigation logic may go here. Create and push another view controller.
@@ -217,6 +243,9 @@
 	self.selectedCell = nil;
 	[self setEnabled:YES];
 }
+
+#pragma mark -
+#pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[self setEnabled:NO];
@@ -236,17 +265,12 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-	self.refreshButton = nil;
 	self.gameTableView = nil;
 	self.logoutButton = nil;
 	self.selectedCell = nil;
 	self.logoutConfirmation = nil;
-	self.bottomToolbar = nil;
     self.noGamesView = nil;
     self.gameListView = nil;
 }
-
-
-
 
 @end

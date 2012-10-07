@@ -225,6 +225,10 @@
     }];
 }
 
+- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess {
+    [self getCurrentGames:onSuccess];
+}
+
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
 	NSURL *url = [self URLWithPath:@"/quick_status.php?no_cache=1&version=2"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];

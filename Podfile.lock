@@ -1,35 +1,26 @@
-
 PODS:
-- ASIHTTPRequest (1.8.1):
-  - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
-  - ASIHTTPRequest/CloudFiles (= 1.8.1)
-  - ASIHTTPRequest/S3 (= 1.8.1)
-  - Reachability
-- ASIHTTPRequest/ASIWebPageRequest (1.8.1):
-  - Reachability
-- ASIHTTPRequest/CloudFiles (1.8.1):
-  - Reachability
-- ASIHTTPRequest/S3 (1.8.1):
-  - Reachability
-- GDataXML-HTML (1.0.0)
-- HockeyKit (2.0.7)
-- JSONKit (1.5pre)
-- Reachability (3.0.0)
+  - ASIHTTPRequest (1.8.1):
+    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
+    - ASIHTTPRequest/CloudFiles (= 1.8.1)
+    - ASIHTTPRequest/S3 (= 1.8.1)
+    - Reachability
+  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/CloudFiles (1.8.1):
+    - Reachability
+  - ASIHTTPRequest/S3 (1.8.1):
+    - Reachability
+  - GDataXML-HTML (1.0.0)
+  - HockeyKit (2.0.7)
+  - JSONKit (1.5pre)
+  - ODRefreshControl (1.1.0)
+  - Reachability (3.0.0)
 
 DEPENDENCIES:
-- ASIHTTPRequest
-- GDataXML-HTML
-- HockeyKit
-- JSONKit
-
-SPEC CHECKSUMS:
-  ASIHTTPRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  ASIHTTPRequest/ASIWebPageRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  ASIHTTPRequest/CloudFiles: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  ASIHTTPRequest/S3: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  GDataXML-HTML: 3f7cbef27d07411516d3720291c58eb49e4b50b1
-  HockeyKit: df5e71674550a3f8a4cb52dfa606c2af34dbfe12
-  JSONKit: a01a22c75f27eae76b4badd55a91c20fe6e86477
-  Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2
-
-COCOAPODS: 0.14.0
+  - ASIHTTPRequest
+  - GDataXML-HTML
+  - GDataXML-HTML
+  - HockeyKit
+  - JSONKit
+  - JSONKit
+  - ODRefreshControl
