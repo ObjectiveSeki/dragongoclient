@@ -14,10 +14,6 @@
 #import "CachingGameServer.h"
 #endif
 
-#ifdef HOCKEY
-#import "BWHockeyManager.h"
-#endif
-
 #ifdef LOG_URL
 #import "ASIFormDataRequest.h"
 #endif
@@ -101,9 +97,6 @@
 #endif
 
 	JWLog("Starting Application...");
-#ifdef HOCKEY
-    [BWHockeyManager sharedHockeyManager].updateURL = @"http://dgs.uberweiss.net/beta/";
-#endif
 	
 	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];
 	[self setWhiteStone:[UIImage imageNamed:@"White.png"]];

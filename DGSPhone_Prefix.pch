@@ -14,7 +14,6 @@
 #define DEBUG 1
 #define LOGGING 1
 //#define DEVELOPMENT_DGS
-//#define HOCKEY 1
 
 // set to '1' to see SGFs that test various aspects of 
 // the board view.
@@ -23,8 +22,6 @@
 
 #if defined (CONFIGURATION_Adhoc)
 //#define LOGGING
-#define HOCKEY
-
 //#define LOG_URL @"http://dgs.uberweiss.net/log"
 #endif
 

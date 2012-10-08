@@ -14,10 +14,6 @@
 #import "NewGameViewController.h"
 #import "ODRefreshControl.h"
 
-#ifdef HOCKEY
-#import "BWHockeyManager.h"
-#endif
-
 @interface CurrentGamesController ()
 @property (nonatomic, strong) id refreshControl; // Can be either a OD or UIRefreshControl
 @end
@@ -26,13 +22,6 @@
 
 #pragma mark -
 #pragma mark View lifecycle
-
-#ifdef HOCKEY
-- (void)openUpdateController {
-    BWHockeyViewController *hockeyViewController = [[BWHockeyManager sharedHockeyManager] hockeyViewController:NO];
-    [self.navigationController pushViewController:hockeyViewController animated:YES];
-}
-#endif
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -49,17 +38,6 @@
     }
     
     [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
-    
-#ifdef HOCKEY
-	NSMutableArray *toolbarItems = [self.bottomToolbar.items mutableCopy];
-    
-	UIBarButtonItem *updateButton = [[UIBarButtonItem alloc] initWithTitle:@"Update..." style:UIBarButtonItemStyleBordered target:self action:@selector(openUpdateController)];
-	[toolbarItems insertObject:updateButton atIndex:0];
-	[updateButton release];
-    
-	[self.bottomToolbar setItems:toolbarItems];
-	[toolbarItems release];
-#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated {
