@@ -9,6 +9,16 @@
 #import "LoginProtocol.h"
 #import "GameList.h"
 
+extern NSString * const PlayerDidLoginNotification;
+extern NSString * const PlayerDidLogoutNotification;
+
+typedef void(^EmptyBlock)();
+typedef void(^ListBlock)(NSArray *list);
+typedef void(^GameListBlock)(GameList *gameList);
+typedef void(^GameBlock)(Game *game);
+typedef void(^NewGameBlock)(NewGame *game);
+typedef void(^ErrorBlock)(NSError *error);
+
 @protocol GameServerProtocol
 
 @property(nonatomic, assign) id <LoginProtocol> delegate;
@@ -18,22 +28,27 @@
 // if we're building the logic tests bundle. It should define LOGIC_TEST_MODE.
 #ifndef LOGIC_TEST_MODE
 
-- (void)logout;
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
++ (id<GameServerProtocol>)sharedGameServer;
 
-- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess;
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
-- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess;
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
-- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess;
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess;
-- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess;
+- (void)logout:(ErrorBlock)onError;
+- (void)loginWithUsername:(NSString *)username
+                 password:(NSString *)password
+                onSuccess:(EmptyBlock)onSuccess
+                  onError:(ErrorBlock)onError;
+
+- (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess;
+- (void)getCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)refreshCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)getWaitingRoomGames:(GameListBlock)onSuccess;
+- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess;
+- (void)joinWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess;
+- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess;
 
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess;
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;
 
 #endif
 

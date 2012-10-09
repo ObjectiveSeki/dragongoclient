@@ -33,7 +33,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 @property(nonatomic, retain) UIAlertView *errorView;
 
 // Starts an asynchronous request, calling onSuccess when the request finishes.
-- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess;
+- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess onError:(ErrorBlock)onError;
 
 #endif
 

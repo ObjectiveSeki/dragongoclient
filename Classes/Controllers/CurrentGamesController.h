@@ -12,15 +12,13 @@
 #import "JWTableViewController.h"
 
 
-@interface CurrentGamesController : JWTableViewController <LoginProtocol> {
-}
+@interface CurrentGamesController : UITableViewController
 
 @property(nonatomic, strong) NSArray *games;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *logoutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *addGameButton;
-@property(nonatomic, strong) IBOutlet UITableView *gameTableView;
 @property(nonatomic, strong) IBOutlet UIView *noGamesView;
-@property(nonatomic, strong) IBOutlet UIView *gameListView;
+@property(nonatomic, strong) IBOutlet UITableView *gameListView;
 @property(nonatomic, strong) UITableViewCell *selectedCell;
 @property(nonatomic, strong) UIAlertView *logoutConfirmation;
 

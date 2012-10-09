@@ -9,6 +9,7 @@
 #import "DGSPhoneAppDelegate.h"
 #import "CurrentGamesController.h"
 #import "FuegoBoard.h"
+#import "LoginViewController.h"
 
 #ifdef CACHING
 #import "CachingGameServer.h"
@@ -17,6 +18,13 @@
 #ifdef LOG_URL
 #import "ASIFormDataRequest.h"
 #endif
+
+NSString * const PlayerDidLoginNotification = @"PlayerDidLoginNotification";
+NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
+
+@interface DGSPhoneAppDelegate ()
+@property (nonatomic, strong) LoginViewController *loginController;
+@end
 
 @implementation DGSPhoneAppDelegate
 
@@ -104,15 +112,7 @@
 	[self setMessageOff:[UIImage imageNamed:@"Message off.png"]];
 	[self setMessageOn:[UIImage imageNamed:@"Message on.png"]];
 	JWLog("Loaded Images...");
-	
-	CurrentGamesController *controller = [[CurrentGamesController alloc] initWithNibName:@"CurrentGamesView" bundle:nil];
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-	
-	if ([window respondsToSelector:@selector(setRootViewController:)]) {
-		[window setRootViewController:navigationController];
-	}
-	JWLog("Initialized controllers...");
-	
+	JWLog("Initialized controllers...");	
 
 	[window makeKeyAndVisible];
 	JWLog("Showing main window...");
@@ -126,6 +126,8 @@
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 	JWLog("Went inactive...");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayerDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayerDidLoginNotification object:nil];
 }
 
 
@@ -145,12 +147,14 @@
 	JWLog("Went into the foreground...");
 }
 
-
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 	JWLog("Went active...");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:PlayerDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLogin) name:PlayerDidLoginNotification object:nil];
+    
 #ifdef LOG_URL
     [self uploadLogFile];
 #endif
@@ -169,6 +173,24 @@
 	[self.logFile closeFile];
 	self.logFile = nil;
 #endif
+}
+
+#pragma mark - Login
+
+- (void)showLoginAnimated:(NSNotification *)notification {
+    [self showLogin:YES];
+}
+
+- (void)showLogin:(BOOL)animated {
+    if (!self.loginController) {
+        self.loginController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        [self.window.rootViewController presentViewController:self.loginController animated:animated completion:^() {}];
+    }
+}
+
+- (void)dismissLogin {
+    [self.loginController dismissModalViewControllerAnimated:YES];
+    self.loginController = nil;
 }
 
 

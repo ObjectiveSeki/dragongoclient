@@ -42,14 +42,9 @@
 }
 
 - (void)notLoggedIn {
-	LoginViewController *loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginView" bundle:nil];
-	loginViewController.delegate = self;
-	[self presentModalViewController:loginViewController animated:YES];
-	[loginViewController notLoggedIn];
 }
 
 - (void)loggedIn {
-	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)requestCancelled {

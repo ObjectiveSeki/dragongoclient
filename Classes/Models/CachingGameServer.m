@@ -21,6 +21,16 @@ static NSString * const kGameListKey = @"GameList";
     s_cache = [[JWCache alloc] init];
 }
 
++ (id<GameServerProtocol>)sharedGameServer {
+    static CachingGameServer *sharedGameServer;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        sharedGameServer = [[self alloc] initWithGameServer:[[NSClassFromString(SERVER_CLASS) alloc] init]];
+    });
+    return sharedGameServer;
+}
+
+
 - (id)initWithGameServer:(id<GameServerProtocol>)aGameServer;
 {
     self = [super init];
@@ -51,16 +61,16 @@ static NSString * const kGameListKey = @"GameList";
     }
 }
 
-- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess {
+- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
     [self.cache removeObjectForKey:kGameListKey];
-    [self getCurrentGames:onSuccess];
+    [self getCurrentGames:onSuccess onError:onError];
 }
 
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
+- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
     [self.cache fetchObjectForKey:kGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
         [self.gameServer getCurrentGames:^(NSArray *games) {
             gotObject(games);
-        }];
+        } onError:onError];
         return nil; // nothing to return here.
     } completion:^(NSArray *gameList) {
         onSuccess(gameList);
@@ -92,20 +102,20 @@ static NSString * const kGameListKey = @"GameList";
     onSuccess(); // cheat and call it right away for speed
 }
 
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
-    [self.gameServer getSgfForGame:game onSuccess:onSuccess];
+- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError{
+    [self.gameServer getSgfForGame:game onSuccess:onSuccess onError:onError];
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password {
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError{
     [self.cache removeAllObjects];
-    [self.gameServer loginWithUsername:username password:password];
+    [self.gameServer loginWithUsername:username password:password onSuccess:onSuccess onError:onError];
 }
 
 // These are all proxied directly to the game server without changes
 #pragma mark - Game Server proxied methods
 
-- (void)logout {
-    [self.gameServer logout];
+- (void)logout:(ErrorBlock)onError {
+    [self.gameServer logout:onError];
 }
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {

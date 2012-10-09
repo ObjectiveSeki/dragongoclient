@@ -31,6 +31,13 @@
 #	define SERVER_CLASS @"DGS"
 #endif
 
+#ifdef CACHING
+#   import "CachingGameServer.h"
+#   define GenericGameServer CachingGameServer
+#else
+#   define GenericGameServer NSClassFromString(SERVER_CLASS)
+#endif
+
 #ifdef LOGGING
 #import "DGSPhoneAppDelegate.h"
 #	define JWLog(fmt, ...) { \

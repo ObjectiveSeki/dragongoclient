@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SpinnerView : UIView {
-	UIActivityIndicatorView *spinner;
-	UILabel *label;
-}
+@interface SpinnerView : UIView
 
 @property (nonatomic, strong) UIActivityIndicatorView *spinner;
 @property (nonatomic, strong) UILabel *label;
 
 + (SpinnerView *)showInView:(UIView *)view;
+- (id)initInView:(UIView *)view;
+- (void)show;
 - (void)dismiss:(BOOL)animate;
 
 @end

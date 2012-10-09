@@ -10,9 +10,6 @@
 
 @implementation SpinnerView
 
-@synthesize spinner;
-@synthesize label;
-
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // Initialization code
@@ -32,12 +29,24 @@
 		self.label.font = [UIFont boldSystemFontOfSize:14.0];
 		self.label.backgroundColor = [UIColor clearColor];
 		self.label.opaque = NO;
+        self.alpha = 0.0;
 
-		
 		[self addSubview:self.spinner];
 		[self addSubview:self.label];
 	}
     return self;
+}
+
+- (id)initInView:(UIView *)view {
+    SpinnerView *spinnerView = [self initWithFrame:CGRectZero];
+    [view addSubview:spinnerView];
+    return spinnerView;
+}
+
++ (SpinnerView *)showInView:(UIView *)view {
+    SpinnerView *spinnerView = [[self alloc] initInView:view];
+    [spinnerView show];
+    return spinnerView;
 }
 
 - (void)drawRoundedRect:(CGContextRef)context frame:(CGRect)roundedRect radius:(int)radius {
@@ -51,20 +60,13 @@
 	CGContextFillPath(context);
 }
 
-+ (SpinnerView *)showInView:(UIView *)view {
-    CGRect rect = [view convertRect:CGRectMake(view.window.center.x - 60, view.window.center.y - 60, 120, 120) fromView:nil];
-	SpinnerView *spinnerView = [[SpinnerView alloc] initWithFrame:rect];
-    spinnerView.alpha = 0.0;
-	spinnerView.transform = CGAffineTransformMakeScale(2,2);
-	[view addSubview:spinnerView];
-	[view bringSubviewToFront:spinnerView];
+- (void)show {
+	self.transform = CGAffineTransformMakeScale(2,2);
 	
 	[UIView animateWithDuration:0.3 delay:0.3 options:0 animations:^(void) {
-		spinnerView.transform = CGAffineTransformMakeScale(1, 1);
-		spinnerView.alpha = 1.0;
+		self.transform = CGAffineTransformMakeScale(1, 1);
+		self.alpha = 1.0;
 	} completion:nil];
-	
-	return spinnerView;
 }
 
 - (void)dismiss:(BOOL)animate {
@@ -73,13 +75,10 @@
 			self.transform = CGAffineTransformMakeScale(2, 2);
 			self.alpha = 0.0;
 		} completion:^(BOOL completion) {
-			[self removeFromSuperview];
 		}];
 	} else {
-		[self removeFromSuperview];
+		self.alpha = 0.0;
 	}
-
-
 }
 
 
@@ -94,19 +93,15 @@
 }
 
 - (void)layoutSubviews {
+    UIView *view = self.superview;
+    CGRect frame = [view convertRect:CGRectMake(view.window.center.x - 60, view.window.center.y - 60, 120, 120) fromView:nil];
+    self.frame = frame;
+    
 	int spinnerSize = 37;
 	self.spinner.frame = CGRectMake((self.frame.size.width - spinnerSize) / 2, self.frame.size.height / 3.0, spinnerSize, spinnerSize);
 	
 	self.label.frame = CGRectMake(8, self.frame.size.height - 8 - 16, self.frame.size.width - 16, 16);
-							
 }
-
-- (void)dealloc {
-	spinner = nil;
-	label = nil;
-
-}
-
 
 @end
 

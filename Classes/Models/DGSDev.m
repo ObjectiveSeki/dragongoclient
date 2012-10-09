@@ -67,7 +67,7 @@
 
     [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	}];
+	} onError:nil];
 }
 
 #endif

@@ -15,10 +15,21 @@
 #ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
 #import "DGSPhoneAppDelegate.h"
+#import "IBAlertView.h"
 #endif
 
-
 @implementation DGS
+
+static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
+
++ (id<GameServerProtocol>)sharedGameServer {
+    static DGS *sharedGameServer;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        sharedGameServer = [[self alloc] init];
+    });
+    return sharedGameServer;
+}
 
 // This returns the base path onto which all of the urls used
 // in this class refer. This is so that you can run your own
@@ -144,12 +155,9 @@
         // Login errors don't count as real errors
 		JWLog(@"Not logged in during request: %@", [request url]);
         [self resetUserData];
-		[[self delegate] notLoggedIn];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:nil];
 	} else if (errorString) {
-		JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		self.errorView = alertView;
-        [self.errorView show];
+        [self showErrorForRequest:request error:errorString];
 	} else {
 		ASIHTTPRequestBlock onSuccess = [[request userInfo] objectForKey:@"onSuccess"];
 
@@ -159,17 +167,28 @@
 	}
 }
 
+- (void)showErrorForRequest:(ASIHTTPRequest *)request error:(NSString *)errorString {
+    JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
+    [IBAlertView showAlertWithTitle:@"Error" message:errorString dismissTitle:@"OK" dismissBlock:^() {
+        ErrorBlock onError = request.userInfo[@"onError"];
+        
+        if (onError) {
+            NSError *error = [[NSError alloc] initWithDomain:DGSErrorDomain code:0 userInfo:@{ NSLocalizedDescriptionKey: errorString }];
+            onError(error);
+        } else {
+            [self.delegate requestCancelled];
+        }
+    }];
+}
+
 // Called when a request fails entirely.
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-	JWLog(@"Request failed: %@", [request url]);
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"There was a problem communicating with the server." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	self.errorView = alertView;
-    [self.errorView show];
+    [self showErrorForRequest:request error:@"There was a problem communicating with the server."];
 }
 
 // Starts an asynchronous request, calling onSuccess when the request finishes.
-- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess {
+- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess onError:(ErrorBlock)onError {
 	JWLog(@"Performing request: %@", [request url]);
 
 	NSMutableDictionary *userInfo = [request.userInfo mutableCopy];
@@ -179,8 +198,12 @@
 	}
 
 	if (onSuccess) {
-		[userInfo setObject:[onSuccess copy] forKey:@"onSuccess"];
+        userInfo[@"onSuccess"] = [onSuccess copy];
 	}
+    
+    if (onError) {
+        userInfo[@"onError"] = [onError copy];
+    }
 
 	request.userInfo = userInfo;
 
@@ -192,44 +215,45 @@
 #pragma mark DGS Calls
 
 
-- (void)logout {
+- (void)logout:(ErrorBlock)onError {
 	NSURL *url = [self URLWithPath:@"/login.php?quick_mode=1&logout=1"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
         [self resetUserData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:nil];
 		[[self delegate] notLoggedIn];
-    }];
+    } onError:onError];
 }
 
-- (void)getCurrentPlayer {
+- (void)getCurrentPlayer:(ErrorBlock)onError {
     NSURL *url = [self URLWithPath:@"/quick_do.php?obj=user&cmd=info"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
     [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
         JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
         [self setCurrentPlayerFromDictionary:[decoder objectWithData:[request responseData]]];
-        [self.delegate loggedIn];
-    }];
+    } onError:onError];
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError
 {
 	NSURL *url = [self URLWithPath:@"/login.php?quick_mode=1"];
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setPostValue:username forKey:@"userid"];
 	[request setPostValue:password forKey:@"passwd"];
-	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-        [self getCurrentPlayer];
-    }];
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString){
+        [self getCurrentPlayer:onError];
+        onSuccess();
+    } onError:onError];
 }
 
-- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess {
-    [self getCurrentGames:onSuccess];
+- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
+    [self getCurrentGames:onSuccess onError:onError];
 }
 
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess {
+- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
 	NSURL *url = [self URLWithPath:@"/quick_status.php?no_cache=1&version=2"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
@@ -237,7 +261,7 @@
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		NSArray *gameList = [self gamesFromCSV:responseString];
 		onSuccess(gameList);
-	}];
+	} onError:onError];
 }
 
 - (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess {
@@ -250,7 +274,7 @@
             [gameList appendGames:[self gamesFromWaitingRoomTable:[request responseData]]];
             gameList.nextPagePath = [self nextPagePath:[request responseData]];
             onSuccess();
-        }];
+        } onError:nil];
     }];
 
     // add=9 to force the time limit to show up
@@ -277,7 +301,7 @@
         JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
         NewGame *gameDetails = [self gameFromWaitingRoomDetailDictionary:[decoder objectWithData:[request responseData]] game:game];
         onSuccess(gameDetails);
-	}];
+	} onError:nil];
 }
 
 - (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
@@ -288,7 +312,7 @@
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	}];
+	} onError:nil];
 }
 
 - (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
@@ -299,10 +323,10 @@
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	}];
+	} onError:nil];
 }
 
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess {
+- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {
 
     if (game.sgfString) {
         // don't try to fetch the sgf again if we already have it
@@ -316,7 +340,7 @@
         [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
             [game setSgfString:responseString];
             onSuccess(game);
-        }];
+        } onError:onError];
     }
 }
 
@@ -341,7 +365,7 @@
     
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	}];
+	} onError:nil];
 }
 
 - (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
@@ -371,7 +395,7 @@
     
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	}];
+	} onError:nil];
 }
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
@@ -397,7 +421,7 @@
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
         onSuccess();
-    }];
+    } onError:nil];
 }
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
@@ -440,7 +464,7 @@
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	}];
+	} onError:nil];
 }
 
 #endif

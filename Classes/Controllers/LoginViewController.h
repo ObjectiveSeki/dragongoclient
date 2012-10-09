@@ -7,22 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DGS.h"
-#import "JWTableViewController.h"
 
-@interface LoginViewController : JWTableViewController <LoginProtocol> {
-	NSString *username;
-	NSString *password;
-	id __weak delegate;
-}
+@class TextCell, SpinnerView;
+
+@interface LoginViewController : UITableViewController
+
+@property (weak, nonatomic) IBOutlet TextCell *usernameCell;
+@property (weak, nonatomic) IBOutlet TextCell *passwordCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *loginCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *signupCell;
 
 @property(nonatomic, copy) NSString *username;
 @property(nonatomic, copy) NSString *password;
-@property(nonatomic, weak) id delegate;
 
-- (void)login;
-- (void)notLoggedIn;
-- (void)requestCancelled;
+@property(nonatomic, strong) SpinnerView *spinner;
 
 @end
 

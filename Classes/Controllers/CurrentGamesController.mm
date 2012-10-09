@@ -15,7 +15,10 @@
 #import "ODRefreshControl.h"
 
 @interface CurrentGamesController ()
-@property (nonatomic, strong) id refreshControl; // Can be either a OD or UIRefreshControl
+// Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
+// conflicting with the built-in iOS6 one.
+@property (nonatomic, strong) id myRefreshControl;
+@property (nonatomic, strong) SpinnerView *spinner;
 @end
 
 @implementation CurrentGamesController
@@ -29,25 +32,25 @@
 	self.navigationItem.leftBarButtonItem = self.logoutButton;
     self.navigationItem.rightBarButtonItem = self.addGameButton;
 	if ([UIRefreshControl class]) {
-        UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-        [self.gameTableView addSubview:refreshControl];
-        self.refreshControl = refreshControl;
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        self.myRefreshControl = self.refreshControl;
     } else {
-        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.gameTableView];
-        self.refreshControl = refreshControl;
+        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.gameListView];
+        self.myRefreshControl = refreshControl;
     }
-    
-    [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
+    [self.myRefreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
+    self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self hideSpinner:YES];
+    [self.spinner dismiss:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     JWLog("Showing current games view and refreshing games...");
+
 	[self refreshGames];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
@@ -72,13 +75,9 @@
 */
 
 - (void)setEnabled:(BOOL)enabled {
-	if (enabled) {
-		[[self logoutButton] setEnabled:YES];
-		[[self gameTableView] setUserInteractionEnabled:YES];
-	} else {
-		[[self logoutButton] setEnabled:NO];
-		[[self gameTableView] setUserInteractionEnabled:NO];
-	}
+    self.logoutButton.enabled = enabled;
+    self.addGameButton.enabled = enabled;
+    self.gameListView.userInteractionEnabled = enabled;
 }
 
 #pragma mark - Actions
@@ -89,31 +88,37 @@
 }
 
 - (IBAction)forceRefreshGames {
-    [self.refreshControl beginRefreshing];
+    [self.myRefreshControl beginRefreshing];
     [self setEnabled:NO];
-    [self.gs refreshCurrentGames:^(NSArray *currentGames) {
+    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSArray *currentGames) {
         self.games = currentGames;
 #if TEST_GAMES
         [self addTestGames];
 #endif
-        [self.refreshControl endRefreshing];
+        [self.myRefreshControl endRefreshing];
         [self gameListChanged];
+        [self setEnabled:YES];
+    } onError:^(NSError *error) {
+        [self.myRefreshControl endRefreshing];
         [self setEnabled:YES];
     }];
 }
 
 - (IBAction)refreshGames {
-    [self.refreshControl beginRefreshing];
+    [self.myRefreshControl beginRefreshing];
 	[self setEnabled:NO];
-	[self.gs getCurrentGames:^(NSArray *currentGames) {
+	[[GenericGameServer sharedGameServer] getCurrentGames:^(NSArray *currentGames) {
 		self.games = currentGames;
 #if TEST_GAMES
         [self addTestGames];
 #endif
-        [self.refreshControl endRefreshing];
+        [self.myRefreshControl endRefreshing];
         [self gameListChanged];
 		[self setEnabled:YES];
-	}];
+	} onError:^(NSError *error) {
+        [self.myRefreshControl endRefreshing];
+        [self setEnabled:YES];
+    }];
 }
 
 
@@ -130,51 +135,15 @@
 	if (alertView == self.logoutConfirmation) {
 		if (buttonIndex != alertView.cancelButtonIndex) {
 			[self setEnabled:NO];
-			[self showSpinner:@"Logging out..."];
-			[self.gs logout];
+            self.spinner.label.text = @"Logging out…";
+            [self.spinner show];
+			[[GenericGameServer sharedGameServer] logout:^(NSError *error) {
+                [self setEnabled:YES];
+                [self.spinner dismiss:YES];
+            }];
 		}
 		self.logoutConfirmation = nil;
 	}
-}
-
-- (void)buildTableCells {
-	NSMutableArray *sections = [NSMutableArray array];
-	TableSection *firstSection = [[TableSection alloc] init];
-
-	for (Game *game in self.games) {
-		TableRow *row = [[TableRow alloc] init];
-		row.cellClass = [UITableViewCell class];
-		row.cellInit = ^UITableViewCell*() {
-			return [[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)];
-		};
-		row.cellSetup = ^(UITableViewCell *cell) {
-			if ([game color] == kMovePlayerBlack) {
-				[[cell imageView] setImage:[DGSAppDelegate blackStone]];
-			} else {
-				[[cell imageView] setImage:[DGSAppDelegate whiteStone]];
-			}
-			[[cell textLabel] setText: [game opponent]];
-			[[cell detailTextLabel] setText:[game time]];
-			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-		};
-		row.cellTouched = ^(UITableViewCell *cell) {
-			self.selectedCell = cell;
-			UIActivityIndicatorView *activityView =
-			[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-			[activityView startAnimating];
-			[cell setAccessoryView:activityView];
-
-			[self.gs getSgfForGame:game onSuccess:^(Game *game) {
-				[self gotSgfForGame:game];
-			}];
-		};
-		[firstSection addRow:row];
-	}
-
-	[sections addObject:firstSection];
-
-	self.tableSections = sections;
-
 }
 
 - (void)addTestGames {
@@ -195,16 +164,15 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
 
     if ([self.games count] == 0) {
-        self.view = self.noGamesView;
+        [self.view addSubview:self.noGamesView];
     } else {
-        self.view = self.gameListView;
-        [self buildTableCells];
-        [self.gameTableView reloadData];
+        [self.noGamesView removeFromSuperview];
+        [self.gameListView reloadData];
     }
 }
 
 - (void)requestCancelled {
-	[self hideSpinner:NO];
+	[self.spinner dismiss:NO];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
@@ -222,12 +190,46 @@
 	[self setEnabled:YES];
 }
 
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.games count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
+    Game *game = self.games[indexPath.row];
+    
+    if ([game color] == kMovePlayerBlack) {
+        [cell.imageView setImage:[DGSAppDelegate blackStone]];
+    } else {
+        [cell.imageView setImage:[DGSAppDelegate whiteStone]];
+    }
+    cell.textLabel.text = game.opponent;
+    cell.detailTextLabel.text = game.time;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+}
+
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self setEnabled:NO];
-	[super tableView:theTableView didSelectRowAtIndexPath:indexPath];
+    UITableViewCell *cell = [theTableView cellForRowAtIndexPath:indexPath];
+    Game *game = self.games[indexPath.row];
+    [self setEnabled:NO];
+    
+    UIActivityIndicatorView *activityView =
+    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [activityView startAnimating];
+    [cell setAccessoryView:activityView];
+    
+    [[GenericGameServer sharedGameServer] getSgfForGame:game onSuccess:^(Game *game) {
+        [self gotSgfForGame:game];
+    } onError:^(NSError *error) {
+        [cell setAccessoryView:nil];
+        [self setEnabled:YES];
+    }];
 }
 
 #pragma mark -
@@ -243,7 +245,6 @@
 - (void)viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
-	self.gameTableView = nil;
 	self.logoutButton = nil;
 	self.selectedCell = nil;
 	self.logoutConfirmation = nil;

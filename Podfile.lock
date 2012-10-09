@@ -11,6 +11,7 @@ PODS:
   - ASIHTTPRequest/S3 (1.8.1):
     - Reachability
   - GDataXML-HTML (1.0.0)
+  - InnerBand (0.0.1)
   - JSONKit (1.5pre)
   - ODRefreshControl (1.1.0)
   - Reachability (3.0.0)
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - ASIHTTPRequest
   - GDataXML-HTML
   - GDataXML-HTML
+  - InnerBand
   - JSONKit
   - JSONKit
   - ODRefreshControl

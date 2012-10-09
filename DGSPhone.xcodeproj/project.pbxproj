@@ -290,10 +290,7 @@
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
 		DA8E707D13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
 		DA94CBE2124839740060FD44 /* AddGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDC124839740060FD44 /* AddGameView.xib */; };
-		DA94CBE3124839740060FD44 /* CurrentGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDD124839740060FD44 /* CurrentGamesView.xib */; };
 		DA94CBE4124839740060FD44 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDE124839740060FD44 /* GameView.xib */; };
-		DA94CBE5124839740060FD44 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDF124839740060FD44 /* LoginView.xib */; };
-		DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE0124839740060FD44 /* MainWindow.xib */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
 		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
 		DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC44125C2725002EB162 /* Message on@2x.png */; };
@@ -303,6 +300,7 @@
 		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
 		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
 		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
+		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC33E9815885EC600CDD7A1 /* libPods-logic_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */; };
 		DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC33EE01589AD2100CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
@@ -676,10 +674,7 @@
 		DA8E707A13D5337E007E569B /* GameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameList.h; sourceTree = "<group>"; };
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
 		DA94CBDC124839740060FD44 /* AddGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGameView.xib; sourceTree = "<group>"; };
-		DA94CBDD124839740060FD44 /* CurrentGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentGamesView.xib; sourceTree = "<group>"; };
 		DA94CBDE124839740060FD44 /* GameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
-		DA94CBDF124839740060FD44 /* LoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
-		DA94CBE0124839740060FD44 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DA98EC43125C2725002EB162 /* Message off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off@2x.png"; sourceTree = "<group>"; };
 		DA98EC44125C2725002EB162 /* Message on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on@2x.png"; sourceTree = "<group>"; };
@@ -689,6 +684,7 @@
 		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
 		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
 		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
+		DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = Resources/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
 		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -853,6 +849,7 @@
 				DA8A962711FBB3D100B2E2C7 /* Default.png */,
 				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
 				DA238C2515B22AE800D4050C /* DGSErrors.strings */,
+				DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1271,10 +1268,7 @@
 			children = (
 				DA94CBDC124839740060FD44 /* AddGameView.xib */,
 				DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */,
-				DA94CBDD124839740060FD44 /* CurrentGamesView.xib */,
 				DA94CBDE124839740060FD44 /* GameView.xib */,
-				DA94CBDF124839740060FD44 /* LoginView.xib */,
-				DA94CBE0124839740060FD44 /* MainWindow.xib */,
 				DA94CBE1124839740060FD44 /* TableCells.xib */,
 				DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */,
 				DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */,
@@ -1565,10 +1559,7 @@
 				DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
 				DA94CBE2124839740060FD44 /* AddGameView.xib in Resources */,
-				DA94CBE3124839740060FD44 /* CurrentGamesView.xib in Resources */,
 				DA94CBE4124839740060FD44 /* GameView.xib in Resources */,
-				DA94CBE5124839740060FD44 /* LoginView.xib in Resources */,
-				DA94CBE6124839740060FD44 /* MainWindow.xib in Resources */,
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 				DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */,
@@ -1598,6 +1589,7 @@
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
 				DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */,
+				DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
