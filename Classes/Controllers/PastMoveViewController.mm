@@ -41,28 +41,29 @@
 	
     CGRect zoomRect;
 	
-    zoomRect.size.height = 640; //theScrollView.frame.size.height / scale;
-    zoomRect.size.width  = 640; //theScrollView.frame.size.width  / scale;
+    zoomRect.size.height = theScrollView.frame.size.height / scale;
+    zoomRect.size.width  = theScrollView.frame.size.width  / scale;
 
-    zoomRect.origin.x = 210; //center.x - (zoomRect.size.width  / 2.0);
-    zoomRect.origin.y = 210; //center.y - (zoomRect.size.height / 2.0);
+    zoomRect.origin.x = center.x - (zoomRect.size.width  / 2.0);
+    zoomRect.origin.y = center.y - (zoomRect.size.height / 2.0);
 	
     return zoomRect;
 }
 
 - (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
-    self.scrollView.maximumZoomScale = 1.0;
-    self.scrollView.minimumZoomScale = 1.0;
 	CGRect zoomRect = [self zoomRectForScrollView:[self scrollView] withScale:scale withCenter:center];
 	[self.scrollView zoomToRect:zoomRect animated:animated];
-    self.scrollView.maximumZoomScale = scale;
-    self.scrollView.minimumZoomScale = scale;
 }
 
 - (IBAction)previousMove {}
 - (IBAction)nextMove {}
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.boardView;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
