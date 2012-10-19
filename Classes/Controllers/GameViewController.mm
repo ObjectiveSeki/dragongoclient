@@ -146,9 +146,12 @@
 }
 
 - (IBAction)showHistory {
-    PastMovesViewController *pastMovesViewController = [[PastMovesViewController alloc] initWithNibName:@"PastMovesView" bundle:nil];
-    [pastMovesViewController setGame:self.game];
-    [self.navigationController pushViewController:pastMovesViewController animated:YES];
+    PastMoveViewController *pastMoveViewController = [[PastMoveViewController alloc] initWithNibName:@"PastMoveView" bundle:nil];
+    [pastMoveViewController setMoveNumber:self.board.moveNumber - 1];
+    [pastMoveViewController setGame:game];
+    [self.navigationController pushViewController:pastMoveViewController animated:YES];
+    [pastMoveViewController release];
+
 }
 
 - (void)playedMove {

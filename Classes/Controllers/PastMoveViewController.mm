@@ -12,6 +12,7 @@
 
 @synthesize game;
 @synthesize moveNumber;
+@synthesize maxMoveNumber;
 @synthesize board;
 @synthesize boardView;
 @synthesize scrollView;
@@ -31,9 +32,19 @@
 
 - (void)updateBoard {
     [self.navigationItem setRightBarButtonItem:nil animated:YES];
-    [self.previousButton setEnabled:false];
-    [self.nextButton setEnabled:false];
-    JWLog(@"boardView:%@ setNeedsDisplay", self.boardView);
+    
+    if([self moveNumber] > 1) {
+        [self.previousButton setEnabled:true];
+    } else {
+        [self.previousButton setEnabled:false];
+    }
+    
+    if([self moveNumber] < [self maxMoveNumber]) {
+        [self.nextButton setEnabled:true];
+    } else {
+        [self.nextButton setEnabled:false];
+    }
+    
 	[self.boardView setNeedsDisplay];
 }
 
@@ -55,8 +66,23 @@
 	[self.scrollView zoomToRect:zoomRect animated:animated];
 }
 
-- (IBAction)previousMove {}
-- (IBAction)nextMove {}
+- (void)changeMove {
+    [self.board goToMove: [self moveNumber]];
+    [self updateBoard];
+    self.navigationItem.title = [NSString stringWithFormat:@"Move %d", [self moveNumber]];
+}
+
+- (IBAction)previousMove {
+    [self setMoveNumber: [self moveNumber] - 1];
+    [self changeMove];
+}
+
+- (IBAction)nextMove {
+    JWLog(@"%d", [self moveNumber]);
+    [self setMoveNumber: [self moveNumber] + 1];
+    JWLog(@"%d", [self moveNumber]);
+    [self changeMove];
+}
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {}
 
@@ -73,7 +99,8 @@
 	[super viewWillAppear:animated];
 
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[game sgfString]];
-    [theBoard goToMove: [self moveNumber]];
+    [self setMaxMoveNumber:[self moveNumber]];
+    [theBoard goToMove:[self moveNumber]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
 	[theBoard release];

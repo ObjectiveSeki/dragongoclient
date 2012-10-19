@@ -18,6 +18,7 @@
 @interface PastMoveViewController : RootViewController <LoginProtocol> {
 	Game *game;
     int moveNumber;
+    int maxMoveNumber;
 	FuegoBoard *board;
 	IBOutlet GoBoardView *boardView;
 	IBOutlet UIScrollView *scrollView;
@@ -30,6 +31,7 @@
 
 @property(nonatomic, retain) Game *game;
 @property(nonatomic, assign) int moveNumber;
+@property(nonatomic, assign) int maxMoveNumber;
 @property(nonatomic, retain) FuegoBoard *board;
 @property(nonatomic, retain) IBOutlet GoBoardView *boardView;
 @property(nonatomic, retain) IBOutlet UIScrollView *scrollView;

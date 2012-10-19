@@ -274,12 +274,22 @@ static bool fuegoInitialized = NO;
 - (void)goToMove:(int)moveNumber {
     int numberOfMoves = [self moveNumber];
     
-    while (numberOfMoves > moveNumber) {
-        numberOfMoves -= 1;
-        
-        if (goGame->CanGoInDirection(SgNode::PREVIOUS)) {
-            goGame->GoInDirection(SgNode::PREVIOUS);
+    if (numberOfMoves > moveNumber) {
+        while (numberOfMoves > moveNumber) {
+            numberOfMoves -= 1;
+            
+            if (goGame->CanGoInDirection(SgNode::PREVIOUS)) {
+                goGame->GoInDirection(SgNode::PREVIOUS);
+            }
         }
+    } else {
+        while (numberOfMoves < moveNumber) {
+            numberOfMoves += 1;
+            
+            if (goGame->CanGoInDirection(SgNode::NEXT)) {
+                goGame->GoInDirection(SgNode::NEXT);
+            }
+        }        
     }
 }
 
