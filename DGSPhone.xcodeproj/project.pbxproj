@@ -12,8 +12,6 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		BF574A4815EC9F030082D2CC /* PastMovesViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF574A4715EC9F030082D2CC /* PastMovesViewController.mm */; };
-		BF574A4B15ECA0380082D2CC /* PastMovesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF574A4A15ECA0380082D2CC /* PastMovesView.xib */; };
 		BF64C95415F5DD3C007C6238 /* PastMoveViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF64C95315F5DD3C007C6238 /* PastMoveViewController.mm */; };
 		BFEE4E0416143526000BBB19 /* PastMoveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFEE4E0316143526000BBB19 /* PastMoveView.xib */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
@@ -513,9 +511,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		BF574A4615EC9F030082D2CC /* PastMovesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastMovesViewController.h; sourceTree = "<group>"; };
-		BF574A4715EC9F030082D2CC /* PastMovesViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PastMovesViewController.mm; sourceTree = "<group>"; };
-		BF574A4A15ECA0380082D2CC /* PastMovesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastMovesView.xib; sourceTree = "<group>"; };
 		BF64C95215F5DD3C007C6238 /* PastMoveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PastMoveViewController.h; sourceTree = "<group>"; };
 		BF64C95315F5DD3C007C6238 /* PastMoveViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PastMoveViewController.mm; sourceTree = "<group>"; };
 		BFEE4E0316143526000BBB19 /* PastMoveView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastMoveView.xib; sourceTree = "<group>"; };
@@ -1506,8 +1501,6 @@
 				DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */,
 				DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */,
 				DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */,
-				BF574A4615EC9F030082D2CC /* PastMovesViewController.h */,
-				BF574A4715EC9F030082D2CC /* PastMovesViewController.mm */,
 				BF64C95215F5DD3C007C6238 /* PastMoveViewController.h */,
 				BF64C95315F5DD3C007C6238 /* PastMoveViewController.mm */,
 			);
@@ -1774,7 +1767,6 @@
 				DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */,
 				DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */,
 				DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */,
-				BF574A4A15ECA0380082D2CC /* PastMovesView.xib */,
 				BFEE4E0316143526000BBB19 /* PastMoveView.xib */,
 			);
 			path = XIBs;
@@ -2199,7 +2191,6 @@
 				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
 				DA0E1045140F32300067BE35 /* Hockey.bundle in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
-				BF574A4B15ECA0380082D2CC /* PastMovesView.xib in Resources */,
 				BFEE4E0416143526000BBB19 /* PastMoveView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2301,7 +2292,6 @@
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
 				DA0F2E9B159197F90048E9B4 /* JSONKit.m in Sources */,
 				DA391DDE1592CB2900F9E36F /* Player.m in Sources */,
-				BF574A4815EC9F030082D2CC /* PastMovesViewController.mm in Sources */,
 				BF64C95415F5DD3C007C6238 /* PastMoveViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
