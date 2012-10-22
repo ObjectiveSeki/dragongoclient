@@ -11,6 +11,7 @@
 #import "Game.h"
 #import "NewGame.h"
 #import "GameList.h"
+#import "Player.h"
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIHTTPRequest.h"
@@ -40,6 +41,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 
 - (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess;
 - (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess;
+- (void)getCurrentPlayer:(void (^)(Player *player))onSuccess;
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess;
 - (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess;
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess;

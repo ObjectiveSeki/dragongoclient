@@ -271,22 +271,72 @@ static bool fuegoInitialized = NO;
 	}
 }
 
+- (void)goToMove:(int)moveNumber {
+    int numberOfMoves = [self moveNumber];
+    
+    if (numberOfMoves > moveNumber) {
+        while (numberOfMoves > moveNumber) {
+            numberOfMoves -= 1;
+            
+            if (goGame->CanGoInDirection(SgNode::PREVIOUS)) {
+                goGame->GoInDirection(SgNode::PREVIOUS);
+            }
+        }
+    } else {
+        while (numberOfMoves < moveNumber) {
+            numberOfMoves += 1;
+            
+            if (goGame->CanGoInDirection(SgNode::NEXT)) {
+                goGame->GoInDirection(SgNode::NEXT);
+            }
+        }        
+    }
+}
+
 - (NSArray *)moves {
+    NSMutableArray *moves = [NSMutableArray array];
+
+    if (self.moveNumber <= [self handicap] + 1) {
+		return nil;
+	}
+
+    for (GoBoard::Iterator it(goGame->Board()); it; ++it) {
+        Move *move = [[Move alloc] init];
+        move.col = SgPointUtil::Col(*it);
+        move.row = SgPointUtil::Row(*it);
+        move.boardSize = [self size];
+        if (goGame->Board().Occupied(*it)) {
+            move.player = [self playerForSgPlayer:goGame->Board().GetStone(*it)];
+            [moves addObject:move];
+        }
+        [move release];
+    }
+
+    return moves;
+}
+
+- (NSArray *)orderedMoves {
 	NSMutableArray *moves = [NSMutableArray array];
-	
-	for (GoBoard::Iterator it(goGame->Board()); it; ++it) {
-		Move *move = [[Move alloc] init];
-		move.col = SgPointUtil::Col(*it);
-		move.row = SgPointUtil::Row(*it);
-		move.boardSize = [self size];
-		if (goGame->Board().Occupied(*it)) {
-			move.player = [self playerForSgPlayer:goGame->Board().GetStone(*it)];
-			[moves addObject:move];
-		}
-		[move release];
+    int numberOfMoves = self.moveNumber;
+    
+    if (numberOfMoves <= [self handicap] + 1) {
+		return nil;
 	}
 	
-	return moves;
+	const SgNode *currentNode = goGame->CurrentNode();
+
+    for (int i = numberOfMoves; i > 1; i -= 1) {
+        Move *move = [self moveFromNode:goGame->CurrentNode()];
+
+        if(move) {
+            [moves addObject:move];
+            goGame->GoInDirection(SgNode::PREVIOUS);
+        }
+    }
+    
+    goGame->GoToNode(currentNode);
+    
+    return moves;
 }
 
 - (int)moveNumber {
