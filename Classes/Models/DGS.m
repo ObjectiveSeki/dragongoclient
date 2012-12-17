@@ -264,8 +264,8 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	} onError:onError];
 }
 
-- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess {
-    GameList *gameList = [[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)()) {
+- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess onError:(ErrorBlock)onError {
+    GameList *gameList = [[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)(), ErrorBlock innerOnError) {
         NSURL *url = [self URLWithPath:pagePath];
         ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
@@ -274,7 +274,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
             [gameList appendGames:[self gamesFromWaitingRoomTable:[request responseData]]];
             gameList.nextPagePath = [self nextPagePath:[request responseData]];
             onSuccess();
-        } onError:nil];
+        } onError:innerOnError];
     }];
 
     // add=9 to force the time limit to show up
@@ -282,10 +282,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
     [gameList loadNextPage:^(GameList *gameList) {
         onSuccess(gameList);
-    }];
+    } onError:onError];
 }
 
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess {
+- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {
     NSString *gameId;
     NSScanner *scanner = [[NSScanner alloc] initWithString:game.detailUrl.query];
     [scanner scanUpToString:@"info=" intoString:NULL];
@@ -301,10 +301,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
         JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
         NewGame *gameDetails = [self gameFromWaitingRoomDetailDictionary:[decoder objectWithData:[request responseData]] game:game];
         onSuccess(gameDetails);
-	} onError:nil];
+	} onError:onError];
 }
 
-- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
+- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     static NSString *joinGameUrlFormat = @"/quick_do.php?obj=wroom&cmd=join&wrid=%d";
 	NSURL *url = [self URLWithPath:[NSString stringWithFormat:joinGameUrlFormat, gameId]];
 
@@ -312,10 +312,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	} onError:nil];
+	} onError:onError];
 }
 
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
+- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     static NSString *deleteGameUrlFormat = @"/quick_do.php?obj=wroom&cmd=delete&wrid=%d";
 	NSURL *url = [self URLWithPath:[NSString stringWithFormat:deleteGameUrlFormat, gameId]];
     
@@ -323,7 +323,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	} onError:nil];
+	} onError:onError];
 }
 
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {

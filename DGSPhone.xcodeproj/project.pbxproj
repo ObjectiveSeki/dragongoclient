@@ -255,9 +255,7 @@
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.mm */; };
 		DA476A5314DA109F00AAF7E0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */; };
 		DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */; };
-		DA5218EB12CFA42A00000147 /* WaitingRoomGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */; };
 		DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */; };
-		DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */; };
 		DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D350C12B20A8F001271D3 /* Moves@2x.png */; };
 		DA5D351312B20A9D001271D3 /* Moves.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D351212B20A9A001271D3 /* Moves.png */; };
@@ -276,7 +274,6 @@
 		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
-		DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */; };
 		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
 		DA82C41B12CEA5310059DAF0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C41A12CEA5310059DAF0 /* RootViewController.m */; };
 		DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C42F12CEA8510059DAF0 /* TableSection.m */; };
@@ -289,7 +286,6 @@
 		DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
 		DA8E707D13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
-		DA94CBE2124839740060FD44 /* AddGameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDC124839740060FD44 /* AddGameView.xib */; };
 		DA94CBE4124839740060FD44 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBDE124839740060FD44 /* GameView.xib */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
 		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
@@ -319,7 +315,6 @@
 		DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CDD11FD3C0B005922A3 /* Readme.md */; };
 		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
-		DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */; };
 		DAE5F4C915AFEDBA0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
 		DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
 		DAE5F4CC15AFEE130062B5F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA52A611B8989F00F4CCB3 /* UIKit.framework */; };
@@ -632,10 +627,8 @@
 		DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingRoomGamesController.h; sourceTree = "<group>"; };
 		DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingRoomGamesController.m; sourceTree = "<group>"; };
-		DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaitingRoomGamesView.xib; sourceTree = "<group>"; };
 		DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinWaitingRoomGameController.h; sourceTree = "<group>"; };
 		DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinWaitingRoomGameController.m; sourceTree = "<group>"; };
-		DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JoinWaitingRoomGameView.xib; sourceTree = "<group>"; };
 		DA58E8041245398B00387BB5 /* libfuego.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfuego.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
 		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
@@ -656,7 +649,6 @@
 		DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Adhoc.xcconfig; sourceTree = "<group>"; };
 		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DGSGamesView.xib; sourceTree = "<group>"; };
 		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
 		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
 		DA82C41912CEA5310059DAF0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -673,7 +665,6 @@
 		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DA8E707A13D5337E007E569B /* GameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameList.h; sourceTree = "<group>"; };
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
-		DA94CBDC124839740060FD44 /* AddGameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddGameView.xib; sourceTree = "<group>"; };
 		DA94CBDE124839740060FD44 /* GameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DA98EC43125C2725002EB162 /* Message off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off@2x.png"; sourceTree = "<group>"; };
@@ -702,7 +693,6 @@
 		DADD1CE111FD3C43005922A3 /* FAQ.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ.md; sourceTree = "<group>"; };
 		DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
 		DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameViewController.m; sourceTree = "<group>"; };
-		DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewGameViewController.xib; path = ../Classes/Controllers/NewGameViewController.xib; sourceTree = "<group>"; };
 		DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DAE932A912454A2900335F0F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -1266,13 +1256,8 @@
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				DA94CBDC124839740060FD44 /* AddGameView.xib */,
-				DAE0D24C13BAD41A00668CB2 /* NewGameViewController.xib */,
 				DA94CBDE124839740060FD44 /* GameView.xib */,
 				DA94CBE1124839740060FD44 /* TableCells.xib */,
-				DA82C3F712CE807F0059DAF0 /* DGSGamesView.xib */,
-				DA5218EA12CFA42A00000147 /* WaitingRoomGamesView.xib */,
-				DA521C1512D431A400C2AE9D /* JoinWaitingRoomGameView.xib */,
 				DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */,
 			);
 			path = XIBs;
@@ -1558,7 +1543,6 @@
 				DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */,
 				DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
-				DA94CBE2124839740060FD44 /* AddGameView.xib in Resources */,
 				DA94CBE4124839740060FD44 /* GameView.xib in Resources */,
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
@@ -1577,14 +1561,10 @@
 				DAD3636A126D586600589A32 /* Message input@2x.png in Resources */,
 				DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */,
 				DA5D351312B20A9D001271D3 /* Moves.png in Resources */,
-				DA82C3F812CE807F0059DAF0 /* DGSGamesView.xib in Resources */,
-				DA5218EB12CFA42A00000147 /* WaitingRoomGamesView.xib in Resources */,
-				DA521C1612D431A400C2AE9D /* JoinWaitingRoomGameView.xib in Resources */,
 				DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */,
 				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
 				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
-				DAE0D24E13BAD41A00668CB2 /* NewGameViewController.xib in Resources */,
 				6645B192147CCE2400170504 /* dgs.sqlite in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,

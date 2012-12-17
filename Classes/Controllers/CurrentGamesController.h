@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LoginProtocol.h"
-#import "DGS.h"
-#import "JWTableViewController.h"
-
 
 @interface CurrentGamesController : UITableViewController
 

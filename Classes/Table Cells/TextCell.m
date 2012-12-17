@@ -10,7 +10,6 @@
 
 
 @implementation TextCell
-@synthesize label = _label, textField = _textField, textEditedSelector = _textEditedSelector, content = _content, onChanged = _onChanged, maxTextLength = _maxTextLength;
 
 - (id)init {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([self class])])) {

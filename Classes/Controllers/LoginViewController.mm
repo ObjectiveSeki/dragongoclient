@@ -7,10 +7,10 @@
 //
 
 #import "LoginViewController.h"
-#import "CurrentGamesController.h"
 #import "DGSPhoneAppDelegate.h"
 #import "DGS.h"
 #import "TextCell.h"
+#import "SpinnerView.h"
 
 @implementation LoginViewController
 

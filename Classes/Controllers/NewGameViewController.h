@@ -6,12 +6,5 @@
 //  Copyright 2011 Justin Weiss. All rights reserved.
 //
 
-#import "JWTableViewController.h"
-
-@interface NewGameViewController : JWTableViewController {
-    
-}
-
-- (UITableViewCell *)selectedCell;
-
+@interface NewGameViewController : UITableViewController
 @end

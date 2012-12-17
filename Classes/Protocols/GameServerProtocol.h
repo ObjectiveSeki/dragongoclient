@@ -40,10 +40,10 @@ typedef void(^ErrorBlock)(NSError *error);
 - (void)getCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)refreshCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getWaitingRoomGames:(GameListBlock)onSuccess;
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess;
-- (void)joinWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess;
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess;
+- (void)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)joinWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 
 
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;

@@ -3,17 +3,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JWTableViewController.h"
-#import "DGS.h"
-#import "GameList.h"
 
-@interface WaitingRoomGamesController : JWTableViewController {
-    UIView *noGamesView;
-}
+@class GameList;
+
+@interface WaitingRoomGamesController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UIView *noGamesView;
-
-- (void)setGames:(GameList *)gameList;
-- (IBAction)addGame:(id)sender;
+@property (nonatomic, strong) GameList *gameList;
 
 @end

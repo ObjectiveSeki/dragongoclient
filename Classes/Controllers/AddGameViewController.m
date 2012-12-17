@@ -7,13 +7,15 @@
 //
 
 #import "AddGameViewController.h"
-#import "TableCellFactory.h"
-#import "LoginViewController.h"
+
+#import "SelectCell.h"
 #import "BooleanCell.h"
+#import "SpinnerView.h"
 
 @interface AddGameViewController ()
 
 @property (nonatomic, strong) NSArray *ratingStrings;
+@property (nonatomic, strong) SpinnerView *spinner;
 
 @end
 
@@ -26,7 +28,9 @@ typedef enum _AddGameSection {
 	kDescriptionSection,
 	kBoardSection,
 	kTimeSection,
-    kRatingSection
+    kRatingSection,
+    kActionSection,
+    kSectionCount
 } AddGameSection;
 
 
@@ -45,7 +49,7 @@ typedef enum _AddGameSection {
         [ratingStrings addObject:[NSString stringWithFormat:@"%d dan", i]];
     }
     self.ratingStrings = ratingStrings;
-    
+    self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
 
 
@@ -66,7 +70,6 @@ typedef enum _AddGameSection {
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self deselectSelectedCell];
 }
 
 /*
@@ -82,22 +85,12 @@ typedef enum _AddGameSection {
 }
 */
 
-- (IBAction)addGame {
-    // break the retain cycle in the block below
-    __weak AddGameViewController* blockSelf = self;
-	[self showSpinner:@"Posting..."];
-	[self.gs addGame:self.game onSuccess:^() {
-		[blockSelf hideSpinner:YES];
-		[[blockSelf navigationController] popToRootViewControllerAnimated:YES];
-	}];
-}
-
 #pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return kRatingSection + 1;
+    return kSectionCount;
 }
 
 
@@ -123,64 +116,34 @@ typedef enum _AddGameSection {
         } else {
             return 2;
         }
+    } else if (section == kActionSection) {
+        return 1;
     }
 	return 0;
 }
 
-- (UITableViewCell *)defaultCell:(UITableView *)theTableView {
-	static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }	
-	return cell;
+- (UITableViewCell *)dequeueDefaultCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
 }
 
-- (TextCell *)textCell:(UITableView *)theTableView {
-	static NSString *CellIdentifier = @"TextCell";
-    
-    TextCell *cell = (TextCell *)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-		cell = [[TextCell alloc] init];
-    }
-	
-	return cell;
+- (TextCell *)dequeueTextCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
 }
 
-- (SelectCell *)selectCell:(UITableView *)theTableView {
-	static NSString *CellIdentifier = @"SelectCell";
-    
-    SelectCell *cell = (SelectCell *)[theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-		cell = [TableCellFactory selectCell];
-    }
-    
-    // only one of these should ever be set.
-    cell.changedSelector = nil;
-    cell.onChanged = nil;
-	
-	return cell;
+- (SelectCell *)dequeueSelectCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"SelectCell"];
 }
 
-- (BooleanCell *)booleanCell:(UITableView *)theTableView {
-    BooleanCell *cell = (BooleanCell *)[theTableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
-    if (cell == nil) {
-		cell = [[BooleanCell alloc] init];
-    }
-	
-	return cell;
+- (BooleanCell *)dequeueBooleanCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
+}
+
+- (TextCell *)dequeueActionCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
 }
 
 - (void)setComment:(TextCell *)commentCell {
 	[self.game setComment:[[commentCell textField] text]];
-}
-
-- (void)setBoardSize:(SelectCell *)cell {
-	NSString *boardSize = (cell.options)[0][[cell.picker selectedRowInComponent:0]];
-	[self.game setBoardSize:[boardSize intValue]];
-	cell.value.text = boardSize;
-	cell.selectedOptions = @[boardSize];
 }
 
 - (void)setKomiType:(SelectCell *)cell {
@@ -278,15 +241,15 @@ typedef enum _AddGameSection {
 	[self.game setCanadianTimePeriods:[[[timePeriodCell textField] text] intValue]];
 }
 
-- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit selector:(SEL)setSelector label:(NSString *)label {
-	SelectCell *cell = [self selectCell:theTableView];
+- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell))onSelected label:(NSString *)label {
+	SelectCell *cell = [self dequeueSelectCell:theTableView];
 	NSString *timeString = [self.game timePeriodString:timeValue withTimeUnit:timeUnit];
 	NSArray *zeroToNine = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"];
 	NSArray *timePeriods = @[[self.game timePeriodValue:kTimePeriodHours], [self.game timePeriodValue:kTimePeriodDays], [self.game timePeriodValue:kTimePeriodMonths]];
 	NSArray *sizes = @[@80.0f,@80.0f, @140.0f];
 	cell.label.text = label;
 	cell.value.text = timeString;
-	cell.changedSelector = setSelector;
+	cell.onChanged = onSelected;
 	cell.sizes = sizes;
 	cell.options = @[zeroToNine, zeroToNine, timePeriods];
 	int tens = timeValue / 10;
@@ -297,11 +260,9 @@ typedef enum _AddGameSection {
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [self textCell:theTableView];
 	if ([indexPath section] == kDescriptionSection) {
-
 		if ([indexPath row] == 0) {
-			TextCell *cell = [self textCell:theTableView];
+			TextCell *cell = [self dequeueTextCell:theTableView];
 			cell.textLabel.text = @"Comment";
 			cell.textField.text = self.game.comment;
 			cell.textField.keyboardType = UIKeyboardTypeDefault;
@@ -312,18 +273,23 @@ typedef enum _AddGameSection {
 	if ([indexPath section] == kBoardSection) {
 		
 		if ([indexPath row] == 0) {
-			SelectCell *cell = [self selectCell:theTableView];
+			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *boardSize = [NSString stringWithFormat:@"%d", self.game.boardSize];
 			NSArray *options = @[@"9", @"13", @"19"];
 			cell.label.text = @"Board Size";
 			cell.value.text = boardSize;
-			cell.changedSelector = @selector(setBoardSize:);
+			cell.onChanged = ^(SelectCell *selectCell) {
+                NSString *boardSize = (cell.options)[0][[cell.picker selectedRowInComponent:0]];
+                [self.game setBoardSize:[boardSize intValue]];
+                cell.value.text = boardSize;
+                cell.selectedOptions = @[boardSize];
+            };
 			cell.options = @[options];
 			cell.sizes = nil;
 			cell.selectedOptions = @[boardSize];
 			return cell;
 		} else if ([indexPath row] == 1) {
-            BooleanCell *cell = [self booleanCell:theTableView];
+            BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Standard Placement";
             cell.toggleSwitch.on = self.game.stdHandicap;
             cell.onChanged = ^(BooleanCell *cell) {
@@ -331,7 +297,7 @@ typedef enum _AddGameSection {
             };
 			return cell;
 		} else if ([indexPath row] == 2) {
-			SelectCell *cell = [self selectCell:theTableView];
+			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *komiType = [self.game komiTypeString];
 			NSMutableArray *options = [NSMutableArray array];
             if (self.player.rated) {
@@ -342,13 +308,15 @@ typedef enum _AddGameSection {
             [options addObject:[self.game komiTypeString:kKomiTypeManual]];
             cell.label.text = @"Komi Type";
 			cell.value.text = komiType;
-			cell.changedSelector = @selector(setKomiType:);
+			cell.onChanged = ^(SelectCell *selectCell) {
+                [self setKomiType:selectCell];
+            };
 			cell.options = @[options];
 			cell.selectedOptions = @[komiType];
 			cell.sizes = nil;
 			return cell;
 		} else if ([indexPath row] == 3) {
-            SelectCell *cell = [self selectCell:theTableView];
+            SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *manualKomiType = [self.game manualKomiTypeString];
             NSMutableArray *options = [NSMutableArray array];
             [options addObject:[self.game manualKomiTypeString:kManualKomiTypeNigiri]];
@@ -370,7 +338,7 @@ typedef enum _AddGameSection {
 			cell.sizes = nil;
 			return cell;
         } else if ([indexPath row] == 4) {
-            SelectCell *cell = [self selectCell:theTableView];
+            SelectCell *cell = [self dequeueSelectCell:theTableView];
             NSMutableArray *handicaps = [[NSMutableArray alloc] initWithObjects:@"0", nil];
             for (int i = 2; i < 22; i++) {
                 [handicaps addObject:[NSString stringWithFormat:@"%d", i]];
@@ -388,7 +356,7 @@ typedef enum _AddGameSection {
 			cell.sizes = nil;
 			return cell;
         } else if ([indexPath row] == 5) {
-            TextCell *cell = [self textCell:theTableView];
+            TextCell *cell = [self dequeueTextCell:theTableView];
             cell.textLabel.text = @"Komi";
             cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
             cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -399,36 +367,36 @@ typedef enum _AddGameSection {
         }
 	} else if ([indexPath section] == kTimeSection) {
 		if ([indexPath row] == 0) {
-			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit selector:@selector(setMainTime:) label:@"Main Time"];
+			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit onSelected:^(SelectCell *selectCell) { [self setMainTime:selectCell]; } label:@"Main Time"];
 		} else if ([indexPath row] == 1) {
-			SelectCell *cell = [self selectCell:theTableView];
+			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *byoYomiType = [self.game byoYomiTypeString];
 			NSArray *options = @[[self.game byoYomiTypeString:kByoYomiTypeJapanese], [self.game byoYomiTypeString:kByoYomiTypeCanadian], [self.game byoYomiTypeString:kByoYomiTypeFischer]];
 			cell.label.text = @"Byo-Yomi";
 			cell.value.text = byoYomiType;
-			cell.changedSelector = @selector(setByoYomiType:);
+			cell.onChanged = ^(SelectCell *selectCell) { [self setByoYomiType:selectCell]; };
 			cell.options = @[options];
 			cell.selectedOptions = @[byoYomiType];
 			cell.sizes = nil;
 			return cell;
 		} else if ([indexPath row] == 2) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
-				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit selector:@selector(setExtraTimeJapanese:) label:@"Extra Time"];
+				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit onSelected:^(SelectCell *selectCell) { [self setExtraTimeJapanese:selectCell]; } label:@"Extra Time"];
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
-				return [self timeCell:theTableView timeValue:self.game.canadianTimeValue timeUnit:self.game.canadianTimeUnit selector:@selector(setExtraTimeCanadian:) label:@"Extra Time"];
+				return [self timeCell:theTableView timeValue:self.game.canadianTimeValue timeUnit:self.game.canadianTimeUnit onSelected:^(SelectCell *selectCell) { [self setExtraTimeCanadian:selectCell]; } label:@"Extra Time"];
 			} else if (self.game.byoYomiType == kByoYomiTypeFischer) {
-				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit selector:@selector(setExtraTimeFischer:) label:@"Extra Per Move"];
+				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit onSelected:^(SelectCell *selectCell) { [self setExtraTimeFischer:selectCell]; } label:@"Extra Per Move"];
 			}
 		} else if ([indexPath row] == 3) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
-				TextCell *cell = [self textCell:theTableView];
+				TextCell *cell = [self dequeueTextCell:theTableView];
 				cell.textLabel.text = @"Extra Periods";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.japaneseTimePeriods];
 				cell.textEditedSelector = @selector(setJapaneseTimePeriods:);
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 				return cell;
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
-				TextCell *cell = [self textCell:theTableView];
+				TextCell *cell = [self dequeueTextCell:theTableView];
 				cell.textLabel.text = @"Extra Stones";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.canadianTimePeriods];
 				cell.textEditedSelector = @selector(setCanadianTimePeriods:);
@@ -436,9 +404,9 @@ typedef enum _AddGameSection {
 				return cell;
 			}
 		}
-	} if ([indexPath section] == kRatingSection) {
+	} else if ([indexPath section] == kRatingSection) {
 		if ([indexPath row] == 0) {
-			BooleanCell *cell = [self booleanCell:theTableView];
+			BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Ranked game";
             cell.toggleSwitch.on = self.game.rated;
             cell.onChanged = ^(BooleanCell *cell) {
@@ -446,7 +414,7 @@ typedef enum _AddGameSection {
             };
 			return cell;
 		} else if ([indexPath row] == 1) {
-			BooleanCell *cell = [self booleanCell:theTableView];
+			BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Rated opponent";
             cell.toggleSwitch.on = self.game.requireRatedOpponent;
             cell.onChanged = ^(BooleanCell *cell) {
@@ -459,12 +427,11 @@ typedef enum _AddGameSection {
                     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];                    
                 } else {
                     [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-                    [self deselectSelectedCell];
                 }
             };
 			return cell;
 		} else if ([indexPath row] == 2) {
-            SelectCell *cell = [self selectCell:theTableView];
+            SelectCell *cell = [self dequeueSelectCell:theTableView];
 			cell.label.text = @"Min rating";
 			cell.value.text = self.game.minimumRating;
 			cell.onChanged = ^(SelectCell *cell) {
@@ -477,7 +444,7 @@ typedef enum _AddGameSection {
 			cell.sizes = nil;
 			return cell;
         } else if ([indexPath row] == 3) {
-            SelectCell *cell = [self selectCell:theTableView];
+            SelectCell *cell = [self dequeueSelectCell:theTableView];
 			cell.label.text = @"Max rating";
 			cell.value.text = self.game.maximumRating;
             cell.onChanged = ^(SelectCell *cell) {
@@ -490,8 +457,13 @@ typedef enum _AddGameSection {
 			cell.sizes = nil;
 			return cell;
         }
+    } else if (indexPath.section == kActionSection) {
+        UITableViewCell *cell = [self dequeueActionCell:theTableView];
+        cell.textLabel.text = @"Create Game";
+        self.createGameButton = cell;
+        return cell;
     }
-    return cell;
+    return [self dequeueDefaultCell:theTableView];
 }
 
 
@@ -539,15 +511,19 @@ typedef enum _AddGameSection {
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//[tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+    if (indexPath.section == kActionSection && indexPath.row == 0) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        // break the retain cycle in the block below
+
+        __weak AddGameViewController* blockSelf = self;
+        self.spinner.label.text = @"Posting…";
+        [self.spinner show];
+        [[GenericGameServer sharedGameServer] addGame:self.game onSuccess:^() {
+            [blockSelf.spinner dismiss:YES];
+            [blockSelf.navigationController popToRootViewControllerAnimated:YES];
+        }];
+        
+    }
 }
 
 

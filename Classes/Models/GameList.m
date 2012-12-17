@@ -14,16 +14,22 @@
     return self;
 }
 
-- (void)loadNextPage:(void(^)(GameList *gameList))onSuccess {
+- (void)loadNextPage:(void(^)(GameList *gameList))onSuccess onError:(void(^)(NSError *error))onError {
     if ([self hasMorePages] && self.pageLoader) {
         self.pageLoader(self, self.nextPagePath, ^() {
             onSuccess(self);
-        });
+        }, onError);
     }
 }
 
 - (BOOL)hasMorePages {
     return self.nextPagePath != nil;
+}
+
+- (void)updateGame:(Game *)game atIndex:(NSInteger)index {
+    NSMutableArray *mutableGames = [self.games mutableCopy];
+    [mutableGames insertObject:game atIndex:index];
+    self.games = mutableGames;
 }
 
 - (void)appendGames:(NSArray *)moreGames {

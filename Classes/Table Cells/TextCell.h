@@ -10,8 +10,7 @@
 
 @class TextCell;
 
-@interface TextCell : UITableViewCell <UITextFieldDelegate> {
-}
+@interface TextCell : UITableViewCell <UITextFieldDelegate>
 
 @property(nonatomic, strong) IBOutlet UILabel *label;
 @property(nonatomic, strong) IBOutlet UITextField *textField;

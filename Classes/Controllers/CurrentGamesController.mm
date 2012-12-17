@@ -28,9 +28,6 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.title = @"Your Move";
-	self.navigationItem.leftBarButtonItem = self.logoutButton;
-    self.navigationItem.rightBarButtonItem = self.addGameButton;
 	if ([UIRefreshControl class]) {
         self.refreshControl = [[UIRefreshControl alloc] init];
         self.myRefreshControl = self.refreshControl;
@@ -88,7 +85,6 @@
 }
 
 - (IBAction)forceRefreshGames {
-    [self.myRefreshControl beginRefreshing];
     [self setEnabled:NO];
     [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSArray *currentGames) {
         self.games = currentGames;

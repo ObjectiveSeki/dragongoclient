@@ -36,71 +36,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    self.navigationItem.title = @"Start a game";
-    NSMutableArray *sections = [[NSMutableArray alloc] init];
-    TableSection *serverGamesSection = [[TableSection alloc] init];
-    
-    TableRow *row;
-    
-    row = [[TableRow alloc] init];
-    row.cellClass = [UITableViewCell class];
-    row.cellInit = ^UITableViewCell*() {
-        return [[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(row.cellClass)];
-    };
-    row.cellSetup = ^(UITableViewCell *cell) {
-        [[cell textLabel] setText:@"Join a game"];
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    };
-    row.cellTouched = ^(UITableViewCell *cell) {
-        UIActivityIndicatorView *activityView = 
-        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [activityView startAnimating];
-        [cell setAccessoryView:activityView];
-        [self.tableView setUserInteractionEnabled:NO];
-        
-        WaitingRoomGamesController *controller = [[WaitingRoomGamesController alloc] initWithNibName:@"WaitingRoomGamesView" bundle:nil];
-        
-		[self.gs getWaitingRoomGames:^(GameList *postedGames) {
-			[controller setGames:postedGames];
-			[self.navigationController pushViewController:controller animated:YES];
-            [self.selectedCell setAccessoryView:nil];
-            [self deselectSelectedCell];
-            [self.tableView setUserInteractionEnabled:YES];
-		}];
-        
-    };
-    [serverGamesSection addRow:row];
-    
-    row = [[TableRow alloc] init];
-    row.cellClass = [UITableViewCell class];
-    row.cellInit = ^UITableViewCell*() {
-        return [[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(row.cellClass)];
-    };
-    row.cellSetup = ^(UITableViewCell *cell) {
-        [[cell textLabel] setText:@"Create a new game"];
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    };
-    row.cellTouched = ^(UITableViewCell *cell) {
-        UIActivityIndicatorView *activityView = 
-        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [activityView startAnimating];
-        [cell setAccessoryView:activityView];
-        
-        AddGameViewController *controller = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
-        [self.navigationController pushViewController:controller animated:YES];
-        
-        [self.selectedCell setAccessoryView:nil];
-        [self deselectSelectedCell];
-    };
-    [serverGamesSection addRow:row];
-    
-    [sections addObject:serverGamesSection];
-    self.tableSections = sections;
-}
-
-- (UITableViewCell *)selectedCell {
-    return [self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]];
 }
 
 - (void)viewDidUnload
@@ -114,6 +49,10 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

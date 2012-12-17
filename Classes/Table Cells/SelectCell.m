@@ -75,9 +75,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (self.onChanged) {
         self.onChanged(self);
-    } else if (self.changedSelector) {
-		[[UIApplication sharedApplication] sendAction:self.changedSelector to:nil from:self forEvent:nil];
-	}
+    }
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {

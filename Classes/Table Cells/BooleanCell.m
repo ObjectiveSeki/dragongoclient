@@ -4,18 +4,19 @@
 
 @implementation BooleanCell
 
-@synthesize toggleSwitch;
-@synthesize onChanged;
-
 - (id)init {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([self class])])) {
-        UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-		self.toggleSwitch = theSwitch;
-		self.accessoryView = theSwitch;
-        [theSwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
-		self.selectionStyle = UITableViewCellSelectionStyleNone;
+        [self awakeFromNib];
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+    self.toggleSwitch = theSwitch;
+    self.accessoryView = theSwitch;
+    [theSwitch addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (IBAction)switchToggled:(id)sender {

@@ -1,120 +1,104 @@
 
 #import "WaitingRoomGamesController.h"
 #import "JoinWaitingRoomGameController.h"
-#import "AddGameViewController.h"
+#import "ODRefreshControl.h"
+
+@interface WaitingRoomGamesController ()
+// Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
+// conflicting with the built-in iOS6 one.
+@property (nonatomic, strong) id myRefreshControl;
+@property (nonatomic) BOOL loadingNewPage;
+@property (nonatomic, strong) NewGame *mostRecentlyLoadedGame;
+@end
 
 @implementation WaitingRoomGamesController
-
-@synthesize noGamesView;
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-- (void)addGame:(NewGame *)game toSection:(TableSection *)section {
-    TableRow *row = [[TableRow alloc] init];
-    row.cellClass = [UITableViewCell class];
-    row.cellInit = ^() {
-        return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NSStringFromClass(row.cellClass)];
-    };
-    row.cellSetup = ^(UITableViewCell *cell) {
-        NSString *ratingString = game.opponentRating ? game.opponentRating : @"Not Ranked";
-        [[cell textLabel] setText:[NSString stringWithFormat:@"%@ - %@", game.opponent, ratingString]];
-        [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%dx%d | %@", game.boardSize, game.boardSize, game.time]];
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    };
-    row.cellTouched = ^(UITableViewCell *cell) {
-        UIActivityIndicatorView *activityView = 
-        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [activityView startAnimating];
-        [cell setAccessoryView:activityView];
-        [self.gs getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
-            JoinWaitingRoomGameController *controller = [[JoinWaitingRoomGameController alloc] initWithNibName:@"JoinWaitingRoomGameView" bundle:nil];
-            controller.game = gameDetails;
-            [self.navigationController pushViewController:controller animated:YES];
-            [cell setAccessoryView:nil];
-            [self deselectSelectedCell];
-        }];
-    };
-    [section addRow:row];
-}
-
-- (void)addNextPageRowForGameList:(GameList *)gameList toSection:(TableSection *)section {
-    
-    TableRow *row = [[TableRow alloc] init];
-    row.cellClass = [UITableViewCell class];
-    row.cellInit = ^() {
-        return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NextPageCell"];
-    };
-    row.cellSetup = ^(UITableViewCell *cell) {
-        [[cell textLabel] setText:@"More Games..."];
-    };
-    row.cellTouched = ^(UITableViewCell *cell) {
-        UIActivityIndicatorView *activityView = 
-        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [activityView startAnimating];
-        [cell setAccessoryView:activityView];
-        [gameList loadNextPage:^(GameList *gameList) {
-            [self setGames:gameList];
-            [cell setAccessoryView:nil];
-            [self deselectSelectedCell];
-            [self.tableView reloadData];
-        }];
-    };
-    [section addRow:row];
-}
-
-- (void)setGames:(GameList *)gameList {
-    NSArray *games = gameList.games;
-    if ([games count] > 0) {
-        NSMutableArray *sections = [NSMutableArray array];
-        TableSection *mainSection = [[TableSection alloc] init];
-        
-        for (NewGame *game in games) {
-            [self addGame:game toSection:mainSection];
-        }
-        
-        if (gameList.hasMorePages) {
-            [self addNextPageRowForGameList:gameList toSection:mainSection];
-        }
-        
-        [sections addObject:mainSection];
-        self.tableSections = sections;
-        [self.tableView reloadData];
-    }
-}
-
-- (IBAction)addGame:(id)sender {
-    AddGameViewController *controller = [[AddGameViewController alloc] initWithNibName:@"AddGameView" bundle:nil];
-    [self.navigationController pushViewController:controller animated:YES];
-}
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.navigationItem.title = @"Join a Game";
+    if ([UIRefreshControl class]) {
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        self.myRefreshControl = self.refreshControl;
+    } else {
+        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
+        self.myRefreshControl = refreshControl;
+    }
+    [self.myRefreshControl addTarget:self action:@selector(refreshGameList:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (!self.tableSections) {
-        self.view = self.noGamesView;
+    [self refreshGameList:nil];
+}
+
+- (IBAction)refreshGameList:(id)sender {
+    [[GenericGameServer sharedGameServer] getWaitingRoomGames:^(GameList *gameList) {
+        self.gameList = gameList;
+        [self.tableView reloadData];
+        [self.myRefreshControl endRefreshing];
+    } onError:^(NSError *error) {
+        [self.myRefreshControl endRefreshing];
+    }];
+}
+
+#pragma mark - UITableViewDataSource actions
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSUInteger count = [self.gameList.games count];
+    if (!self.gameList || [self.gameList hasMorePages]) {
+        count += 1;
+    }
+    return count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row < self.gameList.games.count) {
+        NewGame *game = self.gameList.games[indexPath.row];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
+        NSString *ratingString = game.opponentRating ? game.opponentRating : @"Not Ranked";
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", game.opponent, ratingString];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%dx%d | %@", game.boardSize, game.boardSize, game.time];
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+        if (!self.loadingNewPage) {
+            [self.gameList loadNextPage:^(GameList *gameList) {
+                self.gameList = gameList;
+                [self.tableView reloadData];
+                self.loadingNewPage = NO;
+            } onError:^(NSError *error) {
+                self.loadingNewPage = NO;
+#warning TODO: maybe allow the new page link to be tapped in this state?
+            }];
+            self.loadingNewPage = YES;
+        }
+        return cell;
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.row < self.gameList.games.count) {
+        NewGame *game = self.gameList.games[indexPath.row];
+        UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [activityView startAnimating];
+        cell.accessoryView = activityView;
+        [[GenericGameServer sharedGameServer] getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
+            cell.accessoryView = nil;
+            [self.gameList updateGame:gameDetails atIndex:indexPath.row];
+            [self performSegueWithIdentifier:@"ShowWaitingRoomDetail" sender:cell];
+        } onError:^(NSError *error) {
+            cell.accessoryView = nil;
+        }];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"ShowWaitingRoomDetail"]) {
+        JoinWaitingRoomGameController *controller = [segue destinationViewController];
+        controller.game = self.gameList.games[[self.tableView indexPathForCell:sender].row];
+    }
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.

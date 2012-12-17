@@ -5,10 +5,7 @@
 
 @class BooleanCell;
 
-@interface BooleanCell : UITableViewCell {
-	void (^onChanged)(BooleanCell *booleanCell);
-	UISwitch *toggleSwitch;
-}
+@interface BooleanCell : UITableViewCell
 
 @property(nonatomic, copy) void (^onChanged)(BooleanCell *booleanCell);
 @property(nonatomic, strong) UISwitch *toggleSwitch;

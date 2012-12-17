@@ -122,19 +122,19 @@ static NSString * const kGameListKey = @"GameList";
     [self.gameServer addGame:game onSuccess:onSuccess];
 }
 
-- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess {
-    [self.gameServer getWaitingRoomGames:onSuccess];
+- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer getWaitingRoomGames:onSuccess onError:onError];
 }
 
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess {
-    [self.gameServer getWaitingRoomGameDetailsForGame:game onSuccess:onSuccess];
+- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer getWaitingRoomGameDetailsForGame:game onSuccess:onSuccess onError:onError];
 }
-- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
-    [self.gameServer joinWaitingRoomGame:gameId onSuccess:onSuccess];
+- (void)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer joinWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }
 
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess {
-    [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess];
+- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }
 
 

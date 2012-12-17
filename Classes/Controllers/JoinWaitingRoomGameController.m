@@ -1,72 +1,40 @@
 
 #import "JoinWaitingRoomGameController.h"
-#import "TextCell.h"
+#import "IBAlertView.h"
+#import "SpinnerView.h"
+
+@interface JoinWaitingRoomGameController ()
+
+@property (nonatomic, strong) NSMutableArray *sectionTitles;
+
+// an array of key-value pairs
+@property (nonatomic, strong) NSMutableArray *sections;
+
+@property (nonatomic, strong) SpinnerView *spinner;
+
+@end
 
 @implementation JoinWaitingRoomGameController
 
-@synthesize game;
-@synthesize deleteConfirmation;
-
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-// Builds a table section with the supplied title and rows. Rows are an array of two-
-// element arrays, where the first element is a key and the second a value. All rows
-// use the TableViewCellStyleValue1 style.
-- (TableSection *)basicSectionWithTitle:(NSString *)sectionTitle rows:(NSArray *)rows {
-	TableSection *section = [[TableSection alloc] init];
-	section.headerString = sectionTitle;
-	for (NSArray *rowInfo in rows) {
-		TableRow *row = [[TableRow alloc] init];
-		row.cellClass = [UITableViewCell class];
-		row.cellInit = ^() {
-			return (UITableViewCell *)[[row.cellClass alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:NSStringFromClass(row.cellClass)];
-		};
-		row.cellSetup = ^(UITableViewCell *cell) {
-			cell.textLabel.text = rowInfo[0];
-			if ([rowInfo count] > 1) {
-				cell.detailTextLabel.text = [rowInfo lastObject];				
-			}
-			cell.selectionStyle = UITableViewCellSelectionStyleNone;
-		};
-		[section addRow:row];
-	}
-	return section;
-}
-
-- (TableSection *)commentSection {
+- (void)buildCommentSection {
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
 	
 	[rows addObject:@[@"Comment", self.game.comment]];
-	
-	return [self basicSectionWithTitle:nil rows:rows];
+    [self.sectionTitles addObject:@""];
+    [self.sections addObject:rows];
 }
 
-- (TableSection *)opponentSection {
+- (void)buildOpponentSection {
 	
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:2];
 	
 	[rows addObject:@[@"Name", self.game.opponent]];
 	[rows addObject:@[@"Rating", self.game.opponentRating ? self.game.opponentRating : @"Not Ranked"]];
-	
-	return [self basicSectionWithTitle:@"Opponent" rows:rows];
+	[self.sectionTitles addObject:@"Opponent"];
+    [self.sections addObject:rows];
 }
 
-- (TableSection *)gameSection {
+- (void)buildGameSection {
 	
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:6];
 	
@@ -82,71 +50,99 @@
     if (self.game.komi != 0.0) {
         [rows addObject:@[@"Komi", [NSString stringWithFormat:@"%0.1f", self.game.komi]]];
     }
-	
-	return [self basicSectionWithTitle:@"Game Information" rows:rows];
+    
+    [self.sectionTitles addObject:@"Game Information"];
+    [self.sections addObject:rows];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	NSMutableArray *sections = [NSMutableArray array];
+
+    self.sectionTitles = [NSMutableArray array];
+    self.sections = [NSMutableArray array];
+
 	if (self.game.comment) {
-		[sections addObject:[self commentSection]];
+		[self buildCommentSection];
 	}
-	[sections addObject:[self opponentSection]];
-	[sections addObject:[self gameSection]];
-	
-	TableSection *buttonSection = [[TableSection alloc] init];
-	TableRow *buttonRow = [[TableRow alloc] init];
-	buttonRow.cellClass = [UITableViewCell class];
-	buttonRow.identifier = @"DefaultCell";
-	buttonRow.cellInit = ^() {
-		return (UITableViewCell *)[[buttonRow.cellClass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:buttonRow.identifier];
-	};
-	buttonRow.cellSetup = ^(UITableViewCell *cell) {
-		if (self.game.myGame) {
-			cell.textLabel.text = @"Delete this game";
-		} else {
-			cell.textLabel.text = @"Join this game";
-		}
-		cell.textLabel.textColor = [UIColor colorWithRed:0.251 green:0.4 blue:0.616 alpha:1.0];
-		cell.textLabel.textAlignment = UITextAlignmentCenter;
-	};
-	
-	buttonRow.cellTouched = ^(UITableViewCell *cell) {
-		if (self.game.myGame) {
-            [cell setSelected:NO];
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" delegate:self cancelButtonTitle:@"Don't delete" otherButtonTitles:@"Delete", nil];
-			self.deleteConfirmation = alertView;
-            [self.deleteConfirmation show];
-		} else {
-            [self showSpinner:@"Joining..."];
-			[self.gs joinWaitingRoomGame:game.gameId onSuccess:^() {
-                [self hideSpinner:YES];
-				[self.navigationController popToRootViewControllerAnimated:YES];
-			}];
-		}
-	};
-	
-	[buttonSection addRow:buttonRow];
-	[sections addObject:buttonSection];
-	
-	self.tableSections = sections;
+    [self buildOpponentSection];
+    [self buildGameSection];
+    
+    self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
 
-// Handles dismissing the logout confirmation.
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (alertView == self.deleteConfirmation) {
-		if (buttonIndex != alertView.cancelButtonIndex) {
-            [self showSpinner:@"Deleting..."];
-			[self.gs deleteWaitingRoomGame:game.gameId onSuccess:^() {
-                [self hideSpinner:YES];
-				[self.navigationController popToRootViewControllerAnimated:YES];
-			}];
-		}
-		self.deleteConfirmation = nil;
-	}
+#pragma mark - TableView Delegate actions
+
+- (BOOL)isPropertyCell:(NSInteger)section {
+    return section < [self.sections count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if ([self isPropertyCell:section]) {
+        return self.sectionTitles[section];
+    } else {
+        return @"";
+    }
+
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if ([self isPropertyCell:section]) {
+        return [self.sections[section] count];
+    } else {
+        return 1; // Action button
+    }
+
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.sections count] + 1; // for action section
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
+    if ([self isPropertyCell:indexPath.section]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+        NSArray *infoRow = self.sections[indexPath.section][indexPath.row];
+        cell.textLabel.text = infoRow[0];
+        cell.detailTextLabel.text = infoRow[1];
+        return cell;
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
+        if (self.game.myGame) {
+            cell.textLabel.text = @"Delete this game";
+        } else {
+            cell.textLabel.text = @"Join this game";
+        }
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (![self isPropertyCell:indexPath.section]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (self.game.myGame) {
+            [IBAlertView showAlertWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" dismissTitle:@"Don't delete" okTitle:@"Delete" dismissBlock:^{
+            } okBlock:^{
+                self.spinner.label.text = @"Deleting…";
+                [self.spinner show];
+                [[GenericGameServer sharedGameServer] deleteWaitingRoomGame:self.game.gameId onSuccess:^() {
+                    [self.spinner dismiss:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                } onError:^(NSError *error) {
+                    [self.spinner dismiss:YES];
+                }];
+            }];
+        } else {
+            self.spinner.label.text = @"Joining…";
+            [[GenericGameServer sharedGameServer] joinWaitingRoomGame:self.game.gameId onSuccess:^{
+                [self.spinner dismiss:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            } onError:^(NSError *error) {
+                [self.spinner dismiss:YES];
+            }];
+        }
+    }
 }
 
 /*
@@ -169,8 +165,5 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
-
-
 
 @end

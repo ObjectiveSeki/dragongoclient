@@ -19,7 +19,6 @@
 @property(nonatomic, strong) NSArray *options;
 @property(nonatomic, strong) NSArray *selectedOptions;
 @property(nonatomic, strong) NSArray *sizes;
-@property(nonatomic) SEL changedSelector;
 @property(nonatomic, copy) void (^onChanged)(SelectCell *selectCell);
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
