@@ -13,6 +13,7 @@
 #import "DGSPhoneAppDelegate.h"
 #import "NewGameViewController.h"
 #import "ODRefreshControl.h"
+#import "SpinnerView.h"
 
 @interface CurrentGamesController ()
 // Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
@@ -167,23 +168,21 @@
     }
 }
 
-- (void)requestCancelled {
-	[self.spinner dismiss:NO];
-	[self.selectedCell setAccessoryView:nil];
-	self.selectedCell = nil;
-	[self setEnabled:YES];
-}
-
 - (void)gotSgfForGame:(Game *)game {
 	// Navigation logic may go here. Create and push another view controller.
-	GameViewController *gameViewController = [[GameViewController alloc] initWithNibName:@"GameView" bundle:nil];
 	// ...
 	// Pass the selected object to the new view controller.
-	[gameViewController setGame:game];
-	[self.navigationController pushViewController:gameViewController animated:YES];
 	[self.selectedCell setAccessoryView:nil];
 	self.selectedCell = nil;
 	[self setEnabled:YES];
+    [self performSegueWithIdentifier:@"ShowGame" sender:game];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowGame"]) {
+        GameViewController *controller = segue.destinationViewController;
+        [controller setGame:sender];
+    }
 }
 
 #pragma mark - Table view data source

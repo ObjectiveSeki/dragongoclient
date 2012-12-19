@@ -7,9 +7,11 @@
 //
 
 #import "GameViewController.h"
-#import "LoginViewController.h"
 #import "FuegoBoard.h"
-#import "DGSPhoneAppDelegate.h"
+#import "Game.h"
+#import "GoBoardView.h"
+#import "MessageView.h"
+#import "SpinnerView.h"
 
 @interface GameViewController ()
 
@@ -19,6 +21,7 @@
 @property (nonatomic, strong) UIDocumentInteractionController *shareController;
 @property (nonatomic, strong) NSOperationQueue *sgfShareQueue;
 @property (nonatomic, strong) NSOperation *sgfShareOperation;
+@property (nonatomic, strong) SpinnerView *spinner;
 
 @end
 
@@ -32,6 +35,7 @@
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
     self.sgfShareQueue = [[NSOperationQueue alloc] init];
+    self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
 
 - (void)updateBoard {
@@ -136,12 +140,13 @@
 }
 
 - (void)playedMove {
-	[self hideSpinner:YES];
-	[[self navigationController] popViewControllerAnimated:YES];
+	[self.spinner dismiss:YES];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)confirmMove {
-	[self showSpinner:@"Submitting..."];
+    self.spinner.label.text = @"Submitting…";
+    [self.spinner show];
 	self.confirmButton.enabled = NO;
 
 	NSString *reply = self.messageView.reply;
@@ -151,11 +156,17 @@
 	};
 
 	if ([self.board beginningOfHandicapGame]) {
-		[self.gs playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
+        [[GenericGameServer sharedGameServer] playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
+            [self.spinner dismiss:YES];
+        }];
 	} else if ([self.board gameEnded]) {
-		[self.gs markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
+		[[GenericGameServer sharedGameServer] markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
+            [self.spinner dismiss:YES];
+        }];
 	} else {
-		[self.gs playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess];
+		[[GenericGameServer sharedGameServer] playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
+            [self.spinner dismiss:YES];
+        }];
 	}
 }
 
@@ -196,11 +207,6 @@
         [self.sgfShareQueue addOperation:self.sgfShareOperation];
     }
     [self.shareController presentOptionsMenuFromBarButtonItem:sender animated:YES];
-}
-
-- (void)requestCancelled {
-	[self hideSpinner:NO];
-	self.confirmButton.enabled = YES;
 }
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {

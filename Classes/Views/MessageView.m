@@ -27,30 +27,22 @@
 }
 
 - (void)keyboardWillBeShown:(NSNotification *)aNotification {
-	float totalHeight = self.frame.size.height;
-	CGRect frame = self.messageInputView.frame;
-	frame.origin.y = totalHeight - frame.size.height;
-	self.messageInputView.frame = frame;
 	CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
 
 	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
-		CGRect newFrame = self.messageInputView.frame;
-		newFrame.origin.y = totalHeight - kbSize.height - frame.size.height;
-		self.messageInputView.frame = newFrame;
+        self.messageInputView.frame = CGRectOffset(self.messageInputView.frame, 0, -kbSize.height);
 	} completion:nil];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification *)aNotification {
-	float totalHeight = self.frame.size.height;
+    CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
 
 	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
-		CGRect frame = self.messageInputView.frame;
-		frame.origin.y = totalHeight - frame.size.height;
-		self.messageInputView.frame = frame;
+        self.messageInputView.frame = CGRectOffset(self.messageInputView.frame, 0, kbSize.height);
 	} completion:nil];
 }
 
@@ -83,6 +75,7 @@
 }
 
 - (void)show:(void (^)(BOOL hasMessage))_onHide {
+    self.frame = self.superview.frame;
 	self.onHide = _onHide;
 	[self registerForKeyboardNotifications];
 	[self.messageField becomeFirstResponder];

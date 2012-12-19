@@ -7,17 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Game.h"
-#import "GoBoardView.h"
-#import "MessageView.h"
-#import "RootViewController.h"
+
+@class GoBoardView, MessageView, Game, FuegoBoard;
 
 enum BoardState {
 	kBoardStateZoomedOut,
 	kBoardStateZoomedIn,
 };
 
-@interface GameViewController : RootViewController <LoginProtocol> {
+@interface GameViewController : UIViewController {
 }
 
 @property(nonatomic, strong) Game *game;

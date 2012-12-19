@@ -20,7 +20,5 @@
 @property(nonatomic, strong) NewGame *game;
 @property(nonatomic, strong) Player *player;
 
-- (IBAction)addGame;
-
 @end
 

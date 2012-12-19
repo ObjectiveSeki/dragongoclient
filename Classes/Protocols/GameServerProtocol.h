@@ -6,7 +6,6 @@
 #import <Foundation/Foundation.h>
 #import "NewGame.h"
 #import "Game.h"
-#import "LoginProtocol.h"
 #import "GameList.h"
 
 extern NSString * const PlayerDidLoginNotification;
@@ -21,8 +20,6 @@ typedef void(^ErrorBlock)(NSError *error);
 
 @protocol GameServerProtocol
 
-@property(nonatomic, assign) id <LoginProtocol> delegate;
-
 // Logic tests can't test anything that uses the native iPhone functionality.
 // Therefore, we don't want to compile anything that hits the network
 // if we're building the logic tests bundle. It should define LOGIC_TEST_MODE.
@@ -36,7 +33,7 @@ typedef void(^ErrorBlock)(NSError *error);
                 onSuccess:(EmptyBlock)onSuccess
                   onError:(ErrorBlock)onError;
 
-- (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess;
+- (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)refreshCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
@@ -46,9 +43,9 @@ typedef void(^ErrorBlock)(NSError *error);
 - (void)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess;
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess  onError:(ErrorBlock)onError;
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 
 #endif
 

@@ -10,7 +10,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="LoginViewController" id="JvH-kK-J7v" customClass="LoginViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Fu3-SY-go1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="W0t-8f-T0I">
@@ -173,7 +173,7 @@
             <objects>
                 <tableViewController id="Yh3-ya-bji" customClass="CurrentGamesController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="rGm-97-Ewz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -225,6 +225,7 @@
                         <outlet property="gameListView" destination="rGm-97-Ewz" id="zjS-0U-NQs"/>
                         <outlet property="logoutButton" destination="tl6-uH-lR6" id="Y6Q-qB-qli"/>
                         <outlet property="noGamesView" destination="W38-2z-8rW" id="Kqh-fl-cee"/>
+                        <segue destination="8uJ-pY-6ja" kind="push" identifier="ShowGame" id="pdS-1c-8ZI"/>
                     </connections>
                 </tableViewController>
                 <view contentMode="scaleToFill" id="W38-2z-8rW" userLabel="No Games View">
@@ -264,12 +265,228 @@
             </objects>
             <point key="canvasLocation" x="348" y="-44"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="gYk-dB-T4J">
+            <objects>
+                <viewController id="8uJ-pY-6ja" customClass="GameViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="swk-Cc-UQi">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="zh1-5j-Rc3">
+                                <rect key="frame" x="0.0" y="372" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="Pass.png" style="plain" id="9lv-Qk-ynQ" userLabel="Pass Button">
+                                        <connections>
+                                            <action selector="pass" destination="8uJ-pY-6ja" id="0je-DB-rh0"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="g0B-Cs-T2A"/>
+                                    <barButtonItem image="Resign.png" style="plain" id="Z3J-8K-Ubw" userLabel="Resign Button">
+                                        <connections>
+                                            <action selector="resign" destination="8uJ-pY-6ja" id="hhf-BM-9FF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="FuV-UC-aBO"/>
+                                    <barButtonItem image="Message off.png" width="48" style="plain" id="syN-FK-JSN" userLabel="Message Button">
+                                        <connections>
+                                            <action selector="showMessageWindow" destination="8uJ-pY-6ja" id="fFd-0g-I2l"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="1YP-5f-xdS"/>
+                                    <barButtonItem style="plain" systemItem="action" id="7PH-6e-vqx">
+                                        <inset key="imageInsets" minX="0.0" minY="-2" maxX="0.0" maxY="2"/>
+                                        <connections>
+                                            <action selector="share:" destination="8uJ-pY-6ja" id="SIy-OZ-tjw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zs1-dQ-099"/>
+                                    <barButtonItem enabled="NO" title="Submit" id="goH-4M-lf1" userLabel="Submit Button">
+                                        <connections>
+                                            <action selector="confirmMove" destination="8uJ-pY-6ja" id="Nhl-6P-8pb"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.5" bouncesZoom="NO" id="xni-U3-1MX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="ak4-mZ-JDu" customClass="GoBoardView">
+                                        <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.85098039219999999" green="0.69803921570000005" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="blackCaptures" destination="rBL-M3-lQW" id="aiT-83-qI3"/>
+                                            <outlet property="blackName" destination="j5c-Dc-e00" id="L6f-4V-Zhs"/>
+                                            <outlet property="delegate" destination="8uJ-pY-6ja" id="YN0-Lm-Fqh"/>
+                                            <outlet property="status" destination="2nz-1y-2CZ" id="Nk0-ja-Pq5"/>
+                                            <outlet property="statusView" destination="Ag3-gW-h4Q" id="Cwt-ou-nym"/>
+                                            <outlet property="whiteCaptures" destination="eIg-7F-VZe" id="Wjx-c5-mj4"/>
+                                            <outlet property="whiteName" destination="ZON-Dw-OW5" id="tAB-xK-F7w"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <connections>
+                                    <outlet property="delegate" destination="8uJ-pY-6ja" id="PHG-U1-QHp"/>
+                                </connections>
+                            </scrollView>
+                            <view opaque="NO" contentMode="scaleToFill" id="Ag3-gW-h4Q" userLabel="Status Bar">
+                                <rect key="frame" x="0.0" y="-20" width="320" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test Status Message" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="2nz-1y-2CZ" userLabel="Status/Message">
+                                        <rect key="frame" x="10" y="0.0" width="274" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="Fhe-2I-MD9" userLabel="Information Bar">
+                                <rect key="frame" x="0.0" y="320" width="320" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Board dock.png" id="EAb-yL-AXZ" userLabel="Board Dock Background">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Black.png" id="dxj-sV-YBt" userLabel="Black Stone Image">
+                                        <rect key="frame" x="5" y="6" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="White.png" id="VUo-tQ-YGj" userLabel="White Stone Image">
+                                        <rect key="frame" x="275" y="6" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Player 1" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="10" adjustsFontSizeToFit="NO" id="j5c-Dc-e00" userLabel="Black Name">
+                                        <rect key="frame" x="53" y="6" width="104" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.98208332060000003" green="0.84136676789999998" blue="0.69193536040000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Player 2" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" minimumFontSize="10" adjustsFontSizeToFit="NO" id="ZON-Dw-OW5" userLabel="White Name">
+                                        <rect key="frame" x="163" y="6" width="104" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.98208332060000003" green="0.84136676789999998" blue="0.69193536040000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <size key="shadowOffset" width="0.0" height="1"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="+10" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="rBL-M3-lQW" userLabel="Black Captures">
+                                        <rect key="frame" x="10" y="15" width="29" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="+10" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="eIg-7F-VZe" userLabel="White Captures">
+                                        <rect key="frame" x="280" y="14" width="29" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.89019614459999996" green="0.82352948189999997" blue="0.75686281919999998" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99989891050000002" green="1" blue="0.9998418093" alpha="1" colorSpace="calibratedRGB"/>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="A4n-tv-kQb"/>
+                    <connections>
+                        <outlet property="boardView" destination="ak4-mZ-JDu" id="ifX-TP-D2g"/>
+                        <outlet property="confirmButton" destination="goH-4M-lf1" id="TAB-BD-AkK"/>
+                        <outlet property="messageButton" destination="syN-FK-JSN" id="4xJ-oX-xRF"/>
+                        <outlet property="messageView" destination="EY9-sO-cE6" id="cjb-Qu-npi"/>
+                        <outlet property="passButton" destination="9lv-Qk-ynQ" id="4qJ-o2-SVT"/>
+                        <outlet property="resignButton" destination="Z3J-8K-Ubw" id="EuV-dz-d4e"/>
+                        <outlet property="scrollView" destination="xni-U3-1MX" id="dHP-le-Gw6"/>
+                        <outlet property="undoButton" destination="zg4-5U-eXD" id="yYQ-qE-Pi5"/>
+                        <outlet property="zoomOutButton" destination="ikf-ud-GZp" id="Dn3-I9-HTz"/>
+                    </connections>
+                </viewController>
+                <view opaque="NO" alpha="0.0" contentMode="scaleToFill" id="EY9-sO-cE6" userLabel="Message View" customClass="MessageView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view opaque="NO" contentMode="scaleToFill" id="6Nd-CL-jGD" userLabel="Message Display View">
+                            <rect key="frame" x="20" y="0.0" width="280" height="185"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Message background.png" id="dCi-CM-2hV">
+                                    <rect key="frame" x="0.0" y="12" width="280" height="173"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="UDH-Nb-tDG" userLabel="Message Text">
+                                    <rect key="frame" x="18" y="19" width="244" height="157"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" id="eV7-PU-9Nd" userLabel="Message Input View">
+                            <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Message input.png" id="jKA-r6-E6Z">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                </imageView>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Leave a message" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" id="Grz-eh-YlX" userLabel="Reply Field">
+                                    <rect key="frame" x="20" y="6" width="290" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                    <connections>
+                                        <action selector="hide" destination="EY9-sO-cE6" eventType="editingDidEndOnExit" id="Hdk-p7-Yjd"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="messageDisplayView" destination="6Nd-CL-jGD" id="eBW-Z9-Xuu"/>
+                        <outlet property="messageField" destination="Grz-eh-YlX" id="EtC-DE-n22"/>
+                        <outlet property="messageInputView" destination="eV7-PU-9Nd" id="2Bc-AY-Tgm"/>
+                        <outlet property="messageTextView" destination="UDH-Nb-tDG" id="z5P-mJ-taR"/>
+                    </connections>
+                </view>
+                <barButtonItem title="Zoom Out" id="ikf-ud-GZp" userLabel="Zoom Out Button">
+                    <connections>
+                        <action selector="zoomOut" destination="8uJ-pY-6ja" id="sLG-rK-3C0"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem systemItem="undo" id="zg4-5U-eXD" userLabel="Undo Button">
+                    <connections>
+                        <action selector="undoMove" destination="8uJ-pY-6ja" id="TgZ-JS-9W5"/>
+                    </connections>
+                </barButtonItem>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1f-AD-zaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="-44"/>
+        </scene>
         <!--New Game View Controller - Start a Game-->
         <scene sceneID="6sj-mT-MB4">
             <objects>
                 <tableViewController id="MCc-zz-sMN" customClass="NewGameViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1cc-pc-eGE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="3kf-av-flc">
@@ -348,7 +565,7 @@
             <objects>
                 <tableViewController id="Cpc-jZ-A3o" customClass="AddGameViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZL8-cp-zh0">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -458,7 +675,7 @@
                                     <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0gO-h7-kRF">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Action" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0gO-h7-kRF">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -486,7 +703,7 @@
             <objects>
                 <tableViewController id="ALP-h5-vSB" customClass="WaitingRoomGamesController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8sh-9a-AuC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -552,7 +769,7 @@
             <objects>
                 <tableViewController id="5hf-c0-A77" customClass="JoinWaitingRoomGameController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cJU-FI-y69">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -627,70 +844,20 @@
             <point key="canvasLocation" x="350" y="-727"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddGameViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddGameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addGame"/>
-            </relationships>
-        </class>
-        <class className="BooleanCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BooleanCell.h"/>
-        </class>
-        <class className="CurrentGamesController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrentGamesController.h"/>
-            <relationships>
-                <relationship kind="action" name="forceRefreshGames"/>
-                <relationship kind="action" name="logout"/>
-                <relationship kind="action" name="refreshGames"/>
-                <relationship kind="action" name="startNewGame"/>
-                <relationship kind="outlet" name="addGameButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="gameListView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="JoinWaitingRoomGameController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JoinWaitingRoomGameController.h"/>
-        </class>
-        <class className="LoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="passwordCell" candidateClass="TextCell"/>
-                <relationship kind="outlet" name="signupCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="usernameCell" candidateClass="TextCell"/>
-            </relationships>
-        </class>
-        <class className="NewGameViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewGameViewController.h"/>
-        </class>
-        <class className="SelectCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="value" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TextCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TextCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="content" candidateClass="UIView"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="WaitingRoomGamesController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WaitingRoomGamesController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
+    <resources>
+        <image name="Black.png" width="38" height="38"/>
+        <image name="Board dock.png" width="320" height="52"/>
+        <image name="Message background.png" width="280" height="173"/>
+        <image name="Message input.png" width="320" height="44"/>
+        <image name="Message off.png" width="30" height="30"/>
+        <image name="Pass.png" width="30" height="30"/>
+        <image name="Resign.png" width="30" height="30"/>
+        <image name="White.png" width="38" height="38"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="SrR-xf-xsG"/>

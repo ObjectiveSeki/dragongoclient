@@ -106,7 +106,6 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 // Called when the AlertView containing an error message is dismissed.
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     self.errorView = nil;
-	[[self delegate] requestCancelled];
 }
 
 - (NSString *)lossyStringFromData:(NSData *)data encoding:(NSStringEncoding)encoding replaceString:(NSString *)replacement {
@@ -175,8 +174,6 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
         if (onError) {
             NSError *error = [[NSError alloc] initWithDomain:DGSErrorDomain code:0 userInfo:@{ NSLocalizedDescriptionKey: errorString }];
             onError(error);
-        } else {
-            [self.delegate requestCancelled];
         }
     }];
 }
@@ -222,7 +219,6 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
         [self resetUserData];
         [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:nil];
-		[[self delegate] notLoggedIn];
     } onError:onError];
 }
 
@@ -344,7 +340,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     }
 }
 
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     static NSString *playHandicapStonesFormat = @"quick_do.php?obj=game&cmd=set_handicap&gid=%d&move_id=%d&move=%@";
 	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
@@ -365,10 +361,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	} onError:nil];
+	} onError:onError];
 }
 
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber;
@@ -395,10 +391,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	} onError:nil];
+	} onError:onError];
 }
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
     static NSString *moveUrlFormat = @"/quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
     static NSString *resignUrlFormat = @"/quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
@@ -421,10 +417,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
         onSuccess();
-    } onError:nil];
+    } onError:onError];
 }
 
-- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
+- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     NSURL *url = [self URLWithPath:@"/new_game.php"];
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 
@@ -464,7 +460,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
 		onSuccess();
-	} onError:nil];
+	} onError:onError];
 }
 
 #endif

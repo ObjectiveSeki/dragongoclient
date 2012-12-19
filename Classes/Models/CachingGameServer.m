@@ -41,14 +41,6 @@ static NSString * const kGameListKey = @"GameList";
     return self;
 }
 
-- (id <LoginProtocol>)delegate {
-    return self.gameServer.delegate;
-}
-
-- (void)setDelegate:(id <LoginProtocol>)delegate {
-    self.gameServer.delegate = delegate;
-}
-
 - (void)removeGameFromGameList:(int)gameId {
     NSArray *gameList = [self.cache objectForKey:kGameListKey];
     NSMutableArray *changedGameList = [gameList mutableCopy];
@@ -77,25 +69,25 @@ static NSString * const kGameListKey = @"GameList";
     }];
 }
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     
-    [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {}];
-    
-    [self removeGameFromGameList:gameId];
-    
-    onSuccess(); // cheat and call it right away for speed
-}
-
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
-    [self.gameServer playHandicapStones:moves comment:comment gameId:gameId onSuccess:^() {}];
+    [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {} onError:onError];
     
     [self removeGameFromGameList:gameId];
     
     onSuccess(); // cheat and call it right away for speed
 }
 
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess {
-    [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {}];
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer playHandicapStones:moves comment:comment gameId:gameId onSuccess:^() {} onError:onError];
+    
+    [self removeGameFromGameList:gameId];
+    
+    onSuccess(); // cheat and call it right away for speed
+}
+
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {} onError:onError];
     
     [self removeGameFromGameList:gameId];
     
@@ -118,8 +110,8 @@ static NSString * const kGameListKey = @"GameList";
     [self.gameServer logout:onError];
 }
 
-- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess {
-    [self.gameServer addGame:game onSuccess:onSuccess];
+- (void)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer addGame:game onSuccess:onSuccess onError:onError];
 }
 
 - (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess onError:(ErrorBlock)onError {

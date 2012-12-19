@@ -38,7 +38,7 @@ typedef enum _AddGameSection {
     [super viewDidLoad];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
+
 	self.game = [[NewGame alloc] init];
     self.navigationItem.title = @"Create a Game";
     NSMutableArray *ratingStrings = [[NSMutableArray alloc] initWithCapacity:40];
@@ -154,13 +154,13 @@ typedef enum _AddGameSection {
 	self.game.komiType = komiType;
 	cell.value.text = komiTypeString;
 	cell.selectedOptions = @[komiTypeString];
-    
-    // We want to update the table cells without deselecting 
+
+    // We want to update the table cells without deselecting
     // the current cell, so no #reloadData for you.
     NSArray *indexPaths = @[[NSIndexPath indexPathForRow:3 inSection:kBoardSection], [NSIndexPath indexPathForRow:4 inSection:kBoardSection], [NSIndexPath indexPathForRow:5 inSection:kBoardSection]];
-    
+
     if (oldKomiType != kKomiTypeManual && komiType == kKomiTypeManual) {
-        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];                    
+        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     } else if (oldKomiType == kKomiTypeManual && komiType != kKomiTypeManual) {
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     }
@@ -173,8 +173,8 @@ typedef enum _AddGameSection {
 	self.game.byoYomiType = byoYomiType;
 	cell.value.text = byoYomiTypeString;
 	cell.selectedOptions = @[byoYomiTypeString];
-	
-	// We want to update the table cells without deselecting 
+
+	// We want to update the table cells without deselecting
 	// the current cell, so no #reloadData for you.
 	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:kTimeSection]];
 	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:kTimeSection];
@@ -195,7 +195,7 @@ typedef enum _AddGameSection {
 	int timeValue = tens * 10 + ones;
 	self.game.timeValue = timeValue;
 	self.game.timeUnit = [cell.picker selectedRowInComponent:2];
-	
+
     cell.value.text = [self.game timePeriodString:self.game.timeValue withTimeUnit:self.game.timeUnit];
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.timeUnit]];
 }
@@ -206,7 +206,7 @@ typedef enum _AddGameSection {
 	int timeValue = tens * 10 + ones;
 	self.game.japaneseTimeValue = timeValue;
 	self.game.japaneseTimeUnit = [cell.picker selectedRowInComponent:2];
-    
+
 	cell.value.text = [self.game timePeriodString:self.game.japaneseTimeValue withTimeUnit:self.game.japaneseTimeUnit];
     cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.japaneseTimeUnit]];
 }
@@ -217,7 +217,7 @@ typedef enum _AddGameSection {
 	int timeValue = tens * 10 + ones;
 	self.game.canadianTimeValue = timeValue;
 	self.game.canadianTimeUnit = [cell.picker selectedRowInComponent:2];
-	
+
     cell.value.text = [self.game timePeriodString:self.game.canadianTimeValue withTimeUnit:self.game.canadianTimeUnit];
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.canadianTimeUnit]];
 }
@@ -228,7 +228,7 @@ typedef enum _AddGameSection {
 	int timeValue = tens * 10 + ones;
 	self.game.fischerTimeValue = timeValue;
 	self.game.fischerTimeUnit = [cell.picker selectedRowInComponent:2];
-	
+
 	cell.value.text = [self.game timePeriodString:self.game.fischerTimeValue withTimeUnit:self.game.fischerTimeUnit];
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.fischerTimeUnit]];
 }
@@ -271,7 +271,7 @@ typedef enum _AddGameSection {
 		}
 	}
 	if ([indexPath section] == kBoardSection) {
-		
+
 		if ([indexPath row] == 0) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *boardSize = [NSString stringWithFormat:@"%d", self.game.boardSize];
@@ -323,7 +323,7 @@ typedef enum _AddGameSection {
             [options addObject:[self.game manualKomiTypeString:kManualKomiTypeDouble]];
             [options addObject:[self.game manualKomiTypeString:kManualKomiTypeBlack]];
             [options addObject:[self.game manualKomiTypeString:kManualKomiTypeWhite]];
-                        
+
 			cell.label.text = @"Game Style";
 			cell.value.text = manualKomiType;
             cell.onChanged = ^(SelectCell *cell) {
@@ -343,7 +343,7 @@ typedef enum _AddGameSection {
             for (int i = 2; i < 22; i++) {
                 [handicaps addObject:[NSString stringWithFormat:@"%d", i]];
             }
-            
+
 			cell.label.text = @"Handicap";
 			cell.value.text = [NSString stringWithFormat:@"%d", self.game.handicap];
             cell.onChanged = ^(SelectCell *cell) {
@@ -419,12 +419,12 @@ typedef enum _AddGameSection {
             cell.toggleSwitch.on = self.game.requireRatedOpponent;
             cell.onChanged = ^(BooleanCell *cell) {
                 self.game.requireRatedOpponent = cell.toggleSwitch.on;
-                // We want to update the table cells without deselecting 
+                // We want to update the table cells without deselecting
                 // the current cell, so no #reloadData for you.
                 NSArray *indexPaths = @[[NSIndexPath indexPathForRow:2 inSection:kRatingSection], [NSIndexPath indexPathForRow:3 inSection:kRatingSection]];
-                
+
                 if (self.game.requireRatedOpponent) {
-                    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];                    
+                    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
                 } else {
                     [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
                 }
@@ -479,14 +479,14 @@ typedef enum _AddGameSection {
 /*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 */
 
@@ -521,8 +521,9 @@ typedef enum _AddGameSection {
         [[GenericGameServer sharedGameServer] addGame:self.game onSuccess:^() {
             [blockSelf.spinner dismiss:YES];
             [blockSelf.navigationController popToRootViewControllerAnimated:YES];
-        }];
-        
+        } onError:^(NSError *error) {
+		}];
+
     }
 }
 
@@ -533,7 +534,7 @@ typedef enum _AddGameSection {
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 
@@ -547,5 +548,3 @@ typedef enum _AddGameSection {
 
 
 @end
-
-

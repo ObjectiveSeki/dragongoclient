@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LoginProtocol.h"
 #import "Game.h"
 #import "NewGame.h"
 #import "GameList.h"
@@ -19,10 +18,7 @@
 typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseString);
 #endif
 
-@interface DGS : NSObject <GameServerProtocol> {
-}
-
-@property(nonatomic, weak) id <LoginProtocol> delegate;
+@interface DGS : NSObject <GameServerProtocol> 
 
 
 // Logic tests can't test anything that uses the native iPhone functionality.
