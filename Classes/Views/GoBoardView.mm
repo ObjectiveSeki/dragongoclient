@@ -15,25 +15,15 @@
 #define LAST_MOVE_RADIUS 0.25
 #define X_MARKER_RADIUS 0.22
 
+@interface GoBoardView ()
+@property (nonatomic) float pointDistance;
+@end
+
 @implementation GoBoardView
-
-@synthesize board;
-@synthesize delegate;
-
-@synthesize blackName;
-@synthesize whiteName;
-@synthesize status;
-@synthesize statusView;
-@synthesize blackCaptures;
-@synthesize whiteCaptures;
-
-@synthesize pointDistance;
-
 
 - (int)maxX {
 	return self.bounds.size.width - _marginX;
 }
-
 
 - (int)maxY {
 	return self.bounds.size.height - _marginY;
@@ -137,7 +127,7 @@
 }
 
 - (void)drawStones:(CGContextRef)context {
-	NSArray *moves = [board moves];
+	NSArray *moves = [self.board moves];
 	float boardRadius = [self pointDistance] * 0.52;
 	UIImage *stoneImage;
 	for (Move *move in moves) {
@@ -159,7 +149,7 @@
 }
 
 - (void)drawLastMoveIndicator:(CGContextRef)context {
-	Move *move = [board currentMove];
+	Move *move = [self.board currentMove];
 	
 	if (!move || ([move moveType] != kMoveTypeMove)) {
 		return;
@@ -281,8 +271,6 @@
 	}
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
 	JWLog(@"rect: %.1f %.1f %.1f %.1f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 	// in order to get a nice square board with good margins, 
@@ -290,9 +278,9 @@
 	// point distance we calculate. The reason these are different are due to rounding 
 	// errors when we snap the board distance to device pixels.
 	_marginX = 50;
-	pointDistance = 2 * round((float)([self maxX] - [self minX]) / (self.board.size - 1) / 2.0);
-	_marginX = (self.bounds.size.width - (pointDistance * (self.board.size - 1))) / 2.0;
-	_marginY = (self.bounds.size.height - (pointDistance * (self.board.size - 1))) / 2.0;
+	self.pointDistance = 2 * round((float)([self maxX] - [self minX]) / (self.board.size - 1) / 2.0);
+	_marginX = (self.bounds.size.width - (self.pointDistance * (self.board.size - 1))) / 2.0;
+	_marginY = (self.bounds.size.height - (self.pointDistance * (self.board.size - 1))) / 2.0;
     
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -307,6 +295,10 @@
 		[self drawLastMoveIndicator:context];
 	}
 	[self updatePlayerInfo];
+    self.layer.masksToBounds = NO;
+    self.layer.shadowOpacity = 0.6;
+    self.layer.shadowRadius = 3.0;
+    self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
 }
 
 - (bool)playStoneAtPoint:(CGPoint)point {
@@ -322,7 +314,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *touch = [touches anyObject];
-	[delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
+	[self.delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
 }
 
 

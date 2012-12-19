@@ -10,15 +10,6 @@
 #import "FuegoBoard.h"
 
 @interface GoBoardView : UIView {
-	FuegoBoard *board;
-	IBOutlet id delegate;
-	IBOutlet UILabel *blackName;
-	IBOutlet UILabel *whiteName;
-	IBOutlet UIView  *statusView;
-	IBOutlet UILabel *status;
-	IBOutlet UILabel *blackCaptures;
-	IBOutlet UILabel *whiteCaptures;
-	int pointDistance;
 	int _marginX;
     int _marginY;
 }
@@ -32,7 +23,6 @@
 @property(nonatomic, strong) IBOutlet UIView *statusView;
 @property(nonatomic, strong) IBOutlet UILabel *blackCaptures;
 @property(nonatomic, strong) IBOutlet UILabel *whiteCaptures;
-@property(nonatomic, readonly) int pointDistance;
 
 - (bool)playStoneAtPoint:(CGPoint)point;
 - (bool)markDeadStonesAtPoint:(CGPoint)point;
