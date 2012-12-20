@@ -14,6 +14,7 @@
 #define HANDICAP_MARKER_RADIUS 0.16
 #define LAST_MOVE_RADIUS 0.25
 #define X_MARKER_RADIUS 0.22
+#define STONE_RADIUS 0.52
 
 @interface GoBoardView ()
 @property (nonatomic) float pointDistance;
@@ -126,26 +127,41 @@
 	}
 }
 
-- (void)drawStones:(CGContextRef)context {
+- (void)drawStonesUsingLayer:(CGContextRef)context {
 	NSArray *moves = [self.board moves];
-	float boardRadius = [self pointDistance] * 0.52;
-	UIImage *stoneImage;
+	float stoneRadius = [self pointDistance] * STONE_RADIUS;
+	UIImage *blackStoneImage = [DGSAppDelegate blackStone];
+    UIImage *whiteStoneImage = [DGSAppDelegate whiteStone];
+
+    CGLayerRef blackStone = CGLayerCreateWithContext(context, blackStoneImage.size, NULL);
+    CGContextRef blackStoneContext = CGLayerGetContext(blackStone);
+    CGContextScaleCTM(blackStoneContext, 1.0, -1.0);
+    CGContextTranslateCTM(blackStoneContext, 0.0, -blackStoneImage.size.height);
+    CGContextDrawImage(blackStoneContext, CGRectMake(0, 0, blackStoneImage.size.width, blackStoneImage.size.height), blackStoneImage.CGImage);
+    
+    CGLayerRef whiteStone = CGLayerCreateWithContext(context, whiteStoneImage.size, NULL);
+    CGContextRef whiteStoneContext = CGLayerGetContext(whiteStone);
+    CGContextScaleCTM(whiteStoneContext, 1.0, -1.0);
+    CGContextTranslateCTM(whiteStoneContext, 0.0, -whiteStoneImage.size.height);
+    CGContextDrawImage(whiteStoneContext, CGRectMake(0, 0, whiteStoneImage.size.width, whiteStoneImage.size.height), whiteStoneImage.CGImage);
+
+    
 	for (Move *move in moves) {
-		
 		if ([move moveType] == kMoveTypeMove) {
+            CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
+			
+			CGRect stoneRect = CGRectMake(coords.x - stoneRadius, coords.y - stoneRadius, stoneRadius * 2, stoneRadius * 2);
 
 			if ([move player] == kMovePlayerBlack) {
-				stoneImage = [DGSAppDelegate blackStone];
+                CGContextDrawLayerInRect(context, stoneRect, blackStone);
 			} else {
-				stoneImage = [DGSAppDelegate whiteStone];
+                CGContextDrawLayerInRect(context, stoneRect, whiteStone);
 			}
-
-			CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
-			
-			CGRect stoneRect = CGRectMake(coords.x - boardRadius, coords.y - boardRadius, boardRadius * 2, boardRadius * 2);
-			[stoneImage drawInRect:stoneRect];
 		}
 	}
+    
+    CGLayerRelease(blackStone);
+    CGLayerRelease(whiteStone);
 }
 
 - (void)drawLastMoveIndicator:(CGContextRef)context {
@@ -271,6 +287,17 @@
 	}
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.layer.masksToBounds = NO;
+    self.layer.shadowOpacity = 0.6;
+    self.layer.shadowRadius = 3.0;
+    CGPathRef shadowPath = CGPathCreateWithRect(self.bounds, NULL);
+    self.layer.shadowPath = shadowPath;
+    CGPathRelease(shadowPath);
+    self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+}
+
 - (void)drawRect:(CGRect)rect {
 	JWLog(@"rect: %.1f %.1f %.1f %.1f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 	// in order to get a nice square board with good margins, 
@@ -281,12 +308,11 @@
 	self.pointDistance = 2 * round((float)([self maxX] - [self minX]) / (self.board.size - 1) / 2.0);
 	_marginX = (self.bounds.size.width - (self.pointDistance * (self.board.size - 1))) / 2.0;
 	_marginY = (self.bounds.size.height - (self.pointDistance * (self.board.size - 1))) / 2.0;
-    
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	// Drawing code
 	[self drawBoardGrid:context boardSize:[[self board] size]];
-	[self drawStones:context];
+    [self drawStonesUsingLayer:context];
 	
 	if ([self.board gameEnded]) {
 		[self markDeadStones:context];
@@ -295,10 +321,6 @@
 		[self drawLastMoveIndicator:context];
 	}
 	[self updatePlayerInfo];
-    self.layer.masksToBounds = NO;
-    self.layer.shadowOpacity = 0.6;
-    self.layer.shadowRadius = 3.0;
-    self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
 }
 
 - (bool)playStoneAtPoint:(CGPoint)point {
@@ -316,7 +338,5 @@
 	UITouch *touch = [touches anyObject];
 	[self.delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
 }
-
-
 
 @end
