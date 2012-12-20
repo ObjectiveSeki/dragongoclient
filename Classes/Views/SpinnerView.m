@@ -7,6 +7,7 @@
 //
 
 #import "SpinnerView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation SpinnerView
 
@@ -49,24 +50,15 @@
     return spinnerView;
 }
 
-- (void)drawRoundedRect:(CGContextRef)context frame:(CGRect)roundedRect radius:(int)radius {
-	
-	CGContextBeginPath(context);
-	CGContextMoveToPoint(context, roundedRect.origin.x, roundedRect.origin.y + radius);
-	CGContextAddArcToPoint(context, roundedRect.origin.x, roundedRect.origin.y + roundedRect.size.height, roundedRect.origin.x + radius, roundedRect.origin.y + roundedRect.size.height, radius);
-	CGContextAddArcToPoint(context, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y + roundedRect.size.height, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y + roundedRect.size.height - radius, radius);
-	CGContextAddArcToPoint(context, roundedRect.origin.x + roundedRect.size.width, roundedRect.origin.y, roundedRect.origin.x + roundedRect.size.width - radius, roundedRect.origin.y, radius);
-	CGContextAddArcToPoint(context, roundedRect.origin.x, roundedRect.origin.y, roundedRect.origin.x, roundedRect.origin.y + radius, radius);
-	CGContextFillPath(context);
-}
-
 - (void)show {
 	self.transform = CGAffineTransformMakeScale(2,2);
-	
+	[self setNeedsLayout];
+    self.superview.userInteractionEnabled = NO;
 	[UIView animateWithDuration:0.3 delay:0.3 options:0 animations:^(void) {
 		self.transform = CGAffineTransformMakeScale(1, 1);
 		self.alpha = 1.0;
-	} completion:nil];
+	} completion:^(BOOL completion) {
+    }];
 }
 
 - (void)dismiss:(BOOL)animate {
@@ -75,32 +67,26 @@
 			self.transform = CGAffineTransformMakeScale(2, 2);
 			self.alpha = 0.0;
 		} completion:^(BOOL completion) {
+            if (completion) {
+                self.superview.userInteractionEnabled = YES;
+            }
 		}];
 	} else {
 		self.alpha = 0.0;
 	}
 }
 
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0);
-	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 0.8);
-	
-	[self drawRoundedRect:context frame:self.bounds radius:10];
-}
-
 - (void)layoutSubviews {
     UIView *view = self.superview;
-    CGRect frame = [view convertRect:CGRectMake(view.window.center.x - 60, view.window.center.y - 60, 120, 120) fromView:nil];
-    self.frame = frame;
+    
+    self.frame = [view convertRect:CGRectMake(view.window.center.x - 60, view.window.center.y - 60, 120, 120) fromView:nil];
     
 	int spinnerSize = 37;
 	self.spinner.frame = CGRectMake((self.frame.size.width - spinnerSize) / 2, self.frame.size.height / 3.0, spinnerSize, spinnerSize);
 	
 	self.label.frame = CGRectMake(8, self.frame.size.height - 8 - 16, self.frame.size.width - 16, 16);
+    self.layer.cornerRadius = 10;
+    self.layer.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.8].CGColor;
 }
 
 @end
