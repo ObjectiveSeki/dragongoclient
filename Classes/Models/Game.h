@@ -11,8 +11,7 @@
 #import <Foundation/Foundation.h>
 #import	"Move.h"
 
-@interface Game : NSObject {
-}
+@interface Game : NSObject <NSCoding>
 
 @property(nonatomic, strong) NSURL * sgfUrl;
 @property(nonatomic, strong) NSURL * detailUrl;
@@ -22,6 +21,7 @@
 @property(nonatomic, copy) NSString * lastMove;
 @property(nonatomic, copy) NSString * opponentRating;
 @property(nonatomic) int gameId;
+@property(nonatomic) int moveId;
 @property(nonatomic) MovePlayer color;
 @property(nonatomic, assign) int handicap;
 @property(nonatomic, assign) float komi;

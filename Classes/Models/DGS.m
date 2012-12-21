@@ -323,21 +323,15 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 }
 
 - (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {
-
-    if (game.sgfString) {
-        // don't try to fetch the sgf again if we already have it
-        onSuccess(game);
-    } else {
-        if (game.sgfUrl == nil) {
-            [game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", [game gameId]]]];
-        }
-
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
-        [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-            [game setSgfString:responseString];
-            onSuccess(game);
-        } onError:onError];
+    if (game.sgfUrl == nil) {
+        [game setSgfUrl:[self URLWithPath:[NSString stringWithFormat:@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", [game gameId]]]];
     }
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:game.sgfUrl];
+    [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        [game setSgfString:responseString];
+        onSuccess(game);
+    } onError:onError];
 }
 
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
@@ -493,6 +487,8 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
 			NSString *timeRemainingString = cols[5];
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
+            
+            game.moveId = [cols[8] intValue];
 
 			[games addObject:game];
 		}

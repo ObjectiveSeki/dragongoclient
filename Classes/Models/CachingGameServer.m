@@ -6,8 +6,10 @@
 #import "JWCache.h"
 
 static JWCache *s_cache;
-static NSTimeInterval kDefaultTTL = 5 * 60;
+static NSTimeInterval kDefaultTTL = 15 * 60; // 15 mins
+static NSTimeInterval kLongTTL = 7 * 24 * 60 * 60; // 7 days
 static NSString * const kGameListKey = @"GameList";
+static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 @interface CachingGameServer ()
 
@@ -41,6 +43,10 @@ static NSString * const kGameListKey = @"GameList";
     return self;
 }
 
+- (NSString *)gameCacheKey:(Game *)game {
+    return S(kGameCacheKeyFormat, game.gameId);
+}
+
 - (void)removeGameFromGameList:(int)gameId {
     NSArray *gameList = [self.cache objectForKey:kGameListKey];
     NSMutableArray *changedGameList = [gameList mutableCopy];
@@ -50,6 +56,7 @@ static NSString * const kGameListKey = @"GameList";
         }];
         [changedGameList removeObjectAtIndex:gameIndex];
         [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
+        [self.cache removeObjectForKey:S(kGameCacheKeyFormat, gameId)];
     }
 }
 
@@ -62,6 +69,10 @@ static NSString * const kGameListKey = @"GameList";
     [self.cache fetchObjectForKey:kGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
         [self.gameServer getCurrentGames:^(NSArray *games) {
             gotObject(games);
+            
+            for (Game *game in games) {
+                [self getSgfForGame:game onSuccess:^(Game *game) {} onError:^(NSError *error) {}];
+            }
         } onError:onError];
         return nil; // nothing to return here.
     } completion:^(NSArray *gameList) {
@@ -94,8 +105,21 @@ static NSString * const kGameListKey = @"GameList";
     onSuccess(); // cheat and call it right away for speed
 }
 
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError{
-    [self.gameServer getSgfForGame:game onSuccess:onSuccess onError:onError];
+- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {
+    [self.cache fetchObjectForKey:[self gameCacheKey:game] ttl:kLongTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
+        gotObject(game);
+        return nil;
+    } completion:^(Game *cachedGame) {
+        if (game.moveId <= cachedGame.moveId && cachedGame.sgfString) {
+            // don't need any more information, just continue with the cached game
+            onSuccess(cachedGame);
+        } else {
+            // re-fetch the sgf, and re-cache the game
+            [self.gameServer getSgfForGame:game onSuccess:^(Game *gameWithSGF) {
+                [self.cache setObject:gameWithSGF forKey:[self gameCacheKey:gameWithSGF] ttl:kLongTTL];
+            } onError:onError];
+        }
+    }];
 }
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError{
