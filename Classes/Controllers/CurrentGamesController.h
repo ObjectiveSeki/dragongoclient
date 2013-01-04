@@ -10,22 +10,15 @@
 
 @interface CurrentGamesController : UITableViewController
 
-@property(nonatomic, strong) NSArray *games;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *logoutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *addGameButton;
 @property(nonatomic, strong) IBOutlet UIView *noGamesView;
-@property(nonatomic, strong) IBOutlet UITableView *gameListView;
-@property(nonatomic, strong) UITableViewCell *selectedCell;
-@property(nonatomic, strong) UIAlertView *logoutConfirmation;
+@property(nonatomic, strong) NSArray *games;
+@property(nonatomic, strong) NSArray *runningGames;
 
-// Refresh games list unconditionally
-- (IBAction)forceRefreshGames;
-
-- (IBAction)refreshGames;
 - (IBAction)logout;
-- (IBAction)startNewGame;
+- (void)setEnabled:(BOOL)enabled;
 
-- (void)gotSgfForGame:(Game *)game;
 
 @end
 

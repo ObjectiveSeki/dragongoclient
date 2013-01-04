@@ -168,7 +168,7 @@
             </objects>
             <point key="canvasLocation" x="-127" y="-44"/>
         </scene>
-        <!--Current Games Controller - Your Move-->
+        <!--Current Games Controller - Games-->
         <scene sceneID="4av-kR-NaI">
             <objects>
                 <tableViewController id="Yh3-ya-bji" customClass="CurrentGamesController" sceneMemberID="viewController">
@@ -204,11 +204,11 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Yh3-ya-bji" id="fuX-Fv-4MS"/>
-                            <outlet property="delegate" destination="Yh3-ya-bji" id="s7i-yD-Nhl"/>
+                            <outlet property="dataSource" destination="Yh3-ya-bji" id="ssG-d8-hMA"/>
+                            <outlet property="delegate" destination="Yh3-ya-bji" id="7CM-hS-gW1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Move" id="8MS-N6-xO8">
+                    <navigationItem key="navigationItem" title="Games" id="8MS-N6-xO8">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="tl6-uH-lR6">
                             <connections>
                                 <action selector="logout" destination="Yh3-ya-bji" id="C1c-O8-7Gx"/>
@@ -222,9 +222,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addGameButton" destination="M3p-0y-Jay" id="Nwp-ci-SF1"/>
-                        <outlet property="gameListView" destination="rGm-97-Ewz" id="zjS-0U-NQs"/>
                         <outlet property="logoutButton" destination="tl6-uH-lR6" id="Y6Q-qB-qli"/>
-                        <outlet property="noGamesView" destination="W38-2z-8rW" id="Kqh-fl-cee"/>
+                        <outlet property="noGamesView" destination="W38-2z-8rW" id="Fed-jX-KDC"/>
                         <segue destination="8uJ-pY-6ja" kind="push" identifier="ShowGame" id="pdS-1c-8ZI"/>
                     </connections>
                 </tableViewController>
@@ -864,12 +863,8 @@
         <class className="CurrentGamesController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrentGamesController.h"/>
             <relationships>
-                <relationship kind="action" name="forceRefreshGames"/>
                 <relationship kind="action" name="logout"/>
-                <relationship kind="action" name="refreshGames"/>
-                <relationship kind="action" name="startNewGame"/>
                 <relationship kind="outlet" name="addGameButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="gameListView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
             </relationships>

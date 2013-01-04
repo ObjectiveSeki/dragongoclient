@@ -27,6 +27,7 @@
     [encoder encodeInt:self.color forKey:@"color"];
     [encoder encodeInt:self.handicap forKey:@"handicap"];
     [encoder encodeFloat:self.komi forKey:@"komi"];
+    [encoder encodeBool:self.myTurn forKey:@"myTurn"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -45,6 +46,7 @@
         self.color = [decoder decodeIntForKey:@"color"];
         self.handicap = [decoder decodeIntForKey:@"handicap"];
         self.komi = [decoder decodeFloatForKey:@"komi"];
+        self.myTurn = [decoder decodeBoolForKey:@"myTurn"];
     }
     return self;
 }

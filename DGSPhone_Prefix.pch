@@ -49,4 +49,4 @@
 #	define JWLog(...)
 #endif
 
-#define S(fmt, ...) [NSString stringWithFormat:fmt, ##__VA_ARGS__]
+#define S(fmt, ...) [NSString stringWithFormat:(fmt), ##__VA_ARGS__]

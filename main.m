@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DGSPhoneAppDelegate.h"
 
 int main(int argc, char *argv[]) {
     

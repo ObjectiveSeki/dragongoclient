@@ -80,6 +80,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }];
 }
 
+- (void)getRunningGames:(ListBlock)onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer getRunningGames:onSuccess onError:onError];
+}
+
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     
     [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {} onError:onError];
@@ -117,6 +121,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
             // re-fetch the sgf, and re-cache the game
             [self.gameServer getSgfForGame:game onSuccess:^(Game *gameWithSGF) {
                 [self.cache setObject:gameWithSGF forKey:[self gameCacheKey:gameWithSGF] ttl:kLongTTL];
+                onSuccess(gameWithSGF);
             } onError:onError];
         }
     }];

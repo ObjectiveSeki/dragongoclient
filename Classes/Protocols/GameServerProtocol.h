@@ -36,6 +36,7 @@ typedef void(^ErrorBlock)(NSError *error);
 - (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)refreshCurrentGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)getRunningGames:(ListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess onError:(ErrorBlock)onError;

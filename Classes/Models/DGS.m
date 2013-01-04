@@ -260,6 +260,21 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	} onError:onError];
 }
 
+// http://www.dragongoserver.net/quick_do.php?obj=game&cmd=list&view=running&lstyle=json
+// {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
+- (void)getRunningGames:(ListBlock)onSuccess onError:(ErrorBlock)onError {
+    NSURL *url = [self URLWithPath:@"/quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json"];
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
+    [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
+#warning TODO: check for errors?
+#warning TODO: pagination?
+        NSArray *games = [self runningGamesFromGameList:[decoder objectWithData:[request responseData]][@"list_result"]];
+        onSuccess(games);
+    } onError:onError];
+}
+
 - (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess onError:(ErrorBlock)onError {
     GameList *gameList = [[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)(), ErrorBlock innerOnError) {
         NSURL *url = [self URLWithPath:pagePath];
@@ -489,11 +504,48 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
             
             game.moveId = [cols[8] intValue];
+            game.myTurn = YES; // Games from the status API are always my turn
 
 			[games addObject:game];
 		}
 	}
 	return games;
+}
+
+// {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
+- (NSArray *)runningGamesFromGameList:(NSArray *)responseGameList {
+    NSMutableArray *games = [[NSMutableArray alloc] initWithCapacity:[responseGameList count]];
+    for (NSDictionary *gameDictionary in responseGameList) {
+        Game *game = [[Game alloc] init];
+        int myId = [gameDictionary[@"my_id"] intValue];
+        game.gameId = [gameDictionary[@"id"] intValue];
+        NSString *sgfUrl = S(@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
+        game.sgfUrl = [self URLWithPath:sgfUrl];
+        
+        if ([gameDictionary[@"white_user"][@"id"] intValue] == myId) {
+            game.color = kMovePlayerWhite;
+            game.time = gameDictionary[@"white_gameinfo"][@"remtime"];
+            game.opponent = gameDictionary[@"black_user"][@"handle"];
+        } else {
+            game.color = kMovePlayerBlack;
+            game.time = gameDictionary[@"black_gameinfo"][@"remtime"];
+            game.opponent = gameDictionary[@"white_user"][@"handle"];
+        }
+        
+        if ((game.color == kMovePlayerBlack && [gameDictionary[@"move_color"] isEqualToString:@"B"]) ||
+            (game.color == kMovePlayerWhite && [gameDictionary[@"move_color"] isEqualToString:@"W"])) {
+            game.myTurn = YES;
+        } else {
+            game.myTurn = NO;
+        }
+        
+        game.lastMove = gameDictionary[@"move_last"];
+        game.moveId = [gameDictionary[@"move_id"] intValue];
+        if (!game.myTurn) {
+            [games addObject:game];
+        }
+    }
+    return games;
 }
 
 // Parses a list of games from the waiting room. This uses the

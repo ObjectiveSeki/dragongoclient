@@ -44,11 +44,18 @@
 	} else {
 		[self.navigationItem setRightBarButtonItem:nil animated:YES];
 	}
-	[[self confirmButton] setEnabled:[self.board canSubmit]];
-	[[self passButton] setEnabled:[self.board canPassOrResign]];
-	[[self resignButton] setEnabled:[self.board canPassOrResign]];
-    JWLog(@"boardView:%@ setNeedsDisplay", self.boardView);
-	[self.boardView setNeedsDisplay]; // show just placed move
+    
+    // If we're readonly, we don't have to touch the buttons on the toolbar,
+    // and the board won't change.
+    if (self.readOnly) {
+        self.passButton.enabled = NO;
+        self.resignButton.enabled = NO;
+    } else {
+        self.confirmButton.enabled = self.board.canSubmit;
+        self.passButton.enabled = self.board.canPassOrResign;
+        self.resignButton.enabled = self.board.canPassOrResign;        
+        [self.boardView setNeedsDisplay]; // show just placed move
+    }
 }
 
 // Sets the 'message waiting' toolbar indicator based on the value of hasMessage.
@@ -211,7 +218,7 @@
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
 
-	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded];
+	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded] || self.readOnly;
 
 	if (![self smallBoard] && [self boardState] == kBoardStateZoomedOut && canZoomIn) {
 		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
@@ -219,7 +226,7 @@
 		[[self passButton] setEnabled:NO];
 		[[self resignButton] setEnabled:NO];
 		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
-	} else if ([self smallBoard] || [self boardState] == kBoardStateZoomedIn) {
+	} else if (!self.readOnly && ([self smallBoard] || [self boardState] == kBoardStateZoomedIn)) {
 		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
 
 		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
@@ -265,7 +272,7 @@
 	self.currentZoomScale = [self zoomInScale];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
-	[self updateBoard];
+    [self updateBoard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

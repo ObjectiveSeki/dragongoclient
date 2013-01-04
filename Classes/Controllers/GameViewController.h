@@ -19,6 +19,8 @@ enum BoardState {
 }
 
 @property(nonatomic, strong) Game *game;
+@property(nonatomic) BOOL readOnly;
+
 @property(nonatomic, strong) FuegoBoard *board;
 @property(nonatomic, strong) IBOutlet GoBoardView *boardView;
 @property(nonatomic, strong) IBOutlet UIScrollView *scrollView;

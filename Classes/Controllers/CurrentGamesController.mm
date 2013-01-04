@@ -8,12 +8,11 @@
 
 #import "CurrentGamesController.h"
 #import "Game.h"
-#import "GameViewController.h"
-#import "LoginViewController.h"
 #import "DGSPhoneAppDelegate.h"
-#import "NewGameViewController.h"
 #import "ODRefreshControl.h"
 #import "SpinnerView.h"
+#import "GameViewController.h"
+#import "IBAlertView.h"
 
 @interface CurrentGamesController ()
 // Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
@@ -21,6 +20,12 @@
 @property (nonatomic, strong) id myRefreshControl;
 @property (nonatomic, strong) SpinnerView *spinner;
 @end
+
+enum GameSections {
+    kGameSectionMyMove,
+    kGameSectionRunningGames,
+    kGameSectionCount
+};
 
 @implementation CurrentGamesController
 
@@ -33,7 +38,7 @@
         self.refreshControl = [[UIRefreshControl alloc] init];
         self.myRefreshControl = self.refreshControl;
     } else {
-        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.gameListView];
+        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
         self.myRefreshControl = refreshControl;
     }
     [self.myRefreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
@@ -75,72 +80,52 @@
 - (void)setEnabled:(BOOL)enabled {
     self.logoutButton.enabled = enabled;
     self.addGameButton.enabled = enabled;
-    self.gameListView.userInteractionEnabled = enabled;
+    self.tableView.userInteractionEnabled = enabled;
 }
 
 #pragma mark - Actions
 
-- (IBAction)startNewGame {
-    NewGameViewController *newGameViewController = [[NewGameViewController alloc] initWithNibName:@"NewGameViewController" bundle:nil];
-    [self.navigationController pushViewController:newGameViewController animated:YES];
-}
-
-- (IBAction)forceRefreshGames {
+- (void)refreshGames {
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSArray *currentGames) {
+    [[GenericGameServer sharedGameServer] getCurrentGames:^(NSArray *currentGames) {
         self.games = currentGames;
 #if TEST_GAMES
         [self addTestGames];
 #endif
-        [self.myRefreshControl endRefreshing];
-        [self gameListChanged];
-        [self setEnabled:YES];
+        [[GenericGameServer sharedGameServer] getRunningGames:^(NSArray *runningGames) {
+            self.runningGames = runningGames;
+            [self gameListChanged];
+            [self.myRefreshControl endRefreshing];
+            [self setEnabled:YES];
+        } onError:^(NSError *error) {
+            [self.myRefreshControl endRefreshing];
+            [self setEnabled:YES];
+        }];
     } onError:^(NSError *error) {
         [self.myRefreshControl endRefreshing];
         [self setEnabled:YES];
     }];
 }
 
-- (IBAction)refreshGames {
-    [self.myRefreshControl beginRefreshing];
-	[self setEnabled:NO];
-	[[GenericGameServer sharedGameServer] getCurrentGames:^(NSArray *currentGames) {
-		self.games = currentGames;
+- (void)forceRefreshGames {
+    [self setEnabled:NO];
+    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSArray *currentGames) {
+        self.games = currentGames;
 #if TEST_GAMES
         [self addTestGames];
 #endif
-        [self.myRefreshControl endRefreshing];
-        [self gameListChanged];
-		[self setEnabled:YES];
-	} onError:^(NSError *error) {
+        [[GenericGameServer sharedGameServer] getRunningGames:^(NSArray *runningGames) {
+            [self gameListChanged];
+            [self.myRefreshControl endRefreshing];
+            [self setEnabled:YES];
+        } onError:^(NSError *error) {
+            [self.myRefreshControl endRefreshing];
+            [self setEnabled:YES];
+        }];
+    } onError:^(NSError *error) {
         [self.myRefreshControl endRefreshing];
         [self setEnabled:YES];
     }];
-}
-
-
-
-- (IBAction)logout {
-	self.logoutConfirmation = [[UIAlertView alloc] initWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" delegate:self cancelButtonTitle:@"Don't logout" otherButtonTitles:@"Logout", nil];
-	[self.logoutConfirmation show];
-}
-
-#pragma mark - Helper Actions
-
-// Handles dismissing the logout confirmation.
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-	if (alertView == self.logoutConfirmation) {
-		if (buttonIndex != alertView.cancelButtonIndex) {
-			[self setEnabled:NO];
-            self.spinner.label.text = @"Logging out…";
-            [self.spinner show];
-			[[GenericGameServer sharedGameServer] logout:^(NSError *error) {
-                [self setEnabled:YES];
-                [self.spinner dismiss:YES];
-            }];
-		}
-		self.logoutConfirmation = nil;
-	}
 }
 
 - (void)addTestGames {
@@ -159,41 +144,80 @@
 
 - (void)gameListChanged {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-
-    if ([self.games count] == 0) {
-        [self.view addSubview:self.noGamesView];
+    if ([self.games count] == 0 && [self.runningGames count] == 0) {
+        [self.tableView addSubview:self.noGamesView];
     } else {
         [self.noGamesView removeFromSuperview];
-        [self.gameListView reloadData];
+        [self.tableView reloadData];
     }
 }
 
-- (void)gotSgfForGame:(Game *)game {
-	// Navigation logic may go here. Create and push another view controller.
-	// ...
-	// Pass the selected object to the new view controller.
-	[self.selectedCell setAccessoryView:nil];
-	self.selectedCell = nil;
-	[self setEnabled:YES];
-    [self performSegueWithIdentifier:@"ShowGame" sender:game];
+- (IBAction)logout {
+    [IBAlertView showAlertWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" dismissTitle:@"Don't logout" okTitle:@"Logout" dismissBlock:^{
+        // do nothing
+    } okBlock:^{
+        [self setEnabled:NO];
+        self.spinner.label.text = @"Logging out…";
+        [self.spinner show];
+        [[GenericGameServer sharedGameServer] logout:^(NSError *error) {
+            [self setEnabled:YES];
+            [self.spinner dismiss:YES];
+        }];
+    }];
 }
+
+#pragma mark - Helper Actions
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowGame"]) {
         GameViewController *controller = segue.destinationViewController;
-        [controller setGame:sender];
+        Game *game = (Game *)sender;
+        controller.game = game;
+        controller.readOnly = !game.myTurn;
     }
 }
 
 #pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return kGameSectionCount;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.games count];
+    if (section == kGameSectionMyMove) {
+        return [self.games count];
+    } else if (section == kGameSectionRunningGames) {
+        return [self.runningGames count];
+    } else {
+        return 0;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == kGameSectionMyMove) {
+        return @"Your Move";
+    } else if (section == kGameSectionRunningGames) {
+        return @"Waiting for Move";
+    } else {
+        return @"";
+    }
+}
+
+- (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Game *game = nil;
+    
+    if (indexPath.section == kGameSectionMyMove) {
+        game = self.games[indexPath.row];
+    } else if (indexPath.section == kGameSectionRunningGames) {
+        game = self.runningGames[indexPath.row];
+    }
+    return game;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
-    Game *game = self.games[indexPath.row];
+    
+    Game *game = [self gameForRowAtIndexPath:indexPath];
     
     if ([game color] == kMovePlayerBlack) {
         [cell.imageView setImage:[DGSAppDelegate blackStone]];
@@ -211,7 +235,6 @@
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [theTableView cellForRowAtIndexPath:indexPath];
-    Game *game = self.games[indexPath.row];
     [self setEnabled:NO];
     
     UIActivityIndicatorView *activityView =
@@ -219,8 +242,11 @@
     [activityView startAnimating];
     [cell setAccessoryView:activityView];
     
+    Game *game = [self gameForRowAtIndexPath:indexPath];
     [[GenericGameServer sharedGameServer] getSgfForGame:game onSuccess:^(Game *game) {
-        [self gotSgfForGame:game];
+        [cell setAccessoryView:nil];
+        [self setEnabled:YES];
+        [self performSegueWithIdentifier:@"ShowGame" sender:game];
     } onError:^(NSError *error) {
         [cell setAccessoryView:nil];
         [self setEnabled:YES];
@@ -241,10 +267,6 @@
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.logoutButton = nil;
-	self.selectedCell = nil;
-	self.logoutConfirmation = nil;
-    self.noGamesView = nil;
-    self.gameListView = nil;
 }
 
 @end

@@ -25,5 +25,6 @@
 @property(nonatomic) MovePlayer color;
 @property(nonatomic, assign) int handicap;
 @property(nonatomic, assign) float komi;
+@property(nonatomic) BOOL myTurn;
 
 @end
