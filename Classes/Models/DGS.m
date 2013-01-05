@@ -14,7 +14,6 @@
 
 #ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
-#import "DGSPhoneAppDelegate.h"
 #import "IBAlertView.h"
 #endif
 

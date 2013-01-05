@@ -9,7 +9,6 @@
     #import "Keys.h"
 #endif
 
-#define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
 #define CACHING 1
 
 #if defined (CONFIGURATION_Debug)

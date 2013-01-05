@@ -7,8 +7,6 @@
 //
 
 #import "LoginViewController.h"
-#import "DGSPhoneAppDelegate.h"
-#import "DGS.h"
 #import "TextCell.h"
 #import "SpinnerView.h"
 

@@ -274,8 +274,6 @@
 		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
-		DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C3FE12CEA1300059DAF0 /* TableRow.m */; };
-		DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = DA82C42F12CEA8510059DAF0 /* TableSection.m */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
 		DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
@@ -301,8 +299,6 @@
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
-		DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
-		DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = DACAEC4A11F95FCD000E3C5D /* Account.m */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
 		DAD3634B126D4A9C00589A32 /* Message background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36349126D4A9C00589A32 /* Message background.png */; };
 		DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD3634A126D4A9C00589A32 /* Message background@2x.png */; };
@@ -646,10 +642,6 @@
 		DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Adhoc.xcconfig; sourceTree = "<group>"; };
 		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		DA82C3FD12CEA1300059DAF0 /* TableRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableRow.h; sourceTree = "<group>"; };
-		DA82C3FE12CEA1300059DAF0 /* TableRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableRow.m; sourceTree = "<group>"; };
-		DA82C42E12CEA8510059DAF0 /* TableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableSection.h; sourceTree = "<group>"; };
-		DA82C42F12CEA8510059DAF0 /* TableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableSection.m; sourceTree = "<group>"; };
 		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
 		DA84D67812F7A0160038D775 /* BooleanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanCell.h; sourceTree = "<group>"; };
@@ -673,8 +665,6 @@
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		DACAEC4911F95FCD000E3C5D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		DACAEC4A11F95FCD000E3C5D /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
 		DAD36349126D4A9C00589A32 /* Message background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background.png"; sourceTree = "<group>"; };
 		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
@@ -760,13 +750,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				DA0FE7BE161FF64200AEAEF6 /* Libraries */,
-				DA02D14A11D99D3900A9D887 /* Table Cells */,
 				DA4026C611D06C38005017C4 /* Protocols */,
-				DAF9102311BB487500FE7B96 /* Views */,
-				DA71CAA911B5EAB1008696AC /* Tests */,
-				DA38B20311B59FB400112AA4 /* Controllers */,
 				DA38B20211B59FAB00112AA4 /* Models */,
+				DAF9102311BB487500FE7B96 /* Views */,
+				DA38B20311B59FB400112AA4 /* Controllers */,
+				DA02D14A11D99D3900A9D887 /* Table Cells */,
+				DA71CAA911B5EAB1008696AC /* Tests */,
+				DA0FE7BE161FF64200AEAEF6 /* Libraries */,
 				1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */,
 			);
@@ -1160,12 +1150,6 @@
 				DA419A6011BA0C0600B3050E /* FuegoBoard.mm */,
 				DAF911F211BB796900FE7B96 /* Move.h */,
 				DAF911F311BB796900FE7B96 /* Move.m */,
-				DACAEC4911F95FCD000E3C5D /* Account.h */,
-				DACAEC4A11F95FCD000E3C5D /* Account.m */,
-				DA82C3FD12CEA1300059DAF0 /* TableRow.h */,
-				DA82C3FE12CEA1300059DAF0 /* TableRow.m */,
-				DA82C42E12CEA8510059DAF0 /* TableSection.h */,
-				DA82C42F12CEA8510059DAF0 /* TableSection.m */,
 				DA0762B51377B678003E0390 /* DGSDev.h */,
 				DA0762B61377B678003E0390 /* DGSDev.m */,
 				DA8E707A13D5337E007E569B /* GameList.h */,
@@ -1656,12 +1640,9 @@
 				DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */,
 				DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */,
 				DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */,
-				DACAEC4B11F95FCD000E3C5D /* Account.m in Sources */,
 				DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */,
 				DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */,
 				DA1341AB1292323300D2A4BF /* MessageView.m in Sources */,
-				DA82C3FF12CEA1300059DAF0 /* TableRow.m in Sources */,
-				DA82C43012CEA8510059DAF0 /* TableSection.m in Sources */,
 				DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */,
 				DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */,
 				DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */,
@@ -1783,7 +1764,6 @@
 				DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */,
 				DAF911F611BB796900FE7B96 /* Move.m in Sources */,
 				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
-				DACAEC4C11F95FCD000E3C5D /* Account.m in Sources */,
 				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.m in Sources */,
 				DA0762B81377B678003E0390 /* DGSDev.m in Sources */,
 				DA8E707D13D5337E007E569B /* GameList.m in Sources */,

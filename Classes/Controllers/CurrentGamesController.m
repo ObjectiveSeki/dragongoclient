@@ -8,7 +8,6 @@
 
 #import "CurrentGamesController.h"
 #import "Game.h"
-#import "DGSPhoneAppDelegate.h"
 #import "ODRefreshControl.h"
 #import "SpinnerView.h"
 #import "GameViewController.h"

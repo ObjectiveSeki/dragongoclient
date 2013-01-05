@@ -20,6 +20,13 @@ typedef id (^CacheFetchBlock)(JWCache *cache, CacheCallbackBlock gotObject);
 - (void)setObject:(id)object forKey:(NSString *)key ttl:(NSTimeInterval)ttl;
 - (void)removeObjectForKey:(NSString *)key;
 - (void)removeAllObjects;
+
+// Try to retrieve the object with a key from the cache. If the object hasn't
+// been cached, fetch the new data using fetchBlock. fetchBlock is responsible
+// for returning the value that should be returned from this method.
+// gotObjectBlock (passed to fetchBlock) is a thunk that should be used to cache
+// the value after retrieval. completionBlock can be called twice -- once with
+// stale data, and again with the freshly fetched data.
 - (id)fetchObjectForKey:(NSString *)key
                     ttl:(NSTimeInterval)ttl
              fetchBlock:(CacheFetchBlock)fetchBlock
