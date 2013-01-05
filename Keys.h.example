@@ -1,0 +1,22 @@
+//
+//  Keys.h
+//  DGSPhone
+//
+//  Created by Justin Weiss on 1/4/13.
+//  Copyright (c) 2013 Justin Weiss. All rights reserved.
+//
+
+#ifndef DGSPhone_Keys_h
+#define DGSPhone_Keys_h
+
+// Keeps track of keys that should be relatively secret.
+// Uncomment and fill out these keys, and the associated features should be
+// enabled automatically.
+
+#if defined (CONFIGURATION_Release)
+//#define TESTFLIGHT_APP_TOKEN @"release_app_token_goes_here"
+#else
+//#define TESTFLIGHT_APP_TOKEN @"app_token_goes_here"
+#endif
+
+#endif

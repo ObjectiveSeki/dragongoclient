@@ -1,26 +1,41 @@
+
 PODS:
-  - ASIHTTPRequest (1.8.1):
-    - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
-    - ASIHTTPRequest/CloudFiles (= 1.8.1)
-    - ASIHTTPRequest/S3 (= 1.8.1)
-    - Reachability
-  - ASIHTTPRequest/ASIWebPageRequest (1.8.1):
-    - Reachability
-  - ASIHTTPRequest/CloudFiles (1.8.1):
-    - Reachability
-  - ASIHTTPRequest/S3 (1.8.1):
-    - Reachability
-  - GDataXML-HTML (1.0.0)
-  - InnerBand (0.0.1)
-  - JSONKit (1.5pre)
-  - ODRefreshControl (1.1.0)
-  - Reachability (3.0.0)
+- ASIHTTPRequest (1.8.1):
+  - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
+  - ASIHTTPRequest/CloudFiles (= 1.8.1)
+  - ASIHTTPRequest/S3 (= 1.8.1)
+  - Reachability
+- ASIHTTPRequest/ASIWebPageRequest (1.8.1):
+  - Reachability
+- ASIHTTPRequest/CloudFiles (1.8.1):
+  - Reachability
+- ASIHTTPRequest/S3 (1.8.1):
+  - Reachability
+- GDataXML-HTML (1.0.0)
+- InnerBand (0.0.1)
+- JSONKit (1.5pre)
+- ODRefreshControl (1.1.0)
+- Reachability (3.0.0)
+- TestFlightSDK (1.2)
 
 DEPENDENCIES:
-  - ASIHTTPRequest
-  - GDataXML-HTML
-  - GDataXML-HTML
-  - InnerBand
-  - JSONKit
-  - JSONKit
-  - ODRefreshControl
+- ASIHTTPRequest
+- GDataXML-HTML
+- InnerBand
+- JSONKit
+- ODRefreshControl
+- TestFlightSDK
+
+SPEC CHECKSUMS:
+  ASIHTTPRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
+  ASIHTTPRequest/ASIWebPageRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
+  ASIHTTPRequest/CloudFiles: e606d2df58b0aace6c1cf1d39a08d3484f91324a
+  ASIHTTPRequest/S3: e606d2df58b0aace6c1cf1d39a08d3484f91324a
+  GDataXML-HTML: 3f7cbef27d07411516d3720291c58eb49e4b50b1
+  InnerBand: cc5993a3552d4ba70a1a555e7269707751a3a7d2
+  JSONKit: 3d4708953ea7ae399a49777372d8b060a43ddd27
+  ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
+  Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2
+  TestFlightSDK: 29e194fb148e4861f92e4c1195b9697e1f3ad19a
+
+COCOAPODS: 0.14.0

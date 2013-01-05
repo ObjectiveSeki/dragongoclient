@@ -26,8 +26,5 @@
 @property (nonatomic, strong) UIImage *boardImage;
 @property (nonatomic, strong) UIImage *messageOff;
 @property (nonatomic, strong) UIImage *messageOn;
-@property (nonatomic, strong) NSFileHandle *logFile;
-
-- (NSString *)logFilePath;
 
 @end

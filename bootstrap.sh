@@ -18,3 +18,7 @@ if [ ! -d DGSPhone.xcworkspace ]; then
 else
     bundle exec pod install
 fi
+
+if [ ! -f Keys.h ]; then
+    cp Keys.h.example Keys.h
+fi

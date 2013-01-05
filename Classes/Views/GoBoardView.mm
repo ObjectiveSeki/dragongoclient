@@ -299,7 +299,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	JWLog(@"rect: %.1f %.1f %.1f %.1f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
+	NSLog(@"rect: %.1f %.1f %.1f %.1f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
 	// in order to get a nice square board with good margins, 
 	// we need to make a guess first, then calculate the actual margins based on the
 	// point distance we calculate. The reason these are different are due to rounding 

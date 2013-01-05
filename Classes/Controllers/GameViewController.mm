@@ -202,7 +202,7 @@
             NSString *tmpFileFullPath = [NSTemporaryDirectory() stringByAppendingPathComponent:tmpFilename];
             
             if (![self.game.sgfString writeToFile:tmpFileFullPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError]) {
-                JWLog(@"Error writing sgf file: %@", writeError.localizedDescription);
+                NSLog(@"Error writing sgf file: %@", writeError.localizedDescription);
             }
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -259,7 +259,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	[self setBoardState:kBoardStateZoomedOut];
-    JWLog("creating board...");
+    NSLog(@"creating board...");
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];

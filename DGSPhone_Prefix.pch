@@ -5,6 +5,8 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
+    #import "TestFlight.h"
+    #import "Keys.h"
 #endif
 
 #define DGSAppDelegate (DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]
@@ -12,7 +14,6 @@
 
 #if defined (CONFIGURATION_Debug)
 #define DEBUG 1
-#define LOGGING 1
 #define DEVELOPMENT_DGS
 
 // set to '1' to see SGFs that test various aspects of
@@ -21,8 +22,7 @@
 #endif
 
 #if defined (CONFIGURATION_Adhoc)
-//#define LOGGING
-//#define LOG_URL @"http://dgs.uberweiss.net/log"
+#define TESTFLIGHT_UUID_TRACKING
 #endif
 
 #ifdef DEVELOPMENT_DGS
@@ -38,15 +38,12 @@
 #   define GenericGameServer NSClassFromString(SERVER_CLASS)
 #endif
 
-#ifdef LOGGING
-#import "DGSPhoneAppDelegate.h"
-#	define JWLog(fmt, ...) { \
-  NSLog((@"[%@] [%s:%d] " fmt), [NSDate date], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); \
-  NSString *logData = [NSString stringWithFormat:(@"%@ %s:%d: " fmt "\n"), [NSDate date], __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__]; \
-  [[DGSAppDelegate logFile] writeData:[logData dataUsingEncoding:NSUTF8StringEncoding]]; \
-}
+// Wrap TestFlight calls in TF() to only call them when TestFlight keys are set
+#ifdef TESTFLIGHT_APP_TOKEN
+#   define TF(testflight_call) { (testflight_call); }
 #else
-#	define JWLog(...)
+#   warning You must define TestFlight app tokens in Keys.h to get TestFlight functionality.
+#   define TF(...)
 #endif
 
 #define S(fmt, ...) [NSString stringWithFormat:(fmt), ##__VA_ARGS__]

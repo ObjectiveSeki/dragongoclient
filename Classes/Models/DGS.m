@@ -147,12 +147,12 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 		// Hopefully it's not too bad.
 		responseString = [self lossyStringFromData:[request responseData] encoding:[request responseEncoding] replaceString:@"?"];
 	}
-	JWLog(@"%@: %@", [request url], responseString);
+	NSLog(@"%@: %@", [request url], responseString);
 	NSString *errorString = [self error:request responseString:responseString];
 
 	if (NO == [self loggedIn:request responseString:responseString]) {
         // Login errors don't count as real errors
-		JWLog(@"Not logged in during request: %@", [request url]);
+		NSLog(@"Not logged in during request: %@", [request url]);
         [self resetUserData];
         [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:nil];
 	} else if (errorString) {
@@ -167,7 +167,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 }
 
 - (void)showErrorForRequest:(ASIHTTPRequest *)request error:(NSString *)errorString {
-    JWLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
+    NSLog(@"Error during request: %@\n  Error: %@", [request url], errorString);
     [IBAlertView showAlertWithTitle:@"Error" message:errorString dismissTitle:@"OK" dismissBlock:^() {
         ErrorBlock onError = request.userInfo[@"onError"];
         
@@ -186,7 +186,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
 // Starts an asynchronous request, calling onSuccess when the request finishes.
 - (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess onError:(ErrorBlock)onError {
-	JWLog(@"Performing request: %@", [request url]);
+	NSLog(@"Performing request: %@", [request url]);
 
 	NSMutableDictionary *userInfo = [request.userInfo mutableCopy];
 

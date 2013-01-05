@@ -52,7 +52,7 @@ enum GameSections {
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    JWLog("Showing current games view and refreshing games...");
+    NSLog(@"Showing current games view and refreshing games...");
 
 	[self refreshGames];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
