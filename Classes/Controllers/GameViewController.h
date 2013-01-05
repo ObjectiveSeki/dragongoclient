@@ -10,10 +10,10 @@
 
 @class GoBoardView, MessageView, Game, FuegoBoard;
 
-enum BoardState {
+typedef enum {
 	kBoardStateZoomedOut,
 	kBoardStateZoomedIn,
-};
+} BoardState;
 
 @interface GameViewController : UIViewController
 
