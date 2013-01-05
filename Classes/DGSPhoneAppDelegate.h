@@ -8,23 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-	UIViewController *viewController;
-	UIImage *blackStone;
-	UIImage *whiteStone;
-	UIImage *boardImage;
-	UIImage *messageOff;
-	UIImage *messageOn;
-	NSFileHandle *logFile;
-}
-
-@property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UIViewController *viewController;
-@property (nonatomic, strong) UIImage *blackStone;
-@property (nonatomic, strong) UIImage *whiteStone;
-@property (nonatomic, strong) UIImage *boardImage;
-@property (nonatomic, strong) UIImage *messageOff;
-@property (nonatomic, strong) UIImage *messageOn;
+@interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate>
 
 @end

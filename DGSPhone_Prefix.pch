@@ -41,6 +41,7 @@
 // Wrap TestFlight calls in TF() to only call them when TestFlight keys are set
 #ifdef TESTFLIGHT_APP_TOKEN
 #   define TF(testflight_call) { (testflight_call); }
+#   define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #else
 #   warning You must define TestFlight app tokens in Keys.h to get TestFlight functionality.
 #   define TF(...)

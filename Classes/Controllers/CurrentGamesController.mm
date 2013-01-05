@@ -15,6 +15,10 @@
 #import "IBAlertView.h"
 
 @interface CurrentGamesController ()
+
+@property(nonatomic, strong) NSArray *games;
+@property(nonatomic, strong) NSArray *runningGames;
+
 // Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
 // conflicting with the built-in iOS6 one.
 @property (nonatomic, strong) id myRefreshControl;
@@ -58,24 +62,10 @@ enum GameSections {
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)setEnabled:(BOOL)enabled {
     self.logoutButton.enabled = enabled;
@@ -83,7 +73,7 @@ enum GameSections {
     self.tableView.userInteractionEnabled = enabled;
 }
 
-#pragma mark - Actions
+#pragma mark - UI Actions
 
 - (void)refreshGames {
     [self setEnabled:NO];
@@ -128,30 +118,6 @@ enum GameSections {
     }];
 }
 
-- (void)addTestGames {
-    NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones", nil];
-    NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
-    for (NSString *name in testGames) {
-        Game *game = [[Game alloc] init];
-        game.opponent = name;
-        game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
-        game.color = kMovePlayerBlack;
-        game.time = @"Test";
-        [mutableCurrentGames addObject:game];
-    }
-    self.games = mutableCurrentGames;
-}
-
-- (void)gameListChanged {
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-    if ([self.games count] == 0 && [self.runningGames count] == 0) {
-        [self.tableView addSubview:self.noGamesView];
-    } else {
-        [self.noGamesView removeFromSuperview];
-        [self.tableView reloadData];
-    }
-}
-
 - (IBAction)logout {
     [IBAlertView showAlertWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" dismissTitle:@"Don't logout" okTitle:@"Logout" dismissBlock:^{
         // do nothing
@@ -174,6 +140,32 @@ enum GameSections {
         Game *game = (Game *)sender;
         controller.game = game;
         controller.readOnly = !game.myTurn;
+    }
+}
+
+#pragma mark - Game list management
+
+- (void)addTestGames {
+    NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones", nil];
+    NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
+    for (NSString *name in testGames) {
+        Game *game = [[Game alloc] init];
+        game.opponent = name;
+        game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
+        game.color = kMovePlayerBlack;
+        game.time = @"Test";
+        [mutableCurrentGames addObject:game];
+    }
+    self.games = mutableCurrentGames;
+}
+
+- (void)gameListChanged {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+    if ([self.games count] == 0 && [self.runningGames count] == 0) {
+        [self.tableView addSubview:self.noGamesView];
+    } else {
+        [self.noGamesView removeFromSuperview];
+        [self.tableView reloadData];
     }
 }
 
@@ -220,9 +212,9 @@ enum GameSections {
     Game *game = [self gameForRowAtIndexPath:indexPath];
     
     if ([game color] == kMovePlayerBlack) {
-        [cell.imageView setImage:[DGSAppDelegate blackStone]];
+        [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
     } else {
-        [cell.imageView setImage:[DGSAppDelegate whiteStone]];
+        [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
     }
     cell.textLabel.text = game.opponent;
     cell.detailTextLabel.text = game.time;

@@ -13,12 +13,8 @@
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *logoutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *addGameButton;
 @property(nonatomic, strong) IBOutlet UIView *noGamesView;
-@property(nonatomic, strong) NSArray *games;
-@property(nonatomic, strong) NSArray *runningGames;
 
 - (IBAction)logout;
-- (void)setEnabled:(BOOL)enabled;
-
 
 @end
 

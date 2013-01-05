@@ -15,16 +15,13 @@ enum BoardState {
 	kBoardStateZoomedIn,
 };
 
-@interface GameViewController : UIViewController {
-}
+@interface GameViewController : UIViewController
 
 @property(nonatomic, strong) Game *game;
 @property(nonatomic) BOOL readOnly;
 
-@property(nonatomic, strong) FuegoBoard *board;
 @property(nonatomic, strong) IBOutlet GoBoardView *boardView;
 @property(nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property(nonatomic) BoardState boardState;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *undoButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *zoomOutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *confirmButton;

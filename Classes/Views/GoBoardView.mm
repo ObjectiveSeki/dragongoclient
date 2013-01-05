@@ -8,7 +8,6 @@
 
 #import "GoBoardView.h"
 #import "Move.h"
-#import "DGSPhoneAppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 #define HANDICAP_MARKER_RADIUS 0.16
@@ -68,7 +67,7 @@
 
 - (void)drawBoardGrid:(CGContextRef)context boardSize:(int)boardSize {
 	
-	[[DGSAppDelegate boardImage] drawInRect:[self bounds]];
+	[[UIImage imageNamed:@"Board.png"] drawInRect:[self bounds]];
 	
 	CGContextSetLineWidth(context, 1.0);
 	
@@ -130,8 +129,8 @@
 - (void)drawStonesUsingLayer:(CGContextRef)context {
 	NSArray *moves = [self.board moves];
 	float stoneRadius = [self pointDistance] * STONE_RADIUS;
-	UIImage *blackStoneImage = [DGSAppDelegate blackStone];
-    UIImage *whiteStoneImage = [DGSAppDelegate whiteStone];
+	UIImage *blackStoneImage = [UIImage imageNamed:@"Black.png"];
+    UIImage *whiteStoneImage = [UIImage imageNamed:@"White.png"];
 
     CGLayerRef blackStone = CGLayerCreateWithContext(context, blackStoneImage.size, NULL);
     CGContextRef blackStoneContext = CGLayerGetContext(blackStone);

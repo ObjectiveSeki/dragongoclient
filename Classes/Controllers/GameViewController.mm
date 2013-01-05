@@ -15,17 +15,26 @@
 
 @interface GameViewController ()
 
+@property(nonatomic, strong) FuegoBoard *board;
+@property(nonatomic) BoardState boardState;
+
+// Zooming state
 @property (nonatomic, assign) CGFloat currentZoomScale;
 @property (nonatomic, assign) CGFloat maximumZoomScale;
 @property (nonatomic, assign) CGFloat minimumZoomScale;
+
+// SGF Sharing
 @property (nonatomic, strong) UIDocumentInteractionController *shareController;
 @property (nonatomic, strong) NSOperationQueue *sgfShareQueue;
 @property (nonatomic, strong) NSOperation *sgfShareOperation;
+
 @property (nonatomic, strong) SpinnerView *spinner;
 
 @end
 
 @implementation GameViewController
+
+#pragma mark - View lifecycle
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -37,6 +46,34 @@
     self.sgfShareQueue = [[NSOperationQueue alloc] init];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
+
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	self.boardState = kBoardStateZoomedOut;
+    NSLog(@"creating board...");
+	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
+	[[self boardView] setBoard:theBoard];
+	[self setBoard:theBoard];
+    
+	if ([theBoard comment]) {
+		[self setMessageIconState:YES];
+		self.messageView.message = [theBoard comment];
+	}
+    
+	self.currentZoomScale = [self zoomInScale];
+	[self lockZoom];
+	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
+    [self updateBoard];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[self.boardView setBoard:nil];
+	self.board = nil;
+}
+
+#pragma mark - UI State
 
 - (void)updateBoard {
 	if ([self.board canUndo]) {
@@ -67,13 +104,10 @@
 	}
 }
 
-- (IBAction)undoMove {
-	[self.board undoLastMove];
-	[self updateBoard];
-}
+#pragma mark - Zooming and scrolling
 
 // Is this board too small to justify zooming?
-- (BOOL)smallBoard {
+- (BOOL)isSmallBoard {
 	return [self.board size] < 13;
 }
 
@@ -142,26 +176,33 @@
 	[self updateBoard];
 }
 
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.boardView;
+}
+
+#pragma mark - Toolbar actions
+
 - (IBAction)zoomOut {
 	[self zoomOut:self.boardView.center];
 }
 
-- (void)playedMove {
-	[self.spinner dismiss:YES];
-	[self.navigationController popViewControllerAnimated:YES];
+- (IBAction)undoMove {
+	[self.board undoLastMove];
+	[self updateBoard];
 }
 
 - (IBAction)confirmMove {
     self.spinner.label.text = @"Submitting…";
     [self.spinner show];
 	self.confirmButton.enabled = NO;
-
+    
 	NSString *reply = self.messageView.reply;
-
+    
 	void (^onSuccess)() = ^() {
 		[self playedMove];
 	};
-
+    
 	if ([self.board beginningOfHandicapGame]) {
         [[GenericGameServer sharedGameServer] playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
             [self.spinner dismiss:YES];
@@ -216,19 +257,25 @@
     [self.shareController presentOptionsMenuFromBarButtonItem:sender animated:YES];
 }
 
+#pragma mark - Playing moves
+
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
-
+    
 	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded] || self.readOnly;
-
-	if (![self smallBoard] && [self boardState] == kBoardStateZoomedOut && canZoomIn) {
+    BOOL shouldZoomIn = ![self isSmallBoard] && self.boardState == kBoardStateZoomedOut && canZoomIn;
+    
+    BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
+    BOOL canPlayOrMarkStones = !self.readOnly && isZoomedIn;
+    
+	if (shouldZoomIn) {
 		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
 		[[self passButton] setEnabled:NO];
 		[[self resignButton] setEnabled:NO];
 		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
-	} else if (!self.readOnly && ([self smallBoard] || [self boardState] == kBoardStateZoomedIn)) {
+	} else if (canPlayOrMarkStones) {
 		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
-
+        
 		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
 		if (markedDeadStones || playedStone) {
 			[self zoomOut:[touch locationInView:view]];
@@ -236,18 +283,12 @@
 	}
 }
 
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    return self.boardView;
+- (void)playedMove {
+	[self.spinner dismiss:YES];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+#pragma mark - Memory management
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -255,47 +296,5 @@
 
     // Release any cached data, images, etc that aren't in use.
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	[self setBoardState:kBoardStateZoomedOut];
-    NSLog(@"creating board...");
-	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
-	[[self boardView] setBoard:theBoard];
-	[self setBoard:theBoard];
-
-	if ([theBoard comment]) {
-		[self setMessageIconState:YES];
-		self.messageView.message = [theBoard comment];
-	}
-
-	self.currentZoomScale = [self zoomInScale];
-	[self lockZoom];
-	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
-    [self updateBoard];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-	[self.boardView setBoard:nil];
-	self.board = nil;
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-	self.boardView = nil;
-	self.undoButton = nil;
-	self.zoomOutButton = nil;
-	self.confirmButton = nil;
-	self.passButton = nil;
-	self.resignButton = nil;
-	self.messageButton = nil;
-	self.messageView = nil;
-    [super viewDidUnload];
-}
-
-
-
 
 @end

@@ -8,13 +8,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SgSystem.h"
-#import "SgNode.h"
-#import "GoGame.h"
 #import "Move.h"
 
-@interface FuegoBoard : NSObject {
-}
+@interface FuegoBoard : NSObject
 
 @property(nonatomic, strong) Move *resignMove;
 @property(nonatomic, strong) NSArray *markedGroups;

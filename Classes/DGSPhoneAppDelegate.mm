@@ -7,13 +7,8 @@
 //
 
 #import "DGSPhoneAppDelegate.h"
-#import "CurrentGamesController.h"
 #import "FuegoBoard.h"
 #import "LoginViewController.h"
-
-#ifdef CACHING
-#import "CachingGameServer.h"
-#endif
 
 NSString * const PlayerDidLoginNotification = @"PlayerDidLoginNotification";
 NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
@@ -24,25 +19,7 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 
 @implementation DGSPhoneAppDelegate
 
-@synthesize window;
-@synthesize viewController;
-@synthesize blackStone;
-@synthesize whiteStone;
-@synthesize boardImage;
-@synthesize messageOff;
-@synthesize messageOn;
-
-#pragma mark -
-#pragma mark Application lifecycle
-
-- (NSString *)logFilePath {
-	
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	if ([paths count] > 0) {
-		return [paths[0] stringByAppendingPathComponent:@"dgs-debug.log"];
-	}
-	return nil;
-}
+#pragma mark - Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
@@ -55,16 +32,8 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
     TF([TestFlight takeOff:TESTFLIGHT_APP_TOKEN]);
 
 	NSLog(@"Starting Application...");
-	
-	[self setBlackStone:[UIImage imageNamed:@"Black.png"]];
-	[self setWhiteStone:[UIImage imageNamed:@"White.png"]];
-	[self setBoardImage:[UIImage imageNamed:@"Board.png"]];
-	[self setMessageOff:[UIImage imageNamed:@"Message off.png"]];
-	[self setMessageOn:[UIImage imageNamed:@"Message on.png"]];
-	NSLog(@"Loaded Images...");
-	NSLog(@"Initialized controllers...");
-
-	[window makeKeyAndVisible];
+    
+	[self.window makeKeyAndVisible];
 	NSLog(@"Showing main window...");
 	
 	return YES;
