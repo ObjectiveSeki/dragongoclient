@@ -4,9 +4,7 @@
 //#import "application_headers" as required
 
 
-@interface FuegoBoardTests : SenTestCase {
-
-}
+@interface FuegoBoardTests : SenTestCase 
 
 - (void)testGameStateAfterPasses;
 - (void)testMoveNumberFixForScores;

@@ -70,8 +70,6 @@
 // Captured endgame territory, in an array of moves
 - (NSArray *)territory;
 
-- (bool)gameEnded;
-
 - (bool)canUndo;
 - (bool)canPlayMove;
 - (bool)canPassOrResign;

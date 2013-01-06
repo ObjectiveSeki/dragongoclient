@@ -9,20 +9,17 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		6645B192147CCE2400170504 /* dgs.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6645B191147CCE2400170504 /* dgs.sqlite */; };
+		2B83CE3D00F44EECB6A4DC92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E70F66E1DDD488A8E5F4CF6 /* libPods.a */; };
 		CE7771B66F8849888D9FC85E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF2422AA37640AC84A2C071 /* libPods.a */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
-		DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
 		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
-		DA0762B81377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
 		DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0824E6161A618F00802B9A /* Default-568h@2x.png */; };
 		DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C1161FF67400AEAEF6 /* JWCache.m */; };
 		DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
-		DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA20DC6E13456BFB00829D9D /* GoAssertBoardRestored.h in Headers */ = {isa = PBXBuildFile; fileRef = DA20DB5313456BF900829D9D /* GoAssertBoardRestored.h */; };
 		DA20DC6F13456BFB00829D9D /* GoAutoBook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA20DB5413456BF900829D9D /* GoAutoBook.cpp */; };
 		DA20DC7013456BFB00829D9D /* GoAutoBook.h in Headers */ = {isa = PBXBuildFile; fileRef = DA20DB5513456BF900829D9D /* GoAutoBook.h */; };
@@ -239,49 +236,39 @@
 		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
 		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
 		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
-		DA37D90C11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
-		DA37D90D11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
 		DA37D9C311BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
-		DA37D9C411BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
-		DA38AB9911EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
 		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
-		DA391DDF1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
-		DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
-		DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.m */; };
-		DA476A5314DA109F00AAF7E0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */; };
 		DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */; };
 		DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */; };
 		DA58E80D12453A3D00387BB5 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D350C12B20A8F001271D3 /* Moves@2x.png */; };
 		DA5D351312B20A9D001271D3 /* Moves.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D351212B20A9A001271D3 /* Moves.png */; };
+		DA65D69C169820E500AB9FC7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */; };
+		DA65D69D169820E500AB9FC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA52A611B8989F00F4CCB3 /* UIKit.framework */; };
+		DA65D69E169820E500AB9FC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
+		DA65D6A4169820E500AB9FC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA65D6A2169820E500AB9FC7 /* InfoPlist.strings */; };
+		DA65D6AF1698247A00AB9FC7 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
+		DA65D6B01698249700AB9FC7 /* FuegoBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.m */; };
+		DA65D6D016982A6D00AB9FC7 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
+		DA65D6D216982A7E00AB9FC7 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
-		DA667C1B125A266C00CA9A13 /* FuegoBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.m */; };
-		DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
-		DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA68408514DB04E9006EF22C /* CachingGameServer.m */; };
 		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
-		DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
 		DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
-		DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
 		DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
-		DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
 		DA77A95013B2F47200803136 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A94F13B2F47200803136 /* libz.dylib */; };
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
-		DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
 		DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
-		DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
-		DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
-		DA8E707D13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
 		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
 		DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC44125C2725002EB162 /* Message on@2x.png */; };
@@ -292,9 +279,7 @@
 		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
 		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
-		DAC33E9815885EC600CDD7A1 /* libPods-logic_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */; };
 		DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
-		DAC33EE01589AD2100CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
@@ -305,44 +290,34 @@
 		DAD36369126D586600589A32 /* Message input.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36367126D586600589A32 /* Message input.png */; };
 		DAD3636A126D586600589A32 /* Message input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36368126D586600589A32 /* Message input@2x.png */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
-		DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CDD11FD3C0B005922A3 /* Readme.md */; };
-		DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */ = {isa = PBXBuildFile; fileRef = DADD1CE111FD3C43005922A3 /* FAQ.md */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
-		DAE5F4C915AFEDBA0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
+		DAE4723D16994BD100E40718 /* waiting.html in Resources */ = {isa = PBXBuildFile; fileRef = DAFADA4E12CF0EF100985126 /* waiting.html */; };
+		DAE4723E16994BD100E40718 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
+		DAE4723F16994BD100E40718 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
+		DAE4724016994BD100E40718 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
+		DAE4724116994BD100E40718 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
+		DAE4724216994BD100E40718 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
+		DAE4724316994BD100E40718 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
+		DAE4724416994BD100E40718 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
+		DAE4724516994BD100E40718 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
+		DAE4724616994BD100E40718 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
 		DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
 		DAE5F4CC15AFEE130062B5F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA52A611B8989F00F4CCB3 /* UIKit.framework */; };
 		DAE932AA12454A2900335F0F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DAE932A912454A2900335F0F /* LICENSE */; };
 		DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE932C112454E4800335F0F /* AddGameViewController.m */; };
-		DAE932D21245501100335F0F /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
-		DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
-		DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
-		DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
-		DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
 		DAEB649D125E1C3D00A915EB /* Resign.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB649C125E1C3D00A915EB /* Resign.png */; };
 		DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB64A9125E202800A915EB /* Resign@2x.png */; };
 		DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
 		DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
-		DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
-		DAECBE2F11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
 		DAF9102911BB48A800FE7B96 /* GoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.m */; };
 		DAF9105F11BB5BBD00FE7B96 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.m */; };
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
-		DAF911F611BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
-		DAFADA4F12CF0EF100985126 /* waiting.html in Resources */ = {isa = PBXBuildFile; fileRef = DAFADA4E12CF0EF100985126 /* waiting.html */; };
 		DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
-		DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DA214FBC12458E8F00448955 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA58E8031245398B00387BB5;
-			remoteInfo = fuego;
-		};
 		DA58E80B12453A3400387BB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -350,12 +325,12 @@
 			remoteGlobalIDString = DA58E8031245398B00387BB5;
 			remoteInfo = fuego;
 		};
-		DA77A95813B2FB8300803136 /* PBXContainerItemProxy */ = {
+		DA65D6AD1698212400AB9FC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DA71CA8311B5E97F008696AC;
-			remoteInfo = LogicTests;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = DGS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -366,7 +341,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		6645B191147CCE2400170504 /* dgs.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = dgs.sqlite; sourceTree = "<group>"; };
+		7E70F66E1DDD488A8E5F4CF6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BF2422AA37640AC84A2C071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CE40383ED0524204AD9559A1 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -386,7 +361,6 @@
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
-		DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-logic_tests.xcconfig"; path = "Pods/Pods-logic_tests.xcconfig"; sourceTree = "<group>"; };
 		DA20DB5313456BF900829D9D /* GoAssertBoardRestored.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoAssertBoardRestored.h; sourceTree = "<group>"; };
 		DA20DB5413456BF900829D9D /* GoAutoBook.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GoAutoBook.cpp; sourceTree = "<group>"; };
 		DA20DB5513456BF900829D9D /* GoAutoBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoAutoBook.h; sourceTree = "<group>"; };
@@ -598,7 +572,6 @@
 		DA20DC3F13456BFA00829D9D /* SgVectorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgVectorUtil.h; sourceTree = "<group>"; };
 		DA20DC4013456BFA00829D9D /* SgWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SgWrite.cpp; sourceTree = "<group>"; };
 		DA20DC4113456BFA00829D9D /* SgWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SgWrite.h; sourceTree = "<group>"; };
-		DA214FB412458E3000448955 /* LogicTests_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicTests_Prefix.pch; sourceTree = "<group>"; };
 		DA238C2515B22AE800D4050C /* DGSErrors.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = DGSErrors.strings; path = Resources/DGSErrors.strings; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
 		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
@@ -616,7 +589,7 @@
 		DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoard.mm; sourceTree = "<group>"; };
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
 		DA419D4411BB2DA400B3050E /* CurrentGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentGamesController.m; sourceTree = "<group>"; };
-		DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		DA5218D312CF9EF500000147 /* WaitingRoomGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingRoomGamesController.h; sourceTree = "<group>"; };
 		DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingRoomGamesController.m; sourceTree = "<group>"; };
 		DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinWaitingRoomGameController.h; sourceTree = "<group>"; };
@@ -624,6 +597,11 @@
 		DA58E8041245398B00387BB5 /* libfuego.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfuego.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
 		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
+		DA65D69B169820E500AB9FC7 /* DGSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGSTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA65D6A1169820E500AB9FC7 /* DGSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSTests-Info.plist"; sourceTree = "<group>"; };
+		DA65D6A3169820E500AB9FC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DA65D6A8169820E500AB9FC7 /* DGSTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DGSTests-Prefix.pch"; sourceTree = "<group>"; };
+		DA65D6E416982C3600AB9FC7 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Pass Should Be Move 200.sgf"; sourceTree = "<group>"; };
 		DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoardTests.h; sourceTree = "<group>"; };
 		DA667C1A125A266C00CA9A13 /* FuegoBoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuegoBoardTests.m; sourceTree = "<group>"; };
@@ -632,9 +610,7 @@
 		DA68408514DB04E9006EF22C /* CachingGameServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachingGameServer.m; sourceTree = "<group>"; };
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
-		DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
-		DA71CA8411B5E97F008696AC /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA7510D61696C96E009BF0E6 /* Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
@@ -687,7 +663,7 @@
 		DAEA519A11B88D8300F4CCB3 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		DAEA525911B895ED00F4CCB3 /* DGSTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSTests.h; sourceTree = "<group>"; };
 		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
-		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
 		DAEB649C125E1C3D00A915EB /* Resign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resign.png; sourceTree = "<group>"; };
 		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
@@ -731,16 +707,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA71CA8111B5E97F008696AC /* Frameworks */ = {
+		DA65D697169820E500AB9FC7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA476A5314DA109F00AAF7E0 /* SenTestingKit.framework in Frameworks */,
-				DA77A95D13B2FCB600803136 /* libxml2.dylib in Frameworks */,
-				DAE932D21245501100335F0F /* libfuego.a in Frameworks */,
-				DAC33E9815885EC600CDD7A1 /* libPods-logic_tests.a in Frameworks */,
-				DAC33EE01589AD2100CDD7A1 /* boost.framework in Frameworks */,
-				DAE5F4C915AFEDBA0062B5F4 /* Foundation.framework in Frameworks */,
+				DA65D6D216982A7E00AB9FC7 /* boost.framework in Frameworks */,
+				DA65D6D016982A6D00AB9FC7 /* libfuego.a in Frameworks */,
+				DA65D69C169820E500AB9FC7 /* SenTestingKit.framework in Frameworks */,
+				DA65D69D169820E500AB9FC7 /* UIKit.framework in Frameworks */,
+				DA65D69E169820E500AB9FC7 /* Foundation.framework in Frameworks */,
+				2B83CE3D00F44EECB6A4DC92 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,7 +731,6 @@
 				DAF9102311BB487500FE7B96 /* Views */,
 				DA38B20311B59FB400112AA4 /* Controllers */,
 				DA02D14A11D99D3900A9D887 /* Table Cells */,
-				DA71CAA911B5EAB1008696AC /* Tests */,
 				DA0FE7BE161FF64200AEAEF6 /* Libraries */,
 				1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */,
@@ -767,8 +742,8 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* DGSBeta.app */,
-				DA71CA8411B5E97F008696AC /* LogicTests.octest */,
 				DA58E8041245398B00387BB5 /* libfuego.a */,
+				DA65D69B169820E500AB9FC7 /* DGSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -776,7 +751,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				6645B191147CCE2400170504 /* dgs.sqlite */,
 				DAEE341C15884ECA00300B29 /* Podfile */,
 				DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */,
 				DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */,
@@ -789,10 +763,10 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				DA58E7841245371700387BB5 /* Vendor */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				DA65D69F169820E500AB9FC7 /* DGSTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				CE40383ED0524204AD9559A1 /* Pods.xcconfig */,
-				DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -800,10 +774,10 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				DA214FB412458E3000448955 /* LogicTests_Prefix.pch */,
 				32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 				DA7510D61696C96E009BF0E6 /* Keys.h */,
+				DA65D6E416982C3600AB9FC7 /* Config.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -817,7 +791,6 @@
 				DA402AC611D30931005017C4 /* AppIcon@2x.png */,
 				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
-				DA71CA5E11B5E894008696AC /* LogicTests-Info.plist */,
 				DA0824E6161A618F00802B9A /* Default-568h@2x.png */,
 				DA8A962711FBB3D100B2E2C7 /* Default.png */,
 				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
@@ -843,6 +816,7 @@
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
 				DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */,
 				8BF2422AA37640AC84A2C071 /* libPods.a */,
+				7E70F66E1DDD488A8E5F4CF6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1209,23 +1183,26 @@
 			name = Fuego;
 			sourceTree = "<group>";
 		};
-		DA71CAA911B5EAB1008696AC /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				DA71CAF711B5EEA9008696AC /* Logic */,
-			);
-			path = Tests;
-			sourceTree = "<group>";
-		};
-		DA71CAF711B5EEA9008696AC /* Logic */ = {
+		DA65D69F169820E500AB9FC7 /* DGSTests */ = {
 			isa = PBXGroup;
 			children = (
 				DAEA525911B895ED00F4CCB3 /* DGSTests.h */,
 				DAEA525A11B895ED00F4CCB3 /* DGSTests.m */,
 				DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */,
 				DA667C1A125A266C00CA9A13 /* FuegoBoardTests.m */,
+				DA65D6A0169820E500AB9FC7 /* Supporting Files */,
 			);
-			name = Logic;
+			path = DGSTests;
+			sourceTree = "<group>";
+		};
+		DA65D6A0169820E500AB9FC7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DA65D6A1169820E500AB9FC7 /* DGSTests-Info.plist */,
+				DA65D6A2169820E500AB9FC7 /* InfoPlist.strings */,
+				DA65D6A8169820E500AB9FC7 /* DGSTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
@@ -1414,7 +1391,6 @@
 			);
 			dependencies = (
 				DA58E80C12453A3400387BB5 /* PBXTargetDependency */,
-				DA77A95913B2FB8300803136 /* PBXTargetDependency */,
 			);
 			name = DGS;
 			productName = DGSPhone;
@@ -1438,24 +1414,24 @@
 			productReference = DA58E8041245398B00387BB5 /* libfuego.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		DA71CA8311B5E97F008696AC /* LogicTests */ = {
+		DA65D69A169820E500AB9FC7 /* DGSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA71CA9611B5E9A0008696AC /* Build configuration list for PBXNativeTarget "LogicTests" */;
+			buildConfigurationList = DA65D6A9169820E500AB9FC7 /* Build configuration list for PBXNativeTarget "DGSTests" */;
 			buildPhases = (
-				DA71CA7F11B5E97F008696AC /* Resources */,
-				DA71CA8011B5E97F008696AC /* Sources */,
-				DA71CA8111B5E97F008696AC /* Frameworks */,
-				DA71CA8211B5E97F008696AC /* ShellScript */,
-				60F25901805E46D3A53A6D99 /* Copy Pods Resources */,
+				DA65D696169820E500AB9FC7 /* Sources */,
+				DA65D697169820E500AB9FC7 /* Frameworks */,
+				DA65D698169820E500AB9FC7 /* Resources */,
+				DA65D699169820E500AB9FC7 /* ShellScript */,
+				587234C528684BE6BA343C38 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DA214FBD12458E8F00448955 /* PBXTargetDependency */,
+				DA65D6AE1698212400AB9FC7 /* PBXTargetDependency */,
 			);
-			name = LogicTests;
-			productName = LogicTests;
-			productReference = DA71CA8411B5E97F008696AC /* LogicTests.octest */;
+			name = DGSTests;
+			productName = DGSTests;
+			productReference = DA65D69B169820E500AB9FC7 /* DGSTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -1481,7 +1457,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* DGS */,
-				DA71CA8311B5E97F008696AC /* LogicTests */,
+				DA65D69A169820E500AB9FC7 /* DGSTests */,
 				DA58E8031245398B00387BB5 /* fuego */,
 			);
 		};
@@ -1527,7 +1503,6 @@
 				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
 				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
-				6645B192147CCE2400170504 /* dgs.sqlite in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
 				DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */,
@@ -1535,36 +1510,41 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA71CA7F11B5E97F008696AC /* Resources */ = {
+		DA65D698169820E500AB9FC7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEA534811B8A4C000F4CCB3 /* status.csv in Resources */,
-				DA137D6211BE13CF00225C12 /* AppIcon.png in Resources */,
-				DA37D90C11BF56DA00BC1445 /* Black.png in Resources */,
-				DA37D90D11BF56DA00BC1445 /* White.png in Resources */,
-				DA37D9C411BF6E5100BC1445 /* Board.png in Resources */,
-				DA402AC711D30931005017C4 /* AppIcon@2x.png in Resources */,
-				DA38AB9911EC028B005E1AB7 /* First Score.sgf in Resources */,
-				DA7541C911EF581B00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
-				DA7542E211F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
-				DA7542F211F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
-				DAECBE2E11F38ADD00CDA9F3 /* Board dock.png in Resources */,
-				DAECBE2F11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
-				DA8A95FE11FBB12000B2E2C7 /* Default@2x.png in Resources */,
-				DA8A962811FBB3D100B2E2C7 /* Default.png in Resources */,
-				DADD1CDE11FD3C0B005922A3 /* Readme.md in Resources */,
-				DADD1CE211FD3C43005922A3 /* FAQ.md in Resources */,
-				DA667C35125A288D00CA9A13 /* Scoring Should Be Move 202.sgf in Resources */,
-				DA667C4B125A2A4500CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
-				DAFADA4F12CF0EF100985126 /* waiting.html in Resources */,
-				DAFED53A15943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
+				DAE4723D16994BD100E40718 /* waiting.html in Resources */,
+				DAE4723E16994BD100E40718 /* Scoring Should Be Move 202.sgf in Resources */,
+				DAE4723F16994BD100E40718 /* Pass Should Be Move 200.sgf in Resources */,
+				DAE4724016994BD100E40718 /* Game with Message.sgf in Resources */,
+				DAE4724116994BD100E40718 /* Start Handicap Game.sgf in Resources */,
+				DAE4724216994BD100E40718 /* Handicap Stones Placed.sgf in Resources */,
+				DAE4724316994BD100E40718 /* Multiple Scoring Passes.sgf in Resources */,
+				DAE4724416994BD100E40718 /* First Score.sgf in Resources */,
+				DAE4724516994BD100E40718 /* status.csv in Resources */,
+				DAE4724616994BD100E40718 /* 25x25 Handicap Stones.sgf in Resources */,
+				DA65D6A4169820E500AB9FC7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		587234C528684BE6BA343C38 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
 		5D26EC3E623C439DB6718EC6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1579,20 +1559,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
 		};
-		60F25901805E46D3A53A6D99 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-logic_tests-resources.sh\"\n";
-		};
 		DA0E103D140F240D0067BE35 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1606,7 +1572,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nif [ $CONFIGURATION != \"Debug\" ]; then\n  buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" DGSPhone-Info.plist)\n  buildNumber=$(($buildNumber + 1))\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" DGSPhone-Info.plist\nfi";
 		};
-		DA71CA8211B5E97F008696AC /* ShellScript */ = {
+		DA65D699169820E500AB9FC7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1754,42 +1720,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA71CA8011B5E97F008696AC /* Sources */ = {
+		DA65D696169820E500AB9FC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAEA518311B88A1100F4CCB3 /* DGS.m in Sources */,
-				DAEA519D11B88D8300F4CCB3 /* Game.m in Sources */,
-				DAEA525B11B895ED00F4CCB3 /* DGSTests.m in Sources */,
-				DA419A6111BA0C0600B3050E /* FuegoBoard.mm in Sources */,
-				DAF911F611BB796900FE7B96 /* Move.m in Sources */,
-				DA02D13E11D99BF000A9D887 /* NewGame.m in Sources */,
-				DA667C1B125A266C00CA9A13 /* FuegoBoardTests.m in Sources */,
-				DA0762B81377B678003E0390 /* DGSDev.m in Sources */,
-				DA8E707D13D5337E007E569B /* GameList.m in Sources */,
-				DA391DDF1592CB2900F9E36F /* Player.m in Sources */,
+				DA65D6AF1698247A00AB9FC7 /* DGSTests.m in Sources */,
+				DA65D6B01698249700AB9FC7 /* FuegoBoardTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DA214FBD12458E8F00448955 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA58E8031245398B00387BB5 /* fuego */;
-			targetProxy = DA214FBC12458E8F00448955 /* PBXContainerItemProxy */;
-		};
 		DA58E80C12453A3400387BB5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA58E8031245398B00387BB5 /* fuego */;
 			targetProxy = DA58E80B12453A3400387BB5 /* PBXContainerItemProxy */;
 		};
-		DA77A95913B2FB8300803136 /* PBXTargetDependency */ = {
+		DA65D6AE1698212400AB9FC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DA71CA8311B5E97F008696AC /* LogicTests */;
-			targetProxy = DA77A95813B2FB8300803136 /* PBXContainerItemProxy */;
+			target = 1D6058900D05DD3D006BFB54 /* DGS */;
+			targetProxy = DA65D6AD1698212400AB9FC7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DA65D6A2169820E500AB9FC7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DA65D6A3169820E500AB9FC7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -1809,7 +1773,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
@@ -1831,7 +1795,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
@@ -1854,6 +1818,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "";
@@ -1875,6 +1840,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -1897,7 +1863,6 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = fuego;
@@ -1918,12 +1883,101 @@
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = fuego;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		DA65D6AA169820E500AB9FC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE40383ED0524204AD9559A1 /* Pods.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DGSBeta.app/DGSBeta";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/vendor\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DGSTests/DGSTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "DGSTests/DGSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		DA65D6AB169820E500AB9FC7 /* Adhoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE40383ED0524204AD9559A1 /* Pods.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DGSBeta.app/DGSBeta";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/vendor\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DGSTests/DGSTests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "DGSTests/DGSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Adhoc;
+		};
+		DA65D6AC169820E500AB9FC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE40383ED0524204AD9559A1 /* Pods.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DGS.app/DGS";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/vendor\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DGSTests/DGSTests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "DGSTests/DGSTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1941,6 +1995,7 @@
 				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -1964,48 +2019,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				PRODUCT_NAME = DGSBeta;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Adhoc;
-		};
-		DA667DC2125AE40300CA9A13 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)/vendor\"",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					vendor/boost/include,
-				);
-				INFOPLIST_FILE = "LogicTests-Info.plist";
-				PRODUCT_NAME = LogicTests;
-				SKIP_INSTALL = YES;
-				TEST_AFTER_BUILD = YES;
-				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
 			};
 			name = Adhoc;
 		};
@@ -2022,7 +2041,6 @@
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				PRODUCT_NAME = fuego;
@@ -2030,78 +2048,6 @@
 				ZERO_LINK = NO;
 			};
 			name = Adhoc;
-		};
-		DA71CA8511B5E97F008696AC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)/vendor\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					vendor/boost/include,
-				);
-				INFOPLIST_FILE = "LogicTests-Info.plist";
-				PRODUCT_NAME = LogicTests;
-				SKIP_INSTALL = YES;
-				TEST_AFTER_BUILD = YES;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		DA71CA8611B5E97F008696AC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA15D3DA15B13D0C00CC6E65 /* Pods-logic_tests.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)/vendor\"",
-				);
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = LogicTests_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = LOGIC_TEST_MODE;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					vendor/boost/include,
-				);
-				INFOPLIST_FILE = "LogicTests-Info.plist";
-				PRODUCT_NAME = LogicTests;
-				SKIP_INSTALL = YES;
-				TEST_AFTER_BUILD = YES;
-				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2136,12 +2082,12 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA71CA9611B5E9A0008696AC /* Build configuration list for PBXNativeTarget "LogicTests" */ = {
+		DA65D6A9169820E500AB9FC7 /* Build configuration list for PBXNativeTarget "DGSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DA71CA8511B5E97F008696AC /* Debug */,
-				DA667DC2125AE40300CA9A13 /* Adhoc */,
-				DA71CA8611B5E97F008696AC /* Release */,
+				DA65D6AA169820E500AB9FC7 /* Debug */,
+				DA65D6AB169820E500AB9FC7 /* Adhoc */,
+				DA65D6AC169820E500AB9FC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

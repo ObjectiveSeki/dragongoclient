@@ -20,11 +20,6 @@ typedef void(^ErrorBlock)(NSError *error);
 
 @protocol GameServerProtocol
 
-// Logic tests can't test anything that uses the native iPhone functionality.
-// Therefore, we don't want to compile anything that hits the network
-// if we're building the logic tests bundle. It should define LOGIC_TEST_MODE.
-#ifndef LOGIC_TEST_MODE
-
 + (id<GameServerProtocol>)sharedGameServer;
 
 - (void)logout:(ErrorBlock)onError;
@@ -47,7 +42,5 @@ typedef void(^ErrorBlock)(NSError *error);
 - (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess  onError:(ErrorBlock)onError;
 - (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
-
-#endif
 
 @end

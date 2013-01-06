@@ -7,10 +7,7 @@
 //
 
 #import "DGSDev.h"
-
-#ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
-#endif
 
 @implementation DGSDev
 

@@ -4,9 +4,7 @@
 //#import "application_headers" as required
 #import "DGS.h"
 
-@interface DGSTests : SenTestCase {
-
-}
+@interface DGSTests : SenTestCase 
 
 - (void)testParseQuickStatusGames;
 - (void)testBoardCoords;

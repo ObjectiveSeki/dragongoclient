@@ -1,5 +1,0 @@
-// needed for Tidy support in TouchXML
-#define TOUCHXMLUSETIDY 1
-#define DGS_SITE @""
-
-#define S(fmt, ...) [NSString stringWithFormat:(fmt), ##__VA_ARGS__]

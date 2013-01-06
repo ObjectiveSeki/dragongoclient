@@ -7,9 +7,5 @@ pod 'JSONKit'
 pod 'ODRefreshControl'
 pod 'InnerBand'
 pod 'TestFlightSDK'
-
-target :logic_tests, :exclusive => true do
-  link_with 'LogicTests'
-  pod 'GDataXML-HTML'
-  pod 'JSONKit'
-end
+link_with 'DGS'
+link_with 'DGSTests'

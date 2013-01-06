@@ -11,11 +11,8 @@
 #import "NewGame.h"
 #import "JSONKit.h"
 #import "Player.h"
-
-#ifndef LOGIC_TEST_MODE
 #import "ASIFormDataRequest.h"
 #import "IBAlertView.h"
-#endif
 
 @implementation DGS
 
@@ -40,8 +37,6 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 - (NSURL *)URLWithPath:(NSString *)path {
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://www.dragongoserver.net", path]];
 }
-
-#ifndef LOGIC_TEST_MODE
 
 - (id)init {
 	if (self = [super init]) {
@@ -470,8 +465,6 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 		onSuccess();
 	} onError:onError];
 }
-
-#endif
 
 #pragma mark -
 #pragma mark Helper functions

@@ -21,7 +21,7 @@
 }
 
 - (NSString *)stringForSgfFile:(NSString *)sgfFilename {
-	NSString * sgfFile = [NSString stringWithContentsOfFile:[[NSBundle bundleForClass:[self class] ] pathForResource:sgfFilename ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
+	NSString * sgfFile = [NSString stringWithContentsOfFile:TestFile(sgfFilename, @"sgf") encoding:NSUTF8StringEncoding error:NULL];
 	return sgfFile;
 }
 
@@ -52,7 +52,6 @@
 	FuegoBoard *otherBoard = [[FuegoBoard alloc] initWithSGFString:otherSgfString];
 	
 	STAssertEquals([otherBoard moveNumber], 15, nil);
-	
 }
 
 - (void)testPlayMoveAfterScoring {

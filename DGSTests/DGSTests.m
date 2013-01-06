@@ -11,7 +11,7 @@
 @implementation DGSTests
 
 - (void)testParseQuickStatusGames {
-	NSString *testData = [NSString stringWithContentsOfFile:@"TestData/status.csv" encoding:NSUTF8StringEncoding error:NULL];
+    NSString *testData = [NSString stringWithContentsOfFile:TestFile(@"status", @"csv") encoding:NSUTF8StringEncoding error:NULL];
 	DGS *dgs = [[DGS alloc] init];
 	NSArray *games = [dgs gamesFromCSV:testData];
 	NSUInteger expectedCount = 2;
@@ -29,7 +29,7 @@
 }
 
 - (void)testParseWaitingRoom {
-	NSData *testData = [NSData dataWithContentsOfFile:@"TestData/waiting.html" options:0 error:nil];
+	NSData *testData = [NSData dataWithContentsOfFile:TestFile(@"waiting", @"html") options:0 error:nil];
 
 	DGS *dgs = [[DGS alloc] init];
 	NSArray *games = [dgs gamesFromWaitingRoomTable:testData];

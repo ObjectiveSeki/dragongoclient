@@ -8,3 +8,5 @@
 #endif
 
 #import "Config.h"
+
+#define TestFile(name, type) [[NSBundle bundleForClass:[self class]] pathForResource:name ofType:type]
