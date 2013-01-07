@@ -43,10 +43,8 @@
     tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
-    self.sgfShareQueue = [[NSOperationQueue alloc] init];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
@@ -65,11 +63,15 @@
 	[self lockZoom];
 	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
     [self updateBoard];
+    self.sgfShareQueue = [[NSOperationQueue alloc] init];
+    self.sgfShareQueue.name = @"SGF saving queue";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[self.boardView setBoard:nil];
+    [self.sgfShareQueue cancelAllOperations];
+    self.sgfShareQueue = nil;
 	self.board = nil;
 }
 
@@ -242,15 +244,22 @@
             NSString *tmpFilename = [NSString stringWithFormat:@"dgs-game-%d-%d.sgf", self.game.gameId, self.board.moveNumber];
             NSString *tmpFileFullPath = [NSTemporaryDirectory() stringByAppendingPathComponent:tmpFilename];
             
-            if (![self.game.sgfString writeToFile:tmpFileFullPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError]) {
-                NSLog(@"Error writing sgf file: %@", writeError.localizedDescription);
+            if (!self.sgfShareOperation.isCancelled) {
+                if (![self.game.sgfString writeToFile:tmpFileFullPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError]) {
+                    NSLog(@"Error writing sgf file: %@", writeError.localizedDescription);
+                }
             }
             
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (!self.sgfShareOperation.isCancelled) {
                 self.shareController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:tmpFileFullPath]];
-                self.sgfShareOperation = nil;
-                [self share:sender];
-            }];
+            }
+            if (!self.sgfShareOperation.isCancelled) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    self.sgfShareOperation = nil;
+                    [self share:sender];
+                }];
+            }
+            self.sgfShareOperation = nil;
         }];
         [self.sgfShareQueue addOperation:self.sgfShareOperation];
     }
