@@ -239,24 +239,28 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     } onError:onError];
 }
 
-- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)refreshCurrentGames:(void (^)(NSOrderedSet *gameList))onSuccess onError:(ErrorBlock)onError {
     [self getCurrentGames:onSuccess onError:onError];
 }
 
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)getCurrentGames:(void (^)(NSOrderedSet *gameList))onSuccess onError:(ErrorBlock)onError {
 	NSURL *url = [self URLWithPath:@"/quick_status.php?no_cache=1&version=2"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-		NSArray *gameList = [self gamesFromCSV:responseString];
+		NSOrderedSet *gameList = [self gamesFromCSV:responseString];
 		onSuccess(gameList);
 	} onError:onError];
 }
 
+- (void)refreshRunningGames:(void (^)(NSOrderedSet *gameList))onSuccess onError:(ErrorBlock)onError {
+    [self getRunningGames:onSuccess onError:onError];
+}
+
 // http://www.dragongoserver.net/quick_do.php?obj=game&cmd=list&view=running&lstyle=json
 // {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
-- (void)getRunningGames:(ListBlock)onSuccess onError:(ErrorBlock)onError {
+- (void)getRunningGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
     NSURL *url = [self URLWithPath:@"/quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
@@ -264,7 +268,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
         JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
 #warning TODO: check for errors?
 #warning TODO: pagination?
-        NSArray *games = [self runningGamesFromGameList:[decoder objectWithData:[request responseData]][@"list_result"]];
+        NSOrderedSet *games = [self runningGamesFromGameList:[decoder objectWithData:[request responseData]][@"list_result"]];
         onSuccess(games);
     } onError:onError];
 }
@@ -343,7 +347,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     } onError:onError];
 }
 
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     static NSString *playHandicapStonesFormat = @"quick_do.php?obj=game&cmd=set_handicap&gid=%d&move_id=%d&move=%@";
 	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
@@ -352,7 +356,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 		[moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
 	}
         
-    NSMutableString *urlString = [NSMutableString stringWithFormat:playHandicapStonesFormat, gameId, lastMoveNumber, moveString];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:playHandicapStonesFormat, game.gameId, lastMoveNumber, moveString];
 
 	if ([comment length] > 0) {
 		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
@@ -367,7 +371,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	} onError:onError];
 }
 
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber;
@@ -379,7 +383,7 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
         [moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
     }
     
-    urlString = [NSMutableString stringWithFormat:scoreUrlFormat, gameId, lastMoveNumber, moveString];
+    urlString = [NSMutableString stringWithFormat:scoreUrlFormat, game.gameId, lastMoveNumber, moveString];
         
     if ([comment length] > 0) {
         [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
@@ -397,18 +401,18 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	} onError:onError];
 }
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
     static NSString *moveUrlFormat = @"/quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
     static NSString *resignUrlFormat = @"/quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
     NSMutableString *urlString;
     
     if ([move moveType] == kMoveTypePass) {
-        urlString = [NSMutableString stringWithFormat:moveUrlFormat, gameId, lastMoveNumber, @"pass"];
+        urlString = [NSMutableString stringWithFormat:moveUrlFormat, game.gameId, lastMoveNumber, @"pass"];
     } else if ([move moveType] == kMoveTypeResign) {
-        urlString = [NSMutableString stringWithFormat:resignUrlFormat, gameId, lastMoveNumber];
+        urlString = [NSMutableString stringWithFormat:resignUrlFormat, game.gameId, lastMoveNumber];
     } else if ([move moveType] == kMoveTypeMove) {
-        urlString = [NSMutableString stringWithFormat:moveUrlFormat, gameId, lastMoveNumber, [self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
+        urlString = [NSMutableString stringWithFormat:moveUrlFormat, game.gameId, lastMoveNumber, [self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
     } 
     
     if ([comment length] > 0) {
@@ -471,9 +475,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
 // This takes the CSV data that the DGS API hands back to us and transforms
 // it into a list of Game objects.
-- (NSArray *)gamesFromCSV:(NSString *)csvData {
-	NSMutableArray *games = [NSMutableArray array];
+- (NSOrderedSet *)gamesFromCSV:(NSString *)csvData {
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
+    NSMutableOrderedSet *games = [NSMutableOrderedSet orderedSetWithCapacity:[lines count]];
+    
 	for(NSString *line in lines) {
 		NSArray *cols = [line componentsSeparatedByString:@","];
 		if([cols[0] isEqual:@"G"]) {
@@ -505,8 +510,8 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 }
 
 // {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
-- (NSArray *)runningGamesFromGameList:(NSArray *)responseGameList {
-    NSMutableArray *games = [[NSMutableArray alloc] initWithCapacity:[responseGameList count]];
+- (NSOrderedSet *)runningGamesFromGameList:(NSArray *)responseGameList {
+    NSMutableOrderedSet *games = [[NSMutableOrderedSet alloc] initWithCapacity:[responseGameList count]];
     for (NSDictionary *gameDictionary in responseGameList) {
         Game *game = [[Game alloc] init];
         int myId = [gameDictionary[@"my_id"] intValue];

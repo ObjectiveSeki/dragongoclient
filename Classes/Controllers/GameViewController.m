@@ -206,15 +206,15 @@
 	};
     
 	if ([self.board beginningOfHandicapGame]) {
-        [[GenericGameServer sharedGameServer] playHandicapStones:[self.board handicapStones] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
+        [[GenericGameServer sharedGameServer] playHandicapStones:[self.board handicapStones] comment:reply game:self.game onSuccess:onSuccess onError:^(NSError *error) {
             [self.spinner dismiss:YES];
         }];
 	} else if ([self.board gameEnded]) {
-		[[GenericGameServer sharedGameServer] markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
+		[[GenericGameServer sharedGameServer] markDeadStones:[self.board changedStones] moveNumber:[self.board moveNumber] comment:reply game:self.game onSuccess:onSuccess onError:^(NSError *error) {
             [self.spinner dismiss:YES];
         }];
 	} else {
-		[[GenericGameServer sharedGameServer] playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply gameId:self.game.gameId onSuccess:onSuccess onError:^(NSError *error) {
+		[[GenericGameServer sharedGameServer] playMove:[self.board currentMove] lastMove:[self.board lastMove] moveNumber:[self.board moveNumber] comment:reply game:self.game onSuccess:onSuccess onError:^(NSError *error) {
             [self.spinner dismiss:YES];
         }];
 	}

@@ -9,6 +9,7 @@ static JWCache *s_cache;
 static NSTimeInterval kDefaultTTL = 15 * 60; // 15 mins
 static NSTimeInterval kLongTTL = 7 * 24 * 60 * 60; // 7 days
 static NSString * const kGameListKey = @"GameList";
+static NSString * const kRunningGameListKey = @"RunningGameList";
 static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 @interface CachingGameServer ()
@@ -47,27 +48,29 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return S(kGameCacheKeyFormat, game.gameId);
 }
 
-- (void)removeGameFromGameList:(int)gameId {
-    NSArray *gameList = [self.cache objectForKey:kGameListKey];
-    NSMutableArray *changedGameList = [gameList mutableCopy];
+- (void)removeGameFromGameList:(Game *)game {
+    NSMutableOrderedSet *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
+
     if (changedGameList) {
-        NSUInteger gameIndex = [changedGameList indexOfObjectPassingTest:^BOOL(Game *game, NSUInteger idx, BOOL *stop) {
-            return game.gameId == gameId;
-        }];
-        [changedGameList removeObjectAtIndex:gameIndex];
+        [changedGameList removeObject:game];
         [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
-        [self.cache removeObjectForKey:S(kGameCacheKeyFormat, gameId)];
+        [self.cache removeObjectForKey:S(kGameCacheKeyFormat, game.gameId)];
+        
+        // We can't do all of the timing calculations client-side, so we'll just
+        // have to invalidate the entire running game list.
+#warning is there something smarter I can do here?
+        [self.cache removeObjectForKey:kRunningGameListKey];
     }
 }
 
-- (void)refreshCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)refreshCurrentGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache removeObjectForKey:kGameListKey];
     [self getCurrentGames:onSuccess onError:onError];
 }
 
-- (void)getCurrentGames:(void (^)(NSArray *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)getCurrentGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache fetchObjectForKey:kGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
-        [self.gameServer getCurrentGames:^(NSArray *games) {
+        [self.gameServer getCurrentGames:^(NSOrderedSet *games) {
             gotObject(games);
             
             for (Game *game in games) {
@@ -75,36 +78,48 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
             }
         } onError:onError];
         return nil; // nothing to return here.
-    } completion:^(NSArray *gameList) {
+    } completion:^(NSOrderedSet *gameList) {
         onSuccess(gameList);
     }];
 }
 
-- (void)getRunningGames:(ListBlock)onSuccess onError:(ErrorBlock)onError {
-    [self.gameServer getRunningGames:onSuccess onError:onError];
+- (void)refreshRunningGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
+    [self.cache removeObjectForKey:kRunningGameListKey];
+    [self getRunningGames:onSuccess onError:onError];
 }
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (void)getRunningGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
+    [self.cache fetchObjectForKey:kRunningGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
+        [self.gameServer getRunningGames:^(NSOrderedSet *games) {
+            gotObject(games);
+        } onError:onError];
+        return nil; // nothing to return here.
+    } completion:^(NSOrderedSet *gameList) {
+        onSuccess(gameList);
+    }];
+}
+
+- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     
-    [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {} onError:onError];
+    [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:onError];
     
-    [self removeGameFromGameList:gameId];
+    [self removeGameFromGameList:game];
     
     onSuccess(); // cheat and call it right away for speed
 }
 
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    [self.gameServer playHandicapStones:moves comment:comment gameId:gameId onSuccess:^() {} onError:onError];
+- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer playHandicapStones:moves comment:comment game:game onSuccess:^() {} onError:onError];
     
-    [self removeGameFromGameList:gameId];
+    [self removeGameFromGameList:game];
     
     onSuccess(); // cheat and call it right away for speed
 }
 
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment gameId:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment gameId:gameId onSuccess:^() {} onError:onError];
+- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:onError];
     
-    [self removeGameFromGameList:gameId];
+    [self removeGameFromGameList:game];
     
     onSuccess(); // cheat and call it right away for speed
 }

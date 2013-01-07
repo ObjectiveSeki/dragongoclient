@@ -27,4 +27,6 @@
 @property(nonatomic, assign) float komi;
 @property(nonatomic) BOOL myTurn;
 
+- (BOOL)isEqualToGame:(Game *)game;
+
 @end

@@ -13,6 +13,28 @@
 
 @implementation Game
 
+- (NSUInteger)hash {
+    return self.gameId * 1000 + self.moveId;
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToGame:other];
+}
+
+- (BOOL)isEqualToGame:(Game *)game {
+    if (self == game) {
+        return YES;
+    }
+    if (self.gameId == game.gameId && self.moveId == game.moveId) {
+        return YES;
+    }
+    return NO;
+}
+
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.sgfUrl forKey:@"sgfUrl"];

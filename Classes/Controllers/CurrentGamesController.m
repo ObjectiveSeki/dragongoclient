@@ -15,8 +15,8 @@
 
 @interface CurrentGamesController ()
 
-@property(nonatomic, strong) NSArray *games;
-@property(nonatomic, strong) NSArray *runningGames;
+@property(nonatomic, strong) NSOrderedSet *games;
+@property(nonatomic, strong) NSOrderedSet *runningGames;
 
 // Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
 // conflicting with the built-in iOS6 one.
@@ -76,12 +76,12 @@ enum GameSections {
 
 - (void)refreshGames {
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] getCurrentGames:^(NSArray *currentGames) {
+    [[GenericGameServer sharedGameServer] getCurrentGames:^(NSOrderedSet *currentGames) {
         self.games = currentGames;
 #if TEST_GAMES
         [self addTestGames];
 #endif
-        [[GenericGameServer sharedGameServer] getRunningGames:^(NSArray *runningGames) {
+        [[GenericGameServer sharedGameServer] getRunningGames:^(NSOrderedSet *runningGames) {
             self.runningGames = runningGames;
             [self gameListChanged];
             [self.myRefreshControl endRefreshing];
@@ -98,12 +98,13 @@ enum GameSections {
 
 - (void)forceRefreshGames {
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSArray *currentGames) {
+    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSOrderedSet *currentGames) {
         self.games = currentGames;
 #if TEST_GAMES
         [self addTestGames];
 #endif
-        [[GenericGameServer sharedGameServer] getRunningGames:^(NSArray *runningGames) {
+        [[GenericGameServer sharedGameServer] refreshRunningGames:^(NSOrderedSet *runningGames) {
+            self.runningGames = runningGames;
             [self gameListChanged];
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
@@ -145,14 +146,18 @@ enum GameSections {
 #pragma mark - Game list management
 
 - (void)addTestGames {
-    NSArray *testGames = [NSArray arrayWithObjects:@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones", nil];
-    NSMutableArray *mutableCurrentGames = [self.games mutableCopy];
-    for (NSString *name in testGames) {
+    NSArray *testGames = @[@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];
+    NSMutableOrderedSet *mutableCurrentGames = [self.games mutableCopy];
+    for (int i = 0; i < [testGames count]; i++) {
         Game *game = [[Game alloc] init];
+        NSString *name = testGames[i];
         game.opponent = name;
         game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
         game.color = kMovePlayerBlack;
         game.time = @"Test";
+        game.gameId = 10000000000 + i;
+        game.moveId = 100;
+        
         [mutableCurrentGames addObject:game];
     }
     self.games = mutableCurrentGames;

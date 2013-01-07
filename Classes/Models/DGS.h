@@ -25,7 +25,7 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 - (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
 
 // Internal, but these have to be exposed so the logic tests can hit them
-- (NSArray *)gamesFromCSV:(NSString *)csvData;
+- (NSOrderedSet *)gamesFromCSV:(NSString *)csvData;
 - (NSArray *)gamesFromWaitingRoomTable:(NSData *)htmlData;
 - (NSString *)nextPagePath:(NSData *)htmlData;
 @end
