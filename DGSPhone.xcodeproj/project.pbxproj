@@ -278,6 +278,7 @@
 		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
 		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
 		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
+		DABA05D5169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05D4169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.m */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
@@ -635,6 +636,8 @@
 		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
 		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
 		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
+		DABA05D3169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+SetOperations.h"; sourceTree = "<group>"; };
+		DABA05D4169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+SetOperations.m"; sourceTree = "<group>"; };
 		DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = Resources/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
 		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
@@ -726,6 +729,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DABA05D2169ABA1800B1ECD9 /* Categories */,
 				DA4026C611D06C38005017C4 /* Protocols */,
 				DA38B20211B59FAB00112AA4 /* Models */,
 				DAF9102311BB487500FE7B96 /* Views */,
@@ -1205,6 +1209,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DABA05D2169ABA1800B1ECD9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DABA05D3169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.h */,
+				DABA05D4169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		DAE932BD12454CCA00335F0F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1619,6 +1632,7 @@
 				DA391DDE1592CB2900F9E36F /* Player.m in Sources */,
 				DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */,
 				DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */,
+				DABA05D5169ABA6400B1ECD9 /* NSOrderedSet+SetOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

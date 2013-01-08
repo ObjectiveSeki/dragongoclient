@@ -12,6 +12,7 @@
 #import "SpinnerView.h"
 #import "GameViewController.h"
 #import "IBAlertView.h"
+#import "NSOrderedSet+SetOperations.h"
 
 @interface CurrentGamesController ()
 
@@ -24,11 +25,11 @@
 @property (nonatomic, strong) SpinnerView *spinner;
 @end
 
-enum GameSections {
+typedef enum {
     kGameSectionMyMove,
     kGameSectionRunningGames,
     kGameSectionCount
-};
+} GameSection;
 
 @implementation CurrentGamesController
 
@@ -46,6 +47,8 @@ enum GameSections {
     }
     [self.myRefreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
+    self.games = [[NSOrderedSet alloc] init];
+    self.runningGames = [[NSOrderedSet alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,15 +80,10 @@ enum GameSections {
 - (void)refreshGames {
     [self setEnabled:NO];
     [[GenericGameServer sharedGameServer] getCurrentGames:^(NSOrderedSet *currentGames) {
-        self.games = currentGames;
-#if TEST_GAMES
-        [self addTestGames];
-#endif
         [[GenericGameServer sharedGameServer] getRunningGames:^(NSOrderedSet *runningGames) {
-            self.runningGames = runningGames;
-            [self gameListChanged];
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
+            [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
         } onError:^(NSError *error) {
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
@@ -99,15 +97,10 @@ enum GameSections {
 - (void)forceRefreshGames {
     [self setEnabled:NO];
     [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSOrderedSet *currentGames) {
-        self.games = currentGames;
-#if TEST_GAMES
-        [self addTestGames];
-#endif
         [[GenericGameServer sharedGameServer] refreshRunningGames:^(NSOrderedSet *runningGames) {
-            self.runningGames = runningGames;
-            [self gameListChanged];
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
+            [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
         } onError:^(NSError *error) {
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
@@ -145,9 +138,9 @@ enum GameSections {
 
 #pragma mark - Game list management
 
-- (void)addTestGames {
+- (NSOrderedSet *)gameListWithTestGames:(NSOrderedSet *)gameList {
     NSArray *testGames = @[@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];
-    NSMutableOrderedSet *mutableCurrentGames = [self.games mutableCopy];
+    NSMutableOrderedSet *mutableGameList = [gameList mutableCopy];
     for (int i = 0; i < [testGames count]; i++) {
         Game *game = [[Game alloc] init];
         NSString *name = testGames[i];
@@ -158,9 +151,73 @@ enum GameSections {
         game.gameId = 10000000000 + i;
         game.moveId = 100;
         
-        [mutableCurrentGames addObject:game];
+        [mutableGameList addObject:game];
     }
-    self.games = mutableCurrentGames;
+    return mutableGameList;
+}
+
+// Taking an NSIndexSet, returns a list of NSIndexPaths with those indexes in
+// the given section.
+- (NSArray *)indexPathsFromIndexSet:(NSIndexSet *)indexSet inSection:(NSUInteger)section {
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:[indexSet count]];
+    [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:section]];
+    }];
+    return indexPaths;
+}
+
+// Updates gameList to become the same as the list of games in gameListChanges.
+// Keeps track of which games have been added and removed from the list, and
+// updates the table rows in the given section to animate in and out
+// appropriately. onTop specifies whether new rows should always appear on top
+// or on the bottom of the list. This is mostly because we want the games in the
+// 'your turn' table to stay in the same order, to make it faster to tap through
+// the table.
+- (NSOrderedSet *)tableView:(UITableView *)tableView updateGameList:(NSOrderedSet *)gameList withChanges:(NSOrderedSet *)gameListChanges inSection:(GameSection)section onTop:(BOOL)onTop {
+    NSOrderedSet *deletedGames = [gameList orderedSetMinusOrderedSet:gameListChanges];
+    NSOrderedSet *addedGames = [gameListChanges orderedSetMinusOrderedSet:gameList];
+    
+    NSMutableOrderedSet *newGameList = [[NSMutableOrderedSet alloc] initWithCapacity:[gameListChanges count]];
+    if (onTop) {
+        [newGameList unionOrderedSet:addedGames];
+    }
+    [newGameList unionOrderedSet:gameList];
+    [newGameList minusOrderedSet:deletedGames];
+    if (!onTop) {
+        [newGameList unionOrderedSet:addedGames];
+    }
+    
+    NSArray *deletedIndexPaths = [self indexPathsFromIndexSet:[gameList indexesOfObjectsIntersectingSet:deletedGames] inSection:section];
+    NSArray *addedIndexPaths = [self indexPathsFromIndexSet:[newGameList indexesOfObjectsIntersectingSet:addedGames] inSection:section];
+    [tableView deleteRowsAtIndexPaths:deletedIndexPaths withRowAnimation:UITableViewRowAnimationTop];
+    [tableView insertRowsAtIndexPaths:addedIndexPaths withRowAnimation:UITableViewRowAnimationTop];
+    return newGameList;
+}
+
+- (void)handleGameListChanges:(NSOrderedSet *)gameListChanges
+       runningGameListChanges:(NSOrderedSet *)runningGameListChanges {
+    
+#ifndef TEST_GAMES
+    gameListChanges = [self gameListWithTestGames:gameListChanges];
+#endif
+    
+    [self.tableView beginUpdates];
+    
+    self.games = [self tableView:self.tableView
+                  updateGameList:self.games
+                     withChanges:gameListChanges
+                       inSection:kGameSectionMyMove
+                           onTop:NO];
+    
+    self.runningGames = [self tableView:self.tableView
+                         updateGameList:self.runningGames
+                            withChanges:runningGameListChanges
+                              inSection:kGameSectionRunningGames
+                                  onTop:YES];
+    
+    [self.tableView endUpdates];
+    [self gameListChanged];
+    
 }
 
 - (void)gameListChanged {
@@ -169,7 +226,6 @@ enum GameSections {
         [self.tableView addSubview:self.noGamesView];
     } else {
         [self.noGamesView removeFromSuperview];
-        [self.tableView reloadData];
     }
 }
 
