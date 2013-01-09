@@ -26,6 +26,4 @@ typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseS
 
 // Internal, but these have to be exposed so the logic tests can hit them
 - (NSOrderedSet *)gamesFromCSV:(NSString *)csvData;
-- (NSArray *)gamesFromWaitingRoomTable:(NSData *)htmlData;
-- (NSString *)nextPagePath:(NSData *)htmlData;
 @end

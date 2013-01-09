@@ -61,14 +61,13 @@
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
-        if (!self.loadingNewPage) {
-            [self.gameList loadNextPage:^(GameList *gameList) {
-                self.gameList = gameList;
+        if (self.gameList && !self.loadingNewPage) {
+            [[GenericGameServer sharedGameServer] addGamesToGameList:self.gameList onSuccess:^(GameList *gameList) {
                 [self.tableView reloadData];
                 self.loadingNewPage = NO;
             } onError:^(NSError *error) {
-                self.loadingNewPage = NO;
 #warning TODO: maybe allow the new page link to be tapped in this state?
+                self.loadingNewPage = NO;
             }];
             self.loadingNewPage = YES;
         }
@@ -79,17 +78,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.row < self.gameList.games.count) {
-        NewGame *game = self.gameList.games[indexPath.row];
         UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [activityView startAnimating];
         cell.accessoryView = activityView;
-        [[GenericGameServer sharedGameServer] getWaitingRoomGameDetailsForGame:game onSuccess:^(NewGame *gameDetails) {
-            cell.accessoryView = nil;
-            [self.gameList updateGame:gameDetails atIndex:indexPath.row];
-            [self performSegueWithIdentifier:@"ShowWaitingRoomDetail" sender:cell];
-        } onError:^(NSError *error) {
-            cell.accessoryView = nil;
-        }];
+        [self performSegueWithIdentifier:@"ShowWaitingRoomDetail" sender:cell];
     }
 }
 

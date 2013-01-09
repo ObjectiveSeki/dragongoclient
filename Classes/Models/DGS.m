@@ -13,10 +13,13 @@
 #import "Player.h"
 #import "ASIFormDataRequest.h"
 #import "IBAlertView.h"
+#import "RunningGameList.h"
 
 @implementation DGS
 
 static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
+
+const int kDefaultPageLimit = 10;
 
 + (id<GameServerProtocol>)sharedGameServer {
     static DGS *sharedGameServer;
@@ -254,61 +257,62 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	} onError:onError];
 }
 
-- (void)refreshRunningGames:(void (^)(NSOrderedSet *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     [self getRunningGames:onSuccess onError:onError];
 }
 
 // http://www.dragongoserver.net/quick_do.php?obj=game&cmd=list&view=running&lstyle=json
 // {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
-- (void)getRunningGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
-    NSURL *url = [self URLWithPath:@"/quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json"];
-	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    
-    [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
-#warning TODO: check for errors?
-#warning TODO: pagination?
-        NSOrderedSet *games = [self runningGamesFromGameList:[decoder objectWithData:[request responseData]][@"list_result"]];
-        onSuccess(games);
-    } onError:onError];
+- (void)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
+    GameList *gameList = [[RunningGameList alloc] init];
+    gameList.pathFormat = @"/quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json&limit=%d&off=%d";
+    // let's just return an empty list, and rely on the caller to fill it in
+    // for us. These games might not be shown anyway.
+    onSuccess(gameList);
 }
 
-- (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess onError:(ErrorBlock)onError {
-    GameList *gameList = [[GameList alloc] initWithPageLoader:^(GameList *gameList, NSString *pagePath, void (^onSuccess)(), ErrorBlock innerOnError) {
-        NSURL *url = [self URLWithPath:pagePath];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-        [request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
+- (void)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
+    GameList *gameList = [[GameList alloc] init];
+    gameList.pathFormat = @"/quick_do.php?obj=wroom&cmd=list&with=user_id&lstyle=json&limit=%d&off=%d";
+    [self addGamesToGameList:gameList onSuccess:onSuccess onError:onError];
+}
+
+- (void)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
+    NSURL *url = [self URLWithPath:[gameList pathForMoreGames:kDefaultPageLimit]];
+    
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
+    
+	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
+        NSDictionary *gameListDictionary = [decoder objectWithData:[request responseData]];
+        NSMutableOrderedSet *games = [NSMutableOrderedSet orderedSetWithCapacity:[gameListDictionary[@"list_result"] count]];
         
-        [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-            [gameList appendGames:[self gamesFromWaitingRoomTable:[request responseData]]];
-            gameList.nextPagePath = [self nextPagePath:[request responseData]];
-            onSuccess();
-        } onError:innerOnError];
-    }];
-
-    // add=9 to force the time limit to show up
-    gameList.nextPagePath = @"/waiting_room.php?add=9&sf20=1&good=1";
-
-    [gameList loadNextPage:^(GameList *gameList) {
+        for (NSDictionary *gameDetails in gameListDictionary[@"list_result"]) {
+            Game *game = [self parseGameFromDictionary:gameDetails ofType:gameListDictionary[@"list_object"]];
+            [games addObject:game];
+        }
+        
+        [gameList addGames:games];
+        
+        if ([gameListDictionary[@"list_has_next"] intValue] == 0) {
+            gameList.hasMorePages = NO;
+        }
+        gameList.offset += [gameListDictionary[@"list_size"] intValue];
+        
         onSuccess(gameList);
-    } onError:onError];
+	} onError:onError];
 }
 
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {
-    NSString *gameId;
-    NSScanner *scanner = [[NSScanner alloc] initWithString:game.detailUrl.query];
-    [scanner scanUpToString:@"info=" intoString:NULL];
-    [scanner scanString:@"info=" intoString:NULL];
-    [scanner scanCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&gameId];
-
-	NSURL *url = [self URLWithPath:[NSString stringWithFormat:@"/quick_do.php?obj=wroom&cmd=info&wrid=%@&with=user_id", gameId]];
+	NSURL *url = [self URLWithPath:[NSString stringWithFormat:@"/quick_do.php?obj=wroom&cmd=info&wrid=%d&with=user_id", game.gameId]];
 
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
         JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
-        NewGame *gameDetails = [self gameFromWaitingRoomDetailDictionary:[decoder objectWithData:[request responseData]] game:game];
+        NewGame *gameDetails = [self gameFromWaitingRoomGameDictionary:[decoder objectWithData:[request responseData]]];
         onSuccess(gameDetails);
 	} onError:onError];
 }
@@ -509,130 +513,6 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	return games;
 }
 
-// {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
-- (NSOrderedSet *)runningGamesFromGameList:(NSArray *)responseGameList {
-    NSMutableOrderedSet *games = [[NSMutableOrderedSet alloc] initWithCapacity:[responseGameList count]];
-    for (NSDictionary *gameDictionary in responseGameList) {
-        Game *game = [[Game alloc] init];
-        int myId = [gameDictionary[@"my_id"] intValue];
-        game.gameId = [gameDictionary[@"id"] intValue];
-        NSString *sgfUrl = S(@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
-        game.sgfUrl = [self URLWithPath:sgfUrl];
-        
-        if ([gameDictionary[@"white_user"][@"id"] intValue] == myId) {
-            game.color = kMovePlayerWhite;
-            game.time = gameDictionary[@"white_gameinfo"][@"remtime"];
-            game.opponent = gameDictionary[@"black_user"][@"handle"];
-        } else {
-            game.color = kMovePlayerBlack;
-            game.time = gameDictionary[@"black_gameinfo"][@"remtime"];
-            game.opponent = gameDictionary[@"white_user"][@"handle"];
-        }
-        
-        if ((game.color == kMovePlayerBlack && [gameDictionary[@"move_color"] isEqualToString:@"B"]) ||
-            (game.color == kMovePlayerWhite && [gameDictionary[@"move_color"] isEqualToString:@"W"])) {
-            game.myTurn = YES;
-        } else {
-            game.myTurn = NO;
-        }
-        
-        game.lastMove = gameDictionary[@"move_last"];
-        game.moveId = [gameDictionary[@"move_id"] intValue];
-        if (!game.myTurn) {
-            [games addObject:game];
-        }
-    }
-    return games;
-}
-
-// Parses a list of games from the waiting room. This uses the
-// markings on the 'th' row to guess which columns hold the data we're
-// looking for. This may or may not be consistent, which is kinda rough,
-// but we'll figure those problems out as we reach them.
-- (NSArray *)gamesFromWaitingRoomTable:(NSData *)htmlData {
-	NSMutableArray *games = [NSMutableArray array];
-	NSError *error;
-	GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
-
-	NSArray *tableRows = [doc nodesForXPath:@"//table[@id='waitingroomTable']/tr" error:&error];
-    if ([tableRows count] > 0) {
-
-        NSMutableArray *tableHeaders = nil;
-
-        for (GDataXMLElement *row in tableRows) {
-
-			// headers come first
-			if (!tableHeaders) {
-				NSArray *columns = [row nodesForXPath:@".//th" error:&error];
-				if ([columns count] > 0) {
-					tableHeaders = [NSMutableArray arrayWithCapacity:[columns count]];
-					for (GDataXMLElement *column in columns) {
-						[tableHeaders addObject:column];
-					}
-				} else {
-					continue; // if we don't have table headers yet, keep searching for them
-				}
-			}
-
-			if ([[[row attributeForName:@"id"] stringValue] isEqualToString:@"TableFilter"]) {
-				continue;
-			}
-
-            NSArray *columns = [row nodesForXPath:@"td" error:&error];
-
-            // bad things happen if these counts aren't equal
-            if ([columns count] != [tableHeaders count]) {
-                continue;
-            }
-
-            NewGame *game = [[NewGame alloc] init];
-
-            for(int i = 0; i < [tableHeaders count]; i++) {
-                GDataXMLElement *header = tableHeaders[i];
-				GDataXMLNode *td = columns[i];
-				if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col0"] ||
-					[[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col17"]) {
-					GDataXMLElement *link = [[td nodesForXPath:@"a" error:&error] lastObject];
-					NSString *href = [[link attributeForName:@"href"] stringValue];
-					game.detailUrl = [self URLWithPath:[NSString stringWithFormat:@"/%@", href]];
-					NSArray *keyValues = [[[href componentsSeparatedByString:@"?"] lastObject] componentsSeparatedByString:@"&"];
- 					for (NSString *keyValue in keyValues) {
-						NSArray *keyValuePair = [keyValue componentsSeparatedByString:@"="];
-						if ([keyValuePair[0] isEqualToString:@"info"]) {
-							game.gameId = [[keyValuePair lastObject] intValue];
-						}
-					}
-				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col1"]) {
-					NSString *data = [[[td nodesForXPath:@"a" error:&error] lastObject] stringValue];
-                    game.opponent = data;
-				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col7"]) {
-					game.boardSize = [[td stringValue] intValue];
-				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col3"]) {
-					game.opponentRating = [[[[td nodesForXPath:@"a" error:&error] lastObject] stringValue] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-				} else if ([[[header attributeForName:@"id"] stringValue] isEqualToString:@"Col9"]) {
-					game.time = [td stringValue];
-				}
-            }
-            if ([game.opponent length] > 0) {
-				[games addObject:game];
-			}
-        }
-	}
-	return games;
-}
-
-// Tells us whether there are more pages in the table we're looking at
-- (NSString *)nextPagePath:(NSData *)htmlData {
-    NSString *nextPagePath = nil;
-    NSError *error;
-    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLData:htmlData options:0 error:&error];
-    NSArray *nextPageIndicator = [doc nodesForXPath:@"//td[@class='PagingL']//a[img[@src='images/next.gif']]/@href" error:&error];
-    if ([nextPageIndicator count] != 0) {
-        nextPagePath = [NSString stringWithFormat:@"/%@", [[nextPageIndicator lastObject] stringValue]];
-    }
-    return nextPagePath;
-}
-
 - (void)setCurrentPlayerFromDictionary:(NSDictionary *)userDataDictionary {
     Player *player = [[Player alloc] init];
     player.userId = userDataDictionary[@"id"];
@@ -644,20 +524,62 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     [Player setCurrentPlayer:nil];
 }
 
-- (NewGame *)gameFromWaitingRoomDetailDictionary:(NSDictionary *)gameDetailDictionary game:(NewGame *)game {
+- (Game *)gameFromGameDictionary:(NSDictionary *)gameDictionary {
+    Game *game = [[Game alloc] init];
+    int myId = [gameDictionary[@"my_id"] intValue];
+    game.gameId = [gameDictionary[@"id"] intValue];
+    NSString *sgfUrl = S(@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
+    game.sgfUrl = [self URLWithPath:sgfUrl];
+    
+    if ([gameDictionary[@"white_user"][@"id"] intValue] == myId) {
+        game.color = kMovePlayerWhite;
+        game.time = gameDictionary[@"white_gameinfo"][@"remtime"];
+        game.opponent = gameDictionary[@"black_user"][@"handle"];
+    } else {
+        game.color = kMovePlayerBlack;
+        game.time = gameDictionary[@"black_gameinfo"][@"remtime"];
+        game.opponent = gameDictionary[@"white_user"][@"handle"];
+    }
+    
+    if ((game.color == kMovePlayerBlack && [gameDictionary[@"move_color"] isEqualToString:@"B"]) ||
+        (game.color == kMovePlayerWhite && [gameDictionary[@"move_color"] isEqualToString:@"W"])) {
+        game.myTurn = YES;
+    } else {
+        game.myTurn = NO;
+    }
+    
+    game.lastMove = gameDictionary[@"move_last"];
+    game.moveId = [gameDictionary[@"move_id"] intValue];
+    return game;
+}
 
-    game.opponent = gameDetailDictionary[@"user"][@"name"];
-    game.opponentRating = gameDetailDictionary[@"user"][@"rating"];
-    game.boardSize = [gameDetailDictionary[@"size"] intValue];
-    game.komiTypeName = [game komiTypeNameFromValue:gameDetailDictionary[@"handicap_type"]];
-    game.handicap = [gameDetailDictionary[@"handicap"] intValue];
-    game.komi = [gameDetailDictionary[@"komi"] floatValue];
-    game.ratedString = [game boolNameFromValue:[gameDetailDictionary[@"rated"] boolValue]];
-    game.weekendClockString = [game boolNameFromValue:[gameDetailDictionary[@"time_weekend_clock"] boolValue]];
-    game.comment = gameDetailDictionary[@"comment"];
-    game.myGame = ([[Player currentPlayer].userId isEqual:gameDetailDictionary[@"user"][@"id"]]);
+- (NewGame *)gameFromWaitingRoomGameDictionary:(NSDictionary *)gameDictionary {
+    
+    NewGame *game = [[NewGame alloc] init];
+
+    game.gameId = [gameDictionary[@"id"] intValue];
+    game.opponent = gameDictionary[@"user"][@"name"];
+    game.opponentRating = gameDictionary[@"user"][@"rating"];
+    game.boardSize = [gameDictionary[@"size"] intValue];
+    game.komiTypeName = [game komiTypeNameFromValue:gameDictionary[@"handicap_type"]];
+    game.handicap = [gameDictionary[@"handicap"] intValue];
+    game.komi = [gameDictionary[@"komi"] floatValue];
+    game.ratedString = [game boolNameFromValue:[gameDictionary[@"rated"] boolValue]];
+    game.weekendClockString = [game boolNameFromValue:[gameDictionary[@"time_weekend_clock"] boolValue]];
+    game.time = gameDictionary[@"time_limit"];
+    game.comment = gameDictionary[@"comment"];
+    game.myGame = ([[Player currentPlayer].userId isEqual:gameDictionary[@"user"][@"id"]]);
 
     return game;
+}
+
+- (Game *)parseGameFromDictionary:(NSDictionary *)dictionary ofType:(NSString *)gameType {
+    if ([gameType isEqualToString:@"wroom"]) {
+        return [self gameFromWaitingRoomGameDictionary:dictionary];
+    } else if ([gameType isEqualToString:@"game"]) {
+        return [self gameFromGameDictionary:dictionary];
+    }
+    return nil;
 }
 
 // This converts an integer row and column representing a board position and

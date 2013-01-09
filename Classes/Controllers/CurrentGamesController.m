@@ -12,12 +12,14 @@
 #import "SpinnerView.h"
 #import "GameViewController.h"
 #import "IBAlertView.h"
-#import "NSOrderedSet+SetOperations.h"
+#import "GameList.h"
 
 @interface CurrentGamesController ()
 
 @property(nonatomic, strong) NSOrderedSet *games;
-@property(nonatomic, strong) NSOrderedSet *runningGames;
+@property(nonatomic, strong) GameList *runningGames;
+@property(nonatomic) BOOL loadingNewRunningGamesPage;
+
 
 // Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
 // conflicting with the built-in iOS6 one.
@@ -47,8 +49,6 @@ typedef enum {
     }
     [self.myRefreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
-    self.games = [[NSOrderedSet alloc] init];
-    self.runningGames = [[NSOrderedSet alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -80,7 +80,21 @@ typedef enum {
 - (void)refreshGames {
     [self setEnabled:NO];
     [[GenericGameServer sharedGameServer] getCurrentGames:^(NSOrderedSet *currentGames) {
-        [[GenericGameServer sharedGameServer] getRunningGames:^(NSOrderedSet *runningGames) {
+        [[GenericGameServer sharedGameServer] getRunningGames:^(GameList *runningGames) {
+            [self setEnabled:YES];
+            [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
+        } onError:^(NSError *error) {
+            [self setEnabled:YES];
+        }];
+    } onError:^(NSError *error) {
+        [self setEnabled:YES];
+    }];
+}
+
+- (void)forceRefreshGames {
+    [self setEnabled:NO];
+    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSOrderedSet *currentGames) {
+        [[GenericGameServer sharedGameServer] refreshRunningGames:^(GameList *runningGames) {
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
             [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
@@ -94,20 +108,13 @@ typedef enum {
     }];
 }
 
-- (void)forceRefreshGames {
-    [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSOrderedSet *currentGames) {
-        [[GenericGameServer sharedGameServer] refreshRunningGames:^(NSOrderedSet *runningGames) {
-            [self.myRefreshControl endRefreshing];
-            [self setEnabled:YES];
-            [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
-        } onError:^(NSError *error) {
-            [self.myRefreshControl endRefreshing];
-            [self setEnabled:YES];
-        }];
+- (void)getMoreRunningGames {
+    [[GenericGameServer sharedGameServer] addGamesToGameList:self.runningGames onSuccess:^(GameList *runningGames) {
+        [self handleGameListChanges:self.games runningGameListChanges:runningGames];
+        self.loadingNewRunningGamesPage = NO;
     } onError:^(NSError *error) {
-        [self.myRefreshControl endRefreshing];
-        [self setEnabled:YES];
+#warning TODO: maybe allow the new page link to be tapped in this state?
+        self.loadingNewRunningGamesPage = NO;
     }];
 }
 
@@ -156,71 +163,15 @@ typedef enum {
     return mutableGameList;
 }
 
-// Taking an NSIndexSet, returns a list of NSIndexPaths with those indexes in
-// the given section.
-- (NSArray *)indexPathsFromIndexSet:(NSIndexSet *)indexSet inSection:(NSUInteger)section {
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:[indexSet count]];
-    [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:idx inSection:section]];
-    }];
-    return indexPaths;
-}
-
-// Updates gameList to become the same as the list of games in gameListChanges.
-// Keeps track of which games have been added and removed from the list, and
-// updates the table rows in the given section to animate in and out
-// appropriately. onTop specifies whether new rows should always appear on top
-// or on the bottom of the list. This is mostly because we want the games in the
-// 'your turn' table to stay in the same order, to make it faster to tap through
-// the table.
-- (NSOrderedSet *)tableView:(UITableView *)tableView updateGameList:(NSOrderedSet *)gameList withChanges:(NSOrderedSet *)gameListChanges inSection:(GameSection)section onTop:(BOOL)onTop {
-    NSOrderedSet *deletedGames = [gameList orderedSetMinusOrderedSet:gameListChanges];
-    NSOrderedSet *addedGames = [gameListChanges orderedSetMinusOrderedSet:gameList];
-    
-    NSMutableOrderedSet *newGameList = [[NSMutableOrderedSet alloc] initWithCapacity:[gameListChanges count]];
-    if (onTop) {
-        [newGameList unionOrderedSet:addedGames];
-    }
-    [newGameList unionOrderedSet:gameList];
-    [newGameList minusOrderedSet:deletedGames];
-    if (!onTop) {
-        [newGameList unionOrderedSet:addedGames];
-    }
-    
-    NSArray *deletedIndexPaths = [self indexPathsFromIndexSet:[gameList indexesOfObjectsIntersectingSet:deletedGames] inSection:section];
-    NSArray *addedIndexPaths = [self indexPathsFromIndexSet:[newGameList indexesOfObjectsIntersectingSet:addedGames] inSection:section];
-    [tableView deleteRowsAtIndexPaths:deletedIndexPaths withRowAnimation:UITableViewRowAnimationTop];
-    [tableView insertRowsAtIndexPaths:addedIndexPaths withRowAnimation:UITableViewRowAnimationTop];
-    return newGameList;
-}
-
 - (void)handleGameListChanges:(NSOrderedSet *)gameListChanges
-       runningGameListChanges:(NSOrderedSet *)runningGameListChanges {
+       runningGameListChanges:(GameList *)runningGameList {
     
-#ifndef TEST_GAMES
+#if TEST_GAMES
     gameListChanges = [self gameListWithTestGames:gameListChanges];
 #endif
-    
-    [self.tableView beginUpdates];
-    
-    self.games = [self tableView:self.tableView
-                  updateGameList:self.games
-                     withChanges:gameListChanges
-                       inSection:kGameSectionMyMove
-                           onTop:NO];
-    
-    self.runningGames = [self tableView:self.tableView
-                         updateGameList:self.runningGames
-                            withChanges:runningGameListChanges
-                              inSection:kGameSectionRunningGames
-                                  onTop:YES];
-    
-    [self.tableView endUpdates];
-    [self gameListChanged];
-    
-}
-
-- (void)gameListChanged {
+    self.games = gameListChanges;
+    self.runningGames = runningGameList;
+    [self.tableView reloadData];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
     if ([self.games count] == 0 && [self.runningGames count] == 0) {
         [self.tableView addSubview:self.noGamesView];
@@ -239,7 +190,11 @@ typedef enum {
     if (section == kGameSectionMyMove) {
         return [self.games count];
     } else if (section == kGameSectionRunningGames) {
-        return [self.runningGames count];
+        NSInteger count = [self.runningGames count];
+        if (!self.runningGames || [self.runningGames hasMorePages]) {
+            count += 1; // for the activity indicator
+        }
+        return count;
     } else {
         return 0;
     }
@@ -261,25 +216,35 @@ typedef enum {
     if (indexPath.section == kGameSectionMyMove) {
         game = self.games[indexPath.row];
     } else if (indexPath.section == kGameSectionRunningGames) {
-        game = self.runningGames[indexPath.row];
+        if (indexPath.row < [self.runningGames count]) {
+            game = self.runningGames[indexPath.row];
+        }
     }
     return game;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
-    
     Game *game = [self gameForRowAtIndexPath:indexPath];
-    
-    if ([game color] == kMovePlayerBlack) {
-        [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
+    if (game) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
+        
+        if ([game color] == kMovePlayerBlack) {
+            [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
+        } else {
+            [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
+        }
+        cell.textLabel.text = game.opponent;
+        cell.detailTextLabel.text = game.time;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
     } else {
-        [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+        if (!self.loadingNewRunningGamesPage) {
+            [self getMoreRunningGames];
+            self.loadingNewRunningGamesPage = YES;
+        }
+        return cell;
     }
-    cell.textLabel.text = game.opponent;
-    cell.detailTextLabel.text = game.time;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
 }
 
 #pragma mark -

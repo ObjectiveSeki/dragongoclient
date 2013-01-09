@@ -83,18 +83,18 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }];
 }
 
-- (void)refreshRunningGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
+- (void)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache removeObjectForKey:kRunningGameListKey];
     [self getRunningGames:onSuccess onError:onError];
 }
 
-- (void)getRunningGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
+- (void)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache fetchObjectForKey:kRunningGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
-        [self.gameServer getRunningGames:^(NSOrderedSet *games) {
+        [self.gameServer getRunningGames:^(GameList *games) {
             gotObject(games);
         } onError:onError];
         return nil; // nothing to return here.
-    } completion:^(NSOrderedSet *gameList) {
+    } completion:^(GameList *gameList) {
         onSuccess(gameList);
     }];
 }
@@ -124,7 +124,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     onSuccess(); // cheat and call it right away for speed
 }
 
-- (void)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {
+- (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache fetchObjectForKey:[self gameCacheKey:game] ttl:kLongTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
 #warning what happens if we lost the game from the cache?
         gotObject(game);
@@ -161,6 +161,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 - (void)getWaitingRoomGames:(void (^)(GameList *gameList))onSuccess onError:(ErrorBlock)onError {
     [self.gameServer getWaitingRoomGames:onSuccess onError:onError];
+}
+
+- (void)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
+    [self.gameServer addGamesToGameList:gameList onSuccess:onSuccess onError:onError];
 }
 
 - (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {

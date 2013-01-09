@@ -37,6 +37,24 @@
 	return self;
 }
 
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self isEqualToGame:other];
+}
+
+- (BOOL)isEqualToGame:(Game *)game {
+    if (self == game) {
+        return YES;
+    }
+    if (self.gameId == game.gameId) {
+        return YES;
+    }
+    return NO;
+}
+
 - (NSString *)ruleSetValue {
 	NSString *ruleSetString = @"";
 	
