@@ -520,7 +520,8 @@ typedef enum _AddGameSection {
         [self.spinner show];
         [[GenericGameServer sharedGameServer] addGame:self.game onSuccess:^() {
             [blockSelf.spinner dismiss:YES];
-            [blockSelf.navigationController popToRootViewControllerAnimated:YES];
+            [blockSelf dismissViewControllerAnimated:YES completion:^{
+            }];
         } onError:^(NSError *error) {
 		}];
 

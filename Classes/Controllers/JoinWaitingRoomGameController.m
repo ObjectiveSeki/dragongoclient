@@ -16,6 +16,33 @@
 
 @implementation JoinWaitingRoomGameController
 
+#pragma mark - View lifecycle
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    if (self.game.myGame) {
+        self.navigationItem.title = @"Game Details";
+    } else {
+        self.navigationItem.title = @"Game Details";
+    }
+    
+    self.sectionTitles = [NSMutableArray array];
+    self.sections = [NSMutableArray array];
+    
+	if (self.game.comment) {
+		[self buildCommentSection];
+	}
+    [self buildOpponentSection];
+    [self buildGameSection];
+    
+    self.spinner = [[SpinnerView alloc] initInView:self.view];
+}
+
+
+#pragma mark - Table cell construction
+
 - (void)buildCommentSection {
 	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
 	
@@ -53,22 +80,6 @@
     
     [self.sectionTitles addObject:@"Game Information"];
     [self.sections addObject:rows];
-}
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    self.sectionTitles = [NSMutableArray array];
-    self.sections = [NSMutableArray array];
-
-	if (self.game.comment) {
-		[self buildCommentSection];
-	}
-    [self buildOpponentSection];
-    [self buildGameSection];
-    
-    self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
 
 #pragma mark - TableView Delegate actions
@@ -128,7 +139,7 @@
                 [self.spinner show];
                 [[GenericGameServer sharedGameServer] deleteWaitingRoomGame:self.game.gameId onSuccess:^() {
                     [self.spinner dismiss:YES];
-                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    [self.navigationController popViewControllerAnimated:YES];
                 } onError:^(NSError *error) {
                     [self.spinner dismiss:YES];
                 }];
@@ -137,7 +148,8 @@
             self.spinner.label.text = @"Joining…";
             [[GenericGameServer sharedGameServer] joinWaitingRoomGame:self.game.gameId onSuccess:^{
                 [self.spinner dismiss:YES];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:^{
+                }];
             } onError:^(NSError *error) {
                 [self.spinner dismiss:YES];
             }];
@@ -158,12 +170,6 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 @end
