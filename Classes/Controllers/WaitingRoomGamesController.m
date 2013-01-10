@@ -2,6 +2,7 @@
 #import "WaitingRoomGamesController.h"
 #import "JoinWaitingRoomGameController.h"
 #import "ODRefreshControl.h"
+#import "LoadingCell.h"
 
 @interface WaitingRoomGamesController ()
 // Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
@@ -60,7 +61,8 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%dx%d | %@", game.boardSize, game.boardSize, game.time];
         return cell;
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+        LoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+        [cell.activityIndicator startAnimating];
         if (self.gameList && !self.loadingNewPage) {
             [[GenericGameServer sharedGameServer] addGamesToGameList:self.gameList onSuccess:^(GameList *gameList) {
                 [self.tableView reloadData];

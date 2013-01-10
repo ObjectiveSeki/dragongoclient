@@ -280,6 +280,7 @@
 		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
 		DABA05D8169BF98F00B1ECD9 /* GameListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05D7169BF98F00B1ECD9 /* GameListTests.m */; };
 		DABA05EA169D580D00B1ECD9 /* RunningGameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05E9169D580C00B1ECD9 /* RunningGameList.m */; };
+		DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
@@ -641,6 +642,8 @@
 		DABA05D7169BF98F00B1ECD9 /* GameListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameListTests.m; sourceTree = "<group>"; };
 		DABA05E8169D580B00B1ECD9 /* RunningGameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningGameList.h; sourceTree = "<group>"; };
 		DABA05E9169D580C00B1ECD9 /* RunningGameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningGameList.m; sourceTree = "<group>"; };
+		DABA05F2169EAACE00B1ECD9 /* LoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
+		DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCell.m; sourceTree = "<group>"; };
 		DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = Resources/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
 		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
@@ -839,6 +842,8 @@
 				DA8366CE11DC3606001A68F9 /* SelectCell.m */,
 				DA84D67812F7A0160038D775 /* BooleanCell.h */,
 				DA84D67912F7A0160038D775 /* BooleanCell.m */,
+				DABA05F2169EAACE00B1ECD9 /* LoadingCell.h */,
+				DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -1638,6 +1643,7 @@
 				DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */,
 				DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */,
 				DABA05EA169D580D00B1ECD9 /* RunningGameList.m in Sources */,
+				DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

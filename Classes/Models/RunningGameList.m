@@ -15,10 +15,7 @@
     [mutableGames removeObjectsAtIndexes:[games indexesOfObjectsPassingTest:^BOOL(Game *game, NSUInteger idx, BOOL *stop) {
         return game.myTurn;
     }]];
-
-    // these go on top
-    [mutableGames unionOrderedSet:self.games];
-    self.games = mutableGames;
+    [super addGames:mutableGames];
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "GameViewController.h"
 #import "IBAlertView.h"
 #import "GameList.h"
+#import "LoadingCell.h"
 
 @interface CurrentGamesController ()
 
@@ -165,15 +166,15 @@ typedef enum {
 
 - (void)handleGameListChanges:(NSOrderedSet *)gameListChanges
        runningGameListChanges:(GameList *)runningGameList {
-    
 #if TEST_GAMES
     gameListChanges = [self gameListWithTestGames:gameListChanges];
 #endif
     self.games = gameListChanges;
     self.runningGames = runningGameList;
     [self.tableView reloadData];
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-    if ([self.games count] == 0 && [self.runningGames count] == 0) {
+    if ([self.games count] == 0 && [self.runningGames count] == 0 && !self.loadingNewRunningGamesPage) {
         [self.tableView addSubview:self.noGamesView];
     } else {
         [self.noGamesView removeFromSuperview];
@@ -238,10 +239,11 @@ typedef enum {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
-        if (!self.loadingNewRunningGamesPage) {
-            [self getMoreRunningGames];
+        LoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+        [cell.activityIndicator startAnimating];
+        if (self.runningGames && !self.loadingNewRunningGamesPage) {
             self.loadingNewRunningGamesPage = YES;
+            [self getMoreRunningGames];
         }
         return cell;
     }

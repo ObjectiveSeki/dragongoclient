@@ -40,8 +40,18 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     if (self) {
         _gameServer = aGameServer;
         _cache = s_cache;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(flushCache) name:PlayerDidLogoutNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)flushCache {
+    [self.cache removeAllObjects];
 }
 
 - (NSString *)gameCacheKey:(Game *)game {

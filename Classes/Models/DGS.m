@@ -278,6 +278,8 @@ const int kDefaultPageLimit = 10;
 }
 
 - (void)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
+    assert(gameList);
+    assert(gameList.pathFormat);
     NSURL *url = [self URLWithPath:[gameList pathForMoreGames:kDefaultPageLimit]];
     
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
