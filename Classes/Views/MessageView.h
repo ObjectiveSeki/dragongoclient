@@ -7,13 +7,6 @@
 
 
 @interface MessageView : UIView {
-	IBOutlet UITextView *messageTextView;
-	IBOutlet UITextField *messageField;
-	IBOutlet UIView *messageDisplayView;
-	IBOutlet UIView *messageInputView;
-	NSString *message;
-	NSString *reply;
-	void (^onHide)(BOOL hasMessage);
 }
 
 @property(nonatomic, strong) IBOutlet UITextView *messageTextView;
@@ -23,6 +16,7 @@
 @property(nonatomic, copy) NSString *message;
 @property(nonatomic, copy) NSString *reply;
 @property(nonatomic, copy) void (^onHide)(BOOL hasMessage);
+@property(nonatomic) BOOL showInputView;
 
 - (void)show:(void (^)(BOOL hasMessage))onHide;
 - (IBAction)hide;

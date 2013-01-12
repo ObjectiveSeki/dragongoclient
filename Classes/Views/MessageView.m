@@ -7,23 +7,18 @@
 
 @implementation MessageView
 
-@synthesize messageTextView;
-@synthesize messageField;
-@synthesize messageDisplayView;
-@synthesize messageInputView;
-
-@synthesize message;
-@synthesize reply;
-
-@synthesize onHide;
-
 - (id)initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code.
+        self.showInputView = YES;
     }
     return self;
+}
+
+- (void)awakeFromNib {
+    self.showInputView = YES;
 }
 
 - (void)keyboardWillBeShown:(NSNotification *)aNotification {
@@ -74,11 +69,18 @@
 	return (self.message.length > 0 || self.reply.length > 0);
 }
 
-- (void)show:(void (^)(BOOL hasMessage))_onHide {
+- (void)show:(void (^)(BOOL hasMessage))onHide {
     self.frame = self.superview.frame;
-	self.onHide = _onHide;
-	[self registerForKeyboardNotifications];
-	[self.messageField becomeFirstResponder];
+    
+    if (self.showInputView) {
+        self.messageInputView.hidden = NO;
+        [self registerForKeyboardNotifications];
+        [self.messageField becomeFirstResponder];
+    } else {
+        self.messageInputView.hidden = YES;
+    }
+    
+	self.onHide = onHide;
 	if (self.message) {
 		self.messageTextView.text = self.message;
 	} else {

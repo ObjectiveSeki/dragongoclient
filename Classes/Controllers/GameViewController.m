@@ -59,6 +59,14 @@
 		self.messageView.message = [theBoard comment];
 	}
     
+    if (self.readOnly) {
+        if ([theBoard comment]) {
+            self.messageView.showInputView = NO;
+        } else {
+            self.messageButton.enabled = NO;
+        }
+    }
+    
 	self.currentZoomScale = [self zoomInScale];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
