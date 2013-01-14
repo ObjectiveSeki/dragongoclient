@@ -59,10 +59,12 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 }
 
 - (void)removeGameFromGameList:(Game *)game {
-    NSMutableOrderedSet *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
+    GameList *changedGameList = [self.cache objectForKey:kGameListKey];
 
     if (changedGameList) {
-        [changedGameList removeObject:game];
+        [changedGameList removeGame:game];
+        
+        // Refresh the TTL, so we don't have to hit the server again soon
         [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
         [self.cache removeObjectForKey:S(kGameCacheKeyFormat, game.gameId)];
         
@@ -73,22 +75,22 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }
 }
 
-- (void)refreshCurrentGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
+- (void)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache removeObjectForKey:kGameListKey];
     [self getCurrentGames:onSuccess onError:onError];
 }
 
-- (void)getCurrentGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError {
+- (void)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     [self.cache fetchObjectForKey:kGameListKey ttl:kDefaultTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
-        [self.gameServer getCurrentGames:^(NSOrderedSet *games) {
-            gotObject(games);
+        [self.gameServer getCurrentGames:^(GameList *gameList) {
+            gotObject(gameList);
             
-            for (Game *game in games) {
+            for (Game *game in gameList.games) {
                 [self getSgfForGame:game onSuccess:^(Game *game) {} onError:^(NSError *error) {}];
             }
         } onError:onError];
         return nil; // nothing to return here.
-    } completion:^(NSOrderedSet *gameList) {
+    } completion:^(GameList *gameList) {
         onSuccess(gameList);
     }];
 }

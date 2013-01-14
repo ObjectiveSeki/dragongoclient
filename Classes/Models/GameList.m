@@ -20,6 +20,12 @@
     return S(self.pathFormat, limit, self.offset);
 }
 
+- (void)removeGame:(Game *)game {
+    NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
+    [mutableGames removeObject:game];
+    self.games = mutableGames;
+}
+
 - (void)updateGame:(Game *)game atIndex:(NSInteger)index {
     NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
     [mutableGames insertObject:game atIndex:index];

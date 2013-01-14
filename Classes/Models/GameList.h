@@ -13,6 +13,7 @@
 @property(nonatomic) int offset;
 
 - (NSString *)pathForMoreGames:(int)limit;
+- (void)removeGame:(Game *)game;
 - (void)updateGame:(Game *)game atIndex:(NSInteger)index;
 - (void)addGames:(NSOrderedSet *)games;
 - (NSUInteger)count;

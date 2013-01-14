@@ -13,8 +13,10 @@
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *logoutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *addGameButton;
 @property(nonatomic, strong) IBOutlet UIView *noGamesView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *gameListTypeControl;
 
 - (IBAction)logout;
+- (IBAction)gameListTypeChanged:(id)sender;
 
 @end
 

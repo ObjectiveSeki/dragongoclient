@@ -17,7 +17,7 @@
 
 @interface CurrentGamesController ()
 
-@property(nonatomic, strong) NSOrderedSet *games;
+@property(nonatomic, strong) GameList *games;
 @property(nonatomic, strong) GameList *runningGames;
 @property(nonatomic) BOOL loadingNewRunningGamesPage;
 
@@ -35,6 +35,8 @@ typedef enum {
 } GameSection;
 
 @implementation CurrentGamesController
+
+#pragma mark - Pseudo-properties
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -80,7 +82,7 @@ typedef enum {
 
 - (void)refreshGames {
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] getCurrentGames:^(NSOrderedSet *currentGames) {
+    [[GenericGameServer sharedGameServer] getCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] getRunningGames:^(GameList *runningGames) {
             [self setEnabled:YES];
             [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
@@ -94,7 +96,7 @@ typedef enum {
 
 - (void)forceRefreshGames {
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(NSOrderedSet *currentGames) {
+    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] refreshRunningGames:^(GameList *runningGames) {
             [self.myRefreshControl endRefreshing];
             [self setEnabled:YES];
@@ -133,6 +135,15 @@ typedef enum {
     }];
 }
 
+- (IBAction)gameListTypeChanged:(id)sender {
+    [self.tableView reloadData];
+    if ([self.games count] == 0 && [self selectedGameList] == self.games) {
+        [self.tableView addSubview:self.noGamesView];
+    } else {
+        [self.noGamesView removeFromSuperview];
+    }
+}
+
 #pragma mark - Helper Actions
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -164,17 +175,17 @@ typedef enum {
     return mutableGameList;
 }
 
-- (void)handleGameListChanges:(NSOrderedSet *)gameListChanges
+- (void)handleGameListChanges:(GameList *)gameList
        runningGameListChanges:(GameList *)runningGameList {
 #if TEST_GAMES
     gameListChanges = [self gameListWithTestGames:gameListChanges];
 #endif
-    self.games = gameListChanges;
+    self.games = gameList;
     self.runningGames = runningGameList;
     [self.tableView reloadData];
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
-    if ([self.games count] == 0 && [self.runningGames count] == 0 && !self.loadingNewRunningGamesPage) {
+    if ([self.games count] == 0 && [self selectedGameList] == self.games) {
         [self.tableView addSubview:self.noGamesView];
     } else {
         [self.noGamesView removeFromSuperview];
@@ -183,45 +194,35 @@ typedef enum {
 
 #pragma mark - Table view data source
 
+- (GameList *)selectedGameList {
+    if (self.gameListTypeControl.selectedSegmentIndex == kGameSectionMyMove) {
+        return self.games;
+    } else if (self.gameListTypeControl.selectedSegmentIndex == kGameSectionRunningGames) {
+        return self.runningGames;
+    }
+    return nil;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return kGameSectionCount;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == kGameSectionMyMove) {
-        return [self.games count];
-    } else if (section == kGameSectionRunningGames) {
-        NSInteger count = [self.runningGames count];
-        if (!self.runningGames || [self.runningGames hasMorePages]) {
-            count += 1; // for the activity indicator
-        }
-        return count;
-    } else {
-        return 0;
+    GameList *selectedGameList = [self selectedGameList];
+    NSInteger count = [selectedGameList count];
+    if (!selectedGameList || [selectedGameList hasMorePages]) {
+        count += 1; // for the activity indicator
     }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == kGameSectionMyMove) {
-        return @"Your Move";
-    } else if (section == kGameSectionRunningGames) {
-        return @"Waiting for Move";
-    } else {
-        return @"";
-    }
+    return count;
 }
 
 - (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Game *game = nil;
-    
-    if (indexPath.section == kGameSectionMyMove) {
-        game = self.games[indexPath.row];
-    } else if (indexPath.section == kGameSectionRunningGames) {
-        if (indexPath.row < [self.runningGames count]) {
-            game = self.runningGames[indexPath.row];
-        }
+    GameList *selectedGameList = [self selectedGameList];
+    if (indexPath.row < [selectedGameList count]) {
+        return selectedGameList[indexPath.row];
+    } else {
+        return nil;
     }
-    return game;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -238,7 +239,7 @@ typedef enum {
         cell.detailTextLabel.text = game.time;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
-    } else {
+    } else if ([self selectedGameList] == self.runningGames) {
         LoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
         [cell.activityIndicator startAnimating];
         if (self.runningGames && !self.loadingNewRunningGamesPage) {
@@ -246,6 +247,9 @@ typedef enum {
             [self getMoreRunningGames];
         }
         return cell;
+    } else {
+        assert(@"Trying to show a loading cell for the main game list!");
+        return nil;
     }
 }
 
@@ -283,6 +287,7 @@ typedef enum {
 }
 
 - (void)viewDidUnload {
+    [self setGameListTypeControl:nil];
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.logoutButton = nil;

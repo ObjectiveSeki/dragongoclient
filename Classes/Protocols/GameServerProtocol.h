@@ -12,8 +12,6 @@ extern NSString * const PlayerDidLoginNotification;
 extern NSString * const PlayerDidLogoutNotification;
 
 typedef void(^EmptyBlock)();
-typedef void(^ListBlock)(NSArray *list);
-typedef void(^OrderedSetBlock)(NSOrderedSet *set);
 typedef void(^GameListBlock)(GameList *gameList);
 typedef void(^GameBlock)(Game *game);
 typedef void(^NewGameBlock)(NewGame *game);
@@ -30,8 +28,8 @@ typedef void(^ErrorBlock)(NSError *error);
                   onError:(ErrorBlock)onError;
 
 - (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getCurrentGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)refreshCurrentGames:(OrderedSetBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (void)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;

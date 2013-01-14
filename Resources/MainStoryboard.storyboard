@@ -168,7 +168,7 @@
             </objects>
             <point key="canvasLocation" x="-127" y="-44"/>
         </scene>
-        <!--Current Games Controller - Games-->
+        <!--Current Games Controller-->
         <scene sceneID="4av-kR-NaI">
             <objects>
                 <tableViewController id="Yh3-ya-bji" customClass="CurrentGamesController" sceneMemberID="viewController">
@@ -226,12 +226,24 @@
                             <outlet property="delegate" destination="Yh3-ya-bji" id="7CM-hS-gW1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Games" id="8MS-N6-xO8">
+                    <navigationItem key="navigationItem" id="8MS-N6-xO8">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="tl6-uH-lR6">
                             <connections>
                                 <action selector="logout" destination="Yh3-ya-bji" id="C1c-O8-7Gx"/>
                             </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="LcN-Kz-YAH">
+                            <rect key="frame" x="74" y="7" width="175" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Your Move"/>
+                                <segment title="All Games"/>
+                            </segments>
+                            <connections>
+                                <action selector="gameListTypeChanged:" destination="Yh3-ya-bji" eventType="valueChanged" id="qAN-vU-yDR"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="M3p-0y-Jay">
                             <connections>
                                 <segue destination="ihu-Gb-uq4" kind="modal" id="SrR-xf-xsG"/>
@@ -240,6 +252,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addGameButton" destination="M3p-0y-Jay" id="Nwp-ci-SF1"/>
+                        <outlet property="gameListTypeControl" destination="LcN-Kz-YAH" id="Yyc-LW-77r"/>
                         <outlet property="logoutButton" destination="tl6-uH-lR6" id="Y6Q-qB-qli"/>
                         <outlet property="noGamesView" destination="W38-2z-8rW" id="Fed-jX-KDC"/>
                         <segue destination="8uJ-pY-6ja" kind="push" identifier="ShowGame" id="pdS-1c-8ZI"/>
@@ -874,108 +887,6 @@
         <image name="Resign.png" width="30" height="30"/>
         <image name="White.png" width="38" height="38"/>
     </resources>
-    <classes>
-        <class className="AddGameViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddGameViewController.h"/>
-        </class>
-        <class className="BooleanCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BooleanCell.h"/>
-        </class>
-        <class className="CurrentGamesController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrentGamesController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout"/>
-                <relationship kind="outlet" name="addGameButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="GameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="confirmMove"/>
-                <relationship kind="action" name="pass"/>
-                <relationship kind="action" name="resign"/>
-                <relationship kind="action" name="share:"/>
-                <relationship kind="action" name="showMessageWindow"/>
-                <relationship kind="action" name="undoMove"/>
-                <relationship kind="action" name="zoomOut"/>
-                <relationship kind="outlet" name="boardView" candidateClass="GoBoardView"/>
-                <relationship kind="outlet" name="confirmButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="messageButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="messageView" candidateClass="MessageView"/>
-                <relationship kind="outlet" name="passButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="resignButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="undoButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="zoomOutButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="GoBoardView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoBoardView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="blackCaptures" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="blackName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="statusView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="whiteCaptures" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="whiteName" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="JoinWaitingRoomGameController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/JoinWaitingRoomGameController.h"/>
-        </class>
-        <class className="LoadingCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="passwordCell" candidateClass="TextCell"/>
-                <relationship kind="outlet" name="signupCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="usernameCell" candidateClass="TextCell"/>
-            </relationships>
-        </class>
-        <class className="MessageView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageView.h"/>
-            <relationships>
-                <relationship kind="action" name="hide"/>
-                <relationship kind="outlet" name="messageDisplayView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="messageField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="messageInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="messageTextView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="NewGameViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewGameViewController.h"/>
-        </class>
-        <class className="SelectCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="value" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TextCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TextCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="content" candidateClass="UIView"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="WaitingRoomGamesController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WaitingRoomGamesController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

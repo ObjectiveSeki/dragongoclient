@@ -13,13 +13,12 @@
 #import "Player.h"
 #import "ASIFormDataRequest.h"
 #import "IBAlertView.h"
-#import "RunningGameList.h"
 
 @implementation DGS
 
 static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 
-const int kDefaultPageLimit = 10;
+const int kDefaultPageLimit = 20;
 
 + (id<GameServerProtocol>)sharedGameServer {
     static DGS *sharedGameServer;
@@ -33,10 +32,6 @@ const int kDefaultPageLimit = 10;
 // This returns the base path onto which all of the urls used
 // in this class refer. This is so that you can run your own
 // DGS instance and play with it without ruining your own games.
-//
-// WARNING: the current CVS checkout of DGS differs significantly
-// from the running version -- therefore, you may run into bugs when
-// switching back to the real server.
 - (NSURL *)URLWithPath:(NSString *)path {
 	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://www.dragongoserver.net", path]];
 }
@@ -242,17 +237,20 @@ const int kDefaultPageLimit = 10;
     } onError:onError];
 }
 
-- (void)refreshCurrentGames:(void (^)(NSOrderedSet *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     [self getCurrentGames:onSuccess onError:onError];
 }
 
-- (void)getCurrentGames:(void (^)(NSOrderedSet *gameList))onSuccess onError:(ErrorBlock)onError {
+- (void)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
 	NSURL *url = [self URLWithPath:@"/quick_status.php?no_cache=1&version=2"];
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-		NSOrderedSet *gameList = [self gamesFromCSV:responseString];
+		NSOrderedSet *games = [self gamesFromCSV:responseString];
+        GameList *gameList = [[GameList alloc] init];
+        gameList.hasMorePages = NO;
+        [gameList addGames:games];
 		onSuccess(gameList);
 	} onError:onError];
 }
@@ -264,7 +262,7 @@ const int kDefaultPageLimit = 10;
 // http://www.dragongoserver.net/quick_do.php?obj=game&cmd=list&view=running&lstyle=json
 // {"version":"1.0.15:3","error":"","quota_count":495,"quota_expire":"2012-12-21 08:51:17","list_object":"game","list_totals":"1","list_size":1,"list_offset":0,"list_limit":10,"list_has_next":0,"list_order":"time_lastmove-,id-","list_result":[{"id":765115,"double_id":0,"tournament_id":0,"game_action":2,"status":"PLAY","flags":"","score":"","game_type":"GO","rated":1,"ruleset":"JAPANESE","size":19,"komi":0.5,"jigo_mode":"KEEP_KOMI","handicap":0,"handicap_mode":"STD","shape_id":0,"time_started":"2012-10-20 01:55:50","time_lastmove":"2012-12-13 12:59:31","time_weekend_clock":1,"time_mode":"FIS","time_limit":"F: 7d + 1d","my_id":53292,"move_id":105,"move_count":105,"move_color":"W","move_uid":53292,"move_opp":46277,"move_last":"cg","prio":0,"black_user":{"id":46277},"black_gameinfo":{"prisoners":0,"remtime":"F: 7d (+ 1d)","rating_start":"15k (-11%)","rating_start_elo":"588.67412133587"},"white_user":{"id":53292},"white_gameinfo":{"prisoners":1,"remtime":"F: 5d (+ 1d)","rating_start":"14k (-5%)","rating_start_elo":"695.01316811253"}}]}
 - (void)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
-    GameList *gameList = [[RunningGameList alloc] init];
+    GameList *gameList = [[GameList alloc] init];
     gameList.pathFormat = @"/quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json&limit=%d&off=%d";
     // let's just return an empty list, and rely on the caller to fill it in
     // for us. These games might not be shown anyway.
