@@ -15,7 +15,7 @@ typedef enum {
 	kBoardStateZoomedIn,
 } BoardState;
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <UIActionSheetDelegate>
 
 @property(nonatomic, strong) Game *game;
 @property(nonatomic) BOOL readOnly;
@@ -28,15 +28,21 @@ typedef enum {
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *passButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *messageButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *nextMoveButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *previousMoveButton;
 @property(nonatomic, strong) IBOutlet MessageView *messageView;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
 - (IBAction)undoMove;
 - (IBAction)zoomOut;
 - (IBAction)confirmMove;
 - (IBAction)pass;
 - (IBAction)resign;
+- (IBAction)showPassResignPanel:(id)sender;
 - (IBAction)showMessageWindow;
 - (IBAction)share:(id)sender;
+- (IBAction)goToPreviousMove:(id)sender;
+- (IBAction)goToNextMove:(id)sender;
 
 @end
 

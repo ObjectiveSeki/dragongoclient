@@ -286,6 +286,10 @@
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
+		DAC86D5316A52AA7000A72D6 /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D4F16A52AA7000A72D6 /* Next.png */; };
+		DAC86D5416A52AA7000A72D6 /* Next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5016A52AA7000A72D6 /* Next@2x.png */; };
+		DAC86D5516A52AA7000A72D6 /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5116A52AA7000A72D6 /* Previous.png */; };
+		DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5216A52AA7000A72D6 /* Previous@2x.png */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
 		DAD3634B126D4A9C00589A32 /* Message background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36349126D4A9C00589A32 /* Message background.png */; };
 		DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD3634A126D4A9C00589A32 /* Message background@2x.png */; };
@@ -647,6 +651,10 @@
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DAC86D4F16A52AA7000A72D6 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
+		DAC86D5016A52AA7000A72D6 /* Next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next@2x.png"; sourceTree = "<group>"; };
+		DAC86D5116A52AA7000A72D6 /* Previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Previous.png; sourceTree = "<group>"; };
+		DAC86D5216A52AA7000A72D6 /* Previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Previous@2x.png"; sourceTree = "<group>"; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
 		DAD36349126D4A9C00589A32 /* Message background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background.png"; sourceTree = "<group>"; };
 		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
@@ -1094,6 +1102,10 @@
 		DA37D90511BF56BC00BC1445 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAC86D4F16A52AA7000A72D6 /* Next.png */,
+				DAC86D5016A52AA7000A72D6 /* Next@2x.png */,
+				DAC86D5116A52AA7000A72D6 /* Previous.png */,
+				DAC86D5216A52AA7000A72D6 /* Previous@2x.png */,
 				DAD36367126D586600589A32 /* Message input.png */,
 				DAD36368126D586600589A32 /* Message input@2x.png */,
 				DAD36349126D4A9C00589A32 /* Message background.png */,
@@ -1525,6 +1537,10 @@
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
 				DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */,
 				DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */,
+				DAC86D5316A52AA7000A72D6 /* Next.png in Resources */,
+				DAC86D5416A52AA7000A72D6 /* Next@2x.png in Resources */,
+				DAC86D5516A52AA7000A72D6 /* Previous.png in Resources */,
+				DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

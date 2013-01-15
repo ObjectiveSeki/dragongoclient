@@ -30,6 +30,8 @@
 
 @property (nonatomic, strong) SpinnerView *spinner;
 
+@property (nonatomic, strong) UIActionSheet *passResignActionSheet;
+
 @end
 
 @implementation GameViewController
@@ -85,6 +87,17 @@
 
 #pragma mark - UI State
 
+- (void)replaceToolbarItemAtIndex:(int)itemIndex withItem:(UIBarButtonItem *)toolbarItem {
+    int index = itemIndex * 2 + 1; // each item has something in between.
+    if (toolbarItem == [self.toolbar.items objectAtIndex:index]) {
+        return;
+    }
+
+    NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
+    [toolbarItems replaceObjectAtIndex:index withObject:toolbarItem];
+    [self.toolbar setItems:toolbarItems animated:YES];
+}
+
 - (void)updateBoard {
 	if ([self.board canUndo]) {
 		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
@@ -92,17 +105,25 @@
 		[self.navigationItem setRightBarButtonItem:nil animated:YES];
 	}
     
-    // If we're readonly, we don't have to touch the buttons on the toolbar,
-    // and the board won't change.
     if (self.readOnly) {
         self.passButton.enabled = NO;
         self.resignButton.enabled = NO;
     } else {
         self.confirmButton.enabled = self.board.canSubmit;
         self.passButton.enabled = self.board.canPassOrResign;
-        self.resignButton.enabled = self.board.canPassOrResign;        
-        [self.boardView setNeedsDisplay]; // show just placed move
+        self.resignButton.enabled = self.board.canPassOrResign;
     }
+    
+    self.previousMoveButton.enabled = self.board.hasPreviousMove;
+    self.nextMoveButton.enabled = self.board.hasNextMove;
+    
+    if (self.board.hasNextMove) {
+        [self replaceToolbarItemAtIndex:1 withItem:self.nextMoveButton];
+    } else {
+        [self replaceToolbarItemAtIndex:1 withItem:self.resignButton];
+    }
+    
+    [self.boardView setNeedsDisplay]; // show just placed move
 }
 
 // Sets the 'message waiting' toolbar indicator based on the value of hasMessage.
@@ -191,6 +212,19 @@
     return self.boardView;
 }
 
+#pragma mark - UIActionSheetDelegate methods
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (actionSheet == self.passResignActionSheet) {
+        if (buttonIndex == actionSheet.destructiveButtonIndex) {
+            [self resign];
+        } else if (buttonIndex != actionSheet.cancelButtonIndex) {
+            [self pass];
+        }
+        self.passResignActionSheet = nil;
+    }
+}
+
 #pragma mark - Toolbar actions
 
 - (IBAction)zoomOut {
@@ -238,6 +272,11 @@
 	[self updateBoard];
 }
 
+- (IBAction)showPassResignPanel:(id)sender {
+    self.passResignActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Resign" otherButtonTitles:@"Pass", nil];
+    [self.passResignActionSheet showFromBarButtonItem:sender animated:YES];
+}
+
 - (IBAction)showMessageWindow {
 	[self.navigationController.view addSubview:self.messageView];
 	[self.messageView show:^(BOOL hasMessage) {
@@ -272,6 +311,16 @@
         [self.sgfShareQueue addOperation:self.sgfShareOperation];
     }
     [self.shareController presentOptionsMenuFromBarButtonItem:sender animated:YES];
+}
+
+- (IBAction)goToPreviousMove:(id)sender {
+    [self.board goToPreviousMove];
+    [self updateBoard];
+}
+
+- (IBAction)goToNextMove:(id)sender {
+    [self.board goToNextMove];
+    [self updateBoard];
 }
 
 #pragma mark - Playing moves
@@ -314,4 +363,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)viewDidUnload {
+    [self setPreviousMoveButton:nil];
+    [self setNextMoveButton:nil];
+    [self setPreviousMoveButton:nil];
+    [self setToolbar:nil];
+    [super viewDidUnload];
+}
 @end

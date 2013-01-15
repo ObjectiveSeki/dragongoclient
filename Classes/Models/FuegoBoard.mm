@@ -153,11 +153,31 @@ static bool fuegoInitialized = NO;
 	return nil;
 }
 
-- (bool)beginningOfHandicapGame {
+- (BOOL)hasPreviousMove {
+    return goGame->CanGoInDirection(SgNode::PREVIOUS);
+}
+
+- (BOOL)hasNextMove {
+    return (![self atCurrentMove] && goGame->CanGoInDirection(SgNode::NEXT));
+}
+
+- (BOOL)atCurrentMove {
+    return (startNode == goGame->CurrentNode());
+}
+
+- (void)goToNextMove {
+    goGame->GoInDirection(SgNode::NEXT);
+}
+
+- (void)goToPreviousMove {
+    goGame->GoInDirection(SgNode::PREVIOUS);
+}
+
+- (BOOL)beginningOfHandicapGame {
 	return [self handicap] && [self moveNumber] == [self handicap];
 }
 
-- (bool)needsHandicapStones {
+- (BOOL)needsHandicapStones {
 	return [self moveNumber] < [self handicap];
 }
 
@@ -425,42 +445,44 @@ static bool fuegoInitialized = NO;
 	return points;
 }
 
-- (bool)canUndo {
-	if ([self gameEnded] && [[self changedGroups] count] > 0) {
+- (BOOL)canUndo {
+    if ([self hasNextMove]) {
+        return NO;
+    } else if ([self gameEnded] && [[self changedGroups] count] > 0) {
 		return YES;
 	} else if (self.resignMove) {
 		return YES;
-	} else if (goGame->CurrentNode() != startNode) {
+	} else if (![self atCurrentMove]) {
 		return YES;
 	}
 	return NO;
 }
 
-- (bool)canPlayMove {
+- (BOOL)canPlayMove {
 	if ([self gameEnded] && [[self changedGroups] count] > 0) {
 		return NO;
 	} else if ([self handicap] && [self needsHandicapStones]) {
 		return YES;
-	} else if (goGame->CurrentNode() == startNode) {
+	} else if ([self atCurrentMove]) {
 		return YES;
 	}
 	return NO;
 }
 
-- (bool)canPassOrResign {
+- (BOOL)canPassOrResign {
 	if ([self gameEnded]) {
 		return NO;
 	} else if ([self needsHandicapStones]) {
 		return NO;
 	} else if (self.resignMove) {
 		return NO;
-	} else if (goGame->CurrentNode() == startNode) {
+	} else if ([self atCurrentMove]) {
 		return YES;
 	}
 	return NO;
 }
 
-- (bool)canSubmit {
+- (BOOL)canSubmit {
 	if ([self handicap] && [self needsHandicapStones]) {
 		return NO;
 	} else if ([self canUndo]) {

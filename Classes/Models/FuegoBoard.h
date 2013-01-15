@@ -58,11 +58,18 @@
 - (void)pass;
 - (void)resign;
 
+// Game Navigation
+- (BOOL)hasPreviousMove;
+- (BOOL)hasNextMove;
+- (BOOL)atCurrentMove;
+- (void)goToNextMove;
+- (void)goToPreviousMove;
+
 // NO if the game has a handicap and the handicap stones have just been placed
-- (bool)beginningOfHandicapGame;
+- (BOOL)beginningOfHandicapGame;
 
 // YES if the game has a hadicap and handicap stones still need to be placed
-- (bool)needsHandicapStones;
+- (BOOL)needsHandicapStones;
 
 // If handicap stones have just been placed, return the handicap stones. Otherwise, return nil.
 - (NSArray *)handicapStones;
@@ -70,10 +77,10 @@
 // Captured endgame territory, in an array of moves
 - (NSArray *)territory;
 
-- (bool)canUndo;
-- (bool)canPlayMove;
-- (bool)canPassOrResign;
-- (bool)canSubmit;
+- (BOOL)canUndo;
+- (BOOL)canPlayMove;
+- (BOOL)canPassOrResign;
+- (BOOL)canSubmit;
 
 - (NSString *)name:(MovePlayer)movePlayer;
 - (int)captures:(MovePlayer)movePlayer;

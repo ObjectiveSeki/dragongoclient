@@ -260,7 +260,7 @@
                 </tableViewController>
                 <view contentMode="scaleToFill" id="W38-2z-8rW" userLabel="No Games View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aBy-VP-VjB">
                             <rect key="frame" x="20" y="53" width="280" height="44"/>
@@ -307,31 +307,32 @@
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem image="Pass.png" style="plain" id="9lv-Qk-ynQ" userLabel="Pass Button">
+                                    <barButtonItem width="11" style="plain" systemItem="fixedSpace" id="7aj-Rd-O75"/>
+                                    <barButtonItem image="Previous.png" style="plain" id="eKh-D3-taq" userLabel="Previous Button">
                                         <connections>
-                                            <action selector="pass" destination="8uJ-pY-6ja" id="0je-DB-rh0"/>
+                                            <action selector="goToPreviousMove:" destination="8uJ-pY-6ja" id="iG1-ah-JBH"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="g0B-Cs-T2A"/>
-                                    <barButtonItem image="Resign.png" style="plain" id="Z3J-8K-Ubw" userLabel="Resign Button">
+                                    <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="vj1-Rm-jmm"/>
+                                    <barButtonItem image="Resign.png" width="20" style="plain" id="Z3J-8K-Ubw" userLabel="Resign Button">
                                         <connections>
-                                            <action selector="resign" destination="8uJ-pY-6ja" id="hhf-BM-9FF"/>
+                                            <action selector="showPassResignPanel:" destination="8uJ-pY-6ja" id="c9A-jk-T8z"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="18" style="plain" systemItem="fixedSpace" id="FuV-UC-aBO"/>
-                                    <barButtonItem image="Message off.png" width="48" style="plain" id="syN-FK-JSN" userLabel="Message Button">
+                                    <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="56G-WC-HqX"/>
+                                    <barButtonItem image="Message off.png" style="plain" id="syN-FK-JSN" userLabel="Message Button">
                                         <connections>
                                             <action selector="showMessageWindow" destination="8uJ-pY-6ja" id="fFd-0g-I2l"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="13" style="plain" systemItem="fixedSpace" id="1YP-5f-xdS"/>
+                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="6lH-mg-GT6"/>
                                     <barButtonItem style="plain" systemItem="action" id="7PH-6e-vqx">
                                         <inset key="imageInsets" minX="0.0" minY="-2" maxX="0.0" maxY="2"/>
                                         <connections>
                                             <action selector="share:" destination="8uJ-pY-6ja" id="SIy-OZ-tjw"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zs1-dQ-099"/>
+                                    <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="834-aG-04F"/>
                                     <barButtonItem enabled="NO" title="Submit" id="goH-4M-lf1" userLabel="Submit Button">
                                         <connections>
                                             <action selector="confirmMove" destination="8uJ-pY-6ja" id="Nhl-6P-8pb"/>
@@ -438,9 +439,12 @@
                         <outlet property="confirmButton" destination="goH-4M-lf1" id="TAB-BD-AkK"/>
                         <outlet property="messageButton" destination="syN-FK-JSN" id="4xJ-oX-xRF"/>
                         <outlet property="messageView" destination="EY9-sO-cE6" id="cjb-Qu-npi"/>
+                        <outlet property="nextMoveButton" destination="KSA-hO-dfv" id="pKQ-iq-M1s"/>
                         <outlet property="passButton" destination="9lv-Qk-ynQ" id="4qJ-o2-SVT"/>
+                        <outlet property="previousMoveButton" destination="eKh-D3-taq" id="JuP-vq-lT5"/>
                         <outlet property="resignButton" destination="Z3J-8K-Ubw" id="EuV-dz-d4e"/>
                         <outlet property="scrollView" destination="xni-U3-1MX" id="dHP-le-Gw6"/>
+                        <outlet property="toolbar" destination="zh1-5j-Rc3" id="1uw-ci-SAC"/>
                         <outlet property="undoButton" destination="zg4-5U-eXD" id="yYQ-qE-Pi5"/>
                         <outlet property="zoomOutButton" destination="ikf-ud-GZp" id="Dn3-I9-HTz"/>
                     </connections>
@@ -502,9 +506,19 @@
                         <action selector="zoomOut" destination="8uJ-pY-6ja" id="sLG-rK-3C0"/>
                     </connections>
                 </barButtonItem>
+                <barButtonItem image="Pass.png" style="plain" id="9lv-Qk-ynQ" userLabel="Pass Button">
+                    <connections>
+                        <action selector="pass" destination="8uJ-pY-6ja" id="0je-DB-rh0"/>
+                    </connections>
+                </barButtonItem>
                 <barButtonItem systemItem="undo" id="zg4-5U-eXD" userLabel="Undo Button">
                     <connections>
                         <action selector="undoMove" destination="8uJ-pY-6ja" id="TgZ-JS-9W5"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem image="Next.png" width="20" style="plain" id="KSA-hO-dfv" userLabel="Next Button">
+                    <connections>
+                        <action selector="goToNextMove:" destination="8uJ-pY-6ja" id="iIz-RI-bgc"/>
                     </connections>
                 </barButtonItem>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1f-AD-zaz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -882,11 +896,123 @@
         <image name="Board dock.png" width="320" height="52"/>
         <image name="Message background.png" width="280" height="173"/>
         <image name="Message input.png" width="320" height="44"/>
-        <image name="Message off.png" width="30" height="30"/>
+        <image name="Message off.png" width="20" height="20"/>
+        <image name="Next.png" width="20" height="20"/>
         <image name="Pass.png" width="30" height="30"/>
-        <image name="Resign.png" width="30" height="30"/>
+        <image name="Previous.png" width="20" height="20"/>
+        <image name="Resign.png" width="20" height="20"/>
         <image name="White.png" width="38" height="38"/>
     </resources>
+    <classes>
+        <class className="AddGameViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddGameViewController.h"/>
+        </class>
+        <class className="BooleanCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BooleanCell.h"/>
+        </class>
+        <class className="CurrentGamesController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CurrentGamesController.h"/>
+            <relationships>
+                <relationship kind="action" name="gameListTypeChanged:"/>
+                <relationship kind="action" name="logout"/>
+                <relationship kind="outlet" name="addGameButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="gameListTypeControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="GameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="confirmMove"/>
+                <relationship kind="action" name="goToNextMove:"/>
+                <relationship kind="action" name="goToPreviousMove:"/>
+                <relationship kind="action" name="pass"/>
+                <relationship kind="action" name="resign"/>
+                <relationship kind="action" name="share:"/>
+                <relationship kind="action" name="showMessageWindow"/>
+                <relationship kind="action" name="showPassResignPanel:"/>
+                <relationship kind="action" name="undoMove"/>
+                <relationship kind="action" name="zoomOut"/>
+                <relationship kind="outlet" name="boardView" candidateClass="GoBoardView"/>
+                <relationship kind="outlet" name="confirmButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="messageButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="messageView" candidateClass="MessageView"/>
+                <relationship kind="outlet" name="nextMoveButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="passButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="previousMoveButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="resignButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="toolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="undoButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="zoomOutButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="GoBoardView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GoBoardView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="blackCaptures" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="blackName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="delegate"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="statusView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="whiteCaptures" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="whiteName" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="JoinWaitingRoomGameController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JoinWaitingRoomGameController.h"/>
+        </class>
+        <class className="LoadingCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="passwordCell" candidateClass="TextCell"/>
+                <relationship kind="outlet" name="signupCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="usernameCell" candidateClass="TextCell"/>
+            </relationships>
+        </class>
+        <class className="MessageView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageView.h"/>
+            <relationships>
+                <relationship kind="action" name="hide"/>
+                <relationship kind="outlet" name="messageDisplayView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="messageField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="messageInputView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="messageTextView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="NewGameViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewGameViewController.h"/>
+        </class>
+        <class className="SelectCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="value" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TextCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TextCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="content" candidateClass="UIView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="WaitingRoomGamesController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WaitingRoomGamesController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noGamesView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
