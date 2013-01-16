@@ -65,11 +65,11 @@
 	
 }
 
-- (BOOL)hasMessage {
+- (BOOL)hasMessageOrReply {
 	return (self.message.length > 0 || self.reply.length > 0);
 }
 
-- (void)show:(void (^)(BOOL hasMessage))onHide {
+- (void)show:(void (^)())onHide {
     self.frame = self.superview.frame;
     
     if (self.showInputView) {
@@ -94,7 +94,7 @@
 
 - (IBAction)hide {
 	self.reply = self.messageField.text;
-	self.onHide([self hasMessage]);
+	self.onHide();
 	[self.messageField resignFirstResponder];
 	[self removeKeyboardNotifications];
 	

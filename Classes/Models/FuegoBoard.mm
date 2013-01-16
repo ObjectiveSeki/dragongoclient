@@ -26,6 +26,7 @@ static bool fuegoInitialized = NO;
     const SgNode *startNode;
     BOOL _gameEnded;
     NSUInteger _scoringMoves;
+    int startMoveNumber;
 }
 
 @end
@@ -101,6 +102,7 @@ static bool fuegoInitialized = NO;
         
 		// used to track changes for undo
 		startNode = goGame->CurrentNode();
+        startMoveNumber = goGame->CurrentMoveNumber();
 		
 		if (goGame->CurrentNode()->HasProp(SG_PROP_MARKED)) {
 			
@@ -157,8 +159,8 @@ static bool fuegoInitialized = NO;
     return goGame->CanGoInDirection(SgNode::PREVIOUS);
 }
 
-- (BOOL)hasNextMove {
-    return (![self atCurrentMove] && goGame->CanGoInDirection(SgNode::NEXT));
+- (BOOL)beforeCurrentMove {
+    return (goGame->CurrentMoveNumber() < startMoveNumber);
 }
 
 - (BOOL)atCurrentMove {
@@ -446,7 +448,7 @@ static bool fuegoInitialized = NO;
 }
 
 - (BOOL)canUndo {
-    if ([self hasNextMove]) {
+    if ([self beforeCurrentMove]) {
         return NO;
     } else if ([self gameEnded] && [[self changedGroups] count] > 0) {
 		return YES;

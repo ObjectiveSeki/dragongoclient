@@ -60,7 +60,7 @@
 
 // Game Navigation
 - (BOOL)hasPreviousMove;
-- (BOOL)hasNextMove;
+- (BOOL)beforeCurrentMove;
 - (BOOL)atCurrentMove;
 - (void)goToNextMove;
 - (void)goToPreviousMove;

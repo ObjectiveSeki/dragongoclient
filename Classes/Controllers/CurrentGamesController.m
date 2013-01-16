@@ -157,9 +157,9 @@ typedef enum {
 
 #pragma mark - Game list management
 
-- (NSOrderedSet *)gameListWithTestGames:(NSOrderedSet *)gameList {
+- (void)addTestGamesToGameList:(GameList *)gameList {
     NSArray *testGames = @[@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];
-    NSMutableOrderedSet *mutableGameList = [gameList mutableCopy];
+    NSMutableOrderedSet *mutableGameList = [[NSMutableOrderedSet alloc] initWithCapacity:[testGames count]];
     for (int i = 0; i < [testGames count]; i++) {
         Game *game = [[Game alloc] init];
         NSString *name = testGames[i];
@@ -169,16 +169,17 @@ typedef enum {
         game.time = @"Test";
         game.gameId = 10000000000 + i;
         game.moveId = 100;
+        game.myTurn = YES;
         
         [mutableGameList addObject:game];
     }
-    return mutableGameList;
+    [gameList addGames:mutableGameList];
 }
 
 - (void)handleGameListChanges:(GameList *)gameList
        runningGameListChanges:(GameList *)runningGameList {
 #if TEST_GAMES
-    gameListChanges = [self gameListWithTestGames:gameListChanges];
+    [self addTestGamesToGameList:gameList];
 #endif
     self.games = gameList;
     self.runningGames = runningGameList;

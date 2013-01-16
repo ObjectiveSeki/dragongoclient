@@ -56,23 +56,10 @@
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
     
-	if ([theBoard comment]) {
-		[self setMessageIconState:YES];
-		self.messageView.message = [theBoard comment];
-	}
-    
-    if (self.readOnly) {
-        if ([theBoard comment]) {
-            self.messageView.showInputView = NO;
-        } else {
-            self.messageButton.enabled = NO;
-        }
-    }
-    
 	self.currentZoomScale = [self zoomInScale];
 	[self lockZoom];
 	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
-    [self updateBoard];
+    [self updateUI];
     self.sgfShareQueue = [[NSOperationQueue alloc] init];
     self.sgfShareQueue.name = @"SGF saving queue";
 }
@@ -87,6 +74,15 @@
 
 #pragma mark - UI State
 
+- (void)updateMessageState {
+    BOOL hasCommentOrReply = [self.messageView hasMessageOrReply];
+    BOOL canLeaveComment = !(self.readOnly || [self.board beforeCurrentMove]);
+    
+    [self setMessageIconState:hasCommentOrReply];
+    self.messageView.showInputView = canLeaveComment;
+    self.messageButton.enabled = (canLeaveComment || hasCommentOrReply);
+}
+
 - (void)replaceToolbarItemAtIndex:(int)itemIndex withItem:(UIBarButtonItem *)toolbarItem {
     int index = itemIndex * 2 + 1; // each item has something in between.
     if (toolbarItem == [self.toolbar.items objectAtIndex:index]) {
@@ -98,10 +94,15 @@
     [self.toolbar setItems:toolbarItems animated:YES];
 }
 
-- (void)updateBoard {
+- (void)updateUI {
+    self.messageView.message = self.board.comment;
+    [self updateMessageState];
+    
 	if ([self.board canUndo]) {
 		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
-	} else {
+	} else if (self.boardState == kBoardStateZoomedIn) {
+        [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
+    } else {
 		[self.navigationItem setRightBarButtonItem:nil animated:YES];
 	}
     
@@ -115,9 +116,9 @@
     }
     
     self.previousMoveButton.enabled = self.board.hasPreviousMove;
-    self.nextMoveButton.enabled = self.board.hasNextMove;
+    self.nextMoveButton.enabled = self.board.beforeCurrentMove;
     
-    if (self.board.hasNextMove) {
+    if (self.board.beforeCurrentMove) {
         [self replaceToolbarItemAtIndex:1 withItem:self.nextMoveButton];
     } else {
         [self replaceToolbarItemAtIndex:1 withItem:self.resignButton];
@@ -204,7 +205,7 @@
 	if (self.currentZoomScale != 0.5) {
 		[self zoomToScale:0.5 center:center animated:YES];
 	}
-	[self updateBoard];
+	[self updateUI];
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
@@ -233,7 +234,7 @@
 
 - (IBAction)undoMove {
 	[self.board undoLastMove];
-	[self updateBoard];
+	[self updateUI];
 }
 
 - (IBAction)confirmMove {
@@ -264,12 +265,12 @@
 
 - (IBAction)pass {
 	[self.board pass];
-	[self updateBoard];
+	[self updateUI];
 }
 
 - (IBAction)resign {
 	[self.board resign];
-	[self updateBoard];
+	[self updateUI];
 }
 
 - (IBAction)showPassResignPanel:(id)sender {
@@ -279,8 +280,8 @@
 
 - (IBAction)showMessageWindow {
 	[self.navigationController.view addSubview:self.messageView];
-	[self.messageView show:^(BOOL hasMessage) {
-		[self setMessageIconState:hasMessage];
+	[self.messageView show:^() {
+		[self updateMessageState];
 	}];
 }
 
@@ -315,29 +316,31 @@
 
 - (IBAction)goToPreviousMove:(id)sender {
     [self.board goToPreviousMove];
-    [self updateBoard];
+    [self updateUI];
 }
 
 - (IBAction)goToNextMove:(id)sender {
     [self.board goToNextMove];
-    [self updateBoard];
+    [self updateUI];
 }
 
 #pragma mark - Playing moves
 
 - (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
     
-	BOOL canZoomIn = [self.board canPlayMove] || [self.board gameEnded] || self.readOnly;
+    BOOL canPlaceStones = [self.board canPlayMove] || [self.board gameEnded];
+    
+	BOOL canZoomIn = canPlaceStones || [self.board beforeCurrentMove] || self.readOnly;
     BOOL shouldZoomIn = ![self isSmallBoard] && self.boardState == kBoardStateZoomedOut && canZoomIn;
     
     BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
-    BOOL canPlayOrMarkStones = !self.readOnly && isZoomedIn;
+    BOOL canPlayOrMarkStones = !self.readOnly && canPlaceStones && isZoomedIn;
     
 	if (shouldZoomIn) {
 		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
-		[[self passButton] setEnabled:NO];
-		[[self resignButton] setEnabled:NO];
+		[self.passButton setEnabled:NO];
+		[self.resignButton setEnabled:NO];
 		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
 	} else if (canPlayOrMarkStones) {
 		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
