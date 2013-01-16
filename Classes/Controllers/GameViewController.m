@@ -12,6 +12,7 @@
 #import "GoBoardView.h"
 #import "MessageView.h"
 #import "SpinnerView.h"
+#import "NSTimer+Blocks.h"
 
 @interface GameViewController ()
 
@@ -32,7 +33,13 @@
 
 @property (nonatomic, strong) UIActionSheet *passResignActionSheet;
 
+// A timer that's triggered when the forward button is hit. It temporarily
+// disables the resign button, to help avoid accidental keypresses.
+@property (nonatomic, strong) NSTimer *resignInteractionTimer;
+
 @end
+
+const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 @implementation GameViewController
 
@@ -118,7 +125,7 @@
     self.previousMoveButton.enabled = self.board.hasPreviousMove;
     self.nextMoveButton.enabled = self.board.beforeCurrentMove;
     
-    if (self.board.beforeCurrentMove) {
+    if (self.board.beforeCurrentMove || [self.resignInteractionTimer isValid]) {
         [self replaceToolbarItemAtIndex:1 withItem:self.nextMoveButton];
     } else {
         [self replaceToolbarItemAtIndex:1 withItem:self.resignButton];
@@ -321,6 +328,15 @@
 
 - (IBAction)goToNextMove:(id)sender {
     [self.board goToNextMove];
+    
+    if ([self.board atCurrentMove]) {
+        [self.resignInteractionTimer invalidate];
+        self.resignInteractionTimer = [NSTimer scheduledTimerWithTimeInterval:kDefaultResignTimerLength block:^(NSTimer *timer) {
+            self.resignInteractionTimer = nil;
+            [self updateUI];
+        } repeats:NO];
+    }
+    
     [self updateUI];
 }
 

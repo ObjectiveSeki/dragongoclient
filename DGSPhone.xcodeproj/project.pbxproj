@@ -257,6 +257,7 @@
 		DA65D6D016982A6D00AB9FC7 /* libfuego.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E8041245398B00387BB5 /* libfuego.a */; };
 		DA65D6D216982A7E00AB9FC7 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
+		DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66E91D16A6923100A066CF /* NSTimer+Blocks.m */; };
 		DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA68408514DB04E9006EF22C /* CachingGameServer.m */; };
 		DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6F94FB11FAA0670093751D /* SpinnerView.m */; };
 		DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
@@ -612,6 +613,8 @@
 		DA667C19125A266C00CA9A13 /* FuegoBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoardTests.h; sourceTree = "<group>"; };
 		DA667C1A125A266C00CA9A13 /* FuegoBoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuegoBoardTests.m; sourceTree = "<group>"; };
 		DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Scoring Should Be Move 202.sgf"; sourceTree = "<group>"; };
+		DA66E91C16A6923100A066CF /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		DA66E91D16A6923100A066CF /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		DA68408414DB04E9006EF22C /* CachingGameServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CachingGameServer.h; sourceTree = "<group>"; };
 		DA68408514DB04E9006EF22C /* CachingGameServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachingGameServer.m; sourceTree = "<group>"; };
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
@@ -1231,6 +1234,8 @@
 		DABA05D2169ABA1800B1ECD9 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				DA66E91C16A6923100A066CF /* NSTimer+Blocks.h */,
+				DA66E91D16A6923100A066CF /* NSTimer+Blocks.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1654,6 +1659,7 @@
 				DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */,
 				DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */,
 				DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */,
+				DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
