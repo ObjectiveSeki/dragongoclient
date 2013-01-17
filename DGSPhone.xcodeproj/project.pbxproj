@@ -240,6 +240,8 @@
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
 		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
+		DA3B8CCF16A7D8520013E85F /* Game Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B8CCD16A7D8520013E85F /* Game Background.png */; };
+		DA3B8CD016A7D8520013E85F /* Game Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */; };
 		DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.m */; };
@@ -591,6 +593,8 @@
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DA391DDC1592CB2900F9E36F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		DA391DDD1592CB2900F9E36F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		DA3B8CCD16A7D8520013E85F /* Game Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Background.png"; sourceTree = "<group>"; };
+		DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Background@2x.png"; sourceTree = "<group>"; };
 		DA402AC611D30931005017C4 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
 		DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoard.mm; sourceTree = "<group>"; };
@@ -1105,6 +1109,8 @@
 		DA37D90511BF56BC00BC1445 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DA3B8CCD16A7D8520013E85F /* Game Background.png */,
+				DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */,
 				DAC86D4F16A52AA7000A72D6 /* Next.png */,
 				DAC86D5016A52AA7000A72D6 /* Next@2x.png */,
 				DAC86D5116A52AA7000A72D6 /* Previous.png */,
@@ -1546,6 +1552,8 @@
 				DAC86D5416A52AA7000A72D6 /* Next@2x.png in Resources */,
 				DAC86D5516A52AA7000A72D6 /* Previous.png in Resources */,
 				DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */,
+				DA3B8CCF16A7D8520013E85F /* Game Background.png in Resources */,
+				DA3B8CD016A7D8520013E85F /* Game Background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

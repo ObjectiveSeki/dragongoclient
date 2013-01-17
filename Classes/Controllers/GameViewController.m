@@ -53,6 +53,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
+    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Game Background.png"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

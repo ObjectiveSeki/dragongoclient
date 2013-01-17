@@ -126,25 +126,26 @@
 	}
 }
 
+- (CGLayerRef)newLayerWithImage:(UIImage *)image context:(CGContextRef)context {
+    float scale = [self contentScaleFactor];
+    CGRect bounds = CGRectMake(0, 0, image.size.width * scale, image.size.height * scale);
+    CGLayerRef layer = CGLayerCreateWithContext(context, bounds.size, NULL);
+    CGContextRef layerContext = CGLayerGetContext(layer);
+    CGContextScaleCTM(layerContext, 1.0, -1.0);
+    CGContextTranslateCTM(layerContext, 0.0, -bounds.size.height);
+    CGContextDrawImage(layerContext, CGRectMake(0, 0, bounds.size.width, bounds.size.height), image.CGImage);
+    return layer;
+}
+
 - (void)drawStonesUsingLayer:(CGContextRef)context {
 	NSArray *moves = [self.board moves];
 	float stoneRadius = [self pointDistance] * STONE_RADIUS;
 	UIImage *blackStoneImage = [UIImage imageNamed:@"Black.png"];
     UIImage *whiteStoneImage = [UIImage imageNamed:@"White.png"];
 
-    CGLayerRef blackStone = CGLayerCreateWithContext(context, blackStoneImage.size, NULL);
-    CGContextRef blackStoneContext = CGLayerGetContext(blackStone);
-    CGContextScaleCTM(blackStoneContext, 1.0, -1.0);
-    CGContextTranslateCTM(blackStoneContext, 0.0, -blackStoneImage.size.height);
-    CGContextDrawImage(blackStoneContext, CGRectMake(0, 0, blackStoneImage.size.width, blackStoneImage.size.height), blackStoneImage.CGImage);
-    
-    CGLayerRef whiteStone = CGLayerCreateWithContext(context, whiteStoneImage.size, NULL);
-    CGContextRef whiteStoneContext = CGLayerGetContext(whiteStone);
-    CGContextScaleCTM(whiteStoneContext, 1.0, -1.0);
-    CGContextTranslateCTM(whiteStoneContext, 0.0, -whiteStoneImage.size.height);
-    CGContextDrawImage(whiteStoneContext, CGRectMake(0, 0, whiteStoneImage.size.width, whiteStoneImage.size.height), whiteStoneImage.CGImage);
-
-    
+    CGLayerRef blackStone = [self newLayerWithImage:blackStoneImage context:context];
+    CGLayerRef whiteStone = [self newLayerWithImage:whiteStoneImage context:context];
+        
 	for (Move *move in moves) {
 		if ([move moveType] == kMoveTypeMove) {
             CGPoint coords = [self pointForBoardRow:[move row] column:[move col]];
@@ -290,11 +291,11 @@
     [super layoutSubviews];
     self.layer.masksToBounds = NO;
     self.layer.shadowOpacity = 0.6;
-    self.layer.shadowRadius = 3.0;
+    self.layer.shadowRadius = 9.0;
     CGPathRef shadowPath = CGPathCreateWithRect(self.bounds, NULL);
     self.layer.shadowPath = shadowPath;
     CGPathRelease(shadowPath);
-    self.layer.shadowOffset = CGSizeMake(0.0, 1.0);
+    self.layer.shadowOffset = CGSizeMake(0.0, 4.0);
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -312,7 +313,7 @@
 	// Drawing code
 	[self drawBoardGrid:context boardSize:[[self board] size]];
     [self drawStonesUsingLayer:context];
-	
+    
 	if ([self.board gameEnded]) {
 		[self markDeadStones:context];
 		[self drawTerritory:context];
