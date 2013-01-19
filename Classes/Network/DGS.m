@@ -9,7 +9,6 @@
 #import "DGS.h"
 #import "GDataXMLNode.h"
 #import "NewGame.h"
-#import "JSONKit.h"
 #import "Player.h"
 #import "ASIFormDataRequest.h"
 #import "IBAlertView.h"
@@ -145,8 +144,9 @@ const int kDefaultPageLimit = 20;
 	if (NO == [self loggedIn:request responseString:responseString]) {
         // Login errors don't count as real errors
 		NSLog(@"Not logged in during request: %@", [request url]);
+        Player *oldPlayer = [Player currentPlayer];
         [self resetUserData];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:oldPlayer];
 	} else if (errorString) {
         [self showErrorForRequest:request error:errorString];
 	} else {
@@ -200,6 +200,15 @@ const int kDefaultPageLimit = 20;
 	[request startAsynchronous];
 }
 
+- (id)objectFromJSONData:(NSData *)data {
+    NSError *parseError;
+    id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+    if (parseError) {
+        NSLog(@"Error reading json: %@", [parseError localizedDescription]);
+    }
+    return object;
+}
+
 #pragma mark -
 #pragma mark DGS Calls
 
@@ -209,8 +218,9 @@ const int kDefaultPageLimit = 20;
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
+        Player *oldPlayer = [Player currentPlayer];
         [self resetUserData];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:oldPlayer];
     } onError:onError];
 }
 
@@ -219,8 +229,8 @@ const int kDefaultPageLimit = 20;
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
     [self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
-        [self setCurrentPlayerFromDictionary:[decoder objectWithData:[request responseData]]];
+        [self setCurrentPlayerFromDictionary:[self objectFromJSONData:[request responseData]]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLoginNotification object:nil];
     } onError:onError];
 }
 
@@ -284,8 +294,7 @@ const int kDefaultPageLimit = 20;
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
     
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
-        NSDictionary *gameListDictionary = [decoder objectWithData:[request responseData]];
+        NSDictionary *gameListDictionary = [self objectFromJSONData:[request responseData]];
         NSMutableOrderedSet *games = [NSMutableOrderedSet orderedSetWithCapacity:[gameListDictionary[@"list_result"] count]];
         
         for (NSDictionary *gameDetails in gameListDictionary[@"list_result"]) {
@@ -311,8 +320,7 @@ const int kDefaultPageLimit = 20;
 	[request setCachePolicy:ASIDoNotReadFromCacheCachePolicy];
 
 	[self performRequest:request onSuccess:^(ASIHTTPRequest *request, NSString *responseString) {
-        JSONDecoder *decoder = [JSONDecoder decoderWithParseOptions:JKParseOptionValidFlags];
-        NewGame *gameDetails = [self gameFromWaitingRoomGameDictionary:[decoder objectWithData:[request responseData]]];
+        NewGame *gameDetails = [self gameFromWaitingRoomGameDictionary:[self objectFromJSONData:[request responseData]]];
         onSuccess(gameDetails);
 	} onError:onError];
 }

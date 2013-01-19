@@ -324,6 +324,8 @@
 		DAF9105F11BB5BBD00FE7B96 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.m */; };
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
 		DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
+		DAFF411216AA8AAB005A62FB /* DGSPushServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF411116AA8AAB005A62FB /* DGSPushServer.m */; };
+		DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -699,6 +701,10 @@
 		DAF911F311BB796900FE7B96 /* Move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Move.m; sourceTree = "<group>"; };
 		DAFADA4E12CF0EF100985126 /* waiting.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = waiting.html; sourceTree = "<group>"; };
 		DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "25x25 Handicap Stones.sgf"; sourceTree = "<group>"; };
+		DAFF411016AA8AAB005A62FB /* DGSPushServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPushServer.h; sourceTree = "<group>"; };
+		DAFF411116AA8AAB005A62FB /* DGSPushServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSPushServer.m; sourceTree = "<group>"; };
+		DAFF411416AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ExtraDeviceDetails.h"; sourceTree = "<group>"; };
+		DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ExtraDeviceDetails.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -747,6 +753,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DAFF410F16AA8A1F005A62FB /* Network */,
 				DABA05D2169ABA1800B1ECD9 /* Categories */,
 				DA4026C611D06C38005017C4 /* Protocols */,
 				DA38B20211B59FAB00112AA4 /* Models */,
@@ -1144,8 +1151,6 @@
 		DA38B20211B59FAB00112AA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DAEA517F11B88A1100F4CCB3 /* DGS.h */,
-				DAEA518011B88A1100F4CCB3 /* DGS.m */,
 				DA02D13B11D99BF000A9D887 /* NewGame.h */,
 				DA02D13C11D99BF000A9D887 /* NewGame.m */,
 				DAEA519911B88D8300F4CCB3 /* Game.h */,
@@ -1154,12 +1159,8 @@
 				DA419A6011BA0C0600B3050E /* FuegoBoard.mm */,
 				DAF911F211BB796900FE7B96 /* Move.h */,
 				DAF911F311BB796900FE7B96 /* Move.m */,
-				DA0762B51377B678003E0390 /* DGSDev.h */,
-				DA0762B61377B678003E0390 /* DGSDev.m */,
 				DA8E707A13D5337E007E569B /* GameList.h */,
 				DA8E707B13D5337E007E569B /* GameList.m */,
-				DA68408414DB04E9006EF22C /* CachingGameServer.h */,
-				DA68408514DB04E9006EF22C /* CachingGameServer.m */,
 				DA391DDC1592CB2900F9E36F /* Player.h */,
 				DA391DDD1592CB2900F9E36F /* Player.m */,
 			);
@@ -1242,6 +1243,8 @@
 			children = (
 				DA66E91C16A6923100A066CF /* NSTimer+Blocks.h */,
 				DA66E91D16A6923100A066CF /* NSTimer+Blocks.m */,
+				DAFF411416AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.h */,
+				DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1283,6 +1286,21 @@
 				DA1341AA1292323300D2A4BF /* MessageView.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DAFF410F16AA8A1F005A62FB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA517F11B88A1100F4CCB3 /* DGS.h */,
+				DAEA518011B88A1100F4CCB3 /* DGS.m */,
+				DA0762B51377B678003E0390 /* DGSDev.h */,
+				DA0762B61377B678003E0390 /* DGSDev.m */,
+				DA68408414DB04E9006EF22C /* CachingGameServer.h */,
+				DA68408514DB04E9006EF22C /* CachingGameServer.m */,
+				DAFF411016AA8AAB005A62FB /* DGSPushServer.h */,
+				DAFF411116AA8AAB005A62FB /* DGSPushServer.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1668,6 +1686,8 @@
 				DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */,
 				DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */,
 				DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */,
+				DAFF411216AA8AAB005A62FB /* DGSPushServer.m in Sources */,
+				DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

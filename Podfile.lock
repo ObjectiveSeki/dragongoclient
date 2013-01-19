@@ -13,7 +13,8 @@ PODS:
   - Reachability
 - GDataXML-HTML (1.0.0)
 - InnerBand (0.0.1)
-- JSONKit (1.5pre)
+- MKNetworkKit (0.87):
+  - Reachability (~> 3.0)
 - ODRefreshControl (1.1.0)
 - Reachability (3.0.0)
 - TestFlightSDK (1.2)
@@ -22,7 +23,7 @@ DEPENDENCIES:
 - ASIHTTPRequest
 - GDataXML-HTML
 - InnerBand
-- JSONKit
+- MKNetworkKit
 - ODRefreshControl
 - TestFlightSDK
 
@@ -33,7 +34,7 @@ SPEC CHECKSUMS:
   ASIHTTPRequest/S3: e606d2df58b0aace6c1cf1d39a08d3484f91324a
   GDataXML-HTML: 3f7cbef27d07411516d3720291c58eb49e4b50b1
   InnerBand: cc5993a3552d4ba70a1a555e7269707751a3a7d2
-  JSONKit: 3d4708953ea7ae399a49777372d8b060a43ddd27
+  MKNetworkKit: 3d3c415ced5fa3f896fd0319820b7832103c2f81
   ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
   Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2
   TestFlightSDK: 29e194fb148e4861f92e4c1195b9697e1f3ad19a

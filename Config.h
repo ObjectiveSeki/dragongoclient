@@ -9,6 +9,8 @@
 #if defined (CONFIGURATION_Debug)
 #define DEBUG 1
 #define DEVELOPMENT_DGS
+#define PUSH_ENABLED
+#define PUSH_HOST @"192.168.0.8:3000"
 
 // set to '1' to see SGFs that test various aspects of
 // the board view.

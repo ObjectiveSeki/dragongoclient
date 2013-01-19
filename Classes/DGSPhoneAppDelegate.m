@@ -9,12 +9,15 @@
 #import "DGSPhoneAppDelegate.h"
 #import "FuegoBoard.h"
 #import "LoginViewController.h"
+#import "DGSPushServer.h"
+#import "Player.h"
 
 NSString * const PlayerDidLoginNotification = @"PlayerDidLoginNotification";
 NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 
 @interface DGSPhoneAppDelegate ()
 @property (nonatomic, strong) LoginViewController *loginController;
+@property (nonatomic, strong) DGSPushServer *pushServer;
 @end
 
 @implementation DGSPhoneAppDelegate
@@ -24,6 +27,10 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
     // Override point for customization after application launch.
+    
+#ifdef PUSH_ENABLED
+    self.pushServer = [[DGSPushServer alloc] init];
+#endif
 
 #ifdef TESTFLIGHT_UUID_TRACKING
     TF([TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]);
@@ -35,6 +42,8 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
     
 	[self.window makeKeyAndVisible];
 	NSLog(@"Showing main window...");
+    
+    [self registerForRemoteNotifications];
 	
 	return YES;
 }
@@ -58,7 +67,6 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 	NSLog(@"Went into the background...");
 }
 
-
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     /*
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
@@ -71,7 +79,7 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 	NSLog(@"Went active...");
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:PlayerDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginAnimated:) name:PlayerDidLogoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLogin) name:PlayerDidLoginNotification object:nil];
 }
 
@@ -89,10 +97,12 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 #pragma mark - Login
 
 - (void)showLoginAnimated:(NSNotification *)notification {
+    [self unregisterForRemoteNotifications:notification];
     [self showLogin:YES];
 }
 
 - (void)showLogin:(BOOL)animated {
+
     if (!self.loginController) {
         self.loginController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self.window.rootViewController presentViewController:self.loginController animated:animated completion:^() {}];
@@ -102,8 +112,36 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 - (void)dismissLogin {
     [self.loginController dismissModalViewControllerAnimated:YES];
     self.loginController = nil;
+    [self registerForRemoteNotifications];
 }
 
+
+#pragma mark - Push notifications
+
+- (void)registerForRemoteNotifications {
+    [self.pushServer registerForRemoteNotifications];
+}
+
+- (void)unregisterForRemoteNotifications:(NSNotification *)notification {
+    Player *oldPlayer = [notification object];
+    [self.pushServer deleteAPNSDeviceTokenForPlayerId:oldPlayer.userId completion:^() { } error:^(NSError *error) {
+        NSLog(@"Error clearing push token: %@", error);
+    }];
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {
+    [self.pushServer updateAPNSDeviceToken:token completion:^{ } error:^(NSError *error) {
+        NSLog(@"Error updating push token: %@", error);
+    }];
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Error updating push token: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // handle receiving notifications here
+}
 
 #pragma mark -
 #pragma mark Memory management

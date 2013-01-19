@@ -46,7 +46,6 @@
 
 	[[GenericGameServer sharedGameServer] loginWithUsername:self.username password:self.password onSuccess:^{
         [self.spinner dismiss:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLoginNotification object:nil];
     } onError:^(NSError *error) {
         [self.spinner dismiss:YES];
     }];
