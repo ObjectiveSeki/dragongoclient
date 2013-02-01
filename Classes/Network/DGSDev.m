@@ -18,7 +18,9 @@
 // WARNING: the current CVS checkout of DGS differs significantly
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
-- (NSURL *)URLWithPath:(NSString *)path {
-	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://localhost/~jweiss/DragonGoServer", path]];
+
+- (NSURL *)baseURL {
+    return [NSURL URLWithString:@"http://localhost/~jweiss/DragonGoServer"];
 }
+
 @end

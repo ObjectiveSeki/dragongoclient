@@ -26,6 +26,7 @@ typedef void(^ErrorBlock)(NSError *error);
                  password:(NSString *)password
                 onSuccess:(EmptyBlock)onSuccess
                   onError:(ErrorBlock)onError;
+- (NSArray *)cookiesForCurrentUser;
 
 - (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 - (void)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;

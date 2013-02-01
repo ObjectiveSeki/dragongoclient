@@ -190,6 +190,8 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }
 
-
+- (NSArray *)cookiesForCurrentUser {
+    return [self.gameServer cookiesForCurrentUser];
+}
 
 @end

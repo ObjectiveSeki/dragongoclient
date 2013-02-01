@@ -37,6 +37,9 @@
 // disables the resign button, to help avoid accidental keypresses.
 @property (nonatomic, strong) NSTimer *resignInteractionTimer;
 
+@property (nonatomic, strong) UIGestureRecognizer *goToBeginningGestureRecognizer;
+@property (nonatomic, strong) UIGestureRecognizer *goToCurrentMoveGestureRecognizer;
+
 @end
 
 const NSTimeInterval kDefaultResignTimerLength = 1.0;
@@ -54,6 +57,8 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
     self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Game Background.png"]];
+    self.goToBeginningGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToBeginning:)];
+    self.goToCurrentMoveGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToCurrentMove:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -131,6 +136,11 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     } else {
         [self replaceToolbarItemAtIndex:1 withItem:self.resignButton];
     }
+    
+    // ugh. This hack will probably break at some point. Hopefully I remember
+    // that I wrote this when it does!
+    [[self.nextMoveButton valueForKey:@"view"] addGestureRecognizer:self.goToCurrentMoveGestureRecognizer];
+    [[self.previousMoveButton valueForKey:@"view"] addGestureRecognizer:self.goToBeginningGestureRecognizer];
     
     [self.boardView setNeedsDisplay]; // show just placed move
 }
@@ -320,6 +330,16 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         [self.sgfShareQueue addOperation:self.sgfShareOperation];
     }
     [self.shareController presentOptionsMenuFromBarButtonItem:sender animated:YES];
+}
+
+- (IBAction)goToBeginning:(id)sender {
+    [self.board goToBeginning];
+    [self updateUI];
+}
+
+- (IBAction)goToCurrentMove:(id)sender {
+    [self.board goToCurrentMove];
+    [self updateUI];
 }
 
 - (IBAction)goToPreviousMove:(id)sender {

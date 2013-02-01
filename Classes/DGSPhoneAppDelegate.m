@@ -44,7 +44,6 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 	NSLog(@"Showing main window...");
     
     [self registerForRemoteNotifications];
-	
 	return YES;
 }
 
@@ -130,7 +129,9 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {
-    [self.pushServer updateAPNSDeviceToken:token completion:^{ } error:^(NSError *error) {
+    [self.pushServer updateAPNSDeviceToken:token completion:^{
+        [self.pushServer createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser] completion:^{ } error:^(NSError *error) { }];
+    } error:^(NSError *error) {
         NSLog(@"Error updating push token: %@", error);
     }];
 }

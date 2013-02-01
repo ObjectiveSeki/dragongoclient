@@ -28,11 +28,15 @@ const int kDefaultPageLimit = 20;
     return sharedGameServer;
 }
 
+- (NSURL *)baseURL {
+    return [NSURL URLWithString:@"http://www.dragongoserver.net"];
+}
+
 // This returns the base path onto which all of the urls used
 // in this class refer. This is so that you can run your own
 // DGS instance and play with it without ruining your own games.
 - (NSURL *)URLWithPath:(NSString *)path {
-	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", @"http://www.dragongoserver.net", path]];
+	return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [self baseURL], path]];
 }
 
 - (id)init {
@@ -245,6 +249,10 @@ const int kDefaultPageLimit = 20;
         [self getCurrentPlayer:onError];
         onSuccess();
     } onError:onError];
+}
+
+- (NSArray *)cookiesForCurrentUser {
+    return [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[self baseURL]];
 }
 
 - (void)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {

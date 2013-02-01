@@ -219,8 +219,8 @@ typedef enum {
 
 - (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath {
     GameList *selectedGameList = [self selectedGameList];
-    if (indexPath.row < [selectedGameList count]) {
-        return selectedGameList[indexPath.row];
+    if (indexPath.row < [selectedGameList.games count]) {
+        return [selectedGameList.games objectAtIndex:indexPath.row];
     } else {
         return nil;
     }

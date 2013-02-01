@@ -42,10 +42,6 @@
     return [self.games count];
 }
 
-- (id)objectAtIndexedSubscript:(NSUInteger)idx {
-    return [self.games objectAtIndexedSubscript:idx];
-}
-
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:self.games forKey:@"games"];
     [encoder encodeObject:self.pathFormat forKey:@"pathFormat"];

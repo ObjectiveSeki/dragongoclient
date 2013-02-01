@@ -278,7 +278,7 @@ typedef enum _AddGameSection {
 			NSArray *options = @[@"9", @"13", @"19"];
 			cell.label.text = @"Board Size";
 			cell.value.text = boardSize;
-			cell.onChanged = ^(SelectCell *selectCell) {
+			cell.onChanged = ^(SelectCell *cell) {
                 NSString *boardSize = (cell.options)[0][[cell.picker selectedRowInComponent:0]];
                 [self.game setBoardSize:[boardSize intValue]];
                 cell.value.text = boardSize;

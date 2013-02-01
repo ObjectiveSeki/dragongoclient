@@ -42,17 +42,21 @@
     [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:APNSDeviceIdUserDefaultsKey];
 }
 
+- (NSNumber *)deviceId {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:APNSDeviceIdUserDefaultsKey];
+}
+
 # pragma mark - Push Server methods
 
 
 // Updates the push token, creating it if we don't already hold a reference to one.
 - (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
     static NSString *updateDeviceTokenPathFormat = @"/players/%@/devices/%@.json";
-    NSNumber *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:APNSDeviceIdUserDefaultsKey];
+    NSNumber *deviceId = [self deviceId];
     NSLog(@"apns token: %@", [token description]);
     
     if (deviceId) {
-        NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[device_token]", nil];
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[encoded_device_token]", nil];
 
         MKNetworkOperation *op = [self operationWithPath:S(updateDeviceTokenPathFormat, [Player currentPlayer].userId, deviceId) params:params httpMethod:@"PUT"];
         
@@ -72,7 +76,7 @@
 
 - (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
     static NSString *createDeviceTokenPathFormat = @"/players/%@/devices.json";
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[device_token]", nil];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[encoded_device_token]", nil];
         
     MKNetworkOperation *op = [self operationWithPath:S(createDeviceTokenPathFormat, [Player currentPlayer].userId) params:params httpMethod:@"POST"];
     
@@ -93,7 +97,7 @@
     }
     
     static NSString *deleteDeviceTokenPathFormat = @"/players/%@/devices/%@.json";
-    NSNumber *deviceId = [[NSUserDefaults standardUserDefaults] objectForKey:APNSDeviceIdUserDefaultsKey];
+    NSNumber *deviceId = [self deviceId];
     
     if (deviceId) {
         // Remove the token regardless of whether this call succeeds, because we can always get it back later if we need it.
@@ -115,5 +119,39 @@
     }
 }
 
+- (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+    if (![self deviceId]) {
+        // Don't bother dealing updating the login cookies on the server if we
+        // aren't using push notifications, since we won't be doing anything
+        // with them anyway.
+        return nil;
+    }
+
+    if ([cookies count] == 0) {
+        return nil;
+    }
+    
+    static NSString *createSessionPathFormat = @"/players/%@/session.json";
+    NSMutableDictionary *params = [self paramsFromLoginCookies:cookies];
+
+    MKNetworkOperation *op = [self operationWithPath:S(createSessionPathFormat, [Player currentPlayer].userId) params:params httpMethod:@"POST"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        completion();
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        error(theError);
+    }];
+    
+    [self enqueueOperation:op];
+    return op;
+}
+
+- (NSMutableDictionary *)paramsFromLoginCookies:(NSArray *)cookies {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    params[@"session[cookie]"] = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies][@"Cookie"];
+    params[@"session[expires_at]"] = [cookies valueForKeyPath:@"@min.expiresDate"];
+    return params;
+}
 
 @end

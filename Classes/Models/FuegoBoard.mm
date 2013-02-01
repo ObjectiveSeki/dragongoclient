@@ -175,6 +175,14 @@ static bool fuegoInitialized = NO;
     goGame->GoInDirection(SgNode::PREVIOUS);
 }
 
+- (void)goToBeginning {
+    goGame->GoToNode(goGame->CurrentNode()->Root());
+}
+
+- (void)goToCurrentMove {
+    goGame->GoToNode(startNode);
+}
+
 - (BOOL)beginningOfHandicapGame {
 	return [self handicap] && [self moveNumber] == [self handicap];
 }

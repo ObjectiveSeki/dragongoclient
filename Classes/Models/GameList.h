@@ -17,6 +17,5 @@
 - (void)updateGame:(Game *)game atIndex:(NSInteger)index;
 - (void)addGames:(NSOrderedSet *)games;
 - (NSUInteger)count;
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
 
 @end

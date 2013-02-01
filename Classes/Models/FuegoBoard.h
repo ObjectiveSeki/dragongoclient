@@ -64,6 +64,8 @@
 - (BOOL)atCurrentMove;
 - (void)goToNextMove;
 - (void)goToPreviousMove;
+- (void)goToBeginning;
+- (void)goToCurrentMove;
 
 // NO if the game has a handicap and the handicap stones have just been placed
 - (BOOL)beginningOfHandicapGame;
