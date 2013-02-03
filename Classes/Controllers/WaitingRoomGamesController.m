@@ -89,8 +89,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ShowWaitingRoomDetail"]) {
+        UITableViewCell *cell = sender;
+        cell.accessoryView = nil;
         JoinWaitingRoomGameController *controller = [segue destinationViewController];
-        controller.game = [self.gameList.games objectAtIndex:([self.tableView indexPathForCell:sender].row)];
+        controller.game = [self.gameList.games objectAtIndex:([self.tableView indexPathForCell:cell].row)];
     }
 }
 
