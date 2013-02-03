@@ -15,6 +15,8 @@
 NSString * const PlayerDidLoginNotification = @"PlayerDidLoginNotification";
 NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 
+NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
+
 @interface DGSPhoneAppDelegate ()
 @property (nonatomic, strong) LoginViewController *loginController;
 @property (nonatomic, strong) DGSPushServer *pushServer;
@@ -39,6 +41,11 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
     TF([TestFlight takeOff:TESTFLIGHT_APP_TOKEN]);
 
 	NSLog(@"Starting Application...");
+    NSDictionary *notificationUserInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notificationUserInfo) {
+        NSLog(@"Received remote notification: %@", notificationUserInfo);
+        [self application:application handleRemoteNotification:notificationUserInfo];
+    }
     
 	[self.window makeKeyAndVisible];
 	NSLog(@"Showing main window...");
@@ -141,7 +148,16 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    // handle receiving notifications here
+    NSLog(@"Received remote notification: %@", userInfo);
+    if (!application.applicationState == UIApplicationStateInactive) {
+        NSLog(@"App was running in the foreground");
+    }
+    [self application:application handleRemoteNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application handleRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Handling remote notification: %@", userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:ReceivedNewGamesNotification object:userInfo];
 }
 
 #pragma mark -

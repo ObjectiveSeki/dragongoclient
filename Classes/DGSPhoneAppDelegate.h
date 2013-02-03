@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const ReceivedNewGamesNotification;
+
 @interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate>
 
 @property(nonatomic, retain) UIWindow *window;

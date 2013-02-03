@@ -53,5 +53,8 @@
 #   define TF(...)
 #endif
 
+#if defined (CONFIGURATION_Release)
+#define NSLog(...)
+#endif
 
 #define S(fmt, ...) [NSString stringWithFormat:(fmt), ##__VA_ARGS__]

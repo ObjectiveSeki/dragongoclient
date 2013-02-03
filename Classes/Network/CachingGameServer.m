@@ -3,6 +3,7 @@
 //  DGSPhone
 
 #import "CachingGameServer.h"
+#import "DGSPhoneAppDelegate.h"
 #import "JWCache.h"
 
 static JWCache *s_cache;
@@ -41,6 +42,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
         _gameServer = aGameServer;
         _cache = s_cache;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(flushCache) name:PlayerDidLogoutNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(invalidateGameLists) name:ReceivedNewGamesNotification object:nil];
     }
     return self;
 }
@@ -73,6 +75,11 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 #warning is there something smarter I can do here?
         [self.cache removeObjectForKey:kRunningGameListKey];
     }
+}
+
+- (void)invalidateGameLists {
+    [self.cache removeObjectForKey:kRunningGameListKey];
+    [self.cache removeObjectForKey:kGameListKey];
 }
 
 - (void)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
