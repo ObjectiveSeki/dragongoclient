@@ -471,7 +471,9 @@ static bool fuegoInitialized = NO;
 - (BOOL)canPlayMove {
 	if ([self gameEnded] && [[self changedGroups] count] > 0) {
 		return NO;
-	} else if ([self handicap] && [self needsHandicapStones]) {
+	} else if (self.resignMove) {
+        return NO;
+    } else if ([self handicap] && [self needsHandicapStones]) {
 		return YES;
 	} else if ([self atCurrentMove]) {
 		return YES;
