@@ -107,18 +107,17 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     [self.toolbar setItems:toolbarItems animated:YES];
 }
 
-- (void)updateUI {
-    self.messageView.message = self.board.comment;
-    [self updateMessageState];
-    
-	if ([self.board canUndo]) {
+- (void)updateNavigationBar {
+    if ([self.board canUndo]) {
 		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
 	} else if (self.boardState == kBoardStateZoomedIn) {
         [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
     } else {
 		[self.navigationItem setRightBarButtonItem:nil animated:YES];
 	}
-    
+}
+
+- (void)updateToolbar {
     if (self.readOnly) {
         self.passButton.enabled = NO;
         self.resignButton.enabled = NO;
@@ -136,12 +135,18 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     } else {
         [self replaceToolbarItemAtIndex:1 withItem:self.resignButton];
     }
-    
+ 
     // ugh. This hack will probably break at some point. Hopefully I remember
     // that I wrote this when it does!
     [[self.nextMoveButton valueForKey:@"view"] addGestureRecognizer:self.goToCurrentMoveGestureRecognizer];
     [[self.previousMoveButton valueForKey:@"view"] addGestureRecognizer:self.goToBeginningGestureRecognizer];
-    
+}
+
+- (void)updateUI {
+    self.messageView.message = self.board.comment;
+    [self updateMessageState];
+    [self updateNavigationBar];
+    [self updateToolbar];
     [self.boardView setNeedsDisplay]; // show just placed move
 }
 
@@ -233,7 +238,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 #pragma mark - UIActionSheetDelegate methods
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (actionSheet == self.passResignActionSheet) {
         if (buttonIndex == actionSheet.destructiveButtonIndex) {
             [self resign];
