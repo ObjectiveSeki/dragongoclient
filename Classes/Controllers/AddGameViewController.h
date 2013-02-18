@@ -15,10 +15,12 @@
 @interface AddGameViewController : UITableViewController {
 }
 
-@property(nonatomic, strong) TextCell *descriptionCell;
-@property(nonatomic, strong) UITableViewCell *createGameButton;
-@property(nonatomic, strong) NewGame *game;
-@property(nonatomic, strong) Player *player;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (nonatomic, strong) TextCell *descriptionCell;
+@property (nonatomic, strong) UITableViewCell *createGameButton;
+@property (nonatomic, strong) NewGame *game;
+@property (nonatomic, strong) Player *player;
+- (IBAction)dismiss:(id)sender;
 
 @end
 

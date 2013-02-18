@@ -36,23 +36,15 @@ typedef enum _AddGameSection {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (self.navigationController.viewControllers[0] == self) {
+        self.navigationItem.leftBarButtonItem = self.cancelButton;
+    }
 
 	self.game = [[NewGame alloc] init];
-    self.navigationItem.title = @"Create a Game";
-    NSMutableArray *ratingStrings = [[NSMutableArray alloc] initWithCapacity:40];
-    for (int i = 30; i > 0; i--) {
-        [ratingStrings addObject:[NSString stringWithFormat:@"%d kyu", i]];
-    }
-    for (int i = 1; i < 10; i++) {
-        [ratingStrings addObject:[NSString stringWithFormat:@"%d dan", i]];
-    }
-    self.ratingStrings = ratingStrings;
+    self.ratingStrings = [self generateRatingStrings];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
-
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -62,28 +54,22 @@ typedef enum _AddGameSection {
     }
 }
 
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+#pragma mark - Initialization 
+- (NSArray *)generateRatingStrings {
+    NSMutableArray *ratingStrings = [[NSMutableArray alloc] initWithCapacity:40];
+    for (int i = 30; i > 0; i--) {
+        [ratingStrings addObject:[NSString stringWithFormat:@"%d kyu", i]];
+    }
+    for (int i = 1; i < 10; i++) {
+        [ratingStrings addObject:[NSString stringWithFormat:@"%d dan", i]];
+    }
+    return ratingStrings;
 }
-*/
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+#pragma mark - Actions
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{ }];
 }
-
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 #pragma mark -
 #pragma mark Table view data source
@@ -92,7 +78,6 @@ typedef enum _AddGameSection {
     // Return the number of sections.
     return kSectionCount;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
@@ -466,47 +451,6 @@ typedef enum _AddGameSection {
     return [self dequeueDefaultCell:theTableView];
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark -
 #pragma mark Table view delegate
 
@@ -540,12 +484,11 @@ typedef enum _AddGameSection {
 }
 
 - (void)viewDidUnload {
+    [self setCancelButton:nil];
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	self.descriptionCell = nil;
      _ratingStrings = nil;
 }
-
-
 
 @end
