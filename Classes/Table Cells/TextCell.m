@@ -16,6 +16,7 @@
         [[NSBundle mainBundle] loadNibNamed:@"TextCell" owner:self options:nil];
 		[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.textField.delegate = self;
         _maxTextLength = -1;
     }
     return self;
@@ -24,6 +25,7 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+    self.textField.delegate = self;
     _maxTextLength = -1;
 }
 
