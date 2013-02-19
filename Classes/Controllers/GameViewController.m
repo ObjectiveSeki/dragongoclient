@@ -51,6 +51,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"ViewDidLoad");
 	UIScrollView *tempScrollView = (UIScrollView *)self.scrollView;
     tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
 	self.currentZoomScale = 1.0;
@@ -65,6 +66,10 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	[super viewWillAppear:animated];
 	self.boardState = kBoardStateZoomedOut;
     NSLog(@"creating board...");
+    NSLog(@"BoardView: %@", self.boardView);
+    // Make sure the board view doesn't go away. This should never happen!
+    NSAssert(self.boardView, @"The board view went away.");
+    
 	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
 	[[self boardView] setBoard:theBoard];
 	[self setBoard:theBoard];
@@ -143,6 +148,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)updateUI {
+    NSLog(@"BoardView: %@", self.boardView);
+    // Make sure the board view doesn't go away. This should never happen!
+    NSAssert(self.boardView, @"The board view went away.");
     self.messageView.message = self.board.comment;
     [self updateMessageState];
     [self updateNavigationBar];
@@ -378,6 +386,8 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
     BOOL canPlayOrMarkStones = !self.readOnly && canPlaceStones && isZoomedIn;
     
+    NSLog(@"Zoom State: %d %d %d %d %d %d", [self.board canPlayMove], [self.board gameEnded], [self.board beforeCurrentMove], self.readOnly, [self isSmallBoard], self.boardState);
+    
 	if (shouldZoomIn) {
 		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
 		[self setBoardState:kBoardStateZoomedIn];
@@ -409,6 +419,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)viewDidUnload {
+    NSLog(@"viewDidUnload called");
     [self setPreviousMoveButton:nil];
     [self setNextMoveButton:nil];
     [self setPreviousMoveButton:nil];

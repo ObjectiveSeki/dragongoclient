@@ -294,8 +294,8 @@ const int kDefaultPageLimit = 20;
 }
 
 - (void)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
-    assert(gameList);
-    assert(gameList.pathFormat);
+    NSAssert(gameList, @"Can't add games to a nil gameList.");
+    NSAssert(gameList.pathFormat, @"GameList: %@ is missing a path format.", gameList);
     NSURL *url = [self URLWithPath:[gameList pathForMoreGames:kDefaultPageLimit]];
     
 	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];

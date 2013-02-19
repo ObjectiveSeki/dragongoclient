@@ -50,8 +50,14 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 	[self.window makeKeyAndVisible];
 	NSLog(@"Showing main window...");
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportMemoryLow) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    
     [self registerForRemoteNotifications];
 	return YES;
+}
+
+- (void)reportMemoryLow {
+    NSLog(@"Low memory!");
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

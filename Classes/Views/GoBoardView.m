@@ -289,6 +289,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    NSLog(@"BoardView layoutSubviews");
+    NSLog(@"BoardView blackName %@", self.blackName);
+    NSAssert(self.board, @"The board went away.");
     self.layer.masksToBounds = NO;
     self.layer.shadowOpacity = 0.6;
     self.layer.shadowRadius = 9.0;
@@ -299,8 +302,14 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	NSLog(@"rect: %.1f %.1f %.1f %.1f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
-	// in order to get a nice square board with good margins, 
+    NSLog(@"BoardView drawRect");
+    NSLog(@"BoardView blackName %@", self.blackName);
+    NSLog(@"Board: %@", self.board);
+    // Make sure the board view doesn't go away. This should never happen!
+    NSAssert(self.board, @"The board went away.");
+    NSAssert(self.blackName, @"Lost the reference to blackName.");
+    NSAssert(self.blackCaptures, @"Lost the reference to blackCaptures.");
+	// in order to get a nice square board with good margins,
 	// we need to make a guess first, then calculate the actual margins based on the
 	// point distance we calculate. The reason these are different are due to rounding 
 	// errors when we snap the board distance to device pixels.
@@ -324,6 +333,7 @@
 }
 
 - (bool)playStoneAtPoint:(CGPoint)point {
+    NSLog(@"Here!");
 	CGPoint boardPoint = [self boardPositionForPoint:point];
 	return [self.board playStoneAtRow:(int)boardPoint.y column:(int)boardPoint.x];
 }
@@ -335,6 +345,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    NSLog(@"Here!");
 	UITouch *touch = [touches anyObject];
 	[self.delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
 }

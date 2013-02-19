@@ -249,7 +249,7 @@ typedef enum {
         }
         return cell;
     } else {
-        assert(@"Trying to show a loading cell for the main game list!");
+        NSAssert(false, @"Trying to show a loading cell for the main game list!");
         return nil;
     }
 }
