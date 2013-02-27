@@ -113,7 +113,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)updateNavigationBar {
+    NSLog(@"Here!");
     if ([self.board canUndo]) {
+        NSLog(@"Adding undo button: %@", [self undoButton]);
 		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
 	} else if (self.boardState == kBoardStateZoomedIn) {
         [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];

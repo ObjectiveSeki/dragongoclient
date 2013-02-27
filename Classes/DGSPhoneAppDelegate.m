@@ -155,14 +155,16 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received remote notification: %@", userInfo);
-    if (!application.applicationState == UIApplicationStateInactive) {
-        NSLog(@"App was running in the foreground");
-    }
     [self application:application handleRemoteNotification:userInfo];
 }
 
 - (void)application:(UIApplication *)application handleRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Handling remote notification: %@", userInfo);
+
+    if (application.applicationState != UIApplicationStateInactive) {
+        NSLog(@"App was running in the foreground");
+    }
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:ReceivedNewGamesNotification object:userInfo];
 }
 

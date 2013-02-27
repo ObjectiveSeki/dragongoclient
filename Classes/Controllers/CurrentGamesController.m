@@ -6,6 +6,7 @@
 // of SGFs at various points in the game, for testing the game views.
 //
 
+#import "DGSPhoneAppDelegate.h"
 #import "CurrentGamesController.h"
 #import "Game.h"
 #import "ODRefreshControl.h"
@@ -26,6 +27,7 @@
 // conflicting with the built-in iOS6 one.
 @property (nonatomic, strong) id myRefreshControl;
 @property (nonatomic, strong) SpinnerView *spinner;
+
 @end
 
 typedef enum {
@@ -64,6 +66,7 @@ typedef enum {
     NSLog(@"Showing current games view and refreshing games...");
 
 	[self refreshGames];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:ReceivedNewGamesNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
@@ -80,17 +83,31 @@ typedef enum {
 
 #pragma mark - UI Actions
 
+- (void)didRefreshWithGames:(GameList *)currentGames runningGames:(GameList *)runningGames error:(NSError *)error {
+    [self setEnabled:YES];
+    [self.myRefreshControl endRefreshing];
+    
+    if (!error) {
+        [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
+    }
+}
+
 - (void)refreshGames {
     [self setEnabled:NO];
     [[GenericGameServer sharedGameServer] getCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] getRunningGames:^(GameList *runningGames) {
-            [self setEnabled:YES];
-            [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
+            [self didRefreshWithGames:currentGames
+                         runningGames:runningGames
+                                error:nil];
         } onError:^(NSError *error) {
-            [self setEnabled:YES];
+            [self didRefreshWithGames:nil
+                         runningGames:nil
+                                error:error];
         }];
     } onError:^(NSError *error) {
-        [self setEnabled:YES];
+        [self didRefreshWithGames:nil
+                     runningGames:nil
+                            error:error];
     }];
 }
 
@@ -98,16 +115,18 @@ typedef enum {
     [self setEnabled:NO];
     [[GenericGameServer sharedGameServer] refreshCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] refreshRunningGames:^(GameList *runningGames) {
-            [self.myRefreshControl endRefreshing];
-            [self setEnabled:YES];
-            [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
+            [self didRefreshWithGames:currentGames
+                         runningGames:runningGames
+                                error:nil];
         } onError:^(NSError *error) {
-            [self.myRefreshControl endRefreshing];
-            [self setEnabled:YES];
+            [self didRefreshWithGames:nil
+                         runningGames:nil
+                                error:error];
         }];
     } onError:^(NSError *error) {
-        [self.myRefreshControl endRefreshing];
-        [self setEnabled:YES];
+        [self didRefreshWithGames:nil
+                     runningGames:nil
+                            error:error];
     }];
 }
 
