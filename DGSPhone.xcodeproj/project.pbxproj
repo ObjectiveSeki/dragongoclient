@@ -286,6 +286,7 @@
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC33ED91589A79700CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
 		DAC33EE11589AD2200CDD7A1 /* boost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC33ED81589A74700CDD7A1 /* boost.framework */; };
+		DAC7BDE616DDEFCE00F4562A /* DGSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC7BDE516DDEFCE00F4562A /* DGSNetworkOperation.m */; };
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
@@ -657,6 +658,8 @@
 		DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = Resources/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-logic_tests.a"; path = "Pods/build/Release-iphoneos/libPods-logic_tests.a"; sourceTree = "<group>"; };
 		DAC33ED81589A74700CDD7A1 /* boost.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = boost.framework; path = vendor/boost.framework; sourceTree = "<group>"; };
+		DAC7BDE416DDEFCE00F4562A /* DGSNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSNetworkOperation.h; sourceTree = "<group>"; };
+		DAC7BDE516DDEFCE00F4562A /* DGSNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSNetworkOperation.m; sourceTree = "<group>"; };
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1299,6 +1302,8 @@
 				DA68408514DB04E9006EF22C /* CachingGameServer.m */,
 				DAFF411016AA8AAB005A62FB /* DGSPushServer.h */,
 				DAFF411116AA8AAB005A62FB /* DGSPushServer.m */,
+				DAC7BDE416DDEFCE00F4562A /* DGSNetworkOperation.h */,
+				DAC7BDE516DDEFCE00F4562A /* DGSNetworkOperation.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1688,6 +1693,7 @@
 				DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */,
 				DAFF411216AA8AAB005A62FB /* DGSPushServer.m in Sources */,
 				DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */,
+				DAC7BDE616DDEFCE00F4562A /* DGSNetworkOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

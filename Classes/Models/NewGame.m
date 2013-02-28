@@ -33,6 +33,7 @@
 		_minimumRating = @"30 kyu";
 		_maximumRating = @"9 dan";
 		_myGame = true;
+        _comment = @"";
 	}
 	return self;
 }

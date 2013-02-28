@@ -7,7 +7,6 @@
 //
 
 #import "DGSDev.h"
-#import "ASIFormDataRequest.h"
 
 @implementation DGSDev
 
@@ -19,8 +18,10 @@
 // from the running version -- therefore, you may run into bugs when
 // switching back to the real server.
 
-- (NSURL *)baseURL {
-    return [NSURL URLWithString:@"http://localhost/~jweiss/DragonGoServer"];
+- (id)init
+{
+    return [self initWithHostName:@"localhost" apiPath:@"~jweiss/DragonGoServer" customHeaderFields:[self defaultCustomHeaderFields]];
 }
+
 
 @end

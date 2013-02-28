@@ -13,8 +13,8 @@
 
 @interface Game : NSObject <NSCoding>
 
-@property(nonatomic, strong) NSURL * sgfUrl;
-@property(nonatomic, strong) NSURL * detailUrl;
+@property(nonatomic, copy) NSString * sgfPath;
+@property(nonatomic, copy) NSString * detailPath;
 @property(nonatomic, copy) NSString * sgfString;
 @property(nonatomic, copy) NSString * opponent;
 @property(nonatomic, copy) NSString * time;

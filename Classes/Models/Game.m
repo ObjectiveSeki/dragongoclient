@@ -37,8 +37,8 @@
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
-    [encoder encodeObject:self.sgfUrl forKey:@"sgfUrl"];
-    [encoder encodeObject:self.detailUrl forKey:@"detailUrl"];
+    [encoder encodeObject:self.sgfPath forKey:@"sgfPath"];
+    [encoder encodeObject:self.detailPath forKey:@"detailPath"];
     [encoder encodeObject:self.sgfString forKey:@"sgfString"];
     [encoder encodeObject:self.opponent forKey:@"opponent"];
     [encoder encodeObject:self.time forKey:@"time"];
@@ -56,8 +56,8 @@
 {
     self = [super init];
     if (self) {
-        self.sgfUrl = [decoder decodeObjectForKey:@"sgfUrl"];
-        self.detailUrl = [decoder decodeObjectForKey:@"detailUrl"];
+        self.sgfPath = [decoder decodeObjectForKey:@"sgfPath"];
+        self.detailPath = [decoder decodeObjectForKey:@"detailPath"];
         self.sgfString = [decoder decodeObjectForKey:@"sgfString"];
         self.opponent = [decoder decodeObjectForKey:@"opponent"];
         self.time = [decoder decodeObjectForKey:@"time"];

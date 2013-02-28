@@ -21,28 +21,28 @@ typedef void(^ErrorBlock)(NSError *error);
 
 + (id<GameServerProtocol>)sharedGameServer;
 
-- (void)logout:(ErrorBlock)onError;
-- (void)loginWithUsername:(NSString *)username
-                 password:(NSString *)password
-                onSuccess:(EmptyBlock)onSuccess
-                  onError:(ErrorBlock)onError;
+- (NSOperation *)logout:(ErrorBlock)onError;
+- (NSOperation *)loginWithUsername:(NSString *)username
+                          password:(NSString *)password
+                         onSuccess:(EmptyBlock)onSuccess
+                           onError:(ErrorBlock)onError;
 - (NSArray *)cookiesForCurrentUser;
 
-- (void)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)joinWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)refreshCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 
 
-- (void)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
-- (void)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess  onError:(ErrorBlock)onError;
-- (void)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess  onError:(ErrorBlock)onError;
+- (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 
 @end

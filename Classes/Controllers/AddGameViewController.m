@@ -467,6 +467,7 @@ typedef enum _AddGameSection {
             [blockSelf dismissViewControllerAnimated:YES completion:^{
             }];
         } onError:^(NSError *error) {
+            [blockSelf.spinner dismiss:YES];
 		}];
 
     }

@@ -1,16 +1,5 @@
 
 PODS:
-- ASIHTTPRequest (1.8.1):
-  - ASIHTTPRequest/ASIWebPageRequest (= 1.8.1)
-  - ASIHTTPRequest/CloudFiles (= 1.8.1)
-  - ASIHTTPRequest/S3 (= 1.8.1)
-  - Reachability
-- ASIHTTPRequest/ASIWebPageRequest (1.8.1):
-  - Reachability
-- ASIHTTPRequest/CloudFiles (1.8.1):
-  - Reachability
-- ASIHTTPRequest/S3 (1.8.1):
-  - Reachability
 - GDataXML-HTML (1.0.0)
 - InnerBand (0.0.1)
 - MKNetworkKit (0.87):
@@ -20,7 +9,6 @@ PODS:
 - TestFlightSDK (1.2)
 
 DEPENDENCIES:
-- ASIHTTPRequest
 - GDataXML-HTML
 - InnerBand
 - MKNetworkKit
@@ -28,10 +16,6 @@ DEPENDENCIES:
 - TestFlightSDK
 
 SPEC CHECKSUMS:
-  ASIHTTPRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  ASIHTTPRequest/ASIWebPageRequest: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  ASIHTTPRequest/CloudFiles: e606d2df58b0aace6c1cf1d39a08d3484f91324a
-  ASIHTTPRequest/S3: e606d2df58b0aace6c1cf1d39a08d3484f91324a
   GDataXML-HTML: 3f7cbef27d07411516d3720291c58eb49e4b50b1
   InnerBand: cc5993a3552d4ba70a1a555e7269707751a3a7d2
   MKNetworkKit: 3d3c415ced5fa3f896fd0319820b7832103c2f81

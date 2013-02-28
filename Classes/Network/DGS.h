@@ -7,23 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Game.h"
-#import "NewGame.h"
-#import "GameList.h"
 #import "GameServerProtocol.h"
-#import "ASIHTTPRequest.h"
+#import "MKNetworkKit.h"
 
-typedef void (^ASIHTTPRequestBlock)(ASIHTTPRequest *request, NSString *responseString);
+typedef void (^DGSResponseBlock)(MKNetworkOperation *operation, NSString *responseString);
 
-@interface DGS : NSObject <GameServerProtocol> 
+@interface DGS : MKNetworkEngine <GameServerProtocol>
 
-@property(nonatomic, retain) UIAlertView *errorView;
+- (NSDictionary *)defaultCustomHeaderFields;
 
-// Starts an asynchronous request, calling onSuccess when the request finishes.
-- (void)performRequest:(ASIHTTPRequest *)request onSuccess:(ASIHTTPRequestBlock)onSuccess onError:(ErrorBlock)onError;
-
-- (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
-
-// Internal, but these have to be exposed so the logic tests can hit them
-- (NSOrderedSet *)gamesFromCSV:(NSString *)csvData;
 @end
