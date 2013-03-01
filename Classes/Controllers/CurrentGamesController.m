@@ -28,6 +28,10 @@
 @property (nonatomic, strong) id myRefreshControl;
 @property (nonatomic, strong) SpinnerView *spinner;
 
+// Keep track of the refresh operation, so we can make sure only one is running at a time
+// (so we don't slam DGS)
+@property (nonatomic, strong) NSOperation *refreshOperation;
+
 @end
 
 typedef enum {
@@ -66,12 +70,13 @@ typedef enum {
     NSLog(@"Showing current games view and refreshing games...");
 
 	[self refreshGames];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:ReceivedNewGamesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forceRefreshGames) name:ReceivedNewGamesNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [self.refreshOperation cancel];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -93,8 +98,13 @@ typedef enum {
 }
 
 - (void)refreshGames {
+    // Block refreshes if we're already in the process of refreshing
+    if (self.refreshOperation && !self.refreshOperation.isFinished) {
+        return;
+    }
+    
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] getCurrentGames:^(GameList *currentGames) {
+    self.refreshOperation = [[GenericGameServer sharedGameServer] getCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] getRunningGames:^(GameList *runningGames) {
             [self didRefreshWithGames:currentGames
                          runningGames:runningGames
@@ -113,7 +123,7 @@ typedef enum {
 
 - (void)forceRefreshGames {
     [self setEnabled:NO];
-    [[GenericGameServer sharedGameServer] refreshCurrentGames:^(GameList *currentGames) {
+    self.refreshOperation = [[GenericGameServer sharedGameServer] refreshCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] refreshRunningGames:^(GameList *runningGames) {
             [self didRefreshWithGames:currentGames
                          runningGames:runningGames

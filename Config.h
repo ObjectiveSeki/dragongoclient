@@ -22,6 +22,7 @@
 #define TESTFLIGHT_UUID_TRACKING
 #define PUSH_ENABLED
 #define PUSH_HOST @"dgs.uberweiss.net"
+#define REMOTE_LOGGING
 #endif
 
 #if defined (CONFIGURATION_Release)

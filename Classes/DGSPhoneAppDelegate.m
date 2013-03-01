@@ -164,6 +164,8 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
     if (application.applicationState != UIApplicationStateInactive) {
         NSLog(@"App was running in the foreground");
     }
+    // Make sure the game server is awake, since it will probably care about this notification.
+    [GenericGameServer sharedGameServer];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:ReceivedNewGamesNotification object:userInfo];
 }
