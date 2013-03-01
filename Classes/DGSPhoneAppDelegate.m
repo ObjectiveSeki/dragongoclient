@@ -106,6 +106,17 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 	NSLog(@"Terminating...");
 }
 
+#pragma mark - Navigation
+
+- (void)goToCurrentGamesViewControllerAnimated:(BOOL)animated {
+    UIViewController *rootViewController = [self.window rootViewController];
+    [rootViewController dismissViewControllerAnimated:animated completion:^{ }];
+    
+    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        [((UINavigationController *)rootViewController) popToRootViewControllerAnimated:animated];
+    }
+}
+
 #pragma mark - Login
 
 - (void)showLoginAnimated:(NSNotification *)notification {
@@ -161,7 +172,9 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 - (void)application:(UIApplication *)application handleRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Handling remote notification: %@", userInfo);
 
-    if (application.applicationState != UIApplicationStateInactive) {
+    if (application.applicationState == UIApplicationStateInactive) {
+        [self goToCurrentGamesViewControllerAnimated:NO];
+    } else {
         NSLog(@"App was running in the foreground");
     }
     // Make sure the game server is awake, since it will probably care about this notification.
