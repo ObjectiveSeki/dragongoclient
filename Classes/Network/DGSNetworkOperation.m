@@ -24,6 +24,9 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 - (BOOL)isLoggedIn {
     NSString *originalUrlString = [self.readonlyRequest.URL absoluteString];
 	NSString *urlString = [self.readonlyResponse.URL absoluteString];
+    if (!urlString) {
+        urlString = originalUrlString;
+    }
     NSString *responseString = self.responseString;
     
 	// Use a simple heuristic here. If we are hitting a normal HTML page, we

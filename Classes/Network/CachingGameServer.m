@@ -146,7 +146,6 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 - (NSOperation *)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError {
     return [self.cache fetchObjectForKey:[self gameCacheKey:game] ttl:kLongTTL fetchBlock:^id(JWCache *cache, CacheCallbackBlock gotObject) {
-#warning what happens if we lost the game from the cache?
         gotObject(game);
         return nil;
     } completion:^(Game *cachedGame) {
