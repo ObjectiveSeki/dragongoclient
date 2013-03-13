@@ -19,6 +19,12 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 // Encapsulates the error and success handling behavior of DGS
 @implementation DGSNetworkOperation
 
+// Disable MKNetworkKit's request matching, because it expects our completion
+// blocks to be idempotent. Which they're not. Maybe someday.
+-(BOOL) isEqual:(id)object {
+    return self == object;
+}
+
 // Is the user currently logged in through their cookie? YES if so,
 // NO if not.
 - (BOOL)isLoggedIn {

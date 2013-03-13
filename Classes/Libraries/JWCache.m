@@ -89,13 +89,13 @@
     
     if (cachedObject) {
         NSLog(@"Found cached object for %@", key);
-        completion(cachedObject);
         
         if ([cachedEntry hasExpired]) {
             NSLog(@"%@ has expired, fetching new version", key);
             [self removeObjectForKey:key];
             needsRefresh = YES;
         } else {
+            completion(cachedObject);
             needsRefresh = NO;
         }
     }
