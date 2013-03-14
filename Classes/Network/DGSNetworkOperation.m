@@ -39,17 +39,23 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 	// can figure out if the user is logged in by checking if we ended up on index.php
 	// or error.php (in the case where the error is not_logged_in)
 	BOOL onErrorPageOrIndex = (NSNotFound != [urlString rangeOfString:@"error.php?err=not_logged_in"].location || NSNotFound != [urlString rangeOfString:@"index.php"].location);
-    
-	// If we're using the DGS api, it will return the string 'Error: no_uid' or 'Error: not_logged_in' if we aren't logged in.
-	BOOL noUID = (NSNotFound != [responseString rangeOfString:@"#Error: no_uid"].location);
-	BOOL notLoggedIn = (NSNotFound != [responseString rangeOfString:@"#Error: not_logged_in"].location);
-    BOOL invalidUser = (NSNotFound != [responseString rangeOfString:@"#Error: invalid_user"].location);
-    BOOL unknownUser = (NSNotFound != [responseString rangeOfString:@"#Error: unknown_user"].location);
     BOOL noUserData = (nil == [Player currentPlayer] && (NSNotFound == [urlString rangeOfString:@"obj=user&cmd=info"].location) && (NSNotFound == [originalUrlString rangeOfString:@"login.php"].location));
     
-	if (onErrorPageOrIndex || noUID || notLoggedIn || invalidUser || unknownUser || noUserData) {
-		return NO;
-	}
+    if (onErrorPageOrIndex || noUserData) {
+        return NO;
+    }
+    
+	// If we're using the DGS api, it will return the string 'Error: no_uid' or 'Error: not_logged_in' if we aren't logged in.
+    if (responseString) {
+        BOOL noUID = (NSNotFound != [responseString rangeOfString:@"#Error: no_uid"].location);
+        BOOL notLoggedIn = (NSNotFound != [responseString rangeOfString:@"#Error: not_logged_in"].location);
+        BOOL invalidUser = (NSNotFound != [responseString rangeOfString:@"#Error: invalid_user"].location);
+        BOOL unknownUser = (NSNotFound != [responseString rangeOfString:@"#Error: unknown_user"].location);
+    
+        if (noUID || notLoggedIn || invalidUser || unknownUser) {
+            return NO;
+        }
+    }
 	return YES;
 }
 
