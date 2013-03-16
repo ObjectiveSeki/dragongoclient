@@ -42,6 +42,18 @@
     return [self.games count];
 }
 
+- (NSUInteger)hash {
+    return self.games.hash;
+}
+
+- (BOOL)isEqual:(id)other {
+    if (other == self)
+        return YES;
+    if (!other || ![other isKindOfClass:[self class]])
+        return NO;
+    return [self.games isEqualToOrderedSet:((GameList *)other).games];
+}
+
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:self.games forKey:@"games"];
     [encoder encodeObject:self.pathFormat forKey:@"pathFormat"];

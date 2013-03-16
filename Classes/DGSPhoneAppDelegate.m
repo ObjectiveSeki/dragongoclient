@@ -19,7 +19,6 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
 @interface DGSPhoneAppDelegate ()
 @property (nonatomic, strong) LoginViewController *loginController;
-@property (nonatomic, strong) DGSPushServer *pushServer;
 @end
 
 @implementation DGSPhoneAppDelegate
@@ -29,10 +28,6 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
     // Override point for customization after application launch.
-    
-#ifdef PUSH_ENABLED
-    self.pushServer = [[DGSPushServer alloc] init];
-#endif
 
 #ifdef TESTFLIGHT_UUID_TRACKING
     TF([TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]);
@@ -142,19 +137,19 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 #pragma mark - Push notifications
 
 - (void)registerForRemoteNotifications {
-    [self.pushServer registerForRemoteNotifications];
+    [[DGSPushServer sharedPushServer] registerForRemoteNotifications];
 }
 
 - (void)unregisterForRemoteNotifications:(NSNotification *)notification {
     Player *oldPlayer = [notification object];
-    [self.pushServer deleteAPNSDeviceTokenForPlayerId:oldPlayer.userId completion:^() { } error:^(NSError *error) {
+    [[DGSPushServer sharedPushServer] deleteAPNSDeviceTokenForPlayerId:oldPlayer.userId completion:^() { } error:^(NSError *error) {
         NSLog(@"Error clearing push token: %@", error);
     }];
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {
-    [self.pushServer updateAPNSDeviceToken:token completion:^{
-        [self.pushServer createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser] completion:^{ } error:^(NSError *error) { }];
+    [[DGSPushServer sharedPushServer] updateAPNSDeviceToken:token completion:^{
+        [[DGSPushServer sharedPushServer] createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser] completion:^{ } error:^(NSError *error) { }];
     } error:^(NSError *error) {
         NSLog(@"Error updating push token: %@", error);
     }];

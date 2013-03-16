@@ -85,7 +85,7 @@ const int kDefaultPageLimit = 20;
 #pragma mark DGS Calls
 
 - (NSOperation *)logout:(ErrorBlock)onError {
-	static NSString *path = @"/login.php?quick_mode=1&logout=1";
+	static NSString *path = @"login.php?quick_mode=1&logout=1";
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         Player *oldPlayer = [Player currentPlayer];
@@ -99,7 +99,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getCurrentPlayer:(ErrorBlock)onError {
-    static NSString *path = @"/quick_do.php?obj=user&cmd=info";
+    static NSString *path = @"quick_do.php?obj=user&cmd=info";
     
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -114,7 +114,7 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError
 {
-	static NSString *path = @"/login.php?quick_mode=1";
+	static NSString *path = @"login.php?quick_mode=1";
     NSDictionary *params = @{
       @"userid": username,
       @"passwd": password
@@ -136,7 +136,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
-	static NSString *path = @"/quick_status.php?no_cache=1&version=2";
+	static NSString *path = @"quick_status.php?no_cache=1&version=2";
     
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -158,7 +158,7 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     GameList *gameList = [[GameList alloc] init];
-    gameList.pathFormat = @"/quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json&limit=%d&off=%d";
+    gameList.pathFormat = @"quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json&limit=%d&off=%d";
     // let's just return an empty list, and rely on the caller to fill it in
     // for us. These games might not be shown anyway.
     onSuccess(gameList);
@@ -167,7 +167,7 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
     GameList *gameList = [[GameList alloc] init];
-    gameList.pathFormat = @"/quick_do.php?obj=wroom&cmd=list&with=user_id&lstyle=json&limit=%d&off=%d";
+    gameList.pathFormat = @"quick_do.php?obj=wroom&cmd=list&with=user_id&lstyle=json&limit=%d&off=%d";
     return [self addGamesToGameList:gameList onSuccess:onSuccess onError:onError];
 }
 
@@ -202,7 +202,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {
-    static NSString *pathFormat = @"/quick_do.php?obj=wroom&cmd=info&wrid=%d&with=user_id";
+    static NSString *pathFormat = @"quick_do.php?obj=wroom&cmd=info&wrid=%d&with=user_id";
     MKNetworkOperation *op = [self operationWithPath:S(pathFormat, game.gameId)];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -216,7 +216,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    static NSString *joinGameUrlFormat = @"/quick_do.php?obj=wroom&cmd=join&wrid=%d";
+    static NSString *joinGameUrlFormat = @"quick_do.php?obj=wroom&cmd=join&wrid=%d";
     MKNetworkOperation *op = [self operationWithPath:S(joinGameUrlFormat, gameId)];
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -229,7 +229,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    static NSString *deleteGameUrlFormat = @"/quick_do.php?obj=wroom&cmd=delete&wrid=%d";
+    static NSString *deleteGameUrlFormat = @"quick_do.php?obj=wroom&cmd=delete&wrid=%d";
     MKNetworkOperation *op = [self operationWithPath:S(deleteGameUrlFormat, gameId)];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
@@ -241,7 +241,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {
-    static NSString *pathFormat = @"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1";
+    static NSString *pathFormat = @"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1";
     if (!game.sgfPath) {
         game.sgfPath = S(pathFormat, game.gameId);
     }
@@ -287,7 +287,7 @@ const int kDefaultPageLimit = 20;
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber;
-    static NSString *scoreUrlFormat = @"/quick_do.php?obj=game&cmd=score&gid=%d&move_id=%d&move=%@";
+    static NSString *scoreUrlFormat = @"quick_do.php?obj=game&cmd=score&gid=%d&move_id=%d&move=%@";
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([changedStones count] * 2)];
     NSMutableString *urlString;
     
@@ -318,8 +318,8 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
-    static NSString *moveUrlFormat = @"/quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
-    static NSString *resignUrlFormat = @"/quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
+    static NSString *moveUrlFormat = @"quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
+    static NSString *resignUrlFormat = @"quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
     NSMutableString *urlString;
     
     if ([move moveType] == kMoveTypePass) {
@@ -348,7 +348,7 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     
-    static NSString *path = @"/new_game.php";
+    static NSString *path = @"new_game.php";
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     params[@"nrGames"] = S(@"%d", game.numberOfGames);
@@ -419,7 +419,7 @@ const int kDefaultPageLimit = 20;
 			NSString *opponentString = cols[2];
 			[game setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
 
-			game.sgfPath = S(@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
+			game.sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
 			if ([cols[3] isEqual:@"W"]) {
 				[game setColor:kMovePlayerWhite];
 			} else {
@@ -456,7 +456,7 @@ const int kDefaultPageLimit = 20;
     Game *game = [[Game alloc] init];
     int myId = [gameDictionary[@"my_id"] intValue];
     game.gameId = [gameDictionary[@"id"] intValue];
-    NSString *sgfPath = S(@"/sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
+    NSString *sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
     game.sgfPath = sgfPath;
     
     if ([gameDictionary[@"white_user"][@"id"] intValue] == myId) {

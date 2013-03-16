@@ -15,6 +15,7 @@
 #import "IBAlertView.h"
 #import "GameList.h"
 #import "LoadingCell.h"
+#import "DGSPushServer.h"
 
 @interface CurrentGamesController ()
 
@@ -207,9 +208,15 @@ typedef enum {
 
 - (void)handleGameListChanges:(GameList *)gameList
        runningGameListChanges:(GameList *)runningGameList {
+    
 #if TEST_GAMES
     [self addTestGamesToGameList:gameList];
 #endif
+    
+    if (![self.games isEqual:gameList]) {
+        [[DGSPushServer sharedPushServer] updateGameList:gameList completion:^{ } error:^(NSError *error) { }];
+    }
+    
     self.games = gameList;
     self.runningGames = runningGameList;
     [self.tableView reloadData];
