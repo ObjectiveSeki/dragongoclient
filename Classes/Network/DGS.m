@@ -60,7 +60,7 @@ const int kDefaultPageLimit = 20;
         NSLog(@"%@", completedOperation.url);
         NSLog(@"%@", completedOperation.responseString);
         DGSNetworkOperation *dgsOperation = (DGSNetworkOperation *)completedOperation;
-        if (NO == [dgsOperation isLoggedIn]) {
+        if (error.domain == kDGSErrorDomain && error.code == kDGSErrorCodeLoginError) {
             NSLog(@"Not logged in during request: %@", dgsOperation.readonlyRequest.URL);
             Player *oldPlayer = [Player currentPlayer];
             [self resetUserData];

@@ -10,7 +10,7 @@
 #import "Player.h"
 #import "GDataXMLNode.h"
 
-static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
+NSString * const kDGSErrorDomain = @"DGSNetworkErrorDomain";
 
 @interface DGSNetworkOperation ()
 @property (nonatomic, readonly) NSString *lossyResponseString;
@@ -60,18 +60,20 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
 }
 
 // Checks the request body to see if it contains an error. If so,
-// return the error string. Otherwise, returns nil.
-- (NSString *)dgsError {
+// return the error. Otherwise, returns nil.
+- (NSError *)dgsError {
 	NSString *urlString = [self.readonlyResponse.URL absoluteString];
     NSString *responseString = self.responseString;
-	NSString *errorString = nil;
+	NSError *error = nil;
     
-	if (NSNotFound != [urlString rangeOfString:@"error.php"].location) {
-		NSError *error;
-		GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLString:responseString options:0 error:&error];
-		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&error];
+    if (![self isLoggedIn]) {
+        error = [self errorWithDGSErrorString:NSLocalizedStringFromTable(@"not_logged_in", @"DGSErrors", nil) code:kDGSErrorCodeLoginError];
+    } else if (NSNotFound != [urlString rangeOfString:@"error.php"].location) {
+		NSError *htmlError;
+		GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLString:responseString options:0 error:&htmlError];
+		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&htmlError];
 		if ([bodyElements count] > 0) {
-			errorString = [[bodyElements objectAtIndex:0] stringValue];
+			error = [self errorWithDGSErrorString:[[bodyElements objectAtIndex:0] stringValue] code:kDGSErrorCodeGenericError];
 		}
 	} else if (NSNotFound != [responseString rangeOfString:@"#Error:"].location) {
         NSString *errorKey;
@@ -80,10 +82,10 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
         [scanner scanString:@"[#Error: " intoString:NULL];
         [scanner scanUpToString:@";" intoString:&errorKey];
         
-        errorString = NSLocalizedStringFromTable(errorKey, @"DGSErrors", nil);
-    }
+        error = [self errorWithDGSErrorString:NSLocalizedStringFromTable(errorKey, @"DGSErrors", nil) code:kDGSErrorCodeGenericError];
+    } 
     
-	return errorString;
+	return error;
 }
 
 - (NSString *)lossyStringFromData:(NSData *)data encoding:(NSStringEncoding)encoding replaceString:(NSString *)replacement {
@@ -135,17 +137,17 @@ static NSString * const DGSErrorDomain = @"DGSNetworkErrorDomain";
     return _lossyResponseString;
 }
 
-- (NSError *)errorWithDGSError:(NSString *)dgsError {
-    return [[NSError alloc] initWithDomain:DGSErrorDomain code:0 userInfo:@{ NSLocalizedDescriptionKey:dgsError }];
+- (NSError *)errorWithDGSErrorString:(NSString *)dgsErrorString code:(NSInteger)code {
+    return [[NSError alloc] initWithDomain:kDGSErrorDomain code:code userInfo:@{ NSLocalizedDescriptionKey:dgsErrorString }];
 }
 
 // Called when a request finishes. Handles being logged out,
 // error messages, and successes.
 - (void)operationSucceeded {
-	NSString *errorString = [self dgsError];
+	NSError *error = [self dgsError];
     
-	if (errorString) {
-        [super operationFailedWithError:[self errorWithDGSError:errorString]];
+	if (error) {
+        [super operationFailedWithError:error];
 	} else {
         [super operationSucceeded];
     }

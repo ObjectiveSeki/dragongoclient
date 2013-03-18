@@ -57,6 +57,10 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:APNSDeviceIdUserDefaultsKey];
 }
 
+- (BOOL)isPushEnabled {
+    return [self deviceId];
+}
+
 #pragma mark - Push Server methods
 
 #pragma mark - Push Tokens
@@ -114,7 +118,7 @@
     if (deviceId) {
         // Remove the token regardless of whether this call succeeds, because we can always get it back later if we need it.
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:APNSDeviceIdUserDefaultsKey];
-        MKNetworkOperation *op = [self operationWithPath:S(deleteDeviceTokenPathFormat, [Player currentPlayer].userId, deviceId) params:nil httpMethod:@"DELETE"];
+        MKNetworkOperation *op = [self operationWithPath:S(deleteDeviceTokenPathFormat, playerId, deviceId) params:nil httpMethod:@"DELETE"];
 
         [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
             completion();
@@ -134,7 +138,7 @@
 #pragma mark - Cookies
 
 - (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
-    if (![self deviceId]) {
+    if (![self isPushEnabled]) {
         // Don't bother dealing updating the login cookies on the server if we
         // aren't using push notifications, since we won't be doing anything
         // with them anyway.
@@ -170,8 +174,8 @@
 
 #pragma mark - Game updates
 - (MKNetworkOperation *)updateGameList:(GameList *)gameList completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
-    if (![self deviceId]) {
-        // Don't bother dealing updating the login cookies on the server if we
+    if (![self isPushEnabled]) {
+        // Don't bother dealing with updating the game list on the server if we
         // aren't using push notifications, since we won't be doing anything
         // with them anyway.
         return nil;

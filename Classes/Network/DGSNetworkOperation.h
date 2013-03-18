@@ -8,8 +8,13 @@
 
 #import "MKNetworkKit.h"
 
-@interface DGSNetworkOperation : MKNetworkOperation
+enum {
+    kDGSErrorCodeGenericError,
+    kDGSErrorCodeLoginError
+};
 
-- (BOOL)isLoggedIn;
+extern NSString * const kDGSErrorDomain;
+
+@interface DGSNetworkOperation : MKNetworkOperation
 
 @end
