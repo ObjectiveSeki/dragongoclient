@@ -36,6 +36,16 @@
     self.passwordCell.maxTextLength = -1;
     
     self.spinner = [[SpinnerView alloc] initInView:self.view];
+    [self updateLoginButton];
+}
+
+- (void)updateLoginButton {
+    self.loginCell.userInteractionEnabled = self.canLogin;
+    self.loginCell.textLabel.textColor = self.canLogin ? self.signupCell.textLabel.textColor : [UIColor grayColor];
+}
+
+- (BOOL)canLogin {
+    return self.username.length > 0 && self.password.length > 0;
 }
 
 - (void)login
@@ -53,10 +63,12 @@
 
 - (void)setUsernameFromCell:(TextCell *)tableCell {
 	self.username = tableCell.textField.text;
+    [self updateLoginButton];
 }
 
 - (void)setPasswordFromCell:(TextCell *)tableCell {
 	self.password = tableCell.textField.text;
+    [self updateLoginButton];
 }
 
 #pragma mark -
