@@ -331,7 +331,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
             NSError *writeError;
             NSString *tmpFilename = [NSString stringWithFormat:@"dgs-game-%d-%d.sgf", self.game.gameId, self.board.moveNumber];
             NSString *tmpFileFullPath = [NSTemporaryDirectory() stringByAppendingPathComponent:tmpFilename];
-            sleep(3);
             
             if (!self.sgfShareOperation.isCancelled) {
                 if (![self.game.sgfString writeToFile:tmpFileFullPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError]) {
