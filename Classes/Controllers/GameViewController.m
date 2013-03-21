@@ -320,10 +320,18 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (IBAction)share:(id)sender {
     if (!self.shareController && !self.sgfShareOperation) {
+        
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        UIBarButtonItem *activityIndicatorButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+        activityIndicatorButton.width = 28;
+        [self replaceToolbarItemAtIndex:3 withItem:activityIndicatorButton];
+        [activityIndicator startAnimating];
+        
         self.sgfShareOperation = [NSBlockOperation blockOperationWithBlock:^{
             NSError *writeError;
             NSString *tmpFilename = [NSString stringWithFormat:@"dgs-game-%d-%d.sgf", self.game.gameId, self.board.moveNumber];
             NSString *tmpFileFullPath = [NSTemporaryDirectory() stringByAppendingPathComponent:tmpFilename];
+            sleep(3);
             
             if (!self.sgfShareOperation.isCancelled) {
                 if (![self.game.sgfString writeToFile:tmpFileFullPath atomically:YES encoding:NSUTF8StringEncoding error:&writeError]) {
@@ -334,6 +342,11 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
             if (!self.sgfShareOperation.isCancelled) {
                 self.shareController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:tmpFileFullPath]];
             }
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [self replaceToolbarItemAtIndex:3 withItem:self.shareButton];
+            }];
+            
             if (!self.sgfShareOperation.isCancelled) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     self.sgfShareOperation = nil;
@@ -426,6 +439,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     [self setNextMoveButton:nil];
     [self setPreviousMoveButton:nil];
     [self setToolbar:nil];
+    [self setShareButton:nil];
     [super viewDidUnload];
 }
 @end

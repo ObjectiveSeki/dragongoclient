@@ -30,6 +30,7 @@ typedef enum {
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *messageButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *nextMoveButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *previousMoveButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 @property(nonatomic, strong) IBOutlet MessageView *messageView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 
