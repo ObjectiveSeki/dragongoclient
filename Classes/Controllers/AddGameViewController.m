@@ -24,8 +24,9 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-typedef enum _AddGameSection {
+typedef enum {
 	kDescriptionSection,
+    kNumberOfGamesSection,
 	kBoardSection,
 	kTimeSection,
     kRatingSection,
@@ -83,7 +84,9 @@ typedef enum _AddGameSection {
     // Return the number of rows in the section.
     if (section == kDescriptionSection) {
 		return 1;
-	} else if (section == kBoardSection) {
+	} else if (section == kNumberOfGamesSection) {
+        return 1;
+    } else if (section == kBoardSection) {
         if (self.game.komiType != kKomiTypeManual) {
 			return 3;
 		} else {
@@ -255,6 +258,24 @@ typedef enum _AddGameSection {
 			return cell;
 		}
 	}
+    
+    if (indexPath.section == kNumberOfGamesSection) {
+        if (indexPath.row == 0) {
+            SelectCell *cell = [self dequeueSelectCell:theTableView];
+            cell.label.text = @"Number of Games";
+            cell.value.text = [@(self.game.numberOfGames) stringValue];
+            cell.onChanged = ^(SelectCell *cell) {
+                NSString *value = [cell selectedValueInComponent:0];
+                self.game.numberOfGames = [value intValue];
+                cell.value.text = value;
+            };
+            cell.options = @[@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
+            cell.selectedOptions = @[cell.value.text];
+            cell.sizes = nil;
+            return cell;
+        }
+    }
+    
 	if ([indexPath section] == kBoardSection) {
 
 		if ([indexPath row] == 0) {
