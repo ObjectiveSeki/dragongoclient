@@ -24,4 +24,5 @@
 
 - (MKNetworkOperation *)updateGameList:(GameList *)gameList completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
 
+- (MKNetworkOperation *)playMoveInGame:(Game *)game completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
 @end

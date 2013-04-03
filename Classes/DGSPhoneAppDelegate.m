@@ -148,10 +148,14 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {
-    [[DGSPushServer sharedPushServer] updateAPNSDeviceToken:token completion:^{
-        [[DGSPushServer sharedPushServer] createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser] completion:^{ } error:^(NSError *error) { }];
+    [[DGSPushServer sharedPushServer] createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser]
+    completion:^{
+        [[DGSPushServer sharedPushServer] updateAPNSDeviceToken:token completion:^{
+        } error:^(NSError *error) {
+            NSLog(@"Error updating push token: %@", error);
+        }];
     } error:^(NSError *error) {
-        NSLog(@"Error updating push token: %@", error);
+        NSLog(@"Error updating session: %@", error);
     }];
 }
 

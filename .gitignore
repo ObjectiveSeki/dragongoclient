@@ -1,4 +1,5 @@
 build/
+.idea
 *.perspectivev3
 *.xcworkspace
 *.pbxuser

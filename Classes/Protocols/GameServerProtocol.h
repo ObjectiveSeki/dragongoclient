@@ -40,7 +40,6 @@ typedef void(^ErrorBlock)(NSError *error);
 - (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 
-
 - (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess  onError:(ErrorBlock)onError;
 - (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;

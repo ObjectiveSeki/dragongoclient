@@ -13,6 +13,7 @@
 #import "MessageView.h"
 #import "SpinnerView.h"
 #import "NSTimer+Blocks.h"
+#import "DGSPushServer.h"
 
 @interface GameViewController ()
 
@@ -278,7 +279,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	NSString *reply = self.messageView.reply;
     
 	void (^onSuccess)() = ^() {
-		[self playedMove];
+		[self didPlayMove];
 	};
     
 	if ([self.board beginningOfHandicapGame]) {
@@ -294,6 +295,8 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
             [self.spinner dismiss:YES];
         }];
 	}
+
+    [self willPlayMove]; // pop the view controller immediately for speed
 }
 
 - (IBAction)pass {
@@ -418,9 +421,13 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	}
 }
 
-- (void)playedMove {
-	[self.spinner dismiss:YES];
+- (void)willPlayMove {
+    [self.spinner dismiss:YES];
 	[self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didPlayMove {
+    [[DGSPushServer sharedPushServer] playMoveInGame:self.game completion:^{} error:^(NSError *error) { }];
 }
 
 #pragma mark - Memory management

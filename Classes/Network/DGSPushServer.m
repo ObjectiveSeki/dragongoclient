@@ -14,6 +14,7 @@
 
 @implementation DGSPushServer
 
+
 + (DGSPushServer *)sharedPushServer {
     static DGSPushServer *sharedPushServer = nil;
 #ifdef PUSH_ENABLED
@@ -138,13 +139,6 @@
 #pragma mark - Cookies
 
 - (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
-    if (![self isPushEnabled]) {
-        // Don't bother dealing updating the login cookies on the server if we
-        // aren't using push notifications, since we won't be doing anything
-        // with them anyway.
-        return nil;
-    }
-
     if ([cookies count] == 0) {
         return nil;
     }
@@ -200,6 +194,29 @@
     return op;
 }
 
+
+- (MKNetworkOperation *)playMoveInGame:(Game *)game completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+    if (![self isPushEnabled]) {
+#warning TODO: This probably isn't the right thing to do here. We actually only want to send messages if we have a *session* on the server, not a push token.
+        return nil;
+    }
+
+    static NSString *pathFormat = @"players/%@/games/%d/move.json";
+
+    MKNetworkOperation *op = [self operationWithPath:S(pathFormat, [Player currentPlayer].userId, game.gameId)
+                                              params:nil
+                                          httpMethod:@"POST"];
+
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        completion();
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        error(theError);
+    }];
+
+    [self enqueueOperation:op];
+    return op;
+}
+
 - (NSMutableDictionary *)paramsFromGameList:(GameList *)gameList {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
@@ -209,6 +226,5 @@
     }
     return params;
 }
-
 
 @end

@@ -26,12 +26,6 @@
     self.games = mutableGames;
 }
 
-- (void)updateGame:(Game *)game atIndex:(NSInteger)index {
-    NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
-    [mutableGames insertObject:game atIndex:index];
-    self.games = mutableGames;
-}
-
 - (void)addGames:(NSOrderedSet *)moreGames {
     NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
     [mutableGames unionOrderedSet:moreGames];

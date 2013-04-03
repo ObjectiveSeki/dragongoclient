@@ -8,12 +8,10 @@
 
 #import "DGSPhoneAppDelegate.h"
 #import "CurrentGamesController.h"
-#import "Game.h"
 #import "ODRefreshControl.h"
 #import "SpinnerView.h"
 #import "GameViewController.h"
 #import "IBAlertView.h"
-#import "GameList.h"
 #import "LoadingCell.h"
 #import "DGSPushServer.h"
 
@@ -197,7 +195,7 @@ typedef enum {
         game.sgfString = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:@"sgf"] encoding:NSUTF8StringEncoding error:NULL];
         game.color = kMovePlayerBlack;
         game.time = @"Test";
-        game.gameId = 10000000000 + i;
+        game.gameId = 100000000 + i;
         game.moveId = 100;
         game.myTurn = YES;
         
