@@ -71,6 +71,7 @@ typedef enum {
 	[self refreshGames];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forceRefreshGames) name:ReceivedNewGamesNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshGames) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearGameList) name:PlayerDidLogoutNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -184,6 +185,10 @@ typedef enum {
 }
 
 #pragma mark - Game list management
+
+- (void)clearGameList {
+    [self handleGameListChanges:nil runningGameListChanges:nil];
+}
 
 - (void)addTestGamesToGameList:(GameList *)gameList {
     NSArray *testGames = @[@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];

@@ -59,7 +59,7 @@
 }
 
 - (BOOL)isPushEnabled {
-    return [self deviceId];
+    return [self.deviceId boolValue];
 }
 
 #pragma mark - Push Server methods
@@ -197,7 +197,6 @@
 
 - (MKNetworkOperation *)playMoveInGame:(Game *)game completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
     if (![self isPushEnabled]) {
-#warning TODO: This probably isn't the right thing to do here. We actually only want to send messages if we have a *session* on the server, not a push token.
         return nil;
     }
 
