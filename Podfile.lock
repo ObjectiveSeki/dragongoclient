@@ -6,21 +6,21 @@ PODS:
   - Reachability (~> 3.1.0)
 - ODRefreshControl (1.1.0)
 - Reachability (3.1.0)
-- TestFlightSDK (1.2.4.beta)
+- TestFlightSDK (1.2.4)
 
 DEPENDENCIES:
 - GDataXML-HTML
 - InnerBand
 - MKNetworkKit
 - ODRefreshControl
-- TestFlightSDK
+- TestFlightSDK (~> 1.2.4)
 
 SPEC CHECKSUMS:
   GDataXML-HTML: 0d474e4fad256e115114b27678d5eeffe2663218
   InnerBand: 2f6e09a3f007f611fe187521f323cbb0e7fd7866
   MKNetworkKit: 79a362de7fdcae82b714c45e0003c52b3b6e53c8
   ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
-  Reachability: 1c8584c5f26fa776695efef95caaa50402c94cfb
-  TestFlightSDK: aeec97fd81096753d53b942f030a443520a087f4
+  Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
+  TestFlightSDK: 96d7400f844599dd02677bf8d34f8bdfe3f9b33c
 
-COCOAPODS: 0.16.0
+COCOAPODS: 0.16.4
