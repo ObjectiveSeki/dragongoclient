@@ -174,6 +174,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return [self.gameServer logout:onError];
 }
 
+- (NSOperation *)refreshLoginCookies:(EmptyBlock)onSuccess error:(ErrorBlock)onError {
+    return [self.gameServer refreshLoginCookies:onSuccess error:onError];
+}
+
 - (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer addGame:game onSuccess:onSuccess onError:onError];
 }

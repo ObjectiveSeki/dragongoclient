@@ -7,13 +7,14 @@
 //
 
 #import "DGS.h"
-#import "NewGame.h"
 #import "Player.h"
 #import "DGSNetworkOperation.h"
+#import "SFHFKeychainUtils.h"
 
 @implementation DGS
 
 const int kDefaultPageLimit = 20;
+static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
 
 + (id<GameServerProtocol>)sharedGameServer {
     static DGS *sharedGameServer;
@@ -51,7 +52,7 @@ const int kDefaultPageLimit = 20;
                                     params:(NSDictionary *)body
                                 httpMethod:(NSString *)method
                                        ssl:(BOOL)useSSL {
-    
+
     MKNetworkOperation *op = [super operationWithPath:path params:body httpMethod:method ssl:useSSL];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"%@", completedOperation.url);
@@ -69,7 +70,7 @@ const int kDefaultPageLimit = 20;
             [UIAlertView showWithError:error];
         }
     }];
-    
+
     return op;
 }
 
@@ -79,6 +80,13 @@ const int kDefaultPageLimit = 20;
         [url appendFormat:@"%@/", self.apiPath];
     }
     return [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
+}
+
+- (void)storeCredentialsForUser:(NSString *)username withPassword:(NSString *)password {
+    NSError *error;
+    if (![SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:kDGSKeychainIdentifier updateExisting:YES error:&error]) {
+        NSLog(@"Error saving credentials to keychain: %@", error);
+    }
 }
 
 #pragma mark -
@@ -100,7 +108,7 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)getCurrentPlayer:(ErrorBlock)onError {
     static NSString *path = @"quick_do.php?obj=user&cmd=info";
-    
+
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [self setCurrentPlayerFromDictionary:completedOperation.responseJSON];
@@ -123,6 +131,40 @@ const int kDefaultPageLimit = 20;
     MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [self getCurrentPlayer:onError];
+        [self storeCredentialsForUser:username withPassword:password];
+        onSuccess();
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        onError(error);
+    }];
+    [self enqueueOperation:op];
+    return op;
+}
+
+- (NSOperation *)refreshLoginCookies:(EmptyBlock)onSuccess error:(ErrorBlock)onError {
+    if (![Player currentPlayer]) {
+        return nil;
+    }
+
+    static NSString *path = @"login.php?quick_mode=1";
+    NSString *username = [[Player currentPlayer] handle];
+    NSError *error;
+
+    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:kDGSKeychainIdentifier error:&error];
+
+    if (!password) {
+        NSLog(@"Error retreiving password: %@", error);
+        return nil;
+    }
+
+    NSDictionary *params = @{
+            @"userid": username,
+            @"passwd": password
+    };
+
+    MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
+
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        [self getCurrentPlayer:onError];
         onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
@@ -137,7 +179,7 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)getCurrentGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
 	static NSString *path = @"quick_status.php?no_cache=1&version=2";
-    
+
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSOrderedSet *games = [self gamesFromCSV:completedOperation.responseString];
@@ -175,24 +217,24 @@ const int kDefaultPageLimit = 20;
     NSAssert(gameList, @"Can't add games to a nil gameList.");
     NSAssert(gameList.pathFormat, @"GameList: %@ is missing a path format.", gameList);
     NSString *path = [gameList pathForMoreGames:kDefaultPageLimit];
-    
+
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *gameListDictionary = completedOperation.responseJSON;
         NSMutableOrderedSet *games = [NSMutableOrderedSet orderedSetWithCapacity:[gameListDictionary[@"list_result"] count]];
-        
+
         for (NSDictionary *gameDetails in gameListDictionary[@"list_result"]) {
             Game *game = [self parseGameFromDictionary:gameDetails ofType:gameListDictionary[@"list_object"]];
             [games addObject:game];
         }
-        
+
         [gameList addGames:games];
-        
+
         if ([gameListDictionary[@"list_has_next"] intValue] == 0) {
             gameList.hasMorePages = NO;
         }
         gameList.offset += [gameListDictionary[@"list_size"] intValue];
-        
+
         onSuccess(gameList);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
@@ -204,7 +246,7 @@ const int kDefaultPageLimit = 20;
 - (NSOperation *)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {
     static NSString *pathFormat = @"quick_do.php?obj=wroom&cmd=info&wrid=%d&with=user_id";
     MKNetworkOperation *op = [self operationWithPath:S(pathFormat, game.gameId)];
-    
+
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NewGame *gameDetails = [self gameFromWaitingRoomGameDictionary:completedOperation.responseJSON];
         onSuccess(gameDetails);
@@ -218,7 +260,7 @@ const int kDefaultPageLimit = 20;
 - (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     static NSString *joinGameUrlFormat = @"quick_do.php?obj=wroom&cmd=join&wrid=%d";
     MKNetworkOperation *op = [self operationWithPath:S(joinGameUrlFormat, gameId)];
-    
+
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
@@ -245,7 +287,7 @@ const int kDefaultPageLimit = 20;
     if (!game.sgfPath) {
         game.sgfPath = S(pathFormat, game.gameId);
     }
-    
+
     MKNetworkOperation *op = [self operationWithPath:game.sgfPath];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [game setSgfString:completedOperation.responseString];
@@ -261,24 +303,24 @@ const int kDefaultPageLimit = 20;
     static NSString *playHandicapStonesFormat = @"quick_do.php?obj=game&cmd=set_handicap&gid=%d&move_id=%d&move=%@";
 	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
-    
+
 	for (Move *move in moves) {
 		[moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
 	}
-        
+
     NSMutableString *urlString = [NSMutableString stringWithFormat:playHandicapStonesFormat, game.gameId, lastMoveNumber, moveString];
 
 	if ([comment length] > 0) {
 		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 	}
-	
+
     MKNetworkOperation *op = [self operationWithPath:urlString];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
     }];
-    
+
     [self enqueueOperation:op];
     return op;
 }
@@ -290,28 +332,28 @@ const int kDefaultPageLimit = 20;
     static NSString *scoreUrlFormat = @"quick_do.php?obj=game&cmd=score&gid=%d&move_id=%d&move=%@";
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([changedStones count] * 2)];
     NSMutableString *urlString;
-    
+
     for (Move *move in changedStones) {
         [moveString appendString:[self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
     }
-    
+
     urlString = [NSMutableString stringWithFormat:scoreUrlFormat, game.gameId, lastMoveNumber, moveString];
-        
+
     if ([comment length] > 0) {
         [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
-    
+
     if ([changedStones count] == 0) {
         [urlString appendString:@"&agree=1"];
     }
-    
+
     MKNetworkOperation *op = [self operationWithPath:urlString];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
     }];
-    
+
     [self enqueueOperation:op];
     return op;
 }
@@ -321,42 +363,42 @@ const int kDefaultPageLimit = 20;
     static NSString *moveUrlFormat = @"quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
     static NSString *resignUrlFormat = @"quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
     NSMutableString *urlString;
-    
+
     if ([move moveType] == kMoveTypePass) {
         urlString = [NSMutableString stringWithFormat:moveUrlFormat, game.gameId, lastMoveNumber, @"pass"];
     } else if ([move moveType] == kMoveTypeResign) {
         urlString = [NSMutableString stringWithFormat:resignUrlFormat, game.gameId, lastMoveNumber];
     } else if ([move moveType] == kMoveTypeMove) {
         urlString = [NSMutableString stringWithFormat:moveUrlFormat, game.gameId, lastMoveNumber, [self sgfCoordsWithRow:[move row] column:[move col] boardSize:[move boardSize]]];
-    } 
-    
+    }
+
     if ([comment length] > 0) {
 		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 	}
-    
-    
+
+
     MKNetworkOperation *op = [self operationWithPath:urlString];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
     }];
-    
+
     [self enqueueOperation:op];
     return op;
 }
 
 - (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    
+
     static NSString *path = @"new_game.php";
-    
+
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     params[@"nrGames"] = S(@"%d", game.numberOfGames);
     params[@"ruleset"] = game.ruleSetValue;
     params[@"size"] = S(@"%d", game.boardSize);
     params[@"cat_htype"] = game.komiTypeValue;
     params[@"color_m"] = game.manualKomiTypeValue;
-    
+
     params[@"handicap_m"] = S(@"%d", game.handicap);
     params[@"komi_m"] = S(@"%0.1f", game.komi);
     params[@"adj_handicap"] = S(@"%d", game.adjustedHandicap);
@@ -365,22 +407,22 @@ const int kDefaultPageLimit = 20;
     params[@"stdhandicap"] = [game boolValue:game.stdHandicap];
     params[@"adj_komi"] = S(@"%f", game.adjustedKomi);
     params[@"jigo_mode"] = game.jigoModeValue;
-    
+
     params[@"timevalue"] = S(@"%d", game.timeValue);
     params[@"timeunit"] = [game timePeriodValue:game.timeUnit];
     params[@"byoyomitype"] = game.byoYomiTypeValue;
-    
+
     params[@"byotimevalue_jap"] = S(@"%d", game.japaneseTimeValue);
     params[@"timeunit_jap"] = [game timePeriodValue:game.japaneseTimeUnit];
     params[@"byoperiods_jap"] = S(@"%d", game.japaneseTimePeriods);
-    
+
     params[@"byotimevalue_can"] = S(@"%d", game.canadianTimeValue);
     params[@"timeunit_can"] = [game timePeriodValue:game.canadianTimeUnit];
     params[@"byoperiods_can"] = S(@"%d", game.canadianTimePeriods);
-    
+
     params[@"byotimevalue_fis"] = S(@"%d", game.fischerTimeValue);
     params[@"timeunit_fis"] = [game timePeriodValue:game.fischerTimeValue];
-    
+
     params[@"weekendclock"] = [game boolValue:game.weekendClock];
     params[@"rated"] = [game boolValue:game.rated];
     params[@"must_be_rated"] = [game boolValue:game.requireRatedOpponent];
@@ -388,11 +430,11 @@ const int kDefaultPageLimit = 20;
     params[@"rating2"] = game.maximumRating;
     params[@"same_opp"] = S(@"%d", game.sameOpponent);
     params[@"comment"] = game.comment;
-    
+
     params[@"add_game"] = @"Add Game";
-    
+
     MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
-    
+
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
@@ -410,7 +452,7 @@ const int kDefaultPageLimit = 20;
 - (NSOrderedSet *)gamesFromCSV:(NSString *)csvData {
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
     NSMutableOrderedSet *games = [NSMutableOrderedSet orderedSetWithCapacity:[lines count]];
-    
+
 	for(NSString *line in lines) {
 		NSArray *cols = [line componentsSeparatedByString:@","];
 		if([cols[0] isEqual:@"G"]) {
@@ -431,7 +473,7 @@ const int kDefaultPageLimit = 20;
 
 			NSString *timeRemainingString = cols[5];
 			[game setTime:[timeRemainingString substringWithRange:NSMakeRange(1, [timeRemainingString length] - 2)]];
-            
+
             game.moveId = [cols[8] intValue];
             game.myTurn = YES; // Games from the status API are always my turn
 
@@ -444,6 +486,8 @@ const int kDefaultPageLimit = 20;
 - (void)setCurrentPlayerFromDictionary:(NSDictionary *)userDataDictionary {
     Player *player = [[Player alloc] init];
     player.userId = userDataDictionary[@"id"];
+    player.handle = userDataDictionary[@"handle"];
+    player.name = userDataDictionary[@"name"];
     player.ratingStatus = userDataDictionary[@"rating_status"];
     [Player setCurrentPlayer:player];
 }
@@ -458,7 +502,7 @@ const int kDefaultPageLimit = 20;
     game.gameId = [gameDictionary[@"id"] intValue];
     NSString *sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
     game.sgfPath = sgfPath;
-    
+
     if ([gameDictionary[@"white_user"][@"id"] intValue] == myId) {
         game.color = kMovePlayerWhite;
         game.time = gameDictionary[@"white_gameinfo"][@"remtime"];
@@ -468,21 +512,21 @@ const int kDefaultPageLimit = 20;
         game.time = gameDictionary[@"black_gameinfo"][@"remtime"];
         game.opponent = gameDictionary[@"white_user"][@"handle"];
     }
-    
+
     if ((game.color == kMovePlayerBlack && [gameDictionary[@"move_color"] isEqualToString:@"B"]) ||
         (game.color == kMovePlayerWhite && [gameDictionary[@"move_color"] isEqualToString:@"W"])) {
         game.myTurn = YES;
     } else {
         game.myTurn = NO;
     }
-    
+
     game.lastMove = gameDictionary[@"move_last"];
     game.moveId = [gameDictionary[@"move_id"] intValue];
     return game;
 }
 
 - (NewGame *)gameFromWaitingRoomGameDictionary:(NSDictionary *)gameDictionary {
-    
+
     NewGame *game = [[NewGame alloc] init];
 
     game.gameId = [gameDictionary[@"id"] intValue];

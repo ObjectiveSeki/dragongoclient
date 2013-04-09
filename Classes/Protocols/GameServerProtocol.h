@@ -7,6 +7,9 @@
 #import "NewGame.h"
 #import "Game.h"
 #import "GameList.h"
+#import "MKNetworkOperation.h"
+
+@class MKNetworkOperation;
 
 extern NSString * const PlayerDidLoginNotification;
 extern NSString * const PlayerDidLogoutNotification;
@@ -26,6 +29,8 @@ typedef void(^ErrorBlock)(NSError *error);
                           password:(NSString *)password
                          onSuccess:(EmptyBlock)onSuccess
                            onError:(ErrorBlock)onError;
+
+- (NSOperation *)refreshLoginCookies:(EmptyBlock)onSuccess error:(ErrorBlock)onError;
 - (NSArray *)cookiesForCurrentUser;
 
 - (NSOperation *)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;

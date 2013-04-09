@@ -6,4 +6,6 @@ pod 'ODRefreshControl'
 pod 'InnerBand'
 pod 'TestFlightSDK', '~> 1.2.4'
 pod 'MKNetworkKit'
+pod 'SFHFKeychainUtils'
+
 link_with 'DGS'
