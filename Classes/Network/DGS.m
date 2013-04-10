@@ -11,6 +11,8 @@
 #import "DGSNetworkOperation.h"
 #import "SFHFKeychainUtils.h"
 
+static const NSTimeInterval kMinSecondsBeforeCookiesExpire = 28 * 86400; // refresh cookies 28 days before expiration
+
 @implementation DGS
 
 const int kDefaultPageLimit = 20;
@@ -82,6 +84,12 @@ static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
     return [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
 }
 
+- (BOOL)cookiesWillExpireSoon {
+    NSDate *guessedExpirationTime = [NSDate dateWithTimeIntervalSinceNow:kMinSecondsBeforeCookiesExpire];
+    NSDate *actualExpirationTime = [[self cookiesForCurrentUser] valueForKeyPath:@"@min.expiresDate"];
+    return ([guessedExpirationTime compare:actualExpirationTime] == NSOrderedDescending);
+}
+
 - (void)storeCredentialsForUser:(NSString *)username withPassword:(NSString *)password {
     NSError *error;
     if (![SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:kDGSKeychainIdentifier updateExisting:YES error:&error]) {
@@ -141,11 +149,16 @@ static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
 }
 
 - (NSOperation *)refreshLoginCookies:(EmptyBlock)onSuccess error:(ErrorBlock)onError {
+    // If we don't have a player, we'll see the login screen soon enough.
     if (![Player currentPlayer]) {
         return nil;
     }
 
-    static NSString *path = @"login.php?quick_mode=1";
+    // If the cookies won't expire anytime soon, don't bother refreshing it.
+    if (![self cookiesWillExpireSoon]) {
+        return nil;
+    }
+
     NSString *username = [[Player currentPlayer] handle];
     NSError *error;
 
@@ -156,10 +169,14 @@ static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
         return nil;
     }
 
+    NSLog(@"Refreshing cookies...");
+
     NSDictionary *params = @{
             @"userid": username,
             @"passwd": password
     };
+
+    static NSString *path = @"login.php?quick_mode=1";
 
     MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
 
