@@ -7,5 +7,7 @@ pod 'InnerBand'
 pod 'TestFlightSDK', '~> 1.2.4'
 pod 'MKNetworkKit'
 pod 'SFHFKeychainUtils'
+pod 'boost-framework', :podspec => 'boost-framework.podspec'
+pod 'fuego-framework', :podspec => 'fuego-framework.podspec'
 
 link_with 'DGS'

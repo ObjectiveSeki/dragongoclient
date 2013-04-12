@@ -1,4 +1,6 @@
 PODS:
+  - boost-framework (1.51.0)
+  - fuego-framework (1.1)
   - GDataXML-HTML (1.0.0)
   - InnerBand (1.0.1)
   - MKNetworkKit (0.87):
@@ -9,6 +11,8 @@ PODS:
   - TestFlightSDK (1.2.4)
 
 DEPENDENCIES:
+  - boost-framework (from `boost-framework.podspec`)
+  - fuego-framework (from `fuego-framework.podspec`)
   - GDataXML-HTML
   - InnerBand
   - MKNetworkKit
@@ -16,7 +20,15 @@ DEPENDENCIES:
   - SFHFKeychainUtils
   - TestFlightSDK (~> 1.2.4)
 
+EXTERNAL SOURCES:
+  boost-framework:
+    :podspec: boost-framework.podspec
+  fuego-framework:
+    :podspec: fuego-framework.podspec
+
 SPEC CHECKSUMS:
+  boost-framework: 2be1e96de36a049f615ff1e4b93a4dc09f088864
+  fuego-framework: b49e76b29b8de27e687b9468570ed8f1920a8407
   GDataXML-HTML: 0d474e4fad256e115114b27678d5eeffe2663218
   InnerBand: 2f6e09a3f007f611fe187521f323cbb0e7fd7866
   MKNetworkKit: 79a362de7fdcae82b714c45e0003c52b3b6e53c8

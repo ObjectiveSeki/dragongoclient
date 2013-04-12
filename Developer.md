@@ -13,14 +13,10 @@ generates, and not the .xcproject.
 If you'd like to know more about CocoaPods, the
 [wiki](https://github.com/CocoaPods/CocoaPods/wiki) is the best place to look.
 
-To build boost, I just followed this tutorial:
-http://www.danielsefton.com/2012/03/building-boost-1-49-with-clang-ios-5-1-and-xcode-4-3/ using this fork: https://git.gitorious.org/~huuskpe/boostoniphone/huuskpes-boostoniphone.git.
-
-I included these libs:
-
-    thread program_options filesystem system date_time
-
-technically, fuego also requires `test`, but I couldn't get it to
-build and my shell scripting is weak. (it happens because the boost
-lib is called 'test', but the built lib is named
-libboost_unit_test_framework). Seems to work without it, though.
+Boost and Fuego are included as frameworks using some simple local
+podspecs. Because they both take a long time to compile and take up a
+lot of space in the repo, I have a separate project called
+([fuego-framework](https://github.com/justinweiss/fuego-framework))
+that compiles them into .frameworks that can be easily downloaded and
+included into this project. This way, they can also be managed using
+CocoaPods, which is really convenient.
