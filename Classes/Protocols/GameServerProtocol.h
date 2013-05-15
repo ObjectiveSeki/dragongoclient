@@ -30,7 +30,6 @@ typedef void(^ErrorBlock)(NSError *error);
                          onSuccess:(EmptyBlock)onSuccess
                            onError:(ErrorBlock)onError;
 
-- (NSOperation *)refreshLoginCookies:(EmptyBlock)onSuccess error:(ErrorBlock)onError;
 - (NSArray *)cookiesForCurrentUser;
 
 - (NSOperation *)addGame:(NewGame *)game onSuccess:(EmptyBlock)onSuccess onError:(ErrorBlock)onError;

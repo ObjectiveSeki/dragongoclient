@@ -7,7 +7,6 @@ PODS:
     - Reachability (~> 3.1.0)
   - ODRefreshControl (1.1.0)
   - Reachability (3.1.0)
-  - SFHFKeychainUtils (0.0.1)
   - TestFlightSDK (1.2.4)
 
 DEPENDENCIES:
@@ -17,7 +16,6 @@ DEPENDENCIES:
   - InnerBand
   - MKNetworkKit
   - ODRefreshControl
-  - SFHFKeychainUtils
   - TestFlightSDK (~> 1.2.4)
 
 EXTERNAL SOURCES:
@@ -34,7 +32,6 @@ SPEC CHECKSUMS:
   MKNetworkKit: 79a362de7fdcae82b714c45e0003c52b3b6e53c8
   ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
   Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
-  SFHFKeychainUtils: e828dbd9eaa509486acf95d8de2ebd414c4b7451
   TestFlightSDK: 96d7400f844599dd02677bf8d34f8bdfe3f9b33c
 
-COCOAPODS: 0.17.2
+COCOAPODS: 0.18.1

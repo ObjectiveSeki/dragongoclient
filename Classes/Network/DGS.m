@@ -9,14 +9,10 @@
 #import "DGS.h"
 #import "Player.h"
 #import "DGSNetworkOperation.h"
-#import "SFHFKeychainUtils.h"
-
-static const NSTimeInterval kMinSecondsBeforeCookiesExpire = 28 * 86400; // refresh cookies 28 days before expiration
 
 @implementation DGS
 
 const int kDefaultPageLimit = 20;
-static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
 
 + (id<GameServerProtocol>)sharedGameServer {
     static DGS *sharedGameServer;
@@ -84,19 +80,6 @@ static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
     return [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
 }
 
-- (BOOL)cookiesWillExpireSoon {
-    NSDate *guessedExpirationTime = [NSDate dateWithTimeIntervalSinceNow:kMinSecondsBeforeCookiesExpire];
-    NSDate *actualExpirationTime = [[self cookiesForCurrentUser] valueForKeyPath:@"@min.expiresDate"];
-    return ([guessedExpirationTime compare:actualExpirationTime] == NSOrderedDescending);
-}
-
-- (void)storeCredentialsForUser:(NSString *)username withPassword:(NSString *)password {
-    NSError *error;
-    if (![SFHFKeychainUtils storeUsername:username andPassword:password forServiceName:kDGSKeychainIdentifier updateExisting:YES error:&error]) {
-        NSLog(@"Error saving credentials to keychain: %@", error);
-    }
-}
-
 #pragma mark -
 #pragma mark DGS Calls
 
@@ -137,49 +120,6 @@ static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
     };
 
     MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
-    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        [self getCurrentPlayer:onError];
-        [self storeCredentialsForUser:username withPassword:password];
-        onSuccess();
-    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        onError(error);
-    }];
-    [self enqueueOperation:op];
-    return op;
-}
-
-- (NSOperation *)refreshLoginCookies:(EmptyBlock)onSuccess error:(ErrorBlock)onError {
-    // If we don't have a player, we'll see the login screen soon enough.
-    if (![Player currentPlayer]) {
-        return nil;
-    }
-
-    // If the cookies won't expire anytime soon, don't bother refreshing it.
-    if (![self cookiesWillExpireSoon]) {
-        return nil;
-    }
-
-    NSString *username = [[Player currentPlayer] handle];
-    NSError *error;
-
-    NSString *password = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:kDGSKeychainIdentifier error:&error];
-
-    if (!password) {
-        NSLog(@"Error retreiving password: %@", error);
-        return nil;
-    }
-
-    NSLog(@"Refreshing cookies...");
-
-    NSDictionary *params = @{
-            @"userid": username,
-            @"passwd": password
-    };
-
-    static NSString *path = @"login.php?quick_mode=1";
-
-    MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
-
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [self getCurrentPlayer:onError];
         onSuccess();
@@ -438,7 +378,7 @@ static NSString * const kDGSKeychainIdentifier = @"net.uberweiss.DGS";
     params[@"byoperiods_can"] = S(@"%d", game.canadianTimePeriods);
 
     params[@"byotimevalue_fis"] = S(@"%d", game.fischerTimeValue);
-    params[@"timeunit_fis"] = [game timePeriodValue:game.fischerTimeValue];
+    params[@"timeunit_fis"] = [game timePeriodValue:game.fischerTimeUnit];
 
     params[@"weekendclock"] = [game boolValue:game.weekendClock];
     params[@"rated"] = [game boolValue:game.rated];

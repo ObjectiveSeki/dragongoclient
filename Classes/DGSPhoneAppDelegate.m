@@ -47,8 +47,6 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportMemoryLow) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 
-    [[GenericGameServer sharedGameServer] refreshLoginCookies:^() { } error:^(NSError *error) { }];
-
     [self registerForRemoteNotifications];
 	return YES;
 }
