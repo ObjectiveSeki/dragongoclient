@@ -128,9 +128,9 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 }
 
 - (void)dismissLogin {
+    [self registerForRemoteNotifications];
     [self.loginController dismissModalViewControllerAnimated:YES];
     self.loginController = nil;
-    [self registerForRemoteNotifications];
 }
 
 
@@ -161,6 +161,7 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     NSLog(@"Error updating push token: %@", error);
+    [[DGSPushServer sharedPushServer] didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

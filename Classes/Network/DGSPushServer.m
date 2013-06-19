@@ -12,8 +12,12 @@
 
 #define APNSDeviceIdUserDefaultsKey @"APNSDeviceId"
 
-@implementation DGSPushServer
+@interface DGSPushServer ()
 
+@property (nonatomic, strong) NSOperationQueue *delayedNetworkOperationQueue;
+@end
+
+@implementation DGSPushServer
 
 + (DGSPushServer *)sharedPushServer {
     static DGSPushServer *sharedPushServer = nil;
@@ -41,17 +45,30 @@
     return self;
 }
 
+# pragma mark - Overridden MKNetworkKit Methods
+
+- (MKNetworkOperation *)operationWithPath:(NSString *)path params:(NSDictionary *)body httpMethod:(NSString *)method {
+    return [super operationWithPath:path params:body httpMethod:method ssl:PUSH_USE_SSL];
+}
+
+
 # pragma mark - Push management methods
 
 - (void)registerForRemoteNotifications {
+    [self beginQueueingRequestsRequiringLogin];
     if ([Player currentPlayer].userId) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     }
 }
 
+- (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [self didFailToRetrieveDeviceId];
+}
+
 - (void)setDeviceIdFromResponse:(NSDictionary *)response {
     NSNumber *deviceId = response[@"id"];
     [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:APNSDeviceIdUserDefaultsKey];
+    [self runQueuedRequests];
 }
 
 - (NSNumber *)deviceId {
@@ -60,6 +77,35 @@
 
 - (BOOL)isPushEnabled {
     return [self.deviceId boolValue];
+}
+
+- (void)didFailToRetrieveDeviceId {
+    [self clearQueueingRequestsRequiringLogin];
+}
+
+- (void)beginQueueingRequestsRequiringLogin {
+    NSOperationQueue *delayedNetworkOperationQueue = [[NSOperationQueue alloc] init];
+    delayedNetworkOperationQueue.name = @"Network requests delayed until login";
+    [delayedNetworkOperationQueue setSuspended:YES];
+    self.delayedNetworkOperationQueue = delayedNetworkOperationQueue;
+}
+
+- (void)queueOrSaveOperation:(MKNetworkOperation *)operation {
+    if([self isPushEnabled]) {
+        [self enqueueOperation:operation];
+    } else {
+        [self.delayedNetworkOperationQueue addOperation:operation];
+    }
+}
+
+- (void)runQueuedRequests {
+    NSOperationQueue *delayedNetworkOperationQueue = self.delayedNetworkOperationQueue;
+    self.delayedNetworkOperationQueue = nil;
+    [delayedNetworkOperationQueue setSuspended:NO];
+}
+
+- (void)clearQueueingRequestsRequiringLogin {
+    self.delayedNetworkOperationQueue = nil;
 }
 
 #pragma mark - Push Server methods
@@ -81,7 +127,9 @@
             [self setDeviceIdFromResponse:[completedOperation responseJSON]];
             completion();
         } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+            [self didFailToRetrieveDeviceId];
             error(theError);
+
         }];
 
         [self enqueueOperation:op];
@@ -101,6 +149,7 @@
         [self setDeviceIdFromResponse:[completedOperation responseJSON]];
         completion();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        [self didFailToRetrieveDeviceId];
         error(theError);
     }];
 
@@ -140,6 +189,7 @@
 
 - (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
     if ([cookies count] == 0) {
+        [self didFailToRetrieveDeviceId];
         return nil;
     }
 
@@ -151,6 +201,7 @@
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         completion();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        [self didFailToRetrieveDeviceId];
         error(theError);
     }];
 
@@ -168,12 +219,6 @@
 
 #pragma mark - Game updates
 - (MKNetworkOperation *)updateGameList:(GameList *)gameList completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
-    if (![self isPushEnabled]) {
-        // Don't bother dealing with updating the game list on the server if we
-        // aren't using push notifications, since we won't be doing anything
-        // with them anyway.
-        return nil;
-    }
 
     if ([gameList count] == 0) {
         return nil;
@@ -190,7 +235,7 @@
         error(theError);
     }];
 
-    [self enqueueOperation:op];
+    [self queueOrSaveOperation:op];
     return op;
 }
 
@@ -212,7 +257,7 @@
         error(theError);
     }];
 
-    [self enqueueOperation:op];
+    [self queueOrSaveOperation:op];
     return op;
 }
 

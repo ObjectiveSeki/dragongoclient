@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2B83CE3D00F44EECB6A4DC92 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E70F66E1DDD488A8E5F4CF6 /* libPods.a */; };
 		CE7771B66F8849888D9FC85E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF2422AA37640AC84A2C071 /* libPods.a */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
@@ -130,7 +129,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		7E70F66E1DDD488A8E5F4CF6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BF2422AA37640AC84A2C071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CE40383ED0524204AD9559A1 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -298,7 +296,6 @@
 				DA65D69C169820E500AB9FC7 /* SenTestingKit.framework in Frameworks */,
 				DA65D69D169820E500AB9FC7 /* UIKit.framework in Frameworks */,
 				DA65D69E169820E500AB9FC7 /* Foundation.framework in Frameworks */,
-				2B83CE3D00F44EECB6A4DC92 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +394,6 @@
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
 				DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */,
 				8BF2422AA37640AC84A2C071 /* libPods.a */,
-				7E70F66E1DDD488A8E5F4CF6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -889,7 +885,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
@@ -908,7 +903,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
@@ -1083,7 +1077,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";

@@ -10,7 +10,8 @@
 #define DEBUG 1
 //#define DEVELOPMENT_DGS
 #define PUSH_ENABLED
-#define PUSH_HOST @"192.168.0.8:3000"
+#define PUSH_HOST @"dgs.uberweiss.net:3000"
+#define PUSH_USE_SSL NO
 #define REMOTE_LOGGING
 
 // set to '1' to see SGFs that test various aspects of
@@ -22,12 +23,14 @@
 #define TESTFLIGHT_UUID_TRACKING
 #define PUSH_ENABLED
 #define PUSH_HOST @"dgs.uberweiss.net"
+#define PUSH_USE_SSL YES
 #define REMOTE_LOGGING
 #endif
 
 #if defined (CONFIGURATION_Release)
 #define PUSH_ENABLED
 #define PUSH_HOST @"dgs.uberweiss.net"
+#define PUSH_USE_SSL YES
 #endif
 
 #ifdef DEVELOPMENT_DGS
