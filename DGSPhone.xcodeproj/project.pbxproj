@@ -37,12 +37,6 @@
 		DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */; };
 		DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D350C12B20A8F001271D3 /* Moves@2x.png */; };
 		DA5D351312B20A9D001271D3 /* Moves.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D351212B20A9A001271D3 /* Moves.png */; };
-		DA65D69C169820E500AB9FC7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA476A5214DA109F00AAF7E0 /* SenTestingKit.framework */; };
-		DA65D69D169820E500AB9FC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA52A611B8989F00F4CCB3 /* UIKit.framework */; };
-		DA65D69E169820E500AB9FC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
-		DA65D6A4169820E500AB9FC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA65D6A2169820E500AB9FC7 /* InfoPlist.strings */; };
-		DA65D6AF1698247A00AB9FC7 /* DGSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA525A11B895ED00F4CCB3 /* DGSTests.m */; };
-		DA65D6B01698249700AB9FC7 /* FuegoBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA667C1A125A266C00CA9A13 /* FuegoBoardTests.m */; };
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66E91D16A6923100A066CF /* NSTimer+Blocks.m */; };
 		DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA68408514DB04E9006EF22C /* CachingGameServer.m */; };
@@ -66,7 +60,6 @@
 		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
 		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
 		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
-		DABA05D8169BF98F00B1ECD9 /* GameListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05D7169BF98F00B1ECD9 /* GameListTests.m */; };
 		DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC7BDE616DDEFCE00F4562A /* DGSNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC7BDE516DDEFCE00F4562A /* DGSNetworkOperation.m */; };
@@ -84,16 +77,6 @@
 		DAD3636A126D586600589A32 /* Message input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36368126D586600589A32 /* Message input@2x.png */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
-		DAE4723D16994BD100E40718 /* waiting.html in Resources */ = {isa = PBXBuildFile; fileRef = DAFADA4E12CF0EF100985126 /* waiting.html */; };
-		DAE4723E16994BD100E40718 /* Scoring Should Be Move 202.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */; };
-		DAE4723F16994BD100E40718 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
-		DAE4724016994BD100E40718 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
-		DAE4724116994BD100E40718 /* Start Handicap Game.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */; };
-		DAE4724216994BD100E40718 /* Handicap Stones Placed.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */; };
-		DAE4724316994BD100E40718 /* Multiple Scoring Passes.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */; };
-		DAE4724416994BD100E40718 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
-		DAE4724516994BD100E40718 /* status.csv in Resources */ = {isa = PBXBuildFile; fileRef = DAEA534711B8A4C000F4CCB3 /* status.csv */; };
-		DAE4724616994BD100E40718 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
 		DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
 		DAE5F4CC15AFEE130062B5F4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAEA52A611B8989F00F4CCB3 /* UIKit.framework */; };
 		DAE932AA12454A2900335F0F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = DAE932A912454A2900335F0F /* LICENSE */; };
@@ -112,16 +95,6 @@
 		DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		DA65D6AD1698212400AB9FC7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
-			remoteInfo = DGS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSPhoneAppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +104,7 @@
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8BF2422AA37640AC84A2C071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C259A1E2D64B4A8CABF15401 /* Pods-DGSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGSTests.xcconfig"; path = "Pods/Pods-DGSTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		CE40383ED0524204AD9559A1 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
 		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
@@ -174,7 +148,6 @@
 		DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinWaitingRoomGameController.m; sourceTree = "<group>"; };
 		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
 		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
-		DA65D69B169820E500AB9FC7 /* DGSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGSTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA65D6A1169820E500AB9FC7 /* DGSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSTests-Info.plist"; sourceTree = "<group>"; };
 		DA65D6A3169820E500AB9FC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA65D6A8169820E500AB9FC7 /* DGSTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DGSTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -270,6 +243,7 @@
 		DAFF411116AA8AAB005A62FB /* DGSPushServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSPushServer.m; sourceTree = "<group>"; };
 		DAFF411416AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ExtraDeviceDetails.h"; sourceTree = "<group>"; };
 		DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ExtraDeviceDetails.m"; sourceTree = "<group>"; };
+		EDC55FDA0F694568A87D9982 /* libPods-DGSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DGSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,16 +260,6 @@
 				CE7771B66F8849888D9FC85E /* libPods.a in Frameworks */,
 				DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */,
 				DAE5F4CC15AFEE130062B5F4 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA65D697169820E500AB9FC7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA65D69C169820E500AB9FC7 /* SenTestingKit.framework in Frameworks */,
-				DA65D69D169820E500AB9FC7 /* UIKit.framework in Frameworks */,
-				DA65D69E169820E500AB9FC7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* DGSBeta.app */,
-				DA65D69B169820E500AB9FC7 /* DGSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -346,6 +309,7 @@
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				CE40383ED0524204AD9559A1 /* Pods.xcconfig */,
+				C259A1E2D64B4A8CABF15401 /* Pods-DGSTests.xcconfig */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -394,6 +358,7 @@
 				DADD19C711BCA6170038F8BC /* QuartzCore.framework */,
 				DAC33E9715885EC600CDD7A1 /* libPods-logic_tests.a */,
 				8BF2422AA37640AC84A2C071 /* libPods.a */,
+				EDC55FDA0F694568A87D9982 /* libPods-DGSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -622,26 +587,6 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* DGSBeta.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA65D69A169820E500AB9FC7 /* DGSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA65D6A9169820E500AB9FC7 /* Build configuration list for PBXNativeTarget "DGSTests" */;
-			buildPhases = (
-				DA65D696169820E500AB9FC7 /* Sources */,
-				DA65D697169820E500AB9FC7 /* Frameworks */,
-				DA65D698169820E500AB9FC7 /* Resources */,
-				DA65D699169820E500AB9FC7 /* ShellScript */,
-				587234C528684BE6BA343C38 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DA65D6AE1698212400AB9FC7 /* PBXTargetDependency */,
-			);
-			name = DGSTests;
-			productName = DGSTests;
-			productReference = DA65D69B169820E500AB9FC7 /* DGSTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -665,7 +610,6 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* DGS */,
-				DA65D69A169820E500AB9FC7 /* DGSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -723,41 +667,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA65D698169820E500AB9FC7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DAE4723D16994BD100E40718 /* waiting.html in Resources */,
-				DAE4723E16994BD100E40718 /* Scoring Should Be Move 202.sgf in Resources */,
-				DAE4723F16994BD100E40718 /* Pass Should Be Move 200.sgf in Resources */,
-				DAE4724016994BD100E40718 /* Game with Message.sgf in Resources */,
-				DAE4724116994BD100E40718 /* Start Handicap Game.sgf in Resources */,
-				DAE4724216994BD100E40718 /* Handicap Stones Placed.sgf in Resources */,
-				DAE4724316994BD100E40718 /* Multiple Scoring Passes.sgf in Resources */,
-				DAE4724416994BD100E40718 /* First Score.sgf in Resources */,
-				DAE4724516994BD100E40718 /* status.csv in Resources */,
-				DAE4724616994BD100E40718 /* 25x25 Handicap Stones.sgf in Resources */,
-				DA65D6A4169820E500AB9FC7 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		587234C528684BE6BA343C38 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
 		5D26EC3E623C439DB6718EC6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,19 +696,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nif [ $CONFIGURATION != \"Debug\" ]; then\n  buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" DGSPhone-Info.plist)\n  buildNumber=$(($buildNumber + 1))\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" DGSPhone-Info.plist\nfi";
-		};
-		DA65D699169820E500AB9FC7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -840,25 +739,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA65D696169820E500AB9FC7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA65D6AF1698247A00AB9FC7 /* DGSTests.m in Sources */,
-				DA65D6B01698249700AB9FC7 /* FuegoBoardTests.m in Sources */,
-				DABA05D8169BF98F00B1ECD9 /* GameListTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DA65D6AE1698212400AB9FC7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1D6058900D05DD3D006BFB54 /* DGS */;
-			targetProxy = DA65D6AD1698212400AB9FC7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DA65D6A2169820E500AB9FC7 /* InfoPlist.strings */ = {
@@ -955,96 +836,6 @@
 			};
 			name = Release;
 		};
-		DA65D6AA169820E500AB9FC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE40383ED0524204AD9559A1 /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DGSBeta.app/DGSBeta";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)/vendor\"",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DGSTests/DGSTests-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "DGSTests/DGSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		DA65D6AB169820E500AB9FC7 /* Adhoc */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE40383ED0524204AD9559A1 /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DGSBeta.app/DGSBeta";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)/vendor\"",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DGSTests/DGSTests-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "DGSTests/DGSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Adhoc;
-		};
-		DA65D6AC169820E500AB9FC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE40383ED0524204AD9559A1 /* Pods.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DGS.app/DGS";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"\"$(SRCROOT)/vendor\"",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DGSTests/DGSTests-Prefix.pch";
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				INFOPLIST_FILE = "DGSTests/DGSTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				VALIDATE_PRODUCT = YES;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		DA667DC0125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1104,16 +895,6 @@
 				C01FCF4F08A954540054247B /* Debug */,
 				DA667DC0125AE40300CA9A13 /* Adhoc */,
 				C01FCF5008A954540054247B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DA65D6A9169820E500AB9FC7 /* Build configuration list for PBXNativeTarget "DGSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA65D6AA169820E500AB9FC7 /* Debug */,
-				DA65D6AB169820E500AB9FC7 /* Adhoc */,
-				DA65D6AC169820E500AB9FC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -8,6 +8,13 @@
 
 #import "DGSTests.h"
 
+@interface DGS ()
+// Re-declare some DGS private methods
+- (NSOrderedSet *)gamesFromCSV:(NSString *)csvData;
+- (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
+@end
+
+
 @implementation DGSTests
 
 - (void)testParseQuickStatusGames {
