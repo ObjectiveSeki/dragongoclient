@@ -94,7 +94,9 @@
     if([self isPushEnabled]) {
         [self enqueueOperation:operation];
     } else {
-        [self.delayedNetworkOperationQueue addOperation:operation];
+        [self.delayedNetworkOperationQueue addOperationWithBlock:^{
+            [self enqueueOperation:operation];
+        }];
     }
 }
 
@@ -219,11 +221,6 @@
 
 #pragma mark - Game updates
 - (MKNetworkOperation *)updateGameList:(GameList *)gameList completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
-
-    if ([gameList count] == 0) {
-        return nil;
-    }
-
     static NSString *pathFormat = @"players/%@/games.json";
     NSMutableDictionary *params = [self paramsFromGameList:gameList];
 
@@ -241,10 +238,6 @@
 
 
 - (MKNetworkOperation *)playMoveInGame:(Game *)game completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
-    if (![self isPushEnabled]) {
-        return nil;
-    }
-
     static NSString *pathFormat = @"players/%@/games/%d/move.json";
 
     MKNetworkOperation *op = [self operationWithPath:S(pathFormat, [Player currentPlayer].userId, game.gameId)
