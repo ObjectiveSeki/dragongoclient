@@ -9,41 +9,41 @@
 #import <Foundation/Foundation.h>
 #import "Game.h"
 
-typedef enum {
+typedef NS_ENUM(NSInteger, KomiType) {
 	kKomiTypeConventional,
 	kKomiTypeProper,
     kKomiTypeManual
-} KomiType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, ManualKomiType) {
     kManualKomiTypeNigiri,
     kManualKomiTypeDouble,
     kManualKomiTypeBlack,
     kManualKomiTypeWhite
-} ManualKomiType;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, RuleSet) {
 	kRuleSetJapanese,
 	kRuleSetChinese
-} RuleSet;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, JigoMode) {
 	kJigoModeUnchanged,
 	kJigoModeYes,
 	kJigoModeNo
-} JigoMode;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TimePeriod) {
 	kTimePeriodHours,
 	kTimePeriodDays,
 	kTimePeriodMonths
-} TimePeriod;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, ByoYomiType) {
 	kByoYomiTypeJapanese,
 	kByoYomiTypeCanadian,
 	kByoYomiTypeFischer
-} ByoYomiType;
+};
 
 @interface NewGame : Game {
 

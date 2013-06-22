@@ -24,7 +24,7 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, AddGameSection) {
 	kDescriptionSection,
     kNumberOfGamesSection,
 	kBoardSection,
@@ -32,7 +32,7 @@ typedef enum {
     kRatingSection,
     kActionSection,
     kSectionCount
-} AddGameSection;
+};
 
 
 - (void)viewDidLoad {

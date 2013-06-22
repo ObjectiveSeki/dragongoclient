@@ -11,17 +11,17 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, MovePlayer) {
 	kMovePlayerNone,
 	kMovePlayerBlack,
 	kMovePlayerWhite
-} MovePlayer;
+};
 
-typedef enum {
+typedef NS_ENUM(NSInteger, MoveType) {
 	kMoveTypeMove,
 	kMoveTypePass,
 	kMoveTypeResign
-} MoveType;
+};
 
 @interface Move : NSObject {
 };

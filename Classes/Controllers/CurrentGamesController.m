@@ -33,11 +33,11 @@
 
 @end
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, GameSection) {
     kGameSectionMyMove,
     kGameSectionRunningGames,
     kGameSectionCount
-} GameSection;
+};
 
 @implementation CurrentGamesController
 

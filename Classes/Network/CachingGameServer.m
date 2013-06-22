@@ -72,7 +72,6 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
         
         // We can't do all of the timing calculations client-side, so we'll just
         // have to invalidate the entire running game list.
-#warning is there something smarter I can do here?
         [self.cache removeObjectForKey:kRunningGameListKey];
     }
 }
