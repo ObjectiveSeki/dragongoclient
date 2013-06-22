@@ -216,7 +216,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     [self addTestGamesToGameList:gameList];
 #endif
     
-    if (![self.games isEqual:gameList]) {
+    if (gameList && ![self.games isEqual:gameList]) {
         [[DGSPushServer sharedPushServer] updateGameList:gameList completion:^{ } error:^(NSError *error) { }];
     }
     
