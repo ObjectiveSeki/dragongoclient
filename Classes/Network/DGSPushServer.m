@@ -79,6 +79,10 @@
     return [self.deviceId boolValue];
 }
 
+- (BOOL)isLoggedIn {
+    return [Player currentPlayer] != nil;
+}
+
 - (void)didFailToRetrieveDeviceId {
     [self clearQueueingRequestsRequiringLogin];
 }
@@ -115,7 +119,7 @@
 #pragma mark - Push Tokens
 
 // Updates the push token, creating it if we don't already hold a reference to one.
-- (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+- (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     static NSString *updateDeviceTokenPathFormat = @"players/%@/devices/%@.json";
     NSNumber *deviceId = [self deviceId];
     NSLog(@"apns token: %@", [token description]);
@@ -127,21 +131,21 @@
 
         [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
             [self setDeviceIdFromResponse:[completedOperation responseJSON]];
-            completion();
+            completionHandler();
         } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
             [self didFailToRetrieveDeviceId];
-            error(theError);
+            errorHandler(theError);
 
         }];
 
         [self enqueueOperation:op];
         return op;
     } else {
-        return [self createAPNSDeviceToken:token completion:completion error:error];
+        return [self createAPNSDeviceToken:token completionHandler:completionHandler errorHandler:errorHandler];
     }
 }
 
-- (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+- (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     static NSString *createDeviceTokenPathFormat = @"players/%@/devices.json";
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[encoded_device_token]", nil];
 
@@ -149,17 +153,17 @@
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [self setDeviceIdFromResponse:[completedOperation responseJSON]];
-        completion();
+        completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
         [self didFailToRetrieveDeviceId];
-        error(theError);
+        errorHandler(theError);
     }];
 
     [self enqueueOperation:op];
     return op;
 }
 
-- (MKNetworkOperation *)deleteAPNSDeviceTokenForPlayerId:(NSNumber *)playerId completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+- (MKNetworkOperation *)deleteAPNSDeviceTokenForPlayerId:(NSNumber *)playerId completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     if (!playerId) {
         return nil;
     }
@@ -173,23 +177,23 @@
         MKNetworkOperation *op = [self operationWithPath:S(deleteDeviceTokenPathFormat, playerId, deviceId) params:nil httpMethod:@"DELETE"];
 
         [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-            completion();
+            completionHandler();
         } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
-            error(theError);
+            errorHandler(theError);
         }];
 
         [self enqueueOperation:op];
         return op;
     } else {
         // pretend success
-        completion();
+        completionHandler();
         return nil;
     }
 }
 
 #pragma mark - Cookies
 
-- (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+- (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     if ([cookies count] == 0) {
         [self didFailToRetrieveDeviceId];
         return nil;
@@ -201,10 +205,10 @@
     MKNetworkOperation *op = [self operationWithPath:S(createSessionPathFormat, [Player currentPlayer].userId) params:params httpMethod:@"POST"];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        completion();
+        completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
         [self didFailToRetrieveDeviceId];
-        error(theError);
+        errorHandler(theError);
     }];
 
     [self enqueueOperation:op];
@@ -220,24 +224,48 @@
 }
 
 #pragma mark - Game updates
-- (MKNetworkOperation *)updateGameList:(GameList *)gameList completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+- (MKNetworkOperation *)updateGameList:(GameList *)gameList completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     static NSString *pathFormat = @"players/%@/games.json";
     NSMutableDictionary *params = [self paramsFromGameList:gameList];
 
     MKNetworkOperation *op = [self operationWithPath:S(pathFormat, [Player currentPlayer].userId) params:params httpMethod:@"PUT"];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        completion();
+        completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
-        error(theError);
+        errorHandler(theError);
     }];
 
     [self queueOrSaveOperation:op];
     return op;
 }
 
+- (MKNetworkOperation *)fetchGamesUpdatedSince:(NSString *)lastKnownMove completionHandler:(void (^)(NSArray *))completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
+    if (![self isLoggedIn]) {
+        return nil;
+    }
+    
+    static NSString *pathFormat = @"players/%@/games.json%@";
+    NSString *getParams = @"";
+    
+    if (lastKnownMove) {
+        getParams = S(@"?after=%@", [lastKnownMove stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+    }
+    
+    MKNetworkOperation *op = [self operationWithPath:S(pathFormat, [Player currentPlayer].userId, getParams) params:@{} httpMethod:@"GET"];
+    
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        // parse game data
+        completionHandler(completedOperation.responseJSON);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        errorHandler(theError);
+    }];
+    
+    [self queueOrSaveOperation:op];
+    return op;
+}
 
-- (MKNetworkOperation *)playMoveInGame:(Game *)game completion:(EmptyBlock)completion error:(MKNKErrorBlock)error {
+- (MKNetworkOperation *)playMoveInGame:(Game *)game completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     static NSString *pathFormat = @"players/%@/games/%d/move.json";
 
     MKNetworkOperation *op = [self operationWithPath:S(pathFormat, [Player currentPlayer].userId, game.gameId)
@@ -245,9 +273,9 @@
                                           httpMethod:@"POST"];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        completion();
+        completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
-        error(theError);
+        errorHandler(theError);
     }];
 
     [self queueOrSaveOperation:op];

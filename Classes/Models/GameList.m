@@ -1,17 +1,36 @@
 #import "GameList.h"
 
 @interface GameList ()
+
+@property(nonatomic, copy) NSOrderedSet *games;
+@property(nonatomic, copy) NSString *pathFormat;
+@property(nonatomic) BOOL hasMorePages;
+@property(nonatomic) int offset;
+
 @end
 
 @implementation GameList
 
 - (id)init
 {
+    return [self initWithPathFormat:nil];
+}
+
+- (id)initWithPathFormat:(NSString *)pathFormat {
+    return [self initWithGames:[[NSOrderedSet alloc] init] pathFormat:pathFormat hasMorePages:YES offset:0];
+}
+
+- (id)initWithGames:(NSOrderedSet *)games
+         pathFormat:(NSString *)pathFormat
+       hasMorePages:(BOOL)hasMorePages
+             offset:(int)offset;
+{
     self = [super init];
     if (self) {
-        _games = [[NSOrderedSet alloc] init];
-        _offset = 0;
-        _hasMorePages = YES;
+        _games = [games copy];
+        _pathFormat = [pathFormat copy];
+        _hasMorePages = hasMorePages;
+        _offset = offset;
     }
     return self;
 }
@@ -20,24 +39,27 @@
     return S(self.pathFormat, limit, self.offset);
 }
 
-- (void)removeGame:(Game *)game {
-    NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
-    [mutableGames removeObject:game];
-    self.games = mutableGames;
-}
-
-- (void)addGames:(NSOrderedSet *)moreGames {
-    NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
-    [mutableGames unionOrderedSet:moreGames];
-    self.games = mutableGames;
-}
-
 - (NSUInteger)count {
     return [self.games count];
 }
 
 - (NSUInteger)hash {
     return self.games.hash;
+}
+
+- (id)mutableCopyWithZone:(NSZone *)zone {
+    MutableGameList *mutableGameList = [[MutableGameList allocWithZone:zone] init];
+    
+    mutableGameList.pathFormat = self.pathFormat;
+    mutableGameList.games = self.games;
+    mutableGameList.offset = self.offset;
+    mutableGameList.hasMorePages = self.hasMorePages;
+    
+    return mutableGameList;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self;
 }
 
 - (BOOL)isEqual:(id)other {
@@ -56,14 +78,36 @@
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
-    if (self) {
-        self.games = [decoder decodeObjectForKey:@"games"];
-        self.pathFormat = [decoder decodeObjectForKey:@"pathFormat"];
-        self.hasMorePages = [decoder decodeBoolForKey:@"hasMorePages"];
-        self.offset = [decoder decodeIntForKey:@"offset"];
-    }
-    return self;
+    return [self initWithGames:[decoder decodeObjectForKey:@"games"]
+                    pathFormat:[decoder decodeObjectForKey:@"pathFormat"]
+                  hasMorePages:[decoder decodeBoolForKey:@"hasMorePages"]
+                        offset:[decoder decodeIntForKey:@"offset"]];
 }
 
 @end
+
+#pragma mark - Mutable Game List
+
+@implementation MutableGameList
+
+- (void)removeGame:(Game *)game {
+    NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
+    [mutableGames removeObject:game];
+    self.games = mutableGames;
+}
+
+- (void)addGames:(NSOrderedSet *)moreGames {
+    NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
+    [mutableGames unionOrderedSet:moreGames];
+    self.games = mutableGames;
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return [[GameList allocWithZone:zone] initWithGames:self.games
+                                             pathFormat:self.pathFormat
+                                           hasMorePages:self.hasMorePages
+                                                 offset:self.offset];
+}
+
+@end
+

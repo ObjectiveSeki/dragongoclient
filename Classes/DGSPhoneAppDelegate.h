@@ -12,6 +12,7 @@ extern NSString * const ReceivedNewGamesNotification;
 
 @interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate>
 
-@property(nonatomic, retain) UIWindow *window;
+@property(nonatomic, strong) UIWindow *window;
+@property(nonatomic, copy) NSString *lastKnownMove;
 
 @end

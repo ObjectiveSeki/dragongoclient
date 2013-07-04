@@ -15,13 +15,15 @@
 - (void)registerForRemoteNotifications;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
-- (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
-- (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
-- (MKNetworkOperation *)deleteAPNSDeviceTokenForPlayerId:(NSNumber *)playerId completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
+- (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
+- (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
+- (MKNetworkOperation *)deleteAPNSDeviceTokenForPlayerId:(NSNumber *)playerId completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
 
-- (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
+- (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
 
-- (MKNetworkOperation *)updateGameList:(GameList *)gameList completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
+- (MKNetworkOperation *)updateGameList:(GameList *)gameList completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
+- (MKNetworkOperation *)fetchGamesUpdatedSince:(NSString *)lastKnownMove completionHandler:(void (^)(NSArray *games))completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
 
-- (MKNetworkOperation *)playMoveInGame:(Game *)game completion:(EmptyBlock)completion error:(MKNKErrorBlock)error;
+- (MKNetworkOperation *)playMoveInGame:(Game *)game completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;
+
 @end

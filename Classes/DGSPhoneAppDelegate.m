@@ -17,8 +17,16 @@ NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
 
 NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
+NSString * const kLastKnownMoveKey = @"LastKnownMove";
+
 @interface DGSPhoneAppDelegate ()
 @property (nonatomic, strong) LoginViewController *loginController;
+
+// I have to catch moves that were played while the app was closed /
+// backgrounded, but I don't need to check if I already got push notifications.
+// Unfortunately, there's no good activation hook method I can check to only
+// check for outstanding notifications if we didn't receive a push notification.
+@property (nonatomic) BOOL *receivedRemoteNotification;
 @end
 
 @implementation DGSPhoneAppDelegate
@@ -27,8 +35,8 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
-    // Override point for customization after application launch.
-
+    self.receivedRemoteNotification = NO;
+    
 #ifdef TESTFLIGHT_UUID_TRACKING
     TF([TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]);
 #endif
@@ -39,15 +47,23 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
     NSDictionary *notificationUserInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notificationUserInfo) {
         NSLog(@"Received remote notification: %@", notificationUserInfo);
+        self.receivedRemoteNotification = YES;
         [self application:application handleRemoteNotification:notificationUserInfo];
+    }
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportMemoryLow) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    
+    [self registerForRemoteNotifications];
+    
+    if (!self.receivedRemoteNotification) {
+        NSLog(@"Checking for outstanding moves...");
+        [self checkForMissedGameNotificationsForApplication:application];
     }
     
 	[self.window makeKeyAndVisible];
 	NSLog(@"Showing main window...");
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportMemoryLow) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-
-    [self registerForRemoteNotifications];
 	return YES;
 }
 
@@ -72,6 +88,7 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
 	NSLog(@"Went into the background...");
+    self.receivedRemoteNotification = NO;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -79,6 +96,11 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
 	NSLog(@"Went into the foreground...");
+    
+    if (!self.receivedRemoteNotification) {
+        NSLog(@"Checking for outstanding moves...");
+        [self checkForMissedGameNotificationsForApplication:application];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -87,6 +109,7 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
      */
 	NSLog(@"Went active...");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginAnimated:) name:PlayerDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearPlayerData) name:PlayerDidLogoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLogin) name:PlayerDidLoginNotification object:nil];
 }
 
@@ -99,6 +122,30 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 	[FuegoBoard finishFuego];
     
 	NSLog(@"Terminating...");
+}
+
+#pragma mark - Move tracking for forcing game refreshes after starting manually
+- (NSString *)lastKnownMove {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:kLastKnownMoveKey];
+}
+
+- (void)setLastKnownMove:(NSString *)lastKnownMove {
+    NSString *latestMove = [lastKnownMove compare:self.lastKnownMove] == NSOrderedDescending ? lastKnownMove : self.lastKnownMove;
+    [[NSUserDefaults standardUserDefaults] setValue:latestMove forKey:kLastKnownMoveKey];
+}
+
+- (void)clearPlayerData {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLastKnownMoveKey];
+}
+
+- (void)checkForMissedGameNotificationsForApplication:(UIApplication *)application {
+    [[DGSPushServer sharedPushServer] fetchGamesUpdatedSince:self.lastKnownMove completionHandler:^(NSArray *games) {
+        if (games.count > 0) {
+            [self application:application handleRemoteNotification:@{}];
+        }
+    } errorHandler:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 #pragma mark - Navigation
@@ -120,7 +167,6 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 }
 
 - (void)showLogin:(BOOL)animated {
-
     if (!self.loginController) {
         self.loginController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         [self.window.rootViewController presentViewController:self.loginController animated:animated completion:^() {}];
@@ -142,19 +188,19 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
 - (void)unregisterForRemoteNotifications:(NSNotification *)notification {
     Player *oldPlayer = [notification object];
-    [[DGSPushServer sharedPushServer] deleteAPNSDeviceTokenForPlayerId:oldPlayer.userId completion:^() { } error:^(NSError *error) {
+    [[DGSPushServer sharedPushServer] deleteAPNSDeviceTokenForPlayerId:oldPlayer.userId completionHandler:^() { } errorHandler:^(NSError *error) {
         NSLog(@"Error clearing push token: %@", error);
     }];
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {
     [[DGSPushServer sharedPushServer] createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser]
-    completion:^{
-        [[DGSPushServer sharedPushServer] updateAPNSDeviceToken:token completion:^{
-        } error:^(NSError *error) {
+    completionHandler:^{
+        [[DGSPushServer sharedPushServer] updateAPNSDeviceToken:token completionHandler:^{
+        } errorHandler:^(NSError *error) {
             NSLog(@"Error updating push token: %@", error);
         }];
-    } error:^(NSError *error) {
+    } errorHandler:^(NSError *error) {
         NSLog(@"Error updating session: %@", error);
     }];
 }
@@ -166,6 +212,7 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"Received remote notification: %@", userInfo);
+    self.receivedRemoteNotification = YES;
     [self application:application handleRemoteNotification:userInfo];
 }
 
@@ -192,8 +239,5 @@ NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
      */
 	NSLog(@"Memory warning...");
 }
-
-
-
 
 @end

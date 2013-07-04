@@ -61,7 +61,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 }
 
 - (void)removeGameFromGameList:(Game *)game {
-    GameList *changedGameList = [self.cache objectForKey:kGameListKey];
+    MutableGameList *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
 
     if (changedGameList) {
         [changedGameList removeGame:game];
@@ -162,7 +162,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 }
 
 - (NSOperation *)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError{
-    [self.cache removeAllObjects];
+    [self flushCache];
     return [self.gameServer loginWithUsername:username password:password onSuccess:onSuccess onError:onError];
 }
 

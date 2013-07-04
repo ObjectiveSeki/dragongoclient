@@ -17,8 +17,8 @@
 
 @interface CurrentGamesController ()
 
-@property(nonatomic, strong) GameList *games;
-@property(nonatomic, strong) GameList *runningGames;
+@property(nonatomic, copy) GameList *games;
+@property(nonatomic, copy) GameList *runningGames;
 @property(nonatomic) BOOL loadingNewRunningGamesPage;
 
 
@@ -190,9 +190,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     [self handleGameListChanges:nil runningGameListChanges:nil];
 }
 
-- (void)addTestGamesToGameList:(GameList *)gameList {
+- (GameList *)gameListByAppendingTestGamesTo:(GameList *)gameList {
     NSArray *testGames = @[@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];
-    NSMutableOrderedSet *mutableGameList = [[NSMutableOrderedSet alloc] initWithCapacity:[testGames count]];
+    NSMutableOrderedSet *mutableGames = [[NSMutableOrderedSet alloc] initWithCapacity:[testGames count]];
     for (int i = 0; i < [testGames count]; i++) {
         Game *game = [[Game alloc] init];
         NSString *name = testGames[i];
@@ -204,20 +204,26 @@ typedef NS_ENUM(NSUInteger, GameSection) {
         game.moveId = 100;
         game.myTurn = YES;
         
-        [mutableGameList addObject:game];
+        [mutableGames addObject:game];
     }
-    [gameList addGames:mutableGameList];
+    
+    MutableGameList *mutableGameList = [gameList mutableCopy];
+    
+    [mutableGameList addGames:mutableGames];
+    return mutableGameList;
 }
 
 - (void)handleGameListChanges:(GameList *)gameList
        runningGameListChanges:(GameList *)runningGameList {
     
 #if TEST_GAMES
-    [self addTestGamesToGameList:gameList];
+    gameList = [self gameListByAppendingTestGamesTo:gameList];
 #endif
     
     if (gameList && ![self.games isEqual:gameList]) {
-        [[DGSPushServer sharedPushServer] updateGameList:gameList completion:^{ } error:^(NSError *error) { }];
+        NSLog(@"Game list changed!");
+        [[DGSPushServer sharedPushServer] updateGameList:gameList completionHandler:^{ } errorHandler:^(NSError *error) { }];
+        ((DGSPhoneAppDelegate *)[[UIApplication sharedApplication] delegate]).lastKnownMove = [gameList.games valueForKeyPath:@"@max.lastMove"];
     }
     
     self.games = gameList;

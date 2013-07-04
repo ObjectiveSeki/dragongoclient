@@ -427,7 +427,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)didPlayMove {
-    [[DGSPushServer sharedPushServer] playMoveInGame:self.game completion:^{} error:^(NSError *error) { }];
+    [[DGSPushServer sharedPushServer] playMoveInGame:self.game completionHandler:^{} errorHandler:^(NSError *error) { }];
 }
 
 #pragma mark - Memory management

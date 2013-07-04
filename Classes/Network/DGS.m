@@ -140,7 +140,7 @@ const int kDefaultPageLimit = 20;
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSOrderedSet *games = [self gamesFromCSV:completedOperation.responseString];
-        GameList *gameList = [[GameList alloc] init];
+        MutableGameList *gameList = [[MutableGameList alloc] init];
         gameList.hasMorePages = NO;
         [gameList addGames:games];
 		onSuccess(gameList);
@@ -156,8 +156,9 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
-    GameList *gameList = [[GameList alloc] init];
-    gameList.pathFormat = @"quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json&limit=%d&off=%d";
+    NSString *pathFormat = @"quick_do.php?obj=game&cmd=list&view=running&with=user_id&lstyle=json&limit=%d&off=%d";
+    GameList *gameList = [[GameList alloc] initWithPathFormat:pathFormat];
+    
     // let's just return an empty list, and rely on the caller to fill it in
     // for us. These games might not be shown anyway.
     onSuccess(gameList);
@@ -165,8 +166,9 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError {
-    GameList *gameList = [[GameList alloc] init];
-    gameList.pathFormat = @"quick_do.php?obj=wroom&cmd=list&with=user_id&lstyle=json&limit=%d&off=%d";
+    NSString *pathFormat = @"quick_do.php?obj=wroom&cmd=list&with=user_id&lstyle=json&limit=%d&off=%d";
+    GameList *gameList = [[GameList alloc] initWithPathFormat:pathFormat];
+    
     return [self addGamesToGameList:gameList onSuccess:onSuccess onError:onError];
 }
 
@@ -184,15 +186,16 @@ const int kDefaultPageLimit = 20;
             Game *game = [self parseGameFromDictionary:gameDetails ofType:gameListDictionary[@"list_object"]];
             [games addObject:game];
         }
+        MutableGameList *mutableGameList = [gameList mutableCopy];
 
-        [gameList addGames:games];
+        [mutableGameList addGames:games];
 
         if ([gameListDictionary[@"list_has_next"] intValue] == 0) {
-            gameList.hasMorePages = NO;
+            mutableGameList.hasMorePages = NO;
         }
-        gameList.offset += [gameListDictionary[@"list_size"] intValue];
+        mutableGameList.offset += [gameListDictionary[@"list_size"] intValue];
 
-        onSuccess(gameList);
+        onSuccess(mutableGameList);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
     }];
