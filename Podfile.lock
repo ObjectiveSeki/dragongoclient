@@ -2,21 +2,21 @@ PODS:
   - boost-framework (1.51.0)
   - fuego-framework (1.1)
   - GDataXML-HTML (1.0.0)
-  - InnerBand (1.0.1)
+  - InnerBand (1.0.5)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
   - ODRefreshControl (1.1.0)
   - Reachability (3.1.0)
-  - TestFlightSDK (1.2.4)
+  - TestFlightSDK (1.3.0-beta.7)
 
 DEPENDENCIES:
   - boost-framework (from `boost-framework.podspec`)
   - fuego-framework (from `fuego-framework.podspec`)
-  - GDataXML-HTML
+  - GDataXML-HTML (~> 1.0.0)
   - InnerBand
   - MKNetworkKit
   - ODRefreshControl
-  - TestFlightSDK (~> 1.2.4)
+  - TestFlightSDK
 
 EXTERNAL SOURCES:
   boost-framework:
@@ -28,10 +28,10 @@ SPEC CHECKSUMS:
   boost-framework: 2be1e96de36a049f615ff1e4b93a4dc09f088864
   fuego-framework: b49e76b29b8de27e687b9468570ed8f1920a8407
   GDataXML-HTML: 0d474e4fad256e115114b27678d5eeffe2663218
-  InnerBand: 2f6e09a3f007f611fe187521f323cbb0e7fd7866
+  InnerBand: e9c476b1d6d81ba3aaa523005b09b69c4bb7baaa
   MKNetworkKit: f174100f92473012138b6b1c3040266af8d43a14
   ODRefreshControl: 886e323a7c25114b9e5c397a9eefbebc034224a9
   Reachability: ba94ecd4eaa037be3d0588b38956672588530c5b
-  TestFlightSDK: 96d7400f844599dd02677bf8d34f8bdfe3f9b33c
+  TestFlightSDK: 3af0a385405725e36452a35ef63ba8b3f2ef3ffc
 
 COCOAPODS: 0.19.1
