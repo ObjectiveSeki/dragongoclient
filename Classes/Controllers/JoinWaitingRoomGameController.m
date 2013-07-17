@@ -2,6 +2,7 @@
 #import "JoinWaitingRoomGameController.h"
 #import "IBAlertView.h"
 #import "SpinnerView.h"
+#import "ExpandingLabelCell.h"
 
 @interface JoinWaitingRoomGameController ()
 
@@ -31,7 +32,7 @@
     self.sectionTitles = [NSMutableArray array];
     self.sections = [NSMutableArray array];
     
-	if (self.game.comment) {
+	if ([self.game.comment length] > 0) {
 		[self buildCommentSection];
 	}
     [self buildOpponentSection];
@@ -44,9 +45,8 @@
 #pragma mark - Table cell construction
 
 - (void)buildCommentSection {
-	NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
-	
-	[rows addObject:@[@"Comment", self.game.comment]];
+    NSMutableArray *rows = [NSMutableArray arrayWithCapacity:1];
+    [rows addObject:@[@"", self.game.comment]];
     [self.sectionTitles addObject:@""];
     [self.sections addObject:rows];
 }
@@ -110,13 +110,32 @@
     return [self.sections count] + 1; // for action section
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *infoRow = nil;
+    
+    if ([self isPropertyCell:indexPath.section]) {
+        infoRow = self.sections[indexPath.section][indexPath.row];
+        if ([infoRow[0] length] == 0) {
+            return [ExpandingLabelCell heightForString:infoRow[1] width:self.tableView.bounds.size.width];
+        }
+    }
+
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell;
     if ([self isPropertyCell:indexPath.section]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+
         NSArray *infoRow = self.sections[indexPath.section][indexPath.row];
-        cell.textLabel.text = infoRow[0];
-        cell.detailTextLabel.text = infoRow[1];
+        if ([infoRow[0] length] == 0) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"LongLabelCell"];
+            cell.textLabel.text = infoRow[1];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"InfoCell"];
+            cell.textLabel.text = infoRow[0];
+            cell.detailTextLabel.text = infoRow[1];
+        }
         return cell;
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
