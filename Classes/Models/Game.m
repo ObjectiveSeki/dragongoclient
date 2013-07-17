@@ -39,6 +39,7 @@
 {
     [encoder encodeObject:self.sgfPath forKey:@"sgfPath"];
     [encoder encodeObject:self.detailPath forKey:@"detailPath"];
+    [encoder encodeObject:self.webPath forKey:@"webPath"];
     [encoder encodeObject:self.sgfString forKey:@"sgfString"];
     [encoder encodeObject:self.opponent forKey:@"opponent"];
     [encoder encodeObject:self.time forKey:@"time"];
@@ -58,6 +59,7 @@
     if (self) {
         self.sgfPath = [decoder decodeObjectForKey:@"sgfPath"];
         self.detailPath = [decoder decodeObjectForKey:@"detailPath"];
+        self.webPath = [decoder decodeObjectForKey:@"webPath"];
         self.sgfString = [decoder decodeObjectForKey:@"sgfString"];
         self.opponent = [decoder decodeObjectForKey:@"opponent"];
         self.time = [decoder decodeObjectForKey:@"time"];

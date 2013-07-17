@@ -72,12 +72,16 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSArray *)cookiesForCurrentUser {
+- (NSURL *)basePath {
     NSMutableString *url = [NSMutableString stringWithFormat:@"http://%@/", self.readonlyHostName];
     if (self.apiPath) {
         [url appendFormat:@"%@/", self.apiPath];
     }
-    return [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:url]];
+    return [NSURL URLWithString:url];
+}
+
+- (NSArray *)cookiesForCurrentUser {
+    return [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[self basePath]];
 }
 
 #pragma mark -
@@ -247,7 +251,7 @@ const int kDefaultPageLimit = 20;
     if (!game.sgfPath) {
         game.sgfPath = S(pathFormat, game.gameId);
     }
-
+    
     MKNetworkOperation *op = [self operationWithPath:game.sgfPath];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [game setSgfString:completedOperation.responseString];
@@ -404,6 +408,10 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
+- (void)openGameInBrowser:(Game *)game {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:S(@"%@%@", [self basePath], game.webPath)]];
+}
+
 #pragma mark -
 #pragma mark Helper functions
 
@@ -422,6 +430,8 @@ const int kDefaultPageLimit = 20;
 			[game setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
 
 			game.sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
+            game.webPath = S(@"game.php?gid=%d", game.gameId);
+            
 			if ([cols[3] isEqual:@"W"]) {
 				[game setColor:kMovePlayerWhite];
 			} else {
@@ -460,8 +470,8 @@ const int kDefaultPageLimit = 20;
     Game *game = [[Game alloc] init];
     int myId = [gameDictionary[@"my_id"] intValue];
     game.gameId = [gameDictionary[@"id"] intValue];
-    NSString *sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
-    game.sgfPath = sgfPath;
+    game.sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
+    game.webPath = S(@"game.php?gid=%d", game.gameId);
 
     if ([gameDictionary[@"white_user"][@"id"] intValue] == myId) {
         game.color = kMovePlayerWhite;

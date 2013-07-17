@@ -46,6 +46,10 @@ static bool fuegoInitialized = NO;
 	SgFini();
 }
 
++ (int)maximumSupportedBoardSize {
+    return SG_MAX_SIZE;
+}
+
 - (MovePlayer)playerForSgPlayer:(SgBlackWhite)player {
 	MovePlayer movePlayer;
 	
@@ -70,10 +74,16 @@ static bool fuegoInitialized = NO;
         int handicap = rootNode->GetIntProp(SG_PROP_HANDICAP);
 		double komi = rootNode->GetRealProp(SG_PROP_KOMI);
 		int size = rootNode->GetIntProp(SG_PROP_SIZE);
+        _size = size;
         
-		goGame = new GoGame(size);
-        goGame->Init(size, GoRules(handicap, GoKomi(komi)));
-		goGame->Init(rootNode);
+        if (size <= [[self class] maximumSupportedBoardSize]) {
+            goGame = new GoGame(size);
+            goGame->Init(size, GoRules(handicap, GoKomi(komi)));
+            goGame->Init(rootNode);
+        } else {
+            goGame = new GoGame([[self class] maximumSupportedBoardSize]);
+            goGame->Init([[self class] maximumSupportedBoardSize], GoRules(handicap, GoKomi(komi)));
+        }
 		
 		// Marked is an array of arrays, so we can undo marks correctly
 		NSMutableArray *marked = [[NSMutableArray alloc] init];
@@ -237,10 +247,6 @@ static bool fuegoInitialized = NO;
 
 - (NSArray *)changedStones {
 	return [self flatten:self.changedGroups];
-}
-
-- (int)size {
-	return goGame->Board().Size();
 }
 
 - (int)handicap {

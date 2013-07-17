@@ -15,6 +15,7 @@
 @property(nonatomic, strong) Move *resignMove;
 @property(nonatomic, strong) NSArray *markedGroups;
 @property(nonatomic, strong) NSArray *changedGroups;
+@property(nonatomic, assign, readonly) int size;
 
 // Must be called after loading but before using this class
 + (void)initFuego;
@@ -22,12 +23,13 @@
 // Must be called when you're done using this class
 + (void)finishFuego;
 
++ (int)maximumSupportedBoardSize;
+
 - initWithSGFString:(NSString *)sgfString;
 
 // Properties
 - (NSString *)comment;
 - (bool)gameEnded;
-- (int)size;
 - (NSArray *)moves;
 - (int)moveNumber;
 

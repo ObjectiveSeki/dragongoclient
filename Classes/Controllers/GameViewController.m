@@ -14,6 +14,7 @@
 #import "SpinnerView.h"
 #import "NSTimer+Blocks.h"
 #import "DGSPushServer.h"
+#import "IBAlertView.h"
 
 @interface GameViewController ()
 
@@ -71,16 +72,25 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     // Make sure the board view doesn't go away. This should never happen!
     NSAssert(self.boardView, @"The board view went away.");
     
-	FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
-	[[self boardView] setBoard:theBoard];
-	[self setBoard:theBoard];
+    FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
+    [[self boardView] setBoard:theBoard];
+    [self setBoard:theBoard];
     
-	self.currentZoomScale = [self zoomInScale];
-	[self lockZoom];
-	[self zoomToScale:0.5 center:self.boardView.center animated:NO];
+    self.currentZoomScale = [self zoomInScale];
+    [self lockZoom];
+    [self zoomToScale:0.5 center:self.boardView.center animated:NO];
     [self updateUI];
     self.sgfShareQueue = [[NSOperationQueue alloc] init];
     self.sgfShareQueue.name = @"SGF saving queue";
+
+    if ([theBoard size] > [FuegoBoard maximumSupportedBoardSize]) {
+        [IBAlertView showAlertWithTitle:nil message:S(@"Games larger than %dx%d can't be played in this app. Would you like to open this game in a browser instead?", [FuegoBoard maximumSupportedBoardSize], [FuegoBoard maximumSupportedBoardSize]) dismissTitle:@"Don't Open" okTitle:@"Open" dismissBlock:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            } okBlock:^{
+                [[GenericGameServer sharedGameServer] openGameInBrowser:self.game];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

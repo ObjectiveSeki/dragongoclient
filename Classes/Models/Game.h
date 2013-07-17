@@ -15,6 +15,7 @@
 
 @property(nonatomic, copy) NSString * sgfPath;
 @property(nonatomic, copy) NSString * detailPath;
+@property(nonatomic, copy) NSString * webPath;
 @property(nonatomic, copy) NSString * sgfString;
 @property(nonatomic, copy) NSString * opponent;
 @property(nonatomic, copy) NSString * time;
