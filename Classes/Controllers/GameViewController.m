@@ -277,6 +277,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (IBAction)undoMove {
+    NSLog(@"Undoing last move");
 	[self.board undoLastMove];
 	[self updateUI];
 }
