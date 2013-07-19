@@ -88,6 +88,8 @@
 		DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB64A9125E202800A915EB /* Resign@2x.png */; };
 		DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
 		DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
+		DAF16E6B1799025600ADA4D1 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */; };
+		DAF16E6D179902F600ADA4D1 /* acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = DAF16E6C179902F600ADA4D1 /* acknowledgements.html */; };
 		DAF9102911BB48A800FE7B96 /* GoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.m */; };
 		DAF9105F11BB5BBD00FE7B96 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9105D11BB5BBD00FE7B96 /* GameViewController.m */; };
 		DAF911F511BB796900FE7B96 /* Move.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF911F311BB796900FE7B96 /* Move.m */; };
@@ -234,6 +236,9 @@
 		DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock.png"; sourceTree = "<group>"; };
 		DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock@2x.png"; sourceTree = "<group>"; };
 		DAEE341C15884ECA00300B29 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; };
+		DAF16E691799025500ADA4D1 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
+		DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
+		DAF16E6C179902F600ADA4D1 /* acknowledgements.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = acknowledgements.html; sourceTree = "<group>"; };
 		DAF9102611BB48A800FE7B96 /* GoBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardView.h; sourceTree = "<group>"; };
 		DAF9102711BB48A800FE7B96 /* GoBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoBoardView.m; sourceTree = "<group>"; };
 		DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
@@ -342,6 +347,7 @@
 				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
 				DA238C2515B22AE800D4050C /* DGSErrors.strings */,
 				DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */,
+				DAF16E6C179902F600ADA4D1 /* acknowledgements.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -467,6 +473,8 @@
 				DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */,
 				DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */,
 				DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */,
+				DAF16E691799025500ADA4D1 /* AcknowledgementsViewController.h */,
+				DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -669,6 +677,7 @@
 				DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */,
 				DA3B8CCF16A7D8520013E85F /* Game Background.png in Resources */,
 				DA3B8CD016A7D8520013E85F /* Game Background@2x.png in Resources */,
+				DAF16E6D179902F600ADA4D1 /* acknowledgements.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +751,7 @@
 				DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */,
 				DAC7BDE616DDEFCE00F4562A /* DGSNetworkOperation.m in Sources */,
 				DA4BC705179517C900C74040 /* ExpandingLabelCell.m in Sources */,
+				DAF16E6B1799025600ADA4D1 /* AcknowledgementsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,13 +776,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = DGSBeta;
@@ -789,7 +797,6 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				PRODUCT_NAME = DGS;
 				VALIDATE_PRODUCT = YES;
@@ -873,7 +880,6 @@
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				PRODUCT_NAME = DGSBeta;
 				VALIDATE_PRODUCT = YES;
