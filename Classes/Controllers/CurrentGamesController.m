@@ -256,7 +256,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     GameList *selectedGameList = [self selectedGameList];
     NSInteger count = [selectedGameList count];
-    if (!selectedGameList || [selectedGameList hasMorePages]) {
+    if ([selectedGameList hasMorePages]) {
         count += 1; // for the activity indicator
     }
     return count;
