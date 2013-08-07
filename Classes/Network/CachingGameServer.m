@@ -76,6 +76,19 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }
 }
 
+// If we remove a game, but later fail to actually play a move, we'll need to
+// add it back to the game list. This more or less reverses removeGameFromGameList
+- (void)addGameBackToGameList:(Game *)game {
+    MutableGameList *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
+    
+    if (changedGameList) {
+        [changedGameList addGames:[NSOrderedSet orderedSetWithObject:game]];
+        
+        [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
+        [self.cache setObject:game forKey:S(kGameCacheKeyFormat, game.gameId) ttl:kLongTTL];
+    }
+}
+
 - (void)invalidateGameLists {
     [self.cache removeObjectForKey:kRunningGameListKey];
     [self.cache removeObjectForKey:kGameListKey];
@@ -117,7 +130,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 - (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     
-    NSOperation *op = [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:onError];
+    NSOperation *op = [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
+        [self addGameBackToGameList:game];
+        onError(error);
+    }];
     
     [self removeGameFromGameList:game];
     
@@ -126,7 +142,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 }
 
 - (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    NSOperation *op = [self.gameServer playHandicapStones:moves comment:comment game:game onSuccess:^() {} onError:onError];
+    NSOperation *op = [self.gameServer playHandicapStones:moves comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
+        [self addGameBackToGameList:game];
+        onError(error);
+    }];
     
     [self removeGameFromGameList:game];
     
@@ -135,7 +154,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 }
 
 - (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    NSOperation *op = [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:onError];
+    NSOperation *op = [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
+        [self addGameBackToGameList:game];
+        onError(error);
+    }];
     
     [self removeGameFromGameList:game];
     
