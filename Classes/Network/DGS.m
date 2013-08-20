@@ -293,7 +293,7 @@ const int kDefaultPageLimit = 20;
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber;
-    static NSString *scoreUrlFormat = @"quick_do.php?obj=game&cmd=score&gid=%d&move_id=%d&move=%@";
+    static NSString *scoreUrlFormat = @"quick_do.php?obj=game&cmd=score&gid=%d&move_id=%d&move=%@&toggle=uniq";
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([changedStones count] * 2)];
     NSMutableString *urlString;
 
