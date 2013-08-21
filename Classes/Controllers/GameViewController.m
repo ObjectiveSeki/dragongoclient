@@ -41,6 +41,8 @@
 
 @property (nonatomic, strong) UIGestureRecognizer *goToBeginningGestureRecognizer;
 @property (nonatomic, strong) UIGestureRecognizer *goToCurrentMoveGestureRecognizer;
+@property (nonatomic, strong) UIGestureRecognizer *tappedBoardGestureRecognizer;
+
 
 @end
 
@@ -62,6 +64,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Game Background.png"]];
     self.goToBeginningGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToBeginning:)];
     self.goToCurrentMoveGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToCurrentMove:)];
+    
+    self.tappedBoardGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGoBoardTouch:)];
+    [self.boardView addGestureRecognizer:self.tappedBoardGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,9 +78,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     NSAssert(self.boardView, @"The board view went away.");
     
     FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
-    [[self boardView] setBoard:theBoard];
-    [self setBoard:theBoard];
-    
+    self.boardView.board = theBoard;
+    self.board = theBoard;
+        
     self.currentZoomScale = [self zoomInScale];
     [self lockZoom];
     [self zoomToScale:0.5 center:self.boardView.center animated:NO];
@@ -95,9 +100,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	[self.boardView setBoard:nil];
     [self.sgfShareQueue cancelAllOperations];
     self.sgfShareQueue = nil;
+    self.boardView.board = nil;
 	self.board = nil;
 }
 
@@ -244,10 +249,17 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	[self lockZoom];
 }
 
+- (void)zoomIn:(CGPoint)center {
+    [self zoomToScale:[self zoomInScale] center:center animated:YES];
+    [self setBoardState:kBoardStateZoomedIn];
+    self.scrollView.scrollEnabled = YES;
+}
+
 - (void)zoomOut:(CGPoint)center {
 	self.boardState = kBoardStateZoomedOut;
 	if (self.currentZoomScale != 0.5) {
 		[self zoomToScale:0.5 center:center animated:YES];
+        self.scrollView.scrollEnabled = NO;
 	}
 	[self updateUI];
 }
@@ -404,32 +416,33 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 #pragma mark - Playing moves
 
-- (void)handleGoBoardTouch:(UITouch *)touch inView:(GoBoardView *)view {
-    
-    BOOL canPlaceStones = [self.board canPlayMove] || [self.board gameEnded];
-    
-	BOOL canZoomIn = canPlaceStones || [self.board beforeCurrentMove] || self.readOnly;
-    BOOL shouldZoomIn = ![self isSmallBoard] && self.boardState == kBoardStateZoomedOut && canZoomIn;
-    
-    BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
-    BOOL canPlayOrMarkStones = !self.readOnly && canPlaceStones && isZoomedIn;
-    
-    NSLog(@"Zoom State: %d %d %d %d %d %d", [self.board canPlayMove], [self.board gameEnded], [self.board beforeCurrentMove], self.readOnly, [self isSmallBoard], self.boardState);
-    
-	if (shouldZoomIn) {
-		[self zoomToScale:[self zoomInScale] center:[touch locationInView:view] animated:YES];
-		[self setBoardState:kBoardStateZoomedIn];
-		[self.passButton setEnabled:NO];
-		[self.resignButton setEnabled:NO];
-		[self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
-	} else if (canPlayOrMarkStones) {
-		BOOL markedDeadStones = [self.board gameEnded] && [view markDeadStonesAtPoint:[touch locationInView:view]];
+- (void)handleGoBoardTouch:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
         
-		BOOL playedStone = !markedDeadStones && [view playStoneAtPoint:[touch locationInView:view]];
-		if (markedDeadStones || playedStone) {
-			[self zoomOut:[touch locationInView:view]];
-		}
-	}
+        BOOL canPlaceStones = [self.board canPlayMove] || [self.board gameEnded];
+        
+        BOOL canZoomIn = canPlaceStones || [self.board beforeCurrentMove] || self.readOnly;
+        BOOL shouldZoomIn = ![self isSmallBoard] && self.boardState == kBoardStateZoomedOut && canZoomIn;
+        
+        BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
+        BOOL canPlayOrMarkStones = !self.readOnly && canPlaceStones && isZoomedIn;
+        
+        NSLog(@"Zoom State: %d %d %d %d %d %d", [self.board canPlayMove], [self.board gameEnded], [self.board beforeCurrentMove], self.readOnly, [self isSmallBoard], self.boardState);
+        
+        if (shouldZoomIn) {
+            [self zoomIn:[sender locationInView:self.boardView]];
+            [self.passButton setEnabled:NO];
+            [self.resignButton setEnabled:NO];
+            [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
+        } else if (canPlayOrMarkStones) {
+            BOOL markedDeadStones = [self.board gameEnded] && [self.boardView markDeadStonesAtPoint:[sender locationInView:self.boardView]];
+            
+            BOOL playedStone = !markedDeadStones && [self.boardView playStoneAtPoint:[sender locationInView:self.boardView]];
+            if (markedDeadStones || playedStone) {
+                [self zoomOut:[sender locationInView:self.boardView]];
+            }
+        }
+    }
 }
 
 - (void)willPlayMove {

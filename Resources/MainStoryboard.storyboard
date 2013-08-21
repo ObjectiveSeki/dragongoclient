@@ -412,7 +412,6 @@
                                         <connections>
                                             <outlet property="blackCaptures" destination="rBL-M3-lQW" id="aiT-83-qI3"/>
                                             <outlet property="blackName" destination="j5c-Dc-e00" id="L6f-4V-Zhs"/>
-                                            <outlet property="delegate" destination="8uJ-pY-6ja" id="YN0-Lm-Fqh"/>
                                             <outlet property="status" destination="2nz-1y-2CZ" id="Nk0-ja-Pq5"/>
                                             <outlet property="statusView" destination="Ag3-gW-h4Q" id="Cwt-ou-nym"/>
                                             <outlet property="whiteCaptures" destination="eIg-7F-VZe" id="Wjx-c5-mj4"/>
@@ -1075,7 +1074,6 @@
             <relationships>
                 <relationship kind="outlet" name="blackCaptures" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="blackName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="delegate"/>
                 <relationship kind="outlet" name="status" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="statusView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="whiteCaptures" candidateClass="UILabel"/>

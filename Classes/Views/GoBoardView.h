@@ -15,7 +15,6 @@
 }
 
 @property(nonatomic, strong) FuegoBoard *board;
-@property(nonatomic, weak) IBOutlet id delegate;
 
 @property(nonatomic, strong) IBOutlet UILabel *blackName;
 @property(nonatomic, strong) IBOutlet UILabel *whiteName;

@@ -343,11 +343,4 @@
 	return [self.board markDeadStonesAtRow:(int)boardPoint.y column:(int)boardPoint.x];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    NSLog(@"Here!");
-	UITouch *touch = [touches anyObject];
-	[self.delegate performSelector:@selector(handleGoBoardTouch:inView:) withObject:touch withObject:self];
-}
-
 @end
