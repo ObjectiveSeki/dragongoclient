@@ -69,6 +69,7 @@ NSString * const kDGSErrorDomain = @"DGSNetworkErrorDomain";
     if (![self isLoggedIn]) {
         error = [self errorWithDGSErrorString:NSLocalizedStringFromTable(@"not_logged_in", @"DGSErrors", nil) code:kDGSErrorCodeLoginError];
     } else if (NSNotFound != [urlString rangeOfString:@"error.php"].location) {
+        // HTML error
 		NSError *htmlError;
 		GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLString:responseString options:0 error:&htmlError];
 		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&htmlError];
@@ -76,6 +77,7 @@ NSString * const kDGSErrorDomain = @"DGSNetworkErrorDomain";
 			error = [self errorWithDGSErrorString:[[bodyElements objectAtIndex:0] stringValue] code:kDGSErrorCodeGenericError];
 		}
 	} else if (NSNotFound != [responseString rangeOfString:@"#Error:"].location) {
+        // quick_status.php error
         NSString *errorKey;
         NSScanner *scanner = [[NSScanner alloc] initWithString:responseString];
         [scanner scanUpToString:@"[#Error:" intoString:NULL];
@@ -83,7 +85,18 @@ NSString * const kDGSErrorDomain = @"DGSNetworkErrorDomain";
         [scanner scanUpToString:@";" intoString:&errorKey];
         
         error = [self errorWithDGSErrorString:NSLocalizedStringFromTable(errorKey, @"DGSErrors", nil) code:kDGSErrorCodeGenericError];
-    } 
+    } else if (NSNotFound != [responseString rangeOfString:@"\"error\":"].location) {
+        // JSON error
+        NSString *errorKey;
+        NSScanner *scanner = [[NSScanner alloc] initWithString:responseString];
+        [scanner scanUpToString:@"\"error\":\"" intoString:NULL];
+        [scanner scanString:@"\"error\":\"" intoString:NULL];
+        [scanner scanUpToString:@"\"," intoString:&errorKey];
+
+        if (errorKey) {
+            error = [self errorWithDGSErrorString:NSLocalizedStringFromTable(errorKey, @"DGSErrors", nil) code:kDGSErrorCodeGenericError];
+        }
+    }
     
 	return error;
 }

@@ -56,7 +56,7 @@
 "invalid_coord" = "The move's coordinates are invalid.";
 "move_problem" = "Passing is broken - Please contact the developer.";
 "not_your_turn" = "It's not your turn.";
-"invalid_action" = "The action you took is invalid.";
+"invalid_action" = "There was a problem taking that action.";
 "mysql_update_game" = "The database failed trying to update the game.";
 "mysql_insert_move" = "The database failed trying to insert the move.";
 "opponent_not_found" = "Opponent database corruption - Please notify a DGS admin.";
@@ -74,7 +74,6 @@
 "bulkmessage_self" = "You can't send a bulk message to yourself";
 
 /* Message send errors */
-"invalid_action" = "There was an error sending the message.";
 "reply_invalid" = "There was an error replying to the message.";
 "folder_forbidden" = "There was an error moving the message to the folder.";
 "game_delete_invitation" = "There was an error deleting the invitation.";
