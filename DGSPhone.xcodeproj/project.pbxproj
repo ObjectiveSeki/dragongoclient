@@ -235,7 +235,7 @@
 		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
 		DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock.png"; sourceTree = "<group>"; };
 		DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock@2x.png"; sourceTree = "<group>"; };
-		DAEE341C15884ECA00300B29 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; };
+		DAEE341C15884ECA00300B29 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DAF16E691799025500ADA4D1 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
 		DAF16E6C179902F600ADA4D1 /* acknowledgements.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = acknowledgements.html; sourceTree = "<group>"; };

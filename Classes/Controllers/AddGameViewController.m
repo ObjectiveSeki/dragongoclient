@@ -53,6 +53,9 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     if (!self.player.rated) {
         self.game.komiType = kKomiTypeManual;
     }
+    
+    // Default komi is 6.5 for new games
+    self.game.komi = 6.5;
 }
 
 #pragma mark - Initialization 
@@ -128,10 +131,6 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
 - (TextCell *)dequeueActionCell:(UITableView *)tableView {
     return [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
-}
-
-- (void)setComment:(TextCell *)commentCell {
-	[self.game setComment:[[commentCell textField] text]];
 }
 
 - (void)setKomiType:(SelectCell *)cell {
@@ -221,14 +220,6 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.fischerTimeUnit]];
 }
 
-- (void)setJapaneseTimePeriods:(TextCell *)timePeriodCell {
-	[self.game setJapaneseTimePeriods:[[[timePeriodCell textField] text] intValue]];
-}
-
-- (void)setCanadianTimePeriods:(TextCell *)timePeriodCell {
-	[self.game setCanadianTimePeriods:[[[timePeriodCell textField] text] intValue]];
-}
-
 - (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell))onSelected label:(NSString *)label {
 	SelectCell *cell = [self dequeueSelectCell:theTableView];
 	NSString *timeString = [self.game timePeriodString:timeValue withTimeUnit:timeUnit];
@@ -251,11 +242,13 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	if ([indexPath section] == kDescriptionSection) {
 		if ([indexPath row] == 0) {
 			TextCell *cell = [self dequeueTextCell:theTableView];
-			cell.textLabel.text = @"Comment";
-			cell.textField.text = self.game.comment;
-			cell.textField.keyboardType = UIKeyboardTypeDefault;
-			cell.textEditedSelector = @selector(setComment:);
-			return cell;
+            cell.textLabel.text = @"Comment";
+            cell.textField.text = self.game.comment;
+            cell.textField.keyboardType = UIKeyboardTypeDefault;
+            cell.onChanged = ^(TextCell *cell) {
+                self.game.comment = cell.textField.text;
+            };
+            return cell;
 		}
 	}
     
@@ -396,16 +389,20 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 		} else if ([indexPath row] == 3) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
-				cell.textLabel.text = @"Extra Periods";
+				cell.textLabel.text = @"Periods";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.japaneseTimePeriods];
-				cell.textEditedSelector = @selector(setJapaneseTimePeriods:);
+                cell.onChanged = ^(TextCell *cell) {
+                    self.game.japaneseTimePeriods = [cell.textField.text intValue];
+                };
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 				return cell;
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
-				cell.textLabel.text = @"Extra Stones";
+				cell.textLabel.text = @"Stones";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.canadianTimePeriods];
-				cell.textEditedSelector = @selector(setCanadianTimePeriods:);
+                cell.onChanged = ^(TextCell *cell) {
+                    self.game.canadianTimePeriods = [cell.textField.text intValue];
+                };
 				cell.textField.keyboardType = UIKeyboardTypeNumberPad;
 				return cell;
 			}

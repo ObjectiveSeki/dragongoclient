@@ -14,7 +14,6 @@
 
 @property(nonatomic, strong) IBOutlet UILabel *label;
 @property(nonatomic, strong) IBOutlet UITextField *textField;
-@property(nonatomic) SEL textEditedSelector;
 @property(nonatomic, strong) IBOutlet UIView *content;
 @property(nonatomic, copy) void (^onChanged)(TextCell *textCell);
 

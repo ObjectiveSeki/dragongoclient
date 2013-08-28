@@ -28,11 +28,17 @@
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     self.usernameCell.textField.text = self.username;
-    self.usernameCell.textEditedSelector = @selector(setUsernameFromCell:);
+    self.usernameCell.onChanged = ^(TextCell *cell) {
+        self.username = cell.textField.text;
+        [self updateLoginButton];
+    };
     self.usernameCell.maxTextLength = 16;
 
     self.passwordCell.textField.text = self.password;
-    self.passwordCell.textEditedSelector = @selector(setPasswordFromCell:);
+    self.passwordCell.onChanged = ^(TextCell *cell) {
+        self.password = cell.textField.text;
+        [self updateLoginButton];
+    };
     self.passwordCell.maxTextLength = -1;
     
     self.spinner = [[SpinnerView alloc] initInView:self.view];
@@ -59,16 +65,6 @@
     } onError:^(NSError *error) {
         [self.spinner dismiss:YES];
     }];
-}
-
-- (void)setUsernameFromCell:(TextCell *)tableCell {
-	self.username = tableCell.textField.text;
-    [self updateLoginButton];
-}
-
-- (void)setPasswordFromCell:(TextCell *)tableCell {
-	self.password = tableCell.textField.text;
-    [self updateLoginButton];
 }
 
 #pragma mark -

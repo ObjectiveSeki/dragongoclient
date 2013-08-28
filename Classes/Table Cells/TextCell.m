@@ -63,9 +63,7 @@
 }
 
 - (IBAction)textFieldChanged:(id)sender {
-	if (self.textEditedSelector) {
-		[[UIApplication sharedApplication] sendAction:self.textEditedSelector to:nil from:self forEvent:nil];
-	} else if (self.onChanged) {
+	if (self.onChanged) {
 		self.onChanged(self);
 	}
 }
