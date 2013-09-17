@@ -12,7 +12,7 @@
 
 + (NSString *)cacheDirectory {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"DGSCache"];
+    return [paths[0] stringByAppendingPathComponent:@"DGSCache"];
 }
 
 + (void)flushCache {

@@ -17,7 +17,7 @@
     sysctlbyname("hw.machine", NULL, &size, NULL, 0);
     char *machine = malloc(size);
     sysctlbyname("hw.machine", machine, &size, NULL, 0);
-    NSString *platform = [NSString stringWithUTF8String:machine];
+    NSString *platform = @(machine);
     free(machine);
     return platform;
 }

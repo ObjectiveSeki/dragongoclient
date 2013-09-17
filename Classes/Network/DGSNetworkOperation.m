@@ -74,7 +74,7 @@ NSString * const kDGSErrorDomain = @"DGSNetworkErrorDomain";
 		GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithHTMLString:responseString options:0 error:&htmlError];
 		NSArray *bodyElements = [doc nodesForXPath:@"//td[@id='pageBody']" error:&htmlError];
 		if ([bodyElements count] > 0) {
-			error = [self errorWithDGSErrorString:[[bodyElements objectAtIndex:0] stringValue] code:kDGSErrorCodeGenericError];
+			error = [self errorWithDGSErrorString:[bodyElements[0] stringValue] code:kDGSErrorCodeGenericError];
 		}
 	} else if (NSNotFound != [responseString rangeOfString:@"#Error:"].location) {
         // quick_status.php error

@@ -26,8 +26,8 @@ const int kDefaultPageLimit = 20;
 - (NSDictionary *)defaultCustomHeaderFields {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSDictionary *headerFields = @{ @"X-client-identifier": @"Dragon Go Client iOS",
-                                    @"X-bundle-identifier": [infoDictionary objectForKey:@"CFBundleIdentifier"],
-                                    @"X-client-version": S(@"Version %@ (%@)", [infoDictionary objectForKey:@"CFBundleShortVersionString"], [infoDictionary objectForKey:@"CFBundleVersion"])};
+                                    @"X-bundle-identifier": infoDictionary[@"CFBundleIdentifier"],
+                                    @"X-client-version": S(@"Version %@ (%@)", infoDictionary[@"CFBundleShortVersionString"], infoDictionary[@"CFBundleVersion"])};
     return headerFields;
 }
 

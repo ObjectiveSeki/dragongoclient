@@ -54,7 +54,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row < self.gameList.games.count) {
-        NewGame *game = [self.gameList.games objectAtIndex:indexPath.row];
+        NewGame *game = (self.gameList.games)[indexPath.row];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
         NSString *ratingString = game.opponentRating ? game.opponentRating : @"Not Ranked";
         cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", game.opponent, ratingString];
@@ -92,7 +92,7 @@
         UITableViewCell *cell = sender;
         cell.accessoryView = nil;
         JoinWaitingRoomGameController *controller = [segue destinationViewController];
-        controller.game = [self.gameList.games objectAtIndex:([self.tableView indexPathForCell:cell].row)];
+        controller.game = (self.gameList.games)[([self.tableView indexPathForCell:cell].row)];
     }
 }
 

@@ -265,7 +265,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 - (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath {
     GameList *selectedGameList = [self selectedGameList];
     if (indexPath.row < [selectedGameList.games count]) {
-        return [selectedGameList.games objectAtIndex:indexPath.row];
+        return (selectedGameList.games)[indexPath.row];
     } else {
         return nil;
     }

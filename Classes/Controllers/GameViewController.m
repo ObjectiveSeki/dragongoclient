@@ -119,12 +119,12 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (void)replaceToolbarItemAtIndex:(int)itemIndex withItem:(UIBarButtonItem *)toolbarItem {
     int index = itemIndex * 2 + 1; // each item has something in between.
-    if (toolbarItem == [self.toolbar.items objectAtIndex:index]) {
+    if (toolbarItem == (self.toolbar.items)[index]) {
         return;
     }
 
     NSMutableArray *toolbarItems = [self.toolbar.items mutableCopy];
-    [toolbarItems replaceObjectAtIndex:index withObject:toolbarItem];
+    toolbarItems[index] = toolbarItem;
     [self.toolbar setItems:toolbarItems animated:YES];
 }
 
