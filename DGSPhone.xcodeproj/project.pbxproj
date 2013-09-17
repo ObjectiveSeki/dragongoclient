@@ -14,11 +14,9 @@
 		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
 		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
-		DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0824E6161A618F00802B9A /* Default-568h@2x.png */; };
 		DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C1161FF67400AEAEF6 /* JWCache.m */; };
 		DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
-		DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA137D5F11BE13CF00225C12 /* AppIcon.png */; };
 		DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA238C2515B22AE800D4050C /* DGSErrors.strings */; };
 		DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE1212F14EC8003FEE23 /* Board@2x.png */; };
 		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
@@ -30,7 +28,6 @@
 		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
 		DA3B8CCF16A7D8520013E85F /* Game Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B8CCD16A7D8520013E85F /* Game Background.png */; };
 		DA3B8CD016A7D8520013E85F /* Game Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */; };
-		DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA402AC611D30931005017C4 /* AppIcon@2x.png */; };
 		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.m */; };
 		DA4BC705179517C900C74040 /* ExpandingLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BC704179517C900C74040 /* ExpandingLabelCell.m */; };
@@ -49,8 +46,6 @@
 		DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA77A95313B2F67B00803136 /* libxml2.dylib */; };
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
-		DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */; };
-		DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DA8A962711FBB3D100B2E2C7 /* Default.png */; };
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
 		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
@@ -72,6 +67,7 @@
 		DAC86D5516A52AA7000A72D6 /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5116A52AA7000A72D6 /* Previous.png */; };
 		DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5216A52AA7000A72D6 /* Previous@2x.png */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
+		DAD2E9EC17E82241002A1822 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD2E9EB17E82241002A1822 /* Images.xcassets */; };
 		DAD3634B126D4A9C00589A32 /* Message background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36349126D4A9C00589A32 /* Message background.png */; };
 		DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD3634A126D4A9C00589A32 /* Message background@2x.png */; };
 		DAD36369126D586600589A32 /* Message input.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36367126D586600589A32 /* Message input.png */; };
@@ -117,14 +113,12 @@
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		DA0762B51377B678003E0390 /* DGSDev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSDev.h; sourceTree = "<group>"; };
 		DA0762B61377B678003E0390 /* DGSDev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSDev.m; sourceTree = "<group>"; };
-		DA0824E6161A618F00802B9A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DA0FE7C0161FF67400AEAEF6 /* JWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCache.h; sourceTree = "<group>"; };
 		DA0FE7C1161FF67400AEAEF6 /* JWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCache.m; sourceTree = "<group>"; };
 		DA0FE7C3161FFA1000AEAEF6 /* JWCacheEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWCacheEntry.h; sourceTree = "<group>"; };
 		DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWCacheEntry.m; sourceTree = "<group>"; };
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
-		DA137D5F11BE13CF00225C12 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 		DA238C2515B22AE800D4050C /* DGSErrors.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = DGSErrors.strings; path = Resources/DGSErrors.strings; sourceTree = "<group>"; };
 		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
 		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
@@ -139,7 +133,6 @@
 		DA391DDD1592CB2900F9E36F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		DA3B8CCD16A7D8520013E85F /* Game Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Background.png"; sourceTree = "<group>"; };
 		DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Background@2x.png"; sourceTree = "<group>"; };
-		DA402AC611D30931005017C4 /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
 		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
 		DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoard.mm; sourceTree = "<group>"; };
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
@@ -179,8 +172,6 @@
 		DA8366CE11DC3606001A68F9 /* SelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCell.m; sourceTree = "<group>"; };
 		DA84D67812F7A0160038D775 /* BooleanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooleanCell.h; sourceTree = "<group>"; };
 		DA84D67912F7A0160038D775 /* BooleanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanCell.m; sourceTree = "<group>"; };
-		DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		DA8A962711FBB3D100B2E2C7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DA8E707A13D5337E007E569B /* GameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameList.h; sourceTree = "<group>"; };
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
@@ -208,6 +199,7 @@
 		DAC86D5116A52AA7000A72D6 /* Previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Previous.png; sourceTree = "<group>"; };
 		DAC86D5216A52AA7000A72D6 /* Previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Previous@2x.png"; sourceTree = "<group>"; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
+		DAD2E9EB17E82241002A1822 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DGS/Images.xcassets; sourceTree = "<group>"; };
 		DAD36349126D4A9C00589A32 /* Message background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background.png"; sourceTree = "<group>"; };
 		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
 		DAD36367126D586600589A32 /* Message input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input.png"; sourceTree = "<group>"; };
@@ -336,15 +328,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DAD2E9EB17E82241002A1822 /* Images.xcassets */,
 				DAE932BD12454CCA00335F0F /* XIBs */,
 				DA37D90511BF56BC00BC1445 /* Images */,
-				DA137D5F11BE13CF00225C12 /* AppIcon.png */,
-				DA402AC611D30931005017C4 /* AppIcon@2x.png */,
 				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
-				DA0824E6161A618F00802B9A /* Default-568h@2x.png */,
-				DA8A962711FBB3D100B2E2C7 /* Default.png */,
-				DA8A95FC11FBB12000B2E2C7 /* Default@2x.png */,
 				DA238C2515B22AE800D4050C /* DGSErrors.strings */,
 				DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */,
 				DAF16E6C179902F600ADA4D1 /* acknowledgements.html */,
@@ -606,7 +594,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Justin Weiss";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
@@ -632,19 +620,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA137D6111BE13CF00225C12 /* AppIcon.png in Resources */,
 				DA37D90A11BF56DA00BC1445 /* Black.png in Resources */,
 				DA37D90B11BF56DA00BC1445 /* White.png in Resources */,
 				DA37D9C311BF6E5100BC1445 /* Board.png in Resources */,
-				DA402ACE11D30978005017C4 /* AppIcon@2x.png in Resources */,
 				DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */,
 				DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
 				DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 				DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */,
 				DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
-				DA8A95FD11FBB12000B2E2C7 /* Default@2x.png in Resources */,
-				DA8A962911FBB3D100B2E2C7 /* Default.png in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
@@ -657,6 +641,7 @@
 				DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */,
 				DA9BAD1C126B6FB5008ED2B4 /* Pass.png in Resources */,
 				DA9BAD1D126B6FB5008ED2B4 /* Pass@2x.png in Resources */,
+				DAD2E9EC17E82241002A1822 /* Images.xcassets in Resources */,
 				DAD3634B126D4A9C00589A32 /* Message background.png in Resources */,
 				DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */,
 				DAD36369126D586600589A32 /* Message input.png in Resources */,
@@ -669,7 +654,6 @@
 				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
-				DA0824E7161A618F00802B9A /* Default-568h@2x.png in Resources */,
 				DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */,
 				DAC86D5316A52AA7000A72D6 /* Next.png in Resources */,
 				DAC86D5416A52AA7000A72D6 /* Next@2x.png in Resources */,
@@ -774,6 +758,8 @@
 			baseConfigurationReference = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -792,6 +778,8 @@
 			baseConfigurationReference = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
@@ -806,10 +794,6 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
@@ -817,7 +801,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -827,10 +811,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss (SB3AKTYGF8)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -843,7 +823,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PROVISIONING_PROFILE = "B066B920-9B63-49AF-9ABA-4810AA46A781";
 				SDKROOT = iphoneos;
 			};
@@ -852,10 +832,6 @@
 		DA667DC0125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
@@ -863,7 +839,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
@@ -874,6 +850,8 @@
 			baseConfigurationReference = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
