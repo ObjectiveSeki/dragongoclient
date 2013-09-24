@@ -242,7 +242,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	if ([indexPath section] == kDescriptionSection) {
 		if ([indexPath row] == 0) {
 			TextCell *cell = [self dequeueTextCell:theTableView];
-            cell.textLabel.text = @"Comment";
+            cell.label.text = @"Comment";
             cell.textField.text = self.game.comment;
             cell.textField.keyboardType = UIKeyboardTypeDefault;
             cell.onChanged = ^(TextCell *cell) {
@@ -356,7 +356,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			return cell;
         } else if ([indexPath row] == 5) {
             TextCell *cell = [self dequeueTextCell:theTableView];
-            cell.textLabel.text = @"Komi";
+            cell.label.text = @"Komi";
             cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
             cell.textField.keyboardType = UIKeyboardTypeDecimalPad;
             cell.onChanged = ^(TextCell *cell) {
@@ -389,7 +389,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 		} else if ([indexPath row] == 3) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
-				cell.textLabel.text = @"Periods";
+				cell.label.text = @"Periods";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.japaneseTimePeriods];
                 cell.onChanged = ^(TextCell *cell) {
                     self.game.japaneseTimePeriods = [cell.textField.text intValue];
@@ -398,7 +398,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 				return cell;
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
-				cell.textLabel.text = @"Stones";
+				cell.label.text = @"Stones";
 				cell.textField.text = [NSString stringWithFormat:@"%d", self.game.canadianTimePeriods];
                 cell.onChanged = ^(TextCell *cell) {
                     self.game.canadianTimePeriods = [cell.textField.text intValue];
