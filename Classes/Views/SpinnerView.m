@@ -25,7 +25,7 @@
         self.label = textLabel;
         
 		self.label.text = @"Loading...";
-		self.label.textAlignment = UITextAlignmentCenter;
+		self.label.textAlignment = NSTextAlignmentCenter;
 		self.label.textColor = [UIColor lightTextColor];
 		self.label.font = [UIFont boldSystemFontOfSize:14.0];
 		self.label.backgroundColor = [UIColor clearColor];

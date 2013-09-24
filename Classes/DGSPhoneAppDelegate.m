@@ -175,7 +175,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 
 - (void)dismissLogin {
     [self registerForRemoteNotifications];
-    [self.loginController dismissModalViewControllerAnimated:YES];
+    [self.loginController dismissViewControllerAnimated:YES completion:^{}];
     self.loginController = nil;
 }
 

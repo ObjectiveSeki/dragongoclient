@@ -1,6 +1,10 @@
 
 #ifdef __OBJC__
+
+#ifdef TESTFLIGHT_APP_TOKEN
     #import "TestFlight.h"
+#endif
+
     #import "Keys.h"
 #endif
 

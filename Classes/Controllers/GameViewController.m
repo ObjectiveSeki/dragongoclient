@@ -427,8 +427,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
         BOOL canPlayOrMarkStones = !self.readOnly && canPlaceStones && isZoomedIn;
         
-        NSLog(@"Zoom State: %d %d %d %d %d %d", [self.board canPlayMove], [self.board gameEnded], [self.board beforeCurrentMove], self.readOnly, [self isSmallBoard], self.boardState);
-        
         if (shouldZoomIn) {
             [self zoomIn:[sender locationInView:self.boardView]];
             [self.passButton setEnabled:NO];

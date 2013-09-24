@@ -35,7 +35,7 @@ END
   s.author             =  'Rene Rivera'
 
   s.source             = { :http => 'https://s3.amazonaws.com/justinweiss/boost.framework.zip' }
-  s.platform           = :ios, '5.0'
+  s.platform           = :ios, '7.0'
 
   s.ios.xcconfig       =  { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/boost-framework"' }
   s.ios.preserve_paths =  'boost.framework'
