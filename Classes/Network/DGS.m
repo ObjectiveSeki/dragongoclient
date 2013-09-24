@@ -490,7 +490,7 @@ const int kDefaultPageLimit = 20;
         game.myTurn = NO;
     }
 
-    game.lastMove = gameDictionary[@"move_last"];
+    game.lastMove = gameDictionary[@"time_lastmove"];
     game.moveId = [gameDictionary[@"move_id"] intValue];
     return game;
 }
