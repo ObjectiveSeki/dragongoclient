@@ -89,7 +89,30 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }
 }
 
+- (void)removeInviteFromList:(Invite *)invite {
+    MutableGameList *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
 
+    if (changedGameList) {
+        [changedGameList removeInvite:invite];
+
+        // Refresh the TTL, so we don't have to hit the server again soon
+        [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
+
+        // We can't do all of the timing calculations client-side, so we'll just
+        // have to invalidate the entire running game list.
+        [self.cache removeObjectForKey:kRunningGameListKey];
+    }
+}
+
+- (void)addInviteBackToInviteList:(Invite *)invite {
+    MutableGameList *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
+
+    if (changedGameList) {
+        [changedGameList addInvites:[NSOrderedSet orderedSetWithObject:invite]];
+
+        [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
+    }
+}
 
 - (void)invalidateGameLists {
     [self.cache removeObjectForKey:kRunningGameListKey];
@@ -190,6 +213,18 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return [self.gameServer loginWithUsername:username password:password onSuccess:onSuccess onError:onError];
 }
 
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    NSOperation *op = [self.gameServer answerInvite:invite accepted:accepted onSuccess:onSuccess onError:^(NSError *error) {
+        [self addInviteBackToInviteList:invite];
+        onError(error);
+    }];
+
+    [self removeInviteFromList:invite];
+
+    onSuccess(); //cheat and call it right away for speed
+    return op;
+}
+
 // These are all proxied directly to the game server without changes
 #pragma mark - Game Server proxied methods
 
@@ -222,30 +257,6 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 - (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
-}
-
-- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-    NSOperation *op = [self.gameServer answerInvite:invite accepted:accepted onSuccess:onSuccess onError:^(NSError *error) {
-        onError(error);
-    }];
-
-    //remove invite
-
-    onSuccess(); //cheat and call it right away for speed
-    return op;
-}
-
-- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
-
-    NSOperation *op = [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
-        [self addGameBackToGameList:game];
-        onError(error);
-    }];
-
-    [self removeGameFromGameList:game];
-
-    onSuccess(); // cheat and call it right away for speed
-    return op;
 }
 
 - (void)openGameInBrowser:(Game *)game {
