@@ -26,4 +26,20 @@
     [self.gameDetails setWithDictionary:dictionary[@"game_settings"]];
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeInt:self.messageId forKey:@"messageId"];
+    [encoder encodeObject:self.opponent forKey:@"opponent"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        self.messageId = [decoder decodeIntForKey:@"messageId"];
+        self.opponent = [decoder decodeObjectForKey:@"opponent"];
+    }
+    return self;
+}
+
 @end

@@ -111,6 +111,13 @@
     self.games = mutableGames;
 }
 
+- (void)removeInvite:(Invite *)invite {
+    NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
+    [mutableInvites removeObject:invite];
+    self.invites = mutableInvites;
+}
+
+
 - (void)addInvites:(NSOrderedSet *)moreInvites {
     NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
     [mutableInvites unionOrderedSet:moreInvites];

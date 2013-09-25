@@ -10,7 +10,7 @@
 
 @class NewGame;
 
-@interface Invite : NSObject
+@interface Invite : NSObject <NSCoding>
 
 @property(nonatomic) int messageId;
 @property(nonatomic, copy) NSString * opponent;

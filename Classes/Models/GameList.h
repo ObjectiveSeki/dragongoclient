@@ -40,6 +40,8 @@
 
 - (void)removeGame:(Game *)game;
 - (void)addGames:(NSOrderedSet *)games;
+
+- (void)removeInvite:(Invite *)invite;
 - (void)addInvites:(NSOrderedSet *)invites;
 
 @end

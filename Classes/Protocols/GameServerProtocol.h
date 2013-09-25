@@ -40,6 +40,7 @@ typedef void(^ErrorBlock)(NSError *error);
 - (NSOperation *)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *invite))onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess onError:(ErrorBlock)onError;

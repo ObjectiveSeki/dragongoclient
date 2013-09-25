@@ -89,6 +89,8 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }
 }
 
+
+
 - (void)invalidateGameLists {
     [self.cache removeObjectForKey:kRunningGameListKey];
     [self.cache removeObjectForKey:kGameListKey];
@@ -220,6 +222,30 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 
 - (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
+}
+
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    NSOperation *op = [self.gameServer answerInvite:invite accepted:accepted onSuccess:onSuccess onError:^(NSError *error) {
+        onError(error);
+    }];
+
+    //remove invite
+
+    onSuccess(); //cheat and call it right away for speed
+    return op;
+}
+
+- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+
+    NSOperation *op = [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
+        [self addGameBackToGameList:game];
+        onError(error);
+    }];
+
+    [self removeGameFromGameList:game];
+
+    onSuccess(); // cheat and call it right away for speed
+    return op;
 }
 
 - (void)openGameInBrowser:(Game *)game {

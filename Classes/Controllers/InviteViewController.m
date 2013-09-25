@@ -67,6 +67,21 @@
     self.komiCell.detailTextLabel.text = [NSString stringWithFormat:@"%.1f", game.komi];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        BOOL accepted = NO;
+        if (indexPath.row == 0) {
+            accepted = YES;
+        }
+
+        [[GenericGameServer sharedGameServer] answerInvite:self.invite accepted:accepted onSuccess:^(Invite *invite) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } onError:^(NSError *error) {
+            //probably should notify the user
+        }];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

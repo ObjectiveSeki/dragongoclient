@@ -42,6 +42,8 @@ const int kDefaultPageLimit = 20;
 - (id)init
 {
     return [self initWithHostName:@"www.dragongoserver.net" apiPath:nil customHeaderFields:[self defaultCustomHeaderFields]];
+    //return [self initWithHostName:@"dragongoserver.sourceforge.net" apiPath:nil customHeaderFields:[self defaultCustomHeaderFields]];
+
 }
 
 #pragma mark -
@@ -253,9 +255,9 @@ const int kDefaultPageLimit = 20;
 
 - (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *invite))onSuccess onError:(ErrorBlock)onError {
     static NSString *pathFormat = @"quick_do.php?obj=message&cmd=info&mid=%d";
-    NSString *mPath = S(pathFormat, invite.messageId);
+    NSString *path = S(pathFormat, invite.messageId);
 
-    MKNetworkOperation *op = [self operationWithPath:mPath];
+    MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [invite setWithDictionary:completedOperation.responseJSON];
         onSuccess(invite);
@@ -264,6 +266,26 @@ const int kDefaultPageLimit = 20;
     }];
     [self enqueueOperation:op];
     return op;
+}
+
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    static NSString *pathFormat = @"quick_do.php?obj=message&cmd=%@&mid=%d";
+    NSString *cmd = @"accept_inv";
+    if (!accepted) {
+        cmd = @"decline_inv";
+    }
+
+    NSString *path = S(pathFormat, cmd, invite.messageId);
+    MKNetworkOperation *op = [self operationWithPath:path];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        [invite setWithDictionary:completedOperation.responseJSON];
+        onSuccess(invite);
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        onError(error);
+    }];
+    [self enqueueOperation:op];
+    return op;
+
 }
 
 - (NSOperation *)getSgfForGame:(Game *)game onSuccess:(void (^)(Game *game))onSuccess onError:(ErrorBlock)onError {
