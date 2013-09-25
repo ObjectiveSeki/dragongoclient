@@ -10,7 +10,7 @@
 
 @interface DGS ()
 // Re-declare some DGS private methods
-- (NSOrderedSet *)gamesFromCSV:(NSString *)csvData;
+- (NSDictionary *)gamesAndInvitesFromCSV:(NSString *)csvData;
 - (NSString *)sgfCoordsWithRow:(int)row column:(int)col boardSize:(int)boardSize;
 @end
 
@@ -20,7 +20,8 @@
 - (void)testParseQuickStatusGames {
     NSString *testData = [NSString stringWithContentsOfFile:TestFile(@"status", @"csv") encoding:NSUTF8StringEncoding error:NULL];
 	DGS *dgs = [[DGS alloc] init];
-	NSOrderedSet *games = [dgs gamesFromCSV:testData];
+    NSDictionary *gamesAndInvites = [dgs gamesAndInvitesFromCSV:testData];
+	NSOrderedSet *games = gamesAndInvites[@"games"];
 	NSUInteger expectedCount = 2;
 	STAssertEquals([games count], expectedCount, nil);
 	STAssertEqualObjects([games[0] opponent], @"pledan", nil);

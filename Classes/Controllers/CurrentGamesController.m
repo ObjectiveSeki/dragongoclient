@@ -11,9 +11,11 @@
 #import "ODRefreshControl.h"
 #import "SpinnerView.h"
 #import "GameViewController.h"
+#import "InviteViewController.h"
 #import "IBAlertView.h"
 #import "LoadingCell.h"
 #import "DGSPushServer.h"
+#import "Invite.h"
 
 @interface CurrentGamesController ()
 
@@ -181,6 +183,10 @@ typedef NS_ENUM(NSUInteger, GameSection) {
         Game *game = (Game *)sender;
         controller.game = game;
         controller.readOnly = !game.myTurn;
+    } else if ([segue.identifier isEqualToString:@"ShowInvite"]) {
+        InviteViewController *controller = segue.destinationViewController;
+        Invite *invite = (Invite *)sender;
+        controller.invite = invite;
     }
 }
 
@@ -250,16 +256,26 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (self.gameListTypeControl.selectedSegmentIndex == kGameSectionMyMove) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     GameList *selectedGameList = [self selectedGameList];
-    NSInteger count = [selectedGameList count];
-    if ([selectedGameList hasMorePages]) {
-        count += 1; // for the activity indicator
+
+    if (section == 0) {
+        NSInteger count = [selectedGameList count];
+        if ([selectedGameList hasMorePages]) {
+            count += 1; // for the activity indicator
+        }
+        return count;
+    } else {
+        //invites
+        return [selectedGameList inviteCount];
     }
-    return count;
 }
 
 - (Game *)gameForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -271,32 +287,50 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Game *game = [self gameForRowAtIndexPath:indexPath];
-    if (game) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
-        
-        if ([game color] == kMovePlayerBlack) {
-            [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
-        } else {
-            [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
-        }
-        cell.textLabel.text = game.opponent;
-        cell.detailTextLabel.text = game.time;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        return cell;
-    } else if ([self selectedGameList] == self.runningGames) {
-        LoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
-        [cell.activityIndicator startAnimating];
-        if (self.runningGames && !self.loadingNewRunningGamesPage) {
-            self.loadingNewRunningGamesPage = YES;
-            [self getMoreRunningGames];
-        }
-        return cell;
+- (Invite *)inviteForRowAtIndexPath:(NSIndexPath *)indexPath {
+    GameList *selectedGameList = [self selectedGameList];
+    if (indexPath.row < [selectedGameList.invites count]) {
+        return [selectedGameList.invites objectAtIndex:indexPath.row];
     } else {
-        NSAssert(false, @"Trying to show a loading cell for the main game list!");
         return nil;
     }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+    if (indexPath.section == 0) {
+        Game *game = [self gameForRowAtIndexPath:indexPath];
+        if (game) {
+
+            if ([game color] == kMovePlayerBlack) {
+                [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
+            } else {
+                [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
+            }
+            cell.textLabel.text = game.opponent;
+            cell.detailTextLabel.text = game.time;
+            return cell;
+        } else if ([self selectedGameList] == self.runningGames) {
+            LoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+            [cell.activityIndicator startAnimating];
+            if (self.runningGames && !self.loadingNewRunningGamesPage) {
+                self.loadingNewRunningGamesPage = YES;
+                [self getMoreRunningGames];
+            }
+        } else {
+            NSAssert(false, @"Trying to show a loading cell for the main game list!");
+            return nil;
+        }
+    } else {
+        //invites
+        Invite *invite = [self inviteForRowAtIndexPath:indexPath];
+        cell.textLabel.text = invite.opponent;
+        cell.detailTextLabel.text = @"Invite";
+    }
+
+    return cell;
 }
 
 #pragma mark -
@@ -305,21 +339,44 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [theTableView cellForRowAtIndexPath:indexPath];
     [self setEnabled:NO];
-    
-    UIActivityIndicatorView *activityView =
-    [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [activityView startAnimating];
-    [cell setAccessoryView:activityView];
-    
-    Game *game = [self gameForRowAtIndexPath:indexPath];
-    [[GenericGameServer sharedGameServer] getSgfForGame:game onSuccess:^(Game *game) {
-        [cell setAccessoryView:nil];
-        [self setEnabled:YES];
-        [self performSegueWithIdentifier:@"ShowGame" sender:game];
-    } onError:^(NSError *error) {
-        [cell setAccessoryView:nil];
-        [self setEnabled:YES];
-    }];
+
+    if (indexPath.section == 0) {
+        Game *game = [self gameForRowAtIndexPath:indexPath];
+        UIActivityIndicatorView *activityView =
+        [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [activityView startAnimating];
+        [cell setAccessoryView:activityView];
+        
+        [[GenericGameServer sharedGameServer] getSgfForGame:game onSuccess:^(Game *game) {
+            [cell setAccessoryView:nil];
+            [self setEnabled:YES];
+            [self performSegueWithIdentifier:@"ShowGame" sender:game];
+        } onError:^(NSError *error) {
+            [cell setAccessoryView:nil];
+            [self setEnabled:YES];
+        }];
+    } else {
+        //invite
+        Invite *i = [self inviteForRowAtIndexPath:indexPath];
+        [[GenericGameServer sharedGameServer] getInviteDetails:i onSuccess:^(Invite *invite) {
+            [cell setAccessoryView:nil];
+            [self setEnabled:YES];
+            [self performSegueWithIdentifier:@"ShowInvite" sender:invite];
+        } onError:^(NSError *error) {
+            [cell setAccessoryView:nil];
+            [self setEnabled:YES];
+        }];
+
+
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Games";
+    } else {
+        return @"Invitations";
+    }
 }
 
 #pragma mark -

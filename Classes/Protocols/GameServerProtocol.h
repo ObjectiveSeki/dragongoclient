@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 #import "NewGame.h"
 #import "Game.h"
+#import "Invite.h"
 #import "GameList.h"
 #import "MKNetworkOperation.h"
 
@@ -38,6 +39,7 @@ typedef void(^ErrorBlock)(NSError *error);
 - (NSOperation *)getRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)refreshRunningGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getSgfForGame:(Game *)game onSuccess:(GameBlock)onSuccess onError:(ErrorBlock)onError;
+- (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *invite))onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getWaitingRoomGames:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)addGamesToGameList:(GameList *)gameList onSuccess:(GameListBlock)onSuccess onError:(ErrorBlock)onError;
 - (NSOperation *)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(NewGameBlock)onSuccess onError:(ErrorBlock)onError;

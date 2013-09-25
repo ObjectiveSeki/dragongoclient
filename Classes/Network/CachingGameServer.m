@@ -214,6 +214,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return [self.gameServer joinWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }
 
+- (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *))onSuccess onError:(ErrorBlock)onError {
+    return [self.gameServer getInviteDetails:invite onSuccess:onSuccess onError:onError];
+}
+
 - (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }

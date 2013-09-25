@@ -87,6 +87,10 @@ typedef NS_ENUM(NSInteger, ByoYomiType) {
 @property(nonatomic, copy) NSString *komiTypeName;
 @property(nonatomic, assign) BOOL myGame;
 
+//used for when receiving an inviation
+@property (nonatomic, assign) BOOL playerColorBlack; // yes if the current user is black
+
+
 - (NSString *)ruleSetValue;
 
 // The komi type, in a form value that DGS understands
@@ -114,5 +118,7 @@ typedef NS_ENUM(NSInteger, ByoYomiType) {
 // Parsing functions from the JSON data
 - (NSString *)komiTypeNameFromValue:(NSString *)komiTypeValue;
 - (NSString *)boolNameFromValue:(BOOL)value;
+
+- (void)setWithDictionary:(NSDictionary *)dictionary;
 
 @end

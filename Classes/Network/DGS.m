@@ -8,6 +8,7 @@
 
 #import "DGS.h"
 #import "Player.h"
+#import "Invite.h"
 #import "DGSNetworkOperation.h"
 
 @implementation DGS
@@ -143,10 +144,14 @@ const int kDefaultPageLimit = 20;
 
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        NSOrderedSet *games = [self gamesFromCSV:completedOperation.responseString];
+        NSDictionary *gamesAndInvites = [self gamesAndInvitesFromCSV:completedOperation.responseString];
+        NSOrderedSet *games = gamesAndInvites[@"games"];
+        NSOrderedSet *invites = gamesAndInvites[@"invites"];
+
         MutableGameList *gameList = [[MutableGameList alloc] init];
         gameList.hasMorePages = NO;
         [gameList addGames:games];
+        [gameList addInvites:invites];
 		onSuccess(gameList);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
@@ -239,6 +244,21 @@ const int kDefaultPageLimit = 20;
     MKNetworkOperation *op = [self operationWithPath:S(deleteGameUrlFormat, gameId)];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         onSuccess();
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        onError(error);
+    }];
+    [self enqueueOperation:op];
+    return op;
+}
+
+- (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *invite))onSuccess onError:(ErrorBlock)onError {
+    static NSString *pathFormat = @"quick_do.php?obj=message&cmd=info&mid=%d";
+    NSString *mPath = S(pathFormat, invite.messageId);
+
+    MKNetworkOperation *op = [self operationWithPath:mPath];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        [invite setWithDictionary:completedOperation.responseJSON];
+        onSuccess(invite);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
     }];
@@ -417,9 +437,10 @@ const int kDefaultPageLimit = 20;
 
 // This takes the CSV data that the DGS API hands back to us and transforms
 // it into a list of Game objects.
-- (NSOrderedSet *)gamesFromCSV:(NSString *)csvData {
+- (NSDictionary *)gamesAndInvitesFromCSV:(NSString *)csvData {
 	NSArray *lines = [csvData componentsSeparatedByString:@"\n"];
     NSMutableOrderedSet *games = [NSMutableOrderedSet orderedSetWithCapacity:[lines count]];
+    NSMutableOrderedSet *invites = [NSMutableOrderedSet orderedSetWithCapacity:[lines count]];
 
 	for(NSString *line in lines) {
 		NSArray *cols = [line componentsSeparatedByString:@","];
@@ -431,7 +452,7 @@ const int kDefaultPageLimit = 20;
 
 			game.sgfPath = S(@"sgf.php?gid=%d&owned_comments=1&quick_mode=1&no_cache=1", game.gameId);
             game.webPath = S(@"game.php?gid=%d", game.gameId);
-            
+
 			if ([cols[3] isEqual:@"W"]) {
 				[game setColor:kMovePlayerWhite];
 			} else {
@@ -448,9 +469,18 @@ const int kDefaultPageLimit = 20;
             game.myTurn = YES; // Games from the status API are always my turn
 
 			[games addObject:game];
-		}
+		} else if([cols[0] isEqual:@"M"]) {
+            if(cols.count > 2 && [cols[3] isEqual:@"INVITATION"]) {
+                //we found an invite.
+                Invite *invite = [[Invite alloc] init];
+                invite.messageId = [cols[1] intValue];
+                NSString *opponentString = cols[4];
+                [invite setOpponent:[opponentString substringWithRange:NSMakeRange(1, [opponentString length] - 2)]];
+                [invites addObject:invite];
+            }
+        }
 	}
-	return games;
+	return @{@"games":games, @"invites":invites};
 }
 
 - (void)setCurrentPlayerFromDictionary:(NSDictionary *)userDataDictionary {
