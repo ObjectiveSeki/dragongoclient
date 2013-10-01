@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A584" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="J44-oY-mQ0">
     <dependencies>
-        <deployment version="1296" defaultVersion="1296" identifier="iOS"/>
+        <deployment version="1296" defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
@@ -56,7 +56,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Dragon Go Server" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="ntu-Bg-qRz">
-                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
+                                    <rect key="frame" x="20" y="24" width="280" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -185,6 +185,7 @@
                             <outlet property="delegate" destination="JvH-kK-J7v" id="p9n-BM-gVZ"/>
                         </connections>
                     </tableView>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="loginCell" destination="IWO-QA-I3Q" id="Cb0-uF-jgC"/>
                         <outlet property="passwordCell" destination="yhP-DE-u0n" id="OsF-EJ-jiW"/>
@@ -393,8 +394,8 @@
                                 </items>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.5" bouncesZoom="NO" id="xni-U3-1MX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="384"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="ak4-mZ-JDu" customClass="GoBoardView">
                                         <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
@@ -410,6 +411,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="8uJ-pY-6ja" id="PHG-U1-QHp"/>
                                 </connections>
