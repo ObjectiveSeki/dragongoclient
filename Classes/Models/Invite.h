@@ -13,7 +13,7 @@
 @interface Invite : NSObject <NSCoding>
 
 @property(nonatomic) int messageId;
-@property(nonatomic, copy) NSString * opponent;
+@property(nonatomic, copy) NSString * opponent; //handle, not full name or UID
 
 //filled after getInviteDetails is called
 @property(nonatomic, strong) NewGame *gameDetails;
