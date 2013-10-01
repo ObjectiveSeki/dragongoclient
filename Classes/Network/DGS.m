@@ -254,7 +254,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *invite))onSuccess onError:(ErrorBlock)onError {
-    static NSString *pathFormat = @"quick_do.php?obj=message&cmd=info&mid=%d";
+    static NSString *pathFormat = @"quick_do.php?obj=message&with=user_id&cmd=info&mid=%d";
     NSString *path = S(pathFormat, invite.messageId);
 
     MKNetworkOperation *op = [self operationWithPath:path];

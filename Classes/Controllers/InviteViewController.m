@@ -12,6 +12,9 @@
 
 @interface InviteViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *opponentNameCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *opponentRatingCell;
+
 @property (weak, nonatomic) IBOutlet UITableViewCell *boardSizeCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *handicapStonesCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *ratedCell;
@@ -44,7 +47,11 @@
 - (void)refreshData {
     self.title = [NSString stringWithFormat:@"Invite: %@", self.invite.opponent];
     NewGame *game = self.invite.gameDetails;
-    self.boardSizeCell.detailTextLabel.text = [NSString stringWithFormat:@"%d", game.boardSize];
+
+    self.opponentNameCell.detailTextLabel.text = game.opponent;
+    self.opponentRatingCell.detailTextLabel.text = game.opponentRating;
+
+    self.boardSizeCell.detailTextLabel.text = [NSString stringWithFormat:@"%dx%d", game.boardSize, game.boardSize];
     self.handicapStonesCell.detailTextLabel.text = [NSString stringWithFormat:@"%d", game.handicap];
     if (game.rated) {
         self.ratedCell.detailTextLabel.text = @"Yes";
