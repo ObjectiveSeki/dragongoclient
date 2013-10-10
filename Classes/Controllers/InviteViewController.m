@@ -59,10 +59,12 @@
         self.ratedCell.detailTextLabel.text = @"No";
     }
     self.timeCell.detailTextLabel.text = game.time;
-    if (game.playerColorBlack) {
+    if (game.color == kMovePlayerBlack) {
         self.colorCell.detailTextLabel.text = @"Black";
-    } else {
+    } else if (game.color == kMovePlayerWhite) {
         self.colorCell.detailTextLabel.text = @"White";
+    } else {
+        self.colorCell.detailTextLabel.text = @"Nigiri";
     }
 
     if (game.ruleSet == kRuleSetJapanese) {

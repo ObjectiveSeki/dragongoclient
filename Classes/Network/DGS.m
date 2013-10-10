@@ -42,8 +42,6 @@ const int kDefaultPageLimit = 20;
 - (id)init
 {
     return [self initWithHostName:@"www.dragongoserver.net" apiPath:nil customHeaderFields:[self defaultCustomHeaderFields]];
-    //return [self initWithHostName:@"dragongoserver.sourceforge.net" apiPath:nil customHeaderFields:[self defaultCustomHeaderFields]];
-
 }
 
 #pragma mark -

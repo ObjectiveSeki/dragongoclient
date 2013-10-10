@@ -17,6 +17,9 @@
 #import "DGSPushServer.h"
 #import "Invite.h"
 
+#define kSectionGames       0
+#define kSectionInvites     1
+
 @interface CurrentGamesController ()
 
 @property(nonatomic, copy) GameList *games;
@@ -300,7 +303,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-    if (indexPath.section == 0) {
+    if (indexPath.section == kSectionGames) {
         Game *game = [self gameForRowAtIndexPath:indexPath];
         if (game) {
 
@@ -340,7 +343,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     UITableViewCell *cell = [theTableView cellForRowAtIndexPath:indexPath];
     [self setEnabled:NO];
 
-    if (indexPath.section == 0) {
+    if (indexPath.section == kSectionGames) {
         Game *game = [self gameForRowAtIndexPath:indexPath];
         UIActivityIndicatorView *activityView =
         [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

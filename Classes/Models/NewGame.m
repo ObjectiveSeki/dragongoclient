@@ -315,9 +315,11 @@
     self.handicap = [dictionary[@"handicap"] intValue];
 
     if ([dictionary[@"calc_color"] isEqualToString:@"white"]) {
-        self.playerColorBlack = NO;
+        self.color = kMovePlayerWhite;
+    } else if ([dictionary[@"calc_color"] isEqualToString:@"white"]) {
+        self.color = kMovePlayerBlack;
     } else {
-        self.playerColorBlack = YES;
+        self.color = kMovePlayerNone;
     }
 }
 
