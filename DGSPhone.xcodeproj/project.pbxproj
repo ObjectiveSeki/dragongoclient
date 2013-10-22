@@ -96,6 +96,8 @@
 		DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAFED53815943E7700A2EE37 /* 25x25 Handicap Stones.sgf */; };
 		DAFF411216AA8AAB005A62FB /* DGSPushServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF411116AA8AAB005A62FB /* DGSPushServer.m */; };
 		DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */; };
+		FA4D2C0E17F34289007F280D /* Invite.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D2C0D17F34289007F280D /* Invite.m */; };
+		FA4D2C1117F3483B007F280D /* InviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D2C1017F3483B007F280D /* InviteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -252,6 +254,10 @@
 		DAFF411416AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ExtraDeviceDetails.h"; sourceTree = "<group>"; };
 		DAFF411516AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ExtraDeviceDetails.m"; sourceTree = "<group>"; };
 		EDC55FDA0F694568A87D9982 /* libPods-DGSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DGSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA4D2C0C17F34289007F280D /* Invite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invite.h; sourceTree = "<group>"; };
+		FA4D2C0D17F34289007F280D /* Invite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invite.m; sourceTree = "<group>"; };
+		FA4D2C0F17F3483B007F280D /* InviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteViewController.h; sourceTree = "<group>"; };
+		FA4D2C1017F3483B007F280D /* InviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,6 +458,8 @@
 				DA8E707B13D5337E007E569B /* GameList.m */,
 				DA391DDC1592CB2900F9E36F /* Player.h */,
 				DA391DDD1592CB2900F9E36F /* Player.m */,
+				FA4D2C0C17F34289007F280D /* Invite.h */,
+				FA4D2C0D17F34289007F280D /* Invite.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -473,6 +481,8 @@
 				DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */,
 				DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */,
 				DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */,
+				FA4D2C0F17F3483B007F280D /* InviteViewController.h */,
+				FA4D2C1017F3483B007F280D /* InviteViewController.m */,
 				DAF16E691799025500ADA4D1 /* AcknowledgementsViewController.h */,
 				DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */,
 			);
@@ -737,6 +747,7 @@
 				DA1341AB1292323300D2A4BF /* MessageView.m in Sources */,
 				DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */,
 				DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */,
+				FA4D2C1117F3483B007F280D /* InviteViewController.m in Sources */,
 				DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */,
 				DA0762B71377B678003E0390 /* DGSDev.m in Sources */,
 				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
@@ -748,6 +759,7 @@
 				DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */,
 				DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */,
 				DAFF411216AA8AAB005A62FB /* DGSPushServer.m in Sources */,
+				FA4D2C0E17F34289007F280D /* Invite.m in Sources */,
 				DAFF411616AA8E67005A62FB /* UIDevice+ExtraDeviceDetails.m in Sources */,
 				DAC7BDE616DDEFCE00F4562A /* DGSNetworkOperation.m in Sources */,
 				DA4BC705179517C900C74040 /* ExpandingLabelCell.m in Sources */,
