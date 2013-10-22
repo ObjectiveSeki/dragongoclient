@@ -115,6 +115,4 @@ typedef NS_ENUM(NSInteger, ByoYomiType) {
 - (NSString *)komiTypeNameFromValue:(NSString *)komiTypeValue;
 - (NSString *)boolNameFromValue:(BOOL)value;
 
-- (void)setWithDictionary:(NSDictionary *)dictionary;
-
 @end

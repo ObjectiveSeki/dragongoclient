@@ -292,11 +292,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 - (Invite *)inviteForRowAtIndexPath:(NSIndexPath *)indexPath {
     GameList *selectedGameList = [self selectedGameList];
-    if (indexPath.row < [selectedGameList.invites count]) {
-        return [selectedGameList.invites objectAtIndex:indexPath.row];
-    } else {
-        return nil;
-    }
+    return [selectedGameList.invites objectAtIndex:indexPath.row];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
