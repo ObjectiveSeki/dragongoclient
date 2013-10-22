@@ -251,13 +251,75 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
+- (void)setInviteDetails:(Invite *)invite withDictionary:(NSDictionary *)dictionary {
+    NSLog(@"Invite Details: %@", dictionary);
+    [self setNewGameDetails:invite.gameDetails withInviteDictionary:dictionary[@"game_settings"]];
+    //since this data is outside the game_settings dict, it could be put here or in the NewGame setWithDict.
+    NSDictionary *oppDict = dictionary[@"user_from"];
+    invite.gameDetails.opponent = oppDict[@"name"];
+    invite.gameDetails.opponentRating = oppDict[@"rating"];
+}
+
+- (void)setNewGameDetails:(NewGame *)game withInviteDictionary:(NSDictionary *)dictionary {
+    if ([dictionary[@"ruleset"] isEqualToString:@"JAPANESE"]) {
+        game.ruleSet = kRuleSetJapanese;
+    } else {
+        game.ruleSet = kRuleSetChinese;
+    }
+
+    game.boardSize = [dictionary[@"size"] intValue];
+    game.adjustedHandicap = [dictionary[@"adjust_handicap"] intValue];
+    game.minHandicap = [dictionary[@"min_handicap"] intValue];
+    game.maxHandicap = [dictionary[@"max_handicap"] intValue];
+
+    if ([dictionary[@"handicap_mode"] isEqualToString:@"STD"]) {
+        game.stdHandicap = YES;
+    } else {
+        game.stdHandicap = NO;
+    }
+
+    game.adjustedKomi = [dictionary[@"adjust_komi"] floatValue];
+    game.komi = [dictionary[@"komi"] floatValue];
+
+    if ([dictionary[@"jigo_mode"] isEqualToString:@"KEEP_KOMI"]) {
+        game.jigoMode = kJigoModeUnchanged;
+    } else if ([dictionary[@"jigo_mode"] isEqualToString:@"ALLOW_JIGO"]) {
+        game.jigoMode = kJigoModeYes;
+    } else {
+        game.jigoMode = kJigoModeNo;
+    }
+
+    if ([dictionary[@"time_mode"] isEqualToString:@"FIS"]) {
+        game.byoYomiType = kByoYomiTypeFischer;
+    } else if ([dictionary[@"time_mode"] isEqualToString:@"JAP"]) {
+        game.byoYomiType = kByoYomiTypeJapanese;
+    } else {
+        game.byoYomiType = kByoYomiTypeCanadian;
+    }
+
+    game.weekendClock = [dictionary[@"time_weekend_clock"] boolValue];
+    game.rated = [dictionary[@"rated"] boolValue];
+
+    game.time = dictionary[@"time_limit"];
+    game.handicap = [dictionary[@"handicap"] intValue];
+
+    if ([dictionary[@"calc_color"] isEqualToString:@"white"]) {
+        game.color = kMovePlayerWhite;
+    } else if ([dictionary[@"calc_color"] isEqualToString:@"white"]) {
+        game.color = kMovePlayerBlack;
+    } else {
+        game.color = kMovePlayerNone;
+    }
+}
+
+
 - (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *invite))onSuccess onError:(ErrorBlock)onError {
     static NSString *pathFormat = @"quick_do.php?obj=message&with=user_id&cmd=info&mid=%d";
     NSString *path = S(pathFormat, invite.messageId);
 
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        [invite setWithDictionary:completedOperation.responseJSON];
+        [self setInviteDetails:invite withDictionary:completedOperation.responseJSON];
         onSuccess(invite);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
@@ -276,7 +338,7 @@ const int kDefaultPageLimit = 20;
     NSString *path = S(pathFormat, cmd, invite.messageId);
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        [invite setWithDictionary:completedOperation.responseJSON];
+        [self setInviteDetails:invite withDictionary:completedOperation.responseJSON];
         onSuccess(invite);
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);

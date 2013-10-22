@@ -18,6 +18,4 @@
 //filled after getInviteDetails is called
 @property(nonatomic, strong) NewGame *gameDetails;
 
-- (void)setWithDictionary:(NSDictionary *)dictionary;
-
 @end
