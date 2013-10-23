@@ -3,6 +3,7 @@
 @interface GameList ()
 
 @property(nonatomic, copy) NSOrderedSet *games;
+@property(nonatomic, copy) NSOrderedSet *invites;
 @property(nonatomic, copy) NSString *pathFormat;
 @property(nonatomic) BOOL hasMorePages;
 @property(nonatomic) int offset;
@@ -17,10 +18,11 @@
 }
 
 - (id)initWithPathFormat:(NSString *)pathFormat {
-    return [self initWithGames:[[NSOrderedSet alloc] init] pathFormat:pathFormat hasMorePages:YES offset:0];
+    return [self initWithGames:[[NSOrderedSet alloc] init] invites:[[NSOrderedSet alloc] init] pathFormat:pathFormat hasMorePages:YES offset:0];
 }
 
 - (id)initWithGames:(NSOrderedSet *)games
+            invites:(NSOrderedSet *)invites
          pathFormat:(NSString *)pathFormat
        hasMorePages:(BOOL)hasMorePages
              offset:(int)offset;
@@ -28,6 +30,7 @@
     self = [super init];
     if (self) {
         _games = [games copy];
+        _invites = [invites copy];
         _pathFormat = [pathFormat copy];
         _hasMorePages = hasMorePages;
         _offset = offset;
@@ -41,6 +44,10 @@
 
 - (NSUInteger)count {
     return [self.games count];
+}
+
+- (NSUInteger)inviteCount {
+    return [self.invites count];
 }
 
 - (NSUInteger)hash {
@@ -72,6 +79,7 @@
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
     [encoder encodeObject:self.games forKey:@"games"];
+    [encoder encodeObject:self.invites forKey:@"invites"];
     [encoder encodeObject:self.pathFormat forKey:@"pathFormat"];
     [encoder encodeBool:self.hasMorePages forKey:@"hasMorePages"];
     [encoder encodeInt:self.offset forKey:@"offset"];
@@ -79,6 +87,7 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     return [self initWithGames:[decoder decodeObjectForKey:@"games"]
+                       invites:[decoder decodeObjectForKey:@"invites"]
                     pathFormat:[decoder decodeObjectForKey:@"pathFormat"]
                   hasMorePages:[decoder decodeBoolForKey:@"hasMorePages"]
                         offset:[decoder decodeIntForKey:@"offset"]];
@@ -102,8 +111,23 @@
     self.games = mutableGames;
 }
 
+- (void)removeInvite:(Invite *)invite {
+    NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
+    [mutableInvites removeObject:invite];
+    self.invites = mutableInvites;
+}
+
+
+- (void)addInvites:(NSOrderedSet *)moreInvites {
+    NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
+    [mutableInvites unionOrderedSet:moreInvites];
+    self.invites = mutableInvites;
+}
+
+
 - (id)copyWithZone:(NSZone *)zone {
     return [[GameList allocWithZone:zone] initWithGames:self.games
+                                                invites:self.invites
                                              pathFormat:self.pathFormat
                                            hasMorePages:self.hasMorePages
                                                  offset:self.offset];

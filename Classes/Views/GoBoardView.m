@@ -313,7 +313,7 @@
 	// we need to make a guess first, then calculate the actual margins based on the
 	// point distance we calculate. The reason these are different are due to rounding 
 	// errors when we snap the board distance to device pixels.
-	_marginX = 50;
+	_marginX = 30;
 	self.pointDistance = 2 * round((float)([self maxX] - [self minX]) / (self.board.size - 1) / 2.0);
 	_marginX = (self.bounds.size.width - (self.pointDistance * (self.board.size - 1))) / 2.0;
 	_marginY = (self.bounds.size.height - (self.pointDistance * (self.board.size - 1))) / 2.0;

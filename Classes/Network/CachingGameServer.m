@@ -89,6 +89,31 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }
 }
 
+- (void)removeInviteFromList:(Invite *)invite {
+    MutableGameList *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
+
+    if (changedGameList) {
+        [changedGameList removeInvite:invite];
+
+        // Refresh the TTL, so we don't have to hit the server again soon
+        [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
+
+        // We can't do all of the timing calculations client-side, so we'll just
+        // have to invalidate the entire running game list.
+        [self.cache removeObjectForKey:kRunningGameListKey];
+    }
+}
+
+- (void)addInviteBackToInviteList:(Invite *)invite {
+    MutableGameList *changedGameList = [[self.cache objectForKey:kGameListKey] mutableCopy];
+
+    if (changedGameList) {
+        [changedGameList addInvites:[NSOrderedSet orderedSetWithObject:invite]];
+
+        [self.cache setObject:changedGameList forKey:kGameListKey ttl:kDefaultTTL];
+    }
+}
+
 - (void)invalidateGameLists {
     [self.cache removeObjectForKey:kRunningGameListKey];
     [self.cache removeObjectForKey:kGameListKey];
@@ -188,6 +213,18 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return [self.gameServer loginWithUsername:username password:password onSuccess:onSuccess onError:onError];
 }
 
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+    NSOperation *op = [self.gameServer answerInvite:invite accepted:accepted onSuccess:onSuccess onError:^(NSError *error) {
+        [self addInviteBackToInviteList:invite];
+        onError(error);
+    }];
+
+    [self removeInviteFromList:invite];
+
+    onSuccess(); //cheat and call it right away for speed
+    return op;
+}
+
 // These are all proxied directly to the game server without changes
 #pragma mark - Game Server proxied methods
 
@@ -212,6 +249,10 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 }
 - (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer joinWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
+}
+
+- (NSOperation *)getInviteDetails:(Invite *)invite onSuccess:(void (^)(Invite *))onSuccess onError:(ErrorBlock)onError {
+    return [self.gameServer getInviteDetails:invite onSuccess:onSuccess onError:onError];
 }
 
 - (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {

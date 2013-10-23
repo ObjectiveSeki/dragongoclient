@@ -21,6 +21,7 @@
 - (id)init
 {
     return [self initWithHostName:@"localhost" apiPath:@"~jweiss/DragonGoServer" customHeaderFields:[self defaultCustomHeaderFields]];
+    //return [self initWithHostName:@"dragongoserver.sourceforge.net" apiPath:nil customHeaderFields:[self defaultCustomHeaderFields]];
 }
 
 
