@@ -8,15 +8,15 @@
 //
 
 #import "FuegoBoard.h"
-#import "SgSystem.h"
-#import "SgNode.h"
-#import "GoGame.h"
-#import "SgInit.h"
-#import "GoInit.h"
-#import "SgGameReader.h"
-#import "GoModBoard.h"
-#import "GoRegionBoard.h"
-#import "GoBlock.h"
+#import <fuego/SgSystem.h>
+#import <fuego/SgNode.h>
+#import <fuego/GoGame.h>
+#import <fuego/SgInit.h>
+#import <fuego/GoInit.h>
+#import <fuego/SgGameReader.h>
+#import <fuego/GoModBoard.h>
+#import <fuego/GoRegionBoard.h>
+#import <fuego/GoBlock.h>
 #include <sstream>
 
 static bool fuegoInitialized = NO;
