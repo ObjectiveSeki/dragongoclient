@@ -104,13 +104,14 @@
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSPhoneAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* DGSBeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGSBeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27F4A14B172931B03961B33B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		285012647373D7A86275D233 /* Pods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.adhoc.xcconfig; path = "Pods/Target Support Files/Pods/Pods.adhoc.xcconfig"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8BF2422AA37640AC84A2C071 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		C259A1E2D64B4A8CABF15401 /* Pods-DGSTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGSTests.xcconfig"; path = "Pods/Pods-DGSTests.xcconfig"; sourceTree = SOURCE_ROOT; };
-		CE40383ED0524204AD9559A1 /* Pods.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		BEF139BB88D21B142BCB0839 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
 		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
 		DA02D14B11D99D7600A9D887 /* TableCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellFactory.h; sourceTree = "<group>"; };
@@ -174,7 +175,6 @@
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
-		DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Adhoc.xcconfig; sourceTree = "<group>"; };
 		DA77A94F13B2F47200803136 /* libz.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DA77A95313B2F67B00803136 /* libxml2.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		DA8366CD11DC3606001A68F9 /* SelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCell.h; sourceTree = "<group>"; };
@@ -219,8 +219,6 @@
 		DADD1CE111FD3C43005922A3 /* FAQ.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ.md; sourceTree = "<group>"; };
 		DAE0D24A13BAD41A00668CB2 /* NewGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGameViewController.h; sourceTree = "<group>"; };
 		DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGameViewController.m; sourceTree = "<group>"; };
-		DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DAE932A912454A2900335F0F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DAE932B512454B4200335F0F /* Developer.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Developer.md; sourceTree = "<group>"; };
 		DAE932C012454E4800335F0F /* AddGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGameViewController.h; sourceTree = "<group>"; };
@@ -309,9 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				DAEE341C15884ECA00300B29 /* Podfile */,
-				DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */,
-				DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */,
-				DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */,
 				DADD1CE111FD3C43005922A3 /* FAQ.md */,
 				DADD1CDD11FD3C0B005922A3 /* Readme.md */,
 				DAE932B512454B4200335F0F /* Developer.md */,
@@ -322,8 +317,7 @@
 				DA65D69F169820E500AB9FC7 /* DGSTests */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				CE40383ED0524204AD9559A1 /* Pods.xcconfig */,
-				C259A1E2D64B4A8CABF15401 /* Pods-DGSTests.xcconfig */,
+				A2E612397B4D91D5631D4207 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -376,6 +370,16 @@
 				EDC55FDA0F694568A87D9982 /* libPods-DGSTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2E612397B4D91D5631D4207 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BEF139BB88D21B142BCB0839 /* Pods.debug.xcconfig */,
+				285012647373D7A86275D233 /* Pods.adhoc.xcconfig */,
+				27F4A14B172931B03961B33B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		DA02D14A11D99D3900A9D887 /* Table Cells */ = {
@@ -600,6 +604,7 @@
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				DA0E103D140F240D0067BE35 /* ShellScript */,
 				5D26EC3E623C439DB6718EC6 /* Copy Pods Resources */,
+				863F578AC81989405C363F53 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -616,7 +621,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Justin Weiss";
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DGSPhone" */;
@@ -706,7 +711,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+		};
+		863F578AC81989405C363F53 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		DA0E103D140F240D0067BE35 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -783,7 +803,7 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAE2EB3E140DFB0700CDA926 /* Debug.xcconfig */;
+			baseConfigurationReference = BEF139BB88D21B142BCB0839 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -791,25 +811,33 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"CONFIGURATION_$(CONFIGURATION)",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGSBeta;
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAE2EB3B140DF94E00CDA926 /* Release.xcconfig */;
+			baseConfigurationReference = 27F4A14B172931B03961B33B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"CONFIGURATION_$(CONFIGURATION)",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGS;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -818,11 +846,8 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
@@ -839,10 +864,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss (SB3AKTYGF8)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -864,10 +885,6 @@
 		DA667DC0125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					"$(ARCHS_STANDARD_32_BIT)",
-					armv6,
-				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
@@ -883,16 +900,20 @@
 		};
 		DA667DC1125AE40300CA9A13 /* Adhoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA75BD43140DF86400C0E72D /* Adhoc.xcconfig */;
+			baseConfigurationReference = 285012647373D7A86275D233 /* Pods.adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = "CONFIGURATION_$(CONFIGURATION)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"CONFIGURATION_$(CONFIGURATION)",
+				);
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGSBeta;
 				VALIDATE_PRODUCT = YES;
 			};
