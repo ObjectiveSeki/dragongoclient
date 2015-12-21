@@ -102,26 +102,26 @@
 - (void)removeGame:(Game *)game {
     NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
     [mutableGames removeObject:game];
-    self.games = mutableGames;
+    _games = mutableGames;
 }
 
 - (void)addGames:(NSOrderedSet *)moreGames {
     NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
     [mutableGames unionOrderedSet:moreGames];
-    self.games = mutableGames;
+    _games = mutableGames;
 }
 
 - (void)removeInvite:(Invite *)invite {
     NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
     [mutableInvites removeObject:invite];
-    self.invites = mutableInvites;
+    _invites = mutableInvites;
 }
 
 
 - (void)addInvites:(NSOrderedSet *)moreInvites {
     NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
     [mutableInvites unionOrderedSet:moreInvites];
-    self.invites = mutableInvites;
+    _invites = mutableInvites;
 }
 
 
