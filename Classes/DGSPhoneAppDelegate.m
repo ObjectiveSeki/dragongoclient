@@ -37,12 +37,6 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 	[FuegoBoard initFuego];
     self.receivedRemoteNotification = NO;
     
-#ifdef TESTFLIGHT_UUID_TRACKING
-    TF([TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]]);
-#endif
-    
-    TF([TestFlight takeOff:TESTFLIGHT_APP_TOKEN]);
-
 	NSLog(@"Starting Application...");
     NSDictionary *notificationUserInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
     if (notificationUserInfo) {

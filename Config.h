@@ -1,6 +1,5 @@
 
 #ifdef __OBJC__
-    #import "TestFlight.h"
     #import "Keys.h"
 #endif
 
@@ -44,17 +43,6 @@
 #   define GenericGameServer CachingGameServer
 #else
 #   define GenericGameServer NSClassFromString(SERVER_CLASS)
-#endif
-
-// Wrap TestFlight calls in TF() to only call them when TestFlight keys are set
-#ifdef TESTFLIGHT_APP_TOKEN
-#   define TF(testflight_call) { (testflight_call); }
-#   ifdef REMOTE_LOGGING
-#       define NSLog(__FORMAT__, ...) TFLog((@"%s [Line %d] " __FORMAT__), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-#   endif
-#else
-#   warning You must define TestFlight app tokens in Keys.h to get TestFlight functionality.
-#   define TF(...)
 #endif
 
 #if defined (CONFIGURATION_Release)
