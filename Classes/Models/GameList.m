@@ -130,7 +130,7 @@
 // confident these are needed, and when I have tests up and running, I'd like
 // to add some tests to see one way or the other. These are an effort to
 // correctly respond to the compiler warnings I'm seeing, but they might be
-// superfluous.
+// superfluous.)
 
 - (void)setPathFormat:(NSString *)pathFormat {
     _pathFormat = pathFormat;
