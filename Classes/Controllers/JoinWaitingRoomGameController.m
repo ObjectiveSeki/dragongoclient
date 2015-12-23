@@ -1,6 +1,5 @@
 
 #import "JoinWaitingRoomGameController.h"
-#import "IBAlertView.h"
 #import "SpinnerView.h"
 #import "ExpandingLabelCell.h"
 
@@ -152,17 +151,33 @@
     if (![self isPropertyCell:indexPath.section]) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (self.game.myGame) {
-            [IBAlertView showAlertWithTitle:@"Delete?" message:@"Are you sure you want to delete this game from the server?" dismissTitle:@"Don't delete" okTitle:@"Delete" dismissBlock:^{
-            } okBlock:^{
-                self.spinner.label.text = @"Deleting…";
-                [self.spinner show];
-                [[GenericGameServer sharedGameServer] deleteWaitingRoomGame:self.game.gameId onSuccess:^() {
-                    [self.spinner dismiss:YES];
-                    [self.navigationController popViewControllerAnimated:YES];
-                } onError:^(NSError *error) {
-                    [self.spinner dismiss:YES];
-                }];
-            }];
+            UIAlertController *confirmDeleteAlert =
+            [UIAlertController alertControllerWithTitle:@"Delete?"
+                                                message:@"Are you sure you want to delete this game from the server?"
+                                         preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *noDeleteAction =
+            [UIAlertAction actionWithTitle:@"Don't delete"
+                                     style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction * action) {}];
+            [confirmDeleteAlert addAction:noDeleteAction];
+            
+            UIAlertAction *deleteAction =
+            [UIAlertAction actionWithTitle:@"Delete"
+                                     style:UIAlertActionStyleDestructive
+                                   handler:^(UIAlertAction * action) {
+                                       self.spinner.label.text = @"Deleting…";
+                                       [self.spinner show];
+                                       [[GenericGameServer sharedGameServer] deleteWaitingRoomGame:self.game.gameId onSuccess:^() {
+                                           [self.spinner dismiss:YES];
+                                           [self.navigationController popViewControllerAnimated:YES];
+                                       } onError:^(NSError *error) {
+                                           [self.spinner dismiss:YES];
+                                       }];
+                                   }];
+            [confirmDeleteAlert addAction:deleteAction];
+            
+            [self presentViewController:confirmDeleteAlert animated:YES completion:nil];
         } else {
             self.spinner.label.text = @"Joining…";
             [[GenericGameServer sharedGameServer] joinWaitingRoomGame:self.game.gameId onSuccess:^{
