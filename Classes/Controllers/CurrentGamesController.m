@@ -160,7 +160,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
                                                                   preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction *noLogoutAction = [UIAlertAction actionWithTitle:@"Don't logout"
-                                                             style:UIAlertActionStyleDefault
+                                                             style:UIAlertActionStyleCancel
                                                            handler:^(UIAlertAction * action) {
         // do nothing
     }];

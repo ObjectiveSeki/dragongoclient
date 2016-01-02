@@ -158,7 +158,7 @@
             
             UIAlertAction *noDeleteAction =
             [UIAlertAction actionWithTitle:@"Don't delete"
-                                     style:UIAlertActionStyleDefault
+                                     style:UIAlertActionStyleCancel
                                    handler:^(UIAlertAction * action) {}];
             [confirmDeleteAlert addAction:noDeleteAction];
             

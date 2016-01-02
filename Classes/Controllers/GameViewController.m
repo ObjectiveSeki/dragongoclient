@@ -95,7 +95,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         
         UIAlertAction *noOpenAction =
             [UIAlertAction actionWithTitle:@"Don't Open"
-                                     style:UIAlertActionStyleDefault
+                                     style:UIAlertActionStyleCancel
                                    handler:^(UIAlertAction * action) {
                                        [self.navigationController popViewControllerAnimated:YES];
                                    }];
