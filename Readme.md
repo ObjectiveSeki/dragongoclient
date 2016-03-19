@@ -9,7 +9,7 @@ is a place where people around the world can get together
 and play the game of Go. Dragon Go Client is the fast, simple
 way to catch up on your games on the iPhone.
 
-<img src="https://dgs.uberweiss.net/assets/iPhone.png">
+<img src="https://dgs.uberweiss.net/assets/iPhone.png" width="352" height="805">
 
 Features
 --------
