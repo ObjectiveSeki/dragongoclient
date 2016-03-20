@@ -1,5 +1,5 @@
 PODS:
-  - boost-framework (1.51.0)
+  - boost-framework (1.58.0)
   - fuego-framework (1.1)
   - GDataXML-HTML (1.0.0)
   - MKNetworkKit (0.87):
@@ -21,8 +21,8 @@ EXTERNAL SOURCES:
     :podspec: fuego-framework.podspec
 
 SPEC CHECKSUMS:
-  boost-framework: 191ccc21b8ae4424de2e2d4aee7964ec116af0fb
-  fuego-framework: 59741807a0d8e1e549e7b11362eb499fdffc9f84
+  boost-framework: cd0897a93bb5f0928c9c8537d044bd0f2d4465b1
+  fuego-framework: 4cd5779cba6967b9c9d865054173234fb3a329d2
   GDataXML-HTML: 40fb2f0ddb189d5a7c8c141a521a75e993bc3dfc
   MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
   ODRefreshControl: 907e6149d72dde488d5917ccfabee5bd8d711a20

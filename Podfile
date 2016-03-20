@@ -1,4 +1,4 @@
-platform :ios, :deployment_target => "9.2"
+platform :ios, :deployment_target => "8.0"
 xcodeproj 'DGSPhone.xcodeproj'
 
 pod 'GDataXML-HTML', '~> 1.0.0'

@@ -171,7 +171,6 @@
 		DA6F94FA11FAA0670093751D /* SpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerView.h; sourceTree = "<group>"; };
 		DA6F94FB11FAA0670093751D /* SpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerView.m; sourceTree = "<group>"; };
 		DA71CAA311B5EA50008696AC /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		DA7510D61696C96E009BF0E6 /* Keys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
 		DA7541C711EF581A00BF0443 /* Multiple Scoring Passes.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Multiple Scoring Passes.sgf"; sourceTree = "<group>"; };
 		DA7542E011F01DEE00BF0443 /* Start Handicap Game.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Start Handicap Game.sgf"; sourceTree = "<group>"; };
 		DA7542F011F01FC100BF0443 /* Handicap Stones Placed.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Handicap Stones Placed.sgf"; sourceTree = "<group>"; };
@@ -327,7 +326,6 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				DA7510D61696C96E009BF0E6 /* Keys.h */,
 				DA65D6E416982C3600AB9FC7 /* Config.h */,
 			);
 			name = "Other Sources";
@@ -808,6 +806,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
@@ -815,8 +814,10 @@
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGSBeta;
@@ -829,14 +830,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGS;
 				VALIDATE_PRODUCT = YES;
@@ -848,9 +852,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -865,19 +867,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Justin Weiss (SB3AKTYGF8)";
-				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					NS_BLOCK_ASSERTIONS,
 					NDEBUG,
 				);
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "B066B920-9B63-49AF-9ABA-4810AA46A781";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -886,9 +886,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -905,14 +903,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
 				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGSBeta;
 				VALIDATE_PRODUCT = YES;

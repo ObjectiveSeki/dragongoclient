@@ -3,7 +3,7 @@
 # in the git repo when I updated it).
 Pod::Spec.new do |s|
   s.name               =  'boost-framework'
-  s.version            =  '1.51.0'
+  s.version            =  '1.58.0'
   s.license            =  {:type => 'Boost Software License - Version 1.0', :text => <<END
 Boost Software License - Version 1.0 - August 17th, 2003
 
@@ -35,7 +35,7 @@ END
   s.author             =  'Rene Rivera'
 
   s.source             = { :http => 'https://s3.amazonaws.com/justinweiss/boost.framework.zip' }
-  s.platform           = :ios, '5.0'
+  s.platform           = :ios, '8.0'
 
   s.ios.xcconfig       =  { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/boost-framework"' }
   s.ios.preserve_paths =  'boost.framework'

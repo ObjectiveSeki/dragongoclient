@@ -59,9 +59,8 @@ const int kDefaultPageLimit = 20;
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         NSLog(@"%@", completedOperation.url);
         NSLog(@"%@", completedOperation.responseString);
-        DGSNetworkOperation *dgsOperation = (DGSNetworkOperation *)completedOperation;
         if (error.domain == kDGSErrorDomain && error.code == kDGSErrorCodeLoginError) {
-            NSLog(@"Not logged in during request: %@", dgsOperation.readonlyRequest.URL);
+            NSLog(@"Not logged in during request: %@", completedOperation.readonlyRequest.URL);
             Player *oldPlayer = [Player currentPlayer];
             [self resetUserData];
             [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:oldPlayer];

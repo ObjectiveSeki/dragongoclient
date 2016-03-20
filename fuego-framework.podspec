@@ -177,7 +177,7 @@ END
   s.author             =  'The Computer Go Group'
 
   s.source             = { :http => 'https://s3.amazonaws.com/justinweiss/fuego.framework.zip' }
-  s.platform           = :ios, '5.0'
+  s.platform           = :ios, '8.0'
 
   s.ios.frameworks          =  'boost', 'fuego'
   s.ios.public_header_files =  "fuego.framework/Headers/*.h"

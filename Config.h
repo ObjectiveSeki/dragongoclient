@@ -1,8 +1,3 @@
-
-#ifdef __OBJC__
-    #import "Keys.h"
-#endif
-
 #define CACHING 1
 
 #if defined (CONFIGURATION_Debug)

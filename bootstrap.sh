@@ -14,6 +14,7 @@ if [ ! -d DGSPhone.xcworkspace ]; then
     ${CMD_PREFIX} gem install bundler
     bundle install --path=~/.bundle
     bundle exec pod setup
+    bundle exec pod cache clean --all
     bundle exec pod install
 else
     bundle exec pod install
