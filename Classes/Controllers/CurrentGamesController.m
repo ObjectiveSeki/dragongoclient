@@ -12,7 +12,6 @@
 #import "SpinnerView.h"
 #import "GameViewController.h"
 #import "InviteViewController.h"
-#import "IBAlertView.h"
 #import "LoadingCell.h"
 #import "DGSPushServer.h"
 #import "Invite.h"
@@ -156,9 +155,20 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (IBAction)logout {
-    [IBAlertView showAlertWithTitle:@"Logout?" message:@"Are you sure you want to logout from the Dragon Go Server?" dismissTitle:@"Don't logout" okTitle:@"Logout" dismissBlock:^{
+    UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"Logout?"
+                                                                         message:@"Are you sure you want to logout from the Dragon Go Server?"
+                                                                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *noLogoutAction = [UIAlertAction actionWithTitle:@"Don't logout"
+                                                             style:UIAlertActionStyleCancel
+                                                           handler:^(UIAlertAction * action) {
         // do nothing
-    } okBlock:^{
+    }];
+    [logoutAlert addAction:noLogoutAction];
+
+    UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:@"Logout"
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction * action) {
         [self setEnabled:NO];
         self.spinner.label.text = @"Logging out…";
         [self.spinner show];
@@ -167,6 +177,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
             [self.spinner dismiss:YES];
         }];
     }];
+    [logoutAlert addAction:logoutAction];
+    
+    [self presentViewController:logoutAlert animated:YES completion:nil];
 }
 
 - (IBAction)gameListTypeChanged:(id)sender {

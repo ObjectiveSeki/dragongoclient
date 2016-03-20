@@ -179,8 +179,8 @@ END
   s.source             = { :http => 'https://s3.amazonaws.com/justinweiss/fuego.framework.zip' }
   s.platform           = :ios, '5.0'
 
-  s.ios.frameworks     =  'boost', 'fuego'
-  s.ios.source_files   =  "fuego.framework/Versions/A/Headers/*.h"
-  s.ios.xcconfig       =  { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/fuego-framework"' }
-  s.ios.preserve_paths =  'fuego.framework'
+  s.ios.frameworks          =  'boost', 'fuego'
+  s.ios.public_header_files =  "fuego.framework/Headers/*.h"
+  s.ios.xcconfig            =  { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/fuego-framework"' }
+  s.ios.preserve_paths      =  'fuego.framework'
 end
