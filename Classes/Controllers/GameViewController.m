@@ -145,9 +145,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)updateNavigationBar {
-    NSLog(@"Here!");
     if ([self.board canUndo]) {
-        NSLog(@"Adding undo button: %@", [self undoButton]);
 		[self.navigationItem setRightBarButtonItem:[self undoButton] animated:YES];
 	} else if (self.boardState == kBoardStateZoomedIn) {
         [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
@@ -305,7 +303,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (IBAction)undoMove {
-    NSLog(@"Undoing last move");
 	[self.board undoLastMove];
 	[self updateUI];
 }
@@ -442,8 +439,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         
         BOOL isZoomedIn = [self isSmallBoard] || self.boardState == kBoardStateZoomedIn;
         BOOL canPlayOrMarkStones = !self.readOnly && canPlaceStones && isZoomedIn;
-        
-        NSLog(@"Zoom State: %d %d %d %d %d %ld", [self.board canPlayMove], [self.board gameEnded], [self.board beforeCurrentMove], self.readOnly, [self isSmallBoard], (long)self.boardState);
         
         if (shouldZoomIn) {
             [self zoomIn:[sender locationInView:self.boardView]];

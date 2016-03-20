@@ -5,14 +5,7 @@
 #import <Foundation/Foundation.h>
 @class Game;
 
-@interface GameList : NSObject <NSCoding, NSCopying, NSMutableCopying> {
-@protected
-    NSOrderedSet *_games;
-    NSOrderedSet *_invites;
-    NSString *_pathFormat;
-    BOOL _hasMorePages;
-    int _offset;
-}
+@interface GameList : NSObject <NSCoding, NSCopying, NSMutableCopying>
 
 @property(nonatomic, copy, readonly) NSOrderedSet *games;
 @property(nonatomic, copy, readonly) NSOrderedSet *invites;
@@ -40,7 +33,6 @@
 
 @property(nonatomic, copy) NSOrderedSet *games;
 @property(nonatomic, copy) NSOrderedSet *invites;
-
 @property(nonatomic, copy) NSString *pathFormat;
 @property(nonatomic) BOOL hasMorePages;
 @property(nonatomic) int offset;

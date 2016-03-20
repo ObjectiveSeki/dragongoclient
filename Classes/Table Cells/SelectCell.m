@@ -65,7 +65,7 @@
         self.picker.delegate = self;
         
         for(int i = 0; i < [self.selectedOptions count]; i++) {
-            int row = (int)[(self.options)[i] indexOfObject:(self.selectedOptions)[i]];
+            NSUInteger row = [(self.options)[i] indexOfObject:(self.selectedOptions)[i]];
             [self.picker selectRow:row inComponent:i animated:NO];
         }
     }

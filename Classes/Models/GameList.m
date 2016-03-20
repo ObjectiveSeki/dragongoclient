@@ -101,47 +101,29 @@
 
 @dynamic games, invites, pathFormat, hasMorePages, offset;
 
+
 - (void)removeGame:(Game *)game {
     NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
     [mutableGames removeObject:game];
-    _games = mutableGames;
+    self.games = mutableGames;
 }
 
 - (void)addGames:(NSOrderedSet *)moreGames {
     NSMutableOrderedSet *mutableGames = [self.games mutableCopy];
     [mutableGames unionOrderedSet:moreGames];
-    _games = mutableGames;
+    self.games = mutableGames;
 }
 
 - (void)removeInvite:(Invite *)invite {
     NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
     [mutableInvites removeObject:invite];
-    _invites = mutableInvites;
+    self.invites = mutableInvites;
 }
 
 - (void)addInvites:(NSOrderedSet *)moreInvites {
     NSMutableOrderedSet *mutableInvites = [self.invites mutableCopy];
     [mutableInvites unionOrderedSet:moreInvites];
-    _invites = mutableInvites;
-}
-
-// Adding implementations of setters since these properties are synthesized
-// in the superclass, where they are declared as readonly. (NOTE: I'm not
-// confident these are needed, and when I have tests up and running, I'd like
-// to add some tests to see one way or the other. These are an effort to
-// correctly respond to the compiler warnings I'm seeing, but they might be
-// superfluous.)
-
-- (void)setPathFormat:(NSString *)pathFormat {
-    _pathFormat = pathFormat;
-}
-
-- (void)setHasMorePages:(BOOL)hasMorePages {
-    _hasMorePages = hasMorePages;
-}
-
-- (void)setOffset:(int)offset {
-    _offset = offset;
+    self.invites = mutableInvites;
 }
 
 - (id)copyWithZone:(NSZone *)zone {

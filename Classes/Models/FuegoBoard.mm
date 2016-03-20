@@ -462,7 +462,6 @@ static bool fuegoInitialized = NO;
 }
 
 - (BOOL)canUndo {
-    NSLog(@"Undo state: %d %d %@ %d", [self beforeCurrentMove], [self gameEnded], [self resignMove], [self atCurrentMove]);
     if ([self beforeCurrentMove]) {
         return NO;
     } else if ([self gameEnded] && [[self changedGroups] count] > 0) {

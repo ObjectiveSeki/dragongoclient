@@ -122,7 +122,6 @@
 - (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
     static NSString *updateDeviceTokenPathFormat = @"players/%@/devices/%@.json";
     NSNumber *deviceId = [self deviceId];
-    NSLog(@"apns token: %@", [token description]);
 
     if (deviceId) {
         NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[encoded_device_token]", nil];

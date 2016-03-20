@@ -289,8 +289,6 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    NSLog(@"BoardView layoutSubviews");
-    NSLog(@"BoardView blackName %@", self.blackName);
     NSAssert(self.board, @"The board went away.");
     self.layer.masksToBounds = NO;
     self.layer.shadowOpacity = 0.6;
@@ -302,9 +300,6 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    NSLog(@"BoardView drawRect");
-    NSLog(@"BoardView blackName %@", self.blackName);
-    NSLog(@"Board: %@", self.board);
     // Make sure the board view doesn't go away. This should never happen!
     NSAssert(self.board, @"The board went away.");
     NSAssert(self.blackName, @"Lost the reference to blackName.");
@@ -333,7 +328,6 @@
 }
 
 - (bool)playStoneAtPoint:(CGPoint)point {
-    NSLog(@"Here!");
 	CGPoint boardPoint = [self boardPositionForPoint:point];
 	return [self.board playStoneAtRow:(int)boardPoint.y column:(int)boardPoint.x];
 }
