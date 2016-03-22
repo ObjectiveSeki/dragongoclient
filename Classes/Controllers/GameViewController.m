@@ -473,14 +473,4 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
     // Release any cached data, images, etc that aren't in use.
 }
-
-- (void)viewDidUnload {
-    NSLog(@"viewDidUnload called");
-    [self setPreviousMoveButton:nil];
-    [self setNextMoveButton:nil];
-    [self setPreviousMoveButton:nil];
-    [self setToolbar:nil];
-    [self setShareButton:nil];
-    [super viewDidUnload];
-}
 @end

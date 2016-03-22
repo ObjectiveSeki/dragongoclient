@@ -57,9 +57,4 @@
     [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
-
-- (void)viewDidUnload {
-    [self setWebView:nil];
-    [super viewDidUnload];
-}
 @end

@@ -391,11 +391,4 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-    [self setGameListTypeControl:nil];
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-	self.logoutButton = nil;
-}
-
 @end
