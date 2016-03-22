@@ -48,7 +48,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportMemoryLow) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     
-    [self registerForRemoteNotifications];
+    [self setupRemoteNotifications];
     
     if (!self.receivedRemoteNotification) {
         NSLog(@"Checking for outstanding moves...");
@@ -168,7 +168,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 }
 
 - (void)dismissLogin {
-    [self registerForRemoteNotifications];
+    [self setupRemoteNotifications];
     [self.loginController dismissViewControllerAnimated:YES completion:^{}];
     self.loginController = nil;
 }
@@ -176,8 +176,8 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 
 #pragma mark - Push notifications
 
-- (void)registerForRemoteNotifications {
-    [[DGSPushServer sharedPushServer] registerForRemoteNotifications];
+- (void)setupRemoteNotifications {
+    [[DGSPushServer sharedPushServer] setupRemoteNotifications];
 }
 
 - (void)unregisterForRemoteNotifications:(NSNotification *)notification {
@@ -185,6 +185,11 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     [[DGSPushServer sharedPushServer] deleteAPNSDeviceTokenForPlayerId:oldPlayer.userId completionHandler:^() { } errorHandler:^(NSError *error) {
         NSLog(@"Error clearing push token: %@", error);
     }];
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {

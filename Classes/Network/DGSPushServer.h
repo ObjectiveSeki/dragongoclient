@@ -12,7 +12,7 @@
 
 + (DGSPushServer *)sharedPushServer;
 
-- (void)registerForRemoteNotifications;
+- (void)setupRemoteNotifications;
 - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
 - (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler;

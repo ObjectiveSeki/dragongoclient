@@ -21,8 +21,11 @@
 }
 
 + (CGFloat)heightForString:(NSString *)string width:(CGFloat)width {
-    CGSize size = [string sizeWithFont:[UIFont systemFontOfSize:17] constrainedToSize:CGSizeMake(width - 2 * MARGIN_X, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-    return size.height + 2 * MARGIN_Y;
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width - 2 * MARGIN_X, 1000)
+                                       options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                    attributes:nil
+                                       context:nil];
+    return rect.size.height + 2 * MARGIN_Y;
 }
 
 @end

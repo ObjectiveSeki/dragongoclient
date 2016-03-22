@@ -54,10 +54,12 @@
 
 # pragma mark - Push management methods
 
-- (void)registerForRemoteNotifications {
+- (void)setupRemoteNotifications {
     [self beginQueueingRequestsRequiringLogin];
     if ([Player currentPlayer].userId) {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+        UIUserNotificationType types = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
 }
 
