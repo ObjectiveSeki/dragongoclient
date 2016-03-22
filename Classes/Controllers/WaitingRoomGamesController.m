@@ -1,13 +1,9 @@
 
 #import "WaitingRoomGamesController.h"
 #import "JoinWaitingRoomGameController.h"
-#import "ODRefreshControl.h"
 #import "LoadingCell.h"
 
 @interface WaitingRoomGamesController ()
-// Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
-// conflicting with the built-in iOS6 one.
-@property (nonatomic, strong) id myRefreshControl;
 @property (nonatomic) BOOL loadingNewPage;
 @property (nonatomic, strong) NewGame *mostRecentlyLoadedGame;
 @end
@@ -17,14 +13,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([UIRefreshControl class]) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
-        self.myRefreshControl = self.refreshControl;
-    } else {
-        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
-        self.myRefreshControl = refreshControl;
-    }
-    [self.myRefreshControl addTarget:self action:@selector(refreshGameList:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshGameList:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -36,9 +26,9 @@
     [[GenericGameServer sharedGameServer] getWaitingRoomGames:^(GameList *gameList) {
         self.gameList = gameList;
         [self.tableView reloadData];
-        [self.myRefreshControl endRefreshing];
+        [self.refreshControl endRefreshing];
     } onError:^(NSError *error) {
-        [self.myRefreshControl endRefreshing];
+        [self.refreshControl endRefreshing];
     }];
 }
 

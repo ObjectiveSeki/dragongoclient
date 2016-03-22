@@ -8,7 +8,6 @@
 
 #import "DGSPhoneAppDelegate.h"
 #import "CurrentGamesController.h"
-#import "ODRefreshControl.h"
 #import "SpinnerView.h"
 #import "GameViewController.h"
 #import "InviteViewController.h"
@@ -26,9 +25,6 @@
 @property(nonatomic) BOOL loadingNewRunningGamesPage;
 
 
-// Can be either a OD or UIRefreshControl. Named 'myRefreshControl' to avoid
-// conflicting with the built-in iOS6 one.
-@property (nonatomic, strong) id myRefreshControl;
 @property (nonatomic, strong) SpinnerView *spinner;
 
 // Keep track of the refresh operation, so we can make sure only one is running at a time
@@ -52,14 +48,8 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	if ([UIRefreshControl class]) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
-        self.myRefreshControl = self.refreshControl;
-    } else {
-        ODRefreshControl *refreshControl = [[ODRefreshControl alloc] initInScrollView:self.tableView];
-        self.myRefreshControl = refreshControl;
-    }
-    [self.myRefreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
 }
 
@@ -94,7 +84,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 - (void)didRefreshWithGames:(GameList *)currentGames runningGames:(GameList *)runningGames error:(NSError *)error {
     [self setEnabled:YES];
-    [self.myRefreshControl endRefreshing];
+    [self.refreshControl endRefreshing];
     
     if (!error) {
         [self handleGameListChanges:currentGames runningGameListChanges:runningGames];
