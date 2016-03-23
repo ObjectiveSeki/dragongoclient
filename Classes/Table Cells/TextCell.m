@@ -14,19 +14,33 @@
 - (id)init {
     if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([self class])])) {
         [[NSBundle mainBundle] loadNibNamed:@"TextCell" owner:self options:nil];
-		[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
-		self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.textField.delegate = self;
-        _maxTextLength = -1;
+        [self setupTextField];
     }
     return self;
 }
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
-	[self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+    [self setupTextField];
+}
+
+- (void)setupTextField {
+    [self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.textField.delegate = self;
+
     _maxTextLength = -1;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+#warning TODO: Hardcoded to something reasonable. This should be configurable.
+    CGFloat textFieldLeftMargin = 120.0;
+    
+    [NSLayoutConstraint constraintWithItem:self.textField attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeadingMargin multiplier:1.0 constant:textFieldLeftMargin].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.textField attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailingMargin multiplier:1.0 constant:0.0].active = YES;
+    [NSLayoutConstraint constraintWithItem:self.textField attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.textLabel attribute:NSLayoutAttributeCenterYWithinMargins multiplier:1.0 constant:0.0].active = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
