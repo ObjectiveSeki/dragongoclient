@@ -23,6 +23,7 @@
 @property(nonatomic, copy) GameList *games;
 @property(nonatomic, copy) GameList *runningGames;
 @property(nonatomic) BOOL loadingNewRunningGamesPage;
+@property(nonatomic, copy) NSArray *noGamesViewConstraints;
 
 
 @property (nonatomic, strong) SpinnerView *spinner;
@@ -51,6 +52,12 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
+    
+    self.noGamesView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.noGamesViewConstraints = @[
+        [NSLayoutConstraint constraintWithItem:self.noGamesView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0],
+        [NSLayoutConstraint constraintWithItem:self.noGamesView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]
+    ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -175,9 +182,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 - (IBAction)gameListTypeChanged:(id)sender {
     [self.tableView reloadData];
     if ([self.games count] == 0 && [self selectedGameList] == self.games) {
-        [self.tableView addSubview:self.noGamesView];
+        [self showNoGamesView:YES];
     } else {
-        [self.noGamesView removeFromSuperview];
+        [self showNoGamesView:NO];
     }
 }
 
@@ -193,6 +200,16 @@ typedef NS_ENUM(NSUInteger, GameSection) {
         InviteViewController *controller = segue.destinationViewController;
         Invite *invite = (Invite *)sender;
         controller.invite = invite;
+    }
+}
+
+- (void)showNoGamesView:(bool)shouldShow {
+    if (shouldShow) {
+        [self.tableView addSubview:self.noGamesView];
+        [NSLayoutConstraint activateConstraints:self.noGamesViewConstraints];
+    } else {
+        [NSLayoutConstraint deactivateConstraints:self.noGamesViewConstraints];
+        [self.noGamesView removeFromSuperview];
     }
 }
 
@@ -244,9 +261,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count] + [self.games inviteCount]];
     if ([self.games count] == 0 && [self selectedGameList] == self.games) {
-        [self.tableView addSubview:self.noGamesView];
+        [self showNoGamesView:YES];
     } else {
-        [self.noGamesView removeFromSuperview];
+        [self showNoGamesView:NO];
     }
 }
 
