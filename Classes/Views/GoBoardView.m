@@ -281,9 +281,9 @@
 	}
 	
 	if (![self.status.text isEqual:@""]) {
-		[self showStatusBar];
+//		[self showStatusBar];
 	} else {
-		[self hideStatusBar];
+//		[self hideStatusBar];
 	}
 }
 

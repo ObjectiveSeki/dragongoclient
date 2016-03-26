@@ -42,7 +42,6 @@
 @property (nonatomic, strong) UIGestureRecognizer *goToCurrentMoveGestureRecognizer;
 @property (nonatomic, strong) UIGestureRecognizer *tappedBoardGestureRecognizer;
 
-
 @end
 
 const NSTimeInterval kDefaultResignTimerLength = 1.0;
@@ -55,8 +54,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"ViewDidLoad");
-	UIScrollView *tempScrollView = (UIScrollView *)self.scrollView;
-    tempScrollView.contentSize = CGSizeMake(self.boardView.bounds.size.height, self.boardView.bounds.size.width);
+    
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
@@ -70,7 +68,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	self.boardState = kBoardStateZoomedOut;
     NSLog(@"creating board...");
     NSLog(@"BoardView: %@", self.boardView);
     // Make sure the board view doesn't go away. This should never happen!
@@ -79,11 +76,13 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     FuegoBoard *theBoard = [[FuegoBoard alloc] initWithSGFString:[self.game sgfString]];
     self.boardView.board = theBoard;
     self.board = theBoard;
-        
+    
+    self.boardState = kBoardStateZoomedOut;
     self.currentZoomScale = [self zoomInScale];
     [self lockZoom];
     [self zoomToScale:0.5 center:self.boardView.center animated:NO];
     [self updateUI];
+    
     self.sgfShareQueue = [[NSOperationQueue alloc] init];
     self.sgfShareQueue.name = @"SGF saving queue";
 
@@ -112,6 +111,11 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         
         [self presentViewController:tooLargeAlert animated:YES completion:nil];
     }
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self updateBoardPositionAnimated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -244,23 +248,44 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     self.scrollView.minimumZoomScale = self.minimumZoomScale;
 }
 
-- (void)zoomToScale:(float)scale center:(CGPoint)center animated:(bool)animated {
+- (void)performBlock:(void(^)(void))animations animated:(BOOL)animated {
+    if (animated) {
+        // This value was found for the specific animations I'm handling by
+        // breakpointing the native animation and investigating
+        // the CABasicAnimation object. It also uses the standard "Ease" curve.
+        [UIView animateWithDuration:0.3 animations:animations];
+    } else {
+        animations();
+    }
+}
+
+- (void)zoomToScale:(float)scale center:(CGPoint)center animated:(BOOL)animated {
 	[self unlockZoom];
 	self.currentZoomScale = scale;
 	CGRect zoomRect = [self zoomRectForScrollView:self.scrollView withScale:scale withCenter:center];
-	[self.scrollView zoomToRect:zoomRect animated:animated];
+
+    [self performBlock:^{
+        [self.scrollView zoomToRect:zoomRect animated:NO];
+        [self updateBoardPositionAnimated:NO];
+    } animated:animated];
     
+	[self lockZoom];
+}
+
+- (void)updateBoardPositionAnimated:(BOOL)animated {
     // Center the board view in the scroll view if it's smaller than the scroll view
     CGPoint contentOffset = self.scrollView.contentOffset;
     if (self.scrollView.contentSize.width < self.scrollView.bounds.size.width) {
         contentOffset.x = -(self.scrollView.bounds.size.width - self.scrollView.contentSize.width) / 2;
     }
-    if (self.scrollView.contentSize.height < self.scrollView.bounds.size.height) {
-        contentOffset.y = -(self.scrollView.bounds.size.height - self.scrollView.contentSize.height) / 2;
-    }
-    [self.scrollView setContentOffset:contentOffset animated:YES];
     
-	[self lockZoom];
+    CGFloat navigationBarHeight = self.topLayoutGuide.length;
+    CGFloat heightWithoutNavigationBar = self.scrollView.bounds.size.height - navigationBarHeight;
+    
+    if (self.scrollView.contentSize.height < heightWithoutNavigationBar) {
+        contentOffset.y = -(heightWithoutNavigationBar - self.scrollView.contentSize.height) / 2 - navigationBarHeight;
+    }
+    [self.scrollView setContentOffset:contentOffset animated:animated];
 }
 
 - (void)zoomIn:(CGPoint)center {
