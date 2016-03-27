@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FuegoBoard.h"
+#import "GoBoardViewDelegate.h"
 
 @interface GoBoardView : UIView {
 	int _marginX;
@@ -16,10 +17,10 @@
 
 @property(nonatomic, strong) FuegoBoard *board;
 
+@property(nonatomic, weak) id<GoBoardViewDelegate> delegate;
+
 @property(nonatomic, strong) IBOutlet UILabel *blackName;
 @property(nonatomic, strong) IBOutlet UILabel *whiteName;
-@property(nonatomic, strong) IBOutlet UILabel *status;
-@property(nonatomic, strong) IBOutlet UIView *statusView;
 @property(nonatomic, strong) IBOutlet UILabel *blackCaptures;
 @property(nonatomic, strong) IBOutlet UILabel *whiteCaptures;
 

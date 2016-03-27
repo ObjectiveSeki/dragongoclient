@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoBoardViewDelegate.h"
 
 @class GoBoardView, MessageView, Game, FuegoBoard;
 
@@ -15,7 +16,7 @@ typedef NS_ENUM(NSInteger, BoardState) {
 	kBoardStateZoomedIn,
 };
 
-@interface GameViewController : UIViewController <UIActionSheetDelegate>
+@interface GameViewController : UIViewController <UIActionSheetDelegate, GoBoardViewDelegate>
 
 @property(nonatomic, strong) Game *game;
 @property(nonatomic) BOOL readOnly;
@@ -33,6 +34,11 @@ typedef NS_ENUM(NSInteger, BoardState) {
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *shareButton;
 @property(nonatomic, strong) IBOutlet MessageView *messageView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+
+@property (weak, nonatomic) IBOutlet UIView *statusBar;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusPositionConstraint;
+
 
 - (IBAction)undoMove;
 - (IBAction)zoomOut;

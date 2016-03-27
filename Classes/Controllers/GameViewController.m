@@ -64,6 +64,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     
     self.tappedBoardGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGoBoardTouch:)];
     [self.boardView addGestureRecognizer:self.tappedBoardGestureRecognizer];
+    self.boardView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -124,6 +125,33 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     self.sgfShareQueue = nil;
     self.boardView.board = nil;
 	self.board = nil;
+}
+
+#pragma mark - GameViewDelegate methods
+
+- (void)showStatusMessage:(NSString *)statusMessage {
+    self.statusLabel.text = statusMessage;
+    if (statusMessage && statusMessage.length > 0) {
+        // can't use frame origin here, because the superview extends below the navbar
+        if (self.statusPositionConstraint.constant <= 0) {
+            self.statusBar.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                self.statusPositionConstraint.constant = self.statusBar.bounds.size.height;
+                [self.statusBar layoutIfNeeded];
+            }];
+        }
+    } else {
+        if (self.statusPositionConstraint.constant > 0) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.statusPositionConstraint.constant = 0;
+                [self.statusBar layoutIfNeeded];
+            } completion:^(BOOL finished) {
+                if (finished) {
+                    self.statusBar.hidden = YES;
+                }
+            }];
+        }
+    }
 }
 
 #pragma mark - UI State
@@ -279,11 +307,11 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         contentOffset.x = -(self.scrollView.bounds.size.width - self.scrollView.contentSize.width) / 2;
     }
     
-    CGFloat navigationBarHeight = self.topLayoutGuide.length;
-    CGFloat heightWithoutNavigationBar = self.scrollView.bounds.size.height - navigationBarHeight;
+    CGFloat minimumVisiblePoint = self.topLayoutGuide.length;
+    CGFloat visibleHeight = self.scrollView.bounds.size.height - minimumVisiblePoint;
     
-    if (self.scrollView.contentSize.height < heightWithoutNavigationBar) {
-        contentOffset.y = -(heightWithoutNavigationBar - self.scrollView.contentSize.height) / 2 - navigationBarHeight;
+    if (self.scrollView.contentSize.height < visibleHeight) {
+        contentOffset.y = - minimumVisiblePoint - (visibleHeight - self.scrollView.contentSize.height) / 2 ;
     }
     [self.scrollView setContentOffset:contentOffset animated:animated];
 }

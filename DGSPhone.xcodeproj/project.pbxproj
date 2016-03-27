@@ -177,6 +177,7 @@
 		DA84D67912F7A0160038D775 /* BooleanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooleanCell.m; sourceTree = "<group>"; };
 		DA8E707A13D5337E007E569B /* GameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameList.h; sourceTree = "<group>"; };
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
+		DA94AEFD1CA6EB6D00CCC83F /* GoBoardViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardViewDelegate.h; sourceTree = "<group>"; };
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
 		DA98EC43125C2725002EB162 /* Message off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off@2x.png"; sourceTree = "<group>"; };
 		DA98EC44125C2725002EB162 /* Message on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on@2x.png"; sourceTree = "<group>"; };
@@ -485,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */,
+				DA94AEFD1CA6EB6D00CCC83F /* GoBoardViewDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

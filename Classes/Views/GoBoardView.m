@@ -227,22 +227,6 @@
 	}
 }
 
-- (void)hideStatusBar {
-	if (self.statusView.frame.origin.y >= 0) {
-		[GoBoardView animateWithDuration:0.5 animations:^() {
-			self.statusView.frame = CGRectMake(self.statusView.frame.origin.x, -self.statusView.frame.size.height, self.statusView.frame.size.width, self.statusView.frame.size.height);
-		}];
-	}
-}
-
-- (void)showStatusBar {
-	if (self.statusView.frame.origin.y < 0) {
-		[GoBoardView animateWithDuration:0.5 animations:^() {
-			self.statusView.frame = CGRectMake(self.statusView.frame.origin.x, 0, self.statusView.frame.size.width, self.statusView.frame.size.height);
-		}];
-	}
-}
-
 - (void)updatePlayerInfo {
 	self.status.text = @"";
 	[self.blackName setText:[self.board name:kMovePlayerBlack]];
@@ -250,41 +234,72 @@
 	
 	self.blackCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerBlack]];	
 	self.whiteCaptures.text = [NSString stringWithFormat:@"+%d", [self.board captures:kMovePlayerWhite]];	
-	
-	NSString *comment = [self.board comment];
-	
-	if (![self.board gameEnded]) {
-		if ([[[self board] currentMove] moveType] == kMoveTypePass) {
-			if ([self.board currentMove].player == kMovePlayerBlack) {
-				self.status.text = @"B Pass";
-			} else {
-				self.status.text = @"W Pass";
-			}
-		} else if ([[[self board] currentMove] moveType] == kMoveTypeResign) {
-			if ([self.board currentMove].player == kMovePlayerBlack) {
-				self.status.text = @"B Resign";
-			} else {
-				self.status.text = @"W Resign";
-			}
-		} else if (comment) {
-			self.status.text = comment;
-		}
-	} else {
-		float score = [self.board score];
-		if (score > 0) {
-			self.status.text = [NSString stringWithFormat:@"Score: B+%.1f", [self.board score]];
-		} else if (score < 0) {
-			self.status.text = [NSString stringWithFormat:@"Score: W+%.1f", -1.0 * [self.board score]];
-		} else {
-			self.status.text = @"Touch groups to mark them as dead";
-		}
-	}
-	
-	if (![self.status.text isEqual:@""]) {
-//		[self showStatusBar];
-	} else {
-//		[self hideStatusBar];
-	}
+    [self.delegate showStatusMessage:[self statusMessage]];
+
+}
+
+- (NSString *)generateScoreMessage {
+    if (![self.board gameEnded]) {
+        return nil;
+    }
+    
+    float score = [self.board score];
+    NSString *message;
+    
+    if (score > 0) {
+        message = [NSString stringWithFormat:@"Score: B+%.1f", [self.board score]];
+    } else if (score < 0) {
+        message = [NSString stringWithFormat:@"Score: W+%.1f", -1.0 * [self.board score]];
+    } else {
+        message = @"Touch groups to mark them as dead";
+    }
+    return message;
+}
+
+- (NSString *)generatePassMessage {
+    NSString *message;
+    
+    if ([self.board currentMove].moveType == kMoveTypePass) {
+        if ([self.board currentMove].player == kMovePlayerBlack) {
+            message = @"B Pass";
+        } else {
+            message = @"W Pass";
+        }
+    }
+    return message;
+}
+
+- (NSString *)generateResignMessage {
+    NSString *message;
+    
+    if ([self.board currentMove].moveType == kMoveTypeResign) {
+        if ([self.board currentMove].player == kMovePlayerBlack) {
+            message = @"B Resign";
+        } else {
+            message = @"W Resign";
+        }
+    }
+    return message;
+}
+
+- (NSString *)statusMessage {
+    
+    NSString *statusMessage;
+    statusMessage = [self generateScoreMessage];
+    
+    if (!statusMessage) {
+        statusMessage = [self generatePassMessage];
+    }
+    
+    if (!statusMessage) {
+        statusMessage = [self generateResignMessage];
+    }
+    
+    if (!statusMessage) {
+        statusMessage = self.board.comment;
+    }
+    
+    return statusMessage;
 }
 
 - (void)layoutSubviews {
