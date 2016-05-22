@@ -228,7 +228,6 @@
 }
 
 - (void)updatePlayerInfo {
-	self.status.text = @"";
 	[self.blackName setText:[self.board name:kMovePlayerBlack]];
 	[self.whiteName setText:[self.board name:kMovePlayerWhite]];
 	
