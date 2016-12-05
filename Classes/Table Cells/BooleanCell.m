@@ -12,6 +12,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
     self.toggleSwitch = theSwitch;
     self.accessoryView = theSwitch;

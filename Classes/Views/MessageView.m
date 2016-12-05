@@ -18,6 +18,7 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.showInputView = YES;
 }
 
@@ -25,8 +26,11 @@
 	CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
+    
+    // see the discussion here: http://stackoverflow.com/questions/7327249/ios-how-to-convert-uiviewanimationcurve-to-uiviewanimationoptions#7327374
+    UIViewAnimationOptions options = curve << 16;
 
-	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
+	[UIView animateWithDuration:duration delay:0 options:options animations:^(void) {
         self.messageInputView.frame = CGRectOffset(self.messageInputView.frame, 0, -kbSize.height);
 	} completion:nil];
 }
@@ -35,8 +39,11 @@
     CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
+    
+    // see the discussion here: http://stackoverflow.com/questions/7327249/ios-how-to-convert-uiviewanimationcurve-to-uiviewanimationoptions#7327374
+    UIViewAnimationOptions options = curve << 16;
 
-	[UIView animateWithDuration:duration delay:0 options:curve animations:^(void) {
+	[UIView animateWithDuration:duration delay:0 options:options animations:^(void) {
         self.messageInputView.frame = CGRectOffset(self.messageInputView.frame, 0, kbSize.height);
 	} completion:nil];
 }

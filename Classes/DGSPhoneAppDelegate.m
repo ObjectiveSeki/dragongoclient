@@ -26,7 +26,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 // backgrounded, but I don't need to check if I already got push notifications.
 // Unfortunately, there's no good activation hook method I can check to only
 // check for outstanding notifications if we didn't receive a push notification.
-@property (nonatomic) BOOL *receivedRemoteNotification;
+@property (nonatomic) BOOL receivedRemoteNotification;
 @end
 
 @implementation DGSPhoneAppDelegate
