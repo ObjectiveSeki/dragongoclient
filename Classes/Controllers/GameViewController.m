@@ -367,7 +367,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     
 	NSString *reply = self.messageView.reply;
     
-	void (^onSuccess)() = ^() {
+    void (^onSuccess)(void) = ^() {
 		[self didPlayMove];
 	};
     

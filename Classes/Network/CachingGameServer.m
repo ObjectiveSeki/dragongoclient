@@ -153,7 +153,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }];
 }
 
-- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     
     NSOperation *op = [self.gameServer playMove:move lastMove:lastMove moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
         [self addGameBackToGameList:game];
@@ -166,7 +166,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return op;
 }
 
-- (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     NSOperation *op = [self.gameServer playHandicapStones:moves comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
         [self addGameBackToGameList:game];
         onError(error);
@@ -178,7 +178,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return op;
 }
 
-- (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     NSOperation *op = [self.gameServer markDeadStones:changedStones moveNumber:moveNumber comment:comment game:game onSuccess:^() {} onError:^(NSError *error) {
         [self addGameBackToGameList:game];
         onError(error);
@@ -208,12 +208,12 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     }];
 }
 
-- (NSOperation *)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError{
+- (NSOperation *)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError{
     [self flushCache];
     return [self.gameServer loginWithUsername:username password:password onSuccess:onSuccess onError:onError];
 }
 
-- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     NSOperation *op = [self.gameServer answerInvite:invite accepted:accepted onSuccess:onSuccess onError:^(NSError *error) {
         [self addInviteBackToInviteList:invite];
         onError(error);
@@ -232,7 +232,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return [self.gameServer logout:onError];
 }
 
-- (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer addGame:game onSuccess:onSuccess onError:onError];
 }
 
@@ -247,7 +247,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
 - (NSOperation *)getWaitingRoomGameDetailsForGame:(NewGame *)game onSuccess:(void (^)(NewGame *game))onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer getWaitingRoomGameDetailsForGame:game onSuccess:onSuccess onError:onError];
 }
-- (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer joinWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }
 
@@ -255,7 +255,7 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return [self.gameServer getInviteDetails:invite onSuccess:onSuccess onError:onError];
 }
 
-- (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     return [self.gameServer deleteWaitingRoomGame:gameId onSuccess:onSuccess onError:onError];
 }
 

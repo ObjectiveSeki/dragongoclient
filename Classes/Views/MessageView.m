@@ -76,7 +76,7 @@
 	return (self.message.length > 0 || self.reply.length > 0);
 }
 
-- (void)show:(void (^)())onHide {
+- (void)show:(void (^)(void))onHide {
     self.frame = self.superview.frame;
     
     if (self.showInputView) {

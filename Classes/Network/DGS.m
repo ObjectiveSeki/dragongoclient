@@ -115,7 +115,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError
+- (NSOperation *)loginWithUsername:(NSString *)username password:(NSString *)password onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError
 {
 	static NSString *path = @"login.php?quick_mode=1";
     NSDictionary *params = @{
@@ -225,7 +225,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)joinWaitingRoomGame:(int)gameId onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     static NSString *joinGameUrlFormat = @"quick_do.php?obj=wroom&cmd=join&wrid=%d";
     MKNetworkOperation *op = [self operationWithPath:S(joinGameUrlFormat, gameId)];
 
@@ -238,7 +238,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)deleteWaitingRoomGame:(int)gameId onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     static NSString *deleteGameUrlFormat = @"quick_do.php?obj=wroom&cmd=delete&wrid=%d";
     MKNetworkOperation *op = [self operationWithPath:S(deleteGameUrlFormat, gameId)];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -327,7 +327,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)answerInvite:(Invite *)invite accepted:(BOOL)accepted onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     static NSString *pathFormat = @"quick_do.php?obj=message&cmd=%@&mid=%d";
     NSString *cmd = @"accept_inv";
     if (!accepted) {
@@ -364,7 +364,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)playHandicapStones:(NSArray *)moves comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     static NSString *playHandicapStonesFormat = @"quick_do.php?obj=game&cmd=set_handicap&gid=%d&move_id=%d&move=%@";
 	int lastMoveNumber = 0; // DGS wants the move number this move is replying to
     NSMutableString *moveString = [[NSMutableString alloc] initWithCapacity:([moves count] * 2)];
@@ -390,7 +390,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)markDeadStones:(NSArray *)changedStones moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
 	// For the endgame, adding dead stones doesn't add moves to the SGF, so we
 	// don't subtract 1 from the moveNumber.
 	int lastMoveNumber = moveNumber;
@@ -423,7 +423,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)playMove:(Move *)move lastMove:(Move *)lastMove moveNumber:(int)moveNumber comment:(NSString *)comment game:(Game *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
     int lastMoveNumber = moveNumber - 1; // DGS wants the move number this move is replying to
     static NSString *moveUrlFormat = @"quick_do.php?obj=game&cmd=move&gid=%d&move_id=%d&move=%@";
     static NSString *resignUrlFormat = @"quick_do.php?obj=game&cmd=resign&gid=%d&move_id=%d";
@@ -453,7 +453,7 @@ const int kDefaultPageLimit = 20;
     return op;
 }
 
-- (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)())onSuccess onError:(ErrorBlock)onError {
+- (NSOperation *)addGame:(NewGame *)game onSuccess:(void (^)(void))onSuccess onError:(ErrorBlock)onError {
 
     static NSString *path = @"new_game.php";
 

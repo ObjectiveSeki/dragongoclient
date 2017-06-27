@@ -14,10 +14,10 @@
 @property(nonatomic, strong) IBOutlet UIView *messageInputView;
 @property(nonatomic, copy) NSString *message;
 @property(nonatomic, copy) NSString *reply;
-@property(nonatomic, copy) void (^onHide)();
+@property(nonatomic, copy) void (^onHide)(void);
 @property(nonatomic) BOOL showInputView;
 
-- (void)show:(void (^)())onHide;
+- (void)show:(void (^)(void))onHide;
 - (BOOL)hasMessageOrReply;
 - (IBAction)hide;
 
