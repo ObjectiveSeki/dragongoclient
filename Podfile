@@ -1,4 +1,4 @@
-platform :ios, :deployment_target => "8.0"
+platform :ios, :deployment_target => "10.0"
 project 'DGSPhone.xcodeproj'
 
 

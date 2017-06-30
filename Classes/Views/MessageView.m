@@ -23,28 +23,29 @@
 }
 
 - (void)keyboardWillBeShown:(NSNotification *)aNotification {
-	CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+	CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
     
     // see the discussion here: http://stackoverflow.com/questions/7327249/ios-how-to-convert-uiviewanimationcurve-to-uiviewanimationoptions#7327374
     UIViewAnimationOptions options = curve << 16;
-
-	[UIView animateWithDuration:duration delay:0 options:options animations:^(void) {
-        self.messageInputView.frame = CGRectOffset(self.messageInputView.frame, 0, -kbSize.height);
+    
+    self.messageInputViewBottomConstraint.constant = -kbSize.height;
+    [UIView animateWithDuration:duration delay:0 options:options animations:^(void) {
+        [self layoutIfNeeded];
 	} completion:nil];
 }
 
 - (void)keyboardWillBeHidden:(NSNotification *)aNotification {
-    CGSize kbSize = [[aNotification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     NSTimeInterval duration = [[aNotification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
     UIViewAnimationCurve curve = [[aNotification userInfo][UIKeyboardAnimationCurveUserInfoKey] intValue];
     
     // see the discussion here: http://stackoverflow.com/questions/7327249/ios-how-to-convert-uiviewanimationcurve-to-uiviewanimationoptions#7327374
     UIViewAnimationOptions options = curve << 16;
-
+    
+    self.messageInputViewBottomConstraint.constant = 0;
 	[UIView animateWithDuration:duration delay:0 options:options animations:^(void) {
-        self.messageInputView.frame = CGRectOffset(self.messageInputView.frame, 0, kbSize.height);
+        [self layoutIfNeeded];
 	} completion:nil];
 }
 
@@ -78,6 +79,7 @@
 
 - (void)show:(void (^)(void))onHide {
     self.frame = self.superview.frame;
+    [self layoutIfNeeded];
     
     if (self.showInputView) {
         self.messageInputView.hidden = NO;
@@ -90,11 +92,12 @@
 	self.onHide = onHide;
 	if (self.message) {
 		self.messageTextView.text = self.message;
+        self.messageDisplayView.hidden = NO;
 	} else {
 		self.messageDisplayView.hidden = YES;
 	}
 	
-	[UIView animateWithDuration:0.3 animations:^(void) {
+	[UIView animateWithDuration:0.25 animations:^(void) {
 		self.alpha = 1.0;
 	}];
 }
@@ -105,7 +108,7 @@
 	[self.messageField resignFirstResponder];
 	[self removeKeyboardNotifications];
 	
-	[UIView animateWithDuration:0.3 animations:^(void) {
+	[UIView animateWithDuration:0.25 animations:^(void) {
 		self.alpha = 0.0;
 	} completion:^(BOOL completion) {
 		[self removeFromSuperview];

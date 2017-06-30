@@ -166,7 +166,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)replaceToolbarItemAtIndex:(int)itemIndex withItem:(UIBarButtonItem *)toolbarItem {
-    int index = itemIndex * 2 + 1; // each item has something in between.
+    int index = itemIndex * 2; // each item has something in between.
     if (toolbarItem == [self.toolbar.items objectAtIndex:index]) {
         return;
     }

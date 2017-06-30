@@ -14,6 +14,7 @@
 
 NSString * const PlayerDidLoginNotification = @"PlayerDidLoginNotification";
 NSString * const PlayerDidLogoutNotification = @"PlayerDidLogoutNotification";
+NSString * const NetworkErrorNotification = @"NetworkErrorNotification";
 
 NSString * const ReceivedNewGamesNotification = @"ReceivedNewGamesNotification";
 
@@ -73,6 +74,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 	NSLog(@"Went inactive...");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayerDidLogoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayerDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NetworkErrorNotification object:nil];
 }
 
 
@@ -105,6 +107,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginAnimated:) name:PlayerDidLogoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearPlayerData) name:PlayerDidLogoutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLogin) name:PlayerDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentNetworkError:) name:NetworkErrorNotification object:nil];
 }
 
 
@@ -173,6 +176,19 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     self.loginController = nil;
 }
 
+#pragma mark - Error handling
+
+- (void)presentNetworkError:(NSNotification *)notification {
+    NSError *error = notification.object;
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                             message:[error localizedRecoverySuggestion]
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Dismiss")
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:^(UIAlertAction * action) {}]];
+    [[self.window rootViewController] presentViewController:alertController animated:YES completion:nil];
+}
 
 #pragma mark - Push notifications
 

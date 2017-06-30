@@ -65,7 +65,7 @@ const int kDefaultPageLimit = 20;
             [self resetUserData];
             [[NSNotificationCenter defaultCenter] postNotificationName:PlayerDidLogoutNotification object:oldPlayer];
         } else {
-            [UIAlertView showWithError:error];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NetworkErrorNotification object:error];
         }
     }];
 
@@ -338,7 +338,7 @@ const int kDefaultPageLimit = 20;
     MKNetworkOperation *op = [self operationWithPath:path];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         [self setInviteDetails:invite withDictionary:completedOperation.responseJSON];
-        onSuccess(invite);
+        onSuccess();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         onError(error);
     }];

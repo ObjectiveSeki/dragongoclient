@@ -14,6 +14,7 @@
 
 extern NSString * const PlayerDidLoginNotification;
 extern NSString * const PlayerDidLogoutNotification;
+extern NSString * const NetworkErrorNotification;
 
 typedef void(^EmptyBlock)(void);
 typedef void(^GameListBlock)(GameList *gameList);

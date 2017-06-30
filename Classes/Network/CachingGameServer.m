@@ -34,7 +34,6 @@ static NSString * const kGameCacheKeyFormat = @"Game-%d";
     return sharedGameServer;
 }
 
-
 - (id)initWithGameServer:(id<GameServerProtocol>)aGameServer;
 {
     self = [super init];

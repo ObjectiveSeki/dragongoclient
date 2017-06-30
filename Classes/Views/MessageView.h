@@ -12,6 +12,8 @@
 @property(nonatomic, strong) IBOutlet UITextField *messageField;
 @property(nonatomic, strong) IBOutlet UIView *messageDisplayView;
 @property(nonatomic, strong) IBOutlet UIView *messageInputView;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *messageInputViewBottomConstraint;
+
 @property(nonatomic, copy) NSString *message;
 @property(nonatomic, copy) NSString *reply;
 @property(nonatomic, copy) void (^onHide)(void);
