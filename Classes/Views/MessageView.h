@@ -9,7 +9,7 @@
 @interface MessageView : UIView
 
 @property(nonatomic, strong) IBOutlet UITextView *messageTextView;
-@property(nonatomic, strong) IBOutlet UITextField *messageField;
+@property(nonatomic, strong) IBOutlet UITextView *messageField;
 @property(nonatomic, strong) IBOutlet UIView *messageDisplayView;
 @property(nonatomic, strong) IBOutlet UIView *messageInputView;
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *messageInputViewBottomConstraint;

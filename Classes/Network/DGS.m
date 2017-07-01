@@ -510,7 +510,9 @@ const int kDefaultPageLimit = 20;
 }
 
 - (void)openGameInBrowser:(Game *)game {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:S(@"%@%@", [self basePath], game.webPath)]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:S(@"%@%@", [self basePath], game.webPath)]
+                                       options:@{}
+                             completionHandler:nil];
 }
 
 #pragma mark -
