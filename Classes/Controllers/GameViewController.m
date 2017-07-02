@@ -65,6 +65,26 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     self.tappedBoardGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGoBoardTouch:)];
     [self.boardView addGestureRecognizer:self.tappedBoardGestureRecognizer];
     self.boardView.delegate = self;
+    
+    self.scrollView.contentInset = UIEdgeInsetsMake(self.scrollView.contentInset.top, self.scrollView.contentInset.left, self.bottomBar.bounds.size.height, self.scrollView.contentInset.right);
+    
+    // make the toolbar translucent
+    [self.toolbar setBackgroundImage:[UIImage new]
+                  forToolbarPosition:UIBarPositionAny
+                          barMetrics:UIBarMetricsDefault];
+    [self.toolbar setShadowImage:[UIImage new]
+              forToolbarPosition:UIBarPositionAny];
+    
+    // add a top border to our bottom view
+    self.bottomBar.clipsToBounds = NO;
+    CALayer *topBorder = [CALayer layer];
+    
+    topBorder.frame = CGRectMake(0.0f, -1.0f, CGRectGetWidth(self.bottomBar.frame), 0.33f);
+    
+    topBorder.backgroundColor = [UIColor colorWithWhite:0.65f
+                                                     alpha:1.0f].CGColor;
+    
+    [self.bottomBar.layer addSublayer:topBorder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -308,7 +328,8 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     }
     
     CGFloat minimumVisiblePoint = self.topLayoutGuide.length;
-    CGFloat visibleHeight = self.scrollView.bounds.size.height - minimumVisiblePoint;
+    CGFloat maximumVisiblePoint = self.bottomBar.frame.origin.y;
+    CGFloat visibleHeight = maximumVisiblePoint - minimumVisiblePoint;
     
     if (self.scrollView.contentSize.height < visibleHeight) {
         contentOffset.y = - minimumVisiblePoint - (visibleHeight - self.scrollView.contentSize.height) / 2 ;

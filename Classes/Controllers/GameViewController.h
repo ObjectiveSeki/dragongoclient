@@ -38,6 +38,7 @@ typedef NS_ENUM(NSInteger, BoardState) {
 @property (weak, nonatomic) IBOutlet UIView *statusBar;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusPositionConstraint;
+@property (weak, nonatomic) IBOutlet UIView *bottomBar;
 
 
 - (IBAction)undoMove;
