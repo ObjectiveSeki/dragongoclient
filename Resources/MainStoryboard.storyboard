@@ -394,24 +394,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag3-gW-h4Q" userLabel="Status Bar">
-                                <rect key="frame" x="0.0" y="44" width="414" height="20"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test Status Message" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nz-1y-2CZ" userLabel="Status/Message">
-                                        <rect key="frame" x="10" y="2.3333333333333357" width="394" height="16.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="2nz-1y-2CZ" firstAttribute="leading" secondItem="Ag3-gW-h4Q" secondAttribute="leading" constant="10" id="1To-Ib-bdE"/>
-                                    <constraint firstAttribute="trailing" secondItem="2nz-1y-2CZ" secondAttribute="trailing" constant="10" id="4ek-bU-8Kf"/>
-                                    <constraint firstItem="2nz-1y-2CZ" firstAttribute="centerY" secondItem="Ag3-gW-h4Q" secondAttribute="centerY" id="VpE-oz-Ar8"/>
-                                    <constraint firstAttribute="height" constant="20" id="m13-ZN-naQ"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.5" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xni-U3-1MX">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
@@ -439,6 +421,24 @@
                                     <outlet property="delegate" destination="8uJ-pY-6ja" id="PHG-U1-QHp"/>
                                 </connections>
                             </scrollView>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag3-gW-h4Q" userLabel="Status Bar">
+                                <rect key="frame" x="0.0" y="44" width="414" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test Status Message" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nz-1y-2CZ" userLabel="Status/Message">
+                                        <rect key="frame" x="8" y="2.3333333333333357" width="398" height="16.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="2nz-1y-2CZ" firstAttribute="leading" secondItem="Ag3-gW-h4Q" secondAttribute="leadingMargin" id="1To-Ib-bdE"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="2nz-1y-2CZ" secondAttribute="trailing" id="4ek-bU-8Kf"/>
+                                    <constraint firstItem="2nz-1y-2CZ" firstAttribute="centerY" secondItem="Ag3-gW-h4Q" secondAttribute="centerY" id="VpE-oz-Ar8"/>
+                                    <constraint firstAttribute="height" constant="20" id="m13-ZN-naQ"/>
+                                </constraints>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZc-4L-fo2">
                                 <rect key="frame" x="0.0" y="640" width="414" height="96"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="J1r-Nu-7fY">

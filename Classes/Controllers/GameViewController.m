@@ -146,19 +146,18 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 - (void)showStatusMessage:(NSString *)statusMessage {
     self.statusLabel.text = statusMessage;
     if (statusMessage && statusMessage.length > 0) {
-        // can't use frame origin here, because the superview extends below the navbar
-        if (self.statusPositionConstraint.constant <= 0) {
+       if (self.statusPositionConstraint.constant <= 0) {
             self.statusBar.hidden = NO;
             [UIView animateWithDuration:0.3 animations:^{
                 self.statusPositionConstraint.constant = self.statusBar.bounds.size.height;
-                [self.statusBar layoutIfNeeded];
+                [self.view layoutIfNeeded];
             }];
         }
     } else {
         if (self.statusPositionConstraint.constant > 0) {
             [UIView animateWithDuration:0.3 animations:^{
                 self.statusPositionConstraint.constant = 0;
-                [self.statusBar layoutIfNeeded];
+                [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 if (finished) {
                     self.statusBar.hidden = YES;
