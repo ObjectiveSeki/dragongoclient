@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, BoardState) {
 	kBoardStateZoomedIn,
 };
 
-@interface GameViewController : UIViewController <UIActionSheetDelegate, GoBoardViewDelegate>
+@interface GameViewController : UIViewController <GoBoardViewDelegate>
 
 @property(nonatomic, strong) Game *game;
 @property(nonatomic) BOOL readOnly;

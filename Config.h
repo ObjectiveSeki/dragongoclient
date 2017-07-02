@@ -7,6 +7,7 @@
 #define PUSH_HOST @"dgs.uberweiss.net:3000"
 #define PUSH_USE_SSL NO
 #define REMOTE_LOGGING
+//#define INVITES_ENABLED
 
 // set to '1' to see SGFs that test various aspects of
 // the board view.

@@ -250,7 +250,7 @@
     NSString *getParams = @"";
     
     if (lastKnownMove) {
-        getParams = S(@"?after=%@", [lastKnownMove stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+        getParams = S(@"?after=%@", [lastKnownMove stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]);
     }
     
     MKNetworkOperation *op = [self operationWithPath:S(pathFormat, [Player currentPlayer].userId, getParams) params:@{} httpMethod:@"GET"];

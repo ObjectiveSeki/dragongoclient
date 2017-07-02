@@ -376,7 +376,7 @@ const int kDefaultPageLimit = 20;
     NSMutableString *urlString = [NSMutableString stringWithFormat:playHandicapStonesFormat, game.gameId, lastMoveNumber, moveString];
 
 	if ([comment length] > 0) {
-		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
 	}
 
     MKNetworkOperation *op = [self operationWithPath:urlString];
@@ -405,7 +405,7 @@ const int kDefaultPageLimit = 20;
     urlString = [NSMutableString stringWithFormat:scoreUrlFormat, game.gameId, lastMoveNumber, moveString];
 
     if ([comment length] > 0) {
-        [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        [urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
     }
 
     if ([changedStones count] == 0) {
@@ -438,7 +438,7 @@ const int kDefaultPageLimit = 20;
     }
 
     if ([comment length] > 0) {
-		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+		[urlString appendString:[NSString stringWithFormat:@"&msg=%@", [comment stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
 	}
 
 

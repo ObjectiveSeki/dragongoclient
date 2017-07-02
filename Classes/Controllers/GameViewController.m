@@ -32,8 +32,6 @@
 
 @property (nonatomic, strong) SpinnerView *spinner;
 
-@property (nonatomic, strong) UIActionSheet *passResignActionSheet;
-
 // A timer that's triggered when the forward button is hit. It temporarily
 // disables the resign button, to help avoid accidental keypresses.
 @property (nonatomic, strong) NSTimer *resignInteractionTimer;
@@ -76,14 +74,10 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
               forToolbarPosition:UIBarPositionAny];
     
     // add a top border to our bottom view
-    self.bottomBar.clipsToBounds = NO;
     CALayer *topBorder = [CALayer layer];
-    
     topBorder.frame = CGRectMake(0.0f, -1.0f, CGRectGetWidth(self.bottomBar.frame), 0.33f);
-    
     topBorder.backgroundColor = [UIColor colorWithWhite:0.65f
-                                                     alpha:1.0f].CGColor;
-    
+                                                  alpha:1.0f].CGColor;
     [self.bottomBar.layer addSublayer:topBorder];
 }
 
@@ -357,19 +351,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     return self.boardView;
 }
 
-#pragma mark - UIActionSheetDelegate methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (actionSheet == self.passResignActionSheet) {
-        if (buttonIndex == actionSheet.destructiveButtonIndex) {
-            [self resign];
-        } else if (buttonIndex != actionSheet.cancelButtonIndex) {
-            [self pass];
-        }
-        self.passResignActionSheet = nil;
-    }
-}
-
 #pragma mark - Toolbar actions
 
 - (IBAction)zoomOut {
@@ -420,8 +401,23 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (IBAction)showPassResignPanel:(id)sender {
-    self.passResignActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Resign" otherButtonTitles:@"Pass", nil];
-    [self.passResignActionSheet showFromBarButtonItem:sender animated:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    }];
+    [alertController addAction:cancelAction];
+    
+    UIAlertAction *passAction = [UIAlertAction actionWithTitle:@"Pass" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self pass];
+    }];
+    [alertController addAction:passAction];
+    
+    UIAlertAction *resignAction = [UIAlertAction actionWithTitle:@"Resign" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self resign];
+    }];
+    [alertController addAction:resignAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{}];
 }
 
 - (IBAction)showMessageWindow {

@@ -279,11 +279,15 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#ifdef INVITES_ENABLED
     if (self.gameListTypeControl.selectedSegmentIndex == kGameSectionMyMove) {
         return 2;
     } else {
         return 1;
     }
+#else
+    return 1;
+#endif
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -391,11 +395,15 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+#ifdef INVITES_ENABLED
     if (section == 0) {
         return @"Games";
     } else {
         return @"Invitations";
     }
+#else
+    return nil;
+#endif
 }
 
 #pragma mark -
