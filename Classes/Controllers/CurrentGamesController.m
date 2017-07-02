@@ -328,9 +328,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
         if (game) {
 
             if ([game color] == kMovePlayerBlack) {
-                [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
+                [cell.imageView setImage:[UIImage imageNamed:@"Black"]];
             } else {
-                [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
+                [cell.imageView setImage:[UIImage imageNamed:@"White"]];
             }
             cell.textLabel.text = game.opponent;
             cell.detailTextLabel.text = game.time;

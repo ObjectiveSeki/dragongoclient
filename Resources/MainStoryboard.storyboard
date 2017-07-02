@@ -452,14 +452,14 @@
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fhe-2I-MD9" userLabel="Information Bar">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Black.png" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-sV-YBt" userLabel="Black Stone Image">
+                                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Black" translatesAutoresizingMaskIntoConstraints="NO" id="dxj-sV-YBt" userLabel="Black Stone Image">
                                                             <rect key="frame" x="8" y="7" width="38" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dxj-sV-YBt" secondAttribute="height" multiplier="1:1" id="3tm-fo-QNi"/>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="tqR-5J-lD0"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="White.png" translatesAutoresizingMaskIntoConstraints="NO" id="VUo-tQ-YGj" userLabel="White Stone Image">
+                                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="White" translatesAutoresizingMaskIntoConstraints="NO" id="VUo-tQ-YGj" userLabel="White Stone Image">
                                                             <rect key="frame" x="368" y="7" width="38" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="VUo-tQ-YGj" secondAttribute="height" multiplier="1:1" id="hrb-BO-A8V"/>
@@ -519,19 +519,19 @@
                                                         <constraint firstAttribute="height" constant="44" id="HsV-0X-7c7"/>
                                                     </constraints>
                                                     <items>
-                                                        <barButtonItem image="Previous.png" style="plain" id="eKh-D3-taq" userLabel="Previous Button">
+                                                        <barButtonItem image="Back" style="plain" id="eKh-D3-taq" userLabel="Previous Button">
                                                             <connections>
                                                                 <action selector="goToPreviousMove:" destination="8uJ-pY-6ja" id="iG1-ah-JBH"/>
                                                             </connections>
                                                         </barButtonItem>
                                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="wIX-64-4Hn"/>
-                                                        <barButtonItem image="Resign.png" width="20" style="plain" id="Z3J-8K-Ubw" userLabel="Resign Button">
+                                                        <barButtonItem image="Flag" width="20" style="plain" id="Z3J-8K-Ubw" userLabel="Resign Button">
                                                             <connections>
                                                                 <action selector="showPassResignPanel:" destination="8uJ-pY-6ja" id="c9A-jk-T8z"/>
                                                             </connections>
                                                         </barButtonItem>
                                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="dmt-8W-guF"/>
-                                                        <barButtonItem image="Message off.png" style="plain" id="syN-FK-JSN" userLabel="Message Button">
+                                                        <barButtonItem image="Message" style="plain" id="syN-FK-JSN" userLabel="Message Button">
                                                             <connections>
                                                                 <action selector="showMessageWindow" destination="8uJ-pY-6ja" id="fFd-0g-I2l"/>
                                                             </connections>
@@ -544,7 +544,7 @@
                                                             </connections>
                                                         </barButtonItem>
                                                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OsH-zi-yPd"/>
-                                                        <barButtonItem enabled="NO" title="Submit" id="goH-4M-lf1" userLabel="Submit Button">
+                                                        <barButtonItem enabled="NO" image="Submit" id="goH-4M-lf1" userLabel="Submit Button">
                                                             <connections>
                                                                 <action selector="confirmMove" destination="8uJ-pY-6ja" id="Nhl-6P-8pb"/>
                                                             </connections>
@@ -592,7 +592,6 @@
                         <outlet property="messageButton" destination="syN-FK-JSN" id="4xJ-oX-xRF"/>
                         <outlet property="messageView" destination="EY9-sO-cE6" id="cjb-Qu-npi"/>
                         <outlet property="nextMoveButton" destination="KSA-hO-dfv" id="pKQ-iq-M1s"/>
-                        <outlet property="passButton" destination="9lv-Qk-ynQ" id="4qJ-o2-SVT"/>
                         <outlet property="previousMoveButton" destination="eKh-D3-taq" id="JuP-vq-lT5"/>
                         <outlet property="resignButton" destination="Z3J-8K-Ubw" id="EuV-dz-d4e"/>
                         <outlet property="scrollView" destination="xni-U3-1MX" id="dHP-le-Gw6"/>
@@ -612,7 +611,7 @@
                         <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nd-CL-jGD" userLabel="Message Display View">
                             <rect key="frame" x="8" y="8" width="304" height="185"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Message background.png" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-CM-2hV">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Message background" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-CM-2hV">
                                     <rect key="frame" x="0.0" y="0.0" width="304" height="185"/>
                                 </imageView>
                                 <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDH-Nb-tDG" userLabel="Message Text">
@@ -676,17 +675,12 @@
                         <action selector="zoomOut" destination="8uJ-pY-6ja" id="sLG-rK-3C0"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem image="Pass.png" style="plain" id="9lv-Qk-ynQ" userLabel="Pass Button">
-                    <connections>
-                        <action selector="pass" destination="8uJ-pY-6ja" id="0je-DB-rh0"/>
-                    </connections>
-                </barButtonItem>
                 <barButtonItem systemItem="undo" id="zg4-5U-eXD" userLabel="Undo Button">
                     <connections>
                         <action selector="undoMove" destination="8uJ-pY-6ja" id="TgZ-JS-9W5"/>
                     </connections>
                 </barButtonItem>
-                <barButtonItem image="Next.png" width="20" style="plain" id="KSA-hO-dfv" userLabel="Next Button">
+                <barButtonItem image="Forward" width="20" style="plain" id="KSA-hO-dfv" userLabel="Next Button">
                     <connections>
                         <action selector="goToNextMove:" destination="8uJ-pY-6ja" id="iIz-RI-bgc"/>
                     </connections>
@@ -1394,14 +1388,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Black.png" width="38" height="38"/>
-        <image name="Message background.png" width="280" height="173"/>
-        <image name="Message off.png" width="22" height="20"/>
-        <image name="Next.png" width="20" height="20"/>
-        <image name="Pass.png" width="30" height="30"/>
-        <image name="Previous.png" width="20" height="20"/>
-        <image name="Resign.png" width="20" height="20"/>
-        <image name="White.png" width="38" height="38"/>
+        <image name="Back" width="25" height="25"/>
+        <image name="Black" width="38" height="38"/>
+        <image name="Flag" width="25" height="25"/>
+        <image name="Forward" width="25" height="25"/>
+        <image name="Message" width="25" height="25"/>
+        <image name="Message background" width="280" height="173"/>
+        <image name="Submit" width="25" height="25"/>
+        <image name="White" width="38" height="38"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="psV-8N-gZ7"/>

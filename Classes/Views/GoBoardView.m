@@ -67,7 +67,7 @@
 
 - (void)drawBoardGrid:(CGContextRef)context boardSize:(int)boardSize {
 	
-	[[UIImage imageNamed:@"Board.png"] drawInRect:[self bounds]];
+	[[UIImage imageNamed:@"Board"] drawInRect:[self bounds]];
 	
 	CGContextSetLineWidth(context, 1.0);
 	
@@ -140,8 +140,8 @@
 - (void)drawStonesUsingLayer:(CGContextRef)context {
 	NSArray *moves = [self.board moves];
 	float stoneRadius = [self pointDistance] * STONE_RADIUS;
-	UIImage *blackStoneImage = [UIImage imageNamed:@"Black.png"];
-    UIImage *whiteStoneImage = [UIImage imageNamed:@"White.png"];
+	UIImage *blackStoneImage = [UIImage imageNamed:@"Black"];
+    UIImage *whiteStoneImage = [UIImage imageNamed:@"White"];
 
     CGLayerRef blackStone = [self newLayerWithImage:blackStoneImage context:context];
     CGLayerRef whiteStone = [self newLayerWithImage:whiteStoneImage context:context];

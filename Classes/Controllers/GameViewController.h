@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, BoardState) {
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *undoButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *zoomOutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *confirmButton;
-@property(nonatomic, strong) IBOutlet UIBarButtonItem *passButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *messageButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *nextMoveButton;

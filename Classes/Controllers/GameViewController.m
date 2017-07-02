@@ -56,7 +56,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
-    //self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Game Background.png"]];
     self.goToBeginningGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToBeginning:)];
     self.goToCurrentMoveGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToCurrentMove:)];
     
@@ -201,11 +200,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (void)updateToolbar {
     if (self.readOnly) {
-        self.passButton.enabled = NO;
         self.resignButton.enabled = NO;
     } else {
         self.confirmButton.enabled = self.board.canSubmit;
-        self.passButton.enabled = self.board.canPassOrResign;
         self.resignButton.enabled = self.board.canPassOrResign;
     }
     
@@ -238,9 +235,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 // Sets the 'message waiting' toolbar indicator based on the value of hasMessage.
 - (void)setMessageIconState:(BOOL)hasMessage {
 	if (hasMessage) {
-		self.messageButton.image = [UIImage imageNamed:@"Message on.png"];
+		self.messageButton.image = [UIImage imageNamed:@"Message Open"];
 	} else {
-		self.messageButton.image = [UIImage imageNamed:@"Message off.png"];
+		self.messageButton.image = [UIImage imageNamed:@"Message"];
 	}
 }
 
@@ -511,7 +508,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         
         if (shouldZoomIn) {
             [self zoomIn:[sender locationInView:self.boardView]];
-            [self.passButton setEnabled:NO];
             [self.resignButton setEnabled:NO];
             [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
         } else if (canPlayOrMarkStones) {
