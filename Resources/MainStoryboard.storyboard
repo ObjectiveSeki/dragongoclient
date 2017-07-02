@@ -411,6 +411,7 @@
                                         </connections>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.9882352941176471" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ak4-mZ-JDu" firstAttribute="leading" secondItem="xni-U3-1MX" secondAttribute="leading" id="CSA-2q-H5Y"/>
                                     <constraint firstAttribute="bottom" secondItem="ak4-mZ-JDu" secondAttribute="bottom" priority="750" id="bbr-oL-r7i"/>
