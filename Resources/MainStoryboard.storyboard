@@ -609,7 +609,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nd-CL-jGD" userLabel="Message Display View">
-                            <rect key="frame" x="8" y="8" width="304" height="185"/>
+                            <rect key="frame" x="8" y="28" width="304" height="185"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Message background" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-CM-2hV">
                                     <rect key="frame" x="0.0" y="0.0" width="304" height="185"/>
@@ -656,7 +656,7 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="eV7-PU-9Nd" firstAttribute="bottom" secondItem="EY9-sO-cE6" secondAttribute="bottom" id="1N1-ys-oG8"/>
-                        <constraint firstItem="6Nd-CL-jGD" firstAttribute="top" secondItem="EY9-sO-cE6" secondAttribute="topMargin" id="9o1-uQ-Lvm"/>
+                        <constraint firstItem="6Nd-CL-jGD" firstAttribute="top" secondItem="EY9-sO-cE6" secondAttribute="topMargin" constant="20" id="9o1-uQ-Lvm"/>
                         <constraint firstItem="6Nd-CL-jGD" firstAttribute="trailing" secondItem="EY9-sO-cE6" secondAttribute="trailingMargin" id="R6x-XL-vkw"/>
                         <constraint firstItem="eV7-PU-9Nd" firstAttribute="leading" secondItem="EY9-sO-cE6" secondAttribute="leading" id="dDE-fk-RPb"/>
                         <constraint firstItem="eV7-PU-9Nd" firstAttribute="width" secondItem="EY9-sO-cE6" secondAttribute="width" id="eDY-Qs-qfb"/>
