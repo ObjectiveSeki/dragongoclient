@@ -77,7 +77,9 @@
 		[self login];
 	} else if (cell == self.signupCell) {
 		[theTableView deselectRowAtIndexPath:indexPath animated:YES];
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]
+                                           options:@{}
+                                 completionHandler:nil];
 	}
 }
 

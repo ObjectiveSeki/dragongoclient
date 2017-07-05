@@ -32,8 +32,6 @@
 
 @property (nonatomic, strong) SpinnerView *spinner;
 
-@property (nonatomic, strong) UIActionSheet *passResignActionSheet;
-
 // A timer that's triggered when the forward button is hit. It temporarily
 // disables the resign button, to help avoid accidental keypresses.
 @property (nonatomic, strong) NSTimer *resignInteractionTimer;
@@ -58,13 +56,28 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	self.currentZoomScale = 1.0;
 	self.navigationItem.title = [NSString stringWithFormat:@"vs. %@", [self.game opponent]];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
-    self.scrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Game Background.png"]];
     self.goToBeginningGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToBeginning:)];
     self.goToCurrentMoveGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(goToCurrentMove:)];
     
     self.tappedBoardGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGoBoardTouch:)];
     [self.boardView addGestureRecognizer:self.tappedBoardGestureRecognizer];
     self.boardView.delegate = self;
+    
+    self.scrollView.contentInset = UIEdgeInsetsMake(self.scrollView.contentInset.top, self.scrollView.contentInset.left, self.bottomBar.bounds.size.height, self.scrollView.contentInset.right);
+    
+    // make the toolbar translucent
+    [self.toolbar setBackgroundImage:[UIImage new]
+                  forToolbarPosition:UIBarPositionAny
+                          barMetrics:UIBarMetricsDefault];
+    [self.toolbar setShadowImage:[UIImage new]
+              forToolbarPosition:UIBarPositionAny];
+    
+    // add a top border to our bottom view
+    CALayer *topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0.0f, -1.0f, CGRectGetWidth(self.bottomBar.frame), 0.33f);
+    topBorder.backgroundColor = [UIColor colorWithWhite:0.65f
+                                                  alpha:1.0f].CGColor;
+    [self.bottomBar.layer addSublayer:topBorder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -132,19 +145,18 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 - (void)showStatusMessage:(NSString *)statusMessage {
     self.statusLabel.text = statusMessage;
     if (statusMessage && statusMessage.length > 0) {
-        // can't use frame origin here, because the superview extends below the navbar
-        if (self.statusPositionConstraint.constant <= 0) {
+       if (self.statusPositionConstraint.constant <= 0) {
             self.statusBar.hidden = NO;
             [UIView animateWithDuration:0.3 animations:^{
                 self.statusPositionConstraint.constant = self.statusBar.bounds.size.height;
-                [self.statusBar layoutIfNeeded];
+                [self.view layoutIfNeeded];
             }];
         }
     } else {
         if (self.statusPositionConstraint.constant > 0) {
             [UIView animateWithDuration:0.3 animations:^{
                 self.statusPositionConstraint.constant = 0;
-                [self.statusBar layoutIfNeeded];
+                [self.view layoutIfNeeded];
             } completion:^(BOOL finished) {
                 if (finished) {
                     self.statusBar.hidden = YES;
@@ -166,7 +178,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (void)replaceToolbarItemAtIndex:(int)itemIndex withItem:(UIBarButtonItem *)toolbarItem {
-    int index = itemIndex * 2 + 1; // each item has something in between.
+    int index = itemIndex * 2; // each item has something in between.
     if (toolbarItem == [self.toolbar.items objectAtIndex:index]) {
         return;
     }
@@ -188,11 +200,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (void)updateToolbar {
     if (self.readOnly) {
-        self.passButton.enabled = NO;
         self.resignButton.enabled = NO;
     } else {
         self.confirmButton.enabled = self.board.canSubmit;
-        self.passButton.enabled = self.board.canPassOrResign;
         self.resignButton.enabled = self.board.canPassOrResign;
     }
     
@@ -225,9 +235,9 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 // Sets the 'message waiting' toolbar indicator based on the value of hasMessage.
 - (void)setMessageIconState:(BOOL)hasMessage {
 	if (hasMessage) {
-		self.messageButton.image = [UIImage imageNamed:@"Message on.png"];
+		self.messageButton.image = [UIImage imageNamed:@"Message Open"];
 	} else {
-		self.messageButton.image = [UIImage imageNamed:@"Message off.png"];
+		self.messageButton.image = [UIImage imageNamed:@"Message"];
 	}
 }
 
@@ -308,7 +318,8 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     }
     
     CGFloat minimumVisiblePoint = self.topLayoutGuide.length;
-    CGFloat visibleHeight = self.scrollView.bounds.size.height - minimumVisiblePoint;
+    CGFloat maximumVisiblePoint = self.bottomBar.frame.origin.y;
+    CGFloat visibleHeight = maximumVisiblePoint - minimumVisiblePoint;
     
     if (self.scrollView.contentSize.height < visibleHeight) {
         contentOffset.y = - minimumVisiblePoint - (visibleHeight - self.scrollView.contentSize.height) / 2 ;
@@ -336,19 +347,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     return self.boardView;
 }
 
-#pragma mark - UIActionSheetDelegate methods
-
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (actionSheet == self.passResignActionSheet) {
-        if (buttonIndex == actionSheet.destructiveButtonIndex) {
-            [self resign];
-        } else if (buttonIndex != actionSheet.cancelButtonIndex) {
-            [self pass];
-        }
-        self.passResignActionSheet = nil;
-    }
-}
-
 #pragma mark - Toolbar actions
 
 - (IBAction)zoomOut {
@@ -367,7 +365,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     
 	NSString *reply = self.messageView.reply;
     
-	void (^onSuccess)() = ^() {
+    void (^onSuccess)(void) = ^() {
 		[self didPlayMove];
 	};
     
@@ -399,8 +397,23 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 }
 
 - (IBAction)showPassResignPanel:(id)sender {
-    self.passResignActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Resign" otherButtonTitles:@"Pass", nil];
-    [self.passResignActionSheet showFromBarButtonItem:sender animated:YES];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    }];
+    [alertController addAction:cancelAction];
+    
+    UIAlertAction *passAction = [UIAlertAction actionWithTitle:@"Pass" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self pass];
+    }];
+    [alertController addAction:passAction];
+    
+    UIAlertAction *resignAction = [UIAlertAction actionWithTitle:@"Resign" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self resign];
+    }];
+    [alertController addAction:resignAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{}];
 }
 
 - (IBAction)showMessageWindow {
@@ -495,7 +508,6 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         
         if (shouldZoomIn) {
             [self zoomIn:[sender locationInView:self.boardView]];
-            [self.passButton setEnabled:NO];
             [self.resignButton setEnabled:NO];
             [self.navigationItem setRightBarButtonItem:self.zoomOutButton animated:YES];
         } else if (canPlayOrMarkStones) {

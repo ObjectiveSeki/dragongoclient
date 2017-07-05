@@ -83,7 +83,7 @@
             accepted = YES;
         }
 
-        [[GenericGameServer sharedGameServer] answerInvite:self.invite accepted:accepted onSuccess:^(Invite *invite) {
+        [[GenericGameServer sharedGameServer] answerInvite:self.invite accepted:accepted onSuccess:^() {
             [self.navigationController popViewControllerAnimated:YES];
         } onError:^(NSError *error) {
             //probably should notify the user

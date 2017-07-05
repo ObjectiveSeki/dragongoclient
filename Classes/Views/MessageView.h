@@ -9,15 +9,17 @@
 @interface MessageView : UIView
 
 @property(nonatomic, strong) IBOutlet UITextView *messageTextView;
-@property(nonatomic, strong) IBOutlet UITextField *messageField;
+@property(nonatomic, strong) IBOutlet UITextView *messageField;
 @property(nonatomic, strong) IBOutlet UIView *messageDisplayView;
 @property(nonatomic, strong) IBOutlet UIView *messageInputView;
+@property(weak, nonatomic) IBOutlet NSLayoutConstraint *messageInputViewBottomConstraint;
+
 @property(nonatomic, copy) NSString *message;
 @property(nonatomic, copy) NSString *reply;
-@property(nonatomic, copy) void (^onHide)();
+@property(nonatomic, copy) void (^onHide)(void);
 @property(nonatomic) BOOL showInputView;
 
-- (void)show:(void (^)())onHide;
+- (void)show:(void (^)(void))onHide;
 - (BOOL)hasMessageOrReply;
 - (IBAction)hide;
 

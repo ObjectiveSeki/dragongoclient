@@ -279,11 +279,15 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#ifdef INVITES_ENABLED
     if (self.gameListTypeControl.selectedSegmentIndex == kGameSectionMyMove) {
         return 2;
     } else {
         return 1;
     }
+#else
+    return 1;
+#endif
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -315,25 +319,46 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     return [selectedGameList.invites objectAtIndex:indexPath.row];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForGame:(Game *)game {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    if ([game color] == kMovePlayerBlack) {
+        [cell.imageView setImage:[UIImage imageNamed:@"Black"]];
+    } else {
+        [cell.imageView setImage:[UIImage imageNamed:@"White"]];
+    }
+    cell.textLabel.text = game.opponent;
+    cell.detailTextLabel.text = game.time;
+    
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForInvite:(Invite *)invite {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameCell"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    cell.textLabel.text = invite.opponent;
+    cell.detailTextLabel.text = @"Invite";
+    return cell;
+}
+
+- (UITableViewCell *)loadingCellForTableView:(UITableView *)tableView {
+    LoadingCell *loadingCell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
+    [loadingCell.activityIndicator startAnimating];
+    return loadingCell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell;
 
     if (indexPath.section == kSectionGames) {
         Game *game = [self gameForRowAtIndexPath:indexPath];
         if (game) {
-
-            if ([game color] == kMovePlayerBlack) {
-                [cell.imageView setImage:[UIImage imageNamed:@"Black.png"]];
-            } else {
-                [cell.imageView setImage:[UIImage imageNamed:@"White.png"]];
-            }
-            cell.textLabel.text = game.opponent;
-            cell.detailTextLabel.text = game.time;
-            return cell;
+            cell = [self tableView:tableView cellForGame:game];
         } else if ([self selectedGameList] == self.runningGames) {
-            LoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
-            [cell.activityIndicator startAnimating];
+            cell = [self loadingCellForTableView:tableView];
+            
             if (self.runningGames && !self.loadingNewRunningGamesPage) {
                 self.loadingNewRunningGamesPage = YES;
                 [self getMoreRunningGames];
@@ -345,10 +370,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     } else {
         //invites
         Invite *invite = [self inviteForRowAtIndexPath:indexPath];
-        cell.textLabel.text = invite.opponent;
-        cell.detailTextLabel.text = @"Invite";
+        cell = [self tableView:tableView cellForInvite:invite];
     }
-
+    
     return cell;
 }
 
@@ -391,11 +415,15 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+#ifdef INVITES_ENABLED
     if (section == 0) {
         return @"Games";
     } else {
         return @"Invitations";
     }
+#else
+    return nil;
+#endif
 }
 
 #pragma mark -

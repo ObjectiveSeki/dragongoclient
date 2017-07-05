@@ -18,24 +18,16 @@
 		DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA238C2515B22AE800D4050C /* DGSErrors.strings */; };
-		DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE1212F14EC8003FEE23 /* Board@2x.png */; };
 		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
-		DA37D90A11BF56DA00BC1445 /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90611BF56DA00BC1445 /* Black.png */; };
-		DA37D90B11BF56DA00BC1445 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D90711BF56DA00BC1445 /* White.png */; };
-		DA37D9C311BF6E5100BC1445 /* Board.png in Resources */ = {isa = PBXBuildFile; fileRef = DA37D9C111BF6E5100BC1445 /* Board.png */; };
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
 		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
-		DA3B8CCF16A7D8520013E85F /* Game Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B8CCD16A7D8520013E85F /* Game Background.png */; };
-		DA3B8CD016A7D8520013E85F /* Game Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */; };
 		DA419A6311BA0C0600B3050E /* FuegoBoard.mm in Sources */ = {isa = PBXBuildFile; fileRef = DA419A6011BA0C0600B3050E /* FuegoBoard.mm */; };
 		DA419D4A11BB2DA400B3050E /* CurrentGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA419D4411BB2DA400B3050E /* CurrentGamesController.m */; };
 		DA4BC705179517C900C74040 /* ExpandingLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4BC704179517C900C74040 /* ExpandingLabelCell.m */; };
 		DA5218D512CF9EF500000147 /* WaitingRoomGamesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5218D412CF9EF500000147 /* WaitingRoomGamesController.m */; };
 		DA521C1212D4312F00C2AE9D /* JoinWaitingRoomGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */; };
 		DA5BEB9B1C9F566F00C335C4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5BEB9A1C9F566F00C335C4 /* Media.xcassets */; };
-		DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D350C12B20A8F001271D3 /* Moves@2x.png */; };
-		DA5D351312B20A9D001271D3 /* Moves.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5D351212B20A9A001271D3 /* Moves.png */; };
 		DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */; };
 		DA66E91E16A6923100A066CF /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = DA66E91D16A6923100A066CF /* NSTimer+Blocks.m */; };
 		DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA68408514DB04E9006EF22C /* CachingGameServer.m */; };
@@ -49,14 +41,6 @@
 		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
 		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
-		DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC43125C2725002EB162 /* Message off@2x.png */; };
-		DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98EC44125C2725002EB162 /* Message on@2x.png */; };
-		DA9BAD1C126B6FB5008ED2B4 /* Pass.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9BAD1A126B6FB5008ED2B4 /* Pass.png */; };
-		DA9BAD1D126B6FB5008ED2B4 /* Pass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */; };
-		DAA7B8D7125C20440002754F /* Message off.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D5125C20440002754F /* Message off.png */; };
-		DAA7B8D8125C20440002754F /* Message on.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA7B8D6125C20440002754F /* Message on.png */; };
-		DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */; };
-		DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA80F9013B42C3700E5E2B5 /* White@2x.png */; };
 		DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC59F641CA104FE009131C0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC59F631CA104FE009131C0 /* Launch Screen.storyboard */; };
@@ -64,15 +48,7 @@
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
-		DAC86D5316A52AA7000A72D6 /* Next.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D4F16A52AA7000A72D6 /* Next.png */; };
-		DAC86D5416A52AA7000A72D6 /* Next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5016A52AA7000A72D6 /* Next@2x.png */; };
-		DAC86D5516A52AA7000A72D6 /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5116A52AA7000A72D6 /* Previous.png */; };
-		DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC86D5216A52AA7000A72D6 /* Previous@2x.png */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
-		DAD3634B126D4A9C00589A32 /* Message background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36349126D4A9C00589A32 /* Message background.png */; };
-		DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD3634A126D4A9C00589A32 /* Message background@2x.png */; };
-		DAD36369126D586600589A32 /* Message input.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36367126D586600589A32 /* Message input.png */; };
-		DAD3636A126D586600589A32 /* Message input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD36368126D586600589A32 /* Message input@2x.png */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
 		DAE5F4CB15AFEDBB0062B5F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA71CAA311B5EA50008696AC /* Foundation.framework */; };
@@ -81,10 +57,6 @@
 		DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE932C112454E4800335F0F /* AddGameViewController.m */; };
 		DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
-		DAEB649D125E1C3D00A915EB /* Resign.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB649C125E1C3D00A915EB /* Resign.png */; };
-		DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEB64A9125E202800A915EB /* Resign@2x.png */; };
-		DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */; };
-		DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */; };
 		DAF16E6B1799025600ADA4D1 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */; };
 		DAF16E6D179902F600ADA4D1 /* acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = DAF16E6C179902F600ADA4D1 /* acknowledgements.html */; };
 		DAF9102911BB48A800FE7B96 /* GoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.m */; };
@@ -124,19 +96,13 @@
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA238C2515B22AE800D4050C /* DGSErrors.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = DGSErrors.strings; path = Resources/DGSErrors.strings; sourceTree = "<group>"; };
-		DA2EDE1212F14EC8003FEE23 /* Board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board@2x.png"; sourceTree = "<group>"; };
 		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServerProtocol.h; sourceTree = "<group>"; };
-		DA37D90611BF56DA00BC1445 /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
-		DA37D90711BF56DA00BC1445 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
-		DA37D9C111BF6E5100BC1445 /* Board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Board.png; sourceTree = "<group>"; };
 		DA38AB9711EC028B005E1AB7 /* First Score.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "First Score.sgf"; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DA38B1F811B59F2F00112AA4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DA391DDC1592CB2900F9E36F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		DA391DDD1592CB2900F9E36F /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
-		DA3B8CCD16A7D8520013E85F /* Game Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Background.png"; sourceTree = "<group>"; };
-		DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Game Background@2x.png"; sourceTree = "<group>"; };
 		DA419A5F11BA0C0600B3050E /* FuegoBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuegoBoard.h; sourceTree = "<group>"; };
 		DA419A6011BA0C0600B3050E /* FuegoBoard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FuegoBoard.mm; sourceTree = "<group>"; };
 		DA419D4311BB2DA400B3050E /* CurrentGamesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentGamesController.h; sourceTree = "<group>"; };
@@ -150,8 +116,6 @@
 		DA521C1012D4312F00C2AE9D /* JoinWaitingRoomGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinWaitingRoomGameController.h; sourceTree = "<group>"; };
 		DA521C1112D4312F00C2AE9D /* JoinWaitingRoomGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinWaitingRoomGameController.m; sourceTree = "<group>"; };
 		DA5BEB9A1C9F566F00C335C4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		DA5D350C12B20A8F001271D3 /* Moves@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Moves@2x.png"; sourceTree = "<group>"; };
-		DA5D351212B20A9A001271D3 /* Moves.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Moves.png; sourceTree = "<group>"; };
 		DA65D6A1169820E500AB9FC7 /* DGSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DGSTests-Info.plist"; sourceTree = "<group>"; };
 		DA65D6A3169820E500AB9FC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA65D6A8169820E500AB9FC7 /* DGSTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DGSTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -180,14 +144,6 @@
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
 		DA94AEFD1CA6EB6D00CCC83F /* GoBoardViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardViewDelegate.h; sourceTree = "<group>"; };
 		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
-		DA98EC43125C2725002EB162 /* Message off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off@2x.png"; sourceTree = "<group>"; };
-		DA98EC44125C2725002EB162 /* Message on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on@2x.png"; sourceTree = "<group>"; };
-		DA9BAD1A126B6FB5008ED2B4 /* Pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pass.png; sourceTree = "<group>"; };
-		DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pass@2x.png"; sourceTree = "<group>"; };
-		DAA7B8D5125C20440002754F /* Message off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message off.png"; sourceTree = "<group>"; };
-		DAA7B8D6125C20440002754F /* Message on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message on.png"; sourceTree = "<group>"; };
-		DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
-		DAA80F9013B42C3700E5E2B5 /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
 		DABA05D6169BF98F00B1ECD9 /* GameListTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameListTests.h; sourceTree = "<group>"; };
 		DABA05D7169BF98F00B1ECD9 /* GameListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameListTests.m; sourceTree = "<group>"; };
 		DABA05F2169EAACE00B1ECD9 /* LoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
@@ -200,15 +156,7 @@
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		DAC86D4F16A52AA7000A72D6 /* Next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Next.png; sourceTree = "<group>"; };
-		DAC86D5016A52AA7000A72D6 /* Next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next@2x.png"; sourceTree = "<group>"; };
-		DAC86D5116A52AA7000A72D6 /* Previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Previous.png; sourceTree = "<group>"; };
-		DAC86D5216A52AA7000A72D6 /* Previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Previous@2x.png"; sourceTree = "<group>"; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
-		DAD36349126D4A9C00589A32 /* Message background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background.png"; sourceTree = "<group>"; };
-		DAD3634A126D4A9C00589A32 /* Message background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message background@2x.png"; sourceTree = "<group>"; };
-		DAD36367126D586600589A32 /* Message input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input.png"; sourceTree = "<group>"; };
-		DAD36368126D586600589A32 /* Message input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Message input@2x.png"; sourceTree = "<group>"; };
 		DADD19C711BCA6170038F8BC /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DADD1CDD11FD3C0B005922A3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		DADD1CE111FD3C43005922A3 /* FAQ.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FAQ.md; sourceTree = "<group>"; };
@@ -226,10 +174,6 @@
 		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
 		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
-		DAEB649C125E1C3D00A915EB /* Resign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Resign.png; sourceTree = "<group>"; };
-		DAEB64A9125E202800A915EB /* Resign@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resign@2x.png"; sourceTree = "<group>"; };
-		DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock.png"; sourceTree = "<group>"; };
-		DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Board dock@2x.png"; sourceTree = "<group>"; };
 		DAEE341C15884ECA00300B29 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DAF16E691799025500ADA4D1 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
@@ -297,7 +241,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				DA427CF71DA0816F001E4304 /* DGS.entitlements */,
@@ -331,13 +275,12 @@
 			isa = PBXGroup;
 			children = (
 				DAE932BD12454CCA00335F0F /* XIBs */,
-				DA37D90511BF56BC00BC1445 /* Images */,
 				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
 				DA238C2515B22AE800D4050C /* DGSErrors.strings */,
 				DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */,
-				DAF16E6C179902F600ADA4D1 /* acknowledgements.html */,
 				DA5BEB9A1C9F566F00C335C4 /* Media.xcassets */,
+				DAF16E6C179902F600ADA4D1 /* acknowledgements.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -399,41 +342,6 @@
 				DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */,
 			);
 			path = Libraries;
-			sourceTree = "<group>";
-		};
-		DA37D90511BF56BC00BC1445 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				DA3B8CCD16A7D8520013E85F /* Game Background.png */,
-				DA3B8CCE16A7D8520013E85F /* Game Background@2x.png */,
-				DAC86D4F16A52AA7000A72D6 /* Next.png */,
-				DAC86D5016A52AA7000A72D6 /* Next@2x.png */,
-				DAC86D5116A52AA7000A72D6 /* Previous.png */,
-				DAC86D5216A52AA7000A72D6 /* Previous@2x.png */,
-				DAD36367126D586600589A32 /* Message input.png */,
-				DAD36368126D586600589A32 /* Message input@2x.png */,
-				DAD36349126D4A9C00589A32 /* Message background.png */,
-				DAD3634A126D4A9C00589A32 /* Message background@2x.png */,
-				DA9BAD1A126B6FB5008ED2B4 /* Pass.png */,
-				DA9BAD1B126B6FB5008ED2B4 /* Pass@2x.png */,
-				DAEB649C125E1C3D00A915EB /* Resign.png */,
-				DAEB64A9125E202800A915EB /* Resign@2x.png */,
-				DAA7B8D5125C20440002754F /* Message off.png */,
-				DA98EC43125C2725002EB162 /* Message off@2x.png */,
-				DA98EC44125C2725002EB162 /* Message on@2x.png */,
-				DAA7B8D6125C20440002754F /* Message on.png */,
-				DAECBE2A11F38ADD00CDA9F3 /* Board dock.png */,
-				DAECBE2B11F38ADD00CDA9F3 /* Board dock@2x.png */,
-				DA37D9C111BF6E5100BC1445 /* Board.png */,
-				DA2EDE1212F14EC8003FEE23 /* Board@2x.png */,
-				DA37D90611BF56DA00BC1445 /* Black.png */,
-				DAA80F8F13B42C3700E5E2B5 /* Black@2x.png */,
-				DAA80F9013B42C3700E5E2B5 /* White@2x.png */,
-				DA37D90711BF56DA00BC1445 /* White.png */,
-				DA5D350C12B20A8F001271D3 /* Moves@2x.png */,
-				DA5D351212B20A9A001271D3 /* Moves.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		DA38B20211B59FAB00112AA4 /* Models */ = {
@@ -613,7 +521,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Justin Weiss";
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
@@ -636,7 +544,7 @@
 				English,
 				German,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -651,48 +559,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA37D90A11BF56DA00BC1445 /* Black.png in Resources */,
-				DA37D90B11BF56DA00BC1445 /* White.png in Resources */,
-				DA37D9C311BF6E5100BC1445 /* Board.png in Resources */,
 				DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */,
 				DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
 				DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
-				DAECBE2C11F38ADD00CDA9F3 /* Board dock.png in Resources */,
-				DAECBE2D11F38ADD00CDA9F3 /* Board dock@2x.png in Resources */,
 				DA5BEB9B1C9F566F00C335C4 /* Media.xcassets in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
 				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 				DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */,
-				DAA7B8D7125C20440002754F /* Message off.png in Resources */,
-				DAA7B8D8125C20440002754F /* Message on.png in Resources */,
-				DA98EC45125C2725002EB162 /* Message off@2x.png in Resources */,
-				DA98EC46125C2725002EB162 /* Message on@2x.png in Resources */,
-				DAEB649D125E1C3D00A915EB /* Resign.png in Resources */,
-				DAEB64AA125E202800A915EB /* Resign@2x.png in Resources */,
-				DA9BAD1C126B6FB5008ED2B4 /* Pass.png in Resources */,
-				DA9BAD1D126B6FB5008ED2B4 /* Pass@2x.png in Resources */,
-				DAD3634B126D4A9C00589A32 /* Message background.png in Resources */,
-				DAD3634C126D4A9C00589A32 /* Message background@2x.png in Resources */,
-				DAD36369126D586600589A32 /* Message input.png in Resources */,
-				DAD3636A126D586600589A32 /* Message input@2x.png in Resources */,
-				DA5D350D12B20A92001271D3 /* Moves@2x.png in Resources */,
-				DA5D351312B20A9D001271D3 /* Moves.png in Resources */,
-				DA2EDE1312F14EC8003FEE23 /* Board@2x.png in Resources */,
 				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
-				DAA80F9113B42C3700E5E2B5 /* Black@2x.png in Resources */,
-				DAA80F9213B42C3700E5E2B5 /* White@2x.png in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
 				DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */,
 				DAC59F641CA104FE009131C0 /* Launch Screen.storyboard in Resources */,
-				DAC86D5316A52AA7000A72D6 /* Next.png in Resources */,
-				DAC86D5416A52AA7000A72D6 /* Next@2x.png in Resources */,
-				DAC86D5516A52AA7000A72D6 /* Previous.png in Resources */,
-				DAC86D5616A52AA7000A72D6 /* Previous@2x.png in Resources */,
-				DA3B8CCF16A7D8520013E85F /* Game Background.png in Resources */,
-				DA3B8CD016A7D8520013E85F /* Game Background@2x.png in Resources */,
 				DAF16E6D179902F600ADA4D1 /* acknowledgements.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,7 +721,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGSBeta;
@@ -869,7 +749,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGS;
 				VALIDATE_PRODUCT = YES;
@@ -880,12 +760,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -902,7 +788,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -912,12 +798,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -938,7 +830,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -947,12 +839,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -967,7 +865,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 			};
 			name = Adhoc;
@@ -994,7 +892,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGSBeta;
 				VALIDATE_PRODUCT = YES;

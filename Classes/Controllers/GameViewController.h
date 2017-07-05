@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, BoardState) {
 	kBoardStateZoomedIn,
 };
 
-@interface GameViewController : UIViewController <UIActionSheetDelegate, GoBoardViewDelegate>
+@interface GameViewController : UIViewController <GoBoardViewDelegate>
 
 @property(nonatomic, strong) Game *game;
 @property(nonatomic) BOOL readOnly;
@@ -26,7 +26,6 @@ typedef NS_ENUM(NSInteger, BoardState) {
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *undoButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *zoomOutButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *confirmButton;
-@property(nonatomic, strong) IBOutlet UIBarButtonItem *passButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *resignButton;
 @property(nonatomic, strong) IBOutlet UIBarButtonItem *messageButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *nextMoveButton;
@@ -38,6 +37,7 @@ typedef NS_ENUM(NSInteger, BoardState) {
 @property (weak, nonatomic) IBOutlet UIView *statusBar;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusPositionConstraint;
+@property (weak, nonatomic) IBOutlet UIView *bottomBar;
 
 
 - (IBAction)undoMove;
