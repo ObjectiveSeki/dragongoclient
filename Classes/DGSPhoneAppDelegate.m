@@ -181,7 +181,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 - (void)presentNetworkError:(NSNotification *)notification {
     NSError *error = notification.object;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
-                                                                             message:[error localizedRecoverySuggestion]
+                                                                             message:[error localizedDescription]
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Dismiss")
