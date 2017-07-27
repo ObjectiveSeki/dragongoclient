@@ -259,7 +259,11 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     self.runningGames = runningGameList;
     [self.tableView reloadData];
     
+#ifdef INVITES_ENABLED
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count] + [self.games inviteCount]];
+#else
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[self.games count]];
+#endif
     if ([self.games count] == 0 && [self selectedGameList] == self.games) {
         [self showNoGamesView:YES];
     } else {
