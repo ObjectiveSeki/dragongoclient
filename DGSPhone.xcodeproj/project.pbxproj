@@ -38,6 +38,7 @@
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
+		DAA94BD81F2C001000FE9DCA /* TintedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA94BD71F2C001000FE9DCA /* TintedLabel.m */; };
 		DAAD85061F298C840046DF60 /* PickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAD85051F298C840046DF60 /* PickerTableViewCell.m */; };
 		DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
@@ -139,6 +140,8 @@
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
 		DA94AEFD1CA6EB6D00CCC83F /* GoBoardViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardViewDelegate.h; sourceTree = "<group>"; };
 		DAA02BA41F2A804A008FDA2C /* PickerTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerTableViewCellDelegate.h; sourceTree = "<group>"; };
+		DAA94BD61F2C001000FE9DCA /* TintedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TintedLabel.h; sourceTree = "<group>"; };
+		DAA94BD71F2C001000FE9DCA /* TintedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TintedLabel.m; sourceTree = "<group>"; };
 		DAAD85041F298C840046DF60 /* PickerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerTableViewCell.h; sourceTree = "<group>"; };
 		DAAD85051F298C840046DF60 /* PickerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerTableViewCell.m; sourceTree = "<group>"; };
 		DABA05D6169BF98F00B1ECD9 /* GameListTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameListTests.h; sourceTree = "<group>"; };
@@ -466,6 +469,8 @@
 				DA6F94FB11FAA0670093751D /* SpinnerView.m */,
 				DA1341A91292323300D2A4BF /* MessageView.h */,
 				DA1341AA1292323300D2A4BF /* MessageView.m */,
+				DAA94BD61F2C001000FE9DCA /* TintedLabel.h */,
+				DAA94BD71F2C001000FE9DCA /* TintedLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */,
 				DA0762B71377B678003E0390 /* DGSDev.m in Sources */,
 				DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */,
+				DAA94BD81F2C001000FE9DCA /* TintedLabel.m in Sources */,
 				DA8E707C13D5337E007E569B /* GameList.m in Sources */,
 				DA68408614DB04E9006EF22C /* CachingGameServer.m in Sources */,
 				DA391DDE1592CB2900F9E36F /* Player.m in Sources */,

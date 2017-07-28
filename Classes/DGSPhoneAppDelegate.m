@@ -56,6 +56,8 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
         [self checkForMissedGameNotificationsForApplication:application];
     }
     
+    [self.window setTintColor:[UIColor colorWithRed:0.92 green:0.60 blue:0.29 alpha:1.0]];
+    
 	[self.window makeKeyAndVisible];
 	NSLog(@"Showing main window...");
     
