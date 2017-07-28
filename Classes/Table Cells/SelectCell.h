@@ -17,6 +17,6 @@
 @property(nonatomic, strong) NSArray *options;
 @property(nonatomic, strong) NSArray *selectedOptions;
 @property(nonatomic, strong) NSArray *sizes;
-@property(nonatomic, copy) void (^onChanged)(SelectCell *cell, PickerTableViewCell *pickerCell);
+@property(nonatomic, copy) void (^onChanged)(PickerTableViewCell *pickerCell);
 
 @end
