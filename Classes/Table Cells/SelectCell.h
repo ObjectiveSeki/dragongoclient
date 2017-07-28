@@ -12,11 +12,10 @@
 @interface SelectCell : UITableViewCell {
 }
 
-@property(nonatomic, strong) IBOutlet UILabel *label;
-@property(nonatomic, strong) IBOutlet UILabel *value;
 @property(nonatomic, strong) NSArray *options;
 @property(nonatomic, strong) NSArray *selectedOptions;
 @property(nonatomic, strong) NSArray *sizes;
+@property(nonatomic, assign) BOOL active;
 @property(nonatomic, copy) void (^onChanged)(PickerTableViewCell *pickerCell);
 
 @end

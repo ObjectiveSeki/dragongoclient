@@ -12,14 +12,10 @@
 
 @interface TextCell : UITableViewCell <UITextFieldDelegate>
 
-@property(nonatomic, strong) IBOutlet UILabel *label;
 @property(nonatomic, strong) IBOutlet UITextField *textField;
-@property(nonatomic, strong) IBOutlet UIView *content;
 @property(nonatomic, copy) void (^onChanged)(TextCell *textCell);
 
 // max length of the text this cell contains. -1 means no maximum.
 @property(nonatomic, assign) int maxTextLength;
-
-- (id)init;
 
 @end

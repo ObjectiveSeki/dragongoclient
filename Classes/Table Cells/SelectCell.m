@@ -9,20 +9,34 @@
 #import "SelectCell.h"
 
 @interface SelectCell ()
-
+@property(nonatomic, assign) UIColor *oldDetailLabelColor;
 @end
 
 @implementation SelectCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
-        // Initialization code
+        _oldDetailLabelColor = self.detailTextLabel.textColor;
     }
     return self;
 }
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.oldDetailLabelColor = self.detailTextLabel.textColor;
+}
+
+- (void)setActive:(BOOL)active {
+    _active = active;
+    [self tintColorDidChange];
+}
+
+- (void)tintColorDidChange {
+    if (self.active) {
+        self.detailTextLabel.textColor = [self tintColor];
+    } else if (self.oldDetailLabelColor) {
+        self.detailTextLabel.textColor = self.oldDetailLabelColor;
+    }
 }
 
 @end
