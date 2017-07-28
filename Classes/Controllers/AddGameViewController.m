@@ -186,7 +186,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 		[indexPaths addObject:indexPath];
 	} else if (oldByoYomiType != kByoYomiTypeFischer && byoYomiType == kByoYomiTypeFischer) {
 		[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-	} else {
+	} else if (oldByoYomiType != byoYomiType){
 		[indexPaths addObject:indexPath];
 	}
 	[self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
