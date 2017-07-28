@@ -37,6 +37,31 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     kSectionCount
 };
 
+typedef NS_ENUM(NSUInteger, BoardSectionRows) {
+    kBoardSectionBoardSizeRow,
+    kBoardSectionHandicapPlacementRow,
+    kBoardSectionKomiTypeRow,
+    kBoardSectionGameStyleRow,
+    kBoardSectionManualHandicapRow,
+    kBoardSectionManualKomiRow,
+    kBoardSectionCount
+};
+
+typedef NS_ENUM(NSUInteger, TimeSectionRows) {
+    kTimeSectionMainTimeRow,
+    kTimeSectionByoYomiTypeRow,
+    kTimeSectionExtraTimeRow,
+    kTimeSectionExtraCountRow,
+    kTimeSectionCount
+};
+
+typedef NS_ENUM(NSUInteger, RatingSectionRows) {
+    kRatingSectionRankedGameRow,
+    kRatingSectionRequireRatedOpponentRow,
+    kRatingSectionMinRatingRow,
+    kRatingSectionMaxRatingRow,
+    kRatingSectionCount
+};
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -137,7 +162,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     return [tableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
 }
 
-- (TextCell *)dequeueActionCell:(UITableView *)tableView {
+- (UITableViewCell *)dequeueActionCell:(UITableView *)tableView {
     return [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
 }
 
@@ -181,7 +206,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	// We want to update the table cells without deselecting
 	// the current cell, so no #reloadData for you.
 	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[self indexPathIgnoringPickerForRow:2 inSection:kTimeSection]];
-	NSIndexPath *indexPath = [self indexPathIgnoringPickerForRow:3 inSection:kTimeSection];
+	NSIndexPath *indexPath = [self indexPathIgnoringPickerForRow:kTimeSectionExtraCountRow inSection:kTimeSection];
     if (oldByoYomiType == kByoYomiTypeFischer && byoYomiType != kByoYomiTypeFischer) {
 		[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 		[indexPaths addObject:indexPath];
@@ -273,37 +298,33 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     NSInteger row = logicalIndexPath.row;
     
 	if (section == kDescriptionSection) {
-		if (row == 0) {
-			TextCell *cell = [self dequeueTextCell:theTableView];
-            cell.label.text = @"Comment";
-            cell.textField.text = self.game.comment;
-            cell.textField.keyboardType = UIKeyboardTypeDefault;
-            cell.onChanged = ^(TextCell *cell) {
-                self.game.comment = cell.textField.text;
-            };
-            return cell;
-		}
+        TextCell *cell = [self dequeueTextCell:theTableView];
+        cell.label.text = @"Comment";
+        cell.textField.text = self.game.comment;
+        cell.textField.keyboardType = UIKeyboardTypeDefault;
+        cell.onChanged = ^(TextCell *cell) {
+            self.game.comment = cell.textField.text;
+        };
+        return cell;
 	}
     
     if (section == kNumberOfGamesSection) {
-        if (row == 0) {
-            SelectCell *cell = [self dequeueSelectCell:theTableView];
-            cell.label.text = @"Number of Games";
-            cell.value.text = [@(self.game.numberOfGames) stringValue];
-            cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-                NSString *value = [pickerCell selectedValueInComponent:0];
-                self.game.numberOfGames = [value intValue];
-                cell.value.text = value;
-            };
-            cell.options = @[@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
-            cell.selectedOptions = @[cell.value.text];
-            cell.sizes = nil;
-            return cell;
-        }
+        SelectCell *cell = [self dequeueSelectCell:theTableView];
+        cell.label.text = @"Number of Games";
+        cell.value.text = [@(self.game.numberOfGames) stringValue];
+        cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+            NSString *value = [pickerCell selectedValueInComponent:0];
+            self.game.numberOfGames = [value intValue];
+            cell.value.text = value;
+        };
+        cell.options = @[@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
+        cell.selectedOptions = @[cell.value.text];
+        cell.sizes = nil;
+        return cell;
     }
     
 	if (section == kBoardSection) {
-		if (row == 0) {
+		if (row == kBoardSectionBoardSizeRow) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *boardSize = [NSString stringWithFormat:@"%d", self.game.boardSize];
 			NSArray *options = @[@"9", @"13", @"19"];
@@ -319,7 +340,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.sizes = nil;
 			cell.selectedOptions = @[boardSize];
 			return cell;
-		} else if (row == 1) {
+		} else if (row == kBoardSectionHandicapPlacementRow) {
             BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Standard Placement";
             cell.toggleSwitch.on = self.game.stdHandicap;
@@ -327,7 +348,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 self.game.stdHandicap = cell.toggleSwitch.on;
             };
 			return cell;
-		} else if (row == 2) {
+		} else if (row == kBoardSectionKomiTypeRow) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *komiType = [self.game komiTypeString];
 			NSMutableArray *options = [NSMutableArray array];
@@ -346,7 +367,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[komiType];
 			cell.sizes = nil;
 			return cell;
-		} else if (row == 3) {
+		} else if (row == kBoardSectionGameStyleRow) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *manualKomiType = [self.game manualKomiTypeString];
             NSMutableArray *options = [NSMutableArray array];
@@ -368,7 +389,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[manualKomiType];
 			cell.sizes = nil;
 			return cell;
-        } else if (row == 4) {
+        } else if (row == kBoardSectionManualHandicapRow) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
             NSMutableArray *handicaps = [[NSMutableArray alloc] initWithObjects:@"0", nil];
             for (int i = 2; i < 22; i++) {
@@ -386,7 +407,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[[NSString stringWithFormat:@"%d", self.game.handicap]];
 			cell.sizes = nil;
 			return cell;
-        } else if (row == 5) {
+        } else if (row == kBoardSectionManualKomiRow) {
             TextCell *cell = [self dequeueTextCell:theTableView];
             cell.label.text = @"Komi";
             cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
@@ -397,9 +418,9 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
             return cell;
         }
 	} else if (section == kTimeSection) {
-		if (row == 0) {
+		if (row == kTimeSectionMainTimeRow) {
 			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setMainTime:selectCell fromPickerCell:pickerCell]; } label:@"Main Time"];
-		} else if (row == 1) {
+		} else if (row == kTimeSectionByoYomiTypeRow) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *byoYomiType = [self.game byoYomiTypeString];
 			NSArray *options = @[[self.game byoYomiTypeString:kByoYomiTypeJapanese], [self.game byoYomiTypeString:kByoYomiTypeCanadian], [self.game byoYomiTypeString:kByoYomiTypeFischer]];
@@ -410,7 +431,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[byoYomiType];
 			cell.sizes = nil;
 			return cell;
-		} else if (row == 2) {
+		} else if (row == kTimeSectionExtraTimeRow) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeJapanese:selectCell fromPickerCell:pickerCell]; } label:@"Extra Time"];
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
@@ -418,7 +439,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			} else if (self.game.byoYomiType == kByoYomiTypeFischer) {
 				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeFischer:selectCell fromPickerCell:pickerCell]; } label:@"Extra Per Move"];
 			}
-		} else if (row == 3) {
+		} else if (row == kTimeSectionExtraCountRow) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
 				cell.label.text = @"Periods";
@@ -440,7 +461,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			}
 		}
 	} else if (section == kRatingSection) {
-		if (row == 0) {
+		if (row == kRatingSectionRankedGameRow) {
 			BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Ranked game";
             cell.toggleSwitch.on = self.game.rated;
@@ -448,7 +469,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 self.game.rated = cell.toggleSwitch.on;
             };
 			return cell;
-		} else if (row == 1) {
+		} else if (row == kRatingSectionRequireRatedOpponentRow) {
 			BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Rated opponent";
             cell.toggleSwitch.on = self.game.requireRatedOpponent;
@@ -456,7 +477,10 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 self.game.requireRatedOpponent = cell.toggleSwitch.on;
                 // We want to update the table cells without deselecting
                 // the current cell, so no #reloadData for you.
-                NSArray *indexPaths = @[[self indexPathIgnoringPickerForRow:2 inSection:kRatingSection], [self indexPathIgnoringPickerForRow:3 inSection:kRatingSection]];
+                NSArray *indexPaths = @[
+                                        [self indexPathIgnoringPickerForRow:kRatingSectionMinRatingRow inSection:kRatingSection],
+                                        [self indexPathIgnoringPickerForRow:kRatingSectionMaxRatingRow inSection:kRatingSection]
+                                        ];
 
                 if (self.game.requireRatedOpponent) {
                     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
@@ -465,7 +489,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 }
             };
 			return cell;
-		} else if (row == 2) {
+		} else if (row == kRatingSectionMinRatingRow) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
 			cell.label.text = @"Min rating";
 			cell.value.text = self.game.minimumRating;
@@ -478,7 +502,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[self.game.minimumRating];
 			cell.sizes = nil;
 			return cell;
-        } else if (row == 3) {
+        } else if (row == kRatingSectionMaxRatingRow) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
 			cell.label.text = @"Max rating";
 			cell.value.text = self.game.maximumRating;
