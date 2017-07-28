@@ -179,14 +179,15 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
     KomiType oldKomiType = self.game.komiType;
 	KomiType komiType = [pickerCell.picker selectedRowInComponent:0];
 
-	NSString *komiTypeString = [self.game komiTypeString:komiType];
 	self.game.komiType = komiType;
-	cell.value.text = komiTypeString;
-	cell.selectedOptions = @[komiTypeString];
 
     // We want to update the table cells without deselecting
     // the current cell, so no #reloadData for you.
-    NSArray *indexPaths = @[[self indexPathIgnoringPickerForRow:3 inSection:kBoardSection], [self indexPathIgnoringPickerForRow:4 inSection:kBoardSection], [self indexPathIgnoringPickerForRow:5 inSection:kBoardSection]];
+    NSArray *indexPaths = @[
+                            [self indexPathIgnoringPickerForRow:kBoardSectionGameStyleRow inSection:kBoardSection],
+                            [self indexPathIgnoringPickerForRow:kBoardSectionManualHandicapRow inSection:kBoardSection],
+                            [self indexPathIgnoringPickerForRow:kBoardSectionManualKomiRow inSection:kBoardSection]
+                            ];
 
     if (oldKomiType != kKomiTypeManual && komiType == kKomiTypeManual) {
         [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
@@ -198,10 +199,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 - (void)setByoYomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
 	ByoYomiType oldByoYomiType = self.game.byoYomiType;
 	ByoYomiType byoYomiType = [pickerCell.picker selectedRowInComponent:0];
-	NSString *byoYomiTypeString = [self.game byoYomiTypeString:byoYomiType];
 	self.game.byoYomiType = byoYomiType;
-	cell.value.text = byoYomiTypeString;
-	cell.selectedOptions = @[byoYomiTypeString];
 
 	// We want to update the table cells without deselecting
 	// the current cell, so no #reloadData for you.
@@ -224,9 +222,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 	int timeValue = tens * 10 + ones;
 	self.game.timeValue = timeValue;
 	self.game.timeUnit = [pickerCell.picker selectedRowInComponent:2];
-
-    cell.value.text = [self.game timePeriodString:self.game.timeValue withTimeUnit:self.game.timeUnit];
-	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.timeUnit]];
 }
 
 - (void)setExtraTimeJapanese:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
@@ -235,9 +230,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 	int timeValue = tens * 10 + ones;
 	self.game.japaneseTimeValue = timeValue;
 	self.game.japaneseTimeUnit = [pickerCell.picker selectedRowInComponent:2];
-
-	cell.value.text = [self.game timePeriodString:self.game.japaneseTimeValue withTimeUnit:self.game.japaneseTimeUnit];
-    cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.japaneseTimeUnit]];
 }
 
 - (void)setExtraTimeCanadian:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
@@ -246,9 +238,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 	int timeValue = tens * 10 + ones;
 	self.game.canadianTimeValue = timeValue;
 	self.game.canadianTimeUnit = [pickerCell.picker selectedRowInComponent:2];
-
-    cell.value.text = [self.game timePeriodString:self.game.canadianTimeValue withTimeUnit:self.game.canadianTimeUnit];
-	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.canadianTimeUnit]];
 }
 
 - (void)setExtraTimeFischer:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
@@ -257,9 +246,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 	int timeValue = tens * 10 + ones;
 	self.game.fischerTimeValue = timeValue;
 	self.game.fischerTimeUnit = [pickerCell.picker selectedRowInComponent:2];
-
-	cell.value.text = [self.game timePeriodString:self.game.fischerTimeValue withTimeUnit:self.game.fischerTimeUnit];
-	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.fischerTimeUnit]];
 }
 
 - (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell, PickerTableViewCell *pickerCell))onSelected label:(NSString *)label {
@@ -315,7 +301,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
         cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
             NSString *value = [pickerCell selectedValueInComponent:0];
             self.game.numberOfGames = [value intValue];
-            cell.value.text = value;
         };
         cell.options = @[@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
         cell.selectedOptions = @[cell.value.text];
@@ -333,8 +318,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
                 NSString *boardSize = [pickerCell selectedValueInComponent:0];
                 [self.game setBoardSize:[boardSize intValue]];
-                cell.value.text = boardSize;
-                cell.selectedOptions = @[boardSize];
             };
 			cell.options = @[options];
 			cell.sizes = nil;
@@ -380,10 +363,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.value.text = manualKomiType;
             cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
                 ManualKomiType manualKomiType = [pickerCell.picker selectedRowInComponent:0];
-                NSString *manualKomiTypeString = [self.game manualKomiTypeString:manualKomiType];
                 self.game.manualKomiType = manualKomiType;
-                cell.value.text = manualKomiTypeString;
-                cell.selectedOptions = @[manualKomiTypeString];
             };
 			cell.options = @[options];
 			cell.selectedOptions = @[manualKomiType];
@@ -401,7 +381,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
             cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
                 NSString *handicapString = [pickerCell selectedValueInComponent:0];
                 self.game.handicap = [handicapString intValue];
-                cell.value.text = handicapString;
             };
 			cell.options = @[handicaps];
 			cell.selectedOptions = @[[NSString stringWithFormat:@"%d", self.game.handicap]];
@@ -496,7 +475,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
                 NSString *value = [pickerCell selectedValueInComponent:0];
                 self.game.minimumRating = value;
-                cell.value.text = value;
             };
 			cell.options = @[_ratingStrings];
 			cell.selectedOptions = @[self.game.minimumRating];
@@ -509,7 +487,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
             cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
                 NSString *value = [pickerCell selectedValueInComponent:0];
                 self.game.maximumRating = value;
-                cell.value.text = value;
             };
 			cell.options = @[_ratingStrings];
 			cell.selectedOptions = @[self.game.maximumRating];
@@ -607,8 +584,10 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 }
 
 - (void)pickerTableViewCell:(PickerTableViewCell *)pickerCell didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    SelectCell *cell = [self.tableView cellForRowAtIndexPath:[self indexPathForOpenPickerCell]];
+    NSIndexPath *selectCellIndexPath = [self indexPathForOpenPickerCell];
+    SelectCell *cell = [self.tableView cellForRowAtIndexPath:selectCellIndexPath];
     pickerCell.onChanged(cell, pickerCell);
+    [self.tableView reloadRowsAtIndexPaths:@[selectCellIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark -
