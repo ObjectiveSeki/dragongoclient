@@ -359,7 +359,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
                                self.game.fischerTimeValue = [self timeValueFromPickerCell:pickerCell];
                                self.game.fischerTimeUnit = [self timePeriodFromPickerCell:pickerCell];
                            }
-                                label:@"Extra Per Move"];
+                                label:@"Extra Time Per Move"];
 			}
 		} else if (row == kTimeSectionExtraPeriodsRow) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
@@ -497,6 +497,8 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 #pragma mark Row adjustments
 
 - (void)komiTypeDidChange:(KomiType)oldKomiType toKomiType:(KomiType)newKomiType {
+    if (oldKomiType == newKomiType) return;
+    
     // We want to update the table cells without deselecting
     // the current cell, so no #reloadData for you.
     NSArray *indexPaths = @[
@@ -505,25 +507,28 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
                             [self indexPathIgnoringPickerForRow:kBoardSectionManualKomiRow inSection:kBoardSection]
                             ];
     
-    if (oldKomiType != kKomiTypeManual && newKomiType == kKomiTypeManual) {
+    if (newKomiType == kKomiTypeManual) {
         [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-    } else if (oldKomiType == kKomiTypeManual && newKomiType != kKomiTypeManual) {
+    } else if (oldKomiType == kKomiTypeManual) {
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
     }
 }
 
 - (void)byoYomiTypeDidChange:(ByoYomiType)oldByoYomiType toByoYomiType:(ByoYomiType)newByoYomiType {
+    if (oldByoYomiType == newByoYomiType) return;
+    
     // We want to update the table cells without deselecting
     // the current cell, so no #reloadData for you.
     NSMutableArray *indexPathsToReload = [NSMutableArray arrayWithObject:[self indexPathIgnoringPickerForRow:kTimeSectionExtraTimeRow inSection:kTimeSection]];
     NSIndexPath *extraPeriodsIndexPath = [self indexPathIgnoringPickerForRow:kTimeSectionExtraPeriodsRow inSection:kTimeSection];
     
-    if (oldByoYomiType == kByoYomiTypeFischer && newByoYomiType != kByoYomiTypeFischer) {
+    if (oldByoYomiType == kByoYomiTypeFischer) {
         [self.tableView insertRowsAtIndexPaths:@[extraPeriodsIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-        [indexPathsToReload addObject:extraPeriodsIndexPath];
-    } else if (oldByoYomiType != kByoYomiTypeFischer && newByoYomiType == kByoYomiTypeFischer) {
+    } else if (newByoYomiType == kByoYomiTypeFischer) {
         [self.tableView deleteRowsAtIndexPaths:@[extraPeriodsIndexPath] withRowAnimation:UITableViewRowAnimationNone];
-    } else if (oldByoYomiType != newByoYomiType){
+    }
+    
+    if (newByoYomiType != kByoYomiTypeFischer) {
         [indexPathsToReload addObject:extraPeriodsIndexPath];
     }
     
