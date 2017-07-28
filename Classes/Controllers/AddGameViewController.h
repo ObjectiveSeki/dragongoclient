@@ -11,8 +11,9 @@
 #import "NewGame.h"
 #import "DGS.h"
 #import "Player.h"
+#import "PickerTableViewCellDelegate.h"
 
-@interface AddGameViewController : UITableViewController {
+@interface AddGameViewController : UITableViewController <PickerTableViewCellDelegate> {
 }
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
@@ -21,6 +22,8 @@
 @property (nonatomic, strong) NewGame *game;
 @property (nonatomic, strong) Player *player;
 - (IBAction)dismiss:(id)sender;
+
+- (void)pickerTableViewCell:(PickerTableViewCell *)pickerCell didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
 
 @end
 

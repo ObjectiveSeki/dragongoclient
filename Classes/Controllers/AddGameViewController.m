@@ -11,11 +11,14 @@
 #import "SelectCell.h"
 #import "BooleanCell.h"
 #import "SpinnerView.h"
+#import "PickerTableViewCell.h"
 
 @interface AddGameViewController ()
 
 @property (nonatomic, strong) NSArray *ratingStrings;
 @property (nonatomic, strong) SpinnerView *spinner;
+@property (nonatomic, strong) NSIndexPath *pickerIndexPath;
+@property (nonatomic, assign) CGFloat pickerCellHeight;
 
 @end
 
@@ -45,6 +48,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	self.game = [[NewGame alloc] init];
     self.ratingStrings = [self generateRatingStrings];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
+    self.pickerCellHeight = CGRectGetHeight([self.tableView dequeueReusableCellWithIdentifier:@"PickerCell"].frame);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,38 +83,42 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return kSectionCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
+    NSInteger rowCount = 0;
     if (section == kDescriptionSection) {
-		return 1;
+		rowCount = 1;
 	} else if (section == kNumberOfGamesSection) {
-        return 1;
+        rowCount = 1;
     } else if (section == kBoardSection) {
-        if (self.game.komiType != kKomiTypeManual) {
-			return 3;
+        if (self.game.komiType == kKomiTypeManual) {
+			rowCount = 6;
 		} else {
-			return 6;
+			rowCount = 3;
 		}
 	} else if (section == kTimeSection) {
 		if (self.game.byoYomiType == kByoYomiTypeFischer) {
-			return 3;
+			rowCount = 3;
 		} else {
-			return 4;
+			rowCount = 4;
 		}
 	} else if (section == kRatingSection) {
         if (self.game.requireRatedOpponent) {
-            return 4;
+            rowCount = 4;
         } else {
-            return 2;
+            rowCount = 2;
         }
     } else if (section == kActionSection) {
-        return 1;
+        rowCount = 1;
     }
-	return 0;
+    
+    // If we're showing a picker in this section, we need an extra row for it.
+    if (self.pickerIndexPath && self.pickerIndexPath.section == section) {
+        rowCount++;
+    }
+	return rowCount;
 }
 
 - (UITableViewCell *)dequeueDefaultCell:(UITableView *)tableView {
@@ -133,9 +141,17 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     return [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
 }
 
-- (void)setKomiType:(SelectCell *)cell {
+- (PickerTableViewCell *)dequeuePickerCell:(UITableView *)tableView withCell:(SelectCell *)selectCell {
+    PickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PickerCell"];
+    cell.sizes = selectCell.sizes;
+    cell.options = selectCell.options;
+    cell.selectedOptions = selectCell.selectedOptions;
+    return cell;
+}
+
+- (void)setKomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
     KomiType oldKomiType = self.game.komiType;
-	KomiType komiType = [cell.picker selectedRowInComponent:0];
+	KomiType komiType = [pickerCell.picker selectedRowInComponent:0];
 
 	NSString *komiTypeString = [self.game komiTypeString:komiType];
 	self.game.komiType = komiType;
@@ -144,7 +160,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
     // We want to update the table cells without deselecting
     // the current cell, so no #reloadData for you.
-    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:3 inSection:kBoardSection], [NSIndexPath indexPathForRow:4 inSection:kBoardSection], [NSIndexPath indexPathForRow:5 inSection:kBoardSection]];
+    NSArray *indexPaths = @[[self indexPathIgnoringPickerForRow:3 inSection:kBoardSection], [self indexPathIgnoringPickerForRow:4 inSection:kBoardSection], [self indexPathIgnoringPickerForRow:5 inSection:kBoardSection]];
 
     if (oldKomiType != kKomiTypeManual && komiType == kKomiTypeManual) {
         [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
@@ -153,9 +169,9 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     }
 }
 
-- (void)setByoYomiType:(SelectCell *)cell {
+- (void)setByoYomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
 	ByoYomiType oldByoYomiType = self.game.byoYomiType;
-	ByoYomiType byoYomiType = [cell.picker selectedRowInComponent:0];
+	ByoYomiType byoYomiType = [pickerCell.picker selectedRowInComponent:0];
 	NSString *byoYomiTypeString = [self.game byoYomiTypeString:byoYomiType];
 	self.game.byoYomiType = byoYomiType;
 	cell.value.text = byoYomiTypeString;
@@ -163,9 +179,9 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
 	// We want to update the table cells without deselecting
 	// the current cell, so no #reloadData for you.
-	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[NSIndexPath indexPathForRow:2 inSection:kTimeSection]];
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:3 inSection:kTimeSection];
-	if (oldByoYomiType == kByoYomiTypeFischer && byoYomiType != kByoYomiTypeFischer) {
+	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[self indexPathIgnoringPickerForRow:2 inSection:kTimeSection]];
+	NSIndexPath *indexPath = [self indexPathIgnoringPickerForRow:3 inSection:kTimeSection];
+    if (oldByoYomiType == kByoYomiTypeFischer && byoYomiType != kByoYomiTypeFischer) {
 		[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 		[indexPaths addObject:indexPath];
 	} else if (oldByoYomiType != kByoYomiTypeFischer && byoYomiType == kByoYomiTypeFischer) {
@@ -176,51 +192,51 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	[self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
 }
 
-- (void)setMainTime:(SelectCell *)cell {
-	int tens = [[cell selectedValueInComponent:0] intValue];
-	int ones = [[cell selectedValueInComponent:1] intValue];
+- (void)setMainTime:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
+	int tens = [[pickerCell selectedValueInComponent:0] intValue];
+	int ones = [[pickerCell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
 	self.game.timeValue = timeValue;
-	self.game.timeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.timeUnit = [pickerCell.picker selectedRowInComponent:2];
 
     cell.value.text = [self.game timePeriodString:self.game.timeValue withTimeUnit:self.game.timeUnit];
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.timeUnit]];
 }
 
-- (void)setExtraTimeJapanese:(SelectCell *)cell {
-	int tens = [[cell selectedValueInComponent:0] intValue];
-	int ones = [[cell selectedValueInComponent:1] intValue];
+- (void)setExtraTimeJapanese:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
+	int tens = [[pickerCell selectedValueInComponent:0] intValue];
+	int ones = [[pickerCell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
 	self.game.japaneseTimeValue = timeValue;
-	self.game.japaneseTimeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.japaneseTimeUnit = [pickerCell.picker selectedRowInComponent:2];
 
 	cell.value.text = [self.game timePeriodString:self.game.japaneseTimeValue withTimeUnit:self.game.japaneseTimeUnit];
     cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.japaneseTimeUnit]];
 }
 
-- (void)setExtraTimeCanadian:(SelectCell *)cell {
-	int tens = [[cell selectedValueInComponent:0] intValue];
-	int ones = [[cell selectedValueInComponent:1] intValue];
+- (void)setExtraTimeCanadian:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
+	int tens = [[pickerCell selectedValueInComponent:0] intValue];
+	int ones = [[pickerCell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
 	self.game.canadianTimeValue = timeValue;
-	self.game.canadianTimeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.canadianTimeUnit = [pickerCell.picker selectedRowInComponent:2];
 
     cell.value.text = [self.game timePeriodString:self.game.canadianTimeValue withTimeUnit:self.game.canadianTimeUnit];
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.canadianTimeUnit]];
 }
 
-- (void)setExtraTimeFischer:(SelectCell *)cell {
-	int tens = [[cell selectedValueInComponent:0] intValue];
-	int ones = [[cell selectedValueInComponent:1] intValue];
+- (void)setExtraTimeFischer:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
+	int tens = [[pickerCell selectedValueInComponent:0] intValue];
+	int ones = [[pickerCell selectedValueInComponent:1] intValue];
 	int timeValue = tens * 10 + ones;
 	self.game.fischerTimeValue = timeValue;
-	self.game.fischerTimeUnit = [cell.picker selectedRowInComponent:2];
+	self.game.fischerTimeUnit = [pickerCell.picker selectedRowInComponent:2];
 
 	cell.value.text = [self.game timePeriodString:self.game.fischerTimeValue withTimeUnit:self.game.fischerTimeUnit];
 	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:self.game.fischerTimeUnit]];
 }
 
-- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell))onSelected label:(NSString *)label {
+- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell, PickerTableViewCell *pickerCell))onSelected label:(NSString *)label {
 	SelectCell *cell = [self dequeueSelectCell:theTableView];
 	NSString *timeString = [self.game timePeriodString:timeValue withTimeUnit:timeUnit];
 	NSArray *zeroToNine = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"];
@@ -239,8 +255,23 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if ([indexPath section] == kDescriptionSection) {
-		if ([indexPath row] == 0) {
+    
+    NSIndexPath *logicalIndexPath = [self indexPathIgnoringPicker:indexPath];
+
+    if ([indexPath compare:self.pickerIndexPath] == NSOrderedSame) {
+#warning assert the indexpath-1 makes sense, and that it's the correct type
+        NSIndexPath *associatedCellIndexPath = [self indexPathForOpenPickerCell];
+        SelectCell *associatedCell = (SelectCell *)[self tableView:theTableView cellForRowAtIndexPath:associatedCellIndexPath];
+        PickerTableViewCell *cell = [self dequeuePickerCell:theTableView withCell:associatedCell];
+        cell.delegate = self;
+        return cell;
+    }
+    
+    NSInteger section = logicalIndexPath.section;
+    NSInteger row = logicalIndexPath.row;
+    
+	if (section == kDescriptionSection) {
+		if (row == 0) {
 			TextCell *cell = [self dequeueTextCell:theTableView];
             cell.label.text = @"Comment";
             cell.textField.text = self.game.comment;
@@ -252,13 +283,13 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 		}
 	}
     
-    if (indexPath.section == kNumberOfGamesSection) {
-        if (indexPath.row == 0) {
+    if (section == kNumberOfGamesSection) {
+        if (row == kNumberOfGamesRow) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
             cell.label.text = @"Number of Games";
             cell.value.text = [@(self.game.numberOfGames) stringValue];
-            cell.onChanged = ^(SelectCell *cell) {
-                NSString *value = [cell selectedValueInComponent:0];
+            cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+                NSString *value = [pickerCell selectedValueInComponent:0];
                 self.game.numberOfGames = [value intValue];
                 cell.value.text = value;
             };
@@ -269,16 +300,15 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
         }
     }
     
-	if ([indexPath section] == kBoardSection) {
-
-		if ([indexPath row] == 0) {
+	if (section == kBoardSection) {
+		if (row == 0) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *boardSize = [NSString stringWithFormat:@"%d", self.game.boardSize];
 			NSArray *options = @[@"9", @"13", @"19"];
 			cell.label.text = @"Board Size";
 			cell.value.text = boardSize;
-			cell.onChanged = ^(SelectCell *cell) {
-                NSString *boardSize = (cell.options)[0][[cell.picker selectedRowInComponent:0]];
+			cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+                NSString *boardSize = [pickerCell selectedValueInComponent:0];
                 [self.game setBoardSize:[boardSize intValue]];
                 cell.value.text = boardSize;
                 cell.selectedOptions = @[boardSize];
@@ -287,7 +317,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.sizes = nil;
 			cell.selectedOptions = @[boardSize];
 			return cell;
-		} else if ([indexPath row] == 1) {
+		} else if (row == 1) {
             BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Standard Placement";
             cell.toggleSwitch.on = self.game.stdHandicap;
@@ -295,7 +325,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 self.game.stdHandicap = cell.toggleSwitch.on;
             };
 			return cell;
-		} else if ([indexPath row] == 2) {
+		} else if (row == 2) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *komiType = [self.game komiTypeString];
 			NSMutableArray *options = [NSMutableArray array];
@@ -307,14 +337,14 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
             [options addObject:[self.game komiTypeString:kKomiTypeManual]];
             cell.label.text = @"Komi Type";
 			cell.value.text = komiType;
-			cell.onChanged = ^(SelectCell *selectCell) {
-                [self setKomiType:selectCell];
+			cell.onChanged = ^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
+                [self setKomiType:selectCell fromPickerCell:pickerCell];
             };
 			cell.options = @[options];
 			cell.selectedOptions = @[komiType];
 			cell.sizes = nil;
 			return cell;
-		} else if ([indexPath row] == 3) {
+		} else if (row == 3) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *manualKomiType = [self.game manualKomiTypeString];
             NSMutableArray *options = [NSMutableArray array];
@@ -325,8 +355,8 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
 			cell.label.text = @"Game Style";
 			cell.value.text = manualKomiType;
-            cell.onChanged = ^(SelectCell *cell) {
-                ManualKomiType manualKomiType = [cell.picker selectedRowInComponent:0];
+            cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+                ManualKomiType manualKomiType = [pickerCell.picker selectedRowInComponent:0];
                 NSString *manualKomiTypeString = [self.game manualKomiTypeString:manualKomiType];
                 self.game.manualKomiType = manualKomiType;
                 cell.value.text = manualKomiTypeString;
@@ -336,7 +366,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[manualKomiType];
 			cell.sizes = nil;
 			return cell;
-        } else if ([indexPath row] == 4) {
+        } else if (row == 4) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
             NSMutableArray *handicaps = [[NSMutableArray alloc] initWithObjects:@"0", nil];
             for (int i = 2; i < 22; i++) {
@@ -345,8 +375,8 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
 			cell.label.text = @"Handicap";
 			cell.value.text = [NSString stringWithFormat:@"%d", self.game.handicap];
-            cell.onChanged = ^(SelectCell *cell) {
-                NSString *handicapString = [cell selectedValueInComponent:0];
+            cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+                NSString *handicapString = [pickerCell selectedValueInComponent:0];
                 self.game.handicap = [handicapString intValue];
                 cell.value.text = handicapString;
             };
@@ -354,7 +384,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[[NSString stringWithFormat:@"%d", self.game.handicap]];
 			cell.sizes = nil;
 			return cell;
-        } else if ([indexPath row] == 5) {
+        } else if (row == 5) {
             TextCell *cell = [self dequeueTextCell:theTableView];
             cell.label.text = @"Komi";
             cell.textField.text = [NSString stringWithFormat:@"%0.1f", self.game.komi];
@@ -364,29 +394,29 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
             };
             return cell;
         }
-	} else if ([indexPath section] == kTimeSection) {
-		if ([indexPath row] == 0) {
-			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit onSelected:^(SelectCell *selectCell) { [self setMainTime:selectCell]; } label:@"Main Time"];
-		} else if ([indexPath row] == 1) {
+	} else if (section == kTimeSection) {
+		if (row == 0) {
+			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setMainTime:selectCell fromPickerCell:pickerCell]; } label:@"Main Time"];
+		} else if (row == 1) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *byoYomiType = [self.game byoYomiTypeString];
 			NSArray *options = @[[self.game byoYomiTypeString:kByoYomiTypeJapanese], [self.game byoYomiTypeString:kByoYomiTypeCanadian], [self.game byoYomiTypeString:kByoYomiTypeFischer]];
 			cell.label.text = @"Byo-Yomi";
 			cell.value.text = byoYomiType;
-			cell.onChanged = ^(SelectCell *selectCell) { [self setByoYomiType:selectCell]; };
+			cell.onChanged = ^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setByoYomiType:selectCell fromPickerCell:pickerCell]; };
 			cell.options = @[options];
 			cell.selectedOptions = @[byoYomiType];
 			cell.sizes = nil;
 			return cell;
-		} else if ([indexPath row] == 2) {
+		} else if (row == 2) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
-				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit onSelected:^(SelectCell *selectCell) { [self setExtraTimeJapanese:selectCell]; } label:@"Extra Time"];
+				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeJapanese:selectCell fromPickerCell:pickerCell]; } label:@"Extra Time"];
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
-				return [self timeCell:theTableView timeValue:self.game.canadianTimeValue timeUnit:self.game.canadianTimeUnit onSelected:^(SelectCell *selectCell) { [self setExtraTimeCanadian:selectCell]; } label:@"Extra Time"];
+				return [self timeCell:theTableView timeValue:self.game.canadianTimeValue timeUnit:self.game.canadianTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeCanadian:selectCell fromPickerCell:pickerCell]; } label:@"Extra Time"];
 			} else if (self.game.byoYomiType == kByoYomiTypeFischer) {
-				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit onSelected:^(SelectCell *selectCell) { [self setExtraTimeFischer:selectCell]; } label:@"Extra Per Move"];
+				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeFischer:selectCell fromPickerCell:pickerCell]; } label:@"Extra Per Move"];
 			}
-		} else if ([indexPath row] == 3) {
+		} else if (row == 3) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
 				cell.label.text = @"Periods";
@@ -407,8 +437,8 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 				return cell;
 			}
 		}
-	} else if ([indexPath section] == kRatingSection) {
-		if ([indexPath row] == 0) {
+	} else if (section == kRatingSection) {
+		if (row == 0) {
 			BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Ranked game";
             cell.toggleSwitch.on = self.game.rated;
@@ -416,7 +446,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 self.game.rated = cell.toggleSwitch.on;
             };
 			return cell;
-		} else if ([indexPath row] == 1) {
+		} else if (row == 1) {
 			BooleanCell *cell = [self dequeueBooleanCell:theTableView];
             cell.textLabel.text = @"Rated opponent";
             cell.toggleSwitch.on = self.game.requireRatedOpponent;
@@ -424,7 +454,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 self.game.requireRatedOpponent = cell.toggleSwitch.on;
                 // We want to update the table cells without deselecting
                 // the current cell, so no #reloadData for you.
-                NSArray *indexPaths = @[[NSIndexPath indexPathForRow:2 inSection:kRatingSection], [NSIndexPath indexPathForRow:3 inSection:kRatingSection]];
+                NSArray *indexPaths = @[[self indexPathIgnoringPickerForRow:2 inSection:kRatingSection], [self indexPathIgnoringPickerForRow:3 inSection:kRatingSection]];
 
                 if (self.game.requireRatedOpponent) {
                     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
@@ -433,12 +463,12 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
                 }
             };
 			return cell;
-		} else if ([indexPath row] == 2) {
+		} else if (row == 2) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
 			cell.label.text = @"Min rating";
 			cell.value.text = self.game.minimumRating;
-			cell.onChanged = ^(SelectCell *cell) {
-                NSString *value = [cell selectedValueInComponent:0];
+			cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+                NSString *value = [pickerCell selectedValueInComponent:0];
                 self.game.minimumRating = value;
                 cell.value.text = value;
             };
@@ -446,12 +476,12 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.selectedOptions = @[self.game.minimumRating];
 			cell.sizes = nil;
 			return cell;
-        } else if ([indexPath row] == 3) {
+        } else if (row == 3) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
 			cell.label.text = @"Max rating";
 			cell.value.text = self.game.maximumRating;
-            cell.onChanged = ^(SelectCell *cell) {
-                NSString *value = [cell selectedValueInComponent:0];
+            cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
+                NSString *value = [pickerCell selectedValueInComponent:0];
                 self.game.maximumRating = value;
                 cell.value.text = value;
             };
@@ -460,7 +490,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 			cell.sizes = nil;
 			return cell;
         }
-    } else if (indexPath.section == kActionSection) {
+    } else if (section == kActionSection) {
         UITableViewCell *cell = [self dequeueActionCell:theTableView];
         cell.textLabel.text = @"Create Game";
         self.createGameButton = cell;
@@ -469,10 +499,19 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     return [self dequeueDefaultCell:theTableView];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath compare:self.pickerIndexPath] == NSOrderedSame) {
+        return self.pickerCellHeight;
+    } else {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+}
+
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (indexPath.section == kActionSection && indexPath.row == 0) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         // break the retain cycle in the block below
@@ -487,10 +526,64 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
         } onError:^(NSError *error) {
             [blockSelf.spinner dismiss:YES];
 		}];
-
+    } else {
+        [self.tableView beginUpdates];
+        
+        BOOL pickerAlreadyOpen = (self.pickerIndexPath &&
+                                  [[self indexPathForOpenPickerCell] compare:indexPath] == NSOrderedSame);
+        BOOL shouldShowPicker = [[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"SelectCell"];
+        NSIndexPath *logicalIndexPath = [self indexPathIgnoringPicker:indexPath];
+        
+        if (self.pickerIndexPath) {
+            [tableView deleteRowsAtIndexPaths:@[self.pickerIndexPath] withRowAnimation:UITableViewRowAnimationTop];
+            self.pickerIndexPath = nil;
+        }
+        
+        if (shouldShowPicker && !pickerAlreadyOpen) {
+            NSIndexPath *pickerIndexPath = [NSIndexPath indexPathForRow:(logicalIndexPath.row + 1) inSection:logicalIndexPath.section];
+            self.pickerIndexPath = pickerIndexPath;
+            [tableView insertRowsAtIndexPaths:@[pickerIndexPath] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        
+        [self.tableView endUpdates];
     }
 }
 
+#pragma mark -
+#pragma mark Picker cell management
+
+- (NSIndexPath *)indexPathIgnoringPickerForRow:(NSInteger)row inSection:(NSInteger)section {
+    if (self.pickerIndexPath &&
+        self.pickerIndexPath.section == section &&
+        self.pickerIndexPath.row <= row) {
+        return [NSIndexPath indexPathForRow:row + 1 inSection:section];
+    } else {
+        return [NSIndexPath indexPathForRow:row inSection:section];
+    }
+}
+
+- (NSIndexPath *)indexPathIgnoringPicker:(NSIndexPath *)originalIndexPath {
+    if (self.pickerIndexPath &&
+        self.pickerIndexPath.section == originalIndexPath.section &&
+        self.pickerIndexPath.row <= originalIndexPath.row) {
+        return [NSIndexPath indexPathForRow:originalIndexPath.row - 1 inSection:originalIndexPath.section];
+    } else {
+        return originalIndexPath;
+    }
+}
+
+- (NSIndexPath *)indexPathForOpenPickerCell {
+    if (self.pickerIndexPath) {
+        return [NSIndexPath indexPathForRow:self.pickerIndexPath.row - 1 inSection:self.pickerIndexPath.section];
+    } else {
+        return nil;
+    }
+}
+
+- (void)pickerTableViewCell:(PickerTableViewCell *)pickerCell didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    SelectCell *cell = [self.tableView cellForRowAtIndexPath:[self indexPathForOpenPickerCell]];
+    cell.onChanged(cell, pickerCell);
+}
 
 #pragma mark -
 #pragma mark Memory management

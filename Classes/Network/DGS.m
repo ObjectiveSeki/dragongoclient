@@ -52,7 +52,7 @@ const int kDefaultPageLimit = 20;
                                 httpMethod:(NSString *)method
                                        ssl:(BOOL)useSSL {
 
-    MKNetworkOperation *op = [super operationWithPath:path params:body httpMethod:method ssl:YES];
+    MKNetworkOperation *op = [super operationWithPath:path params:body httpMethod:method ssl:DGS_USE_SSL];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"%@", completedOperation.url);
         NSLog(@"%@", completedOperation.responseString);

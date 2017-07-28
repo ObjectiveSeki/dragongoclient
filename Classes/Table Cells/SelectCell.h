@@ -7,27 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PickerTableViewCell.h"
 
-@class SelectCell;
-
-@interface SelectCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource> {
+@interface SelectCell : UITableViewCell {
 }
 
 @property(nonatomic, strong) IBOutlet UILabel *label;
 @property(nonatomic, strong) IBOutlet UILabel *value;
-@property(nonatomic, strong) UIPickerView *picker;
 @property(nonatomic, strong) NSArray *options;
 @property(nonatomic, strong) NSArray *selectedOptions;
 @property(nonatomic, strong) NSArray *sizes;
-@property(nonatomic, copy) void (^onChanged)(SelectCell *selectCell);
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
-- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component;
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component;
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
-
-- (NSString *)selectedValueInComponent:(NSInteger)component;
+@property(nonatomic, copy) void (^onChanged)(SelectCell *cell, PickerTableViewCell *pickerCell);
 
 @end

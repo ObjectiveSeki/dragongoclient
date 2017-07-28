@@ -11,14 +11,12 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		AF7F0D42C252D90B01228524 /* libPods-DGS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D1FA5346BE30FA36D34F8A /* libPods-DGS.a */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
-		DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D14C11D99D7600A9D887 /* TableCellFactory.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
 		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
 		DA0FE7C2161FF67400AEAEF6 /* JWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C1161FF67400AEAEF6 /* JWCache.m */; };
 		DA0FE7C5161FFA1000AEAEF6 /* JWCacheEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FE7C4161FFA1000AEAEF6 /* JWCacheEntry.m */; };
 		DA1341AB1292323300D2A4BF /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1341AA1292323300D2A4BF /* MessageView.m */; };
 		DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA238C2515B22AE800D4050C /* DGSErrors.strings */; };
-		DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */; };
 		DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DA38AB9711EC028B005E1AB7 /* First Score.sgf */; };
 		DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38B1F811B59F2F00112AA4 /* LoginViewController.m */; };
 		DA391DDE1592CB2900F9E36F /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = DA391DDD1592CB2900F9E36F /* Player.m */; };
@@ -40,7 +38,7 @@
 		DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8366CE11DC3606001A68F9 /* SelectCell.m */; };
 		DA84D67A12F7A0160038D775 /* BooleanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA84D67912F7A0160038D775 /* BooleanCell.m */; };
 		DA8E707C13D5337E007E569B /* GameList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8E707B13D5337E007E569B /* GameList.m */; };
-		DA94CBE7124839740060FD44 /* TableCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA94CBE1124839740060FD44 /* TableCells.xib */; };
+		DAAD85061F298C840046DF60 /* PickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAD85051F298C840046DF60 /* PickerTableViewCell.m */; };
 		DABA05F4169EAACE00B1ECD9 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */; };
 		DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */; };
 		DAC59F641CA104FE009131C0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC59F631CA104FE009131C0 /* Launch Screen.storyboard */; };
@@ -83,8 +81,6 @@
 		D5FFF4B56CEF0F74B0C6C683 /* Pods-DGS.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGS.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-DGS/Pods-DGS.adhoc.xcconfig"; sourceTree = "<group>"; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
 		DA02D13C11D99BF000A9D887 /* NewGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewGame.m; sourceTree = "<group>"; };
-		DA02D14B11D99D7600A9D887 /* TableCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellFactory.h; sourceTree = "<group>"; };
-		DA02D14C11D99D7600A9D887 /* TableCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellFactory.m; sourceTree = "<group>"; };
 		DA02D15811D99E4500A9D887 /* TextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextCell.h; sourceTree = "<group>"; };
 		DA02D15911D99E4500A9D887 /* TextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextCell.m; sourceTree = "<group>"; };
 		DA0762B51377B678003E0390 /* DGSDev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSDev.h; sourceTree = "<group>"; };
@@ -96,7 +92,6 @@
 		DA1341A91292323300D2A4BF /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		DA1341AA1292323300D2A4BF /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		DA238C2515B22AE800D4050C /* DGSErrors.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = DGSErrors.strings; path = Resources/DGSErrors.strings; sourceTree = "<group>"; };
-		DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextCell.xib; sourceTree = "<group>"; };
 		DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameServerProtocol.h; sourceTree = "<group>"; };
 		DA38AB9711EC028B005E1AB7 /* First Score.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "First Score.sgf"; sourceTree = "<group>"; };
 		DA38B1F711B59F2F00112AA4 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -143,7 +138,9 @@
 		DA8E707A13D5337E007E569B /* GameList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameList.h; sourceTree = "<group>"; };
 		DA8E707B13D5337E007E569B /* GameList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameList.m; sourceTree = "<group>"; };
 		DA94AEFD1CA6EB6D00CCC83F /* GoBoardViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoBoardViewDelegate.h; sourceTree = "<group>"; };
-		DA94CBE1124839740060FD44 /* TableCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableCells.xib; sourceTree = "<group>"; };
+		DAA02BA41F2A804A008FDA2C /* PickerTableViewCellDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerTableViewCellDelegate.h; sourceTree = "<group>"; };
+		DAAD85041F298C840046DF60 /* PickerTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerTableViewCell.h; sourceTree = "<group>"; };
+		DAAD85051F298C840046DF60 /* PickerTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerTableViewCell.m; sourceTree = "<group>"; };
 		DABA05D6169BF98F00B1ECD9 /* GameListTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameListTests.h; sourceTree = "<group>"; };
 		DABA05D7169BF98F00B1ECD9 /* GameListTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameListTests.m; sourceTree = "<group>"; };
 		DABA05F2169EAACE00B1ECD9 /* LoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
@@ -317,8 +314,6 @@
 		DA02D14A11D99D3900A9D887 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
-				DA02D14B11D99D7600A9D887 /* TableCellFactory.h */,
-				DA02D14C11D99D7600A9D887 /* TableCellFactory.m */,
 				DA02D15811D99E4500A9D887 /* TextCell.h */,
 				DA02D15911D99E4500A9D887 /* TextCell.m */,
 				DA8366CD11DC3606001A68F9 /* SelectCell.h */,
@@ -329,6 +324,8 @@
 				DABA05F3169EAACE00B1ECD9 /* LoadingCell.m */,
 				DA4BC703179517C900C74040 /* ExpandingLabelCell.h */,
 				DA4BC704179517C900C74040 /* ExpandingLabelCell.m */,
+				DAAD85041F298C840046DF60 /* PickerTableViewCell.h */,
+				DAAD85051F298C840046DF60 /* PickerTableViewCell.m */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -395,6 +392,7 @@
 			children = (
 				DA2EE2D312F69255003FEE23 /* GameServerProtocol.h */,
 				DA94AEFD1CA6EB6D00CCC83F /* GoBoardViewDelegate.h */,
+				DAA02BA41F2A804A008FDA2C /* PickerTableViewCellDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -438,8 +436,6 @@
 			isa = PBXGroup;
 			children = (
 				DAC59F631CA104FE009131C0 /* Launch Screen.storyboard */,
-				DA94CBE1124839740060FD44 /* TableCells.xib */,
-				DA2EDE5D12F27FEB003FEE23 /* TextCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -565,10 +561,8 @@
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 				DA5BEB9B1C9F566F00C335C4 /* Media.xcassets in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
-				DA94CBE7124839740060FD44 /* TableCells.xib in Resources */,
 				DA667B9B12562AC400CA9A13 /* Pass Should Be Move 200.sgf in Resources */,
 				DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */,
-				DA2EDE5E12F27FEB003FEE23 /* TextCell.xib in Resources */,
 				DAFED53915943E7700A2EE37 /* 25x25 Handicap Stones.sgf in Resources */,
 				DA238C2615B22AE800D4050C /* DGSErrors.strings in Resources */,
 				DABC87F6162290AF009E0808 /* MainStoryboard.storyboard in Resources */,
@@ -656,7 +650,6 @@
 				DAF9105F11BB5BBD00FE7B96 /* GameViewController.m in Sources */,
 				DAF911F511BB796900FE7B96 /* Move.m in Sources */,
 				DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */,
-				DA02D14D11D99D7600A9D887 /* TableCellFactory.m in Sources */,
 				DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */,
 				DA8366CF11DC3606001A68F9 /* SelectCell.m in Sources */,
 				DA6F94FD11FAA0670093751D /* SpinnerView.m in Sources */,
@@ -681,6 +674,7 @@
 				DAC7BDE616DDEFCE00F4562A /* DGSNetworkOperation.m in Sources */,
 				DA4BC705179517C900C74040 /* ExpandingLabelCell.m in Sources */,
 				DAF16E6B1799025600ADA4D1 /* AcknowledgementsViewController.m in Sources */,
+				DAAD85061F298C840046DF60 /* PickerTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

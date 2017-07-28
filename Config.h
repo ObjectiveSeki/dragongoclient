@@ -23,6 +23,7 @@
 #endif
 
 #if defined (CONFIGURATION_Release)
+#define DEVELOPMENT_USE_SSL YES
 #define PUSH_ENABLED
 #define PUSH_HOST @"dgs.uberweiss.net"
 #define PUSH_USE_SSL YES
@@ -30,8 +31,10 @@
 
 #ifdef DEVELOPMENT_DGS
 #	define SERVER_CLASS @"DGSDev"
+#   define DGS_USE_SSL NO
 #else
 #	define SERVER_CLASS @"DGS"
+#   define DGS_USE_SSL YES
 #endif
 
 #ifdef CACHING

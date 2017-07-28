@@ -4,13 +4,6 @@
 
 @implementation BooleanCell
 
-- (id)init {
-    if ((self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([self class])])) {
-        [self awakeFromNib];
-    }
-    return self;
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     UISwitch *theSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
