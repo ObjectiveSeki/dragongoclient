@@ -177,7 +177,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 
 - (void)setKomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
     KomiType oldKomiType = self.game.komiType;
-	KomiType komiType = [pickerCell.picker selectedRowInComponent:0];
+    KomiType komiType = [pickerCell selectedRow];
 
 	self.game.komiType = komiType;
 
@@ -198,7 +198,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 
 - (void)setByoYomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
 	ByoYomiType oldByoYomiType = self.game.byoYomiType;
-	ByoYomiType byoYomiType = [pickerCell.picker selectedRowInComponent:0];
+	ByoYomiType byoYomiType = [pickerCell selectedRow];
 	self.game.byoYomiType = byoYomiType;
 
 	// We want to update the table cells without deselecting
@@ -299,8 +299,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
         cell.label.text = @"Number of Games";
         cell.value.text = [@(self.game.numberOfGames) stringValue];
         cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-            NSString *value = [pickerCell selectedValueInComponent:0];
-            self.game.numberOfGames = [value intValue];
+            self.game.numberOfGames = [[pickerCell selectedValue] intValue];
         };
         cell.options = @[@[@"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10"]];
         cell.selectedOptions = @[cell.value.text];
@@ -316,8 +315,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.label.text = @"Board Size";
 			cell.value.text = boardSize;
 			cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-                NSString *boardSize = [pickerCell selectedValueInComponent:0];
-                [self.game setBoardSize:[boardSize intValue]];
+                self.game.boardSize = [[pickerCell selectedValue] intValue];
             };
 			cell.options = @[options];
 			cell.sizes = nil;
@@ -362,8 +360,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.label.text = @"Game Style";
 			cell.value.text = manualKomiType;
             cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-                ManualKomiType manualKomiType = [pickerCell.picker selectedRowInComponent:0];
-                self.game.manualKomiType = manualKomiType;
+                self.game.manualKomiType = [pickerCell selectedRow];
             };
 			cell.options = @[options];
 			cell.selectedOptions = @[manualKomiType];
@@ -379,8 +376,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.label.text = @"Handicap";
 			cell.value.text = [NSString stringWithFormat:@"%d", self.game.handicap];
             cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-                NSString *handicapString = [pickerCell selectedValueInComponent:0];
-                self.game.handicap = [handicapString intValue];
+                self.game.handicap = [[pickerCell selectedValue] intValue];
             };
 			cell.options = @[handicaps];
 			cell.selectedOptions = @[[NSString stringWithFormat:@"%d", self.game.handicap]];
@@ -473,8 +469,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.label.text = @"Min rating";
 			cell.value.text = self.game.minimumRating;
 			cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-                NSString *value = [pickerCell selectedValueInComponent:0];
-                self.game.minimumRating = value;
+                self.game.minimumRating = [pickerCell selectedValue];
             };
 			cell.options = @[_ratingStrings];
 			cell.selectedOptions = @[self.game.minimumRating];
@@ -485,8 +480,7 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
 			cell.label.text = @"Max rating";
 			cell.value.text = self.game.maximumRating;
             cell.onChanged = ^(SelectCell *cell, PickerTableViewCell *pickerCell) {
-                NSString *value = [pickerCell selectedValueInComponent:0];
-                self.game.maximumRating = value;
+                self.game.maximumRating = [pickerCell selectedValue];
             };
 			cell.options = @[_ratingStrings];
 			cell.selectedOptions = @[self.game.maximumRating];

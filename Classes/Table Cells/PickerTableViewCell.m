@@ -59,8 +59,21 @@
     return [(self.options)[component] count];
 }
 
+- (NSInteger)selectedRowInComponent:(NSInteger)component {
+    return [self.picker selectedRowInComponent:component];
+}
+
 - (NSString *)selectedValueInComponent:(NSInteger)component {
     return (self.options)[component][[self.picker selectedRowInComponent:component]];
 }
 
+- (NSInteger)selectedRow {
+    NSAssert([self numberOfComponentsInPickerView:self.picker] == 1, @"Trying to use selectedRow on a multi-component UIPickerView.");
+    return [self selectedRowInComponent:0];
+}
+
+- (NSString *)selectedValue {
+    NSAssert([self numberOfComponentsInPickerView:self.picker] == 1, @"Trying to use selectedValue on a multi-component UIPickerView.");
+    return [self selectedValueInComponent:0];
+}
 @end

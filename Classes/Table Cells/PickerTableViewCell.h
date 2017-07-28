@@ -26,7 +26,14 @@
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView;
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 
+- (NSInteger)selectedRowInComponent:(NSInteger)component;
 - (NSString *)selectedValueInComponent:(NSInteger)component;
+
 - (void)setSelectedOptions:(NSArray *)selectedOptions;
+
+// Returns the selected value for single-component pickers
+
+- (NSInteger)selectedRow;
+- (NSString *)selectedValue;
 
 @end
