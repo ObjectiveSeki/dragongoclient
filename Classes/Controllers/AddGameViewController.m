@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, TimeSectionRows) {
     kTimeSectionMainTimeRow,
     kTimeSectionByoYomiTypeRow,
     kTimeSectionExtraTimeRow,
-    kTimeSectionExtraCountRow,
+    kTimeSectionExtraPeriodsRow,
     kTimeSectionCount
 };
 
@@ -104,6 +104,37 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
     [self dismissViewControllerAnimated:YES completion:^{ }];
 }
 
+#pragma mark - Default cells
+
+- (UITableViewCell *)dequeueDefaultCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
+}
+
+- (TextCell *)dequeueTextCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
+}
+
+- (SelectCell *)dequeueSelectCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"SelectCell"];
+}
+
+- (BooleanCell *)dequeueBooleanCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
+}
+
+- (UITableViewCell *)dequeueActionCell:(UITableView *)tableView {
+    return [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
+}
+
+- (PickerTableViewCell *)dequeuePickerCell:(UITableView *)tableView withCell:(SelectCell *)selectCell {
+    PickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PickerCell"];
+    cell.sizes = selectCell.sizes;
+    cell.options = selectCell.options;
+    cell.selectedOptions = selectCell.selectedOptions;
+    cell.onChanged = selectCell.onChanged;
+    return cell;
+}
+
 #pragma mark -
 #pragma mark Table view data source
 
@@ -144,125 +175,6 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
         rowCount++;
     }
 	return rowCount;
-}
-
-- (UITableViewCell *)dequeueDefaultCell:(UITableView *)tableView {
-    return [tableView dequeueReusableCellWithIdentifier:@"DefaultCell"];
-}
-
-- (TextCell *)dequeueTextCell:(UITableView *)tableView {
-    return [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
-}
-
-- (SelectCell *)dequeueSelectCell:(UITableView *)tableView {
-    return [tableView dequeueReusableCellWithIdentifier:@"SelectCell"];
-}
-
-- (BooleanCell *)dequeueBooleanCell:(UITableView *)tableView {
-    return [tableView dequeueReusableCellWithIdentifier:@"BooleanCell"];
-}
-
-- (UITableViewCell *)dequeueActionCell:(UITableView *)tableView {
-    return [tableView dequeueReusableCellWithIdentifier:@"ActionCell"];
-}
-
-- (PickerTableViewCell *)dequeuePickerCell:(UITableView *)tableView withCell:(SelectCell *)selectCell {
-    PickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PickerCell"];
-    cell.sizes = selectCell.sizes;
-    cell.options = selectCell.options;
-    cell.selectedOptions = selectCell.selectedOptions;
-    cell.onChanged = selectCell.onChanged;
-    return cell;
-}
-
-- (void)setKomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
-    KomiType oldKomiType = self.game.komiType;
-    KomiType komiType = [pickerCell selectedRow];
-
-	self.game.komiType = komiType;
-
-    // We want to update the table cells without deselecting
-    // the current cell, so no #reloadData for you.
-    NSArray *indexPaths = @[
-                            [self indexPathIgnoringPickerForRow:kBoardSectionGameStyleRow inSection:kBoardSection],
-                            [self indexPathIgnoringPickerForRow:kBoardSectionManualHandicapRow inSection:kBoardSection],
-                            [self indexPathIgnoringPickerForRow:kBoardSectionManualKomiRow inSection:kBoardSection]
-                            ];
-
-    if (oldKomiType != kKomiTypeManual && komiType == kKomiTypeManual) {
-        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-    } else if (oldKomiType == kKomiTypeManual && komiType != kKomiTypeManual) {
-        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-    }
-}
-
-- (void)setByoYomiType:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
-	ByoYomiType oldByoYomiType = self.game.byoYomiType;
-	ByoYomiType byoYomiType = [pickerCell selectedRow];
-	self.game.byoYomiType = byoYomiType;
-
-	// We want to update the table cells without deselecting
-	// the current cell, so no #reloadData for you.
-	NSMutableArray *indexPaths = [NSMutableArray arrayWithObject:[self indexPathIgnoringPickerForRow:2 inSection:kTimeSection]];
-	NSIndexPath *indexPath = [self indexPathIgnoringPickerForRow:kTimeSectionExtraCountRow inSection:kTimeSection];
-    if (oldByoYomiType == kByoYomiTypeFischer && byoYomiType != kByoYomiTypeFischer) {
-		[self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-		[indexPaths addObject:indexPath];
-	} else if (oldByoYomiType != kByoYomiTypeFischer && byoYomiType == kByoYomiTypeFischer) {
-		[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-	} else if (oldByoYomiType != byoYomiType){
-		[indexPaths addObject:indexPath];
-	}
-	[self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-}
-
-- (void)setMainTime:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
-	int tens = [[pickerCell selectedValueInComponent:0] intValue];
-	int ones = [[pickerCell selectedValueInComponent:1] intValue];
-	int timeValue = tens * 10 + ones;
-	self.game.timeValue = timeValue;
-	self.game.timeUnit = [pickerCell.picker selectedRowInComponent:2];
-}
-
-- (void)setExtraTimeJapanese:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
-	int tens = [[pickerCell selectedValueInComponent:0] intValue];
-	int ones = [[pickerCell selectedValueInComponent:1] intValue];
-	int timeValue = tens * 10 + ones;
-	self.game.japaneseTimeValue = timeValue;
-	self.game.japaneseTimeUnit = [pickerCell.picker selectedRowInComponent:2];
-}
-
-- (void)setExtraTimeCanadian:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
-	int tens = [[pickerCell selectedValueInComponent:0] intValue];
-	int ones = [[pickerCell selectedValueInComponent:1] intValue];
-	int timeValue = tens * 10 + ones;
-	self.game.canadianTimeValue = timeValue;
-	self.game.canadianTimeUnit = [pickerCell.picker selectedRowInComponent:2];
-}
-
-- (void)setExtraTimeFischer:(SelectCell *)cell fromPickerCell:(PickerTableViewCell *)pickerCell {
-	int tens = [[pickerCell selectedValueInComponent:0] intValue];
-	int ones = [[pickerCell selectedValueInComponent:1] intValue];
-	int timeValue = tens * 10 + ones;
-	self.game.fischerTimeValue = timeValue;
-	self.game.fischerTimeUnit = [pickerCell.picker selectedRowInComponent:2];
-}
-
-- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell, PickerTableViewCell *pickerCell))onSelected label:(NSString *)label {
-	SelectCell *cell = [self dequeueSelectCell:theTableView];
-	NSString *timeString = [self.game timePeriodString:timeValue withTimeUnit:timeUnit];
-	NSArray *zeroToNine = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"];
-	NSArray *timePeriods = @[[self.game timePeriodValue:kTimePeriodHours], [self.game timePeriodValue:kTimePeriodDays], [self.game timePeriodValue:kTimePeriodMonths]];
-	NSArray *sizes = @[@80.0f,@80.0f, @140.0f];
-	cell.label.text = label;
-	cell.value.text = timeString;
-	cell.onChanged = onSelected;
-	cell.sizes = sizes;
-	cell.options = @[zeroToNine, zeroToNine, timePeriods];
-	int tens = timeValue / 10;
-	int ones = timeValue - (tens * 10);
-	cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:timeUnit]];
-	return cell;
 }
 
 // Customize the appearance of table view cells.
@@ -342,7 +254,9 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
             cell.label.text = @"Komi Type";
 			cell.value.text = komiType;
 			cell.onChanged = ^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
-                [self setKomiType:selectCell fromPickerCell:pickerCell];
+                KomiType oldKomiType = self.game.komiType;
+                self.game.komiType = [pickerCell selectedRow];
+                [self komiTypeDidChange:oldKomiType toKomiType:self.game.komiType];
             };
 			cell.options = @[options];
 			cell.selectedOptions = @[komiType];
@@ -394,27 +308,60 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
         }
 	} else if (section == kTimeSection) {
 		if (row == kTimeSectionMainTimeRow) {
-			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setMainTime:selectCell fromPickerCell:pickerCell]; } label:@"Main Time"];
+			return [self timeCell:theTableView timeValue:self.game.timeValue timeUnit:self.game.timeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
+                    self.game.timeValue = [self timeValueFromPickerCell:pickerCell];
+                    self.game.timeUnit = [self timePeriodFromPickerCell:pickerCell];
+                } label:@"Main Time"];
 		} else if (row == kTimeSectionByoYomiTypeRow) {
 			SelectCell *cell = [self dequeueSelectCell:theTableView];
 			NSString *byoYomiType = [self.game byoYomiTypeString];
 			NSArray *options = @[[self.game byoYomiTypeString:kByoYomiTypeJapanese], [self.game byoYomiTypeString:kByoYomiTypeCanadian], [self.game byoYomiTypeString:kByoYomiTypeFischer]];
 			cell.label.text = @"Byo-Yomi";
 			cell.value.text = byoYomiType;
-			cell.onChanged = ^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setByoYomiType:selectCell fromPickerCell:pickerCell]; };
+			cell.onChanged = ^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
+                ByoYomiType oldByoYomiType = self.game.byoYomiType;
+                self.game.byoYomiType = [pickerCell selectedRow];
+                [self byoYomiTypeDidChange:oldByoYomiType toByoYomiType:self.game.byoYomiType];
+            };
 			cell.options = @[options];
 			cell.selectedOptions = @[byoYomiType];
 			cell.sizes = nil;
 			return cell;
 		} else if (row == kTimeSectionExtraTimeRow) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
-				return [self timeCell:theTableView timeValue:self.game.japaneseTimeValue timeUnit:self.game.japaneseTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeJapanese:selectCell fromPickerCell:pickerCell]; } label:@"Extra Time"];
+                
+				return [self timeCell:theTableView
+                            timeValue:self.game.japaneseTimeValue
+                             timeUnit:self.game.japaneseTimeUnit
+                           onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
+                               self.game.japaneseTimeValue = [self timeValueFromPickerCell:pickerCell];
+                               self.game.japaneseTimeUnit = [self timePeriodFromPickerCell:pickerCell];
+                           }
+                                label:@"Extra Time"];
+                
 			} else if (self.game.byoYomiType == kByoYomiTypeCanadian) {
-				return [self timeCell:theTableView timeValue:self.game.canadianTimeValue timeUnit:self.game.canadianTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeCanadian:selectCell fromPickerCell:pickerCell]; } label:@"Extra Time"];
+                
+				return [self timeCell:theTableView
+                            timeValue:self.game.canadianTimeValue
+                             timeUnit:self.game.canadianTimeUnit
+                           onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
+                               self.game.canadianTimeValue = [self timeValueFromPickerCell:pickerCell];
+                               self.game.canadianTimeUnit = [self timePeriodFromPickerCell:pickerCell];
+                               
+                           }
+                                label:@"Extra Time"];
+                
 			} else if (self.game.byoYomiType == kByoYomiTypeFischer) {
-				return [self timeCell:theTableView timeValue:self.game.fischerTimeValue timeUnit:self.game.fischerTimeUnit onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) { [self setExtraTimeFischer:selectCell fromPickerCell:pickerCell]; } label:@"Extra Per Move"];
+				return [self timeCell:theTableView
+                            timeValue:self.game.fischerTimeValue
+                             timeUnit:self.game.fischerTimeUnit
+                           onSelected:^(SelectCell *selectCell, PickerTableViewCell *pickerCell) {
+                               self.game.fischerTimeValue = [self timeValueFromPickerCell:pickerCell];
+                               self.game.fischerTimeUnit = [self timePeriodFromPickerCell:pickerCell];
+                           }
+                                label:@"Extra Per Move"];
 			}
-		} else if (row == kTimeSectionExtraCountRow) {
+		} else if (row == kTimeSectionExtraPeriodsRow) {
 			if (self.game.byoYomiType == kByoYomiTypeJapanese) {
 				TextCell *cell = [self dequeueTextCell:theTableView];
 				cell.label.text = @"Periods";
@@ -545,6 +492,73 @@ typedef NS_ENUM(NSUInteger, RatingSectionRows) {
         [self.tableView endUpdates];
     }
 }
+
+#pragma mark -
+#pragma mark Row adjustments
+
+- (void)komiTypeDidChange:(KomiType)oldKomiType toKomiType:(KomiType)newKomiType {
+    // We want to update the table cells without deselecting
+    // the current cell, so no #reloadData for you.
+    NSArray *indexPaths = @[
+                            [self indexPathIgnoringPickerForRow:kBoardSectionGameStyleRow inSection:kBoardSection],
+                            [self indexPathIgnoringPickerForRow:kBoardSectionManualHandicapRow inSection:kBoardSection],
+                            [self indexPathIgnoringPickerForRow:kBoardSectionManualKomiRow inSection:kBoardSection]
+                            ];
+    
+    if (oldKomiType != kKomiTypeManual && newKomiType == kKomiTypeManual) {
+        [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    } else if (oldKomiType == kKomiTypeManual && newKomiType != kKomiTypeManual) {
+        [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
+
+- (void)byoYomiTypeDidChange:(ByoYomiType)oldByoYomiType toByoYomiType:(ByoYomiType)newByoYomiType {
+    // We want to update the table cells without deselecting
+    // the current cell, so no #reloadData for you.
+    NSMutableArray *indexPathsToReload = [NSMutableArray arrayWithObject:[self indexPathIgnoringPickerForRow:kTimeSectionExtraTimeRow inSection:kTimeSection]];
+    NSIndexPath *extraPeriodsIndexPath = [self indexPathIgnoringPickerForRow:kTimeSectionExtraPeriodsRow inSection:kTimeSection];
+    
+    if (oldByoYomiType == kByoYomiTypeFischer && newByoYomiType != kByoYomiTypeFischer) {
+        [self.tableView insertRowsAtIndexPaths:@[extraPeriodsIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        [indexPathsToReload addObject:extraPeriodsIndexPath];
+    } else if (oldByoYomiType != kByoYomiTypeFischer && newByoYomiType == kByoYomiTypeFischer) {
+        [self.tableView deleteRowsAtIndexPaths:@[extraPeriodsIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+    } else if (oldByoYomiType != newByoYomiType){
+        [indexPathsToReload addObject:extraPeriodsIndexPath];
+    }
+    
+    [self.tableView reloadRowsAtIndexPaths:indexPathsToReload withRowAnimation:UITableViewRowAnimationNone];
+}
+
+#pragma mark - Time period cell handling
+
+- (SelectCell *)timeCell:(UITableView *)theTableView timeValue:(int)timeValue timeUnit:(TimePeriod)timeUnit onSelected:(void (^)(SelectCell *selectCell, PickerTableViewCell *pickerCell))onSelected label:(NSString *)label {
+    SelectCell *cell = [self dequeueSelectCell:theTableView];
+    NSString *timeString = [self.game timePeriodString:timeValue withTimeUnit:timeUnit];
+    NSArray *zeroToNine = @[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"];
+    NSArray *timePeriods = @[[self.game timePeriodValue:kTimePeriodHours], [self.game timePeriodValue:kTimePeriodDays], [self.game timePeriodValue:kTimePeriodMonths]];
+    NSArray *sizes = @[@80.0f,@80.0f, @140.0f];
+    cell.label.text = label;
+    cell.value.text = timeString;
+    cell.onChanged = onSelected;
+    cell.sizes = sizes;
+    cell.options = @[zeroToNine, zeroToNine, timePeriods];
+    int tens = timeValue / 10;
+    int ones = timeValue - (tens * 10);
+    cell.selectedOptions = @[[NSString stringWithFormat:@"%d", tens], [NSString stringWithFormat:@"%d", ones], [self.game timePeriodValue:timeUnit]];
+    return cell;
+}
+
+- (int)timeValueFromPickerCell:(PickerTableViewCell *)pickerCell {
+    int tens = [[pickerCell selectedValueInComponent:0] intValue];
+    int ones = [[pickerCell selectedValueInComponent:1] intValue];
+    return tens * 10 + ones;
+}
+
+- (TimePeriod)timePeriodFromPickerCell:(PickerTableViewCell *)pickerCell {
+    return [pickerCell selectedRowInComponent:2];
+}
+
 
 #pragma mark -
 #pragma mark Picker cell management
