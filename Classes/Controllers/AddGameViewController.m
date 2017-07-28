@@ -146,6 +146,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     cell.sizes = selectCell.sizes;
     cell.options = selectCell.options;
     cell.selectedOptions = selectCell.selectedOptions;
+    cell.onChanged = selectCell.onChanged;
     return cell;
 }
 
@@ -259,9 +260,10 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
     NSIndexPath *logicalIndexPath = [self indexPathIgnoringPicker:indexPath];
 
     if ([indexPath compare:self.pickerIndexPath] == NSOrderedSame) {
-#warning assert the indexpath-1 makes sense, and that it's the correct type
+        NSAssert((indexPath.row - 1) >= 0, @"The row of the picker's associated cell is out of bounds.");
         NSIndexPath *associatedCellIndexPath = [self indexPathForOpenPickerCell];
         SelectCell *associatedCell = (SelectCell *)[self tableView:theTableView cellForRowAtIndexPath:associatedCellIndexPath];
+        NSAssert([associatedCell.reuseIdentifier isEqualToString:@"SelectCell"], @"PickerCell's associated cell is not a SelectCell: %@", associatedCell);
         PickerTableViewCell *cell = [self dequeuePickerCell:theTableView withCell:associatedCell];
         cell.delegate = self;
         return cell;
@@ -284,7 +286,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 	}
     
     if (section == kNumberOfGamesSection) {
-        if (row == kNumberOfGamesRow) {
+        if (row == 0) {
             SelectCell *cell = [self dequeueSelectCell:theTableView];
             cell.label.text = @"Number of Games";
             cell.value.text = [@(self.game.numberOfGames) stringValue];
@@ -582,7 +584,7 @@ typedef NS_ENUM(NSUInteger, AddGameSection) {
 
 - (void)pickerTableViewCell:(PickerTableViewCell *)pickerCell didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     SelectCell *cell = [self.tableView cellForRowAtIndexPath:[self indexPathForOpenPickerCell]];
-    cell.onChanged(cell, pickerCell);
+    pickerCell.onChanged(cell, pickerCell);
 }
 
 #pragma mark -
