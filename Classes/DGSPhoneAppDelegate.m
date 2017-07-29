@@ -180,6 +180,16 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 
 #pragma mark - Error handling
 
+
+- (UIViewController *)topViewControllerStartingFrom:(UIViewController *)viewController {
+    if ([viewController respondsToSelector:@selector(visibleViewController)]) {
+        return [self topViewControllerStartingFrom:[viewController performSelector:@selector(visibleViewController)]];
+    } else if ([viewController presentedViewController]) {
+        return [self topViewControllerStartingFrom:[viewController presentedViewController]];
+    }
+    return viewController;
+}
+
 - (void)presentNetworkError:(NSNotification *)notification {
     NSError *error = notification.object;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
@@ -189,7 +199,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"Dismiss")
                                                         style:UIAlertActionStyleDefault
                                                       handler:^(UIAlertAction * action) {}]];
-    [[self.window rootViewController] presentViewController:alertController animated:YES completion:nil];
+    [[self topViewControllerStartingFrom:[self.window rootViewController]] presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Push notifications
