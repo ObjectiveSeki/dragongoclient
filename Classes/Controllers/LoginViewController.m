@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "TextCell.h"
 #import "SpinnerView.h"
+#import <SafariServices/SafariServices.h>
 
 @implementation LoginViewController
 
@@ -77,9 +78,8 @@
 		[self login];
 	} else if (cell == self.signupCell) {
 		[theTableView deselectRowAtIndexPath:indexPath animated:YES];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]
-                                           options:@{}
-                                 completionHandler:nil];
+        SFSafariViewController *registerView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]];
+        [self presentViewController:registerView animated:YES completion:^{}];
 	}
 }
 

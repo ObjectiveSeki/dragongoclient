@@ -8,14 +8,27 @@
 
 #import "TintedLabel.h"
 
+@interface TintedLabel ()
+@property(nonatomic, retain) UIColor *oldTintColor;
+@end
+
 @implementation TintedLabel
 
-- (void)layoutSubviews {
-    [self tintColorDidChange];
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        self.textColor = self.tintColor;
+        _oldTintColor = self.tintColor;
+    }
+    return self;
 }
 
 - (void)tintColorDidChange {
-    self.textColor = self.tintColor;
+    if ([self.textColor isEqual:self.oldTintColor]) {
+        self.textColor = self.tintColor;
+        self.oldTintColor = self.tintColor;
+    }
 }
 
 @end

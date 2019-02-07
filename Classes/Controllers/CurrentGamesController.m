@@ -220,7 +220,7 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (GameList *)gameListByAppendingTestGamesTo:(GameList *)gameList {
-    NSArray *testGames = @[@"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];
+    NSArray *testGames = @[@"AlphaGo", @"Start Handicap Game", @"Handicap Stones Placed", @"First Score", @"Multiple Scoring Passes", @"Pass Should Be Move 200", @"Game with Message", @"25x25 Handicap Stones"];
     NSMutableOrderedSet *mutableGames = [[NSMutableOrderedSet alloc] initWithCapacity:[testGames count]];
     for (int i = 0; i < [testGames count]; i++) {
         Game *game = [[Game alloc] init];

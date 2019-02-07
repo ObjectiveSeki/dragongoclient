@@ -78,10 +78,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     topBorder.backgroundColor = [UIColor colorWithWhite:0.65f
                                                   alpha:1.0f].CGColor;
     [self.bottomBar.layer addSublayer:topBorder];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+    
     NSLog(@"creating board...");
     NSLog(@"BoardView: %@", self.boardView);
     // Make sure the board view doesn't go away. This should never happen!
@@ -97,34 +94,14 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     [self zoomToScale:0.5 center:self.boardView.center animated:NO];
     [self updateUI];
     
+    [self handleLargeBoards:theBoard];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+    
     self.sgfShareQueue = [[NSOperationQueue alloc] init];
     self.sgfShareQueue.name = @"SGF saving queue";
-
-    if ([theBoard size] > [FuegoBoard maximumSupportedBoardSize]) {
-        UIAlertController *tooLargeAlert =
-            [UIAlertController alertControllerWithTitle:nil
-                                                message:S(@"Games larger than %dx%d can't be played in this app. Would you like to open this game in a browser instead?", [FuegoBoard maximumSupportedBoardSize], [FuegoBoard maximumSupportedBoardSize])
-                                         preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *noOpenAction =
-            [UIAlertAction actionWithTitle:@"Don't Open"
-                                     style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction * action) {
-                                       [self.navigationController popViewControllerAnimated:YES];
-                                   }];
-        [tooLargeAlert addAction:noOpenAction];
-        
-        UIAlertAction *openAction =
-            [UIAlertAction actionWithTitle:@"Open"
-                                     style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action) {
-                                       [[GenericGameServer sharedGameServer] openGameInBrowser:self.game];
-                                       [self.navigationController popViewControllerAnimated:YES];
-                                   }];
-        [tooLargeAlert addAction:openAction];
-        
-        [self presentViewController:tooLargeAlert animated:YES completion:nil];
-    }
 }
 
 - (void)viewDidLayoutSubviews {
@@ -136,10 +113,35 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 	[super viewWillDisappear:animated];
     [self.sgfShareQueue cancelAllOperations];
     self.sgfShareQueue = nil;
-    self.boardView.board = nil;
-	self.board = nil;
 }
 
+- (void)handleLargeBoards:(FuegoBoard *)theBoard {
+    if ([theBoard size] > [FuegoBoard maximumSupportedBoardSize]) {
+        UIAlertController *tooLargeAlert =
+        [UIAlertController alertControllerWithTitle:nil
+                                            message:S(@"Games larger than %dx%d can't be played in this app. Would you like to open this game in a browser instead?", [FuegoBoard maximumSupportedBoardSize], [FuegoBoard maximumSupportedBoardSize])
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *noOpenAction =
+        [UIAlertAction actionWithTitle:@"Don't Open"
+                                 style:UIAlertActionStyleCancel
+                               handler:^(UIAlertAction * action) {
+                                   [self.navigationController popViewControllerAnimated:YES];
+                               }];
+        [tooLargeAlert addAction:noOpenAction];
+        
+        UIAlertAction *openAction =
+        [UIAlertAction actionWithTitle:@"Open"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   [[GenericGameServer sharedGameServer] openGameInBrowser:self.game];
+                                   [self.navigationController popViewControllerAnimated:YES];
+                               }];
+        [tooLargeAlert addAction:openAction];
+        
+        [self presentViewController:tooLargeAlert animated:YES completion:nil];
+    }
+}
 #pragma mark - GameViewDelegate methods
 
 - (void)showStatusMessage:(NSString *)statusMessage {
@@ -428,7 +430,7 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
         
         UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         UIBarButtonItem *activityIndicatorButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-        activityIndicatorButton.width = 28;
+        activityIndicatorButton.width = self.shareButton.width;
         [self replaceToolbarItemAtIndex:3 withItem:activityIndicatorButton];
         [activityIndicator startAnimating];
         

@@ -47,6 +47,7 @@
 		DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868A711B7479D00A4DA7A /* CFNetwork.framework */; };
 		DAC868AC11B747A500A4DA7A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */; };
 		DAC868B011B747AE00A4DA7A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */; };
+		DACD5DDB1F7493CB00CFA61F /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DACD5DDA1F7493CB00CFA61F /* SafariServices.framework */; };
 		DACE119B1255754A006C9598 /* Game with Message.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DACE119A1255754A006C9598 /* Game with Message.sgf */; };
 		DADD19C811BCA6180038F8BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADD19C711BCA6170038F8BC /* QuartzCore.framework */; };
 		DAE0D24D13BAD41A00668CB2 /* NewGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE0D24B13BAD41A00668CB2 /* NewGameViewController.m */; };
@@ -56,6 +57,7 @@
 		DAE932C212454E4800335F0F /* AddGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE932C112454E4800335F0F /* AddGameViewController.m */; };
 		DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA518011B88A1100F4CCB3 /* DGS.m */; };
 		DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA519A11B88D8300F4CCB3 /* Game.m */; };
+		DAEBAB501F71AD84006C6C3B /* AlphaGo.sgf in Resources */ = {isa = PBXBuildFile; fileRef = DAEBAB4F1F71AD3C006C6C3B /* AlphaGo.sgf */; };
 		DAF16E6B1799025600ADA4D1 /* AcknowledgementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */; };
 		DAF16E6D179902F600ADA4D1 /* acknowledgements.html in Resources */ = {isa = PBXBuildFile; fileRef = DAF16E6C179902F600ADA4D1 /* acknowledgements.html */; };
 		DAF9102911BB48A800FE7B96 /* GoBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF9102711BB48A800FE7B96 /* GoBoardView.m */; };
@@ -156,6 +158,7 @@
 		DAC868A711B7479D00A4DA7A /* CFNetwork.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAC868AB11B747A500A4DA7A /* SystemConfiguration.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DAC868AF11B747AE00A4DA7A /* MobileCoreServices.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DACD5DDA1F7493CB00CFA61F /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		DACE119A1255754A006C9598 /* Game with Message.sgf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Game with Message.sgf"; sourceTree = "<group>"; };
 		DADD19C711BCA6170038F8BC /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DADD1CDD11FD3C0B005922A3 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
@@ -174,6 +177,7 @@
 		DAEA525A11B895ED00F4CCB3 /* DGSTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSTests.m; sourceTree = "<group>"; };
 		DAEA52A611B8989F00F4CCB3 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAEA534711B8A4C000F4CCB3 /* status.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = status.csv; sourceTree = "<group>"; };
+		DAEBAB4F1F71AD3C006C6C3B /* AlphaGo.sgf */ = {isa = PBXFileReference; lastKnownFileType = text; path = AlphaGo.sgf; sourceTree = "<group>"; };
 		DAEE341C15884ECA00300B29 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DAF16E691799025500ADA4D1 /* AcknowledgementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcknowledgementsViewController.h; sourceTree = "<group>"; };
 		DAF16E6A1799025600ADA4D1 /* AcknowledgementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcknowledgementsViewController.m; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DACD5DDB1F7493CB00CFA61F /* SafariServices.framework in Frameworks */,
 				DA77A95C13B2FCA700803136 /* libxml2.dylib in Frameworks */,
 				DA77A95013B2F47200803136 /* libz.dylib in Frameworks */,
 				DAC868A811B7479D00A4DA7A /* CFNetwork.framework in Frameworks */,
@@ -288,6 +293,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DACD5DDA1F7493CB00CFA61F /* SafariServices.framework */,
 				6645B18F147B8BED00170504 /* libsqlite3.dylib */,
 				DA71CAA311B5EA50008696AC /* Foundation.framework */,
 				DAC868A711B7479D00A4DA7A /* CFNetwork.framework */,
@@ -446,6 +452,7 @@
 		DAEA525511B8954100F4CCB3 /* TestData */ = {
 			isa = PBXGroup;
 			children = (
+				DAEBAB4F1F71AD3C006C6C3B /* AlphaGo.sgf */,
 				DAFADA4E12CF0EF100985126 /* waiting.html */,
 				DA667C34125A288D00CA9A13 /* Scoring Should Be Move 202.sgf */,
 				DA667B9A12562AC400CA9A13 /* Pass Should Be Move 200.sgf */,
@@ -563,6 +570,7 @@
 				DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */,
 				DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
 				DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
+				DAEBAB501F71AD84006C6C3B /* AlphaGo.sgf in Resources */,
 				DA7542F111F01FC100BF0443 /* Handicap Stones Placed.sgf in Resources */,
 				DA5BEB9B1C9F566F00C335C4 /* Media.xcassets in Resources */,
 				DAE932AA12454A2900335F0F /* LICENSE in Resources */,
