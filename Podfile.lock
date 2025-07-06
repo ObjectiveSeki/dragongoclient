@@ -12,6 +12,12 @@ DEPENDENCIES:
   - GDataXML-HTML (~> 1.0.0)
   - MKNetworkKit
 
+SPEC REPOS:
+  trunk:
+    - GDataXML-HTML
+    - MKNetworkKit
+    - Reachability
+
 EXTERNAL SOURCES:
   boost-framework:
     :podspec: boost-framework.podspec
@@ -27,4 +33,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 32619da058eb6622fe51af14a18d23845e7dd694
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.16.2
