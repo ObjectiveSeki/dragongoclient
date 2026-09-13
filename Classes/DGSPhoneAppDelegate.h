@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 
 extern NSString * const ReceivedNewGamesNotification;
 
-@interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate>
+@interface DGSPhoneAppDelegate : NSObject <UIApplicationDelegate, UNUserNotificationCenterDelegate>
 
 @property(nonatomic, strong) UIWindow *window;
 @property(nonatomic, copy) NSString *lastKnownMove;

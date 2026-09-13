@@ -1,25 +1,19 @@
 #!/bin/bash
-
-if [[ "$1" == "--sudo" ]]; then
-    echo "All commands (brew, gem, pod) will be run with sudo. You may be prompted by sudo for your password."
-    CMD_PREFIX="sudo"
+set -euo pipefail
+cd "$(dirname "$0")"
+# All Ruby dependencies stay in this checkout; no administrator access is needed.
+export GEM_HOME="$PWD/.tools/gems"
+export GEM_PATH="$GEM_HOME"
+export DEVELOPER_DIR="${DEVELOPER_DIR:-/Applications/Xcode.app/Contents/Developer}"
+if [ ! -f "$GEM_HOME/bin/bundle" ]; then
+  gem install bundler -v 2.4.22 --install-dir "$GEM_HOME" --no-document
 fi
-
-if [[ -x `which brew` && ! -d ~/Library/Application\ Support/appledoc ]]; then
-    ${CMD_PREFIX} brew install appledoc --HEAD
-    ${CMD_PREFIX} ln -sf "`brew --prefix`/Cellar/appledoc/HEAD/Templates" ~/Library/Application\ Support/appledoc
-fi
-
-if [ ! -d DGSPhone.xcworkspace ]; then
-    ${CMD_PREFIX} gem install bundler
-    bundle install --path=~/.bundle
-    bundle exec pod setup
-    bundle exec pod cache clean --all
-    bundle exec pod install
-else
-    bundle exec pod install
-fi
-
+ruby "$GEM_HOME/bin/bundle" config set --local path .tools/bundle
+ruby "$GEM_HOME/bin/bundle" config set --local force_ruby_platform true
+ruby "$GEM_HOME/bin/bundle" install
+ruby scripts/pod.rb install
+python3 scripts/prepare-legacy-pods.py
+python3 scripts/build-fuego-simulator.py
 if [ ! -f Keys.h ]; then
-    cp Keys.h.example Keys.h
+  cp Keys.h.example Keys.h
 fi

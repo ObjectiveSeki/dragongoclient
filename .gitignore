@@ -8,3 +8,8 @@ xcuserdata/
 Pods/
 .bundle/
 Keys.h
+
+.build/
+.tools/
+
+__pycache__/

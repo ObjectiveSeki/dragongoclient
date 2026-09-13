@@ -54,11 +54,9 @@ const int kDefaultPageLimit = 20;
 
     MKNetworkOperation *op = [super operationWithPath:path params:body httpMethod:method ssl:DGS_USE_SSL];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        NSLog(@"%@", completedOperation.url);
-        NSLog(@"%@", completedOperation.responseString);
+
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        NSLog(@"%@", completedOperation.url);
-        NSLog(@"%@", completedOperation.responseString);
+
         if (error.domain == kDGSErrorDomain && error.code == kDGSErrorCodeLoginError) {
             NSLog(@"Not logged in during request: %@", completedOperation.readonlyRequest.URL);
             Player *oldPlayer = [Player currentPlayer];
@@ -73,7 +71,7 @@ const int kDefaultPageLimit = 20;
 }
 
 - (NSURL *)basePath {
-    NSMutableString *url = [NSMutableString stringWithFormat:@"http://%@/", self.readonlyHostName];
+    NSMutableString *url = [NSMutableString stringWithFormat:@"%@://%@/", DGS_USE_SSL ? @"https" : @"http", self.readonlyHostName];
     if (self.apiPath) {
         [url appendFormat:@"%@/", self.apiPath];
     }

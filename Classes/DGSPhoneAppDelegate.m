@@ -36,6 +36,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
+    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
     self.receivedRemoteNotification = NO;
     
 	NSLog(@"Starting Application...");
@@ -215,11 +216,6 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     }];
 }
 
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-    
-}
-
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)token {
     [[DGSPushServer sharedPushServer] createLoginCookies:[[GenericGameServer sharedGameServer] cookiesForCurrentUser]
     completionHandler:^{
@@ -241,6 +237,23 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     NSLog(@"Received remote notification: %@", userInfo);
     self.receivedRemoteNotification = YES;
     [self application:application handleRemoteNotification:userInfo];
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.receivedRemoteNotification = YES;
+        [self application:[UIApplication sharedApplication] handleRemoteNotification:notification.request.content.userInfo];
+        completionHandler(UNNotificationPresentationOptionBadge);
+    });
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.receivedRemoteNotification = YES;
+        [self goToCurrentGamesViewControllerAnimated:NO];
+        [self application:[UIApplication sharedApplication] handleRemoteNotification:response.notification.request.content.userInfo];
+        completionHandler();
+    });
 }
 
 - (void)application:(UIApplication *)application handleRemoteNotification:(NSDictionary *)userInfo {

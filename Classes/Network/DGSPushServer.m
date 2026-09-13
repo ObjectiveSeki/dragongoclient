@@ -8,6 +8,8 @@
 
 #import "DGSPushServer.h"
 #import "Player.h"
+#import <UserNotifications/UserNotifications.h>
+#import <Security/Security.h>
 #import "UIDevice+ExtraDeviceDetails.h"
 
 #define APNSDeviceIdUserDefaultsKey @"APNSDeviceId"
@@ -15,6 +17,8 @@
 @interface DGSPushServer ()
 
 @property (nonatomic, strong) NSOperationQueue *delayedNetworkOperationQueue;
+@property (nonatomic, copy) NSString *pushToken;
+@property (nonatomic) BOOL registrationReady;
 @end
 
 @implementation DGSPushServer
@@ -41,6 +45,7 @@
 
     self = [super initWithHostName:PUSH_HOST customHeaderFields:headerFields];
     if (self) {
+        self.pushToken = [self storedPushToken];
     }
     return self;
 }
@@ -52,14 +57,52 @@
 }
 
 
+// A grant is scoped to this push host and DGS player, and never stored in defaults.
+- (NSMutableDictionary *)tokenQuery {
+    return [@{(__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
+              (__bridge id)kSecAttrService: S(@"DragonGoPush.%@", PUSH_HOST),
+              (__bridge id)kSecAttrAccount: [[Player currentPlayer].userId stringValue] ?: @""} mutableCopy];
+}
+
+- (NSString *)storedPushToken {
+    NSMutableDictionary *query = [self tokenQuery];
+    query[(__bridge id)kSecReturnData] = @YES;
+    CFTypeRef result = NULL;
+    if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) != errSecSuccess) return nil;
+    return [[NSString alloc] initWithData:CFBridgingRelease(result) encoding:NSUTF8StringEncoding];
+}
+
+- (void)storePushToken:(NSString *)token {
+    NSMutableDictionary *query = [self tokenQuery];
+    SecItemDelete((__bridge CFDictionaryRef)query);
+    query[(__bridge id)kSecValueData] = [token dataUsingEncoding:NSUTF8StringEncoding];
+    query[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly;
+    SecItemAdd((__bridge CFDictionaryRef)query, NULL);
+    self.pushToken = token;
+}
+
+- (void)enqueueOperation:(MKNetworkOperation *)operation {
+    // Apply credentials when dequeuing: game sync may be created before registration.
+    if (self.pushToken && ![operation.readonlyRequest.URL.path hasSuffix:@"/session.json"]) {
+        [operation addHeaders:@{@"Authorization": S(@"Bearer %@", self.pushToken)}];
+    }
+    [super enqueueOperation:operation];
+}
+
 # pragma mark - Push management methods
 
 - (void)setupRemoteNotifications {
     [self beginQueueingRequestsRequiringLogin];
     if ([Player currentPlayer].userId) {
-        UIUserNotificationType types = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        self.pushToken = [self storedPushToken];
+        [[UNUserNotificationCenter currentNotificationCenter]
+         requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound)
+         completionHandler:^(BOOL granted, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (granted) [[UIApplication sharedApplication] registerForRemoteNotifications];
+                else [self didFailToRetrieveDeviceId];
+            });
+        }];
     }
 }
 
@@ -70,6 +113,7 @@
 - (void)setDeviceIdFromResponse:(NSDictionary *)response {
     NSNumber *deviceId = response[@"id"];
     [[NSUserDefaults standardUserDefaults] setObject:deviceId forKey:APNSDeviceIdUserDefaultsKey];
+    self.registrationReady = YES;
     [self runQueuedRequests];
 }
 
@@ -78,7 +122,7 @@
 }
 
 - (BOOL)isPushEnabled {
-    return [self.deviceId boolValue];
+    return self.registrationReady && self.pushToken.length > 0 && [self.deviceId boolValue];
 }
 
 - (BOOL)isLoggedIn {
@@ -90,6 +134,8 @@
 }
 
 - (void)beginQueueingRequestsRequiringLogin {
+    self.registrationReady = NO;
+    [self.delayedNetworkOperationQueue cancelAllOperations];
     NSOperationQueue *delayedNetworkOperationQueue = [[NSOperationQueue alloc] init];
     delayedNetworkOperationQueue.name = @"Network requests delayed until login";
     [delayedNetworkOperationQueue setSuspended:YES];
@@ -113,6 +159,9 @@
 }
 
 - (void)clearQueueingRequestsRequiringLogin {
+    self.registrationReady = NO;
+    [self.delayedNetworkOperationQueue cancelAllOperations];
+    [self.delayedNetworkOperationQueue setSuspended:NO];
     self.delayedNetworkOperationQueue = nil;
 }
 
@@ -184,6 +233,9 @@
         }];
 
         [self enqueueOperation:op];
+        self.registrationReady = NO;
+        self.pushToken = nil;
+        [self clearQueueingRequestsRequiringLogin];
         return op;
     } else {
         // pretend success
@@ -206,6 +258,13 @@
     MKNetworkOperation *op = [self operationWithPath:S(createSessionPathFormat, [Player currentPlayer].userId) params:params httpMethod:@"POST"];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSString *token = completedOperation.responseJSON[@"token"];
+        if (![token isKindOfClass:[NSString class]] || token.length == 0) {
+            [self didFailToRetrieveDeviceId];
+            errorHandler([NSError errorWithDomain:@"DragonGoPush" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Push registration did not return an authentication token."}]);
+            return;
+        }
+        [self storePushToken:token];
         completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
         [self didFailToRetrieveDeviceId];
@@ -220,7 +279,12 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
     params[@"session[cookie]"] = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies][@"Cookie"];
-    params[@"session[expires_at]"] = [cookies valueForKeyPath:@"@min.expiresDate"];
+    // MKNetworkKit only percent-encodes string values. Passing NSDate directly
+    // leaves the timezone '+' unescaped, which form decoders interpret as a space.
+    NSDate *expires = [cookies valueForKeyPath:@"@min.expiresDate"];
+    if (expires) {
+        params[@"session[expires_at]"] = [[[NSISO8601DateFormatter alloc] init] stringFromDate:expires];
+    }
     return params;
 }
 

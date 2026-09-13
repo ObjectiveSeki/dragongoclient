@@ -4,8 +4,8 @@
 #define DEBUG 1
 //#define DEVELOPMENT_DGS
 #define PUSH_ENABLED
-#define PUSH_HOST @"dgs.uberweiss.net:3000"
-#define PUSH_USE_SSL NO
+#define PUSH_HOST @"dragon-go-push-3wr88837j5.fly.dev"
+#define PUSH_USE_SSL YES
 #define REMOTE_LOGGING
 //#define INVITES_ENABLED
 
@@ -17,7 +17,7 @@
 #if defined (CONFIGURATION_Adhoc)
 #define TESTFLIGHT_UUID_TRACKING
 #define PUSH_ENABLED
-#define PUSH_HOST @"dgs.uberweiss.net"
+#define PUSH_HOST @"dragon-go-push-3wr88837j5.fly.dev"
 #define PUSH_USE_SSL YES
 #define REMOTE_LOGGING
 #endif
@@ -25,7 +25,7 @@
 #if defined (CONFIGURATION_Release)
 #define DEVELOPMENT_USE_SSL YES
 #define PUSH_ENABLED
-#define PUSH_HOST @"dgs.uberweiss.net"
+#define PUSH_HOST @"dragon-go-push-3wr88837j5.fly.dev"
 #define PUSH_USE_SSL YES
 #endif
 
