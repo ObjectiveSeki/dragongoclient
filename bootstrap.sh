@@ -13,7 +13,7 @@ ruby "$GEM_HOME/bin/bundle" config set --local force_ruby_platform true
 ruby "$GEM_HOME/bin/bundle" install
 ruby scripts/pod.rb install
 python3 scripts/prepare-legacy-pods.py
-python3 scripts/build-fuego-simulator.py
+python3 scripts/build-fuego.py
 if [ ! -f Keys.h ]; then
   cp Keys.h.example Keys.h
 fi

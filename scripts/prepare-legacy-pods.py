@@ -12,11 +12,6 @@ text = header.read_text().replace('#import <netinet6/in6.h>', '// IPv6 types com
 header.chmod(header.stat().st_mode | 0o200)
 header.write_text(text)
 
-# Only header-only Boost APIs are used by the client's board and SGF code.
-# The old boost binary contains an iOS arm64 slice, not an arm64 simulator slice.
-for config in (root / 'Pods/Target Support Files/Pods-DGS').glob('*.xcconfig'):
-    config.write_text(config.read_text().replace('-framework "boost"', ''))
-
 operation = root / 'Pods/MKNetworkKit/MKNetworkKit/MKNetworkOperation.m'
 text = operation.read_text().replace('DLog(@"%@, [%@]", self, [self.error localizedDescription]);', 'DLog(@"Request failed: %@", [self.error localizedDescription]);')
 operation.chmod(operation.stat().st_mode | 0o200)

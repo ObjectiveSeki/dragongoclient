@@ -510,7 +510,6 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				DA0E103D140F240D0067BE35 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -605,19 +604,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DA0E103D140F240D0067BE35 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nif [ $CONFIGURATION != \"Debug\" ]; then\n  buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" DGSPhone-Info.plist)\n  buildNumber=$(($buildNumber + 1))\n  /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" DGSPhone-Info.plist\nfi";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -690,12 +676,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_TEAM = 3WR88837J5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/simulator-frameworks $(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(SRCROOT)/.build/fuego/products/iphoneos $(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/fuego/products/iphonesimulator $(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
@@ -703,7 +691,13 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/.build/fuego/sources/boost_1_58_0 $(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					fuego,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}.dev";
 				PRODUCT_NAME = DGS;
@@ -721,11 +715,13 @@
 				CODE_SIGN_ENTITLEMENTS = DGS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_TEAM = 3WR88837J5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/simulator-frameworks $(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(SRCROOT)/.build/fuego/products/iphoneos $(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/fuego/products/iphonesimulator $(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
@@ -733,7 +729,13 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/.build/fuego/sources/boost_1_58_0 $(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					fuego,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = DGS;
 				VALIDATE_PRODUCT = YES;
@@ -865,11 +867,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 137;
 				DEVELOPMENT_TEAM = 3WR88837J5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/simulator-frameworks $(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(SRCROOT)/.build/fuego/products/iphoneos $(inherited)";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/fuego/products/iphonesimulator $(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
@@ -877,7 +881,13 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/.build/fuego/sources/boost_1_58_0 $(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					fuego,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}.dev";
 				PRODUCT_NAME = DGS;
 				PROVISIONING_PROFILE_SPECIFIER = "";
