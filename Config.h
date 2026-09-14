@@ -25,7 +25,7 @@
 #if defined (CONFIGURATION_Release)
 #define DEVELOPMENT_USE_SSL YES
 #define PUSH_ENABLED
-#define PUSH_HOST @"dragon-go-push-3wr88837j5.fly.dev"
+#define PUSH_HOST @"dragon-go-push-production-3wr88837j5.fly.dev"
 #define PUSH_USE_SSL YES
 #endif
 
