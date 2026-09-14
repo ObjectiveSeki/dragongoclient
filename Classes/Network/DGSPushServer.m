@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSOperationQueue *delayedNetworkOperationQueue;
 @property (nonatomic, copy) NSString *pushToken;
 @property (nonatomic) BOOL registrationReady;
+@property (nonatomic) NSUInteger registrationGeneration;
 @end
 
 @implementation DGSPushServer
@@ -58,22 +59,22 @@
 
 
 // A grant is scoped to this push host and DGS player, and never stored in defaults.
-- (NSMutableDictionary *)tokenQuery {
+- (NSMutableDictionary *)tokenQueryForPlayerId:(NSNumber *)playerId {
     return [@{(__bridge id)kSecClass: (__bridge id)kSecClassGenericPassword,
               (__bridge id)kSecAttrService: S(@"DragonGoPush.%@", PUSH_HOST),
-              (__bridge id)kSecAttrAccount: [[Player currentPlayer].userId stringValue] ?: @""} mutableCopy];
+              (__bridge id)kSecAttrAccount: [playerId stringValue] ?: @""} mutableCopy];
 }
 
 - (NSString *)storedPushToken {
-    NSMutableDictionary *query = [self tokenQuery];
+    NSMutableDictionary *query = [self tokenQueryForPlayerId:[Player currentPlayer].userId];
     query[(__bridge id)kSecReturnData] = @YES;
     CFTypeRef result = NULL;
     if (SecItemCopyMatching((__bridge CFDictionaryRef)query, &result) != errSecSuccess) return nil;
     return [[NSString alloc] initWithData:CFBridgingRelease(result) encoding:NSUTF8StringEncoding];
 }
 
-- (void)storePushToken:(NSString *)token {
-    NSMutableDictionary *query = [self tokenQuery];
+- (void)storePushToken:(NSString *)token forPlayerId:(NSNumber *)playerId {
+    NSMutableDictionary *query = [self tokenQueryForPlayerId:playerId];
     SecItemDelete((__bridge CFDictionaryRef)query);
     query[(__bridge id)kSecValueData] = [token dataUsingEncoding:NSUTF8StringEncoding];
     query[(__bridge id)kSecAttrAccessible] = (__bridge id)kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly;
@@ -93,12 +94,15 @@
 
 - (void)setupRemoteNotifications {
     [self beginQueueingRequestsRequiringLogin];
+    NSUInteger generation = self.registrationGeneration;
+    NSNumber *playerId = [Player currentPlayer].userId;
     if ([Player currentPlayer].userId) {
         self.pushToken = [self storedPushToken];
         [[UNUserNotificationCenter currentNotificationCenter]
          requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound)
          completionHandler:^(BOOL granted, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                if (![self isCurrentRegistration:generation playerId:playerId]) return;
                 if (granted) [[UIApplication sharedApplication] registerForRemoteNotifications];
                 else [self didFailToRetrieveDeviceId];
             });
@@ -134,6 +138,7 @@
 }
 
 - (void)beginQueueingRequestsRequiringLogin {
+    self.registrationGeneration++;
     self.registrationReady = NO;
     [self.delayedNetworkOperationQueue cancelAllOperations];
     NSOperationQueue *delayedNetworkOperationQueue = [[NSOperationQueue alloc] init];
@@ -159,6 +164,7 @@
 }
 
 - (void)clearQueueingRequestsRequiringLogin {
+    self.registrationGeneration++;
     self.registrationReady = NO;
     [self.delayedNetworkOperationQueue cancelAllOperations];
     [self.delayedNetworkOperationQueue setSuspended:NO];
@@ -167,10 +173,17 @@
 
 #pragma mark - Push Server methods
 
+- (BOOL)isCurrentRegistration:(NSUInteger)generation playerId:(NSNumber *)playerId {
+    return generation == self.registrationGeneration && playerId != nil &&
+        [playerId isEqual:[Player currentPlayer].userId];
+}
+
 #pragma mark - Push Tokens
 
 // Updates the push token, creating it if we don't already hold a reference to one.
 - (MKNetworkOperation *)updateAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
+    NSUInteger generation = self.registrationGeneration;
+    NSNumber *playerId = [Player currentPlayer].userId;
     static NSString *updateDeviceTokenPathFormat = @"players/%@/devices/%@.json";
     NSNumber *deviceId = [self deviceId];
 
@@ -180,9 +193,11 @@
         MKNetworkOperation *op = [self operationWithPath:S(updateDeviceTokenPathFormat, [Player currentPlayer].userId, deviceId) params:params httpMethod:@"PUT"];
 
         [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+            if (![self isCurrentRegistration:generation playerId:playerId]) return;
             [self setDeviceIdFromResponse:[completedOperation responseJSON]];
             completionHandler();
         } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+            if (![self isCurrentRegistration:generation playerId:playerId]) return;
             [self didFailToRetrieveDeviceId];
             errorHandler(theError);
 
@@ -196,15 +211,19 @@
 }
 
 - (MKNetworkOperation *)createAPNSDeviceToken:(NSData *)token completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
+    NSUInteger generation = self.registrationGeneration;
+    NSNumber *playerId = [Player currentPlayer].userId;
     static NSString *createDeviceTokenPathFormat = @"players/%@/devices.json";
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[token base64EncodedString], @"device[encoded_device_token]", nil];
 
     MKNetworkOperation *op = [self operationWithPath:S(createDeviceTokenPathFormat, [Player currentPlayer].userId) params:params httpMethod:@"POST"];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        if (![self isCurrentRegistration:generation playerId:playerId]) return;
         [self setDeviceIdFromResponse:[completedOperation responseJSON]];
         completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        if (![self isCurrentRegistration:generation playerId:playerId]) return;
         [self didFailToRetrieveDeviceId];
         errorHandler(theError);
     }];
@@ -214,6 +233,8 @@
 }
 
 - (MKNetworkOperation *)deleteAPNSDeviceTokenForPlayerId:(NSNumber *)playerId completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
+    // Logout must invalidate callbacks even when no device ID has arrived yet.
+    [self clearQueueingRequestsRequiringLogin];
     if (!playerId) {
         return nil;
     }
@@ -239,6 +260,7 @@
         return op;
     } else {
         // pretend success
+        self.pushToken = nil;
         completionHandler();
         return nil;
     }
@@ -247,26 +269,34 @@
 #pragma mark - Cookies
 
 - (MKNetworkOperation *)createLoginCookies:(NSArray *)cookies completionHandler:(EmptyBlock)completionHandler errorHandler:(MKNKErrorBlock)errorHandler {
+    NSUInteger generation = ++self.registrationGeneration;
     if ([cookies count] == 0) {
         [self didFailToRetrieveDeviceId];
         return nil;
     }
 
     static NSString *createSessionPathFormat = @"players/%@/session.json";
+    NSNumber *playerId = [Player currentPlayer].userId;
+    if (!playerId) {
+        [self didFailToRetrieveDeviceId];
+        return nil;
+    }
     NSMutableDictionary *params = [self paramsFromLoginCookies:cookies];
 
-    MKNetworkOperation *op = [self operationWithPath:S(createSessionPathFormat, [Player currentPlayer].userId) params:params httpMethod:@"POST"];
+    MKNetworkOperation *op = [self operationWithPath:S(createSessionPathFormat, playerId) params:params httpMethod:@"POST"];
 
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        if (![self isCurrentRegistration:generation playerId:playerId]) return;
         NSString *token = completedOperation.responseJSON[@"token"];
         if (![token isKindOfClass:[NSString class]] || token.length == 0) {
             [self didFailToRetrieveDeviceId];
             errorHandler([NSError errorWithDomain:@"DragonGoPush" code:1 userInfo:@{NSLocalizedDescriptionKey: @"Push registration did not return an authentication token."}]);
             return;
         }
-        [self storePushToken:token];
+        [self storePushToken:token forPlayerId:playerId];
         completionHandler();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *theError) {
+        if (![self isCurrentRegistration:generation playerId:playerId]) return;
         [self didFailToRetrieveDeviceId];
         errorHandler(theError);
     }];

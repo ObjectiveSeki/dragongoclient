@@ -56,6 +56,20 @@ def sha256(path):
     return digest.hexdigest()
 
 
+def tree_sha256(directory, excluding=()):
+    digest = hashlib.sha256()
+    excluded = set(excluding)
+    for path in sorted(item for item in directory.rglob("*") if item.is_file()):
+        relative = path.relative_to(directory).as_posix()
+        if relative in excluded:
+            continue
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(sha256(path).encode("ascii"))
+        digest.update(b"\n")
+    return digest.hexdigest()
+
+
 def download(spec):
     DOWNLOADS.mkdir(parents=True, exist_ok=True)
     destination = DOWNLOADS / spec["archive"]
@@ -222,13 +236,24 @@ def prepare_sources(spec, destination, patch=None):
         recipe += ":" + ",".join(spec["members"])
     if patch is not None:
         recipe += ":" + sha256(Path(__file__))
-    if stamp.exists() and stamp.read_text() == recipe:
-        return destination
+    if stamp.exists():
+        try:
+            metadata = json.loads(stamp.read_text())
+            if metadata == {
+                "recipe": recipe,
+                "contents": tree_sha256(destination, excluding=(stamp.name,)),
+            }:
+                return destination
+        except (json.JSONDecodeError, OSError):
+            pass
     destination.parent.mkdir(parents=True, exist_ok=True)
     safe_extract(archive, spec["root"], destination, spec.get("members"))
     if patch is not None:
         patch(destination)
-    stamp.write_text(recipe)
+    stamp.write_text(json.dumps({
+        "recipe": recipe,
+        "contents": tree_sha256(destination, excluding=(stamp.name,)),
+    }, sort_keys=True) + "\n")
     return destination
 
 
@@ -345,22 +370,70 @@ def create_frameworks(fuego_source, archives):
     )
 
 
-def write_manifest():
+def toolchain_identity():
     environment = os.environ.copy()
     environment.setdefault("DEVELOPER_DIR", "/Applications/Xcode.app/Contents/Developer")
     xcode = run(["xcodebuild", "-version"], env=environment, capture_output=True).stdout.strip().splitlines()
+    sdks = {}
+    for sdk in ("iphoneos", "iphonesimulator"):
+        sdks[sdk] = {
+            "version": run(["xcrun", "--sdk", sdk, "--show-sdk-version"], env=environment, capture_output=True).stdout.strip(),
+            "build": run(["xcrun", "--sdk", sdk, "--show-sdk-build-version"], env=environment, capture_output=True).stdout.strip(),
+        }
+    return {"xcode": xcode, "sdks": sdks}
+
+
+def write_manifest(toolchain):
     manifest = {
         "deployment_target": DEPLOYMENT_TARGET,
         "recipe_sha256": sha256(Path(__file__)),
-        "xcode": xcode,
+        "toolchain": toolchain,
         "fuego": {key: FUEGO[key] for key in ("version", "url", "sha256")},
         "boost": {key: BOOST[key] for key in ("version", "url", "sha256")},
         "products": {
             "iphoneos": sha256(PRODUCTS / "iphoneos/fuego.framework/fuego"),
             "iphonesimulator": sha256(PRODUCTS / "iphonesimulator/fuego.framework/fuego"),
         },
+        "headers": {
+            "iphoneos": tree_sha256(PRODUCTS / "iphoneos/fuego.framework/Headers"),
+            "iphonesimulator": tree_sha256(PRODUCTS / "iphonesimulator/fuego.framework/Headers"),
+        },
     }
     (BUILD / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+
+
+def cache_is_valid(recipe, toolchain):
+    recipe_stamp = PRODUCTS / ".recipe-sha256"
+    manifest_path = BUILD / "manifest.json"
+    if not recipe_stamp.is_file() or recipe_stamp.read_text() != recipe or not manifest_path.is_file():
+        return False
+    try:
+        manifest = json.loads(manifest_path.read_text())
+    except (json.JSONDecodeError, OSError):
+        return False
+    expected = {
+        "deployment_target": DEPLOYMENT_TARGET,
+        "recipe_sha256": recipe,
+        "toolchain": toolchain,
+        "fuego": {key: FUEGO[key] for key in ("version", "url", "sha256")},
+        "boost": {key: BOOST[key] for key in ("version", "url", "sha256")},
+    }
+    if any(manifest.get(key) != value for key, value in expected.items()):
+        return False
+    binaries = {
+        "iphoneos": PRODUCTS / "iphoneos/fuego.framework/fuego",
+        "iphonesimulator": PRODUCTS / "iphonesimulator/fuego.framework/fuego",
+    }
+    headers = {
+        "iphoneos": PRODUCTS / "iphoneos/fuego.framework/Headers",
+        "iphonesimulator": PRODUCTS / "iphonesimulator/fuego.framework/Headers",
+    }
+    return (
+        all(path.is_file() for path in binaries.values())
+        and all(path.is_dir() for path in headers.values())
+        and manifest.get("products") == {key: sha256(path) for key, path in binaries.items()}
+        and manifest.get("headers") == {key: tree_sha256(path) for key, path in headers.items()}
+    )
 
 
 def main():
@@ -368,23 +441,14 @@ def main():
     fuego_source = prepare_sources(FUEGO, SOURCES / FUEGO["root"], patch_fuego)
     boost_source = prepare_sources(BOOST, SOURCES / BOOST["root"])
     recipe = sha256(Path(__file__))
-    recipe_stamp = PRODUCTS / ".recipe-sha256"
-    product_binaries = [
-        PRODUCTS / "iphoneos/fuego.framework/fuego",
-        PRODUCTS / "iphonesimulator/fuego.framework/fuego",
-        BUILD / "manifest.json",
-    ]
-    if (
-        recipe_stamp.exists()
-        and recipe_stamp.read_text() == recipe
-        and all(path.is_file() for path in product_binaries)
-    ):
+    toolchain = toolchain_identity()
+    if cache_is_valid(recipe, toolchain):
         print("Pinned Fuego device and simulator frameworks are already built")
         return
     archives = build_archives(fuego_source, boost_source)
     create_frameworks(fuego_source, archives)
-    write_manifest()
-    recipe_stamp.write_text(recipe)
+    write_manifest(toolchain)
+    (PRODUCTS / ".recipe-sha256").write_text(recipe)
     print(f"Built Fuego frameworks under {PRODUCTS}")
 
 
