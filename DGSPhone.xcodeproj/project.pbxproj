@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE7A00000000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */; };
 		1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */; };
+		BE7A00000000000000000003 /* DGSSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7A00000000000000000005 /* DGSSceneDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		AF7F0D42C252D90B01228524 /* libPods-DGS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D1FA5346BE30FA36D34F8A /* libPods-DGS.a */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
@@ -71,8 +73,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSPhoneAppDelegate.m; sourceTree = "<group>"; };
+		BE7A00000000000000000004 /* DGSSceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSSceneDelegate.h; sourceTree = "<group>"; };
+		BE7A00000000000000000005 /* DGSSceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSSceneDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* DGS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
@@ -234,6 +239,8 @@
 				DA0FE7BE161FF64200AEAEF6 /* Libraries */,
 				1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */,
+				BE7A00000000000000000004 /* DGSSceneDelegate.h */,
+				BE7A00000000000000000005 /* DGSSceneDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -282,6 +289,7 @@
 				DAE932BD12454CCA00335F0F /* XIBs */,
 				DAEA525511B8954100F4CCB3 /* TestData */,
 				8D1107310486CEB800E47090 /* DGSPhone-Info.plist */,
+				BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */,
 				DA238C2515B22AE800D4050C /* DGSErrors.strings */,
 				DABC87F5162290AF009E0808 /* MainStoryboard.storyboard */,
 				DA5BEB9A1C9F566F00C335C4 /* Assets.xcassets */,
@@ -566,6 +574,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7A00000000000000000001 /* PrivacyInfo.xcprivacy in Resources */,
 				DA38AB9811EC028B005E1AB7 /* First Score.sgf in Resources */,
 				DA7541C811EF581A00BF0443 /* Multiple Scoring Passes.sgf in Resources */,
 				DA7542E111F01DEE00BF0443 /* Start Handicap Game.sgf in Resources */,
@@ -613,6 +622,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.m in Sources */,
+				BE7A00000000000000000003 /* DGSSceneDelegate.m in Sources */,
 				DA38B1FA11B59F2F00112AA4 /* LoginViewController.m in Sources */,
 				DAEA518111B88A1100F4CCB3 /* DGS.m in Sources */,
 				DAEA519B11B88D8300F4CCB3 /* Game.m in Sources */,
@@ -676,7 +686,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 137;
+				CURRENT_PROJECT_VERSION = 138;
 				DEVELOPMENT_TEAM = 3WR88837J5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -713,9 +723,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = "DGS-Production.entitlements";
-				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 137;
+				CURRENT_PROJECT_VERSION = 138;
 				DEVELOPMENT_TEAM = 3WR88837J5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -867,7 +877,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 137;
+				CURRENT_PROJECT_VERSION = 138;
 				DEVELOPMENT_TEAM = 3WR88837J5;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
