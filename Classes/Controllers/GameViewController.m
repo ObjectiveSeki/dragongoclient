@@ -62,8 +62,10 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
     self.tappedBoardGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleGoBoardTouch:)];
     [self.boardView addGestureRecognizer:self.tappedBoardGestureRecognizer];
     self.boardView.delegate = self;
+    UIStackView *controls = (UIStackView *)self.toolbar.superview;
+    controls.layoutMarginsRelativeArrangement = YES;
+    controls.layoutMargins = UIEdgeInsetsMake(0, 0, 8, 0);
     
-    self.scrollView.contentInset = UIEdgeInsetsMake(self.scrollView.contentInset.top, self.scrollView.contentInset.left, self.bottomBar.bounds.size.height, self.scrollView.contentInset.right);
     
     // make the toolbar translucent
     [self.toolbar setBackgroundImage:[UIImage new]
@@ -106,6 +108,12 @@ const NSTimeInterval kDefaultResignTimerLength = 1.0;
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    // Measure after Auto Layout; UIScrollView adds the safe-area inset itself.
+    UIEdgeInsets insets = self.scrollView.contentInset;
+    insets.bottom = MAX(0, CGRectGetHeight(self.bottomBar.bounds) - self.view.safeAreaInsets.bottom);
+    if (!UIEdgeInsetsEqualToEdgeInsets(insets, self.scrollView.contentInset)) {
+        self.scrollView.contentInset = insets;
+    }
     [self updateBoardPositionAnimated:NO];
 }
 

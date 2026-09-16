@@ -49,6 +49,8 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    // The subtitle and 38-point stone need breathing room beyond a 44-point row.
+    self.tableView.rowHeight = 64;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
     self.spinner = [[SpinnerView alloc] initInView:self.view];

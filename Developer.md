@@ -75,3 +75,23 @@ Create an isolated staging Fly app and database before testing incompatible back
 Do not merely add a same-bundle staging configuration: the two databases can retain the same production APNs token and both send notifications. The current client also stores its device registration ID in a single defaults key. A same-bundle staging lane first needs host-scoped registration IDs and a reliable, retryable handoff that retires the previous host's registration; failure and offline switching need tests. Alternatively, a separate beta bundle ID/APNs topic gives clean separation and side-by-side installation, at the cost of a separate App Store Connect app and purchase setup. A staging-pointed build must never be promoted unchanged to the production App Store release.
 
 For small beta features on a compatible production backend, use server-authorized account cohorts and a kill switch. Do not trust a client-provided beta header as authorization. Add this when there is an actual feature to gate; no feature-flag or StoreKit infrastructure is implemented yet.
+
+## App appearance
+
+The shared light/dark palette is in `Assets.xcassets`. Edit the **Dark** variant
+in Xcode's color editor (or the luminosity-dark components in `Contents.json`):
+
+- `AppBackground`: launch screen, plain lists, game canvas, and window background.
+- `AppGroupedBackground`: grouped forms; keep its dark value equal to `AppBackground`.
+- `AppSurface`: grouped rows and the game controls, including the bottom safe area.
+
+Assign cell backgrounds in the storyboard, including loading prototypes, so initial
+insertion animations use the right color. Use semantic label colors for text.
+The board, stone artwork, capture labels, and translucent dark message/spinner
+backdrops intentionally retain their own colors. The acknowledgements HTML uses
+transparent backgrounds and adaptive text/link colors.
+
+For appearance review, cold-launch in both modes, switch to All Games before it
+has loaded, and open login, Start a Game, creation/pickers, waiting room/join,
+invitations, game/messages, and acknowledgements. Also switch appearance while a
+screen is open. iOS can cache an old launch snapshot after an app update.

@@ -18,7 +18,8 @@
     if (![scene isKindOfClass:[UIWindowScene class]]) return;
 
     self.appDelegate.window = self.window;
-    [self.window setTintColor:[UIColor colorWithRed:0.92 green:0.60 blue:0.29 alpha:1.0]];
+    self.window.tintColor = [UIColor systemOrangeColor];
+    self.window.backgroundColor = [UIColor colorNamed:@"AppBackground"];
     [self.window makeKeyAndVisible];
 
     UNNotificationResponse *notificationResponse = connectionOptions.notificationResponse;

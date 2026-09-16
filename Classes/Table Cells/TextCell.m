@@ -17,6 +17,7 @@
 }
 
 - (void)setupTextField {
+    self.textField.textColor = [UIColor labelColor];
     [self.textField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.textField.delegate = self;

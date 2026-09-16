@@ -35,6 +35,9 @@
     }
     
     self.webView.delegate = self;
+    self.webView.opaque = NO;
+    self.webView.backgroundColor = [UIColor colorNamed:@"AppBackground"];
+    self.webView.scrollView.backgroundColor = [UIColor colorNamed:@"AppBackground"];
     [self.webView loadHTMLString:html baseURL:nil];
 
 }

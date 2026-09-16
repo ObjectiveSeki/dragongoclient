@@ -48,7 +48,7 @@
 
 - (void)updateLoginButton {
     self.loginCell.userInteractionEnabled = self.canLogin;
-    self.loginCell.textLabel.textColor = self.canLogin ? self.signupCell.textLabel.textColor : [UIColor grayColor];
+    self.loginCell.textLabel.textColor = self.canLogin ? self.signupCell.textLabel.textColor : [UIColor secondaryLabelColor];
 }
 
 - (BOOL)canLogin {
@@ -99,4 +99,3 @@
 }
 
 @end
-
