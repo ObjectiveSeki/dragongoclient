@@ -13,6 +13,8 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Match the main game list: both rows present a title and game details.
+    self.tableView.rowHeight = 64;
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(refreshGameList:) forControlEvents:UIControlEventValueChanged];
 }

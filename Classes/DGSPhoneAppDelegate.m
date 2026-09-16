@@ -36,6 +36,7 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[FuegoBoard initFuego];
+    [UISwitch appearance].onTintColor = [UIColor systemOrangeColor];
     [UNUserNotificationCenter currentNotificationCenter].delegate = self;
     self.receivedRemoteNotification = NO;
     
