@@ -31,6 +31,8 @@
 // Keep track of the refresh operation, so we can make sure only one is running at a time
 // (so we don't slam DGS)
 @property (nonatomic, strong) NSOperation *refreshOperation;
+@property (nonatomic) BOOL refreshInProgress;
+@property (nonatomic) NSUInteger refreshGeneration;
 
 @end
 
@@ -64,7 +66,9 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.spinner dismiss:animated];
+    // A delayed logout animation must never survive the login controller.
+    [self.spinner dismiss:NO];
+    self.spinner.label.text = @"Loading…";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -80,6 +84,12 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.refreshOperation cancel];
+    self.refreshOperation = nil;
+    self.refreshInProgress = NO;
+    self.refreshGeneration++;
+    [self.refreshControl endRefreshing];
+    [self.spinner dismiss:NO];
+    [self setEnabled:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -91,7 +101,17 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 #pragma mark - UI Actions
 
-- (void)didRefreshWithGames:(GameList *)currentGames runningGames:(GameList *)runningGames error:(NSError *)error {
+- (void)didRefreshWithGames:(GameList *)currentGames
+               runningGames:(GameList *)runningGames
+                       error:(NSError *)error
+                  generation:(NSUInteger)generation {
+    // Requests from the previous login may finish after a new user signs in.
+    if (generation != self.refreshGeneration) {
+        return;
+    }
+
+    self.refreshOperation = nil;
+    self.refreshInProgress = NO;
     [self setEnabled:YES];
     [self.refreshControl endRefreshing];
     
@@ -102,44 +122,55 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 
 - (void)refreshGames {
     // Block refreshes if we're already in the process of refreshing
-    if (self.refreshOperation && !self.refreshOperation.isFinished) {
+    if (self.refreshInProgress) {
         return;
     }
-    
+
+    self.refreshInProgress = YES;
+    NSUInteger generation = ++self.refreshGeneration;
     [self setEnabled:NO];
     self.refreshOperation = [[GenericGameServer sharedGameServer] getCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] getRunningGames:^(GameList *runningGames) {
             [self didRefreshWithGames:currentGames
                          runningGames:runningGames
-                                error:nil];
+                                error:nil
+                           generation:generation];
         } onError:^(NSError *error) {
             [self didRefreshWithGames:nil
                          runningGames:nil
-                                error:error];
+                                error:error
+                           generation:generation];
         }];
     } onError:^(NSError *error) {
         [self didRefreshWithGames:nil
                      runningGames:nil
-                            error:error];
+                            error:error
+                       generation:generation];
     }];
 }
 
 - (void)forceRefreshGames {
+    [self.refreshOperation cancel];
+    self.refreshInProgress = YES;
+    NSUInteger generation = ++self.refreshGeneration;
     [self setEnabled:NO];
     self.refreshOperation = [[GenericGameServer sharedGameServer] refreshCurrentGames:^(GameList *currentGames) {
         [[GenericGameServer sharedGameServer] refreshRunningGames:^(GameList *runningGames) {
             [self didRefreshWithGames:currentGames
                          runningGames:runningGames
-                                error:nil];
+                                error:nil
+                           generation:generation];
         } onError:^(NSError *error) {
             [self didRefreshWithGames:nil
                          runningGames:nil
-                                error:error];
+                                error:error
+                           generation:generation];
         }];
     } onError:^(NSError *error) {
         [self didRefreshWithGames:nil
                      runningGames:nil
-                            error:error];
+                            error:error
+                       generation:generation];
     }];
 }
 
@@ -218,6 +249,13 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 #pragma mark - Game list management
 
 - (void)clearGameList {
+    [self.refreshOperation cancel];
+    self.refreshOperation = nil;
+    self.refreshInProgress = NO;
+    self.refreshGeneration++;
+    [self.refreshControl endRefreshing];
+    [self.spinner dismiss:NO];
+    [self setEnabled:YES];
     [self handleGameListChanges:nil runningGameListChanges:nil];
 }
 

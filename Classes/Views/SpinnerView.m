@@ -51,10 +51,12 @@
 }
 
 - (void)show {
+	[self.layer removeAllAnimations];
 	self.transform = CGAffineTransformMakeScale(2,2);
+	self.alpha = 0.0;
 	[self setNeedsLayout];
     self.superview.userInteractionEnabled = NO;
-	[UIView animateWithDuration:0.3 delay:0.3 options:0 animations:^(void) {
+	[UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionBeginFromCurrentState animations:^(void) {
 		self.transform = CGAffineTransformMakeScale(1, 1);
 		self.alpha = 1.0;
 	} completion:^(BOOL completion) {
@@ -62,16 +64,15 @@
 }
 
 - (void)dismiss:(BOOL)animate {
+	[self.layer removeAllAnimations];
+    self.superview.userInteractionEnabled = YES;
 	if (animate) {
 		[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionLayoutSubviews | UIViewAnimationOptionBeginFromCurrentState animations:^(void) {
 			self.transform = CGAffineTransformMakeScale(2, 2);
 			self.alpha = 0.0;
-		} completion:^(BOOL completion) {
-            if (completion) {
-                self.superview.userInteractionEnabled = YES;
-            }
-		}];
+		} completion:nil];
 	} else {
+		self.transform = CGAffineTransformMakeScale(2, 2);
 		self.alpha = 0.0;
 	}
 }
@@ -90,4 +91,3 @@
 }
 
 @end
-

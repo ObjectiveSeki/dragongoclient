@@ -49,6 +49,9 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reportMemoryLow) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginAnimated:) name:PlayerDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearPlayerData) name:PlayerDidLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLogin) name:PlayerDidLoginNotification object:nil];
     
     [self setupRemoteNotifications];
     
@@ -70,8 +73,6 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
 	NSLog(@"Went inactive...");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayerDidLogoutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayerDidLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NetworkErrorNotification object:nil];
 }
 
@@ -102,10 +103,16 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
 	NSLog(@"Went active...");
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLoginAnimated:) name:PlayerDidLogoutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearPlayerData) name:PlayerDidLogoutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissLogin) name:PlayerDidLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentNetworkError:) name:NetworkErrorNotification object:nil];
+    // Reconcile the UI as well as reacting to notifications. This covers an
+    // authentication change that completed before the scene connected.
+    if ([Player currentPlayer]) {
+        if (self.loginController) {
+            [self dismissLogin];
+        }
+    } else {
+        [self showLogin:NO];
+    }
 }
 
 
@@ -162,16 +169,23 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
 }
 
 - (void)showLogin:(BOOL)animated {
-    if (!self.loginController) {
-        self.loginController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        [self.window.rootViewController presentViewController:self.loginController animated:animated completion:^() {}];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.loginController && !self.loginController.presentingViewController) {
+            self.loginController = nil;
+        }
+        if (!self.loginController) {
+            self.loginController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            [self.window.rootViewController presentViewController:self.loginController animated:animated completion:^() {}];
+        }
+    });
 }
 
 - (void)dismissLogin {
-    [self setupRemoteNotifications];
-    [self.loginController dismissViewControllerAnimated:YES completion:^{}];
-    self.loginController = nil;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setupRemoteNotifications];
+        [self.loginController dismissViewControllerAnimated:YES completion:^{}];
+        self.loginController = nil;
+    });
 }
 
 #pragma mark - Error handling
