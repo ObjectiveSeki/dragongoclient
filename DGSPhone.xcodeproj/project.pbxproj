@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BEEA00000000000000000001 /* DeveloperNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEA00000000000000000002; };
-		BE7A00000000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */; };
 		1D3623260D0F684500981E51 /* DGSPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */; };
-		BE7A00000000000000000003 /* DGSSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7A00000000000000000005 /* DGSSceneDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		AF7F0D42C252D90B01228524 /* libPods-DGS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D1FA5346BE30FA36D34F8A /* libPods-DGS.a */; };
+		BE7A00000000000000000001 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */; };
+		BE7A00000000000000000003 /* DGSSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7A00000000000000000005 /* DGSSceneDelegate.m */; };
+		BEEA00000000000000000001 /* DeveloperNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEA00000000000000000002 /* DeveloperNoteViewController.m */; };
 		DA02D13D11D99BF000A9D887 /* NewGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D13C11D99BF000A9D887 /* NewGame.m */; };
 		DA02D15A11D99E4500A9D887 /* TextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02D15911D99E4500A9D887 /* TextCell.m */; };
 		DA0762B71377B678003E0390 /* DGSDev.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0762B61377B678003E0390 /* DGSDev.m */; };
@@ -74,13 +74,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BEEA00000000000000000002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeveloperNoteViewController.m; sourceTree = "<group>"; };
-		BEEA00000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeveloperNoteViewController.h; sourceTree = "<group>"; };
-		BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
 		1D3623240D0F684500981E51 /* DGSPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* DGSPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSPhoneAppDelegate.m; sourceTree = "<group>"; };
-		BE7A00000000000000000004 /* DGSSceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSSceneDelegate.h; sourceTree = "<group>"; };
-		BE7A00000000000000000005 /* DGSSceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSSceneDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* DGS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* DGSPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSPhone_Prefix.pch; sourceTree = "<group>"; };
@@ -89,6 +84,11 @@
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		869373FF30A50968005CC011 /* AIPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AIPolicy.md; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		BE7A00000000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
+		BE7A00000000000000000004 /* DGSSceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSSceneDelegate.h; sourceTree = "<group>"; };
+		BE7A00000000000000000005 /* DGSSceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSSceneDelegate.m; sourceTree = "<group>"; };
+		BEEA00000000000000000002 /* DeveloperNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeveloperNoteViewController.m; sourceTree = "<group>"; };
+		BEEA00000000000000000003 /* DeveloperNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeveloperNoteViewController.h; sourceTree = "<group>"; };
 		C390EA1E8011043F7FC3B2FF /* Pods-DGS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DGS/Pods-DGS.release.xcconfig"; sourceTree = "<group>"; };
 		D5FFF4B56CEF0F74B0C6C683 /* Pods-DGS.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGS.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-DGS/Pods-DGS.adhoc.xcconfig"; sourceTree = "<group>"; };
 		DA02D13B11D99BF000A9D887 /* NewGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewGame.h; sourceTree = "<group>"; };
@@ -391,8 +391,8 @@
 				DAE932C112454E4800335F0F /* AddGameViewController.m */,
 				DA38B1F711B59F2F00112AA4 /* LoginViewController.h */,
 				DA38B1F811B59F2F00112AA4 /* LoginViewController.m */,
-				BEEA00000000000000000002,
-				BEEA00000000000000000003,
+				BEEA00000000000000000002 /* DeveloperNoteViewController.m */,
+				BEEA00000000000000000003 /* DeveloperNoteViewController.h */,
 				DA419D4311BB2DA400B3050E /* CurrentGamesController.h */,
 				DA419D4411BB2DA400B3050E /* CurrentGamesController.m */,
 				DAF9105C11BB5BBD00FE7B96 /* GameViewController.h */,
@@ -694,29 +694,38 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 139;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = 3WR88837J5;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(SRCROOT)/.build/fuego/products/iphoneos",
+					"$(inherited)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(SRCROOT)/.build/fuego/products/iphonesimulator",
+					"$(inherited)",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(SRCROOT)/.build/fuego/products/iphoneos $(inherited)";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/fuego/products/iphonesimulator $(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/.build/fuego/sources/boost_1_58_0",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/.build/fuego/sources/boost_1_58_0 $(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-framework",
 					fuego,
 				);
-				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.uberweiss.${PRODUCT_NAME:rfc1034identifier}.dev";
 				PRODUCT_NAME = DGS;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -733,21 +742,30 @@
 				CODE_SIGN_ENTITLEMENTS = "DGS-Production.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 139;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = 3WR88837J5;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(SRCROOT)/.build/fuego/products/iphoneos",
+					"$(inherited)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(SRCROOT)/.build/fuego/products/iphonesimulator",
+					"$(inherited)",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(SRCROOT)/.build/fuego/products/iphoneos $(inherited)";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/fuego/products/iphonesimulator $(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/.build/fuego/sources/boost_1_58_0",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/.build/fuego/sources/boost_1_58_0 $(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -885,13 +903,19 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 139;
+				CURRENT_PROJECT_VERSION = 140;
 				DEVELOPMENT_TEAM = 3WR88837J5;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(SRCROOT)/.build/fuego/products/iphoneos",
+					"$(inherited)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = (
+					"$(SRCROOT)/.build/fuego/products/iphonesimulator",
+					"$(inherited)",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = DGSPhone_Prefix.pch;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = "$(SRCROOT)/.build/fuego/products/iphoneos $(inherited)";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(SRCROOT)/.build/fuego/products/iphonesimulator $(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"CONFIGURATION_$(CONFIGURATION)",
@@ -899,8 +923,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/.build/fuego/sources/boost_1_58_0",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "DGSPhone-Info.plist";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/.build/fuego/sources/boost_1_58_0 $(inherited)";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
