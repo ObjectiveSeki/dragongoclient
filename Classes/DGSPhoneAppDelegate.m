@@ -176,6 +176,8 @@ NSString * const kLastKnownMoveKey = @"LastKnownMove";
         }
         if (!self.loginController) {
             self.loginController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            self.loginController.modalPresentationStyle = UIModalPresentationFullScreen;
+            self.loginController.modalInPresentation = YES;
             [self.window.rootViewController presentViewController:self.loginController animated:animated completion:^() {}];
         }
     });

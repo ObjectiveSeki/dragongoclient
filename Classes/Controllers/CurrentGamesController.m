@@ -14,16 +14,24 @@
 #import "LoadingCell.h"
 #import "DGSPushServer.h"
 #import "Invite.h"
+#import "DeveloperNoteViewController.h"
 
 #define kSectionGames       0
 #define kSectionInvites     1
+
+static NSString * const DGSDeveloperWelcomeSeenKey = @"DGSDeveloperWelcomeSeen";
+static NSString * const DGSDeveloperMessageReadKey = @"DGSDeveloperMessageReadIdentifier";
+static NSString * const DGSCurrentDeveloperMessageIdentifier = @"2026-revival";
 
 @interface CurrentGamesController ()
 
 @property(nonatomic, copy) GameList *games;
 @property(nonatomic, copy) GameList *runningGames;
 @property(nonatomic) BOOL loadingNewRunningGamesPage;
-@property(nonatomic, copy) NSArray *noGamesViewConstraints;
+@property(nonatomic, strong) UIButton *developerNoteButton;
+@property(nonatomic, strong) UIButton *developerAnnouncementButton;
+@property(nonatomic, copy) NSArray<NSLayoutConstraint *> *developerNoteButtonConstraints;
+@property(nonatomic, strong) NSLayoutConstraint *developerNoteButtonBottomConstraint;
 
 
 @property (nonatomic, strong) SpinnerView *spinner;
@@ -56,16 +64,41 @@ typedef NS_ENUM(NSUInteger, GameSection) {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(forceRefreshGames) forControlEvents:UIControlEventValueChanged];
     self.spinner = [[SpinnerView alloc] initInView:self.view];
+    // Keep the final game row clear of the persistent developer-message button.
+    UIEdgeInsets contentInset = self.tableView.contentInset;
+    contentInset.bottom += 52;
+    self.tableView.contentInset = contentInset;
+    UIEdgeInsets indicatorInsets = self.tableView.verticalScrollIndicatorInsets;
+    indicatorInsets.bottom += 52;
+    self.tableView.verticalScrollIndicatorInsets = indicatorInsets;
     
-    self.noGamesView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.noGamesViewConstraints = @[
-        [NSLayoutConstraint constraintWithItem:self.noGamesView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0],
-        [NSLayoutConstraint constraintWithItem:self.noGamesView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]
-    ];
+    self.noGamesView.translatesAutoresizingMaskIntoConstraints = YES;
+    self.developerNoteButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.developerNoteButton.accessibilityIdentifier = @"developerNoteButton";
+    [self.developerNoteButton addTarget:self action:@selector(showDeveloperNote) forControlEvents:UIControlEventTouchUpInside];
+    self.developerAnnouncementButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.developerAnnouncementButton.titleLabel.numberOfLines = 0;
+    self.developerAnnouncementButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.developerAnnouncementButton.accessibilityIdentifier = @"developerAnnouncementButton";
+    [self.developerAnnouncementButton addTarget:self action:@selector(showDeveloperNote) forControlEvents:UIControlEventTouchUpInside];
+    [self updateDeveloperNoteControls];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    UIColor *accentColor = [UIColor systemOrangeColor];
+    self.navigationController.navigationBar.tintColor = accentColor;
+    self.logoutButton.tintColor = accentColor;
+    self.addGameButton.tintColor = accentColor;
+    self.gameListTypeControl.tintColor = accentColor;
+    NSDictionary *segmentTitleAttributes = @{NSForegroundColorAttributeName: accentColor};
+    [self.gameListTypeControl setTitleTextAttributes:segmentTitleAttributes forState:UIControlStateNormal];
+    [self.gameListTypeControl setTitleTextAttributes:segmentTitleAttributes forState:UIControlStateSelected];
+    [self.gameListTypeControl setTitleTextAttributes:segmentTitleAttributes forState:UIControlStateHighlighted];
+    [self.gameListTypeControl setTitleTextAttributes:
+        @{NSForegroundColorAttributeName: [accentColor colorWithAlphaComponent:0.35]}
+        forState:UIControlStateDisabled];
+
     // A delayed logout animation must never survive the login controller.
     [self.spinner dismiss:NO];
     self.spinner.label.text = @"Loading…";
@@ -237,13 +270,102 @@ typedef NS_ENUM(NSUInteger, GameSection) {
 }
 
 - (void)showNoGamesView:(bool)shouldShow {
-    if (shouldShow) {
-        [self.tableView addSubview:self.noGamesView];
-        [NSLayoutConstraint activateConstraints:self.noGamesViewConstraints];
-    } else {
-        [NSLayoutConstraint deactivateConstraints:self.noGamesViewConstraints];
-        [self.noGamesView removeFromSuperview];
+    // Use normal table content so the empty state cannot cover the footer link.
+    self.noGamesView.frame = CGRectMake(0, 0, CGRectGetWidth(self.tableView.bounds), 110);
+    self.tableView.tableHeaderView = shouldShow ? self.noGamesView : nil;
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    self.developerNoteButtonBottomConstraint.constant = -(self.tableView.safeAreaInsets.bottom + 8);
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DGSDeveloperWelcomeSeenKey]) {
+        return;
     }
+
+    CGFloat width = CGRectGetWidth(self.tableView.bounds);
+    CGFloat height = MAX(60, [self.developerAnnouncementButton sizeThatFits:CGSizeMake(width, CGFLOAT_MAX)].height);
+    if (CGRectGetWidth(self.developerAnnouncementButton.frame) != width || CGRectGetHeight(self.developerAnnouncementButton.frame) != height) {
+        self.developerAnnouncementButton.frame = CGRectMake(0, 0, width, height);
+        self.tableView.tableFooterView = self.developerAnnouncementButton;
+    }
+}
+
+- (void)updateDeveloperNoteControls {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL hasSeenWelcome = [defaults boolForKey:DGSDeveloperWelcomeSeenKey];
+    BOOL hasUnreadMessage = ![[defaults stringForKey:DGSDeveloperMessageReadKey]
+        isEqualToString:DGSCurrentDeveloperMessageIdentifier];
+
+    if (self.tableView.tableFooterView == self.developerAnnouncementButton) {
+        self.tableView.tableFooterView = nil;
+    }
+    [self.developerAnnouncementButton removeFromSuperview];
+
+    UIImage *icon = [UIImage systemImageNamed:hasUnreadMessage ? @"message.badge" : @"message"];
+    if (!icon) {
+        icon = [UIImage systemImageNamed:@"message"];
+    }
+    UIButtonConfiguration *iconConfiguration = [UIButtonConfiguration plainButtonConfiguration];
+    iconConfiguration.image = icon;
+    iconConfiguration.preferredSymbolConfigurationForImage =
+        [UIImageSymbolConfiguration configurationWithPointSize:19 weight:UIImageSymbolWeightRegular];
+    iconConfiguration.contentInsets = NSDirectionalEdgeInsetsMake(10, 10, 10, 10);
+    self.developerNoteButton.configuration = iconConfiguration;
+    self.developerNoteButton.accessibilityLabel = hasUnreadMessage
+        ? @"Unread note from the developer"
+        : @"Note from the developer";
+
+    if (!self.developerNoteButton.superview) {
+        [self.tableView addSubview:self.developerNoteButton];
+        self.developerNoteButton.translatesAutoresizingMaskIntoConstraints = NO;
+        self.developerNoteButtonBottomConstraint =
+            [self.developerNoteButton.bottomAnchor constraintEqualToAnchor:self.tableView.frameLayoutGuide.bottomAnchor constant:-8];
+        self.developerNoteButtonConstraints = @[
+            [self.developerNoteButton.widthAnchor constraintEqualToConstant:44],
+            [self.developerNoteButton.heightAnchor constraintEqualToConstant:44],
+            [self.developerNoteButton.trailingAnchor constraintEqualToAnchor:self.tableView.frameLayoutGuide.trailingAnchor constant:-10],
+            self.developerNoteButtonBottomConstraint
+        ];
+        [NSLayoutConstraint activateConstraints:self.developerNoteButtonConstraints];
+    }
+
+    if (!hasSeenWelcome) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.alignment = NSTextAlignmentCenter;
+        paragraphStyle.paragraphSpacing = 3;
+        UIFont *titleFont = [[UIFontMetrics metricsForTextStyle:UIFontTextStyleHeadline]
+            scaledFontForFont:[UIFont boldSystemFontOfSize:17]];
+        UIFont *detailFont = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+        NSMutableAttributedString *title = [[NSMutableAttributedString alloc]
+            initWithString:@"Notifications are back!\n"
+                attributes:@{NSFontAttributeName: titleFont,
+                             NSParagraphStyleAttributeName: paragraphStyle}];
+        [title appendAttributedString:[[NSAttributedString alloc]
+            initWithString:@"Read a note from the developer ›"
+                attributes:@{NSFontAttributeName: detailFont,
+                             NSParagraphStyleAttributeName: paragraphStyle}]];
+        UIButtonConfiguration *announcementConfiguration = [UIButtonConfiguration plainButtonConfiguration];
+        announcementConfiguration.attributedTitle = title;
+        announcementConfiguration.contentInsets = NSDirectionalEdgeInsetsMake(16, 24, 16, 24);
+        self.developerAnnouncementButton.configuration = announcementConfiguration;
+        self.developerAnnouncementButton.translatesAutoresizingMaskIntoConstraints = YES;
+        self.tableView.tableFooterView = self.developerAnnouncementButton;
+    }
+}
+
+- (void)showDeveloperNote {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:YES forKey:DGSDeveloperWelcomeSeenKey];
+    [defaults setObject:DGSCurrentDeveloperMessageIdentifier forKey:DGSDeveloperMessageReadKey];
+    [self updateDeveloperNoteControls];
+
+    DeveloperNoteViewController *note = [[DeveloperNoteViewController alloc] init];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:note];
+    navigation.navigationBar.prefersLargeTitles = NO;
+    navigation.view.tintColor = self.view.tintColor;
+    navigation.view.backgroundColor = [UIColor colorNamed:@"AppBackground"];
+    [self presentViewController:navigation animated:YES completion:nil];
 }
 
 #pragma mark - Game list management
