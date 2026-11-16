@@ -1,1 +1,2 @@
-If you have any questions, don't hesitate to contact me on Twitter at [@justinweiss](http://twitter.com/justinweiss) or via email at justin@uberweiss.org.
+Questions? Don't hesitate to contact me 😊
+Email: [dragongoclient@stackofreason.com](mailto:dragongoclient@stackofreason.com)

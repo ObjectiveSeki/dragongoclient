@@ -1,21 +1,13 @@
-Dragon Go Client
-================
+# Dragon Go Client
 
-Dragon Go Client is the easiest way to play Go on
-the Dragon Go Server from your iPhone!
+Play Go on [Dragon Go Server](https://www.dragongoserver.net) from your iPhone.
+Catch up on games, play moves, score, message opponents, and start new games.
+Supports light and dark mode. Requires iOS 15 or later.
 
-The Dragon Go Server (http://www.dragongoserver.net) 
-is a place where people around the world can get together
-and play the game of Go. Dragon Go Client is the fast, simple
-way to catch up on your games on the iPhone.
+Owned and maintained by Niclas Eriksson. Originally created by Justin Weiss.
 
-<img src="https://dgs.uberweiss.net/assets/iPhone.png" width="352" height="805">
+The iPhone client is open source. Push notifications use a new, separately maintained backend whose source is currently private.
 
-Features
---------
-
-* See the games that are waiting for your move
-* Tap-to-zoom makes it simple to play the right move, every time
-* Supports the entire game flow, from placing handicap stones to scoring
-* Read, write, and respond to messages from opponents all over the world
-* Post new games that Dragon Go Server users can join
+- [Build and test](Developer.md)
+- [AI policy](AIPolicy.md)
+- [Contact](FAQ.md)

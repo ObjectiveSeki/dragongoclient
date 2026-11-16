@@ -84,6 +84,7 @@
 		35E36AE358A9310A9EF80A5D /* Pods-DGS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DGS/Pods-DGS.debug.xcconfig"; sourceTree = "<group>"; };
 		65D1FA5346BE30FA36D34F8A /* libPods-DGS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DGS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6645B18F147B8BED00170504 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		869373FF30A50968005CC011 /* AIPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AIPolicy.md; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DGSPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DGSPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C390EA1E8011043F7FC3B2FF /* Pods-DGS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DGS/Pods-DGS.release.xcconfig"; sourceTree = "<group>"; };
 		D5FFF4B56CEF0F74B0C6C683 /* Pods-DGS.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGS.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-DGS/Pods-DGS.adhoc.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +260,7 @@
 				DA427CF71DA0816F001E4304 /* DGS.entitlements */,
 				DAEE341C15884ECA00300B29 /* Podfile */,
 				DADD1CE111FD3C43005922A3 /* FAQ.md */,
+				869373FF30A50968005CC011 /* AIPolicy.md */,
 				DADD1CDD11FD3C0B005922A3 /* Readme.md */,
 				DAE932B512454B4200335F0F /* Developer.md */,
 				DAE932A912454A2900335F0F /* LICENSE */,
