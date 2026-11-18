@@ -46,3 +46,14 @@ the client or run the checks above.
 
 `Config.h` selects the push service. Debug uses development APNs; Release uses the
 production service. Use test accounts for development and keep credentials out of Git.
+
+## Privacy policy
+
+The login footer opens `DGSPrivacyPolicyURL` from `DGSPhone-Info.plist` in the
+in-app Safari browser. It sits directly below Acknowledgements & Licenses.
+Both links use Dynamic Type.
+
+The policy text is kept in `docs/privacy-policy.md`. Its intended public address
+is `https://dragongoclient.net/#privacy`, a separate section of the Carrd site.
+Keep the public policy and this copy in sync when data handling changes, and
+verify that the section is published before shipping a build that links to it.

@@ -96,23 +96,48 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="qQs-3c-SF2">
-                            <rect key="frame" x="0.0" y="345.33333333333337" width="414" height="63"/>
+                            <rect key="frame" x="0.0" y="345.33333333333337" width="414" height="120"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sp-0s-sqL">
-                                    <rect key="frame" x="113" y="17.666666666666664" width="188" height="27.999999999999993"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                    <size key="titleShadowOffset" width="0.0" height="1"/>
-                                    <state key="normal" title="Acknowledgements &amp; Licenses"/>
-                                    <connections>
-                                        <segue destination="6Rl-lk-7Kb" kind="presentation" id="KLA-Cp-wy7"/>
-                                    </connections>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="legal-links-stack">
+                                    <rect key="frame" x="113" y="16" width="188" height="88"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Sp-0s-sqL">
+                                            <rect key="frame" x="0.0" y="0.0" width="188" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="licenses-tap-height"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                            <size key="titleShadowOffset" width="0.0" height="1"/>
+                                            <state key="normal" title="Acknowledgements &amp; Licenses"/>
+                                            <connections>
+                                                <segue destination="6Rl-lk-7Kb" kind="presentation" id="KLA-Cp-wy7"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="privacy-policy-button">
+                                            <rect key="frame" x="48" y="44" width="92" height="44"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="privacyPolicyButton"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="privacy-tap-height"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                            <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                            <state key="normal" title="Privacy Policy"/>
+                                            <connections>
+                                                <action selector="showPrivacyPolicy:" destination="JvH-kK-J7v" eventType="touchUpInside" id="privacy-policy-action"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="5Sp-0s-sqL" firstAttribute="centerY" secondItem="qQs-3c-SF2" secondAttribute="centerY" id="eWD-VM-Kg4"/>
-                                <constraint firstItem="5Sp-0s-sqL" firstAttribute="centerX" secondItem="qQs-3c-SF2" secondAttribute="centerX" id="osa-gd-AuI"/>
+                                <constraint firstItem="legal-links-stack" firstAttribute="top" secondItem="qQs-3c-SF2" secondAttribute="top" constant="16" id="legal-links-top"/>
+                                <constraint firstAttribute="bottom" secondItem="legal-links-stack" secondAttribute="bottom" constant="16" id="legal-links-bottom"/>
+                                <constraint firstItem="legal-links-stack" firstAttribute="centerX" secondItem="qQs-3c-SF2" secondAttribute="centerX" id="legal-links-center"/>
+                                <constraint firstItem="legal-links-stack" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="qQs-3c-SF2" secondAttribute="leading" constant="16" id="legal-links-leading"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="legal-links-stack" secondAttribute="trailing" constant="16" id="legal-links-trailing"/>
                             </constraints>
                         </view>
                         <sections>
@@ -215,6 +240,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="informationLinks" destination="legal-links-stack" id="legal-links-outlet"/>
                         <outlet property="loginCell" destination="IWO-QA-I3Q" id="Cb0-uF-jgC"/>
                         <outlet property="passwordCell" destination="yhP-DE-u0n" id="OsF-EJ-jiW"/>
                         <outlet property="signupCell" destination="8NT-jo-yvY" id="i2d-H5-132"/>

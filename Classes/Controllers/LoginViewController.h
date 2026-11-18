@@ -16,11 +16,14 @@
 @property (weak, nonatomic) IBOutlet TextCell *passwordCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *loginCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *signupCell;
+@property (weak, nonatomic) IBOutlet UIStackView *informationLinks;
 
 @property(nonatomic, copy) NSString *username;
 @property(nonatomic, copy) NSString *password;
 
 @property(nonatomic, strong) SpinnerView *spinner;
+
+- (IBAction)showPrivacyPolicy:(id)sender;
 
 @end
 

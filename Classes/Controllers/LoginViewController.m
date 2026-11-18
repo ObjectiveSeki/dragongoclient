@@ -41,9 +41,36 @@
         [self updateLoginButton];
     };
     self.passwordCell.maxTextLength = -1;
+
+    for (UIButton *button in self.informationLinks.arrangedSubviews) {
+        button.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleFootnote];
+        button.titleLabel.adjustsFontForContentSizeCategory = YES;
+        button.titleLabel.numberOfLines = 0;
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    }
     
     self.spinner = [[SpinnerView alloc] initInView:self.view];
     [self updateLoginButton];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
+    UIView *footer = self.tableView.tableFooterView;
+    CGFloat width = CGRectGetWidth(self.tableView.bounds);
+    CGFloat height = [footer systemLayoutSizeFittingSize:CGSizeMake(width, UILayoutFittingCompressedSize.height)
+                         withHorizontalFittingPriority:UILayoutPriorityRequired
+                               verticalFittingPriority:UILayoutPriorityFittingSizeLevel].height;
+    if (fabs(CGRectGetHeight(footer.frame) - height) > 0.5) {
+        footer.frame = CGRectMake(0, 0, width, height);
+        self.tableView.tableFooterView = footer;
+    }
+}
+
+- (IBAction)showPrivacyPolicy:(id)sender {
+    NSURL *url = [NSURL URLWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"DGSPrivacyPolicyURL"]];
+    SFSafariViewController *browser = [[SFSafariViewController alloc] initWithURL:url];
+    [self presentViewController:browser animated:YES completion:nil];
 }
 
 - (void)updateLoginButton {

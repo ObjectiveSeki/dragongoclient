@@ -4,6 +4,8 @@
 <dict>
 	<key>DGSCommunityURL</key>
 	<string>https://dragongoclient.net/</string>
+	<key>DGSPrivacyPolicyURL</key>
+	<string>https://dragongoclient.net/#privacy</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
