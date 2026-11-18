@@ -6,7 +6,9 @@ Dragon Go Client is an independent iOS app maintained by Niclas Eriksson. This p
 
 ## Playing on Dragon Go Server
 
-Your account and games are hosted by the separate service Dragon Go Server (DGS). The app sends your login details, moves, game settings, comments, and messages to DGS under its [policy](https://www.dragongoserver.net/policy.php). Messages reach their intended recipients; game visibility follows DGS's rules and your settings.
+Your account and games are hosted by the separate service Dragon Go Server (DGS). Account registration opens DGS's website in your browser. The registration form goes directly to DGS; our push server does not receive that form or its full-name, email, or password fields.
+
+The app sends your login details, moves, game settings, comments, and messages directly to DGS under its [policy](https://www.dragongoserver.net/policy.php). Messages reach their intended recipients; game visibility follows DGS's rules and your settings. Our push service separately handles the information described below.
 
 The app keeps account details, login sessions, settings, and cached games on your device. Your DGS password is not sent to our push server.
 

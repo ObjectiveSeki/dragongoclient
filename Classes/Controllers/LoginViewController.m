@@ -105,8 +105,9 @@
 		[self login];
 	} else if (cell == self.signupCell) {
 		[theTableView deselectRowAtIndexPath:indexPath animated:YES];
-        SFSafariViewController *registerView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.dragongoserver.net/register.php"]];
-        [self presentViewController:registerView animated:YES completion:^{}];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.dragongoserver.net/register.php"]
+                                           options:@{}
+                                 completionHandler:nil];
 	}
 }
 
