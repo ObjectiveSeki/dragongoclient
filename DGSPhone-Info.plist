@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>DGSCommunityURL</key>
-	<string>https://dragongoclient.net/</string>
-	<key>DGSPrivacyPolicyURL</key>
-	<string>https://dragongoclient.net/#privacy</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>
@@ -25,11 +21,15 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2</string>
+	<string>2.2.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>DGSCommunityURL</key>
+	<string>https://dragongoclient.net/</string>
+	<key>DGSPrivacyPolicyURL</key>
+	<string>https://dragongoclient.net/#privacy</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationCategoryType</key>
@@ -52,10 +52,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>UIInterfaceOrientation</key>
-	<string>UIInterfaceOrientationPortrait</string>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -75,6 +71,10 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIInterfaceOrientation</key>
+	<string>UIInterfaceOrientationPortrait</string>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UISupportedInterfaceOrientations</key>
