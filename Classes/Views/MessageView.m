@@ -20,6 +20,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.showInputView = YES;
+    self.messageDisplayView.layer.cornerRadius = 24;
+    if (@available(iOS 26.0, *)) {
+        self.messageTextView.topEdgeEffect.hidden = YES;
+    }
 }
 
 - (void)keyboardWillBeShown:(NSNotification *)aNotification {
